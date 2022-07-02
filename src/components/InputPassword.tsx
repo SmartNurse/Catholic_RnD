@@ -26,7 +26,6 @@ const InputPassword = forwardRef(
 
     return (
       <TextField
-        size="small"
         variant="outlined"
         type={type}
         InputProps={{ endAdornment: <VisibleBtn /> }}

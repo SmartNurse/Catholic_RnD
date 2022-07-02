@@ -1,6 +1,11 @@
 import { createTheme } from '@mui/material/styles';
 
 const theme = createTheme({
+  palette: {
+    primary: {
+      main: '#0C5299',
+    },
+  },
   typography: {
     fontFamily: [
       '"Spoqa Han Sans Neo"',
@@ -12,6 +17,13 @@ const theme = createTheme({
     MuiButton: {
       defaultProps: {
         disableElevation: true,
+      },
+    },
+    MuiDialog: {
+      styleOverrides: {
+        paper: {
+          width: '100%',
+        },
       },
     },
   },

@@ -12,8 +12,9 @@ import {
   useTheme,
 } from '@mui/material';
 import { FieldValues, UseFormRegister } from 'react-hook-form';
-import imgLogo from '../../assets/logo.png';
-import ConfirmModalButton from '../../components/ConfirmModalButton';
+
+import { imgNaverCloudLogo, imgSmartNurseLogo } from '../../assets';
+import ConfirmDialogButton from '../../components/ConfirmDialog/ConfirmDialogButton';
 import InputPassword from '../../components/InputPassword';
 
 interface Props {
@@ -31,14 +32,13 @@ function SignInPresenter({ errors, register, onSignUp }: Props) {
         <Card sx={{ borderTop: `solid 8px ${palette.primary.main}` }}>
           <CardMedia
             height={120}
-            image={imgLogo}
             component="img"
+            image={imgSmartNurseLogo}
             sx={{ objectFit: 'contain', mt: 5, mb: 5 }}
           />
           <CardContent sx={{ ml: 5, mr: 5 }}>
             <TextField
               fullWidth
-              size="small"
               label="이메일"
               type="email"
               variant="outlined"
@@ -74,14 +74,16 @@ function SignInPresenter({ errors, register, onSignUp }: Props) {
             <Box flex={1} textAlign="center">
               <Button
                 fullWidth
+                size="large"
+                type="submit"
                 variant="contained"
                 sx={{ mb: '20px' }}
-                type="submit"
               >
                 로그인
               </Button>
               <Button
                 fullWidth
+                size="large"
                 variant="outlined"
                 sx={{ mb: '20px' }}
                 onClick={onSignUp}
@@ -89,12 +91,19 @@ function SignInPresenter({ errors, register, onSignUp }: Props) {
                 회원가입
               </Button>
 
-              <ConfirmModalButton
+              <ConfirmDialogButton
                 title="아이디/비밀번호를 잊으셨나요?"
                 message={`아이디는 본인 학교 이메일입니다.\n비밀번호를 잊으셨다면 스마트널스 관리자 이메일(nurse@smartnurse.co.kr)로 문의해주세요. `}
               />
             </Box>
           </CardActions>
+
+          <CardMedia
+            height={23}
+            component="img"
+            image={imgNaverCloudLogo}
+            sx={{ objectFit: 'contain', mb: 4 }}
+          />
         </Card>
       </Container>
     </Box>

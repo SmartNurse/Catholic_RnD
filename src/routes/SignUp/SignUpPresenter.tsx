@@ -1,3 +1,4 @@
+import { CheckCircle } from '@mui/icons-material';
 import {
   Box,
   Button,
@@ -14,46 +15,106 @@ import FormItem from '../../components/FormItem';
 import InputPassword from '../../components/InputPassword';
 
 interface Props {
-  register: UseFormRegister<FieldValues>;
   errors: { [x: string]: any };
+  register: UseFormRegister<FieldValues>;
+  isSendCertificationMail: boolean;
+  onSendCertificationMail: () => void;
+  isCertification: boolean;
+  onCertificationCode: () => void;
 }
 
-function SignUpPresenter({ register, errors }: Props) {
+function SignUpPresenter(props: Props) {
+  const {
+    errors,
+    register,
+    isSendCertificationMail,
+    onSendCertificationMail,
+    isCertification,
+    onCertificationCode,
+  } = props;
+
+  const InputCertificationCode = () => {
+    if (!isSendCertificationMail) return null;
+
+    const ConfirmIcon = () => {
+      if (!isCertification) return null;
+      return <CheckCircle fontSize="small" color="primary" />;
+    };
+
+    const ConfirmButton = () => {
+      if (isCertification) return null;
+      return (
+        <Button
+          fullWidth
+          variant="contained"
+          onClick={onCertificationCode}
+          sx={{ width: 100, pl: 0, pr: 0, fontSize: 16 }}
+        >
+          확인
+        </Button>
+      );
+    };
+
+    return (
+      <FormItem title="인증번호">
+        <Box display="flex" gap={1}>
+          <TextField
+            fullWidth
+            type="email"
+            variant="outlined"
+            placeholder="이메일로 전송된 인증번호를 입력해주세요."
+            InputProps={{
+              readOnly: isCertification,
+              endAdornment: <ConfirmIcon />,
+            }}
+            {...register('certificationCode')}
+          />
+          <ConfirmButton />
+        </Box>
+      </FormItem>
+    );
+  };
+
   return (
     <Box>
-      <Container maxWidth="sm" sx={{ mt: 10 }}>
+      <Container maxWidth="sm" sx={{ mt: 10, mb: 6 }}>
         <FormItem title="이메일">
-          <Grid container spacing={1}>
-            <Grid item sm={9} xs={8}>
-              <TextField
-                fullWidth
-                size="small"
-                type="email"
-                variant="outlined"
-                placeholder="대학교 이메일을 입력해 주세요."
-                error={Boolean(errors.email)}
-                helperText={errors.email?.message}
-                {...register('email', {
-                  required: {
-                    value: true,
-                    message: '이메일 주소를 입력해주세요.',
-                  },
-                })}
-              />
-            </Grid>
-            <Grid item sm={3} xs={4}>
-              <Button fullWidth size="large" variant="contained">
-                인증하기
-              </Button>
-            </Grid>
-          </Grid>
+          <Box display="flex" gap={1}>
+            <TextField
+              fullWidth
+              type="email"
+              variant="outlined"
+              placeholder="대학교 이메일을 입력해 주세요."
+              error={Boolean(errors.email)}
+              helperText={errors.email?.message}
+              {...register('email', {
+                required: {
+                  value: true,
+                  message: '이메일 주소를 입력해주세요.',
+                },
+              })}
+            />
+            <Button
+              fullWidth
+              variant="contained"
+              onClick={onSendCertificationMail}
+              sx={{ width: 100, pl: 0, pr: 0, fontSize: 16 }}
+            >
+              인증하기
+            </Button>
+          </Box>
         </FormItem>
+
+        <InputCertificationCode />
 
         <FormItem title="비밀번호">
           <InputPassword
             fullWidth
             error={Boolean(errors.password)}
-            helperText={errors.password?.message}
+            helperText={
+              errors.password?.message ??
+              '영문+숫자+특수기호를 포함해서 8자리 이상 입력해 주세요.'
+            }
             {...register('password', {
               required: {
                 value: true,
@@ -80,7 +141,6 @@ function SignUpPresenter({ register, errors }: Props) {
         <FormItem title="이름">
           <TextField
             fullWidth
-            size="small"
             variant="outlined"
             {...register('name', {
               required: {
@@ -117,18 +177,12 @@ function SignUpPresenter({ register, errors }: Props) {
         </Grid>
 
         <FormItem title="학교 선택">
-          <TextField
-            fullWidth
-            size="small"
-            variant="outlined"
-            {...register('university')}
-          />
+          <TextField fullWidth variant="outlined" {...register('university')} />
         </FormItem>
 
         <FormItem title="학번/사번">
           <TextField
             fullWidth
-            size="small"
             variant="outlined"
             {...register('universityId')}
           />
@@ -139,7 +193,6 @@ function SignUpPresenter({ register, errors }: Props) {
             <Grid item xs={4}>
               <TextField
                 fullWidth
-                size="small"
                 type="number"
                 variant="outlined"
                 placeholder="년"
@@ -149,7 +202,6 @@ function SignUpPresenter({ register, errors }: Props) {
             <Grid item xs={4}>
               <TextField
                 fullWidth
-                size="small"
                 type="number"
                 variant="outlined"
                 placeholder="월"
@@ -159,7 +211,6 @@ function SignUpPresenter({ register, errors }: Props) {
             <Grid item xs={4}>
               <TextField
                 fullWidth
-                size="small"
                 type="number"
                 variant="outlined"
                 placeholder="일"
