@@ -20,11 +20,14 @@
     "@types/react": "^18.0.0",
     "@types/react-dom": "^18.0.0",
     "@types/react-router-dom": "^5.3.3",
+    "dotenv-cli": "^5.1.0",
     "prettier": "^2.4.1"
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "react-scripts build"
+    "start:dev": "dotenv -e .env.development react-scripts start",
+    "build": "react-scripts build",
+    "build:dev": "dotenv -e .env.development react-scripts build"
   },
   "eslintConfig": {
     "extends": [
