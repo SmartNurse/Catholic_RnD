@@ -26,6 +26,14 @@ const theme = createTheme({
         },
       },
     },
+    MuiDrawer: {
+      styleOverrides: {
+        paper: {
+          boxSizing: 'border-box',
+          borderRight: 0,
+        },
+      },
+    },
   },
 });
 
