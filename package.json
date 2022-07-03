@@ -28,9 +28,11 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "start:dev": "dotenv -e .env.development react-scripts start",
     "build": "react-scripts build",
-    "build:dev": "dotenv -e .env.development react-scripts build"
+    "start:dev": "dotenv -e .env.development react-scripts start",
+    "build:dev": "rm -rf build && dotenv -e .env.development react-scripts build",
+    "prepublish:dev": "yarn build:dev",
+    "publish:dev": "aws --endpoint-url=https://kr.object.ncloudstorage.com s3 sync build s3://enr-client-dev"
   },
   "eslintConfig": {
     "extends": [

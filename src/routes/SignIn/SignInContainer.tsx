@@ -2,7 +2,11 @@ import { FieldValues, useForm } from 'react-hook-form';
 import { useMutation } from 'react-query';
 import { useNavigate } from 'react-router-dom';
 import { postLogin } from '../../apis/account';
-import { getLocalStorage, setLocalStorage } from '../../utils/storage';
+import {
+  getLocalStorage,
+  setLocalStorage,
+  setSessionStorage,
+} from '../../utils/storage';
 import SignInPresenter from './SignInPresenter';
 import { ISignInForm } from './type';
 
@@ -32,7 +36,9 @@ function SignInContainer() {
     // 이메일 저장 체크된 경우 로컬스토리지에 이메일 저장
     if (saveEmail) setLocalStorage('USER_EMAIL', userEmail);
 
-    handleLogin.mutate({ userEmail, userPassword });
+    // handleLogin.mutate({ userEmail, userPassword });
+    setSessionStorage('AUTH_TOKEN', '123');
+    navigate('/');
   };
 
   const onSignUp = () => navigate('/signup');

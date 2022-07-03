@@ -1,7 +1,17 @@
-type TStorageKey = 'USER_EMAIL';
+type TLocalStorageKey = 'USER_EMAIL';
 
-export const getLocalStorage = (storageKey: TStorageKey) =>
+export const getLocalStorage = (storageKey: TLocalStorageKey) =>
   localStorage.getItem(storageKey) || '';
 
-export const setLocalStorage = (storageKey: TStorageKey, value: string) =>
+export const setLocalStorage = (storageKey: TLocalStorageKey, value: string) =>
   value && localStorage.setItem(storageKey, value);
+
+type TSessionStorageKey = 'AUTH_TOKEN';
+
+export const getSessionStorage = (storageKey: TSessionStorageKey) =>
+  sessionStorage.getItem(storageKey) || '';
+
+export const setSessionStorage = (
+  storageKey: TSessionStorageKey,
+  value: string
+) => value && sessionStorage.setItem(storageKey, value);
