@@ -85,9 +85,9 @@ function SignUpPresenter(props: Props) {
               type="email"
               variant="outlined"
               placeholder="대학교 이메일을 입력해 주세요."
-              error={Boolean(errors.email)}
-              helperText={errors.email?.message}
-              {...register('email', {
+              error={Boolean(errors.userEmail)}
+              helperText={errors.userEmail?.message}
+              {...register('userEmail', {
                 required: {
                   value: true,
                   message: '이메일 주소를 입력해주세요.',

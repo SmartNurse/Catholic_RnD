@@ -5,13 +5,11 @@ interface Props {
   children: JSX.Element;
 }
 
-const FormItem = ({ title, children }: Props) => {
-  return (
-    <Box sx={{ mb: '20px' }}>
-      <Typography variant="caption">{title}</Typography>
-      {children}
-    </Box>
-  );
-};
+const FormItem = ({ title, children }: Props) => (
+  <Box sx={{ mb: '20px' }}>
+    <Typography variant="caption">{title}</Typography>
+    {children}
+  </Box>
+);
 
 export default FormItem;

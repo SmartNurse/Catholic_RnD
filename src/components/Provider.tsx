@@ -1,19 +1,19 @@
 import React from 'react';
-import { CssBaseline, GlobalStyles, ThemeProvider } from '@mui/material';
+import { QueryClient, QueryClientProvider } from 'react-query';
+import { CssBaseline, ThemeProvider } from '@mui/material';
 import theme from '../styles/theme';
 
 interface Props {
   children: React.ReactNode;
 }
 
+const queryClient = new QueryClient();
+
 function Provider({ children }: Props) {
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
-      <GlobalStyles
-        styles={{ body: { minWidth: '1440px', overflowX: 'auto' } }}
-      />
-      {children}
+      <QueryClientProvider client={queryClient}>{children}</QueryClientProvider>
     </ThemeProvider>
   );
 }

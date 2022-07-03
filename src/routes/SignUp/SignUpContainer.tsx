@@ -1,5 +1,7 @@
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
+import { useMutation } from 'react-query';
+import { postSendEmail } from '../../apis/account';
 import ConfirmDialog from '../../components/ConfirmDialog/ConfirmDialog';
 import SignUpPresenter from './SignUpPresenter';
 
@@ -7,13 +9,25 @@ function SignUpContainer() {
   const {
     handleSubmit,
     register,
+    getValues,
     formState: { errors },
   } = useForm();
+
+  const handleSendEmail = useMutation(postSendEmail, {
+    onSuccess: () => {
+      console.log('onSuccess');
+      setIsSendCertificationMail(true);
+    },
+    onError: e => {
+      console.log('onError', e);
+    },
+  });
 
   const [isSendCertificationMail, setIsSendCertificationMail] = useState(false);
   const onSendCertificationMail = () => {
     // TODO 인증메일 API
-    setIsSendCertificationMail(true);
+    const userEmail = getValues('userEmail');
+    handleSendEmail.mutate({ userEmail });
   };
 
   const [isCertification, setIsCertification] = useState(false);

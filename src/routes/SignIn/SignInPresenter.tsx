@@ -43,9 +43,9 @@ function SignInPresenter({ errors, register, onSignUp }: Props) {
               type="email"
               variant="outlined"
               sx={{ mb: '20px' }}
-              error={Boolean(errors.email)}
-              helperText={errors.email?.message}
-              {...register('email', {
+              error={Boolean(errors.userEmail)}
+              helperText={errors.userEmail?.message}
+              {...register('userEmail', {
                 required: {
                   value: true,
                   message: '이메일 주소를 입력해주세요.',
@@ -56,9 +56,9 @@ function SignInPresenter({ errors, register, onSignUp }: Props) {
               fullWidth
               label="비밀번호"
               sx={{ mb: '2px' }}
-              error={Boolean(errors.password)}
-              helperText={errors.password?.message}
-              {...register('password', {
+              error={Boolean(errors.userPassword)}
+              helperText={errors.userPassword?.message}
+              {...register('userPassword', {
                 required: {
                   value: true,
                   message: '비밀번호를 입력해주세요.',
