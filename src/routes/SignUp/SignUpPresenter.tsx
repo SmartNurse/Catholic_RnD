@@ -1,79 +1,33 @@
 import { CheckCircle } from '@mui/icons-material';
+import { LoadingButton } from '@mui/lab';
 import {
   Box,
   Button,
   Checkbox,
   Container,
   FormControlLabel,
-  FormGroup,
   Grid,
   Radio,
+  RadioGroup,
   TextField,
 } from '@mui/material';
 import { FieldValues, UseFormRegister } from 'react-hook-form';
 import FormItem from '../../components/FormItem';
 import InputPassword from '../../components/InputPassword';
+import { ISendMailProps, IVerifyMailProps } from './types';
 
 interface Props {
   errors: { [x: string]: any };
   register: UseFormRegister<FieldValues>;
-  isSendCertificationMail: boolean;
-  onSendCertificationMail: () => void;
-  isCertification: boolean;
-  onCertificationCode: () => void;
+  sendMailProps: ISendMailProps;
+  verifyMailProps: IVerifyMailProps;
 }
 
 function SignUpPresenter(props: Props) {
-  const {
-    errors,
-    register,
-    isSendCertificationMail,
-    onSendCertificationMail,
-    isCertification,
-    onCertificationCode,
-  } = props;
+  const { errors, register, sendMailProps, verifyMailProps } = props;
 
-  const InputCertificationCode = () => {
-    if (!isSendCertificationMail) return null;
-
-    const ConfirmIcon = () => {
-      if (!isCertification) return null;
-      return <CheckCircle fontSize="small" color="primary" />;
-    };
-
-    const ConfirmButton = () => {
-      if (isCertification) return null;
-      return (
-        <Button
-          fullWidth
-          variant="contained"
-          onClick={onCertificationCode}
-          sx={{ width: 100, pl: 0, pr: 0, fontSize: 16 }}
-        >
-          확인
-        </Button>
-      );
-    };
-
-    return (
-      <FormItem title="인증번호">
-        <Box display="flex" gap={1}>
-          <TextField
-            fullWidth
-            type="email"
-            variant="outlined"
-            placeholder="이메일로 전송된 인증번호를 입력해주세요."
-            InputProps={{
-              readOnly: isCertification,
-              endAdornment: <ConfirmIcon />,
-            }}
-            {...register('certificationCode')}
-          />
-          <ConfirmButton />
-        </Box>
-      </FormItem>
-    );
-  };
+  // sx
+  const extraButtonStyle = { width: 100, pl: 0, pr: 0, fontSize: 16 };
 
   return (
     <Box>
@@ -84,9 +38,6 @@ function SignUpPresenter(props: Props) {
               fullWidth
               type="email"
               variant="outlined"
-              placeholder="대학교 이메일을 입력해 주세요."
-              error={Boolean(errors.userEmail)}
-              helperText={errors.userEmail?.message}
               {...register('userEmail', {
                 required: {
                   value: true,
@@ -94,28 +45,70 @@ function SignUpPresenter(props: Props) {
                 },
               })}
             />
-            <Button
+            <LoadingButton
               fullWidth
-              variant="contained"
-              onClick={onSendCertificationMail}
-              sx={{ width: 100, pl: 0, pr: 0, fontSize: 16 }}
+              sx={extraButtonStyle}
+              loading={sendMailProps.isLoading}
+              variant={sendMailProps.isSendMail ? 'outlined' : 'contained'}
+              onClick={sendMailProps.onClick}
             >
-              인증하기
-            </Button>
+              {sendMailProps.isSendMail ? '재전송' : '인증하기'}
+            </LoadingButton>
           </Box>
         </FormItem>
 
-        <InputCertificationCode />
+        <FormItem title="인증번호" isHidden={!sendMailProps.isSendMail}>
+          <Box display="flex" gap={1}>
+            <TextField
+              fullWidth
+              type="text"
+              variant="outlined"
+              placeholder="이메일로 전송된 인증번호를 입력해주세요."
+              InputProps={{
+                readOnly: verifyMailProps.isVerification,
+                endAdornment: (
+                  <CheckCircle
+                    fontSize="small"
+                    color="primary"
+                    sx={{
+                      display: verifyMailProps.isVerification
+                        ? 'block'
+                        : 'none',
+                    }}
+                  />
+                ),
+              }}
+              {...register('userCode', {
+                required: {
+                  value: true,
+                  message: '이메일로 전송된 인증번호를 입력해주세요.',
+                },
+              })}
+            />
+            <LoadingButton
+              fullWidth
+              variant="contained"
+              loading={verifyMailProps.isLoading}
+              onClick={verifyMailProps.onClick}
+              sx={{
+                ...extraButtonStyle,
+                display: !verifyMailProps.isVerification ? 'block' : 'none',
+              }}
+            >
+              확인
+            </LoadingButton>
+          </Box>
+        </FormItem>
 
         <FormItem title="비밀번호">
           <InputPassword
             fullWidth
-            error={Boolean(errors.password)}
+            error={Boolean(errors.userPassword)}
             helperText={
-              errors.password?.message ??
+              errors.userPassword?.message ??
               '영문+숫자+특수기호를 포함해서 8자리 이상 입력해 주세요.'
             }
-            {...register('password', {
+            {...register('userPassword', {
               required: {
                 value: true,
                 message: '비밀번호를 입력해주세요.',
@@ -128,9 +121,9 @@ function SignUpPresenter(props: Props) {
           <InputPassword
             fullWidth
             isHideVisibleBtn
-            error={Boolean(errors.passwordConfirm)}
-            helperText={errors.passwordConfirm?.message}
-            {...register('passwordConfirm', {
+            error={Boolean(errors.userPasswordConfirm)}
+            helperText={errors.userPasswordConfirm?.message}
+            {...register('userPasswordConfirm', {
               required: {
                 value: true,
                 message: '비밀번호를 입력해주세요.',
@@ -142,7 +135,7 @@ function SignUpPresenter(props: Props) {
           <TextField
             fullWidth
             variant="outlined"
-            {...register('name', {
+            {...register('userName', {
               required: {
                 value: true,
                 message: '이름을 입력해주세요.',
@@ -154,37 +147,39 @@ function SignUpPresenter(props: Props) {
         <Grid container>
           <Grid item xs={6}>
             <FormItem title="성별">
-              <FormGroup row {...register('gender')}>
-                <FormControlLabel
-                  control={<Radio defaultChecked />}
-                  label="여"
-                />
-                <FormControlLabel control={<Radio />} label="남" />
-              </FormGroup>
+              <RadioGroup row {...register('userGender')}>
+                <FormControlLabel control={<Radio />} value={0} label="여" />
+                <FormControlLabel control={<Radio />} value={1} label="남" />
+              </RadioGroup>
             </FormItem>
           </Grid>
           <Grid item xs={6}>
             <FormItem title="구분">
-              <FormGroup row {...register('job')}>
+              <RadioGroup row {...register('job')}>
+                <FormControlLabel control={<Radio />} value={0} label="학생" />
                 <FormControlLabel
-                  control={<Radio defaultChecked />}
-                  label="학생"
+                  control={<Radio />}
+                  value={1}
+                  label="교수/조교"
                 />
-                <FormControlLabel control={<Radio />} label="교수/조교" />
-              </FormGroup>
+              </RadioGroup>
             </FormItem>
           </Grid>
         </Grid>
 
         <FormItem title="학교 선택">
-          <TextField fullWidth variant="outlined" {...register('university')} />
+          <TextField
+            fullWidth
+            variant="outlined"
+            {...register('userCollege')}
+          />
         </FormItem>
 
         <FormItem title="학번/사번">
           <TextField
             fullWidth
             variant="outlined"
-            {...register('universityId')}
+            {...register('studentNumber')}
           />
         </FormItem>
 
@@ -232,7 +227,7 @@ function SignUpPresenter(props: Props) {
           fullWidth
           size="large"
           variant="contained"
-          sx={{ mt: '28px' }}
+          sx={{ mt: 3.25 }}
           type="submit"
         >
           가입 신청하기

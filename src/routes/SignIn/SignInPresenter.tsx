@@ -29,7 +29,10 @@ function SignInPresenter({ errors, register, onSignUp }: Props) {
   return (
     <Box>
       <Container maxWidth="sm" sx={{ mt: 10 }}>
-        <Card sx={{ borderTop: `solid 8px ${palette.primary.main}` }}>
+        <Card
+          elevation={1}
+          sx={{ borderTop: `solid 8px ${palette.primary.main}` }}
+        >
           <CardMedia
             height={120}
             component="img"
@@ -42,7 +45,7 @@ function SignInPresenter({ errors, register, onSignUp }: Props) {
               label="이메일"
               type="email"
               variant="outlined"
-              sx={{ mb: '20px' }}
+              sx={{ mb: 2.5 }}
               error={Boolean(errors.userEmail)}
               helperText={errors.userEmail?.message}
               {...register('userEmail', {
@@ -55,7 +58,7 @@ function SignInPresenter({ errors, register, onSignUp }: Props) {
             <InputPassword
               fullWidth
               label="비밀번호"
-              sx={{ mb: '2px' }}
+              sx={{ mb: 0.25 }}
               error={Boolean(errors.userPassword)}
               helperText={errors.userPassword?.message}
               {...register('userPassword', {
@@ -77,7 +80,7 @@ function SignInPresenter({ errors, register, onSignUp }: Props) {
                 size="large"
                 type="submit"
                 variant="contained"
-                sx={{ mb: '20px' }}
+                sx={{ mb: 2.5 }}
               >
                 로그인
               </Button>
@@ -85,7 +88,7 @@ function SignInPresenter({ errors, register, onSignUp }: Props) {
                 fullWidth
                 size="large"
                 variant="outlined"
-                sx={{ mb: '20px' }}
+                sx={{ mb: 2.5 }}
                 onClick={onSignUp}
               >
                 회원가입

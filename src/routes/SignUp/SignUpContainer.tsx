@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { useMutation } from 'react-query';
-import { postSendEmail } from '../../apis/account';
+import { postSendMail, postVerifyMail } from '../../apis/account';
 import ConfirmDialog from '../../components/ConfirmDialog/ConfirmDialog';
 import SignUpPresenter from './SignUpPresenter';
 
@@ -13,27 +13,27 @@ function SignUpContainer() {
     formState: { errors },
   } = useForm();
 
-  const handleSendEmail = useMutation(postSendEmail, {
+  // email
+  const [isSendMail, setSendMail] = useState(false);
+  const handleSendEmail = useMutation(postSendMail, {
     onSuccess: () => {
-      console.log('onSuccess');
-      setIsSendCertificationMail(true);
-    },
-    onError: e => {
-      console.log('onError', e);
+      setSendMail(true);
+      setIsVerification(false);
     },
   });
-
-  const [isSendCertificationMail, setIsSendCertificationMail] = useState(false);
-  const onSendCertificationMail = () => {
-    // TODO 인증메일 API
+  const onSendMail = () => {
     const userEmail = getValues('userEmail');
     handleSendEmail.mutate({ userEmail });
   };
 
-  const [isCertification, setIsCertification] = useState(false);
-  const onCertificationCode = () => {
-    // TODO 인증메일 코드 확인
-    setIsCertification(true);
+  const [isVerification, setIsVerification] = useState(false);
+  const handleVerifyEmail = useMutation(postVerifyMail, {
+    onSuccess: () => setIsVerification(true),
+  });
+  const onVerifyMail = () => {
+    const userCode = getValues('userCode');
+    const userEmail = getValues('userEmail');
+    handleVerifyEmail.mutate({ userCode, userEmail });
   };
 
   const [isSignUp, setIsSignUp] = useState(false);
@@ -41,7 +41,7 @@ function SignUpContainer() {
   const onSubmit = (data: any) => {
     console.log(data);
     // TODO 회원가입
-    setIsSignUp(true);
+    // setIsSignUp(true);
   };
 
   return (
@@ -49,10 +49,16 @@ function SignUpContainer() {
       <SignUpPresenter
         errors={errors}
         register={register}
-        isSendCertificationMail={isSendCertificationMail}
-        onSendCertificationMail={onSendCertificationMail}
-        isCertification={isCertification}
-        onCertificationCode={onCertificationCode}
+        sendMailProps={{
+          isSendMail,
+          isLoading: handleSendEmail.isLoading,
+          onClick: onSendMail,
+        }}
+        verifyMailProps={{
+          isVerification,
+          isLoading: handleVerifyEmail.isLoading,
+          onClick: onVerifyMail,
+        }}
       />
 
       <ConfirmDialog
