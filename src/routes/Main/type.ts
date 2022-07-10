@@ -1,7 +1,7 @@
 export enum RECORD_TYPE {
   ADMISSION = '입원간호 기록지',
   DISCHARGE = '퇴원간호 기록지',
-  PRESCRIPTION = '차방 기록지',
+  PRESCRIPTION = '처방 기록지',
   NURSE = '간호 기록지',
   DOSAGE = '투약 기록지',
   IMAGING = '영상검사 기록지',

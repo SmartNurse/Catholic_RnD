@@ -20,9 +20,9 @@ export const DrawerWrapper = styled('div')`
   }
 
   .MuiList-root {
-    /* 100% - MuiToolbar - userName */
     display: flex;
     flex-direction: column;
+    /* 100% - MuiToolbar - userName */
     height: calc(100% - 98px);
     padding: 18px 10px;
     background-color: ${theme.palette.primary.main};

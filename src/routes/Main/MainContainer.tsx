@@ -1,7 +1,11 @@
 import { Box } from '@mui/material';
 import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+
 import { getSessionStorage } from '../../utils/storage';
+
+import DisplayInformation from './DisplayInformation';
+import InputInformation from './InputInformation';
 import MenuDrawer from './MenuDrawer';
 
 function MainContainer() {
@@ -16,8 +20,10 @@ function MainContainer() {
   }, [navigate]);
 
   return (
-    <Box sx={{ display: 'flex' }}>
+    <Box display={'flex'} minWidth={1440}>
       <MenuDrawer />
+      <DisplayInformation />
+      <InputInformation />
     </Box>
   );
 }

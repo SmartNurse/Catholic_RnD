@@ -13,11 +13,11 @@ import {
   MedicationOutlined,
   ImageOutlined,
   TaskOutlined,
-  BloodtypeOutlined,
   SentimentSatisfiedOutlined,
   RestaurantMenu,
   VerifiedUserOutlined,
   ExpandMore,
+  MonitorHeartOutlined,
 } from '@mui/icons-material';
 import { RECORD_TYPE } from '../type';
 
@@ -52,7 +52,7 @@ const MenuRecords = () => {
       label: RECORD_TYPE.CLINICAL_PATHOLOGY,
     },
     {
-      icon: <BloodtypeOutlined />,
+      icon: <MonitorHeartOutlined />,
       label: RECORD_TYPE.CLINICAL_OBSERVATION,
     },
     {
