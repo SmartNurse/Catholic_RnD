@@ -14,7 +14,7 @@ const DisplayInformation = () => {
   return (
     <Box
       component="main"
-      display={'flex'}
+      display="flex"
       flexDirection="column"
       sx={{ width: containerWidth, height: '100vh' }}
     >
@@ -25,7 +25,7 @@ const DisplayInformation = () => {
 
       <Box
         flex={1}
-        display={'flex'}
+        display="flex"
         flexDirection="column"
         sx={{ p: 2.5, backgroundColor: '#EDF3FA' }}
       >

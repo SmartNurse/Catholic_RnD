@@ -1,11 +1,4 @@
-import {
-  Box,
-  Card,
-  List,
-  ListItem,
-  ListItemIcon,
-  Typography,
-} from '@mui/material';
+import { Box, Card, List, Typography } from '@mui/material';
 
 const NursingRecord = () => {
   return (

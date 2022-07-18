@@ -8,7 +8,7 @@ interface Props {
 
 const FormItem = ({ title, children, isHidden }: Props) =>
   isHidden ? null : (
-    <Box sx={{ mb: '20px' }}>
+    <Box sx={{ mb: 2.5 }}>
       <Typography variant="caption">{title}</Typography>
       {children}
     </Box>

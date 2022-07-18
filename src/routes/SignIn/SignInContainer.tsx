@@ -5,7 +5,7 @@ import { postLogin } from '../../apis/account';
 import {
   getLocalStorage,
   setLocalStorage,
-  setSessionStorage,
+  removeLocalStorage,
 } from '../../utils/storage';
 import SignInPresenter from './SignInPresenter';
 import { ISignInForm } from './type';
@@ -15,9 +15,10 @@ function SignInContainer() {
 
   const handleLogin = useMutation(postLogin, {
     onSuccess: () => {
-      console.log('onSuccess');
+      navigate('/');
     },
     onError: e => {
+      removeLocalStorage('USER_EMAIL');
       console.log('onError', e);
     },
   });
@@ -36,9 +37,8 @@ function SignInContainer() {
     // 이메일 저장 체크된 경우 로컬스토리지에 이메일 저장
     if (saveEmail) setLocalStorage('USER_EMAIL', userEmail);
 
-    // handleLogin.mutate({ userEmail, userPassword });
-    setSessionStorage('AUTH_TOKEN', '123');
-    navigate('/');
+    handleLogin.mutate({ userEmail, userPassword });
+    // setSessionStorage('AUTH_TOKEN', '123');
   };
 
   const onSignUp = () => navigate('/signup');

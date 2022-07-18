@@ -13,12 +13,13 @@ const InputPassword = forwardRef(
     const type = isVisible ? 'text' : 'password';
 
     const VisibleBtn = () => {
+      if (isHideVisibleBtn) return null;
+
       const onClick = () => setIsVisible(value => !value);
       const icon = isVisible ? <VisibilityOff /> : <Visibility />;
 
-      if (isHideVisibleBtn) return null;
       return (
-        <IconButton size="small" onClick={onClick} sx={{ ml: '14px' }}>
+        <IconButton size="small" onClick={onClick} sx={{ ml: 1.75 }}>
           {icon}
         </IconButton>
       );
