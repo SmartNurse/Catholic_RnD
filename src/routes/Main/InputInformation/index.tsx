@@ -1,7 +1,13 @@
+import { useState } from 'react';
 import { TabContext, TabList } from '@mui/lab';
 import { Box, Tab, TextField, Toolbar, Typography } from '@mui/material';
-import { useState } from 'react';
+
 import { StyledTabPanel } from './style';
+import NandaContainer from './NandaContainer';
+import SoapieContainer from './SoapieContainer';
+import FocusDarContainer from './FocusDarContainer';
+import NarrativeRecordContainer from './NarrativeRecordContainer';
+import RemarksContainer from './RemarksContainer';
 
 export const inputInformationWidth = { xs: 340, xl: 530 };
 
@@ -12,7 +18,13 @@ const InputInformation = () => {
     <Box component="aside" width={inputInformationWidth}>
       <Toolbar sx={{ backgroundColor: '#F2F2F2' }}>광고 영역</Toolbar>
 
-      <Box sx={{ p: 2.5 }}>
+      <Box
+        p={2.5}
+        display="flex"
+        flexDirection="column"
+        overflow="auto"
+        height="calc(100vh - 52px)"
+      >
         <TextField
           multiline
           fullWidth
@@ -23,7 +35,7 @@ const InputInformation = () => {
         />
 
         <Box
-          display={'flex'}
+          display="flex"
           justifyContent="space-between"
           sx={{ mt: 2.5, mb: 1.5 }}
         >
@@ -40,11 +52,21 @@ const InputInformation = () => {
             <Tab label="서술기록" value={'서술기록'} />
             <Tab label="특기사항" value={'특기사항'} />
           </TabList>
-          <StyledTabPanel value={'NANDA'}>NANDA</StyledTabPanel>
-          <StyledTabPanel value={'SOAPIE'}>SOAPIE</StyledTabPanel>
-          <StyledTabPanel value={'FocusDAR'}>FocusDAR</StyledTabPanel>
-          <StyledTabPanel value={'서술기록'}>서술기록</StyledTabPanel>
-          <StyledTabPanel value={'특기사항'}>특기사항</StyledTabPanel>
+          <StyledTabPanel value={'NANDA'}>
+            <NandaContainer />
+          </StyledTabPanel>
+          <StyledTabPanel value={'SOAPIE'}>
+            <SoapieContainer />
+          </StyledTabPanel>
+          <StyledTabPanel value={'FocusDAR'}>
+            <FocusDarContainer />
+          </StyledTabPanel>
+          <StyledTabPanel value={'서술기록'}>
+            <NarrativeRecordContainer />
+          </StyledTabPanel>
+          <StyledTabPanel value={'특기사항'}>
+            <RemarksContainer />
+          </StyledTabPanel>
         </TabContext>
       </Box>
     </Box>

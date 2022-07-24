@@ -13,10 +13,10 @@ const DisplayInformation = () => {
 
   return (
     <Box
-      component="main"
       display="flex"
+      component="main"
       flexDirection="column"
-      sx={{ width: containerWidth, height: '100vh' }}
+      width={containerWidth}
     >
       <Toolbar sx={{ boxShadow: '-4px 4px 10px rgba(0, 0, 0, 0.04)' }}>
         {/* TODO autocomplete list */}
@@ -24,10 +24,13 @@ const DisplayInformation = () => {
       </Toolbar>
 
       <Box
+        p={2.5}
+        overflow="auto"
+        height="calc(100vh - 52px)"
         flex={1}
         display="flex"
         flexDirection="column"
-        sx={{ p: 2.5, backgroundColor: '#EDF3FA' }}
+        sx={{ backgroundColor: '#EDF3FA' }}
       >
         <Privacy />
         <Box display="flex" flex={1} mt={2.5} columnGap={2.5}>
