@@ -16,7 +16,7 @@ function MainContainer() {
     if (authToken) return;
 
     // TODO 로그인 안되어 있는 경우 페이지 이동
-    // navigate('/signin', { replace: true });
+    navigate('/signin', { replace: true });
   }, [navigate]);
 
   return (

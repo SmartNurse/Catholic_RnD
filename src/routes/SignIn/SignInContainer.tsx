@@ -6,6 +6,7 @@ import {
   getLocalStorage,
   setLocalStorage,
   removeLocalStorage,
+  setSessionStorage,
 } from '../../utils/storage';
 import SignInPresenter from './SignInPresenter';
 import { ISignInForm } from './type';
@@ -38,7 +39,7 @@ function SignInContainer() {
     if (saveEmail) setLocalStorage('USER_EMAIL', userEmail);
 
     handleLogin.mutate({ userEmail, userPassword });
-    // setSessionStorage('AUTH_TOKEN', '123');
+    setSessionStorage('AUTH_TOKEN', '123');
   };
 
   const onSignUp = () => navigate('/signup');

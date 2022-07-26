@@ -18,3 +18,6 @@ export const setSessionStorage = (
   storageKey: TSessionStorageKey,
   value: string
 ) => value && sessionStorage.setItem(storageKey, value);
+
+export const removeSessionStorage = (storageKey: TSessionStorageKey) =>
+  sessionStorage.removeItem(storageKey);

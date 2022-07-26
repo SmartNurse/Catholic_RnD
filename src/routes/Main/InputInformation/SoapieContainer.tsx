@@ -14,7 +14,7 @@ function SoapieContainer() {
         />
       </FormItem>
 
-      <FormItem title="객관적 정보 Objective Date">
+      <FormItem title="객관적 정보 Objective Data">
         <TextField
           fullWidth
           multiline
@@ -54,7 +54,7 @@ function SoapieContainer() {
         />
       </FormItem>
 
-      <FormItem title="평가 Evalustion">
+      <FormItem title="평가 Evaluation">
         <TextField
           fullWidth
           multiline

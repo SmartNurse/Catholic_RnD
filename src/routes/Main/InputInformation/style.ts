@@ -8,6 +8,7 @@ export const StyledTabPanel = styled(TabPanel)`
   .MuiButtonGroup-root {
     color: #000000b2;
     margin-top: auto;
+    padding-top: 16px;
     justify-content: flex-end;
   }
 `;
