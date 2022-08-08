@@ -18,8 +18,8 @@ export const postVerifyMail = (request: IPostVerifyMailRequest) => {
 };
 
 export const postAccountCreate = (request: IPostAccountCreateRequest) => {
-  const url = `/account/create?${formatToRequestParameter(request)}`;
-  return apiGateway.post(url);
+  const url = `/account/create`;
+  return apiGateway.post(url, request);
 };
 
 export const postLogin = (request: IPostLoginRequest) => {

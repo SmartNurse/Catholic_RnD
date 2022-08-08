@@ -1,4 +1,4 @@
-import { Box, Typography } from '@mui/material';
+import { FormControl, Typography } from '@mui/material';
 
 interface Props {
   title: string;
@@ -8,10 +8,10 @@ interface Props {
 
 const FormItem = ({ title, children, isHidden }: Props) =>
   isHidden ? null : (
-    <Box>
+    <FormControl fullWidth>
       <Typography variant="caption">{title}</Typography>
       {children}
-    </Box>
+    </FormControl>
   );
 
 export default FormItem;

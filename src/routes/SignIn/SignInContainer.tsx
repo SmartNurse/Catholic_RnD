@@ -33,12 +33,15 @@ function SignInContainer() {
   });
 
   const onSubmit = (data: any) => {
-    const { saveEmail, userEmail, userPassword } = data as ISignInForm;
+    const request = {
+      user_email: data.userEmail,
+      user_password: data.userPassword,
+    };
 
     // 이메일 저장 체크된 경우 로컬스토리지에 이메일 저장
-    if (saveEmail) setLocalStorage('USER_EMAIL', userEmail);
+    if (data.saveEmail) setLocalStorage('USER_EMAIL', data.userEmail);
 
-    handleLogin.mutate({ userEmail, userPassword });
+    handleLogin.mutate(request);
     setSessionStorage('AUTH_TOKEN', '123');
   };
 

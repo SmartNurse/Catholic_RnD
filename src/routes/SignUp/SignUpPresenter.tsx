@@ -13,22 +13,23 @@ import {
   TextField,
   Typography,
 } from '@mui/material';
-import { FieldValues, UseFormRegister } from 'react-hook-form';
+import { format } from 'date-fns';
+import { FieldValues, UseFormRegister, UseFormSetValue } from 'react-hook-form';
 import FormItem from '../../components/FormItem';
 import InputPassword from '../../components/InputPassword';
+import CollegeList from './CollegeList';
 import { ISendMailProps, IVerifyMailProps } from './types';
 
 interface Props {
   errors: { [x: string]: any };
   register: UseFormRegister<FieldValues>;
+  setValue: UseFormSetValue<FieldValues>;
   sendMailProps: ISendMailProps;
   verifyMailProps: IVerifyMailProps;
 }
 
 function SignUpPresenter(props: Props) {
-  const { errors, register, sendMailProps, verifyMailProps } = props;
-
-  // sx
+  const { errors, register, setValue, sendMailProps, verifyMailProps } = props;
   const extraButtonStyle = { width: 100, pl: 0, pr: 0, fontSize: 16 };
 
   return (
@@ -53,7 +54,6 @@ function SignUpPresenter(props: Props) {
                 })}
               />
               <LoadingButton
-                fullWidth
                 sx={{ ...extraButtonStyle, maxHeight: 56 }}
                 loading={sendMailProps.isLoading}
                 variant={sendMailProps.isSendMail ? 'outlined' : 'contained'}
@@ -85,15 +85,9 @@ function SignUpPresenter(props: Props) {
                     />
                   ),
                 }}
-                {...register('userCode', {
-                  required: {
-                    value: true,
-                    message: '이메일로 전송된 인증번호를 입력해주세요.',
-                  },
-                })}
+                {...register('userCode')}
               />
               <LoadingButton
-                fullWidth
                 variant="contained"
                 loading={verifyMailProps.isLoading}
                 onClick={verifyMailProps.onClick}
@@ -140,37 +134,41 @@ function SignUpPresenter(props: Props) {
           </FormItem>
           <FormItem title="이름">
             <TextField
+              required
               fullWidth
               variant="outlined"
-              {...register('userName', {
-                required: {
-                  value: true,
-                  message: '이름을 입력해주세요.',
-                },
-              })}
+              {...register('userName')}
             />
           </FormItem>
 
           <Grid container>
             <Grid item xs={6}>
               <FormItem title="성별">
-                <RadioGroup row {...register('userGender')}>
-                  <FormControlLabel control={<Radio />} value={0} label="여" />
-                  <FormControlLabel control={<Radio />} value={1} label="남" />
+                <RadioGroup
+                  row
+                  name="gender"
+                  onChange={e => setValue('gender', e.target.value)}
+                >
+                  <FormControlLabel value={1} control={<Radio />} label="여" />
+                  <FormControlLabel value={2} control={<Radio />} label="남" />
                 </RadioGroup>
               </FormItem>
             </Grid>
             <Grid item xs={6}>
               <FormItem title="구분">
-                <RadioGroup row {...register('job')}>
+                <RadioGroup
+                  row
+                  name="grade"
+                  onChange={e => setValue('grade', e.target.value)}
+                >
                   <FormControlLabel
+                    value={1}
                     control={<Radio />}
-                    value={0}
                     label="학생"
                   />
                   <FormControlLabel
+                    value={2}
                     control={<Radio />}
-                    value={1}
                     label="교수/조교"
                   />
                 </RadioGroup>
@@ -179,62 +177,39 @@ function SignUpPresenter(props: Props) {
           </Grid>
 
           <FormItem title="학교 선택">
-            <TextField
-              fullWidth
-              variant="outlined"
-              {...register('userCollege')}
-            />
+            <CollegeList register={register} />
           </FormItem>
 
           <FormItem title="학번/사번">
             <TextField
+              required
               fullWidth
+              type="number"
               variant="outlined"
-              {...register('studentNumber')}
+              {...register('studentNo')}
             />
           </FormItem>
 
           <FormItem title="생년월일">
-            <Grid container spacing={1}>
-              <Grid item xs={4}>
-                <TextField
-                  fullWidth
-                  type="number"
-                  variant="outlined"
-                  placeholder="년"
-                  {...register('year')}
-                />
-              </Grid>
-              <Grid item xs={4}>
-                <TextField
-                  fullWidth
-                  type="number"
-                  variant="outlined"
-                  placeholder="월"
-                  {...register('month')}
-                />
-              </Grid>
-              <Grid item xs={4}>
-                <TextField
-                  fullWidth
-                  type="number"
-                  variant="outlined"
-                  placeholder="일"
-                  {...register('day')}
-                />
-              </Grid>
-            </Grid>
+            <TextField
+              required
+              fullWidth
+              type="date"
+              InputLabelProps={{ shrink: true }}
+              defaultValue={format(new Date(), 'yyyy-MM-dd')}
+              {...register('birth')}
+            />
           </FormItem>
         </Stack>
 
         <FormControlLabel
           label="(필수) 스마트널스 서비스 이용약관 동의"
-          control={<Checkbox {...register('termsOfService')} />}
+          control={<Checkbox required {...register('termsOfService')} />}
           sx={{ mt: 2.5 }}
         />
         <FormControlLabel
           label="(필수) 개인정보 수집 및 이용 동의"
-          control={<Checkbox {...register('personalInfo')} />}
+          control={<Checkbox required {...register('personalInfo')} />}
         />
         <Button
           fullWidth

@@ -1,19 +1,20 @@
 export interface IPostSendMailRequest {
-  userEmail: string;
+  user_email: string;
 }
 
 export interface IPostVerifyMailRequest extends IPostSendMailRequest {
-  userCode: string;
+  user_code: string;
 }
 
 export interface IPostLoginRequest extends IPostSendMailRequest {
-  userPassword: string;
+  user_password: string;
 }
 
 export interface IPostAccountCreateRequest extends IPostLoginRequest {
-  studentNumber: string;
-  userBirth: string;
-  userCollege: string;
-  userGender: string;
-  userName: string;
+  user_name: string;
+  gender: number;
+  birth: string;
+  college: number;
+  studentNo: number;
+  grade: number;
 }

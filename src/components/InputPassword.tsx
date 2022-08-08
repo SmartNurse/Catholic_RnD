@@ -30,7 +30,7 @@ const InputPassword = forwardRef(
         variant="outlined"
         type={type}
         InputProps={{ endAdornment: <VisibleBtn /> }}
-        inputProps={{ ref }}
+        inputRef={ref}
         {...props}
       />
     );

@@ -1,4 +1,4 @@
-import { Fragment } from 'react';
+import { Fragment, useState } from 'react';
 import {
   ListItem,
   ListItemButton,
@@ -19,9 +19,12 @@ import {
   ExpandMore,
   MonitorHeartOutlined,
 } from '@mui/icons-material';
+import Records from '../Records';
 import { RECORD_TYPE } from '../type';
 
 const MenuRecords = () => {
+  const [record, setRecord] = useState('');
+
   const records = [
     {
       icon: <Healing />,
@@ -85,6 +88,8 @@ const MenuRecords = () => {
   return (
     <Fragment>
       {records.map(({ icon, label, disabled }) => {
+        const onClick = () => setRecord(label);
+
         const MoreIcon = () => {
           if (!disabled) return null;
           return <ExpandMore fontSize="small" sx={{ color: '#fff' }} />;
@@ -92,7 +97,7 @@ const MenuRecords = () => {
 
         return (
           <ListItem key={label} disablePadding>
-            <ListItemButton disabled={disabled}>
+            <ListItemButton disabled={disabled} onClick={onClick}>
               <ListItemIcon>{icon}</ListItemIcon>
               <ListItemText primary={label} />
               <MoreIcon />
@@ -100,6 +105,8 @@ const MenuRecords = () => {
           </ListItem>
         );
       })}
+
+      <Records record={record} onResetRecord={() => setRecord('')} />
     </Fragment>
   );
 };
