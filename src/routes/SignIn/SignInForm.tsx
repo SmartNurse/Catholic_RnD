@@ -23,7 +23,7 @@ interface Props {
   onSignUp: () => void;
 }
 
-function SignInPresenter({ errors, register, onSignUp }: Props) {
+function SignInForm({ errors, register, onSignUp }: Props) {
   const { palette } = useTheme();
 
   return (
@@ -113,4 +113,4 @@ function SignInPresenter({ errors, register, onSignUp }: Props) {
   );
 }
 
-export default SignInPresenter;
+export default SignInForm;

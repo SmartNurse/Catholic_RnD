@@ -11,11 +11,10 @@ import {
   NotificationsOutlined,
 } from '@mui/icons-material';
 import { SETTING_TYPE } from '../type';
-import { removeSessionStorage } from '../../../utils/storage';
-import { useNavigate } from 'react-router-dom';
+import useUser from '../../../store/slices/useUser';
 
 const MenuSettings = () => {
-  const navigate = useNavigate();
+  const { onSignOut } = useUser();
 
   const settings = [
     {
@@ -34,10 +33,7 @@ const MenuSettings = () => {
       icon: <LogoutOutlined />,
       label: SETTING_TYPE.LOGOUT,
       buttonClick: {
-        onClick: () => {
-          removeSessionStorage('AUTH_TOKEN');
-          navigate('/signin', { replace: true });
-        },
+        onClick: onSignOut,
       },
     },
   ];

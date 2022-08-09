@@ -9,9 +9,9 @@ import {
   postVerifyMail,
 } from '../../apis/account';
 import ConfirmDialog from '../../components/ConfirmDialog/ConfirmDialog';
-import SignUpPresenter from './SignUpPresenter';
+import SignUpForm from './SignUpForm';
 
-function SignUpContainer() {
+function SignUp() {
   const navigate = useNavigate();
   const { enqueueSnackbar } = useSnackbar();
 
@@ -23,6 +23,7 @@ function SignUpContainer() {
     formState: { errors },
   } = useForm();
 
+  // 이메일 발송
   const [isSendMail, setSendMail] = useState(false);
   const handleSendEmail = useMutation(postSendMail, {
     onSuccess: () => {
@@ -35,6 +36,7 @@ function SignUpContainer() {
     handleSendEmail.mutate({ user_email });
   };
 
+  // 이메일 인증
   const [isVerification, setIsVerification] = useState(false);
   const handleVerifyEmail = useMutation(postVerifyMail, {
     onSuccess: () => setIsVerification(true),
@@ -45,25 +47,27 @@ function SignUpContainer() {
     handleVerifyEmail.mutate({ user_code, user_email });
   };
 
+  // 회원 가입
   const [isSignUp, setIsSignUp] = useState(false);
   const handleAccountCreate = useMutation(postAccountCreate, {
     onSuccess: () => setIsSignUp(true),
   });
 
   const onSubmit = (data: any) => {
-    if (!data.userCode) {
-      enqueueSnackbar('이메일 인증을 해주세요', { variant: 'error' });
-      return null;
+    if (!data.userCode || !isVerification) {
+      return enqueueSnackbar('이메일 인증을 해주세요', { variant: 'error' });
     }
 
     if (!data.gender) {
-      enqueueSnackbar('성별을 선택해주세요', { variant: 'error' });
-      return null;
+      return enqueueSnackbar('성별을 선택해주세요', { variant: 'error' });
     }
 
     if (!data.grade) {
-      enqueueSnackbar('구분을 선택해주세요', { variant: 'error' });
-      return null;
+      return enqueueSnackbar('구분을 선택해주세요', { variant: 'error' });
+    }
+
+    if (!data.college) {
+      return enqueueSnackbar('학교를 선택 해주세요', { variant: 'error' });
     }
 
     const request = {
@@ -82,7 +86,7 @@ function SignUpContainer() {
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
-      <SignUpPresenter
+      <SignUpForm
         errors={errors}
         register={register}
         setValue={setValue}
@@ -108,4 +112,4 @@ function SignUpContainer() {
   );
 }
 
-export default SignUpContainer;
+export default SignUp;

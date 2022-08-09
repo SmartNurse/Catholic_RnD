@@ -13,7 +13,7 @@ import {
   TextField,
   Typography,
 } from '@mui/material';
-import { format } from 'date-fns';
+import { addYears, format } from 'date-fns';
 import { FieldValues, UseFormRegister, UseFormSetValue } from 'react-hook-form';
 import FormItem from '../../components/FormItem';
 import InputPassword from '../../components/InputPassword';
@@ -28,9 +28,9 @@ interface Props {
   verifyMailProps: IVerifyMailProps;
 }
 
-function SignUpPresenter(props: Props) {
+function SignUpForm(props: Props) {
+  const xsBtnStyles = { width: 100, pl: 0, pr: 0, fontSize: 16 };
   const { errors, register, setValue, sendMailProps, verifyMailProps } = props;
-  const extraButtonStyle = { width: 100, pl: 0, pr: 0, fontSize: 16 };
 
   return (
     <Box>
@@ -54,7 +54,7 @@ function SignUpPresenter(props: Props) {
                 })}
               />
               <LoadingButton
-                sx={{ ...extraButtonStyle, maxHeight: 56 }}
+                sx={{ ...xsBtnStyles, maxHeight: 56 }}
                 loading={sendMailProps.isLoading}
                 variant={sendMailProps.isSendMail ? 'outlined' : 'contained'}
                 onClick={sendMailProps.onClick}
@@ -92,7 +92,7 @@ function SignUpPresenter(props: Props) {
                 loading={verifyMailProps.isLoading}
                 onClick={verifyMailProps.onClick}
                 sx={{
-                  ...extraButtonStyle,
+                  ...xsBtnStyles,
                   display: !verifyMailProps.isVerification ? 'block' : 'none',
                 }}
               >
@@ -177,7 +177,7 @@ function SignUpPresenter(props: Props) {
           </Grid>
 
           <FormItem title="학교 선택">
-            <CollegeList register={register} />
+            <CollegeList setValue={setValue} />
           </FormItem>
 
           <FormItem title="학번/사번">
@@ -196,7 +196,7 @@ function SignUpPresenter(props: Props) {
               fullWidth
               type="date"
               InputLabelProps={{ shrink: true }}
-              defaultValue={format(new Date(), 'yyyy-MM-dd')}
+              defaultValue={format(addYears(new Date(), -20), 'yyyy-MM-dd')}
               {...register('birth')}
             />
           </FormItem>
@@ -225,4 +225,4 @@ function SignUpPresenter(props: Props) {
   );
 }
 
-export default SignUpPresenter;
+export default SignUpForm;

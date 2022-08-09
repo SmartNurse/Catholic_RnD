@@ -13,10 +13,10 @@ export const DrawerWrapper = styled('div')`
   .userName {
     color: #fff;
     height: 46px;
+    line-height: 46px;
     font-weight: 600;
     background-color: #2e85dc;
     text-align: center;
-    padding: 12px;
   }
 
   .MuiList-root {

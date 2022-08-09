@@ -2,26 +2,25 @@ import { FieldValues, useForm } from 'react-hook-form';
 import { useMutation } from 'react-query';
 import { useNavigate } from 'react-router-dom';
 import { postLogin } from '../../apis/account';
+import useUser from '../../store/slices/useUser';
 import {
   getLocalStorage,
   setLocalStorage,
   removeLocalStorage,
-  setSessionStorage,
 } from '../../utils/storage';
-import SignInPresenter from './SignInPresenter';
+import SignInForm from './SignInForm';
 import { ISignInForm } from './type';
 
-function SignInContainer() {
+function SignIn() {
   const navigate = useNavigate();
+  const { onSignIn } = useUser();
 
   const handleLogin = useMutation(postLogin, {
-    onSuccess: () => {
+    onSuccess: ({ data }) => {
+      onSignIn({ ...data });
       navigate('/');
     },
-    onError: e => {
-      removeLocalStorage('USER_EMAIL');
-      console.log('onError', e);
-    },
+    onError: e => removeLocalStorage('USER_EMAIL'),
   });
 
   const {
@@ -42,20 +41,15 @@ function SignInContainer() {
     if (data.saveEmail) setLocalStorage('USER_EMAIL', data.userEmail);
 
     handleLogin.mutate(request);
-    setSessionStorage('AUTH_TOKEN', '123');
   };
 
   const onSignUp = () => navigate('/signup');
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
-      <SignInPresenter
-        errors={errors}
-        register={register}
-        onSignUp={onSignUp}
-      />
+      <SignInForm errors={errors} register={register} onSignUp={onSignUp} />
     </form>
   );
 }
 
-export default SignInContainer;
+export default SignIn;

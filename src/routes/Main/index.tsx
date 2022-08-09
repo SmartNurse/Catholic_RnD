@@ -2,30 +2,28 @@ import { Box } from '@mui/material';
 import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-import { getSessionStorage } from '../../utils/storage';
+import useUser from '../../store/slices/useUser';
 
 import DisplayInformation from './DisplayInformation';
 import InputInformation from './InputInformation';
 import MenuDrawer from './MenuDrawer';
 
-function MainContainer() {
+function Main() {
+  const { name } = useUser();
   const navigate = useNavigate();
 
   useEffect(() => {
-    const authToken = getSessionStorage('AUTH_TOKEN');
-    if (authToken) return;
-
-    // TODO 로그인 안되어 있는 경우 페이지 이동
+    if (name) return;
     navigate('/signin', { replace: true });
-  }, [navigate]);
+  }, [name, navigate]);
 
   return (
     <Box display={'flex'} minWidth={1440}>
-      <MenuDrawer />
+      <MenuDrawer name={name} />
       <DisplayInformation />
       <InputInformation />
     </Box>
   );
 }
 
-export default MainContainer;
+export default Main;
