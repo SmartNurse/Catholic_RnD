@@ -12,9 +12,9 @@ export interface IPostLoginRequest extends IPostSendMailRequest {
 
 export interface IPostAccountCreateRequest extends IPostLoginRequest {
   user_name: string;
-  gender: number;
+  gender: 1 | 2;
   birth: string;
   college: number;
   studentNo: number;
-  grade: number;
+  grade: 1 | 2;
 }

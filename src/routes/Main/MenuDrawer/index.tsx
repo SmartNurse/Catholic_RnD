@@ -1,6 +1,8 @@
 import { Box, Drawer, Typography, Toolbar, List } from '@mui/material';
+
 import { imgSmartNurseLogoText } from '../../../assets';
-import { DrawerWrapper } from '../style';
+import { StyledDrawerWrapper } from '../style';
+
 import CopyRight from './CopyRight';
 import MenuRecords from './MenuRecords';
 import MenuSettings from './MenuSettings';
@@ -18,7 +20,7 @@ const MenuDrawer = ({ name }: Props) => (
     sx={{ width: menuDrawerWidth }}
     PaperProps={{ sx: { width: 'inherit' } }}
   >
-    <DrawerWrapper>
+    <StyledDrawerWrapper>
       <Toolbar>
         <img src={imgSmartNurseLogoText} alt="SmartNurse" width={86} />
       </Toolbar>
@@ -31,7 +33,7 @@ const MenuDrawer = ({ name }: Props) => (
         <MenuSettings />
         <CopyRight />
       </List>
-    </DrawerWrapper>
+    </StyledDrawerWrapper>
   </Drawer>
 );
 

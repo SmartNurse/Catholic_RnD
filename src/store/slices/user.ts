@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
-export interface User {
+export interface UserState {
   name: string;
   student_uuid: number;
 }
@@ -11,9 +11,9 @@ export const userSlice = createSlice({
   initialState: {
     name: '',
     student_uuid: 0,
-  } as User,
+  } as UserState,
   reducers: {
-    signIn(_, action: PayloadAction<User>) {
+    signIn(_, action: PayloadAction<UserState>) {
       return action.payload;
     },
   },

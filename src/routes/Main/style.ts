@@ -1,7 +1,7 @@
 import { styled } from '@mui/material';
 import theme from '../../styles/theme';
 
-export const DrawerWrapper = styled('div')`
+export const StyledDrawerWrapper = styled('div')`
   flex: 1;
 
   .MuiToolbar-root {
@@ -67,4 +67,13 @@ export const DrawerWrapper = styled('div')`
       opacity: 1;
     }
   }
+`;
+
+export const StyledContentContainer = styled('section')`
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  overflow: auto;
+  /* 100% - MuiToolbar */
+  height: calc(100vh - 52px);
 `;

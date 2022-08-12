@@ -1,5 +1,4 @@
-import React, { Fragment, useEffect, useState } from 'react';
-import { FieldValues, UseFormSetValue } from 'react-hook-form';
+import React, { Fragment, useCallback, useEffect, useState } from 'react';
 import {
   Autocomplete,
   CircularProgress,
@@ -7,27 +6,26 @@ import {
   TextField,
 } from '@mui/material';
 
-import { getCollegeLists } from '../../apis/admin';
-import { ICollege } from '../../apis/admin/type';
+import { getPatients } from '../../../apis/admin';
+import { IPatient } from '../../../apis/admin/type';
+import usePatient from '../../../store/slices/usePatient';
 
-interface Props {
-  setValue: UseFormSetValue<FieldValues>;
-}
-
-const CollegeList = ({ setValue }: Props) => {
+const PatientsList = () => {
   const [open, setOpen] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
-  const [options, setOptions] = useState([] as ICollege[]);
+  const [options, setOptions] = useState([] as IPatient[]);
+  const { patient, onSelectedPatient } = usePatient();
 
-  const onChangeOptions = (keyword: string) => {
-    getCollegeLists({ page: 1, keyword })
+  const onChangeOptions = useCallback((keyword: string) => {
+    getPatients({ page: 1, keyword })
       .then(({ data }) => {
-        setOptions(data.college_lists);
+        const patients = data.admin_patients;
+        setOptions(patients);
       })
       .finally(() => setIsLoading(false));
-  };
+  }, []);
 
-  useEffect(() => onChangeOptions(''), []);
+  useEffect(() => onChangeOptions(''), [onChangeOptions]);
 
   const onChangeTextField = debounce(e => {
     const keyword = e.target.value;
@@ -51,17 +49,19 @@ const CollegeList = ({ setValue }: Props) => {
       open={open}
       onOpen={() => setOpen(true)}
       onClose={() => setOpen(false)}
+      value={patient}
+      onChange={(_, value) => onSelectedPatient(value)}
       isOptionEqualToValue={(option, value) =>
-        option.college_name === value.college_name
+        option.patient_id === value.patient_id
       }
-      getOptionLabel={option => option.college_name}
-      noOptionsText="다른 학교를 입력해주세요"
+      getOptionLabel={option => `${option.name} ${option.age}세`}
+      noOptionsText="검색한 환자가 없습니다 다른 환자 이름을 입력해주세요"
       options={options}
       loading={isLoading}
       onChangeCapture={() => setIsLoading(true)}
-      onChange={(_, value) => setValue('college', value?.college_id)}
       renderInput={params => (
         <TextField
+          variant="standard"
           {...params}
           onChange={onChangeTextField}
           InputProps={{
@@ -78,4 +78,4 @@ const CollegeList = ({ setValue }: Props) => {
   );
 };
 
-export default CollegeList;
+export default PatientsList;

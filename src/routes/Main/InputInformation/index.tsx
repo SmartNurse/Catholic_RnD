@@ -1,6 +1,16 @@
 import { useState } from 'react';
 import { TabContext, TabList } from '@mui/lab';
-import { Box, Tab, TextField, Toolbar, Typography } from '@mui/material';
+import {
+  Box,
+  Button,
+  ButtonGroup,
+  Tab,
+  TextField,
+  Toolbar,
+  Typography,
+} from '@mui/material';
+
+import { StyledContentContainer } from '../style';
 
 import { StyledTabPanel } from './style';
 import NandaContainer from './NandaContainer';
@@ -8,31 +18,22 @@ import SoapieContainer from './SoapieContainer';
 import FocusDarContainer from './FocusDarContainer';
 import NarrativeRecordContainer from './NarrativeRecordContainer';
 import RemarksContainer from './RemarksContainer';
+import usePatient from '../../../store/slices/usePatient';
+import PatientNote from './PatientMemo';
 
 export const inputInformationWidth = { xs: 340, xl: 530 };
 
 const InputInformation = () => {
+  const { patient } = usePatient();
+
   const [tab, setTab] = useState('NANDA');
 
   return (
     <Box component="aside" width={inputInformationWidth}>
       <Toolbar sx={{ backgroundColor: '#F2F2F2' }}>광고 영역</Toolbar>
 
-      <Box
-        p={2.5}
-        display="flex"
-        flexDirection="column"
-        overflow="auto"
-        height="calc(100vh - 52px)"
-      >
-        <TextField
-          multiline
-          fullWidth
-          size="small"
-          placeholder="진단명, 주의사항, 처방 등 인수인계를 입력해주세요."
-          InputProps={{ sx: { fontSize: 14, height: 160 } }}
-          inputProps={{ style: { height: '100%' } }}
-        />
+      <StyledContentContainer>
+        <PatientNote patient={patient} />
 
         <Box
           display="flex"
@@ -67,8 +68,19 @@ const InputInformation = () => {
           <StyledTabPanel value={'특기사항'}>
             <RemarksContainer />
           </StyledTabPanel>
+
+          <ButtonGroup
+            size="small"
+            color="info"
+            sx={{ justifyContent: 'flex-end' }}
+          >
+            <Button variant="text" color="inherit">
+              취소
+            </Button>
+            <Button variant="text">저장</Button>
+          </ButtonGroup>
         </TabContext>
-      </Box>
+      </StyledContentContainer>
     </Box>
   );
 };

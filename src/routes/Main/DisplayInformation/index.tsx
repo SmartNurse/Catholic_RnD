@@ -1,9 +1,13 @@
-import { Box, Toolbar, Typography } from '@mui/material';
+import { Box, Toolbar } from '@mui/material';
+
 import { inputInformationWidth } from '../InputInformation';
+import { StyledContentContainer } from '../style';
+
 import { menuDrawerWidth } from '../MenuDrawer';
 import NursingRecord from './NursingRecord';
-import Prescription from './Prescription';
-import Privacy from './Privacy';
+import PatientsList from './PatientsList';
+import MedicalNote from './MedicalNote';
+import PatientInfo from './PatientInfo';
 
 const DisplayInformation = () => {
   const containerWidth = {
@@ -19,25 +23,16 @@ const DisplayInformation = () => {
       width={containerWidth}
     >
       <Toolbar sx={{ boxShadow: '-4px 4px 10px rgba(0, 0, 0, 0.04)' }}>
-        {/* TODO autocomplete list */}
-        <Typography variant="subtitle1">김소현 환자</Typography>
+        <PatientsList />
       </Toolbar>
 
-      <Box
-        p={2.5}
-        overflow="auto"
-        height="calc(100vh - 52px)"
-        flex={1}
-        display="flex"
-        flexDirection="column"
-        sx={{ backgroundColor: '#EDF3FA' }}
-      >
-        <Privacy />
+      <StyledContentContainer style={{ flex: 1, backgroundColor: '#EDF3FA' }}>
+        <PatientInfo />
         <Box display="flex" flex={1} mt={2.5} columnGap={2.5}>
-          <Prescription />
+          <MedicalNote />
           <NursingRecord />
         </Box>
-      </Box>
+      </StyledContentContainer>
     </Box>
   );
 };
