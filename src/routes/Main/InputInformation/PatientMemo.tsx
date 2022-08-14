@@ -1,32 +1,22 @@
-import { useEffect, useMemo, useState } from 'react';
-import { Skeleton, TextField } from '@mui/material';
+import { useEffect, useState } from 'react';
+import { TextField } from '@mui/material';
 
 import { getPatientMemo, postPatientMemo } from '../../../apis/admin';
-import { IPatient } from '../../../apis/admin/type';
-import useUser from '../../../store/slices/useUser';
 
 interface Props {
-  patient?: IPatient | null;
+  user_id: number;
+  patient_id: number;
 }
 
-const PatientMemo = ({ patient }: Props) => {
-  const { student_uuid } = useUser();
+const PatientMemo = ({ user_id, patient_id }: Props) => {
   const [memo, setMemo] = useState('');
 
-  const requestIds = useMemo(
-    () => ({
-      user_id: student_uuid,
-      patient_id: patient ? patient.patient_id : 0,
-    }),
-    [patient, student_uuid]
-  );
-
   useEffect(() => {
-    if (!patient) return;
-
     // 가상환자 메모 조회요청
-    getPatientMemo(requestIds).then(({ data }) => setMemo(data?.memo));
-  }, [patient, student_uuid, requestIds]);
+    getPatientMemo({ patient_id, user_id }).then(({ data }) =>
+      setMemo(data?.memo)
+    );
+  }, [patient_id, user_id]);
 
   const onChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
@@ -34,12 +24,8 @@ const PatientMemo = ({ patient }: Props) => {
 
   const onBlur = () => {
     // 가상환자 메모 업데이트요청
-    postPatientMemo({ ...requestIds, memo: encodeURIComponent(memo) });
+    postPatientMemo({ patient_id, user_id, memo });
   };
-
-  if (!patient) {
-    return <Skeleton variant="rectangular" width="100%" height={160} />;
-  }
 
   return (
     <TextField
@@ -50,7 +36,7 @@ const PatientMemo = ({ patient }: Props) => {
       onBlur={onBlur}
       onChange={onChange}
       placeholder="진단명, 주의사항, 처방 등 인수인계를 입력해주세요."
-      InputProps={{ sx: { fontSize: 14, height: 160 } }}
+      InputProps={{ sx: { height: 160 } }}
       inputProps={{ style: { height: '100%' } }}
     />
   );

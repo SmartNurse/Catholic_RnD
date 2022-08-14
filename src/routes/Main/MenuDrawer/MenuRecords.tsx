@@ -19,76 +19,75 @@ import {
   ExpandMore,
   MonitorHeartOutlined,
 } from '@mui/icons-material';
-import Records from '../Records';
-import { RECORD_TYPE } from '../type';
+import Survey from '../Survey';
 
 const MenuRecords = () => {
-  const [record, setRecord] = useState('');
+  const [type, setType] = useState('');
 
-  const records = [
+  const menus = [
     {
       icon: <Healing />,
-      label: RECORD_TYPE.ADMISSION,
+      label: '입원간호 기록지',
     },
     {
       icon: <HomeOutlined />,
-      label: RECORD_TYPE.DISCHARGE,
+      label: '퇴원간호 기록지',
     },
     {
       icon: <LocalPharmacyOutlined />,
-      label: RECORD_TYPE.PRESCRIPTION,
+      label: '처방 기록지',
     },
     {
       icon: <DriveFileRenameOutline />,
-      label: RECORD_TYPE.NURSE,
+      label: '간호 기록지',
     },
     {
       icon: <MedicationOutlined />,
-      label: RECORD_TYPE.DOSAGE,
+      label: '투약 기록지',
     },
     {
       icon: <ImageOutlined />,
-      label: RECORD_TYPE.IMAGING,
+      label: '영상검사 기록지',
     },
     {
       icon: <TaskOutlined />,
-      label: RECORD_TYPE.CLINICAL_PATHOLOGY,
+      label: '임상병리검사 기록지',
     },
     {
       icon: <MonitorHeartOutlined />,
-      label: RECORD_TYPE.CLINICAL_OBSERVATION,
+      label: '임상관찰 기록지',
     },
     {
       disabled: true,
       icon: <SentimentSatisfiedOutlined />,
-      label: RECORD_TYPE.PATIENT_EVALUATION,
+      label: '환자평가 기록지',
     },
     {
-      label: RECORD_TYPE.RISK_OF_BEDSORES,
+      label: '욕창위험도 평가도구',
     },
     {
-      label: RECORD_TYPE.NEEDS_ASSESSMENT,
+      label: '욕구평가 기록지',
     },
     {
-      label: RECORD_TYPE.FALL_RISK_ASSESSMENT,
+      label: '낙상위험도 평가도구',
     },
     {
-      label: RECORD_TYPE.COGNITIVE_FUNCTION,
+      label: '인지기능검사',
     },
     {
       icon: <RestaurantMenu />,
-      label: RECORD_TYPE.DIET_NUTRITION,
+      label: '식이/영양 기록지',
     },
     {
       icon: <VerifiedUserOutlined />,
-      label: RECORD_TYPE.AGREEMENT,
+      label: '동의서',
     },
   ];
 
   return (
     <Fragment>
-      {records.map(({ icon, label, disabled }) => {
-        const onClick = () => setRecord(label);
+      {menus.map(({ icon, label, disabled }) => {
+        const onClick = () => setType(label);
 
         const MoreIcon = () => {
           if (!disabled) return null;
@@ -106,7 +105,7 @@ const MenuRecords = () => {
         );
       })}
 
-      <Records record={record} onResetRecord={() => setRecord('')} />
+      <Survey type={type} onReset={() => setType('')} />
     </Fragment>
   );
 };

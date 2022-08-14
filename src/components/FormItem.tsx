@@ -2,7 +2,7 @@ import { FormControl, Typography } from '@mui/material';
 
 interface Props {
   title: string;
-  children: JSX.Element;
+  children: React.ReactNode;
   isHidden?: boolean;
 }
 

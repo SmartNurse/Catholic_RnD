@@ -1,4 +1,4 @@
-import { Box, Card, Skeleton, Typography } from '@mui/material';
+import { Box, Card, Typography } from '@mui/material';
 import { format } from 'date-fns/esm';
 import usePatient from '../../../store/slices/usePatient';
 
@@ -6,13 +6,17 @@ const MedicalNote = () => {
   const { patientInfo } = usePatient();
   const today = format(new Date(), 'yyyy-MM-dd');
 
-  const MedicalNoteCard = () => {
-    if (!patientInfo) {
-      return <Skeleton variant="rectangular" height="auto" sx={{ flex: 1 }} />;
-    }
+  if (!patientInfo) return null;
 
-    return (
-      <Card component="section" sx={{ p: '20px 15px', flex: 1 }}>
+  return (
+    <Box flex={1} display="flex" flexDirection="column" overflow="auto">
+      <Typography variant="subtitle2" fontSize={13} mb={1}>
+        처방 내역
+      </Typography>
+      <Card
+        component="section"
+        sx={{ p: '20px 15px', height: '100%', overflow: 'auto' }}
+      >
         <Typography variant="caption" component="p" color="#00000080" mb={1}>
           처방일시 {today}
         </Typography>
@@ -20,15 +24,6 @@ const MedicalNote = () => {
           {patientInfo.medical_note}
         </Typography>
       </Card>
-    );
-  };
-
-  return (
-    <Box flex={1} display="flex" flexDirection={'column'}>
-      <Typography variant="subtitle2" fontSize={13} mb={1}>
-        처방 내역
-      </Typography>
-      <MedicalNoteCard />
     </Box>
   );
 };

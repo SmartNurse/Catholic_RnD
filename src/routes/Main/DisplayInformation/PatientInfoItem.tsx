@@ -2,7 +2,7 @@ import { Box, Typography } from '@mui/material';
 
 interface Props {
   title: string;
-  content?: string | number | JSX.Element;
+  content?: string | number | React.ReactNode;
 }
 
 const PatientInfoItem = ({ title, content }: Props) => {

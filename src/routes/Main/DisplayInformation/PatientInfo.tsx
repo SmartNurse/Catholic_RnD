@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { Card, Divider, NativeSelect, Skeleton, Stack } from '@mui/material';
+import { Card, Divider, NativeSelect, Stack } from '@mui/material';
 
 import { getPatientInfo } from '../../../apis/admin';
 import usePatient from '../../../store/slices/usePatient';
@@ -9,24 +9,23 @@ import PatientInfoItem from './PatientInfoItem';
 import useI18n from '../../../hooks/useI18n';
 
 const PatientInfo = () => {
+  const i18n = useI18n();
   const { name: userName } = useUser();
   const { patient, patientInfo, onSelectedPatientInfo } = usePatient();
-  const i18n = useI18n();
 
   // 부진단 코드 index
   const [diseaseSubIndex, setDiseaseSubIndex] = useState(0);
 
   useEffect(() => {
     if (!patient) return;
+
     // 가상환자 상세정보 요청
     getPatientInfo({ patient_id: patient.patient_id }).then(({ data }) =>
       onSelectedPatientInfo(data)
     );
   }, [patient, onSelectedPatientInfo]);
 
-  if (!patientInfo) {
-    return <Skeleton variant="rectangular" width="100%" height={160} />;
-  }
+  if (!patientInfo) return null;
 
   const {
     // column1
@@ -54,7 +53,7 @@ const PatientInfo = () => {
       value={diseaseSubIndex}
       onChange={e => setDiseaseSubIndex(Number(e.target.value))}
       inputProps={{ style: { paddingTop: 0, paddingBottom: 0 } }}
-      sx={{ fontSize: 14, lineHeight: '18px', p: 0 }}
+      sx={{ fontSize: 14, lineHeight: '18px' }}
     >
       {disease_sub.map(({ disease_id }, index) => (
         <option key={disease_id} value={index}>
@@ -70,16 +69,14 @@ const PatientInfo = () => {
       sx={{
         p: 2.5,
         display: 'flex',
+        overflow: 'visible',
         justifyContent: 'space-around',
         gap: { xs: 1.25, xl: 5 },
       }}
     >
       <Stack spacing={1.25}>
         <PatientInfoItem title="등록번호" content={patient_id} />
-        <PatientInfoItem
-          title="성별"
-          content={i18n(`STUDENT.GENDER.${gender}`)}
-        />
+        <PatientInfoItem title="성별" content={i18n(`GENDER.${gender}`)} />
         <PatientInfoItem title="키" content={height.toLowerCase()} />
         <PatientInfoItem title="혈액형" content={blood} />
         <PatientInfoItem title="체중" content={weight.toLowerCase()} />

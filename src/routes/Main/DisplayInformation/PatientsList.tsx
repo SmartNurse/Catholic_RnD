@@ -16,16 +16,20 @@ const PatientsList = () => {
   const [options, setOptions] = useState([] as IPatient[]);
   const { patient, onSelectedPatient } = usePatient();
 
-  const onChangeOptions = useCallback((keyword: string) => {
-    getPatients({ page: 1, keyword })
-      .then(({ data }) => {
-        const patients = data.admin_patients;
-        setOptions(patients);
-      })
-      .finally(() => setIsLoading(false));
-  }, []);
+  const onChangeOptions = useCallback(
+    (keyword?: string) => {
+      getPatients({ page: 1, keyword: keyword ?? '' })
+        .then(({ data }) => {
+          const patients = data.admin_patients;
+          setOptions(patients);
+          if (!patient) onSelectedPatient(patients[0]);
+        })
+        .finally(() => setIsLoading(false));
+    },
+    [patient, onSelectedPatient]
+  );
 
-  useEffect(() => onChangeOptions(''), [onChangeOptions]);
+  useEffect(onChangeOptions, [onChangeOptions]);
 
   const onChangeTextField = debounce(e => {
     const keyword = e.target.value;
@@ -43,13 +47,16 @@ const PatientsList = () => {
     </Fragment>
   );
 
+  if (!patient) return null;
+
   return (
     <Autocomplete
       fullWidth
+      disableClearable
       open={open}
       onOpen={() => setOpen(true)}
       onClose={() => setOpen(false)}
-      value={patient}
+      value={patient!}
       onChange={(_, value) => onSelectedPatient(value)}
       isOptionEqualToValue={(option, value) =>
         option.patient_id === value.patient_id

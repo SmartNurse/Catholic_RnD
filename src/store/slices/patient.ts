@@ -5,6 +5,7 @@ import { IPatient, IPatientInfo } from '../../apis/admin/type';
 export interface PatientState {
   patient?: IPatient | null;
   patientInfo?: IPatientInfo | null;
+  isUpdateNursingRecord: boolean;
 }
 
 export const patientSlice = createSlice({
@@ -12,6 +13,7 @@ export const patientSlice = createSlice({
   initialState: {
     patient: null,
     patientInfo: null,
+    isUpdateNursingRecord: false,
   } as PatientState,
   reducers: {
     selectedPatient(state, action: PayloadAction<IPatient | null>) {
@@ -21,8 +23,12 @@ export const patientSlice = createSlice({
     selectedPatientInfo(state, action: PayloadAction<IPatientInfo | null>) {
       state.patientInfo = action.payload;
     },
+    updateNursingRecord(state, action: PayloadAction<boolean>) {
+      state.isUpdateNursingRecord = action.payload;
+    },
   },
 });
 
-export const { selectedPatient, selectedPatientInfo } = patientSlice.actions;
+export const { selectedPatient, selectedPatientInfo, updateNursingRecord } =
+  patientSlice.actions;
 export default patientSlice.reducer;

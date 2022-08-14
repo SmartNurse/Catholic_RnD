@@ -10,7 +10,6 @@ import {
   LogoutOutlined,
   NotificationsOutlined,
 } from '@mui/icons-material';
-import { SETTING_TYPE } from '../type';
 import useUser from '../../../store/slices/useUser';
 
 const MenuSettings = () => {
@@ -19,7 +18,7 @@ const MenuSettings = () => {
   const settings = [
     {
       icon: <NotificationsOutlined />,
-      label: SETTING_TYPE.NOTICE,
+      label: '공지사항',
       buttonClick: {
         target: '_blank',
         href: 'https://www.smartnurse.co.kr/enrnotice',
@@ -27,11 +26,11 @@ const MenuSettings = () => {
     },
     {
       icon: <AccountCircleOutlined />,
-      label: SETTING_TYPE.ACCOUNT,
+      label: '계정설정',
     },
     {
       icon: <LogoutOutlined />,
-      label: SETTING_TYPE.LOGOUT,
+      label: '로그아웃',
       buttonClick: {
         onClick: onSignOut,
       },

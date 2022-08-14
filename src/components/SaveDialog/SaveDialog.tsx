@@ -7,14 +7,14 @@ import {
   IconButton,
 } from '@mui/material';
 
-interface Props {
+export interface SaveDialogProps {
   title: string;
   isOpen?: boolean;
   onClose: () => void;
-  children: JSX.Element;
+  children: React.ReactNode;
 }
 
-function SaveDialog(props: Props) {
+function SaveDialog(props: SaveDialogProps) {
   const { title, isOpen = false, onClose, children } = props;
 
   return (
@@ -30,7 +30,12 @@ function SaveDialog(props: Props) {
 
         {title}
 
-        <Button size="small" variant="contained" sx={{ ml: 'auto' }}>
+        <Button
+          size="small"
+          type="submit"
+          variant="contained"
+          sx={{ ml: 'auto' }}
+        >
           저장
         </Button>
       </DialogTitle>

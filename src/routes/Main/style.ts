@@ -1,3 +1,4 @@
+import { TabPanel } from '@mui/lab';
 import { styled } from '@mui/material';
 import theme from '../../styles/theme';
 
@@ -71,9 +72,30 @@ export const StyledDrawerWrapper = styled('div')`
 
 export const StyledContentContainer = styled('section')`
   padding: 20px;
-  display: flex;
-  flex-direction: column;
   overflow: auto;
   /* 100% - MuiToolbar */
   height: calc(100vh - 52px);
 `;
+
+export const StyledTabPanel = styled(TabPanel)`
+  flex: 1;
+  padding: 10px 0;
+
+  .MuiButtonGroup-root {
+    color: #000000b2;
+    margin-top: auto;
+    padding-top: 16px;
+    justify-content: flex-end;
+  }
+`;
+
+export const styledRecordList = {
+  pt: 0,
+  ':not(:first-of-type)': {
+    pt: 2,
+    borderTop: '1px solid rgba(0, 0, 0, 0.05)',
+  },
+  ':not(:last-of-type)': {
+    pb: 2,
+  },
+};

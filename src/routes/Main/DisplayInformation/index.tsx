@@ -26,9 +26,21 @@ const DisplayInformation = () => {
         <PatientsList />
       </Toolbar>
 
-      <StyledContentContainer style={{ flex: 1, backgroundColor: '#EDF3FA' }}>
+      <StyledContentContainer
+        style={{
+          display: 'flex',
+          flexDirection: 'column',
+          backgroundColor: '#EDF3FA',
+        }}
+      >
         <PatientInfo />
-        <Box display="flex" flex={1} mt={2.5} columnGap={2.5}>
+        <Box
+          display="flex"
+          mt={2.5}
+          columnGap={2.5}
+          overflow="hidden"
+          height={'calc(100% - 180px)'}
+        >
           <MedicalNote />
           <NursingRecord />
         </Box>

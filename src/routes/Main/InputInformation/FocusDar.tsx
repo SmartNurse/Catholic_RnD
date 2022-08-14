@@ -1,70 +1,59 @@
 import { Stack, TextField } from '@mui/material';
 import FormItem from '../../../components/FormItem';
+import { FormProps } from '../type';
 
-function SoapieContainer() {
+function FocusDar({ register }: FormProps) {
   return (
     <Stack spacing={2}>
-      <FormItem title="주관적 증상 Subjective Data">
+      <FormItem title="포커스 Focus">
         <TextField
+          required
           fullWidth
           multiline
           rows={2}
           size="small"
           variant="outlined"
+          {...register('focus')}
         />
       </FormItem>
 
-      <FormItem title="객관적 정보 Objective Data">
+      <FormItem title="데이터 Data">
         <TextField
+          required
           fullWidth
           multiline
-          rows={2}
+          rows={4}
           size="small"
           variant="outlined"
+          {...register('data')}
         />
       </FormItem>
 
-      <FormItem title="사정 Assessment">
+      <FormItem title="활동 Action">
         <TextField
+          required
           fullWidth
           multiline
-          rows={2}
+          rows={3}
           size="small"
           variant="outlined"
+          {...register('action')}
         />
       </FormItem>
 
-      <FormItem title="계획 Planning">
+      <FormItem title="반응 Response">
         <TextField
+          required
           fullWidth
           multiline
-          rows={2}
+          rows={5}
           size="small"
           variant="outlined"
-        />
-      </FormItem>
-
-      <FormItem title="중재 Interventions">
-        <TextField
-          fullWidth
-          multiline
-          rows={2}
-          size="small"
-          variant="outlined"
-        />
-      </FormItem>
-
-      <FormItem title="평가 Evaluation">
-        <TextField
-          fullWidth
-          multiline
-          rows={2}
-          size="small"
-          variant="outlined"
+          {...register('response')}
         />
       </FormItem>
     </Stack>
   );
 }
 
-export default SoapieContainer;
+export default FocusDar;

@@ -107,6 +107,16 @@ const theme = createTheme({
         },
       },
     },
+    MuiTextField: {
+      styleOverrides: {
+        root: {
+          '.MuiInputBase-sizeSmall': {
+            fontSize: 14,
+            minHeight: 38,
+          },
+        },
+      },
+    },
     MuiToolbar: {
       styleOverrides: {
         root: {
