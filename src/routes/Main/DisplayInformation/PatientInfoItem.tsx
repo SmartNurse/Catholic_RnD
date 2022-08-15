@@ -11,6 +11,16 @@ const PatientInfoItem = ({ title, content }: Props) => {
     contentType === 'string' || contentType === 'number'
   );
 
+  const Content = () => {
+    if (isContentElement) return content;
+
+    return (
+      <Typography component="span" variant="body2" color="#000000E5">
+        {content ? content : '-'}
+      </Typography>
+    );
+  };
+
   return (
     <Box
       display="flex"
@@ -20,17 +30,12 @@ const PatientInfoItem = ({ title, content }: Props) => {
       <Typography
         component="span"
         variant="body2"
-        sx={{ width: 85, display: 'inline-block' }}
+        sx={{ minWidth: 85, display: 'inline-block', whiteSpace: 'nowrap' }}
       >
         {title}
       </Typography>
-      {isContentElement ? (
-        content
-      ) : (
-        <Typography component="span" variant="body2" color="#000000E5">
-          {content}
-        </Typography>
-      )}
+
+      {Content()}
     </Box>
   );
 };
