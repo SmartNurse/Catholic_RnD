@@ -100,7 +100,7 @@ const NursingRecord = () => {
       >
         {data?.pages.map(({ nursing_records }) =>
           !nursing_records || nursing_records.length === 0 ? (
-            <Typography variant="caption">
+            <Typography variant="caption" key={'empty'}>
               작성된 간호기록이 없습니다.
             </Typography>
           ) : (
