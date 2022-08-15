@@ -12,7 +12,7 @@ const PatientInfoItem = ({ title, content }: Props) => {
   );
 
   const Content = () => {
-    if (isContentElement) return content;
+    if (content && isContentElement) return content;
 
     return (
       <Typography component="span" variant="body2" color="#000000E5">

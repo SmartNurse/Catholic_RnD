@@ -7,9 +7,11 @@ import useUser from '../../../store/slices/useUser';
 
 import PatientInfoItem from './PatientInfoItem';
 import useI18n from '../../../hooks/useI18n';
+import { useSnackbar } from 'notistack';
 
 const PatientInfo = () => {
   const i18n = useI18n();
+  const { enqueueSnackbar } = useSnackbar();
   const { name: userName } = useUser();
   const { patient, patientInfo, onSelectedPatientInfo } = usePatient();
 
@@ -20,10 +22,14 @@ const PatientInfo = () => {
     if (!patient) return;
 
     // 가상환자 상세정보 요청
-    getPatientInfo({ patient_id: patient.patient_id }).then(({ data }) =>
-      onSelectedPatientInfo(data)
-    );
-  }, [patient, onSelectedPatientInfo]);
+    getPatientInfo({ patient_id: patient.patient_id })
+      .then(({ data }) => onSelectedPatientInfo(data))
+      .catch(e =>
+        enqueueSnackbar(`가상환자 데이터 조회에 실패했습니다.\n오류: ${e}`, {
+          variant: 'error',
+        })
+      );
+  }, [patient, onSelectedPatientInfo, enqueueSnackbar]);
 
   if (!patientInfo) return null;
 
@@ -55,7 +61,7 @@ const PatientInfo = () => {
       inputProps={{ style: { paddingTop: 0, paddingBottom: 0 } }}
       sx={{ fontSize: 14, lineHeight: '18px' }}
     >
-      {disease_sub.map(({ disease_id }, index) => (
+      {disease_sub?.map(({ disease_id }, index) => (
         <option key={disease_id} value={index}>
           {disease_id}
         </option>
@@ -98,10 +104,13 @@ const PatientInfo = () => {
       <Stack spacing={1.25}>
         <PatientInfoItem title="주진단코드" content={disease_main.disease_id} />
         <PatientInfoItem title="주진단명" content={disease_main.disease_kor} />
-        <PatientInfoItem title="부진단코드" content={<DiseaseSubCode />} />
+        <PatientInfoItem
+          title="부진단코드"
+          content={disease_sub.length > 0 ? <DiseaseSubCode /> : null}
+        />
         <PatientInfoItem
           title="부진단명"
-          content={disease_sub[diseaseSubIndex].disease_kor}
+          content={disease_sub[diseaseSubIndex]?.disease_kor}
         />
       </Stack>
     </Card>
