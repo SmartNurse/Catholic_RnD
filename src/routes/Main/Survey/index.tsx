@@ -50,7 +50,7 @@ const Survey = ({ type, onReset }: Props) => {
       default:
         break;
     }
-  }, [type, patientInfo, user_id]);
+  }, [type, patientInfo, user_id, onUpdateIsSave]);
 
   if (!type || !patientInfo || !defaultValues) return null;
 
