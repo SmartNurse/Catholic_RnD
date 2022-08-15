@@ -1,25 +1,26 @@
 import { Grid } from '@mui/material';
 import { useSnackbar } from 'notistack';
+import { useForm } from 'react-hook-form';
 
 import {
   THospitalizationSurveyDefaultValues,
   SurveyDialogProps,
 } from '../../type';
 import SaveDialog from '../../../../components/SaveDialog/SaveDialog';
+import { findKeyValueToStr } from '../../../../utils/convert';
+import { createHospitalization } from '../../../../apis/survey';
+import useSurvey from '../../../../store/slices/useSurvey';
 
 import PatientInfo from './PatientInfo';
 import DefaultInfo from './DefaultInfo';
 import DiseaseHistory from './DiseaseHistory';
 import BodyStatus from './BodyStatus';
 import Habit from './Habit';
-import { useForm } from 'react-hook-form';
 import FunctionalEvaluation from './FunctionalEvaluation';
 import SocialHistory from './SocialHistory';
 import EconomyHistory from './EconomyHistory';
 import Education from './Education';
 import OutHospitalPlan from './OutHospitalPlan';
-import { findKeyValueToStr } from '../../../../utils/convert';
-import { createHospitalization } from '../../../../apis/survey';
 
 const Hospitalization = (
   props: SurveyDialogProps<THospitalizationSurveyDefaultValues>
@@ -35,6 +36,7 @@ const Hospitalization = (
   } = props;
 
   const { enqueueSnackbar } = useSnackbar();
+  const { onUpdateIsSave } = useSurvey();
 
   const { handleSubmit, register, getValues, setValue } = useForm({
     defaultValues,
@@ -97,11 +99,12 @@ const Hospitalization = (
     };
 
     createHospitalization(request)
-      .then(() =>
+      .then(() => {
+        onUpdateIsSave(true);
         enqueueSnackbar('입원기록지 저장에 성공하였습니다.', {
           variant: 'success',
-        })
-      )
+        });
+      })
       .catch(e =>
         enqueueSnackbar(`'입원기록지 저장에 실패하였습니다.\n오류: ${e}`, {
           variant: 'error',

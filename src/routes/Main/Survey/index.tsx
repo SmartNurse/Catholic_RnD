@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { getHospitalization } from '../../../apis/survey';
 import usePatient from '../../../store/slices/usePatient';
+import useSurvey from '../../../store/slices/useSurvey';
 import useUser from '../../../store/slices/useUser';
 import { findKeyValueToObj } from '../../../utils/convert';
 import { initialHospitalizationSurvey } from '../initialStates';
@@ -15,10 +16,13 @@ interface Props {
 const Survey = ({ type, onReset }: Props) => {
   const { name, student_uuid: user_id } = useUser();
   const { patientInfo } = usePatient();
+  const { isSave, onUpdateIsSave } = useSurvey();
   const [defaultValues, setDefaultValues] = useState(null);
 
   useEffect(() => {
     if (!type || !patientInfo) return;
+
+    onUpdateIsSave(false);
 
     switch (type) {
       case ACTIVE_MENU.ADMISSION:
@@ -58,6 +62,8 @@ const Survey = ({ type, onReset }: Props) => {
     title: type,
     isOpen: Boolean(type),
     onClose: () => {
+      if (isSave) return onReset();
+
       const isConfirm = window.confirm('저장하지 않고 종료하시겠습니까?');
       if (isConfirm) return onReset();
     },
