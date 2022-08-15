@@ -6,6 +6,7 @@ import {
   Checkbox,
   Container,
   FormControlLabel,
+  FormGroup,
   Grid,
   Radio,
   RadioGroup,
@@ -38,6 +39,7 @@ function SignUpForm(props: Props) {
         <Typography variant="subtitle1" fontWeight={700} sx={{ mb: 5 }}>
           회원가입
         </Typography>
+
         <Stack spacing={2.5}>
           <FormItem title="이메일">
             <Box display="flex" gap={1}>
@@ -202,15 +204,21 @@ function SignUpForm(props: Props) {
           </FormItem>
         </Stack>
 
-        <FormControlLabel
-          label="(필수) 스마트널스 서비스 이용약관 동의"
-          control={<Checkbox required {...register('termsOfService')} />}
-          sx={{ mt: 2.5 }}
-        />
-        <FormControlLabel
-          label="(필수) 개인정보 수집 및 이용 동의"
-          control={<Checkbox required {...register('personalInfo')} />}
-        />
+        <FormGroup sx={{ mt: 2.5 }}>
+          <FormControlLabel
+            label="(필수) 스마트널스 서비스 이용약관 동의"
+            control={
+              <Checkbox size="small" required {...register('termsOfService')} />
+            }
+          />
+          <FormControlLabel
+            label="(필수) 개인정보 수집 및 이용 동의"
+            control={
+              <Checkbox size="small" required {...register('personalInfo')} />
+            }
+          />
+        </FormGroup>
+
         <Button
           fullWidth
           size="large"

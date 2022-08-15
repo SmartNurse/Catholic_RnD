@@ -58,6 +58,12 @@ function SignUp() {
       return enqueueSnackbar('이메일 인증을 해주세요', { variant: 'error' });
     }
 
+    if (data.userPassword !== data.userPasswordConfirm) {
+      return enqueueSnackbar('비밀번호가 일치하지 않습니다.', {
+        variant: 'error',
+      });
+    }
+
     if (!data.gender) {
       return enqueueSnackbar('성별을 선택해주세요', { variant: 'error' });
     }
