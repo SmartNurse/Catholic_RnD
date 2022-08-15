@@ -98,8 +98,8 @@ const NursingRecord = () => {
         component="section"
         sx={{ p: '10px 15px', height: '100%', overflow: 'auto' }}
       >
-        {data.pages.map(({ nursing_records }) =>
-          nursing_records.length === 0 ? (
+        {data?.pages.map(({ nursing_records }) =>
+          !nursing_records || nursing_records.length === 0 ? (
             <Typography variant="caption">
               작성된 간호기록이 없습니다.
             </Typography>
