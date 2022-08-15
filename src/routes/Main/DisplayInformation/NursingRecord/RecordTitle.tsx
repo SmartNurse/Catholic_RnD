@@ -1,5 +1,5 @@
 import { format } from 'date-fns/esm';
-import { Grid, List, Typography } from '@mui/material';
+import { Grid, Typography } from '@mui/material';
 
 interface Props {
   title: string;

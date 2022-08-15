@@ -5,6 +5,7 @@ import {
   DialogContent,
   DialogTitle,
   IconButton,
+  useTheme,
 } from '@mui/material';
 
 export interface SaveDialogProps {
@@ -12,35 +13,45 @@ export interface SaveDialogProps {
   isOpen?: boolean;
   onClose: () => void;
   children: React.ReactNode;
+  onSubmit?: React.FormEventHandler<HTMLFormElement>;
 }
 
 function SaveDialog(props: SaveDialogProps) {
-  const { title, isOpen = false, onClose, children } = props;
+  const { zIndex } = useTheme();
+  const { title, isOpen = false, children, onClose, onSubmit } = props;
 
   return (
     <Dialog maxWidth="lg" open={isOpen} onClose={onClose}>
-      <DialogTitle
-        display="flex"
-        alignItems="center"
-        sx={{ borderBottom: '1px solid rgba(0, 0, 0, 0.3)' }}
-      >
-        <IconButton size="small" onClick={onClose} sx={{ mr: 1.5 }}>
-          <Close />
-        </IconButton>
-
-        {title}
-
-        <Button
-          size="small"
-          type="submit"
-          variant="contained"
-          sx={{ ml: 'auto' }}
+      <form onSubmit={onSubmit}>
+        <DialogTitle
+          display="flex"
+          alignItems="center"
+          position="sticky"
+          sx={{
+            top: 0,
+            zIndex: zIndex.modal,
+            background: '#fff',
+            borderBottom: '1px solid rgba(0, 0, 0, 0.3)',
+          }}
         >
-          저장
-        </Button>
-      </DialogTitle>
+          <IconButton size="small" onClick={onClose} sx={{ mr: 1.5 }}>
+            <Close />
+          </IconButton>
 
-      <DialogContent>{children}</DialogContent>
+          {title}
+
+          <Button
+            size="small"
+            type="submit"
+            variant="contained"
+            sx={{ ml: 'auto' }}
+          >
+            저장
+          </Button>
+        </DialogTitle>
+
+        <DialogContent>{children}</DialogContent>
+      </form>
     </Dialog>
   );
 }

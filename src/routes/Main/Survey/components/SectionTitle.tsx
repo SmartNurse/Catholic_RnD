@@ -2,10 +2,11 @@ import { Grid, Typography } from '@mui/material';
 
 interface Props {
   title: string;
+  mb?: number;
 }
 
-const SectionTitle = ({ title }: Props) => (
-  <Grid item xs={12} sx={{ mb: -3 }}>
+const SectionTitle = ({ title, mb = -3 }: Props) => (
+  <Grid item xs={12} sx={{ mb }}>
     <Typography
       fontSize={13}
       fontWeight="bold"

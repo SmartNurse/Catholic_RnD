@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { getHospitalization } from '../../../apis/survey';
 import usePatient from '../../../store/slices/usePatient';
 import useUser from '../../../store/slices/useUser';
+import { findKeyValueToObj } from '../../../utils/convert';
 import { initialHospitalizationSurvey } from '../initialStates';
 import { ACTIVE_MENU } from '../type';
 import Hospitalization from './Hospitalization';
@@ -30,8 +31,13 @@ const Survey = ({ type, onReset }: Props) => {
           const values = initialHospitalizationSurvey as any;
 
           for (let key of keys) {
-            if (hospitalization_survey[key])
-              values[key] = hospitalization_survey[key];
+            const getValue = hospitalization_survey[key];
+
+            if (key === 'offer' || key === 'contacts') {
+              values[key] = getValue;
+            } else if (hospitalization_survey[key]) {
+              values[key] = findKeyValueToObj(getValue, Object.keys(getValue));
+            }
           }
 
           setDefaultValues(values);
@@ -45,6 +51,7 @@ const Survey = ({ type, onReset }: Props) => {
   if (!type || !patientInfo || !defaultValues) return null;
 
   const dialogProps = {
+    user_id,
     nurseName: name,
     patientInfo,
     defaultValues,

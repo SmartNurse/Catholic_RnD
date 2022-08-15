@@ -86,7 +86,7 @@ const NursingRecord = () => {
     }
   };
 
-  const isEmpty = !data || data?.pages.length === 0;
+  if (!data) return null;
 
   return (
     <Box flex={1} display="flex" flexDirection="column">
@@ -98,11 +98,13 @@ const NursingRecord = () => {
         component="section"
         sx={{ p: '10px 15px', height: '100%', overflow: 'auto' }}
       >
-        {isEmpty ? (
-          <Typography variant="caption">작성된 간호기록이 없습니다.</Typography>
-        ) : (
-          data.pages.map(({ nursing_records }) =>
-            nursing_records?.map(RecordList)
+        {data.pages.map(({ nursing_records }) =>
+          nursing_records.length === 0 ? (
+            <Typography variant="caption">
+              작성된 간호기록이 없습니다.
+            </Typography>
+          ) : (
+            nursing_records.map(RecordList)
           )
         )}
       </Card>

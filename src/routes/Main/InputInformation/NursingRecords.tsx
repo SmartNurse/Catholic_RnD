@@ -4,16 +4,18 @@ import { useEffect, useState } from 'react';
 import { TabContext, TabList } from '@mui/lab';
 import { Box, Button, ButtonGroup, Tab, Typography } from '@mui/material';
 
-import Nanda from './Nanda';
-import Soapie from './Soapie';
-import FocusDar from './FocusDar';
-import NarrativeRecord from './NarrativeRecord';
-import Remarks from './Remarks';
 import { StyledTabPanel } from '../style';
 import { RECORD_TYPE } from '../type';
 import { getNandaDomain, createNursingRecord } from '../../../apis/main';
 import { initialNursingRecord } from '../initialStates';
 import { INames } from '../../../apis/main/type';
+import { findKeyValue } from '../../../utils/convert';
+
+import Nanda from './Nanda';
+import Soapie from './Soapie';
+import FocusDar from './FocusDar';
+import NarrativeRecord from './NarrativeRecord';
+import Remarks from './Remarks';
 
 interface Props {
   user_id: number;
@@ -47,38 +49,31 @@ const NursingRecords = ({
     let content = {};
     const { recordType } = data;
 
-    // combine request content
-    const findContent = (keys: string[]) =>
-      keys.reduce(
-        (prev, next) => (data[next] ? { ...prev, [next]: data[next] } : prev),
-        {}
-      );
-
     // update content
     switch (recordType) {
       case RECORD_TYPE.NANDA: {
         const { nanda } = initialNursingRecord;
-        content = findContent(Object.keys(nanda));
+        content = findKeyValue(data, Object.keys(nanda));
         break;
       }
       case RECORD_TYPE.SOAPIE: {
         const { soapie } = initialNursingRecord;
-        content = findContent(Object.keys(soapie));
+        content = findKeyValue(data, Object.keys(soapie));
         break;
       }
       case RECORD_TYPE.FOCUS_DAR: {
         const { focusDar } = initialNursingRecord;
-        content = findContent(Object.keys(focusDar));
+        content = findKeyValue(data, Object.keys(focusDar));
         break;
       }
       case RECORD_TYPE.NARRATIVE_RECORD: {
         const { narrativeRecord } = initialNursingRecord;
-        content = findContent(Object.keys(narrativeRecord));
+        content = findKeyValue(data, Object.keys(narrativeRecord));
         break;
       }
       case RECORD_TYPE.REMARKS: {
         const { remarks } = initialNursingRecord;
-        content = findContent(Object.keys(remarks));
+        content = findKeyValue(data, Object.keys(remarks));
         break;
       }
     }

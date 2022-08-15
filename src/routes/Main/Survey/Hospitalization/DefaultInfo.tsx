@@ -1,8 +1,8 @@
 import { Fragment } from 'react';
 import { Stack } from '@mui/material';
 
+import { FormProps } from '../../type';
 import adornment from '../../../../components/adornment';
-import { FormProps, HospitalizationSurveyDefaultValues } from '../../type';
 
 import RowContainer from '../components/RowContainer';
 import RowContent from '../components/RowContent';
@@ -10,17 +10,10 @@ import SurveyRadio from '../components/SurveyRadio';
 import SectionTitle from '../components/SectionTitle';
 import SurveyInput from '../components/SurveyInput';
 
-const DefaultInfo = (
-  props: Required<
-    Omit<FormProps<HospitalizationSurveyDefaultValues>, 'watch' | 'setValue'>
-  >
-) => {
-  const { getValues, register } = props;
+const DefaultInfo = (props: FormProps) => {
+  const { register, getValues, setValue } = props;
 
-  const defaultPath = getValues('default_info.hospitalization_path')
-    ? JSON.parse(getValues('default_info.hospitalization_path'))
-    : { value: '', input: '' };
-
+  if (!getValues || !setValue) return null;
   return (
     <Fragment>
       <SectionTitle title="기본 정보" />
@@ -31,14 +24,15 @@ const DefaultInfo = (
             <SurveyRadio
               exceptionKey="ETC"
               labelKey="HOSPITALIZATION.PATH"
-              defaultValue={defaultPath?.value}
               radios={[{ value: 1 }, { value: 2 }, { value: 0 }]}
-              {...register('default_info.hospitalization_path')}
+              valueKey="default_info.hospitalization_path.value"
+              {...{ getValues, setValue }}
             />
             <SurveyInput
+              required={false}
               fullWidth={false}
-              defaultValue={defaultPath?.input}
-              {...register('default_info.hospitalization_path_input')}
+              placeholder="직접 입력"
+              {...register('default_info.hospitalization_path.input')}
             />
           </Stack>
         </RowContent>
@@ -46,25 +40,34 @@ const DefaultInfo = (
           <SurveyRadio
             labelKey="HOSPITALIZATION.WAY"
             radios={[{ value: 1 }, { value: 2 }, { value: 3 }]}
+            valueKey="default_info.hospitalization_way"
+            {...{ getValues, setValue }}
           />
         </RowContent>
-        <RowContent title="입원방법">
+        <RowContent title="의식상태">
           <SurveyRadio
             labelKey="HOSPITALIZATION.STATUS"
             radios={[{ value: 1 }, { value: 2 }, { value: 3 }]}
+            valueKey="default_info.status"
+            {...{ getValues, setValue }}
           />
         </RowContent>
         <RowContent title="주호소">
-          <SurveyInput />
+          <SurveyInput {...register('default_info.joo_ho_so')} />
         </RowContent>
         <RowContent title="발병일자">
-          <SurveyInput fullWidth={false} type="date" />
+          <SurveyInput
+            fullWidth={false}
+            type="date"
+            {...register('default_info.date')}
+          />
         </RowContent>
         <RowContent title="입원동기">
           <SurveyInput
             multiline
             InputProps={{ sx: { height: 63 } }}
             inputProps={{ style: { height: '100%' } }}
+            {...register('default_info.hospitalization_reason')}
           />
         </RowContent>
       </RowContainer>
@@ -73,42 +76,52 @@ const DefaultInfo = (
         <RowContent title="신체">
           <Stack direction="row" spacing={1}>
             <SurveyInput
-              fullWidth={false}
+              type="number"
+              textAlign="right"
               InputProps={{ ...adornment('키', 'cm') }}
+              {...register('default_info.height')}
             />
             <SurveyInput
-              fullWidth={false}
+              type="number"
+              textAlign="right"
               InputProps={{ ...adornment('몸무게', 'kg') }}
+              {...register('default_info.weight')}
             />
           </Stack>
         </RowContent>
         <RowContent title="활력징후">
           <Stack direction="row" spacing={1} sx={{ mb: 1 }}>
             <SurveyInput
-              fullWidth={false}
+              textAlign="right"
               InputProps={{ ...adornment('SBP', 'mmHg') }}
+              {...register('default_info.SBP')}
             />
             <SurveyInput
-              fullWidth={false}
+              textAlign="right"
               InputProps={{ ...adornment('DBP', 'mmHg') }}
+              {...register('default_info.DBP')}
             />
           </Stack>
           <Stack direction="row" spacing={1}>
             <SurveyInput
-              fullWidth={false}
+              textAlign="right"
               InputProps={{ ...adornment('PR', '회') }}
+              {...register('default_info.PR')}
             />
             <SurveyInput
-              fullWidth={false}
-              InputProps={{ ...adornment('PR', '회') }}
+              textAlign="right"
+              InputProps={{ ...adornment('RR', '회') }}
+              {...register('default_info.RR')}
             />
             <SurveyInput
-              fullWidth={false}
+              textAlign="right"
               InputProps={{ ...adornment('BT', '℃') }}
+              {...register('default_info.BT')}
             />
             <SurveyInput
-              fullWidth={false}
+              textAlign="right"
               InputProps={{ ...adornment('SpO2', '%') }}
+              {...register('default_info.Sp02')}
             />
           </Stack>
         </RowContent>
@@ -116,6 +129,8 @@ const DefaultInfo = (
           <SurveyRadio
             labelKey="HOSPITALIZATION.STATUS02"
             radios={[{ value: 1 }, { value: 2 }, { value: 3 }]}
+            valueKey="default_info.status02"
+            {...{ getValues, setValue }}
           />
         </RowContent>
       </RowContainer>

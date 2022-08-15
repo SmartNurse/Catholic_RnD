@@ -125,6 +125,15 @@ const theme = createTheme({
         },
       },
     },
+    MuiFormControlLabel: {
+      styleOverrides: {
+        root: {
+          '.MuiTypography-root': {
+            fontSize: 14,
+          },
+        },
+      },
+    },
   },
 });
 

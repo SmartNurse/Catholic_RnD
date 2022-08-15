@@ -6,6 +6,7 @@ import {
 } from 'react-hook-form';
 import { IPatientInfo } from '../../apis/admin/type';
 import { SaveDialogProps } from '../../components/SaveDialog/SaveDialog';
+import { initialHospitalizationSurvey } from './initialStates';
 
 export enum ACTIVE_MENU {
   ADMISSION = '입원간호 기록지',
@@ -41,91 +42,11 @@ export interface FormProps<T = any> {
 
 export interface SurveyDialogProps<T>
   extends Omit<SaveDialogProps, 'children'> {
+  user_id: number;
   nurseName: string;
   patientInfo: IPatientInfo;
   defaultValues: T;
 }
 
-export interface HospitalizationSurveyDefaultValues {
-  offer: string;
-  contacts: {
-    contact: string;
-    name: string;
-    relation: string;
-  }[];
-  disease_history: {
-    history: string;
-    operation_history: string;
-    latest_medicine: string;
-    family_history: string;
-    medicine_allergy: string;
-    allergy: string;
-    food_allergy: string;
-  };
-  body_status: {
-    cycle: string;
-    breath: string;
-    camouflage: string;
-    nerve: string;
-    skin: string;
-    operation_history: string;
-    medicine_history: string;
-    fall: string;
-    yukchang: string;
-    fain: string;
-  };
-  habit: {
-    feces: string;
-    feces_info: string;
-    urine: string;
-    urine_info: string;
-    drink: string;
-    smoke: string;
-    sleep: string;
-    nutrition: string;
-    obstetric: string;
-  };
-  functional_evaluation: {
-    sit: string;
-    stand_up: string;
-    wheel_chair: string;
-    walk: string;
-  };
-  social_history: {
-    marry: string;
-    language: string;
-    job: string;
-    religion: string;
-  };
-  economy_history: {
-    counseling: string;
-    mind_status: string;
-  };
-  education: {
-    education_way: string;
-    education_contents: string;
-  };
-  out_hospital_plan: {
-    life: string;
-    guardian: string;
-    destination: string;
-  };
-  default_info: {
-    hospitalization_path: string;
-    hospitalization_path_input: string;
-    hospitalization_way: string;
-    status: string;
-    joo_ho_so: string;
-    date: string;
-    hospitalization_reason: string;
-    height: string;
-    weight: string;
-    status02: string;
-    SBP: string;
-    DBP: string;
-    PR: string;
-    RR: string;
-    BT: string;
-    Sp02: string;
-  };
-}
+export type THospitalizationSurveyDefaultValues =
+  typeof initialHospitalizationSurvey;

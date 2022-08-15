@@ -2,26 +2,29 @@ import { Fragment } from 'react';
 import { Grid, Stack, Typography, TypographyProps } from '@mui/material';
 
 import { IPatientInfo } from '../../../../apis/admin/type';
-import { FormProps, HospitalizationSurveyDefaultValues } from '../../type';
+import { FormProps, THospitalizationSurveyDefaultValues } from '../../type';
 
 import RowContainer from '../components/RowContainer';
 import RowContent from '../components/RowContent';
 import SurveyInput from '../components/SurveyInput';
 import SurveyRadio from '../components/SurveyRadio';
 
-interface Props extends FormProps<HospitalizationSurveyDefaultValues> {
+interface Props extends FormProps<THospitalizationSurveyDefaultValues> {
   nurseName: string;
   patientInfo: IPatientInfo;
 }
 
 const PatientInfo = (props: Props) => {
-  const { nurseName, patientInfo, register } = props;
+  const { nurseName, patientInfo, register, getValues, setValue } = props;
 
   const contactTitleProps: TypographyProps = {
     variant: 'caption',
     fontWeight: 'bold',
   };
 
+  const contacts = Array.from({ length: 3 }, (_, i) => i);
+
+  if (!getValues || !setValue) return null;
   return (
     <Fragment>
       <RowContainer>
@@ -42,6 +45,8 @@ const PatientInfo = (props: Props) => {
               { value: 1, disabled: true },
               { value: 2, disabled: true },
             ]}
+            valueKey="gender"
+            {...{ getValues, setValue }}
           />
         </RowContent>
         <RowContent title="진료과" childrenRatio={4}>
@@ -61,25 +66,38 @@ const PatientInfo = (props: Props) => {
         <Grid item xs={6}>
           <Stack spacing={1}>
             <Typography {...contactTitleProps}>비상 연락처</Typography>
-            <SurveyInput {...register('contacts.0.contact')} />
-            <SurveyInput {...register('contacts.1.contact')} />
-            <SurveyInput {...register('contacts.2.contact')} />
+            {contacts.map(i => (
+              <SurveyInput
+                key={i}
+                type="tel"
+                required={!i}
+                {...register(`contacts.${i}.contact`)}
+              />
+            ))}
           </Stack>
         </Grid>
         <Grid item xs={3}>
           <Stack spacing={1}>
             <Typography {...contactTitleProps}>이름</Typography>
-            <SurveyInput {...register('contacts.0.name')} />
-            <SurveyInput {...register('contacts.1.name')} />
-            <SurveyInput {...register('contacts.2.name')} />
+            {contacts.map(i => (
+              <SurveyInput
+                key={i}
+                required={!i}
+                {...register(`contacts.${i}.name`)}
+              />
+            ))}
           </Stack>
         </Grid>
         <Grid item xs={3}>
           <Stack spacing={1}>
             <Typography {...contactTitleProps}>관계</Typography>
-            <SurveyInput {...register('contacts.0.relation')} />
-            <SurveyInput {...register('contacts.1.relation')} />
-            <SurveyInput {...register('contacts.2.relation')} />
+            {contacts.map(i => (
+              <SurveyInput
+                key={i}
+                required={!i}
+                {...register(`contacts.${i}.relation`)}
+              />
+            ))}
           </Stack>
         </Grid>
       </RowContainer>
