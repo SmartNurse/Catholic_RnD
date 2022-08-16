@@ -68,33 +68,15 @@ const Hospitalization = (
         main_doctor: patientInfo.main_doctor,
         offer: data.offer,
         contacts: data.contacts,
-        disease_history: findKeyValueToStr(
-          disease_history,
-          Object.keys(disease_history)
-        ),
-        body_status: findKeyValueToStr(body_status, Object.keys(body_status)),
-        habit: findKeyValueToStr(habit, Object.keys(habit)),
-        functional_evaluation: findKeyValueToStr(
-          functional_evaluation,
-          Object.keys(functional_evaluation)
-        ),
-        economy_history: findKeyValueToStr(
-          economy_history,
-          Object.keys(economy_history)
-        ),
-        education: findKeyValueToStr(education, Object.keys(education)),
-        out_hospital_plan: findKeyValueToStr(
-          out_hospital_plan,
-          Object.keys(out_hospital_plan)
-        ),
-        default_info: findKeyValueToStr(
-          default_info,
-          Object.keys(default_info)
-        ),
-        social_history: findKeyValueToStr(
-          social_history,
-          Object.keys(social_history)
-        ),
+        disease_history: findKeyValueToStr(disease_history),
+        body_status: findKeyValueToStr(body_status),
+        habit: findKeyValueToStr(habit),
+        functional_evaluation: findKeyValueToStr(functional_evaluation),
+        economy_history: findKeyValueToStr(economy_history),
+        education: findKeyValueToStr(education),
+        out_hospital_plan: findKeyValueToStr(out_hospital_plan),
+        default_info: findKeyValueToStr(default_info),
+        social_history: findKeyValueToStr(social_history),
       },
     };
 

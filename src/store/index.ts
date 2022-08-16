@@ -15,7 +15,7 @@ import reducer from './reducer';
 export const persistKey = process.env.NODE_ENV ?? 'development';
 
 const persistConfig = {
-  key: `${persistKey} v0.1`,
+  key: `${persistKey} v0.2`,
   storage,
 };
 

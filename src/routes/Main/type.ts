@@ -6,7 +6,10 @@ import {
 } from 'react-hook-form';
 import { IPatientInfo } from '../../apis/admin/type';
 import { SaveDialogProps } from '../../components/SaveDialog/SaveDialog';
-import { initialHospitalizationSurvey } from './initialStates';
+import {
+  initialHospitalizationSurvey,
+  initialOutHospitalSurvey,
+} from './initialStates';
 
 export enum ACTIVE_MENU {
   ADMISSION = '입원간호 기록지',
@@ -50,3 +53,5 @@ export interface SurveyDialogProps<T>
 
 export type THospitalizationSurveyDefaultValues =
   typeof initialHospitalizationSurvey;
+
+export type TOutHospitalSurveyDefaultValues = typeof initialOutHospitalSurvey;

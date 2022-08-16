@@ -71,6 +71,18 @@ const locale = {
     'HOSPITALIZATION.GUARDIAN.3': '부',
     'HOSPITALIZATION.GUARDIAN.4': '모',
     'HOSPITALIZATION.GUARDIAN.5': '자녀',
+    // out hospital
+    'OUT.HOSPITAL.DESTINATION.1': '자택',
+    'OUT.HOSPITAL.DESTINATION.2': '타병원',
+    'OUT.HOSPITAL.DESTINATION.3': '요양시설',
+    'OUT.HOSPITAL.WAY.1': '요양시설',
+    'OUT.HOSPITAL.WAY.2': '대중교통',
+    'OUT.HOSPITAL.WAY.3': '구급차',
+    'OUT.HOSPITAL.FOOD.1': '일반식',
+    'OUT.HOSPITAL.SHOWER.1': '샤워',
+    'OUT.HOSPITAL.SHOWER.2': '통목욕',
+    'OUT.HOSPITAL.ACTIVITY.1': '제한',
+    'OUT.HOSPITAL.ACTIVITY.2': '제한없음',
   },
 };
 

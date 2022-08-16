@@ -1,12 +1,13 @@
 import { useEffect, useState } from 'react';
-import { getHospitalization } from '../../../apis/survey';
+
+import { ACTIVE_MENU } from '../type';
 import usePatient from '../../../store/slices/usePatient';
 import useSurvey from '../../../store/slices/useSurvey';
 import useUser from '../../../store/slices/useUser';
-import { findKeyValueToObj } from '../../../utils/convert';
-import { initialHospitalizationSurvey } from '../initialStates';
-import { ACTIVE_MENU } from '../type';
+
 import Hospitalization from './Hospitalization';
+import useDefaultValues from './useDefaultValues';
+import OutHospital from './OutHospital';
 
 interface Props {
   type: string;
@@ -18,39 +19,30 @@ const Survey = ({ type, onReset }: Props) => {
   const { patientInfo } = usePatient();
   const { isSave, onUpdateIsSave } = useSurvey();
   const [defaultValues, setDefaultValues] = useState(null);
+  const { onGetHospitalization, onGetOutHospital } = useDefaultValues({
+    user_id,
+    setDefaultValues,
+  });
 
   useEffect(() => {
     if (!type || !patientInfo) return;
+
+    const { patient_id } = patientInfo;
 
     onUpdateIsSave(false);
 
     switch (type) {
       case ACTIVE_MENU.ADMISSION:
-        getHospitalization({
-          user_id,
-          patient_id: patientInfo?.patient_id,
-        }).then(({ data }) => {
-          const { hospitalization_survey } = data;
-          const keys = Object.keys(initialHospitalizationSurvey);
-          const values = initialHospitalizationSurvey as any;
-
-          for (let key of keys) {
-            const getValue = hospitalization_survey[key];
-
-            if (key === 'offer' || key === 'contacts') {
-              values[key] = getValue;
-            } else if (hospitalization_survey[key]) {
-              values[key] = findKeyValueToObj(getValue, Object.keys(getValue));
-            }
-          }
-
-          setDefaultValues(values);
-        });
+        onGetHospitalization(patient_id);
+        break;
+      case ACTIVE_MENU.DISCHARGE:
+        onGetOutHospital(patient_id);
         break;
       default:
         break;
     }
-  }, [type, patientInfo, user_id, onUpdateIsSave]);
+    // eslint-disable-next-line
+  }, [type, patientInfo]);
 
   if (!type || !patientInfo || !defaultValues) return null;
 
@@ -72,6 +64,8 @@ const Survey = ({ type, onReset }: Props) => {
   switch (type) {
     case ACTIVE_MENU.ADMISSION:
       return <Hospitalization {...dialogProps} />;
+    case ACTIVE_MENU.DISCHARGE:
+      return <OutHospital {...dialogProps} />;
     default:
       return null;
   }

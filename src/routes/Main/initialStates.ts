@@ -23,18 +23,7 @@ export const initialNursingRecord = {
 };
 
 export const initialHospitalizationSurvey = {
-  body_status: {
-    breath: { value: 1, checked: [], input: '' },
-    camouflage: { value: 1, checked: [], input: '' },
-    cycle: { value: 1, checked: [], input: '' },
-    fain: { checked: [] },
-    fall: { checked: [] },
-    medicine_history: { value: 1, input: '' },
-    nerve: { value: 1, checked: [], input: '' },
-    operation_history: { value: 1, input: '' },
-    skin: { value: 1, checked: [], input: '' },
-    yukchang: { checked: [] },
-  },
+  offer: '',
   contacts: [
     { contact: '', name: '', relation: '' },
     { contact: '', name: '', relation: '' },
@@ -66,19 +55,17 @@ export const initialHospitalizationSurvey = {
     medicine_allergy: { value: 1, input: '' },
     operation_history: { value: 1, input: '' },
   },
-  economy_history: {
-    counseling: '',
-    mind_status: { checked: [] },
-  },
-  education: {
-    education_contents: { checked: [], input: '' },
-    education_way: '',
-  },
-  functional_evaluation: {
-    sit: '',
-    stand_up: '',
-    walk: '',
-    wheel_chair: '',
+  body_status: {
+    breath: { value: 1, checked: [], input: '' },
+    camouflage: { value: 1, checked: [], input: '' },
+    cycle: { value: 1, checked: [], input: '' },
+    fain: { checked: [] },
+    fall: { checked: [] },
+    medicine_history: { value: 1, input: '' },
+    nerve: { value: 1, checked: [], input: '' },
+    operation_history: { value: 1, input: '' },
+    skin: { value: 1, checked: [], input: '' },
+    yukchang: { checked: [] },
   },
   habit: {
     drink: { value: 1, checked: [], input: '', input2: '' },
@@ -91,11 +78,11 @@ export const initialHospitalizationSurvey = {
     urine: { value: '', input: '' },
     urine_info: { checked: [] },
   },
-  offer: '',
-  out_hospital_plan: {
-    destination: { value: 1, input: '' },
-    guardian: { value: 1, input: '' },
-    life: '',
+  functional_evaluation: {
+    sit: '',
+    stand_up: '',
+    walk: '',
+    wheel_chair: '',
   },
   social_history: {
     job: '',
@@ -103,4 +90,45 @@ export const initialHospitalizationSurvey = {
     marry: '',
     religion: { value: '', input: '' },
   },
+  economy_history: {
+    counseling: '',
+    mind_status: { checked: [] },
+  },
+  education: {
+    education_contents: { checked: [], input: '' },
+    education_way: '',
+  },
+  out_hospital_plan: {
+    destination: { value: 1, input: '' },
+    guardian: { value: 1, input: '' },
+    life: '',
+  },
+};
+
+export const initialOutHospitalSurvey = {
+  date: '',
+  default_info: {
+    destination: { value: 1, input: '' },
+    out_hospital_way: { value: 1, input: '' },
+    guardians: { value: 1, input: '' },
+    food: { value: 1, input: '' },
+    shower: { value: 1, input: '' },
+    activity: '',
+  },
+  out_hospital_medicines: [
+    { amount: '', count: '', days: '', how_to: '', name: '' },
+    { amount: '', count: '', days: '', how_to: '', name: '' },
+    { amount: '', count: '', days: '', how_to: '', name: '' },
+    { amount: '', count: '', days: '', how_to: '', name: '' },
+    { amount: '', count: '', days: '', how_to: '', name: '' },
+  ],
+  out_patients: [
+    { call_number: '', date: '', department: '', doctor: '', location: '' },
+    { call_number: '', date: '', department: '', doctor: '', location: '' },
+  ],
+  check_reservations: [
+    { call_number: '', date: '', destination: '', name: '', warning: '' },
+    { call_number: '', date: '', destination: '', name: '', warning: '' },
+  ],
+  education: '',
 };

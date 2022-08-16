@@ -8,3 +8,5 @@ export const setLocalStorage = (storageKey: TLocalStorageKey, value: string) =>
 
 export const removeLocalStorage = (storageKey: TLocalStorageKey) =>
   localStorage.removeItem(storageKey);
+
+export const clearLocalStorage = () => localStorage.clear();

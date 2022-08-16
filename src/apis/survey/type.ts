@@ -1,4 +1,7 @@
-import { initialHospitalizationSurvey } from '../../routes/Main/initialStates';
+import {
+  initialHospitalizationSurvey,
+  initialOutHospitalSurvey,
+} from '../../routes/Main/initialStates';
 
 export interface IGetHospitalization {
   user_id: number;
@@ -24,5 +27,20 @@ export interface ICreateHospitalization extends IGetHospitalization {
     out_hospital_plan: object;
     default_info: object;
     social_history: object;
+  };
+}
+
+export interface IGetOutHospital extends IGetHospitalization {}
+
+export interface ICreateOutHospital extends IGetOutHospital {
+  out_hospital_survey: {
+    patient_name: string;
+    patient_id: number;
+    date: string;
+    default_info: object;
+    out_hospital_medicines: typeof initialOutHospitalSurvey.out_hospital_medicines;
+    out_patients: typeof initialOutHospitalSurvey.out_patients;
+    check_reservations: typeof initialOutHospitalSurvey.check_reservations;
+    education: string;
   };
 }

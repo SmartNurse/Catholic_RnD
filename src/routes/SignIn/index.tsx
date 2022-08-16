@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import { FieldValues, useForm } from 'react-hook-form';
 import { useMutation } from 'react-query';
 import { useNavigate } from 'react-router-dom';
@@ -7,6 +8,7 @@ import {
   getLocalStorage,
   setLocalStorage,
   removeLocalStorage,
+  clearLocalStorage,
 } from '../../utils/storage';
 import SignInForm from './SignInForm';
 import { ISignInForm } from './type';
@@ -14,6 +16,9 @@ import { ISignInForm } from './type';
 function SignIn() {
   const navigate = useNavigate();
   const { onSignIn } = useUser();
+
+  // 로컬스토리지 클리어
+  useEffect(clearLocalStorage, []);
 
   const handleLogin = useMutation(postLogin, {
     onSuccess: ({ data }) => {
