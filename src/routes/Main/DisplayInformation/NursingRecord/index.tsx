@@ -39,7 +39,7 @@ const NursingRecord = () => {
     fetchNursingRecords,
     {
       getNextPageParam: lastPage => {
-        if (lastPage.nursing_records.length === 20) return lastPage.nextPage;
+        if (lastPage.nursing_records?.length === 20) return lastPage.nextPage;
         return undefined;
       },
     }
