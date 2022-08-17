@@ -25,7 +25,7 @@ const Survey = ({ type, onReset }: Props) => {
   });
 
   useEffect(() => {
-    if (!type || !patientInfo) return;
+    if (!patientInfo) return;
 
     const { patient_id } = patientInfo;
 
@@ -39,6 +39,7 @@ const Survey = ({ type, onReset }: Props) => {
         onGetOutHospital(patient_id);
         break;
       default:
+        setDefaultValues(null);
         break;
     }
     // eslint-disable-next-line
