@@ -22,8 +22,10 @@ const NursingRecord = () => {
   const fetchNursingRecords = async ({ pageParam = 1 }) => {
     if (!patient) return { result: [], nextPage: pageParam };
 
+    const { patient_id } = patient;
+
     const { data } = await getNursingRecords({
-      patient_id: patient.patient_id,
+      patient_id,
       user_id,
       page: pageParam,
     });
@@ -52,7 +54,7 @@ const NursingRecord = () => {
     // eslint-disable-next-line
   }, [isUpdateNursingRecord]);
 
-  if (!patient) return null;
+  if (!patient || !data) return null;
 
   const RecordList = (record: INursingRecord) => {
     const { nursing_record_id, record_type } = record;
@@ -85,8 +87,6 @@ const NursingRecord = () => {
         return null;
     }
   };
-
-  if (!data) return null;
 
   return (
     <Box flex={1} display="flex" flexDirection="column">
