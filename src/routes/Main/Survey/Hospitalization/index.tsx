@@ -116,7 +116,7 @@ const Hospitalization = (
         <DefaultInfo {...formProps} />
         <DiseaseHistory {...formProps} />
         <BodyStatus {...formProps} />
-        <Habit {...formProps} />
+        <Habit {...formProps} gender={patientInfo.gender} />
         <FunctionalEvaluation {...formProps} />
         <SocialHistory {...formProps} />
         <EconomyHistory {...formProps} />

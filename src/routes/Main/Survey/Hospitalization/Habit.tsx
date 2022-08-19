@@ -3,6 +3,7 @@ import { Stack, Typography } from '@mui/material';
 
 import { FormProps } from '../../type';
 import adornment from '../../../../components/adornment';
+import { TGender } from '../../../../apis/account/type';
 
 import RowContainer from '../components/RowContainer';
 import RowContent from '../components/RowContent';
@@ -11,8 +12,14 @@ import SectionTitle from '../components/SectionTitle';
 import SurveyInput from '../components/SurveyInput';
 import SurveyCheckbox from '../components/SurveyCheckbox';
 
-const Habit = (props: FormProps) => {
-  const { register, getValues, setValue } = props;
+interface Props extends FormProps {
+  gender: TGender;
+}
+
+const Habit = (props: Props) => {
+  const { gender, register, getValues, setValue } = props;
+
+  const isRequiredObstetric = gender === 1;
 
   if (!getValues || !setValue) return null;
   return (
@@ -163,21 +170,25 @@ const Habit = (props: FormProps) => {
           <Stack direction="row" spacing={1}>
             <SurveyInput
               fullWidth={false}
+              required={isRequiredObstetric}
               InputProps={{ ...adornment('G') }}
               {...register('habit.obstetric.G')}
             />
             <SurveyInput
               fullWidth={false}
+              required={isRequiredObstetric}
               InputProps={{ ...adornment('T') }}
               {...register('habit.obstetric.T')}
             />
             <SurveyInput
               fullWidth={false}
+              required={isRequiredObstetric}
               InputProps={{ ...adornment('P') }}
               {...register('habit.obstetric.P')}
             />
             <SurveyInput
               fullWidth={false}
+              required={isRequiredObstetric}
               InputProps={{ ...adornment('A') }}
               {...register('habit.obstetric.A')}
             />
