@@ -64,6 +64,7 @@ const CollegeList = ({ setValue }: Props) => {
         <TextField
           {...params}
           onChange={onChangeTextField}
+          helperText="본인 학교 명칭을 직접 입력해주세요. 대학 재학 또는 재직 중이 아닐 시 ‘기타대학’ 이라고 입력해주세요"
           InputProps={{
             ...params.InputProps,
             endAdornment: (

@@ -21,7 +21,7 @@ function SaveDialog(props: SaveDialogProps) {
   const { title, isOpen = false, children, onClose, onSubmit } = props;
 
   return (
-    <Dialog maxWidth="lg" open={isOpen} onClose={onClose} scroll="body">
+    <Dialog maxWidth="xl" open={isOpen} onClose={onClose} scroll="body">
       <form onSubmit={onSubmit} style={{ minWidth: 1280 }}>
         <DialogTitle
           display="flex"

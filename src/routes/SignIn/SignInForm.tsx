@@ -9,6 +9,7 @@ import {
   Container,
   FormControlLabel,
   TextField,
+  Typography,
   useTheme,
 } from '@mui/material';
 import { FieldValues, UseFormRegister } from 'react-hook-form';
@@ -73,7 +74,7 @@ function SignInForm({ errors, register, onSignUp }: Props) {
               label="이메일 저장"
             />
           </CardContent>
-          <CardActions sx={{ ml: 5, mr: 5, pb: 10 }}>
+          <CardActions sx={{ ml: 5, mr: 5, pb: 5 }}>
             <Box flex={1} textAlign="center">
               <Button
                 fullWidth
@@ -100,6 +101,12 @@ function SignInForm({ errors, register, onSignUp }: Props) {
               />
             </Box>
           </CardActions>
+
+          <Typography fontSize={10} align="center" sx={{ mb: 2 }}>
+            copyright © 2022 DKMediInfo.
+            <br />
+            All rights reserved.
+          </Typography>
 
           <CardMedia
             height={23}
