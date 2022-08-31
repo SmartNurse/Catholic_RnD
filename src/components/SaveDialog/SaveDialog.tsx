@@ -5,6 +5,7 @@ import {
   DialogContent,
   DialogTitle,
   IconButton,
+  useMediaQuery,
   useTheme,
 } from '@mui/material';
 
@@ -17,11 +18,18 @@ export interface SaveDialogProps {
 }
 
 function SaveDialog(props: SaveDialogProps) {
-  const { zIndex } = useTheme();
+  const { zIndex, breakpoints } = useTheme();
+  const isMobile = useMediaQuery(breakpoints.down('sm'));
+
   const { title, isOpen = false, children, onClose, onSubmit } = props;
 
   return (
-    <Dialog maxWidth="xl" open={isOpen} onClose={onClose} scroll="body">
+    <Dialog
+      maxWidth="xl"
+      open={isOpen}
+      onClose={onClose}
+      scroll={isMobile ? 'body' : 'paper'}
+    >
       <form onSubmit={onSubmit} style={{ minWidth: 1280 }}>
         <DialogTitle
           display="flex"
