@@ -1,5 +1,12 @@
-import { useEffect, useState } from 'react';
-import { Card, Divider, NativeSelect, Stack } from '@mui/material';
+import { Fragment, useEffect, useState } from 'react';
+import {
+  Card,
+  Divider,
+  NativeSelect,
+  Skeleton,
+  Stack,
+  Typography,
+} from '@mui/material';
 
 import { getPatientInfo } from '../../../apis/admin';
 import usePatient from '../../../store/slices/usePatient';
@@ -35,11 +42,15 @@ const PatientInfo = () => {
       });
   }, [patient, onSelectedPatientInfo, enqueueSnackbar]);
 
-  if (!patientInfo) return null;
+  if (!patientInfo) {
+    return <Skeleton variant="rectangular" sx={{ flex: 1 }} />;
+  }
 
   const {
-    // column1
+    // title
+    name,
     patient_id,
+    // column1
     gender,
     height,
     blood,
@@ -74,50 +85,62 @@ const PatientInfo = () => {
   );
 
   return (
-    <Card
-      component="section"
-      sx={{
-        p: 2.5,
-        display: 'flex',
-        overflow: 'visible',
-        justifyContent: 'space-around',
-        gap: { xs: 1.25, xl: 5 },
-      }}
-    >
-      <Stack spacing={1.25}>
-        <PatientInfoItem title="등록번호" content={patient_id} />
-        <PatientInfoItem title="성별" content={i18n(`GENDER.${gender}`)} />
-        <PatientInfoItem title="키" content={height.toLowerCase()} />
-        <PatientInfoItem title="혈액형" content={blood} />
-        <PatientInfoItem title="체중" content={weight.toLowerCase()} />
-      </Stack>
-      <Divider orientation="horizontal" />
-      <Stack spacing={1.25}>
-        <PatientInfoItem title="진료과" content={department} />
-        <PatientInfoItem title="병동" content={ward} />
-        <PatientInfoItem title="병실" content={room} />
-        <PatientInfoItem title="담당간호사" content={userName} />
-        <PatientInfoItem title="담당의사" content={main_doctor} />
-      </Stack>
-      <Divider orientation="horizontal" />
-      <Stack spacing={1.25}>
-        <PatientInfoItem title="HOD" content={admin_hod} />
-        <PatientInfoItem title="POD" content={admin_pod} />
-      </Stack>
-      <Divider orientation="horizontal" />
-      <Stack spacing={1.25}>
-        <PatientInfoItem title="주진단코드" content={disease_main.disease_id} />
-        <PatientInfoItem title="주진단명" content={disease_main.disease_kor} />
-        <PatientInfoItem
-          title="부진단코드"
-          content={disease_sub.length > 0 ? <DiseaseSubCode /> : null}
-        />
-        <PatientInfoItem
-          title="부진단명"
-          content={disease_sub[diseaseSubIndex]?.disease_kor}
-        />
-      </Stack>
-    </Card>
+    <Fragment>
+      <Typography variant="subtitle2" fontSize={13} mb={1}>
+        {name} 환자 정보
+      </Typography>
+
+      <Card
+        component="section"
+        sx={{
+          p: 2.5,
+          display: 'flex',
+          overflow: 'visible',
+          justifyContent: 'space-around',
+          gap: { xs: 1.25, xl: 5 },
+        }}
+      >
+        <Stack spacing={1.25}>
+          <PatientInfoItem title="등록번호" content={patient_id} />
+          <PatientInfoItem title="성별" content={i18n(`GENDER.${gender}`)} />
+          <PatientInfoItem title="키" content={height.toLowerCase()} />
+          <PatientInfoItem title="혈액형" content={blood} />
+          <PatientInfoItem title="체중" content={weight.toLowerCase()} />
+        </Stack>
+        <Divider orientation="horizontal" />
+        <Stack spacing={1.25}>
+          <PatientInfoItem title="진료과" content={department} />
+          <PatientInfoItem title="병동" content={ward} />
+          <PatientInfoItem title="병실" content={room} />
+          <PatientInfoItem title="담당간호사" content={userName} />
+          <PatientInfoItem title="담당의사" content={main_doctor} />
+        </Stack>
+        <Divider orientation="horizontal" />
+        <Stack spacing={1.25}>
+          <PatientInfoItem title="HOD" content={admin_hod} />
+          <PatientInfoItem title="POD" content={admin_pod} />
+        </Stack>
+        <Divider orientation="horizontal" />
+        <Stack spacing={1.25}>
+          <PatientInfoItem
+            title="주진단코드"
+            content={disease_main.disease_id}
+          />
+          <PatientInfoItem
+            title="주진단명"
+            content={disease_main.disease_kor}
+          />
+          <PatientInfoItem
+            title="부진단코드"
+            content={disease_sub.length > 0 ? <DiseaseSubCode /> : null}
+          />
+          <PatientInfoItem
+            title="부진단명"
+            content={disease_sub[diseaseSubIndex]?.disease_kor}
+          />
+        </Stack>
+      </Card>
+    </Fragment>
   );
 };
 

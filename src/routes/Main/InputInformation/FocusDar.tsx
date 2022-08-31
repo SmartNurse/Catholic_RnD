@@ -1,11 +1,11 @@
 import { Stack, TextField } from '@mui/material';
-import FormItem from '../../../components/FormItem';
+import Form from '../../../components/Form';
 import { FormProps } from '../type';
 
 function FocusDar({ register }: FormProps) {
   return (
     <Stack spacing={2}>
-      <FormItem title="포커스 Focus">
+      <Form.Item label="포커스 Focus">
         <TextField
           required
           fullWidth
@@ -15,9 +15,9 @@ function FocusDar({ register }: FormProps) {
           variant="outlined"
           {...register('focus')}
         />
-      </FormItem>
+      </Form.Item>
 
-      <FormItem title="데이터 Data">
+      <Form.Item label="데이터 Data">
         <TextField
           required
           fullWidth
@@ -27,9 +27,9 @@ function FocusDar({ register }: FormProps) {
           variant="outlined"
           {...register('data')}
         />
-      </FormItem>
+      </Form.Item>
 
-      <FormItem title="활동 Action">
+      <Form.Item label="활동 Action">
         <TextField
           required
           fullWidth
@@ -39,9 +39,9 @@ function FocusDar({ register }: FormProps) {
           variant="outlined"
           {...register('action')}
         />
-      </FormItem>
+      </Form.Item>
 
-      <FormItem title="반응 Response">
+      <Form.Item label="반응 Response">
         <TextField
           required
           fullWidth
@@ -51,7 +51,7 @@ function FocusDar({ register }: FormProps) {
           variant="outlined"
           {...register('response')}
         />
-      </FormItem>
+      </Form.Item>
     </Stack>
   );
 }

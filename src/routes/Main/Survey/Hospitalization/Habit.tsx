@@ -19,6 +19,7 @@ interface Props extends FormProps {
 const Habit = (props: Props) => {
   const { gender, register, getValues, setValue } = props;
 
+  // gender 여성인 경우 필수
   const isRequiredObstetric = gender === 1;
 
   if (!getValues || !setValue) return null;

@@ -8,8 +8,11 @@ import NursingRecord from './NursingRecord';
 import PatientsList from './PatientsList';
 import MedicalNote from './MedicalNote';
 import PatientInfo from './PatientInfo';
+import usePatient from '../../../store/slices/usePatient';
 
 const DisplayInformation = () => {
+  const { patientInfo } = usePatient();
+
   const containerWidth = {
     xs: `calc(100% - ${menuDrawerWidth}px - ${inputInformationWidth.xs}px)`,
     xl: `calc(100% - ${menuDrawerWidth}px - ${inputInformationWidth.xl}px)`,
@@ -41,8 +44,8 @@ const DisplayInformation = () => {
           overflow="hidden"
           height={'calc(100% - 180px)'}
         >
-          <MedicalNote />
-          <NursingRecord />
+          <MedicalNote patientInfo={patientInfo} />
+          <NursingRecord patientInfo={patientInfo} />
         </Box>
       </StyledContentContainer>
     </Box>

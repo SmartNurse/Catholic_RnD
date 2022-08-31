@@ -5,7 +5,7 @@ export const findKeyValue = (values: any, keys: string[]) => {
   return keys.reduce(
     (prev, next) => (values[next] ? { ...prev, [next]: values[next] } : prev),
     {}
-  );
+  ) as any;
 };
 
 /**

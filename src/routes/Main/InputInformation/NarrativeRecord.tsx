@@ -1,5 +1,5 @@
 import { Stack, TextField } from '@mui/material';
-import FormItem from '../../../components/FormItem';
+import Form from '../../../components/Form';
 import useI18n from '../../../hooks/useI18n';
 import { FormProps } from '../type';
 
@@ -8,7 +8,7 @@ function NarrativeRecord({ register }: FormProps) {
 
   return (
     <Stack spacing={2}>
-      <FormItem title={i18n('NARRATIVE.NOTES')}>
+      <Form.Item label={i18n('NARRATIVE.NOTES')}>
         <TextField
           required
           fullWidth
@@ -18,7 +18,7 @@ function NarrativeRecord({ register }: FormProps) {
           variant="outlined"
           {...register('narrativeNote')}
         />
-      </FormItem>
+      </Form.Item>
     </Stack>
   );
 }

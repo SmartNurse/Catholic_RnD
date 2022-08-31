@@ -1,95 +1,79 @@
-import { useEffect } from 'react';
-import { useInfiniteQuery } from 'react-query';
-import { Box, Card, Typography } from '@mui/material';
+import { Fragment, useEffect, useRef } from 'react';
+import { Box, Card, Skeleton, Typography } from '@mui/material';
 
+import { IGetList } from '../../../../apis/type';
 import { getNursingRecords } from '../../../../apis/main';
+import { IPatientInfo } from '../../../../apis/admin/type';
 import { INursingRecord } from '../../../../apis/main/type';
 import usePatient from '../../../../store/slices/usePatient';
 import useUser from '../../../../store/slices/useUser';
+import useInfiniteScroll from '../../../../hooks/useInfiniteScroll';
 
-import DisplayNarrative from './DisplayNarrative';
-import DisplayNanda from './DisplayNanda';
-import DisplaySoapie from './DisplaySoapie';
-import DisplayFocusDar from './DisplayFocusDar';
-import DisplayRemarks from './DisplayRemarks';
-import ActionButtons from './ActionButtons';
+import RecordItemWrapper from './RecordItemWrapper';
 
-const NursingRecord = () => {
+interface Props {
+  patientInfo?: IPatientInfo | null;
+}
+
+const NursingRecord = ({ patientInfo }: Props) => {
   const { student_uuid: user_id, name } = useUser();
-  const { patient, isUpdateNursingRecord, onUpdateNursingRecord } =
-    usePatient();
+  const { isUpdateNursingRecord, onUpdateNursingRecord } = usePatient();
 
-  const fetchNursingRecords = async ({ pageParam = 1 }) => {
-    if (!patient) return { result: [], nextPage: pageParam };
+  const moreRef = useRef(null);
+  const getApi = ({ page }: IGetList) =>
+    getNursingRecords({ page, user_id, patient_id: patientInfo?.patient_id! });
 
-    const { patient_id } = patient;
-
-    const { data } = await getNursingRecords({
-      patient_id,
-      user_id,
-      page: pageParam,
-    });
-
-    return {
-      nursing_records: data.nursing_records,
-      nextPage: pageParam + 1,
-    };
-  };
-
-  const { data, refetch } = useInfiniteQuery(
-    ['nursingRecords'],
-    fetchNursingRecords,
-    {
-      getNextPageParam: lastPage => {
-        if (lastPage.nursing_records?.length === 20) return lastPage.nextPage;
-        return undefined;
-      },
-    }
-  );
+  const { list, onResetList } = useInfiniteScroll({
+    listKey: 'nursing_records',
+    moreRef,
+    getApi,
+  });
 
   useEffect(() => {
     if (!isUpdateNursingRecord) return;
-    refetch();
+
+    onResetList();
     onUpdateNursingRecord(false);
     // eslint-disable-next-line
   }, [isUpdateNursingRecord]);
 
-  if (!patient || !data) return null;
+  if (!patientInfo) {
+    return (
+      <Box flex={1} display="flex" flexDirection="column" overflow="auto">
+        <Skeleton variant="rectangular" sx={{ flex: 1 }} />
+      </Box>
+    );
+  }
 
-  const RecordList = (record: INursingRecord) => {
-    const { nursing_record_id, record_type } = record;
-    const displayProps = {
-      ...record,
-      key: nursing_record_id,
-      nurseName: name,
-      actionButtons: (
-        <ActionButtons
-          user_id={user_id}
-          patient_id={patient.patient_id}
-          record_id={nursing_record_id}
-          refetch={refetch}
-        />
-      ),
-    };
-
-    switch (record_type) {
-      case 0:
-        return <DisplayNanda {...displayProps} />;
-      case 1:
-        return <DisplaySoapie {...displayProps} />;
-      case 2:
-        return <DisplayFocusDar {...displayProps} />;
-      case 3:
-        return <DisplayNarrative {...displayProps} />;
-      case 4:
-        return <DisplayRemarks {...displayProps} />;
-      default:
-        return null;
+  const RecordList = () => {
+    if (list.length === 0) {
+      return (
+        <Typography variant="caption">작성된 간호기록이 없습니다.</Typography>
+      );
     }
+
+    return (
+      <Fragment>
+        {list.map((record: INursingRecord) => {
+          const itemWrapperProps = {
+            ...record,
+            nurseName: name,
+            refetch: onResetList,
+          };
+
+          return (
+            <RecordItemWrapper
+              key={record.nursing_record_id}
+              {...itemWrapperProps}
+            />
+          );
+        })}
+      </Fragment>
+    );
   };
 
   return (
-    <Box flex={1} display="flex" flexDirection="column">
+    <Box flex={1} display="flex" flexDirection="column" overflow="auto">
       <Typography variant="subtitle2" fontSize={13} mb={1}>
         간호 기록 내역
       </Typography>
@@ -97,16 +81,10 @@ const NursingRecord = () => {
       <Card
         component="section"
         sx={{ p: '10px 15px', height: '100%', overflow: 'auto' }}
+        onLoad={() => console.log('load')}
       >
-        {data?.pages.map(({ nursing_records }) =>
-          !nursing_records || nursing_records.length === 0 ? (
-            <Typography variant="caption" key={'empty'}>
-              작성된 간호기록이 없습니다.
-            </Typography>
-          ) : (
-            nursing_records.map(RecordList)
-          )
-        )}
+        <RecordList />
+        <div ref={moreRef} />
       </Card>
     </Box>
   );

@@ -1,12 +1,21 @@
-import { Box, Card, Typography } from '@mui/material';
 import { format } from 'date-fns/esm';
-import usePatient from '../../../store/slices/usePatient';
+import { Box, Card, Skeleton, Typography } from '@mui/material';
+import { IPatientInfo } from '../../../apis/admin/type';
 
-const MedicalNote = () => {
-  const { patientInfo } = usePatient();
+interface Props {
+  patientInfo?: IPatientInfo | null;
+}
+
+const MedicalNote = ({ patientInfo }: Props) => {
   const today = format(new Date(), 'yyyy-MM-dd');
 
-  if (!patientInfo) return null;
+  if (!patientInfo) {
+    return (
+      <Box flex={1} display="flex" flexDirection="column" overflow="auto">
+        <Skeleton variant="rectangular" sx={{ flex: 1 }} />
+      </Box>
+    );
+  }
 
   return (
     <Box flex={1} display="flex" flexDirection="column" overflow="auto">

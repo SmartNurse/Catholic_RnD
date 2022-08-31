@@ -9,13 +9,13 @@ import InputInformation from './InputInformation';
 import MenuDrawer from './MenuDrawer';
 
 function Main() {
-  const { name } = useUser();
   const navigate = useNavigate();
+  const { name, student_uuid } = useUser();
 
   useEffect(() => {
-    if (name) return;
+    if (student_uuid) return;
     navigate('/signin', { replace: true });
-  }, [name, navigate]);
+  }, [student_uuid, navigate]);
 
   return (
     <Box display={'flex'} minWidth={1440}>

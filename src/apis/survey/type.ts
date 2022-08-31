@@ -3,12 +3,14 @@ import {
   initialOutHospitalSurvey,
 } from '../../routes/Main/initialStates';
 
-export interface IGetHospitalization {
+interface GetSurvey {
   user_id: number;
   patient_id: number;
 }
 
-export interface ICreateHospitalization extends IGetHospitalization {
+export interface IGetHospitalization extends GetSurvey {}
+
+export interface ICreateHospitalization extends GetSurvey {
   hospitalization_survey: {
     patient_name: string;
     age: string;
@@ -30,9 +32,9 @@ export interface ICreateHospitalization extends IGetHospitalization {
   };
 }
 
-export interface IGetOutHospital extends IGetHospitalization {}
+export interface IGetOutHospital extends GetSurvey {}
 
-export interface ICreateOutHospital extends IGetOutHospital {
+export interface ICreateOutHospital extends GetSurvey {
   out_hospital_survey: {
     patient_name: string;
     patient_id: number;

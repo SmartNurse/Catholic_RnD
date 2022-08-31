@@ -1,6 +1,8 @@
 const locale = {
   ko: {
     // common
+    'GRADE.1': '학생',
+    'GRADE.2': '교수/조교',
     'GENDER.1': '여자',
     'GENDER.2': '남자',
     ETC: '기타',
@@ -11,12 +13,25 @@ const locale = {
     'NEED.1': '필요',
     'NEED.2': '불필요',
 
+    // signup
+    'REQUIRED.EMAIL.FORMAT': '이메일 형식이 올바르지 않습니다',
+    'REQUIRED.EMAIL.VERIFICATION': '이메일 인증번호를 확인해주세요',
+    'REQUIRED.PASSWORD.FORMAT':
+      '비밀번호는 영문+숫자+특수기호를 포함해서 8자리 이상 입력해 주세요',
+    'REQUIRED.PASSWORD.CONFIRM': '입력하신 비밀번호가 일치하지 않습니다',
+    'REQUIRED.COLLEGE': '학교를 선택해주세요',
+
     // nursing record
     'RECORD.0': 'NANDA',
     'RECORD.1': 'SOAPIE',
     'RECORD.2': 'Focus DAR',
     'RECORD.3': '서술기록',
     'RECORD.4': '특기사항',
+    'RECORD.TYPE.0': 'NANDA',
+    'RECORD.TYPE.1': 'SOAPIE',
+    'RECORD.TYPE.2': 'FOCUSDAR',
+    'RECORD.TYPE.3': 'NARRATIVE',
+    'RECORD.TYPE.4': 'REMARKS',
     'NANDA.DOMAIN': '영역 Domain',
     'NANDA.CLASS': '분류 Class',
     'NANDA.DIAGNOSIS': '진단명 Diagnosis',
@@ -35,8 +50,11 @@ const locale = {
     'FOCUSDAR.DATA': '데이터 Data',
     'FOCUSDAR.ACTION': '활동 Action',
     'FOCUSDAR.RESPONSE': '반응 Response',
-    'NARRATIVE.NOTES': '서술 기록 Narrative Notes',
+    'NARRATIVE.NARRATIVENOTE': '서술 기록 Narrative Notes',
     'REMARKS.CBE': '특기사항기록 CBE',
+    'REQUIRED.DOMAIN': '영역을 선택해주세요',
+    'REQUIRED.CLASS': '분류를 선택해주세요',
+    'REQUIRED.DIAGNOSIS': '진단명을 선택해주세요',
 
     // hospitalization
     'HOSPITALIZATION.PATH.1': '외래',

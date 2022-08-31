@@ -1,14 +1,8 @@
-import {
-  Grid,
-  Stack,
-  TextField,
-  Typography,
-  NativeSelect,
-} from '@mui/material';
+import { Grid, Stack, TextField, Typography } from '@mui/material';
 import { useEffect, useState } from 'react';
 import { getNandaClass, getNandaDiagnosis } from '../../../apis/main';
 import { INames } from '../../../apis/main/type';
-import FormItem from '../../../components/FormItem';
+import Form from '../../../components/Form';
 import { FormProps } from '../type';
 
 interface Props extends Required<Omit<FormProps, 'getValues'>> {
@@ -27,7 +21,6 @@ function Nanda(props: Props) {
     if (!m_domain) return;
     getNandaClass({ domain: m_domain }).then(({ data }) => {
       setClassNames(data.names);
-      setValue('class', data.names[0].kor);
     });
   }, [m_domain, setValue]);
 
@@ -37,19 +30,12 @@ function Nanda(props: Props) {
     if (!m_domain || !m_class) return;
     getNandaDiagnosis({ domain: m_domain, class: m_class }).then(({ data }) => {
       setDiagnosisNames(data.names);
-      setValue('diagnosis', data.names[0].kor);
     });
   }, [m_domain, m_class, setValue]);
 
   // Render Select Options
-  const options = (list?: INames[]) =>
-    list?.map(({ kor, eng }) => (
-      <option key={kor} value={kor}>
-        {kor} ({eng})
-      </option>
-    ));
-
-  const fontStyle = { fontSize: 14, lineHeight: '18px' };
+  const getOptionValue = (option: INames) => option.kor;
+  const getOptionLabel = (option: INames) => `${option.kor} (${option.eng})`;
 
   return (
     <Stack spacing={2}>
@@ -64,47 +50,41 @@ function Nanda(props: Props) {
           <Typography variant="caption">영역 Domain</Typography>
         </Grid>
         <Grid item xs={8}>
-          <NativeSelect
-            fullWidth
-            size="small"
-            placeholder="선택"
+          <Form.MuiSelect
+            isNone
+            options={domainNames}
+            getOptionValue={getOptionValue}
+            getOptionLabel={getOptionLabel}
             {...register('domain')}
-            sx={fontStyle}
-          >
-            {options(domainNames)}
-          </NativeSelect>
+          />
         </Grid>
         <Grid item xs={4}>
           <Typography variant="caption">분류 Class</Typography>
         </Grid>
         <Grid item xs={8}>
-          <NativeSelect
-            fullWidth
-            size="small"
-            placeholder="선택"
+          <Form.MuiSelect
+            isNone
+            options={classNames}
+            getOptionValue={getOptionValue}
+            getOptionLabel={getOptionLabel}
             {...register('class')}
-            sx={fontStyle}
-          >
-            {options(classNames)}
-          </NativeSelect>
+          />
         </Grid>
         <Grid item xs={4}>
           <Typography variant="caption">진단명 Diagnosis</Typography>
         </Grid>
         <Grid item xs={8}>
-          <NativeSelect
-            fullWidth
-            size="small"
-            placeholder="선택"
+          <Form.MuiSelect
+            isNone
+            options={diagnosisNames}
+            getOptionValue={getOptionValue}
+            getOptionLabel={getOptionLabel}
             {...register('diagnosis')}
-            sx={fontStyle}
-          >
-            {options(diagnosisNames)}
-          </NativeSelect>
+          />
         </Grid>
       </Grid>
 
-      <FormItem title="자료 수집 주관적 / 객관적">
+      <Form.Item label="자료 수집 주관적 / 객관적">
         <TextField
           required
           fullWidth
@@ -112,9 +92,9 @@ function Nanda(props: Props) {
           variant="outlined"
           {...register('collectingData')}
         />
-      </FormItem>
+      </Form.Item>
 
-      <FormItem title="간호목표 단기/장기 Goal">
+      <Form.Item label="간호목표 단기/장기 Goal">
         <TextField
           required
           fullWidth
@@ -122,9 +102,9 @@ function Nanda(props: Props) {
           variant="outlined"
           {...register('goal')}
         />
-      </FormItem>
+      </Form.Item>
 
-      <FormItem title="간호계획 Plan">
+      <Form.Item label="간호계획 Plan">
         <TextField
           required
           fullWidth
@@ -134,9 +114,9 @@ function Nanda(props: Props) {
           variant="outlined"
           {...register('plan')}
         />
-      </FormItem>
+      </Form.Item>
 
-      <FormItem title="간호수행/중재/이론적 근거 Interventions">
+      <Form.Item label="간호수행/중재/이론적 근거 Interventions">
         <TextField
           required
           fullWidth
@@ -146,9 +126,9 @@ function Nanda(props: Props) {
           variant="outlined"
           {...register('interventions')}
         />
-      </FormItem>
+      </Form.Item>
 
-      <FormItem title="간호평가 Evaluation">
+      <Form.Item label="간호평가 Evaluation">
         <TextField
           required
           fullWidth
@@ -158,7 +138,7 @@ function Nanda(props: Props) {
           variant="outlined"
           {...register('evaluation')}
         />
-      </FormItem>
+      </Form.Item>
     </Stack>
   );
 }

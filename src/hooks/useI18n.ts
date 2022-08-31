@@ -1,4 +1,7 @@
 import { useIntl } from 'react-intl';
+import locale from '../locale';
+
+export type Ti18nId = keyof typeof locale.ko;
 
 /**
  * 값을 i18n 언어로 변경함

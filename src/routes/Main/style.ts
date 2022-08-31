@@ -89,7 +89,7 @@ export const StyledTabPanel = styled(TabPanel)`
   }
 `;
 
-export const styledRecordList = {
+export const sxRecordItem = {
   pt: 0,
   ':not(:first-of-type)': {
     pt: 2,

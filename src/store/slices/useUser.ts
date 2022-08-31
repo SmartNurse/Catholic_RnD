@@ -1,14 +1,12 @@
 import { useCallback } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
 import { persistKey } from '..';
 import { removeLocalStorage } from '../../utils/storage';
 import { ReducerType } from '../reducer';
-import { signIn, UserState } from './user';
+import { signIn, signOut, UserState } from './user';
 
 const useUser = () => {
   const dispatch = useDispatch();
-  const navigate = useNavigate();
 
   const { name, student_uuid } = useSelector<ReducerType, UserState>(
     state => state.user
@@ -19,10 +17,10 @@ const useUser = () => {
     [dispatch]
   );
 
-  const onSignOut = () => {
-    navigate('/signin');
+  const onSignOut = useCallback(() => {
+    dispatch(signOut());
     removeLocalStorage(`persist:${persistKey}`);
-  };
+  }, [dispatch]);
 
   return { name, student_uuid, onSignIn, onSignOut };
 };

@@ -1,4 +1,3 @@
-import { useSnackbar } from 'notistack';
 import { useForm } from 'react-hook-form';
 import { useEffect, useState } from 'react';
 import { TabContext, TabList } from '@mui/lab';
@@ -10,6 +9,8 @@ import { getNandaDomain, createNursingRecord } from '../../../apis/main';
 import { initialNursingRecord } from '../initialStates';
 import { INames } from '../../../apis/main/type';
 import { findKeyValue } from '../../../utils/convert';
+import { requiredSelect } from '../../../components/Form/requiredItems';
+import useNotification from '../../../hooks/useNotification';
 
 import Nanda from './Nanda';
 import Soapie from './Soapie';
@@ -28,7 +29,7 @@ const NursingRecords = ({
   patient_id,
   onUpdateNursingRecord,
 }: Props) => {
-  const { enqueueSnackbar } = useSnackbar();
+  const { onSuccess, onFail, onRequired } = useNotification();
   const { register, watch, setValue, handleSubmit, reset } = useForm({
     defaultValues: { recordType: RECORD_TYPE.NANDA } as any,
   });
@@ -38,43 +39,50 @@ const NursingRecords = ({
   // GetNandaDomains
   const [domainNames, setDomainNames] = useState<INames[]>([]);
   useEffect(() => {
-    getNandaDomain().then(({ data }) => {
-      setDomainNames(data.names);
-      setValue('domain', data.names[0].kor);
-    });
-  }, [setValue]);
+    getNandaDomain().then(({ data }) => setDomainNames(data.names));
+  }, []);
 
   // Submit
   const onSubmit = (data: any) => {
-    let content = {};
+    let contentKeys: string[] = [];
     const { recordType } = data;
 
     // update content
     switch (recordType) {
       case RECORD_TYPE.NANDA: {
-        const { nanda } = initialNursingRecord;
-        content = findKeyValue(data, Object.keys(nanda));
+        contentKeys = Object.keys(initialNursingRecord.nanda);
         break;
       }
       case RECORD_TYPE.SOAPIE: {
-        const { soapie } = initialNursingRecord;
-        content = findKeyValue(data, Object.keys(soapie));
+        contentKeys = Object.keys(initialNursingRecord.soapie);
         break;
       }
       case RECORD_TYPE.FOCUS_DAR: {
-        const { focusDar } = initialNursingRecord;
-        content = findKeyValue(data, Object.keys(focusDar));
+        contentKeys = Object.keys(initialNursingRecord.focusDar);
         break;
       }
       case RECORD_TYPE.NARRATIVE_RECORD: {
-        const { narrativeRecord } = initialNursingRecord;
-        content = findKeyValue(data, Object.keys(narrativeRecord));
+        contentKeys = Object.keys(initialNursingRecord.narrativeRecord);
         break;
       }
       case RECORD_TYPE.REMARKS: {
-        const { remarks } = initialNursingRecord;
-        content = findKeyValue(data, Object.keys(remarks));
+        contentKeys = Object.keys(initialNursingRecord.remarks);
         break;
+      }
+    }
+
+    const content = findKeyValue(data, contentKeys);
+
+    // nanda 필수값 체크
+    if (recordType === RECORD_TYPE.NANDA) {
+      if (!requiredSelect(content?.domain)) {
+        return onRequired('REQUIRED.DOMAIN');
+      }
+      if (!requiredSelect(content?.class)) {
+        return onRequired('REQUIRED.CLASS');
+      }
+      if (!requiredSelect(content?.diagnosis)) {
+        return onRequired('REQUIRED.DIAGNOSIS');
       }
     }
 
@@ -87,13 +95,9 @@ const NursingRecords = ({
       .then(() => {
         reset();
         onUpdateNursingRecord(true);
-        const message = '간호기록을 저장하였습니다.';
-        enqueueSnackbar(message, { variant: 'success' });
+        onSuccess('간호기록을 저장하였습니다.');
       })
-      .catch(e => {
-        const message = `간호기록 저장 실패하였습니다.\n오류: ${e}`;
-        enqueueSnackbar(message, { variant: 'error' });
-      });
+      .catch(e => onFail('간호기록 저장 실패하였습니다.', e));
   };
 
   return (

@@ -14,6 +14,9 @@ const SurveySelect = forwardRef(({ options, ...props }: Props, ref) => (
     sx={{ fontSize: 14, pt: 1 }}
     {...props}
   >
+    <option value={''} disabled>
+      선택
+    </option>
     {options.map(option => (
       <option key={option} value={option}>
         {option}

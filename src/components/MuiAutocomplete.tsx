@@ -1,32 +1,51 @@
 import React, { Fragment, useEffect, useState } from 'react';
-import { FieldValues, UseFormSetValue } from 'react-hook-form';
+import { AxiosResponse } from 'axios';
 import {
   Autocomplete,
   CircularProgress,
   debounce,
   TextField,
 } from '@mui/material';
+import { Search } from '@mui/icons-material';
 
-import { getCollegeLists } from '../../apis/admin';
-import { ICollege } from '../../apis/admin/type';
+import { IGetSearch } from '../apis/type';
 
 interface Props {
-  setValue: UseFormSetValue<FieldValues>;
+  listKey: string;
+  valueKey: string;
+  variant?: 'outlined' | 'standard';
+  noOptionsText?: string;
+  helperText?: string;
+  placeholder?: string;
+  onChange: (value: any) => void;
+  getApi: (request: IGetSearch) => Promise<AxiosResponse<any>>;
+  getOptionLabel: (option: any) => string;
 }
 
-const CollegeList = ({ setValue }: Props) => {
+const MuiAutocomplete = (props: Props) => {
   const [open, setOpen] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
-  const [options, setOptions] = useState([] as ICollege[]);
+  const [options, setOptions] = useState<any[]>([]);
+
+  const {
+    listKey,
+    valueKey,
+    variant = 'outlined',
+    noOptionsText,
+    helperText,
+    placeholder,
+    onChange,
+    getApi,
+    getOptionLabel,
+  } = props;
 
   const onChangeOptions = (keyword: string) => {
-    getCollegeLists({ page: 1, keyword })
-      .then(({ data }) => {
-        setOptions(data.college_lists);
-      })
+    getApi({ page: 1, keyword })
+      .then(({ data }) => setOptions(data[listKey]))
       .finally(() => setIsLoading(false));
   };
 
+  // eslint-disable-next-line
   useEffect(() => onChangeOptions(''), []);
 
   const onChangeTextField = debounce(e => {
@@ -52,21 +71,24 @@ const CollegeList = ({ setValue }: Props) => {
       onOpen={() => setOpen(true)}
       onClose={() => setOpen(false)}
       isOptionEqualToValue={(option, value) =>
-        option.college_name === value.college_name
+        option[valueKey] === value[valueKey]
       }
-      getOptionLabel={option => option.college_name}
-      noOptionsText="다른 학교를 입력해주세요"
+      getOptionLabel={getOptionLabel}
+      noOptionsText={noOptionsText}
       options={options}
       loading={isLoading}
       onChangeCapture={() => setIsLoading(true)}
-      onChange={(_, value) => setValue('college', value?.college_id)}
+      onChange={(_, value) => onChange(value)}
       renderInput={params => (
         <TextField
           {...params}
+          variant={variant}
+          helperText={helperText}
+          placeholder={placeholder}
           onChange={onChangeTextField}
-          helperText="본인 학교 명칭을 직접 입력해주세요. 대학 재학 또는 재직 중이 아닐 시 ‘기타대학’ 이라고 입력해주세요"
           InputProps={{
             ...params.InputProps,
+            startAdornment: <Search color="disabled" />,
             endAdornment: (
               <TextFieldEndAdornment
                 endAdornment={params.InputProps.endAdornment}
@@ -79,4 +101,4 @@ const CollegeList = ({ setValue }: Props) => {
   );
 };
 
-export default CollegeList;
+export default MuiAutocomplete;

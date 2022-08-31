@@ -40,9 +40,22 @@ const theme = createTheme({
         ::-webkit-scrollbar {
           display: none;
         }
+
         /* Hide scrollbar for IE, Edge and Firefox */
         -ms-overflow-style: none;  /* IE and Edge */
         scrollbar-width: none;  /* Firefox */
+
+        /* Hide input[type="number"] arrow button */
+        input[type="number"]::-webkit-outer-spin-button,
+        input[type="number"]::-webkit-inner-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+        
+        /* SnackbarItem styles */
+        .SnackbarItem-message {
+          white-space: pre-wrap;
+        }
       `,
     },
     MuiButton: {

@@ -15,8 +15,8 @@ import {
 import { FieldValues, UseFormRegister } from 'react-hook-form';
 
 import { imgNaverCloudLogo, imgSmartNurseLogo } from '../../assets';
+import Form from '../../components/Form';
 import ConfirmDialogButton from '../../components/ConfirmDialog/ConfirmDialogButton';
-import InputPassword from '../../components/InputPassword';
 
 interface Props {
   errors: { [x: string]: any };
@@ -50,23 +50,17 @@ function SignInForm({ errors, register, onSignUp }: Props) {
               error={Boolean(errors.userEmail)}
               helperText={errors.userEmail?.message}
               {...register('userEmail', {
-                required: {
-                  value: true,
-                  message: '이메일 주소를 입력해주세요.',
-                },
+                required: '이메일 주소를 입력해주세요.',
               })}
             />
-            <InputPassword
+            <Form.Password
               fullWidth
               label="비밀번호"
               sx={{ mb: 0.25 }}
               error={Boolean(errors.userPassword)}
               helperText={errors.userPassword?.message}
               {...register('userPassword', {
-                required: {
-                  value: true,
-                  message: '비밀번호를 입력해주세요.',
-                },
+                required: '비밀번호를 입력해주세요.',
               })}
             />
             <FormControlLabel

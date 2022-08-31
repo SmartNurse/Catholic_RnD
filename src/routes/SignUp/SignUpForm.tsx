@@ -8,21 +8,18 @@ import {
   FormControlLabel,
   FormGroup,
   Grid,
-  Radio,
-  RadioGroup,
   Stack,
   TextField,
   Typography,
 } from '@mui/material';
 import { addYears, format } from 'date-fns';
 import { FieldValues, UseFormRegister, UseFormSetValue } from 'react-hook-form';
-import FormItem from '../../components/FormItem';
-import InputPassword from '../../components/InputPassword';
-import CollegeList from './CollegeList';
+import { getCollegeLists } from '../../apis/admin';
+import Form from '../../components/Form';
+import MuiAutocomplete from '../../components/MuiAutocomplete';
 import { ISendMailProps, IVerifyMailProps } from './types';
 
 interface Props {
-  errors: { [x: string]: any };
   register: UseFormRegister<FieldValues>;
   setValue: UseFormSetValue<FieldValues>;
   sendMailProps: ISendMailProps;
@@ -31,7 +28,17 @@ interface Props {
 
 function SignUpForm(props: Props) {
   const xsBtnStyles = { width: 100, pl: 0, pr: 0, fontSize: 16 };
-  const { errors, register, setValue, sendMailProps, verifyMailProps } = props;
+  const { register, setValue, sendMailProps, verifyMailProps } = props;
+
+  const VerificationIcon = () => (
+    <CheckCircle
+      fontSize="small"
+      color="primary"
+      sx={{
+        display: verifyMailProps.isVerification ? 'block' : 'none',
+      }}
+    />
+  );
 
   return (
     <Box>
@@ -41,19 +48,14 @@ function SignUpForm(props: Props) {
         </Typography>
 
         <Stack spacing={2.5}>
-          <FormItem title="이메일">
+          <Form.Item label="이메일">
             <Box display="flex" gap={1}>
               <TextField
+                required
                 fullWidth
                 type="email"
-                variant="outlined"
                 helperText="반드시 본인의 대학교 이메일을 입력해주세요."
-                {...register('userEmail', {
-                  required: {
-                    value: true,
-                    message: '이메일 주소를 입력해주세요.',
-                  },
-                })}
+                {...register('userEmail')}
               />
               <LoadingButton
                 sx={{ ...xsBtnStyles, maxHeight: 56 }}
@@ -64,28 +66,16 @@ function SignUpForm(props: Props) {
                 {sendMailProps.isSendMail ? '재전송' : '인증하기'}
               </LoadingButton>
             </Box>
-          </FormItem>
-
-          <FormItem title="인증번호" isHidden={!sendMailProps.isSendMail}>
+          </Form.Item>
+          <Form.Item label="인증번호" isHidden={!sendMailProps.isSendMail}>
             <Box display="flex" gap={1}>
               <TextField
+                required
                 fullWidth
-                type="text"
-                variant="outlined"
                 placeholder="이메일로 전송된 인증번호를 입력해주세요."
                 InputProps={{
                   readOnly: verifyMailProps.isVerification,
-                  endAdornment: (
-                    <CheckCircle
-                      fontSize="small"
-                      color="primary"
-                      sx={{
-                        display: verifyMailProps.isVerification
-                          ? 'block'
-                          : 'none',
-                      }}
-                    />
-                  ),
+                  endAdornment: <VerificationIcon />,
                 }}
                 {...register('userCode')}
               />
@@ -101,88 +91,62 @@ function SignUpForm(props: Props) {
                 확인
               </LoadingButton>
             </Box>
-          </FormItem>
-
-          <FormItem title="비밀번호">
-            <InputPassword
-              fullWidth
-              error={Boolean(errors.userPassword)}
-              helperText={
-                errors.userPassword?.message ??
-                '영문+숫자+특수기호를 포함해서 8자리 이상 입력해 주세요.'
-              }
-              {...register('userPassword', {
-                required: {
-                  value: true,
-                  message: '비밀번호를 입력해주세요.',
-                },
-              })}
-            />
-          </FormItem>
-
-          <FormItem title="비밀번호 확인">
-            <InputPassword
-              fullWidth
-              isHideVisibleBtn
-              error={Boolean(errors.userPasswordConfirm)}
-              helperText={errors.userPasswordConfirm?.message}
-              {...register('userPasswordConfirm', {
-                required: {
-                  value: true,
-                  message: '비밀번호를 입력해주세요.',
-                },
-              })}
-            />
-          </FormItem>
-          <FormItem title="이름">
-            <TextField
+          </Form.Item>
+          <Form.Item label="비밀번호">
+            <Form.Password
               required
               fullWidth
-              variant="outlined"
-              {...register('userName')}
+              helperText="영문+숫자+특수기호를 포함해서 8자리 이상 입력해 주세요."
+              {...register('userPassword')}
             />
-          </FormItem>
-
+          </Form.Item>
+          <Form.Item label="비밀번호 확인">
+            <Form.Password
+              required
+              fullWidth
+              isHideVisibleBtn
+              {...register('userPasswordConfirm')}
+            />
+          </Form.Item>
+          <Form.Item label="이름">
+            <TextField required fullWidth {...register('userName')} />
+          </Form.Item>
           <Grid container>
             <Grid item xs={6}>
-              <FormItem title="성별">
-                <RadioGroup
-                  row
-                  name="gender"
-                  onChange={e => setValue('gender', e.target.value)}
-                >
-                  <FormControlLabel value={1} control={<Radio />} label="여" />
-                  <FormControlLabel value={2} control={<Radio />} label="남" />
-                </RadioGroup>
-              </FormItem>
+              <Form.Item label="성별">
+                <Form.MuiRadioGroup
+                  i18nKey="GENDER"
+                  values={[1, 2]}
+                  defaultValue={1}
+                  onChange={value => setValue('gender', value)}
+                />
+              </Form.Item>
             </Grid>
             <Grid item xs={6}>
-              <FormItem title="구분">
-                <RadioGroup
-                  row
-                  name="grade"
-                  onChange={e => setValue('grade', e.target.value)}
-                >
-                  <FormControlLabel
-                    value={1}
-                    control={<Radio />}
-                    label="학생"
-                  />
-                  <FormControlLabel
-                    value={2}
-                    control={<Radio />}
-                    label="교수/조교"
-                  />
-                </RadioGroup>
-              </FormItem>
+              <Form.Item label="구분">
+                <Form.MuiRadioGroup
+                  i18nKey="GRADE"
+                  values={[1, 2]}
+                  defaultValue={1}
+                  onChange={value => setValue('grade', value)}
+                />
+              </Form.Item>
             </Grid>
           </Grid>
 
-          <FormItem title="학교 선택">
-            <CollegeList setValue={setValue} />
-          </FormItem>
-
-          <FormItem title="학번/사번">
+          <Form.Item label="학교 선택">
+            <MuiAutocomplete
+              listKey="college_lists"
+              valueKey="college_id"
+              noOptionsText="다른 학교를 입력해주세요"
+              helperText="본인 학교 명칭을 직접 입력해주세요. 대학 재학 또는 재직 중이 아닐 시 ‘기타대학’ 이라고 입력해주세요"
+              placeholder="학교 검색"
+              onChange={value => setValue('college', value.college_id)}
+              getApi={getCollegeLists}
+              getOptionLabel={option => option.college_name}
+            />
+          </Form.Item>
+          <Form.Item label="학번/사번">
             <TextField
               required
               fullWidth
@@ -190,9 +154,8 @@ function SignUpForm(props: Props) {
               variant="outlined"
               {...register('studentNo')}
             />
-          </FormItem>
-
-          <FormItem title="생년월일">
+          </Form.Item>
+          <Form.Item label="생년월일">
             <TextField
               required
               fullWidth
@@ -201,7 +164,7 @@ function SignUpForm(props: Props) {
               defaultValue={format(addYears(new Date(), -20), 'yyyy-MM-dd')}
               {...register('birth')}
             />
-          </FormItem>
+          </Form.Item>
         </Stack>
 
         <FormGroup sx={{ mt: 2.5 }}>

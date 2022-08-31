@@ -5,19 +5,24 @@ export interface UserState {
   student_uuid: number;
 }
 
+const initialState: UserState = {
+  name: '',
+  student_uuid: 0,
+};
+
 // name, initialState, reducers.
 export const userSlice = createSlice({
   name: 'users',
-  initialState: {
-    name: '',
-    student_uuid: 0,
-  } as UserState,
+  initialState,
   reducers: {
     signIn(_, action: PayloadAction<UserState>) {
       return action.payload;
     },
+    signOut() {
+      return initialState;
+    },
   },
 });
 
-export const { signIn } = userSlice.actions;
+export const { signIn, signOut } = userSlice.actions;
 export default userSlice.reducer;

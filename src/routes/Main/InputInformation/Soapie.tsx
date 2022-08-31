@@ -1,11 +1,11 @@
 import { Stack, TextField } from '@mui/material';
-import FormItem from '../../../components/FormItem';
+import Form from '../../../components/Form';
 import { FormProps } from '../type';
 
 function Soapie({ register }: FormProps) {
   return (
     <Stack spacing={2}>
-      <FormItem title="주관적 증상 Subjective Data">
+      <Form.Item label="주관적 증상 Subjective Data">
         <TextField
           required
           fullWidth
@@ -15,9 +15,9 @@ function Soapie({ register }: FormProps) {
           variant="outlined"
           {...register('subjective')}
         />
-      </FormItem>
+      </Form.Item>
 
-      <FormItem title="객관적 정보 Objective Data">
+      <Form.Item label="객관적 정보 Objective Data">
         <TextField
           required
           fullWidth
@@ -27,9 +27,9 @@ function Soapie({ register }: FormProps) {
           variant="outlined"
           {...register('objective')}
         />
-      </FormItem>
+      </Form.Item>
 
-      <FormItem title="사정 Assessment">
+      <Form.Item label="사정 Assessment">
         <TextField
           required
           fullWidth
@@ -39,9 +39,9 @@ function Soapie({ register }: FormProps) {
           variant="outlined"
           {...register('assessment')}
         />
-      </FormItem>
+      </Form.Item>
 
-      <FormItem title="계획 Planning">
+      <Form.Item label="계획 Planning">
         <TextField
           required
           fullWidth
@@ -51,9 +51,9 @@ function Soapie({ register }: FormProps) {
           variant="outlined"
           {...register('planning')}
         />
-      </FormItem>
+      </Form.Item>
 
-      <FormItem title="중재 Interventions">
+      <Form.Item label="중재 Interventions">
         <TextField
           required
           fullWidth
@@ -63,9 +63,9 @@ function Soapie({ register }: FormProps) {
           variant="outlined"
           {...register('interventions')}
         />
-      </FormItem>
+      </Form.Item>
 
-      <FormItem title="평가 Evaluation">
+      <Form.Item label="평가 Evaluation">
         <TextField
           required
           fullWidth
@@ -75,7 +75,7 @@ function Soapie({ register }: FormProps) {
           variant="outlined"
           {...register('evaluation')}
         />
-      </FormItem>
+      </Form.Item>
     </Stack>
   );
 }
