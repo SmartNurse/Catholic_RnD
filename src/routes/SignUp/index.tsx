@@ -6,9 +6,9 @@ import {
   postSendMail,
   postVerifyMail,
 } from '../../apis/account';
-import ConfirmDialog from '../../components/ConfirmDialog/ConfirmDialog';
 import useNotification from '../../hooks/useNotification';
 import regex from '../../utils/regex';
+import SignUpDialog from './SignUpDialog';
 import SignUpForm from './SignUpForm';
 
 function SignUp() {
@@ -59,7 +59,6 @@ function SignUp() {
 
   // 회원 가입
   const [isSignUp, setIsSignUp] = useState(false);
-
   const onSubmit = (data: any) => {
     // 메일인증 여부
     if (!isVerification) {
@@ -114,10 +113,8 @@ function SignUp() {
         }}
       />
 
-      <ConfirmDialog
+      <SignUpDialog.Complete
         isOpen={isSignUp}
-        title="회원가입 신청 완료"
-        message="승인까지 최대 1일이 소요 됩니다"
         onClose={() => navigate('/signin', { replace: true })}
       />
     </form>

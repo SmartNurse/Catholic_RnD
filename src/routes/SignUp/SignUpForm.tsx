@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { CheckCircle } from '@mui/icons-material';
 import { LoadingButton } from '@mui/lab';
 import {
@@ -18,6 +19,7 @@ import { getCollegeLists } from '../../apis/admin';
 import Form from '../../components/Form';
 import MuiAutocomplete from '../../components/MuiAutocomplete';
 import { ISendMailProps, IVerifyMailProps } from './types';
+import SignUpDialog from './SignUpDialog';
 
 interface Props {
   register: UseFormRegister<FieldValues>;
@@ -27,7 +29,9 @@ interface Props {
 }
 
 function SignUpForm(props: Props) {
-  const xsBtnStyles = { width: 100, pl: 0, pr: 0, fontSize: 16 };
+  const [isTerms, setIsTerms] = useState(false);
+  const [isPersonal, setIsPersonal] = useState(false);
+  const sxBtnStyles = { width: 100, pl: 0, pr: 0, fontSize: 16 };
   const { register, setValue, sendMailProps, verifyMailProps } = props;
 
   const VerificationIcon = () => (
@@ -58,7 +62,7 @@ function SignUpForm(props: Props) {
                 {...register('userEmail')}
               />
               <LoadingButton
-                sx={{ ...xsBtnStyles, maxHeight: 56 }}
+                sx={{ ...sxBtnStyles, maxHeight: 56 }}
                 loading={sendMailProps.isLoading}
                 variant={sendMailProps.isSendMail ? 'outlined' : 'contained'}
                 onClick={sendMailProps.onClick}
@@ -84,7 +88,7 @@ function SignUpForm(props: Props) {
                 loading={verifyMailProps.isLoading}
                 onClick={verifyMailProps.onClick}
                 sx={{
-                  ...xsBtnStyles,
+                  ...sxBtnStyles,
                   display: !verifyMailProps.isVerification ? 'block' : 'none',
                 }}
               >
@@ -171,13 +175,21 @@ function SignUpForm(props: Props) {
           <FormControlLabel
             label="(필수) 스마트널스 서비스 이용약관 동의"
             control={
-              <Checkbox size="small" required {...register('termsOfService')} />
+              <Checkbox
+                required
+                size="small"
+                onChange={(_, checked) => setIsTerms(checked)}
+              />
             }
           />
           <FormControlLabel
             label="(필수) 개인정보 수집 및 이용 동의"
             control={
-              <Checkbox size="small" required {...register('personalInfo')} />
+              <Checkbox
+                required
+                size="small"
+                onChange={(_, checked) => setIsPersonal(checked)}
+              />
             }
           />
         </FormGroup>
@@ -192,6 +204,16 @@ function SignUpForm(props: Props) {
           가입 신청하기
         </Button>
       </Container>
+
+      <SignUpDialog.TermsOfService
+        isOpen={isTerms}
+        onClose={() => setIsTerms(false)}
+      />
+
+      <SignUpDialog.PersonalInfo
+        isOpen={isPersonal}
+        onClose={() => setIsPersonal(false)}
+      />
     </Box>
   );
 }

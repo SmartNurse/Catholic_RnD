@@ -1,4 +1,5 @@
 import {
+  Breakpoint,
   Button,
   Dialog,
   DialogActions,
@@ -10,16 +11,23 @@ interface Props {
   title: string;
   message: string;
   isOpen?: boolean;
+  maxWidth?: Breakpoint;
   onClose: () => void;
 }
 
 function ConfirmDialog(props: Props) {
-  const { title, message, isOpen = false, onClose } = props;
+  const { title, message, isOpen = false, maxWidth = 'xs', onClose } = props;
 
   return (
-    <Dialog maxWidth="xs" open={isOpen} onClose={onClose}>
+    <Dialog maxWidth={maxWidth} open={isOpen} onClose={onClose}>
       <DialogTitle>{title}</DialogTitle>
-      <DialogContent sx={{ wordBreak: 'keep-all', lineHeight: '24px' }}>
+      <DialogContent
+        sx={{
+          whiteSpace: 'pre-line',
+          wordBreak: 'keep-all',
+          lineHeight: '24px',
+        }}
+      >
         {message}
       </DialogContent>
       <DialogActions>
