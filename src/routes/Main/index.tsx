@@ -18,7 +18,7 @@ function Main() {
   }, [student_uuid, navigate]);
 
   return (
-    <Box display={'flex'} minWidth={1440}>
+    <Box display="flex" minWidth={1440}>
       <MenuDrawer name={name} />
       <DisplayInformation />
       <InputInformation />

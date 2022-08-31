@@ -12,10 +12,10 @@ import {
 import storage from 'redux-persist/lib/storage';
 import reducer from './reducer';
 
-export const persistKey = process.env.NODE_ENV ?? 'development';
+export const persistKey = `${process.env.NODE_ENV ?? 'development'} v0.2`;
 
 const persistConfig = {
-  key: `${persistKey} v0.2`,
+  key: persistKey,
   storage,
 };
 

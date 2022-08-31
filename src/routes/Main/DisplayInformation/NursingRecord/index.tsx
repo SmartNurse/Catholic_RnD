@@ -30,7 +30,7 @@ const NursingRecord = ({ patientInfo }: Props) => {
   });
 
   useEffect(() => {
-    if (!isUpdateNursingRecord) return;
+    if (!isUpdateNursingRecord || !patientInfo) return;
 
     onResetList();
     onUpdateNursingRecord(false);
