@@ -193,6 +193,12 @@ const Habit = (props: Props) => {
               InputProps={{ ...adornment('A') }}
               {...register('habit.obstetric.A')}
             />
+            <SurveyInput
+              fullWidth={false}
+              required={isRequiredObstetric}
+              InputProps={{ ...adornment('L') }}
+              {...register('habit.obstetric.L')}
+            />
           </Stack>
         </RowContent>
       </RowContainer>
