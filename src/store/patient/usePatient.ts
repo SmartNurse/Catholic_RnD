@@ -7,7 +7,7 @@ import {
   selectedPatient,
   selectedPatientInfo,
   updateNursingRecord,
-} from './patient';
+} from '.';
 
 const usePatient = () => {
   const dispatch = useDispatch();

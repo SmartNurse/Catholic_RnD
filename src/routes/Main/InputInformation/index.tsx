@@ -1,10 +1,10 @@
 import { Box, Skeleton, Toolbar } from '@mui/material';
 
 import { StyledContentContainer } from '../style';
-import usePatient from '../../../store/slices/usePatient';
+import usePatient from '../../../store/patient/usePatient';
 import PatientMemo from './PatientMemo';
 import NursingRecords from './NursingRecords';
-import useUser from '../../../store/slices/useUser';
+import useUser from '../../../store/user/useUser';
 
 export const inputInformationWidth = { xs: 340, xl: 530 };
 

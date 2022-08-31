@@ -5,8 +5,8 @@ import { IGetList } from '../../../../apis/type';
 import { getNursingRecords } from '../../../../apis/main';
 import { IPatientInfo } from '../../../../apis/admin/type';
 import { INursingRecord } from '../../../../apis/main/type';
-import usePatient from '../../../../store/slices/usePatient';
-import useUser from '../../../../store/slices/useUser';
+import usePatient from '../../../../store/patient/usePatient';
+import useUser from '../../../../store/user/useUser';
 import useInfiniteScroll from '../../../../hooks/useInfiniteScroll';
 
 import RecordItemWrapper from './RecordItemWrapper';

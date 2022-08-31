@@ -9,8 +9,8 @@ import {
 } from '@mui/material';
 
 import { getPatientInfo } from '../../../apis/admin';
-import usePatient from '../../../store/slices/usePatient';
-import useUser from '../../../store/slices/useUser';
+import usePatient from '../../../store/patient/usePatient';
+import useUser from '../../../store/user/useUser';
 
 import PatientInfoItem from './PatientInfoItem';
 import useI18n from '../../../hooks/useI18n';

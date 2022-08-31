@@ -1,9 +1,9 @@
 import { useEffect, useState } from 'react';
 
 import { ACTIVE_MENU } from '../type';
-import usePatient from '../../../store/slices/usePatient';
-import useSurvey from '../../../store/slices/useSurvey';
-import useUser from '../../../store/slices/useUser';
+import usePatient from '../../../store/patient/usePatient';
+import useSurvey from '../../../store/survey/useSurvey';
+import useUser from '../../../store/user/useUser';
 
 import Hospitalization from './Hospitalization';
 import useDefaultValues from './useDefaultValues';

@@ -3,7 +3,7 @@ import { FieldValues, useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
 import { postLogin } from '../../apis/account';
 import useNotification from '../../hooks/useNotification';
-import useUser from '../../store/slices/useUser';
+import useUser from '../../store/user/useUser';
 import {
   getLocalStorage,
   setLocalStorage,

@@ -9,7 +9,7 @@ import {
 import SaveDialog from '../../../../components/SaveDialog/SaveDialog';
 import { findKeyValueToStr } from '../../../../utils/convert';
 import { createHospitalization } from '../../../../apis/survey';
-import useSurvey from '../../../../store/slices/useSurvey';
+import useSurvey from '../../../../store/survey/useSurvey';
 
 import PatientInfo from './PatientInfo';
 import DefaultInfo from './DefaultInfo';

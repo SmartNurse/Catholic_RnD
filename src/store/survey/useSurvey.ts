@@ -1,7 +1,7 @@
 import { useCallback } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { ReducerType } from '../reducer';
-import { SurveyState, updateIsSave } from './survey';
+import { SurveyState, updateIsSave } from '.';
 
 const useSurvey = () => {
   const dispatch = useDispatch();

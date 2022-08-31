@@ -8,7 +8,7 @@ import NursingRecord from './NursingRecord';
 import PatientsList from './PatientsList';
 import MedicalNote from './MedicalNote';
 import PatientInfo from './PatientInfo';
-import usePatient from '../../../store/slices/usePatient';
+import usePatient from '../../../store/patient/usePatient';
 
 const DisplayInformation = () => {
   const { patientInfo } = usePatient();

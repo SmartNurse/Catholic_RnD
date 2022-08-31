@@ -2,7 +2,7 @@ import { Box } from '@mui/material';
 import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-import useUser from '../../store/slices/useUser';
+import useUser from '../../store/user/useUser';
 
 import DisplayInformation from './DisplayInformation';
 import InputInformation from './InputInformation';

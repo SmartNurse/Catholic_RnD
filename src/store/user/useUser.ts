@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { persistKey } from '..';
 import { removeLocalStorage } from '../../utils/storage';
 import { ReducerType } from '../reducer';
-import { signIn, signOut, UserState } from './user';
+import { signIn, signOut, UserState } from '.';
 
 const useUser = () => {
   const dispatch = useDispatch();

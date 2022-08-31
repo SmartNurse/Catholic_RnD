@@ -1,5 +1,5 @@
 import { getPatients } from '../../../apis/admin';
-import usePatient from '../../../store/slices/usePatient';
+import usePatient from '../../../store/patient/usePatient';
 import MuiAutocomplete from '../../../components/MuiAutocomplete';
 
 const PatientsList = () => {
