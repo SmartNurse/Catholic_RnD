@@ -14,7 +14,12 @@ import {
   Typography,
 } from '@mui/material';
 import { addYears, format } from 'date-fns';
-import { FieldValues, UseFormRegister, UseFormSetValue } from 'react-hook-form';
+import {
+  FieldValues,
+  UseFormGetValues,
+  UseFormRegister,
+  UseFormSetValue,
+} from 'react-hook-form';
 import { getCollegeLists } from '../../apis/admin';
 import Form from '../../components/Form';
 import MuiAutocomplete from '../../components/MuiAutocomplete';
@@ -24,6 +29,7 @@ import SignUpDialog from './SignUpDialog';
 interface Props {
   register: UseFormRegister<FieldValues>;
   setValue: UseFormSetValue<FieldValues>;
+  getValues: UseFormGetValues<FieldValues>;
   sendMailProps: ISendMailProps;
   verifyMailProps: IVerifyMailProps;
 }
@@ -32,7 +38,8 @@ function SignUpForm(props: Props) {
   const [isTerms, setIsTerms] = useState(false);
   const [isPersonal, setIsPersonal] = useState(false);
   const sxBtnStyles = { width: 100, pl: 0, pr: 0, fontSize: 16 };
-  const { register, setValue, sendMailProps, verifyMailProps } = props;
+  const { register, setValue, getValues, sendMailProps, verifyMailProps } =
+    props;
 
   const VerificationIcon = () => (
     <CheckCircle
@@ -121,7 +128,7 @@ function SignUpForm(props: Props) {
                 <Form.MuiRadioGroup
                   i18nKey="GENDER"
                   values={[1, 2]}
-                  defaultValue={1}
+                  defaultValue={getValues('gender')}
                   onChange={value => setValue('gender', value)}
                 />
               </Form.Item>
@@ -131,7 +138,7 @@ function SignUpForm(props: Props) {
                 <Form.MuiRadioGroup
                   i18nKey="GRADE"
                   values={[1, 2]}
-                  defaultValue={1}
+                  defaultValue={getValues('grade')}
                   onChange={value => setValue('grade', value)}
                 />
               </Form.Item>

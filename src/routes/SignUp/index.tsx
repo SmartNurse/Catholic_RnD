@@ -15,7 +15,9 @@ function SignUp() {
   const navigate = useNavigate();
   const { onSuccess, onFail, onRequired } = useNotification();
 
-  const { handleSubmit, register, getValues, setValue } = useForm();
+  const { handleSubmit, register, getValues, setValue } = useForm({
+    defaultValues: { grade: 1, gender: 1 } as any,
+  });
 
   // 이메일 발송
   const [isSendMail, setSendMail] = useState(false);
@@ -76,8 +78,14 @@ function SignUp() {
       return onRequired('REQUIRED.PASSWORD.CONFIRM');
     }
 
+    // 학교 선택 여부
     if (!data.college) {
       return onRequired('REQUIRED.COLLEGE');
+    }
+
+    // 학번 유효성 검사
+    if (!regex.studentNo.test(data.studentNo)) {
+      return onRequired('REQUIRED.STUDENT.NO');
     }
 
     const request = {
@@ -101,6 +109,7 @@ function SignUp() {
       <SignUpForm
         register={register}
         setValue={setValue}
+        getValues={getValues}
         sendMailProps={{
           isSendMail,
           isLoading: isSendMailLoading,

@@ -20,6 +20,8 @@ const locale = {
       '비밀번호는 영문+숫자+특수기호를 포함해서 8자리 이상 입력해 주세요',
     'REQUIRED.PASSWORD.CONFIRM': '입력하신 비밀번호가 일치하지 않습니다',
     'REQUIRED.COLLEGE': '학교를 선택해주세요',
+    'REQUIRED.STUDENT.NO':
+      '학번은 "-"를 제외한 8자리 이하 숫자만 입력가능합니다',
 
     // nursing record
     'RECORD.0': 'NANDA',
