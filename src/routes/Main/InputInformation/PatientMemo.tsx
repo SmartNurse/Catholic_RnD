@@ -13,9 +13,9 @@ const PatientMemo = ({ user_id, patient_id }: Props) => {
 
   useEffect(() => {
     // 가상환자 메모 조회요청
-    getPatientMemo({ patient_id, user_id }).then(({ data }) =>
-      setMemo(data?.memo)
-    );
+    getPatientMemo({ patient_id, user_id }).then(({ data }) => {
+      setMemo(data?.memo);
+    });
   }, [patient_id, user_id]);
 
   const onChange = (
