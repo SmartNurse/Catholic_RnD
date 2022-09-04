@@ -10,9 +10,13 @@ const useNotification = () => {
   };
 
   const onResultCode = (rc: number) => {
-    const message = rc
+    // 유효한 에러코드
+    const errorCodes = [100, 101, 102, 104, 105, 106, 107, 108, 201, 202, 702];
+    // 에러 메시지
+    const message = errorCodes.includes(rc)
       ? i18n(`ERROR.CODE.${rc}` as Ti18nId)
       : i18n(`ERROR.CODE.0`, { rc });
+
     return enqueueSnackbar(message, { variant: 'error' });
   };
 
