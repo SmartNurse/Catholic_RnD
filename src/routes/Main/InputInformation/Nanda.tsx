@@ -18,16 +18,17 @@ function Nanda(props: Props) {
   const m_class = watch('class');
   const [classNames, setClassNames] = useState<INames[]>([]);
   useEffect(() => {
-    if (!m_domain) return;
+    if (!m_domain || m_domain === 'none') return setClassNames([]);
     getNandaClass({ domain: m_domain }).then(({ data }) => {
       setClassNames(data.names);
+      setDiagnosisNames([]);
     });
   }, [m_domain, setValue]);
 
   // GetNandaDiagnosis
   const [diagnosisNames, setDiagnosisNames] = useState<INames[]>([]);
   useEffect(() => {
-    if (!m_domain || !m_class) return;
+    if (!m_class || m_class === 'none') return setDiagnosisNames([]);
     getNandaDiagnosis({ domain: m_domain, class: m_class }).then(({ data }) => {
       setDiagnosisNames(data.names);
     });

@@ -26,7 +26,7 @@ const RecordItem = (props: IRecord) => {
       {contentKeys.map(contentKey => (
         <RecordContent
           key={contentKey}
-          title={i18n(`${type}.${contentKey}`)}
+          title={i18n(`${type}.${contentKey}` as any)}
           content={contents[contentKey]}
         />
       ))}

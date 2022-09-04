@@ -11,6 +11,8 @@ import { INames } from '../../../apis/main/type';
 import { findKeyValue } from '../../../utils/convert';
 import { requiredSelect } from '../../../components/Form/requiredItems';
 import useNotification from '../../../hooks/useNotification';
+import useUser from '../../../store/user/useUser';
+import usePatient from '../../../store/patient/usePatient';
 
 import Nanda from './Nanda';
 import Soapie from './Soapie';
@@ -18,17 +20,9 @@ import FocusDar from './FocusDar';
 import NarrativeRecord from './NarrativeRecord';
 import Remarks from './Remarks';
 
-interface Props {
-  user_id: number;
-  patient_id: number;
-  onUpdateNursingRecord: (value: boolean) => void;
-}
-
-const NursingRecords = ({
-  user_id,
-  patient_id,
-  onUpdateNursingRecord,
-}: Props) => {
+const NursingRecords = () => {
+  const { patientInfo, onUpdateNursingRecord } = usePatient();
+  const { student_uuid: user_id } = useUser();
   const { onSuccess, onFail, onRequired } = useNotification();
   const { register, watch, setValue, handleSubmit, reset } = useForm({
     defaultValues: { recordType: RECORD_TYPE.NANDA } as any,
@@ -39,8 +33,9 @@ const NursingRecords = ({
   // GetNandaDomains
   const [domainNames, setDomainNames] = useState<INames[]>([]);
   useEffect(() => {
+    if (domainNames.length !== 0) return;
     getNandaDomain().then(({ data }) => setDomainNames(data.names));
-  }, []);
+  }, [domainNames]);
 
   // Submit
   const onSubmit = (data: any) => {
@@ -88,7 +83,7 @@ const NursingRecords = ({
 
     createNursingRecord({
       userId: user_id,
-      patientId: patient_id!,
+      patientId: patientInfo!.patient_id,
       recordType: Number(recordType),
       content: JSON.stringify(content),
     })
@@ -152,7 +147,7 @@ const NursingRecords = ({
           <Button variant="text" color="inherit" onClick={() => reset()}>
             취소
           </Button>
-          <Button variant="text" type="submit">
+          <Button variant="text" type="submit" disabled={!patientInfo}>
             저장
           </Button>
         </ButtonGroup>

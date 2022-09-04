@@ -8,7 +8,7 @@ function NarrativeRecord({ register }: FormProps) {
 
   return (
     <Stack spacing={2}>
-      <Form.Item label={i18n('NARRATIVE.NOTES')}>
+      <Form.Item label={i18n('NARRATIVE.NARRATIVENOTE')}>
         <TextField
           required
           fullWidth

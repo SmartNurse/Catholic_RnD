@@ -3,7 +3,6 @@ import { Box, Card, Skeleton, Typography } from '@mui/material';
 
 import { IGetList } from '../../../../apis/type';
 import { getNursingRecords } from '../../../../apis/main';
-import { IPatientInfo } from '../../../../apis/admin/type';
 import { INursingRecord } from '../../../../apis/main/type';
 import usePatient from '../../../../store/patient/usePatient';
 import useUser from '../../../../store/user/useUser';
@@ -11,13 +10,10 @@ import useInfiniteScroll from '../../../../hooks/useInfiniteScroll';
 
 import RecordItemWrapper from './RecordItemWrapper';
 
-interface Props {
-  patientInfo?: IPatientInfo | null;
-}
-
-const NursingRecord = ({ patientInfo }: Props) => {
+const NursingRecord = () => {
   const { student_uuid: user_id, name } = useUser();
-  const { isUpdateNursingRecord, onUpdateNursingRecord } = usePatient();
+  const { patientInfo, isUpdateNursingRecord, onUpdateNursingRecord } =
+    usePatient();
 
   const moreRef = useRef(null);
   const getApi = ({ page }: IGetList) =>
@@ -30,7 +26,7 @@ const NursingRecord = ({ patientInfo }: Props) => {
   });
 
   useEffect(() => {
-    if (!isUpdateNursingRecord || !patientInfo) return;
+    if (!isUpdateNursingRecord) return;
 
     onResetList();
     onUpdateNursingRecord(false);
@@ -81,7 +77,6 @@ const NursingRecord = ({ patientInfo }: Props) => {
       <Card
         component="section"
         sx={{ p: '10px 15px', height: '100%', overflow: 'auto' }}
-        onLoad={() => console.log('load')}
       >
         <RecordList />
         <div ref={moreRef} />

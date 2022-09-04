@@ -26,21 +26,21 @@ const PatientInfo = () => {
   const [diseaseSubIndex, setDiseaseSubIndex] = useState(0);
 
   useEffect(() => {
-    if (!patient) {
-      onSelectedPatientInfo(null);
-      return;
-    }
+    if (!patient) return;
 
     // 가상환자 상세정보 요청
     getPatientInfo({ patient_id: patient.patient_id })
-      .then(({ data }) => onSelectedPatientInfo(data))
+      .then(({ data }) => {
+        onSelectedPatientInfo(data);
+      })
       .catch(e => {
         onSelectedPatientInfo(null);
         enqueueSnackbar(`가상환자 데이터 조회에 실패했습니다.\n오류: ${e}`, {
           variant: 'error',
         });
       });
-  }, [patient, onSelectedPatientInfo, enqueueSnackbar]);
+    // eslint-disable-next-line
+  }, [patient]);
 
   if (!patientInfo) {
     return <Skeleton variant="rectangular" sx={{ flex: 1 }} />;

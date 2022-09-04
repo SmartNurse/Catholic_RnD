@@ -1,12 +1,9 @@
 import { format } from 'date-fns/esm';
 import { Box, Card, Skeleton, Typography } from '@mui/material';
-import { IPatientInfo } from '../../../apis/admin/type';
+import usePatient from '../../../store/patient/usePatient';
 
-interface Props {
-  patientInfo?: IPatientInfo | null;
-}
-
-const MedicalNote = ({ patientInfo }: Props) => {
+const MedicalNote = () => {
+  const { patientInfo } = usePatient();
   const today = format(new Date(), 'yyyy-MM-dd');
 
   if (!patientInfo) {
