@@ -13,7 +13,7 @@ import SignUpForm from './SignUpForm';
 
 function SignUp() {
   const navigate = useNavigate();
-  const { onSuccess, onFail, onRequired } = useNotification();
+  const { onResultCode, onSuccess, onFail, onRequired } = useNotification();
 
   const { handleSubmit, register, getValues, setValue } = useForm({
     defaultValues: { grade: 1, gender: 1 } as any,
@@ -51,7 +51,9 @@ function SignUp() {
     const user_email = getValues('userEmail');
 
     postVerifyMail({ user_code, user_email })
-      .then(() => {
+      .then(({ data: { rc } }) => {
+        if (rc !== 1) return onResultCode(rc);
+
         setIsVerification(true);
         onSuccess('이메일 인증되었습니다.');
       })
@@ -100,7 +102,10 @@ function SignUp() {
     };
 
     postAccountCreate(request)
-      .then(() => setIsSignUp(true))
+      .then(({ data: { rc } }) => {
+        if (rc !== 1) return onResultCode(rc);
+        setIsSignUp(true);
+      })
       .catch(e => onFail('회원가입 실패했습니다.', e));
   };
 

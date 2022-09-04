@@ -41,12 +41,10 @@ function SignIn() {
     };
 
     postLogin(request)
-      .then(({ data }) => {
-        if (data.rc !== 1) {
-          onResultCode(data.rc);
-        }
+      .then(({ data: { rc, ...response } }) => {
+        if (rc !== 1) return onResultCode(rc);
 
-        onSignIn({ ...data });
+        onSignIn({ ...response });
         onSuccess('로그인 되었습니다.');
         navigate('/', { replace: true });
       })
