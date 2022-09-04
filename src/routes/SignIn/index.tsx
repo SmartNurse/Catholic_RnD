@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
-import { FieldValues, useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
+import { FieldValues, useForm } from 'react-hook-form';
+
 import { postLogin } from '../../apis/account';
 import useNotification from '../../hooks/useNotification';
 import useUser from '../../store/user/useUser';
@@ -16,7 +17,7 @@ import { ISignInForm } from './type';
 function SignIn() {
   const navigate = useNavigate();
   const { onSignIn } = useUser();
-  const { onSuccess, onFail } = useNotification();
+  const { onResultCode, onSuccess, onFail } = useNotification();
 
   // 로그인 화면으로 오는 경우 로컬스토리지 클리어
   useEffect(clearLocalStorage, []);
@@ -30,29 +31,26 @@ function SignIn() {
   });
 
   const onSubmit = (data: any) => {
+    // 이메일 저장 체크된 경우 로컬스토리지에 이메일 저장
+    if (data.saveEmail) setLocalStorage('USER_EMAIL', data.userEmail);
+    else removeLocalStorage('USER_EMAIL');
+
     const request = {
       user_email: data.userEmail,
       user_password: data.userPassword,
     };
 
-    // 이메일 저장 체크된 경우 로컬스토리지에 이메일 저장
-    if (data.saveEmail) setLocalStorage('USER_EMAIL', data.userEmail);
-
     postLogin(request)
       .then(({ data }) => {
         if (data.rc !== 1) {
-          onFail('로그인에 실패하였습니다.', `server rc code is ${data.rc}`);
-          return removeLocalStorage('USER_EMAIL');
+          onResultCode(data.rc);
         }
 
         onSignIn({ ...data });
         onSuccess('로그인 되었습니다.');
         navigate('/', { replace: true });
       })
-      .catch(e => {
-        onFail('로그인에 실패하였습니다.', e);
-        removeLocalStorage('USER_EMAIL');
-      });
+      .catch(e => onFail('로그인에 실패하였습니다.', e));
   };
 
   const onSignUp = () => navigate('/signup', { replace: true });

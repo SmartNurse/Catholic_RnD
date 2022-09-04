@@ -9,10 +9,9 @@ export type Ti18nId = keyof typeof locale.ko;
 const useI18n = () => {
   const { formatMessage } = useIntl();
 
-  return (id: Ti18nId) => {
-    const message = formatMessage({ id: id?.toUpperCase() });
+  return (id: Ti18nId, value?: any) => {
+    const message = formatMessage({ id: id?.toUpperCase() }, value);
     if (message === id) return '';
-
     return message;
   };
 };

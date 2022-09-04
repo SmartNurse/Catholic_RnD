@@ -13,6 +13,20 @@ const locale = {
     'NEED.1': '필요',
     'NEED.2': '불필요',
 
+    // error message
+    'ERROR.CODE.0': '알 수 없는 오류가 발생했습니다. ErrorCode: {rc}',
+    'ERROR.CODE.100': '계정에 문제가 발생했습니다. 관리자에게 문의해주세요',
+    'ERROR.CODE.101': '이메일 인증 코드가 일치하지 않습니다.',
+    'ERROR.CODE.102': '가상환자의 ID가 올바르지 않습니다.',
+    'ERROR.CODE.104': '기록지 ID가 올바르지 않습니다.',
+    'ERROR.CODE.105': '간호기록지 정보를 찾을 수 없습니다.',
+    'ERROR.CODE.106': '승인되지 않은 유저입니다. 관리자에게 문의해주세요',
+    'ERROR.CODE.107': '비밀번호가 일치하지 않습니다.',
+    'ERROR.CODE.108': '이미 가입된 Email 주소 입니다.',
+    'ERROR.CODE.201': '수가코드 정보를 찾을 수 없습니다.',
+    'ERROR.CODE.202': '약품코드 정보를 찾을 수 없습니다.',
+    'ERROR.CODE.702': '유효한 파일이 아닙니다. 파일을 다시 한번 확인해주세요',
+
     // signup
     'REQUIRED.EMAIL.FORMAT': '이메일 형식이 올바르지 않습니다',
     'REQUIRED.EMAIL.VERIFICATION': '이메일 인증번호를 확인해주세요',
