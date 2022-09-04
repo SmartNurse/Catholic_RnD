@@ -89,6 +89,8 @@ function Nanda(props: Props) {
         <TextField
           required
           fullWidth
+          multiline
+          minRows={3}
           size="small"
           variant="outlined"
           {...register('collectingData')}
@@ -99,6 +101,8 @@ function Nanda(props: Props) {
         <TextField
           required
           fullWidth
+          multiline
+          minRows={3}
           size="small"
           variant="outlined"
           {...register('goal')}
@@ -110,7 +114,7 @@ function Nanda(props: Props) {
           required
           fullWidth
           multiline
-          rows={2}
+          minRows={3}
           size="small"
           variant="outlined"
           {...register('plan')}
@@ -122,7 +126,7 @@ function Nanda(props: Props) {
           required
           fullWidth
           multiline
-          rows={3}
+          minRows={5}
           size="small"
           variant="outlined"
           {...register('interventions')}
@@ -134,7 +138,7 @@ function Nanda(props: Props) {
           required
           fullWidth
           multiline
-          rows={2}
+          minRows={3}
           size="small"
           variant="outlined"
           {...register('evaluation')}
