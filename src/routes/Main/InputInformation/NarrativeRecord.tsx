@@ -1,9 +1,9 @@
 import { Stack, TextField } from '@mui/material';
 import Form from '../../../components/Form';
 import useI18n from '../../../hooks/useI18n';
-import { FormProps } from '../type';
+import { IFormRegister } from '../type';
 
-function NarrativeRecord({ register }: FormProps) {
+function NarrativeRecord({ register }: IFormRegister) {
   const i18n = useI18n();
 
   return (

@@ -3,9 +3,11 @@ import { useEffect, useState } from 'react';
 import { getNandaClass, getNandaDiagnosis } from '../../../apis/main';
 import { INames } from '../../../apis/main/type';
 import Form from '../../../components/Form';
-import { FormProps } from '../type';
 
-interface Props extends Required<Omit<FormProps, 'getValues'>> {
+interface Props {
+  watch: any;
+  setValue: any;
+  register: any;
   domainNames?: INames[];
 }
 

@@ -14,7 +14,6 @@ const PatientMemo = () => {
     if (!patientInfo) return;
     const { patient_id } = patientInfo;
 
-    console.log('PatientMemo');
     // 가상환자 메모 조회요청
     getPatientMemo({ patient_id, user_id }).then(({ data }) =>
       setMemo(data?.memo)

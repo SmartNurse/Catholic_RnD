@@ -1,18 +1,15 @@
 import { Fragment } from 'react';
 import { Stack, Typography } from '@mui/material';
 
-import { FormProps } from '../../type';
-import adornment from '../../../../components/adornment';
+import Form from '../../../../components/Form';
+import { IFormRegister, IFormValues } from '../../type';
 import { TGender } from '../../../../apis/account/type';
 
 import RowContainer from '../components/RowContainer';
 import RowContent from '../components/RowContent';
-import SurveyRadio from '../components/SurveyRadio';
 import SectionTitle from '../components/SectionTitle';
-import SurveyInput from '../components/SurveyInput';
-import SurveyCheckbox from '../components/SurveyCheckbox';
 
-interface Props extends FormProps {
+interface Props extends IFormRegister, IFormValues {
   gender: TGender;
 }
 
@@ -22,7 +19,6 @@ const Habit = (props: Props) => {
   // gender 여성인 경우 필수
   const isRequiredObstetric = gender === 1;
 
-  if (!getValues || !setValue) return null;
   return (
     <Fragment>
       <SectionTitle title="습관" />
@@ -30,12 +26,13 @@ const Habit = (props: Props) => {
       <RowContainer>
         <RowContent title="대변">
           <Stack direction="row" spacing={1}>
-            <SurveyInput
+            <Form.MuiTextField
+              type="number"
               textAlign="right"
-              InputProps={{ ...adornment('횟수', '회/day') }}
+              InputProps={{ ...Form.adornment('횟수', '회/day') }}
               {...register('habit.feces.value')}
             />
-            <SurveyInput
+            <Form.MuiTextField
               required={false}
               placeholder="기타"
               {...register('habit.feces.input')}
@@ -43,26 +40,22 @@ const Habit = (props: Props) => {
           </Stack>
         </RowContent>
         <RowContent title="대변 양상">
-          <SurveyCheckbox
-            checkboxes={[
-              { name: '정상' },
-              { name: '설사' },
-              { name: '혈변' },
-              { name: '통증' },
-              { name: '인공루' },
-            ]}
-            defaultChecked={getValues('habit.feces_info.checked')}
-            onChange={values => setValue!('habit.feces_info.checked', values)}
+          <Form.MuiCheckboxGroup
+            i18nKey="HOSPITALIZATION.HABIT.FECES"
+            values={[1, 2, 3, 4, 5]}
+            defaultValue={getValues('habit.feces_info.checked')}
+            onChange={v => setValue('habit.feces_info.checked', v)}
           />
         </RowContent>
         <RowContent title="소변">
           <Stack direction="row" spacing={1}>
-            <SurveyInput
+            <Form.MuiTextField
+              type="number"
               textAlign="right"
-              InputProps={{ ...adornment('횟수', '회/day') }}
+              InputProps={{ ...Form.adornment('횟수', '회/day') }}
               {...register('habit.urine.value')}
             />
-            <SurveyInput
+            <Form.MuiTextField
               required={false}
               placeholder="기타"
               {...register('habit.urine.input')}
@@ -70,37 +63,32 @@ const Habit = (props: Props) => {
           </Stack>
         </RowContent>
         <RowContent title="소변 양상">
-          <SurveyCheckbox
-            checkboxes={[
-              { name: '정상' },
-              { name: '작열감' },
-              { name: '빈뇨' },
-              { name: '실금' },
-              { name: '인공루' },
-            ]}
-            defaultChecked={getValues('habit.urine_info.checked')}
-            onChange={values => setValue!('habit.urine_info.checked', values)}
+          <Form.MuiCheckboxGroup
+            i18nKey="HOSPITALIZATION.HABIT.URINE"
+            values={[1, 2, 3, 4, 5]}
+            defaultValue={getValues('habit.urine_info.checked')}
+            onChange={v => setValue('habit.urine_info.checked', v)}
           />
         </RowContent>
         <RowContent title="음주">
           <Stack direction="row" spacing={2}>
-            <SurveyRadio
-              labelKey="EXIST.SHORT"
-              radios={[{ value: 1 }, { value: 2 }]}
-              valueKey="habit.drink.value"
-              {...{ getValues, setValue }}
+            <Form.MuiRadioGroup
+              i18nKey="EXIST.SHORT"
+              values={[1, 2]}
+              defaultValue={getValues('habit.drink.value')}
+              onChange={v => setValue('habit.drink.value', v)}
             />
-            <SurveyInput
+            <Form.MuiTextField
               required={false}
               placeholder="기간"
               {...register('habit.drink.input')}
             />
-            <SurveyCheckbox
-              checkboxes={[{ name: '금주' }]}
-              defaultChecked={getValues('habit.drink.checked')}
-              onChange={values => setValue!('habit.drink.checked', values)}
+            <Form.MuiCheckbox
+              label="금주"
+              defaultValue={getValues('habit.drink.checked')}
+              {...register('habit.drink.checked')}
             />
-            <SurveyInput
+            <Form.MuiTextField
               required={false}
               placeholder="기간"
               {...register('habit.drink.input2')}
@@ -109,23 +97,23 @@ const Habit = (props: Props) => {
         </RowContent>
         <RowContent title="흡연">
           <Stack direction="row" spacing={2}>
-            <SurveyRadio
-              labelKey="EXIST.SHORT"
-              radios={[{ value: 1 }, { value: 2 }]}
-              valueKey="habit.smoke.value"
-              {...{ getValues, setValue }}
+            <Form.MuiRadioGroup
+              i18nKey="EXIST.SHORT"
+              values={[1, 2]}
+              defaultValue={getValues('habit.smoke.value')}
+              onChange={v => setValue('habit.smoke.value', v)}
             />
-            <SurveyInput
+            <Form.MuiTextField
               required={false}
               placeholder="기간"
               {...register('habit.smoke.input')}
             />
-            <SurveyCheckbox
-              checkboxes={[{ name: '금연' }]}
-              defaultChecked={getValues('habit.smoke.checked')}
-              onChange={values => setValue!('habit.smoke.checked', values)}
+            <Form.MuiCheckbox
+              label="금연"
+              defaultValue={getValues('habit.smoke.checked')}
+              {...register('habit.smoke.checked')}
             />
-            <SurveyInput
+            <Form.MuiTextField
               required={false}
               placeholder="기간"
               {...register('habit.smoke.input2')}
@@ -136,11 +124,11 @@ const Habit = (props: Props) => {
 
       <RowContainer sx={{ mb: 'auto' }}>
         <RowContent title="수면장애">
-          <SurveyRadio
-            labelKey="EXIST"
-            radios={[{ value: 1 }, { value: 2 }]}
-            valueKey="habit.sleep"
-            {...{ getValues, setValue }}
+          <Form.MuiRadioGroup
+            i18nKey="EXIST"
+            values={[1, 2]}
+            defaultValue={getValues('habit.sleep')}
+            onChange={v => setValue('habit.sleep', v)}
           />
         </RowContent>
         <RowContent title="영양장애">
@@ -148,55 +136,55 @@ const Habit = (props: Props) => {
             <Typography variant="caption" fontWeight="bold" lineHeight="38px">
               최근 한 달간 체중변화
             </Typography>
-            <SurveyRadio
-              labelKey="EXIST"
-              radios={[{ value: 1 }, { value: 2 }]}
-              valueKey="habit.nutrition.weight"
-              {...{ getValues, setValue }}
+            <Form.MuiRadioGroup
+              i18nKey="EXIST"
+              values={[1, 2]}
+              defaultValue={getValues('habit.nutrition.weight')}
+              onChange={v => setValue('habit.nutrition.weight', v)}
             />
           </Stack>
           <Stack direction="row" spacing={1}>
             <Typography variant="caption" fontWeight="bold" lineHeight="38px">
               최근 한 달간 식욕변화
             </Typography>
-            <SurveyRadio
-              labelKey="EXIST"
-              radios={[{ value: 1 }, { value: 2 }]}
-              valueKey="habit.nutrition.appetite"
-              {...{ getValues, setValue }}
+            <Form.MuiRadioGroup
+              i18nKey="EXIST"
+              values={[1, 2]}
+              defaultValue={getValues('habit.nutrition.appetite')}
+              onChange={v => setValue('habit.nutrition.appetite', v)}
             />
           </Stack>
         </RowContent>
         <RowContent title="산과력">
           <Stack direction="row" spacing={1}>
-            <SurveyInput
+            <Form.MuiTextField
               fullWidth={false}
               required={isRequiredObstetric}
-              InputProps={{ ...adornment('G') }}
+              InputProps={{ ...Form.adornment('G') }}
               {...register('habit.obstetric.G')}
             />
-            <SurveyInput
+            <Form.MuiTextField
               fullWidth={false}
               required={isRequiredObstetric}
-              InputProps={{ ...adornment('T') }}
+              InputProps={{ ...Form.adornment('T') }}
               {...register('habit.obstetric.T')}
             />
-            <SurveyInput
+            <Form.MuiTextField
               fullWidth={false}
               required={isRequiredObstetric}
-              InputProps={{ ...adornment('P') }}
+              InputProps={{ ...Form.adornment('P') }}
               {...register('habit.obstetric.P')}
             />
-            <SurveyInput
+            <Form.MuiTextField
               fullWidth={false}
               required={isRequiredObstetric}
-              InputProps={{ ...adornment('A') }}
+              InputProps={{ ...Form.adornment('A') }}
               {...register('habit.obstetric.A')}
             />
-            <SurveyInput
+            <Form.MuiTextField
               fullWidth={false}
               required={isRequiredObstetric}
-              InputProps={{ ...adornment('L') }}
+              InputProps={{ ...Form.adornment('L') }}
               {...register('habit.obstetric.L')}
             />
           </Stack>

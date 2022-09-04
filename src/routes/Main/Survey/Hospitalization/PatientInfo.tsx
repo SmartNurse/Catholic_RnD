@@ -1,21 +1,19 @@
 import { Fragment } from 'react';
 import { Grid, Stack, Typography, TypographyProps } from '@mui/material';
 
+import { IFormRegister } from '../../type';
 import { IPatientInfo } from '../../../../apis/admin/type';
-import { FormProps, THospitalizationSurveyDefaultValues } from '../../type';
-
+import Form from '../../../../components/Form';
 import RowContainer from '../components/RowContainer';
 import RowContent from '../components/RowContent';
-import SurveyInput from '../components/SurveyInput';
-import SurveyRadio from '../components/SurveyRadio';
 
-interface Props extends FormProps<THospitalizationSurveyDefaultValues> {
+interface Props extends IFormRegister {
   nurseName: string;
   patientInfo: IPatientInfo;
 }
 
 const PatientInfo = (props: Props) => {
-  const { nurseName, patientInfo, register, getValues, setValue } = props;
+  const { nurseName, patientInfo, register } = props;
 
   const contactTitleProps: TypographyProps = {
     variant: 'caption',
@@ -23,43 +21,52 @@ const PatientInfo = (props: Props) => {
   };
 
   const contacts = Array.from({ length: 3 }, (_, i) => i);
-
-  if (!getValues || !setValue) return null;
   return (
     <Fragment>
       <RowContainer>
         <RowContent title="대상" childrenRatio={4}>
-          <SurveyInput disabled value="환자" />
+          <Form.MuiTextField value="환자" InputProps={{ readOnly: true }} />
         </RowContent>
         <RowContent title="환자명" childrenRatio={4}>
-          <SurveyInput disabled value={patientInfo.name} />
+          <Form.MuiTextField
+            value={patientInfo.name}
+            InputProps={{ readOnly: true }}
+          />
         </RowContent>
         <RowContent title="나이" childrenRatio={4}>
-          <SurveyInput disabled value={patientInfo.age} />
+          <Form.MuiTextField
+            value={patientInfo.age}
+            InputProps={{ readOnly: true }}
+          />
         </RowContent>
         <RowContent title="성별" childrenRatio={4}>
-          <SurveyRadio
-            labelKey="GENDER"
+          <Form.MuiRadioGroup
+            i18nKey="GENDER"
+            values={[1, 2]}
             value={patientInfo.gender}
-            radios={[
-              { value: 1, disabled: true },
-              { value: 2, disabled: true },
-            ]}
-            valueKey="gender"
-            {...{ getValues, setValue }}
+            defaultValue={patientInfo.gender}
           />
         </RowContent>
         <RowContent title="진료과" childrenRatio={4}>
-          <SurveyInput disabled value={patientInfo.department} />
+          <Form.MuiTextField
+            value={patientInfo.department}
+            InputProps={{ readOnly: true }}
+          />
         </RowContent>
         <RowContent title="딤딩 의사" childrenRatio={4}>
-          <SurveyInput disabled value={patientInfo.main_doctor} />
+          <Form.MuiTextField
+            value={patientInfo.main_doctor}
+            InputProps={{ readOnly: true }}
+          />
         </RowContent>
         <RowContent title="기록자" childrenRatio={4}>
-          <SurveyInput disabled value={nurseName} />
+          <Form.MuiTextField
+            value={nurseName}
+            InputProps={{ readOnly: true }}
+          />
         </RowContent>
         <RowContent title="정보제공자" childrenRatio={4}>
-          <SurveyInput {...register('offer')} />
+          <Form.MuiTextField {...register('offer')} />
         </RowContent>
       </RowContainer>
       <RowContainer sx={{ mt: 'auto' }}>
@@ -67,7 +74,7 @@ const PatientInfo = (props: Props) => {
           <Stack spacing={1}>
             <Typography {...contactTitleProps}>비상 연락처</Typography>
             {contacts.map(i => (
-              <SurveyInput
+              <Form.MuiTextField
                 key={i}
                 type="tel"
                 required={!i}
@@ -80,7 +87,7 @@ const PatientInfo = (props: Props) => {
           <Stack spacing={1}>
             <Typography {...contactTitleProps}>이름</Typography>
             {contacts.map(i => (
-              <SurveyInput
+              <Form.MuiTextField
                 key={i}
                 required={!i}
                 {...register(`contacts.${i}.name`)}
@@ -92,7 +99,7 @@ const PatientInfo = (props: Props) => {
           <Stack spacing={1}>
             <Typography {...contactTitleProps}>관계</Typography>
             {contacts.map(i => (
-              <SurveyInput
+              <Form.MuiTextField
                 key={i}
                 required={!i}
                 {...register(`contacts.${i}.relation`)}

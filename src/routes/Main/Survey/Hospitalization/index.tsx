@@ -1,5 +1,4 @@
 import { Grid } from '@mui/material';
-import { useSnackbar } from 'notistack';
 import { useForm } from 'react-hook-form';
 
 import {
@@ -21,6 +20,7 @@ import SocialHistory from './SocialHistory';
 import EconomyHistory from './EconomyHistory';
 import Education from './Education';
 import OutHospitalPlan from './OutHospitalPlan';
+import useNotification from '../../../../hooks/useNotification';
 
 const Hospitalization = (
   props: SurveyDialogProps<THospitalizationSurveyDefaultValues>
@@ -35,8 +35,8 @@ const Hospitalization = (
     onClose,
   } = props;
 
-  const { enqueueSnackbar } = useSnackbar();
   const { onUpdateIsSave } = useSurvey();
+  const { onSuccess, onFail, onResultCode } = useNotification();
 
   const { handleSubmit, register, getValues, setValue } = useForm({
     defaultValues,
@@ -81,17 +81,13 @@ const Hospitalization = (
     };
 
     createHospitalization(request)
-      .then(() => {
+      .then(({ data: { rc } }) => {
+        if (rc !== 1) return onResultCode(rc);
+
         onUpdateIsSave(true);
-        enqueueSnackbar('입원기록지 저장에 성공하였습니다.', {
-          variant: 'success',
-        });
+        onSuccess('입원기록지 저장에 성공하였습니다.');
       })
-      .catch(e =>
-        enqueueSnackbar(`'입원기록지 저장에 실패하였습니다.\n오류: ${e}`, {
-          variant: 'error',
-        })
-      );
+      .catch(e => onFail('입원기록지 저장에 실패하였습니다.', e));
   };
 
   return (

@@ -1,19 +1,18 @@
 import { Fragment } from 'react';
 import { Stack } from '@mui/material';
 
-import { FormProps } from '../../type';
-import adornment from '../../../../components/adornment';
+import { IFormRegister, IFormValues } from '../../type';
+import Form from '../../../../components/Form';
 
 import RowContainer from '../components/RowContainer';
 import RowContent from '../components/RowContent';
-import SurveyRadio from '../components/SurveyRadio';
 import SectionTitle from '../components/SectionTitle';
-import SurveyInput from '../components/SurveyInput';
 
-const DefaultInfo = (props: FormProps) => {
+interface Props extends IFormRegister, IFormValues {}
+
+const DefaultInfo = (props: Props) => {
   const { register, getValues, setValue } = props;
 
-  if (!getValues || !setValue) return null;
   return (
     <Fragment>
       <SectionTitle title="기본 정보" />
@@ -21,14 +20,18 @@ const DefaultInfo = (props: FormProps) => {
       <RowContainer>
         <RowContent title="입원경로">
           <Stack direction="row" spacing={1}>
-            <SurveyRadio
-              exceptionKey="ETC"
-              labelKey="HOSPITALIZATION.PATH"
-              radios={[{ value: 1 }, { value: 2 }, { value: 0 }]}
-              valueKey="default_info.hospitalization_path.value"
-              {...{ getValues, setValue }}
+            <Form.MuiRadioGroup
+              i18nKey="HOSPITALIZATION.PATH"
+              i18nNullKey="ETC"
+              values={[1, 2, 0]}
+              defaultValue={getValues(
+                'default_info.hospitalization_path.value'
+              )}
+              onChange={v =>
+                setValue('default_info.hospitalization_path.value', v)
+              }
             />
-            <SurveyInput
+            <Form.MuiTextField
               required={false}
               fullWidth={false}
               placeholder="직접 입력"
@@ -37,33 +40,33 @@ const DefaultInfo = (props: FormProps) => {
           </Stack>
         </RowContent>
         <RowContent title="입원방법">
-          <SurveyRadio
-            labelKey="HOSPITALIZATION.WAY"
-            radios={[{ value: 1 }, { value: 2 }, { value: 3 }]}
-            valueKey="default_info.hospitalization_way"
-            {...{ getValues, setValue }}
+          <Form.MuiRadioGroup
+            i18nKey="HOSPITALIZATION.WAY"
+            values={[1, 2, 3]}
+            defaultValue={getValues('default_info.hospitalization_way')}
+            onChange={v => setValue('default_info.hospitalization_way', v)}
           />
         </RowContent>
         <RowContent title="의식상태">
-          <SurveyRadio
-            labelKey="HOSPITALIZATION.STATUS"
-            radios={[{ value: 1 }, { value: 2 }, { value: 3 }]}
-            valueKey="default_info.status"
-            {...{ getValues, setValue }}
+          <Form.MuiRadioGroup
+            i18nKey="HOSPITALIZATION.STATUS"
+            values={[1, 2, 3]}
+            defaultValue={getValues('default_info.status')}
+            onChange={v => setValue('default_info.status', v)}
           />
         </RowContent>
         <RowContent title="주호소">
-          <SurveyInput {...register('default_info.joo_ho_so')} />
+          <Form.MuiTextField {...register('default_info.joo_ho_so')} />
         </RowContent>
         <RowContent title="발병일자">
-          <SurveyInput
-            fullWidth={false}
+          <Form.MuiTextField
             type="date"
+            fullWidth={false}
             {...register('default_info.date')}
           />
         </RowContent>
         <RowContent title="입원동기">
-          <SurveyInput
+          <Form.MuiTextField
             multiline
             InputProps={{ sx: { height: 63 } }}
             inputProps={{ style: { height: '100%' } }}
@@ -75,62 +78,62 @@ const DefaultInfo = (props: FormProps) => {
       <RowContainer sx={{ mb: 'auto' }}>
         <RowContent title="신체">
           <Stack direction="row" spacing={1}>
-            <SurveyInput
+            <Form.MuiTextField
               type="number"
               textAlign="right"
-              InputProps={{ ...adornment('키', 'cm') }}
+              InputProps={{ ...Form.adornment('키', 'cm') }}
               {...register('default_info.height')}
             />
-            <SurveyInput
+            <Form.MuiTextField
               type="number"
               textAlign="right"
-              InputProps={{ ...adornment('몸무게', 'kg') }}
+              InputProps={{ ...Form.adornment('몸무게', 'kg') }}
               {...register('default_info.weight')}
             />
           </Stack>
         </RowContent>
         <RowContent title="활력징후">
           <Stack direction="row" spacing={1} sx={{ mb: 1 }}>
-            <SurveyInput
+            <Form.MuiTextField
               textAlign="right"
-              InputProps={{ ...adornment('SBP', 'mmHg') }}
+              InputProps={{ ...Form.adornment('SBP', 'mmHg') }}
               {...register('default_info.SBP')}
             />
-            <SurveyInput
+            <Form.MuiTextField
               textAlign="right"
-              InputProps={{ ...adornment('DBP', 'mmHg') }}
+              InputProps={{ ...Form.adornment('DBP', 'mmHg') }}
               {...register('default_info.DBP')}
             />
           </Stack>
           <Stack direction="row" spacing={1}>
-            <SurveyInput
+            <Form.MuiTextField
               textAlign="right"
-              InputProps={{ ...adornment('PR', '회') }}
+              InputProps={{ ...Form.adornment('PR', '회') }}
               {...register('default_info.PR')}
             />
-            <SurveyInput
+            <Form.MuiTextField
               textAlign="right"
-              InputProps={{ ...adornment('RR', '회') }}
+              InputProps={{ ...Form.adornment('RR', '회') }}
               {...register('default_info.RR')}
             />
-            <SurveyInput
+            <Form.MuiTextField
               textAlign="right"
-              InputProps={{ ...adornment('BT', '℃') }}
+              InputProps={{ ...Form.adornment('BT', '℃') }}
               {...register('default_info.BT')}
             />
-            <SurveyInput
+            <Form.MuiTextField
               textAlign="right"
-              InputProps={{ ...adornment('SpO2', '%') }}
+              InputProps={{ ...Form.adornment('SpO2', '%') }}
               {...register('default_info.Sp02')}
             />
           </Stack>
         </RowContent>
         <RowContent title="의식상태">
-          <SurveyRadio
-            labelKey="HOSPITALIZATION.STATUS02"
-            radios={[{ value: 1 }, { value: 2 }, { value: 3 }]}
-            valueKey="default_info.status02"
-            {...{ getValues, setValue }}
+          <Form.MuiRadioGroup
+            i18nKey="HOSPITALIZATION.STATUS02"
+            values={[1, 2, 3]}
+            defaultValue={getValues('default_info.status02')}
+            onChange={v => setValue('default_info.status02', v)}
           />
         </RowContent>
       </RowContainer>

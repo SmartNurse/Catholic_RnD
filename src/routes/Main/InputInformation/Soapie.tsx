@@ -1,8 +1,8 @@
 import { Stack, TextField } from '@mui/material';
 import Form from '../../../components/Form';
-import { FormProps } from '../type';
+import { IFormRegister } from '../type';
 
-function Soapie({ register }: FormProps) {
+function Soapie({ register }: IFormRegister) {
   return (
     <Stack spacing={2}>
       <Form.Item label="주관적 증상 Subjective Data">

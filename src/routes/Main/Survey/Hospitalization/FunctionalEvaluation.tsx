@@ -1,25 +1,26 @@
-import { FormProps } from '../../type';
+import { IFormValues } from '../../type';
+import Form from '../../../../components/Form';
 
 import RowContainer from '../components/RowContainer';
 import RowContent from '../components/RowContent';
-import SurveyRadio from '../components/SurveyRadio';
 import SectionTitle from '../components/SectionTitle';
 
-const FunctionalEvaluation = (props: FormProps) => {
+interface Props extends IFormValues {}
+
+const FunctionalEvaluation = (props: Props) => {
   const { getValues, setValue } = props;
 
-  if (!getValues || !setValue) return null;
   return (
     <RowContainer>
       <SectionTitle title="기능평가" mb={0} />
 
       <RowContainer ratio={12}>
         <RowContent title="스스로 앉기" titleRatio={4} childrenRatio={8}>
-          <SurveyRadio
-            labelKey="HOSPITALIZATION.FUNCTIONAL.EVALUATION"
-            radios={[{ value: 1 }, { value: 2 }, { value: 3 }]}
-            valueKey="functional_evaluation.sit"
-            {...{ getValues, setValue }}
+          <Form.MuiRadioGroup
+            i18nKey="HOSPITALIZATION.FUNCTIONAL.EVALUATION"
+            values={[1, 2, 3]}
+            defaultValue={getValues('functional_evaluation.sit')}
+            onChange={v => setValue('functional_evaluation.sit', v)}
           />
         </RowContent>
         <RowContent
@@ -27,11 +28,11 @@ const FunctionalEvaluation = (props: FormProps) => {
           titleRatio={4}
           childrenRatio={8}
         >
-          <SurveyRadio
-            labelKey="HOSPITALIZATION.FUNCTIONAL.EVALUATION"
-            radios={[{ value: 1 }, { value: 2 }, { value: 3 }]}
-            valueKey="functional_evaluation.stand_up"
-            {...{ getValues, setValue }}
+          <Form.MuiRadioGroup
+            i18nKey="HOSPITALIZATION.FUNCTIONAL.EVALUATION"
+            values={[1, 2, 3]}
+            defaultValue={getValues('functional_evaluation.stand_up')}
+            onChange={v => setValue('functional_evaluation.stand_up', v)}
           />
         </RowContent>
         <RowContent
@@ -39,19 +40,19 @@ const FunctionalEvaluation = (props: FormProps) => {
           titleRatio={4}
           childrenRatio={8}
         >
-          <SurveyRadio
-            labelKey="HOSPITALIZATION.FUNCTIONAL.EVALUATION"
-            radios={[{ value: 1 }, { value: 2 }, { value: 3 }]}
-            valueKey="functional_evaluation.wheel_chair"
-            {...{ getValues, setValue }}
+          <Form.MuiRadioGroup
+            i18nKey="HOSPITALIZATION.FUNCTIONAL.EVALUATION"
+            values={[1, 2, 3]}
+            defaultValue={getValues('functional_evaluation.wheel_chair')}
+            onChange={v => setValue('functional_evaluation.wheel_chair', v)}
           />
         </RowContent>
         <RowContent title="독립보행" titleRatio={4} childrenRatio={8}>
-          <SurveyRadio
-            labelKey="HOSPITALIZATION.FUNCTIONAL.EVALUATION"
-            radios={[{ value: 1 }, { value: 2 }, { value: 3 }]}
-            valueKey="functional_evaluation.walk"
-            {...{ getValues, setValue }}
+          <Form.MuiRadioGroup
+            i18nKey="HOSPITALIZATION.FUNCTIONAL.EVALUATION"
+            values={[1, 2, 3]}
+            defaultValue={getValues('functional_evaluation.walk')}
+            onChange={v => setValue('functional_evaluation.walk', v)}
           />
         </RowContent>
       </RowContainer>

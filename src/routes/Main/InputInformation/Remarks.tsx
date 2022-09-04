@@ -1,8 +1,8 @@
 import { Stack, TextField } from '@mui/material';
 import Form from '../../../components/Form';
-import { FormProps } from '../type';
+import { IFormRegister } from '../type';
 
-function Remarks({ register }: FormProps) {
+function Remarks({ register }: IFormRegister) {
   return (
     <Stack spacing={2}>
       <Form.Item label="특기사항기록 CBE - 추후 시스템 업데이트 예정">

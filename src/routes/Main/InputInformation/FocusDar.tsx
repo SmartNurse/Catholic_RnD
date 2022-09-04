@@ -1,8 +1,8 @@
 import { Stack, TextField } from '@mui/material';
 import Form from '../../../components/Form';
-import { FormProps } from '../type';
+import { IFormRegister } from '../type';
 
-function FocusDar({ register }: FormProps) {
+function FocusDar({ register }: IFormRegister) {
   return (
     <Stack spacing={2}>
       <Form.Item label="포커스 Focus">

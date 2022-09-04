@@ -4,8 +4,8 @@ import { NativeSelect, NativeSelectProps } from '@mui/material';
 interface Props extends NativeSelectProps {
   isNone?: boolean;
   options?: any[];
-  getOptionLabel: (option: any) => string;
-  getOptionValue: (option: any) => string;
+  getOptionLabel?: (option: any) => string;
+  getOptionValue?: (option: any) => string;
 }
 
 const MuiSelect = forwardRef((props: Props, ref) => {
@@ -22,8 +22,8 @@ const MuiSelect = forwardRef((props: Props, ref) => {
     >
       {isNone && <option value="none">선택</option>}
       {options?.map(option => {
-        const label = getOptionLabel(option);
-        const value = getOptionValue(option);
+        const label = getOptionLabel ? getOptionLabel(option) : option;
+        const value = getOptionValue ? getOptionValue(option) : option;
 
         return (
           <option key={value} value={value}>

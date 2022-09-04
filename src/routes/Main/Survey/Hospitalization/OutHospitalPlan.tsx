@@ -1,41 +1,41 @@
 import { Fragment } from 'react';
 import { Stack } from '@mui/material';
 
-import { FormProps } from '../../type';
+import { IFormRegister, IFormValues } from '../../type';
+import Form from '../../../../components/Form';
 
 import RowContainer from '../components/RowContainer';
 import RowContent from '../components/RowContent';
-import SurveyRadio from '../components/SurveyRadio';
 import SectionTitle from '../components/SectionTitle';
-import SurveyInput from '../components/SurveyInput';
 
-const OutHospitalPlan = (props: FormProps) => {
+interface Props extends IFormRegister, IFormValues {}
+
+const OutHospitalPlan = (props: Props) => {
   const { register, getValues, setValue } = props;
 
-  if (!getValues || !setValue) return null;
   return (
     <Fragment>
       <SectionTitle title="퇴원계획" />
 
       <RowContainer>
         <RowContent title="일상생활유지정도">
-          <SurveyRadio
-            labelKey="HOSPITALIZATION.LIFE"
-            radios={[{ value: 1 }, { value: 2 }, { value: 3 }]}
-            valueKey="out_hospital_plan.life"
-            {...{ getValues, setValue }}
+          <Form.MuiRadioGroup
+            i18nKey="HOSPITALIZATION.LIFE"
+            values={[1, 2, 3]}
+            defaultValue={getValues('out_hospital_plan.life')}
+            onChange={v => setValue('out_hospital_plan.life', v)}
           />
         </RowContent>
         <RowContent title="퇴원예정지">
           <Stack direction="row" spacing={1}>
-            <SurveyRadio
-              exceptionKey="ETC"
-              labelKey="HOSPITALIZATION.DESTINATION"
-              radios={[{ value: 1 }, { value: 2 }, { value: 3 }, { value: 0 }]}
-              valueKey="out_hospital_plan.destination.value"
-              {...{ getValues, setValue }}
+            <Form.MuiRadioGroup
+              i18nNullKey="ETC"
+              i18nKey="HOSPITALIZATION.DESTINATION"
+              values={[1, 2, 3, 0]}
+              defaultValue={getValues('out_hospital_plan.destination.value')}
+              onChange={v => setValue('out_hospital_plan.destination.value', v)}
             />
-            <SurveyInput
+            <Form.MuiTextField
               required={false}
               placeholder="직접 입력"
               {...register('out_hospital_plan.destination.input')}
@@ -46,21 +46,14 @@ const OutHospitalPlan = (props: FormProps) => {
 
       <RowContainer sx={{ mb: 'auto' }}>
         <RowContent title="주요 보호자">
-          <SurveyRadio
-            exceptionKey="ETC"
-            labelKey="HOSPITALIZATION.GUARDIAN"
-            radios={[
-              { value: 1 },
-              { value: 2 },
-              { value: 3 },
-              { value: 4 },
-              { value: 5 },
-              { value: 0 },
-            ]}
-            valueKey="out_hospital_plan.guardian.value"
-            {...{ getValues, setValue }}
+          <Form.MuiRadioGroup
+            i18nNullKey="ETC"
+            i18nKey="HOSPITALIZATION.GUARDIAN"
+            values={[1, 2, 3, 4, 5, 0]}
+            defaultValue={getValues('out_hospital_plan.guardian.value')}
+            onChange={v => setValue('out_hospital_plan.guardian.value', v)}
           />
-          <SurveyInput
+          <Form.MuiTextField
             required={false}
             placeholder="직접 입력"
             {...register('out_hospital_plan.guardian.input')}

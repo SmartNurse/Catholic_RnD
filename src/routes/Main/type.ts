@@ -36,11 +36,24 @@ export enum RECORD_TYPE {
   REMARKS = '4',
 }
 
-export interface FormProps<T = any> {
-  register: UseFormRegister<T>;
-  watch?: UseFormWatch<T>;
-  getValues?: UseFormGetValues<T>;
-  setValue?: UseFormSetValue<T>;
+export interface FormProps {
+  register: UseFormRegister<any>;
+  setValue?: UseFormSetValue<any>;
+  getValues?: UseFormGetValues<any>;
+  watch?: UseFormWatch<any>;
+}
+
+export interface IFormRegister {
+  register: UseFormRegister<any>;
+}
+
+export interface IFormValues {
+  setValue: UseFormSetValue<any>;
+  getValues: UseFormGetValues<any>;
+}
+
+export interface IFormWatch {
+  watch: UseFormWatch<any>;
 }
 
 export interface SurveyDialogProps<T>

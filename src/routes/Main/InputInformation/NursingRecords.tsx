@@ -21,8 +21,8 @@ import NarrativeRecord from './NarrativeRecord';
 import Remarks from './Remarks';
 
 const NursingRecords = () => {
-  const { patientInfo, onUpdateNursingRecord } = usePatient();
   const { student_uuid: user_id } = useUser();
+  const { patientInfo, onUpdateNursingRecord } = usePatient();
   const { onSuccess, onFail, onRequired } = useNotification();
   const { register, watch, setValue, handleSubmit, reset } = useForm({
     defaultValues: { recordType: RECORD_TYPE.NANDA } as any,

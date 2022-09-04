@@ -1,11 +1,11 @@
 import { IPatientInfo } from '../../../../apis/admin/type';
-import { FormProps } from '../../type';
+import { IFormRegister } from '../../type';
 
 import RowContainer from '../components/RowContainer';
 import RowContent from '../components/RowContent';
 import SurveyInput from '../components/SurveyInput';
 
-interface Props extends FormProps {
+interface Props extends IFormRegister {
   patientInfo: IPatientInfo;
 }
 
