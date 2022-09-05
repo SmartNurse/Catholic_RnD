@@ -5,7 +5,7 @@ import {
   SurveyDialogProps,
   THospitalizationSurveyDefaultValues,
 } from 'routes/Main/type';
-import SaveDialog from 'components/SaveDialog/SaveDialog';
+import MuiDialog from 'components/MuiDialog';
 import { findKeyValueToStr } from 'utils/convert';
 import { createHospitalization } from 'apis/survey';
 import useSurvey from 'store/survey/useSurvey';
@@ -90,7 +90,7 @@ const Hospitalization = (
   };
 
   return (
-    <SaveDialog
+    <MuiDialog.SaveForm
       title={title}
       isOpen={isOpen}
       update_at={defaultValues.update_at}
@@ -148,7 +148,7 @@ const Hospitalization = (
           getValues={getValues}
         />
       </Grid>
-    </SaveDialog>
+    </MuiDialog.SaveForm>
   );
 };
 

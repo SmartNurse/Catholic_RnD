@@ -1,13 +1,13 @@
 import { Button } from '@mui/material';
 import { Fragment, useState } from 'react';
-import ConfirmDialog from './ConfirmDialog';
+import ConfirmDialog from './Confirm';
 
 interface Props {
   title: string;
   message: string;
 }
 
-function ConfirmDialogButton({ title, message }: Props) {
+function ConfirmButton({ title, message }: Props) {
   const [isOpen, setIsOpen] = useState(false);
   const onOpen = () => setIsOpen(true);
   const onClose = () => setIsOpen(false);
@@ -28,4 +28,4 @@ function ConfirmDialogButton({ title, message }: Props) {
   );
 }
 
-export default ConfirmDialogButton;
+export default ConfirmButton;

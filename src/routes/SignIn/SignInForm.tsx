@@ -16,7 +16,7 @@ import { FieldValues, UseFormRegister } from 'react-hook-form';
 
 import { imgNaverCloudLogo, imgSmartNurseLogo } from 'assets';
 import Form from 'components/Form';
-import ConfirmDialogButton from 'components/ConfirmDialog/ConfirmDialogButton';
+import MuiDialog from 'components/MuiDialog';
 
 interface Props {
   errors: { [x: string]: any };
@@ -89,7 +89,7 @@ function SignInForm({ errors, register, onSignUp }: Props) {
                 회원가입
               </Button>
 
-              <ConfirmDialogButton
+              <MuiDialog.ConfirmButton
                 title="아이디/비밀번호를 잊으셨나요?"
                 message={`아이디는 본인 학교 이메일입니다.\n비밀번호를 잊으셨다면 스마트널스 관리자 이메일(nurse@smartnurse.co.kr)로 문의해주세요. `}
               />

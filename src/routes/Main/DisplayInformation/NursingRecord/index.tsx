@@ -1,7 +1,6 @@
 import { Fragment, useEffect, useRef } from 'react';
 import { Box, Card, Skeleton, Typography } from '@mui/material';
 
-import { IGetList } from 'apis/type';
 import { getNursingRecords } from 'apis/main';
 import { INursingRecord } from 'apis/main/type';
 import usePatient from 'store/patient/usePatient';
@@ -16,13 +15,15 @@ const NursingRecord = () => {
     usePatient();
 
   const moreRef = useRef(null);
-  const getApi = ({ page }: IGetList) =>
-    getNursingRecords({ page, user_id, patient_id: patientInfo?.patient_id! });
-
   const { list, onResetList } = useInfiniteScroll({
-    listKey: 'nursing_records',
     moreRef,
-    getApi,
+    listKey: 'nursing_records',
+    getApi: ({ page }) =>
+      getNursingRecords({
+        page,
+        user_id,
+        patient_id: patientInfo?.patient_id!,
+      }),
   });
 
   useEffect(() => {

@@ -1,4 +1,4 @@
-import ConfirmDialog from 'components/ConfirmDialog/ConfirmDialog';
+import MuiDialog from 'components/MuiDialog';
 
 interface Props {
   isOpen: boolean;
@@ -6,7 +6,7 @@ interface Props {
 }
 
 const TermsOfService = ({ isOpen, onClose }: Props) => (
-  <ConfirmDialog
+  <MuiDialog.Confirm
     maxWidth="md"
     isOpen={isOpen}
     title="스마트널스 서비스 이용약관 동의"

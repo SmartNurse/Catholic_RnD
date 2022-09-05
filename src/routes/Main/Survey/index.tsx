@@ -8,16 +8,14 @@ import { ACTIVE_MENU } from '../type';
 import Hospitalization from './Hospitalization';
 import useDefaultValues from './useDefaultValues';
 import OutHospital from './OutHospital';
+import Prescription from './Prescription';
+import Nurse from './Nurse';
 
-interface Props {
-  type: string;
-  onReset: () => void;
-}
-
-const Survey = ({ type, onReset }: Props) => {
-  const { name, student_uuid: user_id } = useUser();
+const Survey = () => {
   const { patientInfo } = usePatient();
-  const { isSave, onUpdateIsSave } = useSurvey();
+  const { name, student_uuid: user_id } = useUser();
+  const { onUpdateIsSave, surveyType, onCloseSave, onCloseReadOnly } =
+    useSurvey();
   const [defaultValues, setDefaultValues] = useState(null);
   const { onGetHospitalization, onGetOutHospital } = useDefaultValues({
     user_id,
@@ -27,11 +25,10 @@ const Survey = ({ type, onReset }: Props) => {
   useEffect(() => {
     if (!patientInfo) return;
 
+    onUpdateIsSave(false);
     const { patient_id } = patientInfo;
 
-    onUpdateIsSave(false);
-
-    switch (type) {
+    switch (surveyType) {
       case ACTIVE_MENU.ADMISSION:
         onGetHospitalization(patient_id);
         break;
@@ -43,35 +40,56 @@ const Survey = ({ type, onReset }: Props) => {
         break;
     }
     // eslint-disable-next-line
-  }, [type, patientInfo]);
+  }, [surveyType, patientInfo]);
 
-  if (!type || !patientInfo) return null;
+  if (!surveyType || !patientInfo) return null;
 
   const dialogProps = {
     user_id,
     nurseName: name,
     patientInfo,
-    title: type,
-    isOpen: Boolean(type),
-    onClose: () => {
-      if (isSave) return onReset();
-      const isConfirm = window.confirm('저장하지 않고 종료하시겠습니까?');
-      if (isConfirm) return onReset();
-    },
+    title: surveyType,
+    isOpen: Boolean(surveyType),
   };
 
-  switch (type) {
+  switch (surveyType) {
     case ACTIVE_MENU.ADMISSION: {
       if (!defaultValues) return null;
-      return <Hospitalization {...dialogProps} defaultValues={defaultValues} />;
+      return (
+        <Hospitalization
+          {...dialogProps}
+          defaultValues={defaultValues}
+          onClose={onCloseSave}
+        />
+      );
     }
     case ACTIVE_MENU.DISCHARGE: {
       if (!defaultValues) return null;
-      return <OutHospital {...dialogProps} defaultValues={defaultValues} />;
+      return (
+        <OutHospital
+          {...dialogProps}
+          defaultValues={defaultValues}
+          onClose={onCloseSave}
+        />
+      );
     }
     case ACTIVE_MENU.PRESCRIPTION: {
-      if (!defaultValues) return null;
-      return <OutHospital {...dialogProps} defaultValues={defaultValues} />;
+      return (
+        <Prescription
+          {...dialogProps}
+          defaultValues={null}
+          onClose={onCloseReadOnly}
+        />
+      );
+    }
+    case ACTIVE_MENU.NURSE: {
+      return (
+        <Nurse
+          {...dialogProps}
+          defaultValues={null}
+          onClose={onCloseReadOnly}
+        />
+      );
     }
     default:
       return null;

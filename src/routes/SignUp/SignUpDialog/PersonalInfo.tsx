@@ -1,4 +1,4 @@
-import ConfirmDialog from 'components/ConfirmDialog/ConfirmDialog';
+import MuiDialog from 'components/MuiDialog';
 
 interface Props {
   isOpen: boolean;
@@ -6,7 +6,7 @@ interface Props {
 }
 
 const PersonalInfo = ({ isOpen, onClose }: Props) => (
-  <ConfirmDialog
+  <MuiDialog.Confirm
     maxWidth="md"
     isOpen={isOpen}
     title="개인정보 수집 및 이용 동의"

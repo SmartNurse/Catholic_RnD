@@ -15,7 +15,7 @@ interface Props {
   onClose: () => void;
 }
 
-function ConfirmDialog(props: Props) {
+function Confirm(props: Props) {
   const { title, message, isOpen = false, maxWidth = 'xs', onClose } = props;
 
   return (
@@ -39,4 +39,4 @@ function ConfirmDialog(props: Props) {
   );
 }
 
-export default ConfirmDialog;
+export default Confirm;

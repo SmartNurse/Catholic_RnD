@@ -1,4 +1,4 @@
-import ConfirmDialog from 'components/ConfirmDialog/ConfirmDialog';
+import MuiDialog from 'components/MuiDialog';
 
 interface Props {
   isOpen: boolean;
@@ -6,7 +6,7 @@ interface Props {
 }
 
 const Complete = ({ isOpen, onClose }: Props) => (
-  <ConfirmDialog
+  <MuiDialog.Confirm
     isOpen={isOpen}
     title="회원가입 신청 완료"
     message="승인까지 최대 1일이 소요 됩니다"

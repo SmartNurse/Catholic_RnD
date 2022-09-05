@@ -5,7 +5,7 @@ import { findKeyValueToStr } from 'utils/convert';
 import { createOutHospital } from 'apis/survey';
 import useSurvey from 'store/survey/useSurvey';
 import useNotification from 'hooks/useNotification';
-import SaveDialog from 'components/SaveDialog/SaveDialog';
+import MuiDialog from 'components/MuiDialog';
 import {
   TOutHospitalSurveyDefaultValues,
   SurveyDialogProps,
@@ -58,7 +58,7 @@ const OutHospital = (
   };
 
   return (
-    <SaveDialog
+    <MuiDialog.SaveForm
       title={title}
       isOpen={isOpen}
       onClose={onClose}
@@ -82,7 +82,7 @@ const OutHospital = (
         <CheckReservations register={register} />
         <Education register={register} />
       </Grid>
-    </SaveDialog>
+    </MuiDialog.SaveForm>
   );
 };
 

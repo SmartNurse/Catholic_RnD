@@ -10,7 +10,7 @@ import {
   useTheme,
 } from '@mui/material';
 
-export interface SaveDialogProps {
+export interface SaveFormProps {
   title: string;
   isOpen?: boolean;
   onClose: () => void;
@@ -19,7 +19,7 @@ export interface SaveDialogProps {
   onSubmit?: React.FormEventHandler<HTMLFormElement>;
 }
 
-function SaveDialog(props: SaveDialogProps) {
+function SaveForm(props: SaveFormProps) {
   const { zIndex, breakpoints } = useTheme();
   const isMobile = useMediaQuery(breakpoints.down('sm'));
 
@@ -61,7 +61,12 @@ function SaveDialog(props: SaveDialogProps) {
             {update_at && `최근 저장한 시간: ${update_at}`}
           </Typography>
 
-          <Button size="small" type="submit" variant="contained">
+          <Button
+            size="small"
+            type="submit"
+            variant="contained"
+            sx={{ display: onSubmit ? 'block' : 'none' }}
+          >
             저장
           </Button>
         </DialogTitle>
@@ -72,4 +77,4 @@ function SaveDialog(props: SaveDialogProps) {
   );
 }
 
-export default SaveDialog;
+export default SaveForm;

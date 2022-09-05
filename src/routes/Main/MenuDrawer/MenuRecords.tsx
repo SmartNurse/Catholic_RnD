@@ -1,4 +1,4 @@
-import { Fragment, useState } from 'react';
+import { Fragment } from 'react';
 import {
   ListItem,
   ListItemButton,
@@ -20,9 +20,10 @@ import {
   MonitorHeartOutlined,
 } from '@mui/icons-material';
 import Survey from '../Survey';
+import useSurvey from 'store/survey/useSurvey';
 
 const MenuRecords = () => {
-  const [type, setType] = useState('');
+  const { onUpdateSurveyType } = useSurvey();
 
   const menus = [
     {
@@ -87,7 +88,7 @@ const MenuRecords = () => {
   return (
     <Fragment>
       {menus.map(({ icon, label, disabled }) => {
-        const onClick = () => setType(label);
+        const onClick = () => onUpdateSurveyType(label);
 
         const MoreIcon = () => {
           if (!disabled) return null;
@@ -105,7 +106,7 @@ const MenuRecords = () => {
         );
       })}
 
-      <Survey type={type} onReset={() => setType('')} />
+      <Survey />
     </Fragment>
   );
 };

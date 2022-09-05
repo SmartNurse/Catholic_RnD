@@ -5,7 +5,7 @@ import {
   UseFormWatch,
 } from 'react-hook-form';
 import { IPatientInfo } from 'apis/admin/type';
-import { SaveDialogProps } from 'components/SaveDialog/SaveDialog';
+import { SaveFormProps } from 'components/MuiDialog/SaveForm';
 import {
   initialOutHospitalSurvey,
   initialHospitalizationSurvey,
@@ -56,8 +56,7 @@ export interface IFormWatch {
   watch: UseFormWatch<any>;
 }
 
-export interface SurveyDialogProps<T>
-  extends Omit<SaveDialogProps, 'children'> {
+export interface SurveyDialogProps<T> extends Omit<SaveFormProps, 'children'> {
   user_id: number;
   nurseName: string;
   patientInfo: IPatientInfo;
