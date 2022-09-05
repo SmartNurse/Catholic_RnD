@@ -11,7 +11,9 @@ const Nurse = (props: SurveyDialogProps<null>) => {
   const moreRef = useRef(null);
   const [isFade, setIsFade] = useState(false);
 
-  useEffect(() => setIsFade(true), [moreRef]);
+  useEffect(() => {
+    setTimeout(() => setIsFade(true), 300);
+  }, [moreRef]);
 
   return (
     <MuiDialog.SaveForm title={title} isOpen={isOpen} onClose={onClose}>
