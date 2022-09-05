@@ -1,13 +1,13 @@
-import { Grid } from '@mui/material';
 import { Fragment } from 'react';
+import { Grid } from '@mui/material';
 
-import { FormProps } from '../../type';
+import { IFormRegister } from '../../type';
+import Form from '../../../../components/Form';
 
 import RowContainer from '../components/RowContainer';
 import SectionTitle from '../components/SectionTitle';
-import SurveyInput from '../components/SurveyInput';
 
-const Education = (props: FormProps) => {
+const Education = (props: IFormRegister) => {
   const { register } = props;
 
   return (
@@ -16,7 +16,7 @@ const Education = (props: FormProps) => {
 
       <RowContainer xs={12}>
         <Grid item flex={1}>
-          <SurveyInput multiline rows={5} {...register('education')} />
+          <Form.MuiTextField multiline minRows={5} {...register('education')} />
         </Grid>
       </RowContainer>
     </Fragment>

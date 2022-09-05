@@ -11,43 +11,34 @@ interface Props {
 }
 
 const useDefaultValues = ({ setDefaultValues, user_id }: Props) => {
+  const convertDataToStates = (data: any, states: any) => {
+    const keys = Object.keys(states);
+    const values = states;
+
+    for (let key of keys) {
+      const getValue = data[key];
+
+      if (typeof getValue !== 'object' || Array.isArray(getValue)) {
+        values[key] = getValue;
+      } else if (getValue) {
+        values[key] = findKeyValueToObj(getValue, Object.keys(getValue));
+      }
+    }
+
+    setDefaultValues(values);
+  };
+
   const onGetHospitalization = (patient_id: number) => {
     getHospitalization({ user_id, patient_id }).then(({ data }) => {
       const { hospitalization_survey } = data;
-      const keys = Object.keys(initialHospitalizationSurvey);
-      const values = initialHospitalizationSurvey as any;
-
-      for (let key of keys) {
-        const getValue = hospitalization_survey[key];
-
-        if (key === 'offer' || key === 'contacts') {
-          values[key] = getValue;
-        } else if (getValue) {
-          values[key] = findKeyValueToObj(getValue, Object.keys(getValue));
-        }
-      }
-
-      setDefaultValues(values);
+      convertDataToStates(hospitalization_survey, initialHospitalizationSurvey);
     });
   };
 
   const onGetOutHospital = (patient_id: number) => {
     getOutHospital({ user_id, patient_id }).then(({ data }) => {
       const { out_hospital_survey } = data;
-      const keys = Object.keys(initialOutHospitalSurvey);
-      const values = initialOutHospitalSurvey as any;
-
-      for (let key of keys) {
-        const getValue = out_hospital_survey[key];
-
-        if (key === 'default_info' && getValue) {
-          values[key] = findKeyValueToObj(getValue, Object.keys(getValue));
-        } else if (getValue) {
-          values[key] = getValue;
-        }
-      }
-
-      setDefaultValues(values);
+      convertDataToStates(out_hospital_survey, initialOutHospitalSurvey);
     });
   };
 

@@ -1,13 +1,13 @@
 import { Fragment } from 'react';
 import { Grid, Stack, Typography, TypographyProps } from '@mui/material';
 
-import { FormProps } from '../../type';
+import { IFormRegister } from '../../type';
+import Form from '../../../../components/Form';
 
 import RowContainer from '../components/RowContainer';
 import SectionTitle from '../components/SectionTitle';
-import SurveyInput from '../components/SurveyInput';
 
-const CheckReservations = (props: FormProps) => {
+const CheckReservations = (props: IFormRegister) => {
   const { register } = props;
 
   const titleProps: TypographyProps = {
@@ -26,7 +26,7 @@ const CheckReservations = (props: FormProps) => {
           <Stack spacing={1}>
             <Typography {...titleProps}>검사명</Typography>
             {reservations.map(i => (
-              <SurveyInput
+              <Form.MuiTextField
                 key={i}
                 required={!i}
                 {...register(`check_reservations.${i}.name`)}
@@ -38,7 +38,7 @@ const CheckReservations = (props: FormProps) => {
           <Stack spacing={1}>
             <Typography {...titleProps}>장소</Typography>
             {reservations.map(i => (
-              <SurveyInput
+              <Form.MuiTextField
                 key={i}
                 required={!i}
                 {...register(`check_reservations.${i}.destination`)}
@@ -50,7 +50,7 @@ const CheckReservations = (props: FormProps) => {
           <Stack spacing={1}>
             <Typography {...titleProps}>주의사항</Typography>
             {reservations.map(i => (
-              <SurveyInput
+              <Form.MuiTextField
                 key={i}
                 required={!i}
                 {...register(`check_reservations.${i}.warning`)}
@@ -62,7 +62,7 @@ const CheckReservations = (props: FormProps) => {
           <Stack spacing={1}>
             <Typography {...titleProps}>전화번호</Typography>
             {reservations.map(i => (
-              <SurveyInput
+              <Form.MuiTextField
                 key={i}
                 type="tel"
                 required={!i}
@@ -75,7 +75,7 @@ const CheckReservations = (props: FormProps) => {
           <Stack spacing={1}>
             <Typography {...titleProps}>예약일시</Typography>
             {reservations.map(i => (
-              <SurveyInput
+              <Form.MuiTextField
                 key={i}
                 type="date"
                 required={!i}

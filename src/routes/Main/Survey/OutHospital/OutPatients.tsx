@@ -1,13 +1,13 @@
 import { Fragment } from 'react';
 import { Grid, Stack, Typography, TypographyProps } from '@mui/material';
 
-import { FormProps } from '../../type';
+import { IFormRegister } from '../../type';
+import Form from '../../../../components/Form';
 
 import RowContainer from '../components/RowContainer';
 import SectionTitle from '../components/SectionTitle';
-import SurveyInput from '../components/SurveyInput';
 
-const OutPatients = (props: FormProps) => {
+const OutPatients = (props: IFormRegister) => {
   const { register } = props;
 
   const titleProps: TypographyProps = {
@@ -26,7 +26,7 @@ const OutPatients = (props: FormProps) => {
           <Stack spacing={1}>
             <Typography {...titleProps}>진료과</Typography>
             {outPatients.map(i => (
-              <SurveyInput
+              <Form.MuiTextField
                 key={i}
                 required={!i}
                 {...register(`out_patients.${i}.department`)}
@@ -38,7 +38,7 @@ const OutPatients = (props: FormProps) => {
           <Stack spacing={1}>
             <Typography {...titleProps}>진료의</Typography>
             {outPatients.map(i => (
-              <SurveyInput
+              <Form.MuiTextField
                 key={i}
                 required={!i}
                 {...register(`out_patients.${i}.doctor`)}
@@ -50,7 +50,7 @@ const OutPatients = (props: FormProps) => {
           <Stack spacing={1}>
             <Typography {...titleProps}>장소</Typography>
             {outPatients.map(i => (
-              <SurveyInput
+              <Form.MuiTextField
                 key={i}
                 required={!i}
                 {...register(`out_patients.${i}.location`)}
@@ -62,7 +62,7 @@ const OutPatients = (props: FormProps) => {
           <Stack spacing={1}>
             <Typography {...titleProps}>전화번호</Typography>
             {outPatients.map(i => (
-              <SurveyInput
+              <Form.MuiTextField
                 key={i}
                 type="tel"
                 required={!i}
@@ -75,7 +75,7 @@ const OutPatients = (props: FormProps) => {
           <Stack spacing={1}>
             <Typography {...titleProps}>예약일시</Typography>
             {outPatients.map(i => (
-              <SurveyInput
+              <Form.MuiTextField
                 key={i}
                 type="date"
                 required={!i}

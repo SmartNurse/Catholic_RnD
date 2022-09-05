@@ -1,18 +1,18 @@
 import { Fragment } from 'react';
 import { Stack } from '@mui/material';
 
-import { FormProps } from '../../type';
+import { IFormRegister, IFormValues } from '../../type';
+import Form from '../../../../components/Form';
 
 import RowContainer from '../components/RowContainer';
 import RowContent from '../components/RowContent';
-import SurveyRadio from '../components/SurveyRadio';
 import SectionTitle from '../components/SectionTitle';
-import SurveyInput from '../components/SurveyInput';
 
-const DefaultInfo = (props: FormProps) => {
+interface Props extends IFormRegister, IFormValues {}
+
+const DefaultInfo = (props: Props) => {
   const { register, getValues, setValue } = props;
 
-  if (!getValues || !setValue) return null;
   return (
     <Fragment>
       <SectionTitle title="기본 정보" />
@@ -20,14 +20,14 @@ const DefaultInfo = (props: FormProps) => {
       <RowContainer>
         <RowContent title="퇴원예정지">
           <Stack direction="row" spacing={1}>
-            <SurveyRadio
-              exceptionKey="ETC"
-              labelKey="OUT.HOSPITAL.DESTINATION"
-              radios={[{ value: 1 }, { value: 2 }, { value: 3 }, { value: 0 }]}
-              valueKey="default_info.destination.value"
-              {...{ getValues, setValue }}
+            <Form.MuiRadioGroup
+              i18nKey="OUT.HOSPITAL.DESTINATION"
+              i18nNullKey="ETC"
+              values={[1, 2, 3, 0]}
+              defaultValue={getValues('default_info.destination.value')}
+              onChange={v => setValue('default_info.destination.value', v)}
             />
-            <SurveyInput
+            <Form.MuiTextField
               required={false}
               fullWidth={false}
               placeholder="직접 입력"
@@ -37,14 +37,14 @@ const DefaultInfo = (props: FormProps) => {
         </RowContent>
         <RowContent title="퇴원방법">
           <Stack direction="row" spacing={1}>
-            <SurveyRadio
-              exceptionKey="ETC"
-              labelKey="OUT.HOSPITAL.WAY"
-              radios={[{ value: 1 }, { value: 2 }, { value: 3 }, { value: 0 }]}
-              valueKey="default_info.out_hospital_way.value"
-              {...{ getValues, setValue }}
+            <Form.MuiRadioGroup
+              i18nKey="OUT.HOSPITAL.WAY"
+              i18nNullKey="ETC"
+              values={[1, 2, 3, 0]}
+              defaultValue={getValues('default_info.out_hospital_way.value')}
+              onChange={v => setValue('default_info.out_hospital_way.value', v)}
             />
-            <SurveyInput
+            <Form.MuiTextField
               required={false}
               placeholder="직접 입력"
               {...register('default_info.out_hospital_way.input')}
@@ -52,21 +52,14 @@ const DefaultInfo = (props: FormProps) => {
           </Stack>
         </RowContent>
         <RowContent title="주요 보호자">
-          <SurveyRadio
-            exceptionKey="ETC"
-            labelKey="HOSPITALIZATION.GUARDIAN"
-            radios={[
-              { value: 1 },
-              { value: 2 },
-              { value: 3 },
-              { value: 4 },
-              { value: 5 },
-              { value: 0 },
-            ]}
-            valueKey="default_info.guardians.value"
-            {...{ getValues, setValue }}
+          <Form.MuiRadioGroup
+            i18nKey="HOSPITALIZATION.GUARDIAN"
+            i18nNullKey="ETC"
+            values={[1, 2, 3, 4, 5, 0]}
+            defaultValue={getValues('default_info.guardians.value')}
+            onChange={v => setValue('default_info.guardians.value', v)}
           />
-          <SurveyInput
+          <Form.MuiTextField
             required={false}
             placeholder="직접 입력"
             {...register('default_info.guardians.input')}
@@ -77,14 +70,14 @@ const DefaultInfo = (props: FormProps) => {
       <RowContainer sx={{ mb: 'auto' }}>
         <RowContent title="퇴원 후 식이">
           <Stack direction="row" spacing={1}>
-            <SurveyRadio
-              exceptionKey="ETC"
-              labelKey="OUT.HOSPITAL.FOOD"
-              radios={[{ value: 1 }, { value: 0 }]}
-              valueKey="default_info.food.value"
-              {...{ getValues, setValue }}
+            <Form.MuiRadioGroup
+              i18nKey="OUT.HOSPITAL.FOOD"
+              i18nNullKey="ETC"
+              values={[1, 0]}
+              defaultValue={getValues('default_info.food.value')}
+              onChange={v => setValue('default_info.food.value', v)}
             />
-            <SurveyInput
+            <Form.MuiTextField
               required={false}
               fullWidth={false}
               placeholder="직접 입력"
@@ -94,14 +87,14 @@ const DefaultInfo = (props: FormProps) => {
         </RowContent>
         <RowContent title="퇴원 후 목욕">
           <Stack direction="row" spacing={1}>
-            <SurveyRadio
-              exceptionKey="ETC"
-              labelKey="OUT.HOSPITAL.SHOWER"
-              radios={[{ value: 1 }, { value: 2 }, { value: 0 }]}
-              valueKey="default_info.shower.value"
-              {...{ getValues, setValue }}
+            <Form.MuiRadioGroup
+              i18nKey="OUT.HOSPITAL.SHOWER"
+              i18nNullKey="ETC"
+              values={[1, 2, 0]}
+              defaultValue={getValues('default_info.shower.value')}
+              onChange={v => setValue('default_info.shower.value', v)}
             />
-            <SurveyInput
+            <Form.MuiTextField
               required={false}
               fullWidth={false}
               placeholder="직접 입력"
@@ -110,11 +103,11 @@ const DefaultInfo = (props: FormProps) => {
           </Stack>
         </RowContent>
         <RowContent title="퇴원 후 활동">
-          <SurveyRadio
-            labelKey="OUT.HOSPITAL.ACTIVITY"
-            radios={[{ value: 1 }, { value: 2 }]}
-            valueKey="default_info.activity"
-            {...{ getValues, setValue }}
+          <Form.MuiRadioGroup
+            i18nKey="OUT.HOSPITAL.ACTIVITY"
+            values={[1, 2]}
+            defaultValue={getValues('default_info.activity')}
+            onChange={v => setValue('default_info.activity', v)}
           />
         </RowContent>
       </RowContainer>

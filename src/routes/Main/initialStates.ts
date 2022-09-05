@@ -24,6 +24,7 @@ export const initialNursingRecord = {
 
 export const initialHospitalizationSurvey = {
   offer: '',
+  update_at: '',
   contacts: [
     { contact: '', name: '', relation: '' },
     { contact: '', name: '', relation: '' },
@@ -107,13 +108,14 @@ export const initialHospitalizationSurvey = {
 
 export const initialOutHospitalSurvey = {
   date: '',
+  update_at: '',
   default_info: {
     destination: { value: 1, input: '' },
     out_hospital_way: { value: 1, input: '' },
     guardians: { value: 1, input: '' },
     food: { value: 1, input: '' },
     shower: { value: 1, input: '' },
-    activity: '',
+    activity: 1,
   },
   out_hospital_medicines: [
     { amount: '', count: '', days: '', how_to: '', name: '' },

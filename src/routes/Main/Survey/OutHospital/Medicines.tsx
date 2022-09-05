@@ -1,13 +1,13 @@
 import { Fragment } from 'react';
 import { Grid, Stack, Typography, TypographyProps } from '@mui/material';
 
-import { FormProps } from '../../type';
+import { IFormRegister } from '../../type';
+import Form from '../../../../components/Form';
 
 import RowContainer from '../components/RowContainer';
 import SectionTitle from '../components/SectionTitle';
-import SurveyInput from '../components/SurveyInput';
 
-const Medicines = (props: FormProps) => {
+const Medicines = (props: IFormRegister) => {
   const { register } = props;
 
   const titleProps: TypographyProps = {
@@ -26,7 +26,7 @@ const Medicines = (props: FormProps) => {
           <Stack spacing={1}>
             <Typography {...titleProps}>약품명</Typography>
             {medicines.map(i => (
-              <SurveyInput
+              <Form.MuiTextField
                 key={i}
                 required={!i}
                 {...register(`out_hospital_medicines.${i}.name`)}
@@ -38,7 +38,7 @@ const Medicines = (props: FormProps) => {
           <Stack spacing={1}>
             <Typography {...titleProps}>용량</Typography>
             {medicines.map(i => (
-              <SurveyInput
+              <Form.MuiTextField
                 key={i}
                 required={!i}
                 {...register(`out_hospital_medicines.${i}.amount`)}
@@ -50,7 +50,7 @@ const Medicines = (props: FormProps) => {
           <Stack spacing={1}>
             <Typography {...titleProps}>횟수</Typography>
             {medicines.map(i => (
-              <SurveyInput
+              <Form.MuiTextField
                 key={i}
                 required={!i}
                 type="number"
@@ -63,7 +63,7 @@ const Medicines = (props: FormProps) => {
           <Stack spacing={1}>
             <Typography {...titleProps}>일수</Typography>
             {medicines.map(i => (
-              <SurveyInput
+              <Form.MuiTextField
                 key={i}
                 required={!i}
                 type="number"
@@ -76,7 +76,7 @@ const Medicines = (props: FormProps) => {
           <Stack spacing={1}>
             <Typography {...titleProps}>용법</Typography>
             {medicines.map(i => (
-              <SurveyInput
+              <Form.MuiTextField
                 key={i}
                 required={!i}
                 {...register(`out_hospital_medicines.${i}.how_to`)}

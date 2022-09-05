@@ -41,7 +41,6 @@ const Hospitalization = (
   const { handleSubmit, register, getValues, setValue } = useForm({
     defaultValues,
   });
-  const formProps = { getValues, setValue, register };
 
   const onSubmit = (data: THospitalizationSurveyDefaultValues) => {
     const {
@@ -94,6 +93,7 @@ const Hospitalization = (
     <SaveDialog
       title={title}
       isOpen={isOpen}
+      update_at={defaultValues.update_at}
       onClose={onClose}
       onSubmit={handleSubmit(onSubmit)}
     >
@@ -105,19 +105,48 @@ const Hospitalization = (
         sx={{ py: 5, px: 1 }}
       >
         <PatientInfo
+          register={register}
           nurseName={nurseName}
           patientInfo={patientInfo}
-          {...formProps}
         />
-        <DefaultInfo {...formProps} />
-        <DiseaseHistory {...formProps} />
-        <BodyStatus {...formProps} />
-        <Habit {...formProps} gender={patientInfo.gender} />
-        <FunctionalEvaluation {...formProps} />
-        <SocialHistory {...formProps} />
-        <EconomyHistory {...formProps} />
-        <Education {...formProps} />
-        <OutHospitalPlan {...formProps} />
+        <DefaultInfo
+          register={register}
+          setValue={setValue}
+          getValues={getValues}
+        />
+        <DiseaseHistory
+          register={register}
+          setValue={setValue}
+          getValues={getValues}
+        />
+        <BodyStatus
+          register={register}
+          setValue={setValue}
+          getValues={getValues}
+        />
+        <Habit
+          register={register}
+          setValue={setValue}
+          getValues={getValues}
+          gender={patientInfo.gender}
+        />
+        <FunctionalEvaluation getValues={getValues} setValue={setValue} />
+        <SocialHistory
+          register={register}
+          setValue={setValue}
+          getValues={getValues}
+        />
+        <EconomyHistory getValues={getValues} setValue={setValue} />
+        <Education
+          register={register}
+          setValue={setValue}
+          getValues={getValues}
+        />
+        <OutHospitalPlan
+          register={register}
+          setValue={setValue}
+          getValues={getValues}
+        />
       </Grid>
     </SaveDialog>
   );

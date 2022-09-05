@@ -1,5 +1,4 @@
 import { Grid } from '@mui/material';
-import { useSnackbar } from 'notistack';
 import { useForm } from 'react-hook-form';
 
 import { TOutHospitalSurveyDefaultValues, SurveyDialogProps } from '../../type';
@@ -7,25 +6,26 @@ import SaveDialog from '../../../../components/SaveDialog/SaveDialog';
 import { findKeyValueToStr } from '../../../../utils/convert';
 import { createOutHospital } from '../../../../apis/survey';
 import useSurvey from '../../../../store/survey/useSurvey';
+import useNotification from '../../../../hooks/useNotification';
 
 import PatientInfo from './PatientInfo';
 import DefaultInfo from './DefaultInfo';
 import Medicines from './Medicines';
 import OutPatients from './OutPatients';
 import Education from './Education';
+import CheckReservations from './CheckReservations';
 
 const OutHospital = (
   props: SurveyDialogProps<TOutHospitalSurveyDefaultValues>
 ) => {
   const { title, isOpen, defaultValues, user_id, patientInfo, onClose } = props;
 
-  const { enqueueSnackbar } = useSnackbar();
   const { onUpdateIsSave } = useSurvey();
+  const { onSuccess, onFail, onResultCode } = useNotification();
 
   const { handleSubmit, register, getValues, setValue } = useForm({
     defaultValues,
   });
-  const formProps = { getValues, setValue, register };
 
   const onSubmit = (data: TOutHospitalSurveyDefaultValues) => {
     const { default_info } = data;
@@ -45,17 +45,13 @@ const OutHospital = (
       },
     };
     createOutHospital(request)
-      .then(() => {
+      .then(({ data: { rc } }) => {
+        if (rc !== 1) return onResultCode(rc);
+
         onUpdateIsSave(true);
-        enqueueSnackbar('퇴원기록지 저장에 성공하였습니다.', {
-          variant: 'success',
-        });
+        onSuccess('퇴원기록지 저장에 성공하였습니다.');
       })
-      .catch(e =>
-        enqueueSnackbar(`'퇴원기록지 저장에 실패하였습니다.\n오류: ${e}`, {
-          variant: 'error',
-        })
-      );
+      .catch(e => onFail('퇴원기록지 저장에 실패하였습니다.', e));
   };
 
   return (
@@ -72,11 +68,16 @@ const OutHospital = (
         columnSpacing={3}
         sx={{ py: 5, px: 1 }}
       >
-        <PatientInfo patientInfo={patientInfo} {...formProps} />
-        <DefaultInfo {...formProps} />
-        <Medicines {...formProps} />
-        <OutPatients {...formProps} />
-        <Education {...formProps} />
+        <PatientInfo register={register} patientInfo={patientInfo} />
+        <DefaultInfo
+          register={register}
+          setValue={setValue}
+          getValues={getValues}
+        />
+        <Medicines register={register} />
+        <OutPatients register={register} />
+        <CheckReservations register={register} />
+        <Education register={register} />
       </Grid>
     </SaveDialog>
   );

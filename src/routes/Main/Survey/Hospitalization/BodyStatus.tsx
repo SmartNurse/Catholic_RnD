@@ -6,14 +6,12 @@ import Form from '../../../../components/Form';
 
 import RowContainer from '../components/RowContainer';
 import RowContent from '../components/RowContent';
-import SurveyRadio from '../components/SurveyRadio';
 import SectionTitle from '../components/SectionTitle';
 
 interface Props extends IFormRegister, IFormValues {}
 
 const BodyStatus = (props: Props) => {
   const { register, getValues, setValue } = props;
-  console.log(getValues('body_status.fall.checked'));
 
   return (
     <Fragment>
@@ -140,11 +138,11 @@ const BodyStatus = (props: Props) => {
         </RowContent>
         <RowContent title="최근 투약">
           <Stack direction="row" spacing={1}>
-            <SurveyRadio
-              labelKey="EXIST"
-              radios={[{ value: 1 }, { value: 2 }]}
-              valueKey="body_status.medicine_history.value"
-              {...{ getValues, setValue }}
+            <Form.MuiRadioGroup
+              i18nKey="EXIST"
+              values={[1, 2]}
+              defaultValue={getValues('body_status.medicine_history.value')}
+              onChange={v => setValue('body_status.medicine_history.value', v)}
             />
             <Form.MuiTextField
               required={false}

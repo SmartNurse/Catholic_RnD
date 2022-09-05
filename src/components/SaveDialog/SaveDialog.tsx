@@ -5,6 +5,7 @@ import {
   DialogContent,
   DialogTitle,
   IconButton,
+  Typography,
   useMediaQuery,
   useTheme,
 } from '@mui/material';
@@ -14,6 +15,7 @@ export interface SaveDialogProps {
   isOpen?: boolean;
   onClose: () => void;
   children: React.ReactNode;
+  update_at?: string;
   onSubmit?: React.FormEventHandler<HTMLFormElement>;
 }
 
@@ -21,7 +23,14 @@ function SaveDialog(props: SaveDialogProps) {
   const { zIndex, breakpoints } = useTheme();
   const isMobile = useMediaQuery(breakpoints.down('sm'));
 
-  const { title, isOpen = false, children, onClose, onSubmit } = props;
+  const {
+    title,
+    isOpen = false,
+    children,
+    update_at,
+    onClose,
+    onSubmit,
+  } = props;
 
   return (
     <Dialog
@@ -48,12 +57,11 @@ function SaveDialog(props: SaveDialogProps) {
 
           {title}
 
-          <Button
-            size="small"
-            type="submit"
-            variant="contained"
-            sx={{ ml: 'auto' }}
-          >
+          <Typography variant="caption" color="gray" sx={{ ml: 'auto', mr: 2 }}>
+            {update_at && `최근 저장한 시간: ${update_at}`}
+          </Typography>
+
+          <Button size="small" type="submit" variant="contained">
             저장
           </Button>
         </DialogTitle>

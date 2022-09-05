@@ -5,9 +5,7 @@ import RowContainer from '../components/RowContainer';
 import RowContent from '../components/RowContent';
 import SectionTitle from '../components/SectionTitle';
 
-interface Props extends IFormValues {}
-
-const EconomyHistory = (props: Props) => {
+const EconomyHistory = (props: IFormValues) => {
   const { getValues, setValue } = props;
 
   return (
