@@ -20,9 +20,11 @@ import {
   UseFormRegister,
   UseFormSetValue,
 } from 'react-hook-form';
-import { getCollegeLists } from '../../apis/admin';
-import Form from '../../components/Form';
-import MuiAutocomplete from '../../components/MuiAutocomplete';
+
+import Form from 'components/Form';
+import { getCollegeLists } from 'apis/admin';
+import MuiAutocomplete from 'components/MuiAutocomplete';
+
 import { ISendMailProps, IVerifyMailProps } from './types';
 import SignUpDialog from './SignUpDialog';
 

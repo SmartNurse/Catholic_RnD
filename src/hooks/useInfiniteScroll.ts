@@ -1,7 +1,8 @@
 import { debounce } from '@mui/material';
 import { AxiosResponse } from 'axios';
 import { useEffect, useState } from 'react';
-import { IGetList } from '../apis/type';
+
+import { IGetList } from 'apis/type';
 
 interface Props {
   listKey: string;

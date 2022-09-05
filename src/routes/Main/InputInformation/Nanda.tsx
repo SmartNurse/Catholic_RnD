@@ -1,8 +1,9 @@
-import { Grid, Stack, TextField, Typography } from '@mui/material';
 import { useEffect, useState } from 'react';
-import { getNandaClass, getNandaDiagnosis } from '../../../apis/main';
-import { INames } from '../../../apis/main/type';
-import Form from '../../../components/Form';
+import { Grid, Stack, TextField, Typography } from '@mui/material';
+
+import Form from 'components/Form';
+import { INames } from 'apis/main/type';
+import { getNandaClass, getNandaDiagnosis } from 'apis/main';
 
 interface Props {
   watch: any;

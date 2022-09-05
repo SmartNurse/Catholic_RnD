@@ -8,17 +8,17 @@ import {
   Typography,
 } from '@mui/material';
 
-import { getPatientInfo } from '../../../apis/admin';
-import usePatient from '../../../store/patient/usePatient';
-import useUser from '../../../store/user/useUser';
+import { getPatientInfo } from 'apis/admin';
+import useI18n from 'hooks/useI18n';
+import useNotification from 'hooks/useNotification';
+import useUser from 'store/user/useUser';
+import usePatient from 'store/patient/usePatient';
 
 import PatientInfoItem from './PatientInfoItem';
-import useI18n from '../../../hooks/useI18n';
-import { useSnackbar } from 'notistack';
 
 const PatientInfo = () => {
   const i18n = useI18n();
-  const { enqueueSnackbar } = useSnackbar();
+  const { onFail } = useNotification();
   const { name: userName } = useUser();
   const { patient, patientInfo, onSelectedPatientInfo } = usePatient();
 
@@ -35,9 +35,7 @@ const PatientInfo = () => {
       })
       .catch(e => {
         onSelectedPatientInfo(null);
-        enqueueSnackbar(`가상환자 데이터 조회에 실패했습니다.\n오류: ${e}`, {
-          variant: 'error',
-        });
+        onFail(`가상환자 데이터 조회에 실패했습니다.`, e);
       });
     // eslint-disable-next-line
   }, [patient]);

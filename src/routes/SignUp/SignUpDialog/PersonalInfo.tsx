@@ -1,4 +1,4 @@
-import ConfirmDialog from '../../../components/ConfirmDialog/ConfirmDialog';
+import ConfirmDialog from 'components/ConfirmDialog/ConfirmDialog';
 
 interface Props {
   isOpen: boolean;

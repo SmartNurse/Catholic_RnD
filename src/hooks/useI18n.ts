@@ -1,5 +1,6 @@
 import { useIntl } from 'react-intl';
-import locale from '../locale';
+
+import locale from 'locale';
 
 export type Ti18nId = keyof typeof locale.ko;
 

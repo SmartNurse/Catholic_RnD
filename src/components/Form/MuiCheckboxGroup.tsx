@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { FormControlLabel, FormGroup, Checkbox } from '@mui/material';
-import useI18n, { Ti18nId } from '../../hooks/useI18n';
+import useI18n, { Ti18nId } from 'hooks/useI18n';
 
 interface Props {
   i18nKey: string;

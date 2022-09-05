@@ -2,15 +2,16 @@ import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { FieldValues, useForm } from 'react-hook-form';
 
-import { postLogin } from '../../apis/account';
-import useNotification from '../../hooks/useNotification';
-import useUser from '../../store/user/useUser';
+import { postLogin } from 'apis/account';
+import useNotification from 'hooks/useNotification';
+import useUser from 'store/user/useUser';
 import {
   getLocalStorage,
   setLocalStorage,
   removeLocalStorage,
   clearLocalStorage,
-} from '../../utils/storage';
+} from 'utils/storage';
+
 import SignInForm from './SignInForm';
 import { ISignInForm } from './type';
 

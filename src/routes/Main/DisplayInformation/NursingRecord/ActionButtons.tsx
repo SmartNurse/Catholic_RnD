@@ -3,8 +3,8 @@ import { useSnackbar } from 'notistack';
 import { IconButton, Menu, MenuItem } from '@mui/material';
 import MoreHorizIcon from '@mui/icons-material/MoreHoriz';
 
-import { IDeleteNursingRecord } from '../../../../apis/main/type';
-import { deleteNursingRecord } from '../../../../apis/main';
+import { IDeleteNursingRecord } from 'apis/main/type';
+import { deleteNursingRecord } from 'apis/main';
 
 interface Props extends IDeleteNursingRecord {
   refetch: () => void;

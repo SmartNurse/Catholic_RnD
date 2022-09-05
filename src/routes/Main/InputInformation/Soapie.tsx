@@ -1,5 +1,7 @@
 import { Stack, TextField } from '@mui/material';
-import Form from '../../../components/Form';
+
+import Form from 'components/Form';
+
 import { IFormRegister } from '../type';
 
 function Soapie({ register }: IFormRegister) {

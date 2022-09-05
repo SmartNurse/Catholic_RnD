@@ -1,7 +1,8 @@
 import { List } from '@mui/material';
 
-import { sxRecordItem } from '../../style';
-import { INursingRecord } from '../../../../apis/main/type';
+import { INursingRecord } from 'apis/main/type';
+import { sxRecordItem } from 'routes/Main/style';
+
 import ActionButtons from './ActionButtons';
 import RecordItem from './RecordItem';
 

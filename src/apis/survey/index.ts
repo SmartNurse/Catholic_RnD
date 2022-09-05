@@ -1,7 +1,7 @@
 import camelcaseKeys from 'camelcase-keys';
 
+import { formatToRequestParameter } from 'utils/formatting';
 import apiGateway from '../axios';
-import { formatToRequestParameter } from '../../utils/formatting';
 import {
   ICreateHospitalization,
   ICreateOutHospital,

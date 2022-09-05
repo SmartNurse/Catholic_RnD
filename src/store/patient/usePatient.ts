@@ -1,6 +1,8 @@
 import { useCallback } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { IPatient, IPatientInfo } from '../../apis/admin/type';
+
+import { IPatient, IPatientInfo } from 'apis/admin/type';
+
 import { ReducerType } from '../reducer';
 import {
   PatientState,

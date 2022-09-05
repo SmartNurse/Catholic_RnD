@@ -1,9 +1,10 @@
 import { Fragment } from 'react';
 
-import useI18n from '../../../../hooks/useI18n';
+import useI18n from 'hooks/useI18n';
+import { INursingRecord } from 'apis/main/type';
+
 import RecordContent from './RecordContent';
 import RecordTitle from './RecordTitle';
-import { INursingRecord } from '../../../../apis/main/type';
 
 export interface IRecord extends INursingRecord {
   nurseName: string;

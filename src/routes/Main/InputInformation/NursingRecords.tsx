@@ -3,22 +3,22 @@ import { useEffect, useState } from 'react';
 import { TabContext, TabList } from '@mui/lab';
 import { Box, Button, ButtonGroup, Tab, Typography } from '@mui/material';
 
-import { StyledTabPanel } from '../style';
-import { RECORD_TYPE } from '../type';
-import { getNandaDomain, createNursingRecord } from '../../../apis/main';
-import { initialNursingRecord } from '../initialStates';
-import { INames } from '../../../apis/main/type';
-import { findKeyValue } from '../../../utils/convert';
-import { requiredSelect } from '../../../components/Form/requiredItems';
-import useNotification from '../../../hooks/useNotification';
-import useUser from '../../../store/user/useUser';
-import usePatient from '../../../store/patient/usePatient';
+import { INames } from 'apis/main/type';
+import { getNandaDomain, createNursingRecord } from 'apis/main';
+import { findKeyValue } from 'utils/convert';
+import { requiredSelect } from 'components/Form/requiredItems';
+import useNotification from 'hooks/useNotification';
+import useUser from 'store/user/useUser';
+import usePatient from 'store/patient/usePatient';
 
 import Nanda from './Nanda';
 import Soapie from './Soapie';
+import Remarks from './Remarks';
 import FocusDar from './FocusDar';
 import NarrativeRecord from './NarrativeRecord';
-import Remarks from './Remarks';
+import { RECORD_TYPE } from '../type';
+import { StyledTabPanel } from '../style';
+import { initialNursingRecord } from '../initialStates';
 
 const NursingRecords = () => {
   const { student_uuid: user_id } = useUser();

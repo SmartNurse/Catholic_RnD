@@ -1,5 +1,7 @@
 import React from 'react';
-import { INursingRecord } from '../../../apis/main/type';
+
+import { INursingRecord } from 'apis/main/type';
+
 import { initialNursingRecord } from '../initialStates';
 
 export interface IDisplayNursingRecord extends INursingRecord {

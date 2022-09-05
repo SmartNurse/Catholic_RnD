@@ -1,5 +1,5 @@
-import { Checkbox, CheckboxProps, FormControlLabel } from '@mui/material';
 import { forwardRef } from 'react';
+import { Checkbox, CheckboxProps, FormControlLabel } from '@mui/material';
 
 interface Props extends CheckboxProps {
   label: string;

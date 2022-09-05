@@ -1,8 +1,9 @@
-import { getHospitalization, getOutHospital } from '../../../apis/survey';
-import { findKeyValueToObj } from '../../../utils/convert';
+import { getHospitalization, getOutHospital } from 'apis/survey';
+import { findKeyValueToObj } from 'utils/convert';
+
 import {
-  initialHospitalizationSurvey,
   initialOutHospitalSurvey,
+  initialHospitalizationSurvey,
 } from '../initialStates';
 
 interface Props {

@@ -1,12 +1,12 @@
 import { Fragment, useEffect, useRef } from 'react';
 import { Box, Card, Skeleton, Typography } from '@mui/material';
 
-import { IGetList } from '../../../../apis/type';
-import { getNursingRecords } from '../../../../apis/main';
-import { INursingRecord } from '../../../../apis/main/type';
-import usePatient from '../../../../store/patient/usePatient';
-import useUser from '../../../../store/user/useUser';
-import useInfiniteScroll from '../../../../hooks/useInfiniteScroll';
+import { IGetList } from 'apis/type';
+import { getNursingRecords } from 'apis/main';
+import { INursingRecord } from 'apis/main/type';
+import usePatient from 'store/patient/usePatient';
+import useUser from 'store/user/useUser';
+import useInfiniteScroll from 'hooks/useInfiniteScroll';
 
 import RecordItemWrapper from './RecordItemWrapper';
 

@@ -1,7 +1,9 @@
 import { useCallback } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+
+import { removeLocalStorage } from 'utils/storage';
+
 import { persistKey } from '..';
-import { removeLocalStorage } from '../../utils/storage';
 import { ReducerType } from '../reducer';
 import { signIn, signOut, UserState } from '.';
 

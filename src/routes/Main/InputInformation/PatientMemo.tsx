@@ -1,9 +1,9 @@
 import { useEffect, useState } from 'react';
 import { TextField } from '@mui/material';
 
-import { getPatientMemo, postPatientMemo } from '../../../apis/admin';
-import useUser from '../../../store/user/useUser';
-import usePatient from '../../../store/patient/usePatient';
+import useUser from 'store/user/useUser';
+import usePatient from 'store/patient/usePatient';
+import { getPatientMemo, postPatientMemo } from 'apis/admin';
 
 const PatientMemo = () => {
   const { patientInfo } = usePatient();

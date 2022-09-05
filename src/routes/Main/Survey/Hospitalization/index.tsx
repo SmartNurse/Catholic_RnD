@@ -2,13 +2,14 @@ import { Grid } from '@mui/material';
 import { useForm } from 'react-hook-form';
 
 import {
-  THospitalizationSurveyDefaultValues,
   SurveyDialogProps,
-} from '../../type';
-import SaveDialog from '../../../../components/SaveDialog/SaveDialog';
-import { findKeyValueToStr } from '../../../../utils/convert';
-import { createHospitalization } from '../../../../apis/survey';
-import useSurvey from '../../../../store/survey/useSurvey';
+  THospitalizationSurveyDefaultValues,
+} from 'routes/Main/type';
+import SaveDialog from 'components/SaveDialog/SaveDialog';
+import { findKeyValueToStr } from 'utils/convert';
+import { createHospitalization } from 'apis/survey';
+import useSurvey from 'store/survey/useSurvey';
+import useNotification from 'hooks/useNotification';
 
 import PatientInfo from './PatientInfo';
 import DefaultInfo from './DefaultInfo';
@@ -20,7 +21,6 @@ import SocialHistory from './SocialHistory';
 import EconomyHistory from './EconomyHistory';
 import Education from './Education';
 import OutHospitalPlan from './OutHospitalPlan';
-import useNotification from '../../../../hooks/useNotification';
 
 const Hospitalization = (
   props: SurveyDialogProps<THospitalizationSurveyDefaultValues>

@@ -4,7 +4,7 @@ import {
   RadioGroup,
   RadioGroupProps,
 } from '@mui/material';
-import useI18n, { Ti18nId } from '../../hooks/useI18n';
+import useI18n, { Ti18nId } from 'hooks/useI18n';
 
 interface Props extends RadioGroupProps {
   i18nKey: string;

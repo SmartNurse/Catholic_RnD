@@ -10,6 +10,7 @@ import {
   REGISTER,
 } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
+
 import reducer from './reducer';
 
 export const persistKey = `${process.env.NODE_ENV ?? 'development'} v0.2`;

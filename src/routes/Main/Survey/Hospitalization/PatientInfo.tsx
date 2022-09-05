@@ -1,9 +1,10 @@
 import { Fragment } from 'react';
 import { Grid, Stack, Typography, TypographyProps } from '@mui/material';
 
-import { IFormRegister } from '../../type';
-import { IPatientInfo } from '../../../../apis/admin/type';
-import Form from '../../../../components/Form';
+import Form from 'components/Form';
+import { IPatientInfo } from 'apis/admin/type';
+import { IFormRegister } from 'routes/Main/type';
+
 import RowContainer from '../components/RowContainer';
 import RowContent from '../components/RowContent';
 

@@ -1,10 +1,10 @@
 import { useEffect, useState } from 'react';
 
-import { ACTIVE_MENU } from '../type';
-import usePatient from '../../../store/patient/usePatient';
-import useSurvey from '../../../store/survey/useSurvey';
-import useUser from '../../../store/user/useUser';
+import usePatient from 'store/patient/usePatient';
+import useSurvey from 'store/survey/useSurvey';
+import useUser from 'store/user/useUser';
 
+import { ACTIVE_MENU } from '../type';
 import Hospitalization from './Hospitalization';
 import useDefaultValues from './useDefaultValues';
 import OutHospital from './OutHospital';
@@ -45,28 +45,34 @@ const Survey = ({ type, onReset }: Props) => {
     // eslint-disable-next-line
   }, [type, patientInfo]);
 
-  if (!type || !patientInfo || !defaultValues) return null;
+  if (!type || !patientInfo) return null;
 
   const dialogProps = {
     user_id,
     nurseName: name,
     patientInfo,
-    defaultValues,
     title: type,
     isOpen: Boolean(type),
     onClose: () => {
       if (isSave) return onReset();
-
       const isConfirm = window.confirm('저장하지 않고 종료하시겠습니까?');
       if (isConfirm) return onReset();
     },
   };
 
   switch (type) {
-    case ACTIVE_MENU.ADMISSION:
-      return <Hospitalization {...dialogProps} />;
-    case ACTIVE_MENU.DISCHARGE:
-      return <OutHospital {...dialogProps} />;
+    case ACTIVE_MENU.ADMISSION: {
+      if (!defaultValues) return null;
+      return <Hospitalization {...dialogProps} defaultValues={defaultValues} />;
+    }
+    case ACTIVE_MENU.DISCHARGE: {
+      if (!defaultValues) return null;
+      return <OutHospital {...dialogProps} defaultValues={defaultValues} />;
+    }
+    case ACTIVE_MENU.PRESCRIPTION: {
+      if (!defaultValues) return null;
+      return <OutHospital {...dialogProps} defaultValues={defaultValues} />;
+    }
     default:
       return null;
   }

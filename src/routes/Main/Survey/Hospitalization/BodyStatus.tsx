@@ -1,8 +1,8 @@
 import { Fragment } from 'react';
 import { Stack } from '@mui/material';
 
-import { IFormRegister, IFormValues } from '../../type';
-import Form from '../../../../components/Form';
+import Form from 'components/Form';
+import { IFormRegister, IFormValues } from 'routes/Main/type';
 
 import RowContainer from '../components/RowContainer';
 import RowContent from '../components/RowContent';

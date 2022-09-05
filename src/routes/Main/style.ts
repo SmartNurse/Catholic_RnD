@@ -1,6 +1,7 @@
 import { TabPanel } from '@mui/lab';
 import { styled } from '@mui/material';
-import theme from '../../styles/theme';
+
+import theme from 'styles/theme';
 
 export const StyledDrawerWrapper = styled('div')`
   flex: 1;

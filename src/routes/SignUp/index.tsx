@@ -1,13 +1,11 @@
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
-import {
-  postAccountCreate,
-  postSendMail,
-  postVerifyMail,
-} from '../../apis/account';
-import useNotification from '../../hooks/useNotification';
-import regex from '../../utils/regex';
+
+import regex from 'utils/regex';
+import useNotification from 'hooks/useNotification';
+import { postAccountCreate, postSendMail, postVerifyMail } from 'apis/account';
+
 import SignUpDialog from './SignUpDialog';
 import SignUpForm from './SignUpForm';
 

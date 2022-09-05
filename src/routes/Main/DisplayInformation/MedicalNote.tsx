@@ -1,6 +1,7 @@
 import { format } from 'date-fns/esm';
 import { Box, Card, Skeleton, Typography } from '@mui/material';
-import usePatient from '../../../store/patient/usePatient';
+
+import usePatient from 'store/patient/usePatient';
 
 const MedicalNote = () => {
   const { patientInfo } = usePatient();

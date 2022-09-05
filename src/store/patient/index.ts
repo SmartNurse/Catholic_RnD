@@ -1,5 +1,6 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { IPatient, IPatientInfo } from '../../apis/admin/type';
+
+import { IPatient, IPatientInfo } from 'apis/admin/type';
 
 // name, initialState, reducers.
 export interface PatientState {

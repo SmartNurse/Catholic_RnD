@@ -14,9 +14,9 @@ import {
 } from '@mui/material';
 import { FieldValues, UseFormRegister } from 'react-hook-form';
 
-import { imgNaverCloudLogo, imgSmartNurseLogo } from '../../assets';
-import Form from '../../components/Form';
-import ConfirmDialogButton from '../../components/ConfirmDialog/ConfirmDialogButton';
+import { imgNaverCloudLogo, imgSmartNurseLogo } from 'assets';
+import Form from 'components/Form';
+import ConfirmDialogButton from 'components/ConfirmDialog/ConfirmDialogButton';
 
 interface Props {
   errors: { [x: string]: any };

@@ -1,12 +1,15 @@
 import { Grid } from '@mui/material';
 import { useForm } from 'react-hook-form';
 
-import { TOutHospitalSurveyDefaultValues, SurveyDialogProps } from '../../type';
-import SaveDialog from '../../../../components/SaveDialog/SaveDialog';
-import { findKeyValueToStr } from '../../../../utils/convert';
-import { createOutHospital } from '../../../../apis/survey';
-import useSurvey from '../../../../store/survey/useSurvey';
-import useNotification from '../../../../hooks/useNotification';
+import { findKeyValueToStr } from 'utils/convert';
+import { createOutHospital } from 'apis/survey';
+import useSurvey from 'store/survey/useSurvey';
+import useNotification from 'hooks/useNotification';
+import SaveDialog from 'components/SaveDialog/SaveDialog';
+import {
+  TOutHospitalSurveyDefaultValues,
+  SurveyDialogProps,
+} from 'routes/Main/type';
 
 import PatientInfo from './PatientInfo';
 import DefaultInfo from './DefaultInfo';

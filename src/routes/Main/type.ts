@@ -4,11 +4,11 @@ import {
   UseFormSetValue,
   UseFormWatch,
 } from 'react-hook-form';
-import { IPatientInfo } from '../../apis/admin/type';
-import { SaveDialogProps } from '../../components/SaveDialog/SaveDialog';
+import { IPatientInfo } from 'apis/admin/type';
+import { SaveDialogProps } from 'components/SaveDialog/SaveDialog';
 import {
-  initialHospitalizationSurvey,
   initialOutHospitalSurvey,
+  initialHospitalizationSurvey,
 } from './initialStates';
 
 export enum ACTIVE_MENU {

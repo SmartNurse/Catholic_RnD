@@ -1,9 +1,9 @@
 import { Fragment } from 'react';
 import { Stack, Typography } from '@mui/material';
 
-import Form from '../../../../components/Form';
-import { IFormRegister, IFormValues } from '../../type';
-import { TGender } from '../../../../apis/account/type';
+import Form from 'components/Form';
+import { TGender } from 'apis/account/type';
+import { IFormRegister, IFormValues } from 'routes/Main/type';
 
 import RowContainer from '../components/RowContainer';
 import RowContent from '../components/RowContent';

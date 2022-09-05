@@ -1,6 +1,7 @@
-import { IFormRegister } from '../../type';
-import { IPatientInfo } from '../../../../apis/admin/type';
-import Form from '../../../../components/Form';
+import Form from 'components/Form';
+import { IFormRegister } from 'routes/Main/type';
+import { IPatientInfo } from 'apis/admin/type';
+
 import RowContainer from '../components/RowContainer';
 import RowContent from '../components/RowContent';
 

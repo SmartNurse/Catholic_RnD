@@ -1,8 +1,8 @@
 import { Box, Drawer, Typography, Toolbar, List } from '@mui/material';
 
-import { imgSmartNurseLogoText } from '../../../assets';
-import { StyledDrawerWrapper } from '../style';
+import { imgSmartNurseLogoText } from 'assets';
 
+import { StyledDrawerWrapper } from '../style';
 import CopyRight from './CopyRight';
 import MenuRecords from './MenuRecords';
 import MenuSettings from './MenuSettings';

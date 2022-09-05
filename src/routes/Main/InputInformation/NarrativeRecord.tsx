@@ -1,6 +1,8 @@
 import { Stack, TextField } from '@mui/material';
-import Form from '../../../components/Form';
-import useI18n from '../../../hooks/useI18n';
+
+import Form from 'components/Form';
+import useI18n from 'hooks/useI18n';
+
 import { IFormRegister } from '../type';
 
 function NarrativeRecord({ register }: IFormRegister) {

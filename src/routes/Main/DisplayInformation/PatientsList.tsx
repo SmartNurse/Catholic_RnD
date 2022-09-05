@@ -1,6 +1,6 @@
-import { getPatients } from '../../../apis/admin';
-import usePatient from '../../../store/patient/usePatient';
-import MuiAutocomplete from '../../../components/MuiAutocomplete';
+import { getPatients } from 'apis/admin';
+import usePatient from 'store/patient/usePatient';
+import MuiAutocomplete from 'components/MuiAutocomplete';
 
 const PatientsList = () => {
   const { onSelectedPatient } = usePatient();

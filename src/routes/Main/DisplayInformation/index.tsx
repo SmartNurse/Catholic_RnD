@@ -2,7 +2,6 @@ import { Box, Toolbar } from '@mui/material';
 
 import { inputInformationWidth } from '../InputInformation';
 import { StyledContentContainer } from '../style';
-
 import { menuDrawerWidth } from '../MenuDrawer';
 import NursingRecord from './NursingRecord';
 import PatientsList from './PatientsList';

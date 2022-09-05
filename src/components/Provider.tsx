@@ -5,9 +5,9 @@ import { Provider as ReduxProvider } from 'react-redux';
 import { PersistGate } from 'redux-persist/integration/react';
 import { CssBaseline, ThemeProvider } from '@mui/material';
 
-import locale from '../locale';
-import theme from '../styles/theme';
-import store, { persistor } from '../store';
+import locale from 'locale';
+import theme from 'styles/theme';
+import store, { persistor } from 'store';
 
 interface Props {
   children: React.ReactNode;

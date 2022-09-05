@@ -1,8 +1,8 @@
 import { Fragment } from 'react';
 import { Grid, Stack, Typography, TypographyProps } from '@mui/material';
 
-import { IFormRegister } from '../../type';
-import Form from '../../../../components/Form';
+import Form from 'components/Form';
+import { IFormRegister } from 'routes/Main/type';
 
 import RowContainer from '../components/RowContainer';
 import SectionTitle from '../components/SectionTitle';

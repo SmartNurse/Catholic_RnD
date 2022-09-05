@@ -10,7 +10,8 @@ import {
   LogoutOutlined,
   NotificationsOutlined,
 } from '@mui/icons-material';
-import useUser from '../../../store/user/useUser';
+
+import useUser from 'store/user/useUser';
 
 const MenuSettings = () => {
   const { onSignOut } = useUser();

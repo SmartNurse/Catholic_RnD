@@ -1,5 +1,5 @@
-import { IFormValues } from '../../type';
-import Form from '../../../../components/Form';
+import Form from 'components/Form';
+import { IFormValues } from 'routes/Main/type';
 
 import RowContainer from '../components/RowContainer';
 import RowContent from '../components/RowContent';

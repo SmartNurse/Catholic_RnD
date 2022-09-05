@@ -1,5 +1,5 @@
+import { formatToRequestParameter } from 'utils/formatting';
 import apiGateway from '../axios';
-import { formatToRequestParameter } from '../../utils/formatting';
 import {
   IPostAccountCreateRequest,
   IPostLoginRequest,

@@ -8,7 +8,7 @@ import {
 } from '@mui/material';
 import { Search } from '@mui/icons-material';
 
-import { IGetSearch } from '../apis/type';
+import { IGetSearch } from 'apis/type';
 
 interface Props {
   listKey: string;
