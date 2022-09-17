@@ -20,6 +20,9 @@ const ActionButtons = ({ refetch, ...request }: Props) => {
   const handleClose = () => setAnchorEl(null);
 
   const onDelete = () => {
+    const isConfirm = window.confirm('간호기록을 삭제하시겠습니까?');
+    if (!isConfirm) return handleClose();
+
     deleteNursingRecord(request)
       .then(() => {
         refetch();
