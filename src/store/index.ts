@@ -1,3 +1,4 @@
+import logger from 'redux-logger';
 import { configureStore } from '@reduxjs/toolkit';
 import {
   persistStore,
@@ -24,12 +25,16 @@ const persistedReducer = persistReducer(persistConfig, reducer);
 
 const store = configureStore({
   reducer: persistedReducer,
-  middleware: getDefaultMiddleware =>
-    getDefaultMiddleware({
+  middleware: getDefaultMiddleware => {
+    const enhancer = getDefaultMiddleware({
       serializableCheck: {
         ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
       },
-    }),
+    });
+
+    if (process.env.NODE_ENV === 'production') return enhancer;
+    return enhancer.concat(logger);
+  },
 });
 
 export type AppDispatch = typeof store.dispatch;
