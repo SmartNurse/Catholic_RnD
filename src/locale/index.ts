@@ -71,6 +71,7 @@ const locale = {
     'REQUIRED.DOMAIN': '영역을 선택해주세요',
     'REQUIRED.CLASS': '분류를 선택해주세요',
     'REQUIRED.DIAGNOSIS': '진단명을 선택해주세요',
+    'REQUIRED.RECORD.TIME': '간호기록 시간을 입력해주세요',
 
     // hospitalization
     'HOSPITALIZATION.PATH.1': '외래',

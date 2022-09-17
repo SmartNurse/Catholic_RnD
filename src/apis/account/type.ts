@@ -10,9 +10,9 @@ export interface IPostLoginRequest extends IPostSendMailRequest {
   user_password: string;
 }
 
-// 1: 여성 2: 남성
+// 1:여성 2:남성
 export type TGender = 1 | 2;
-// 1: 학생 2: 교수/조교
+// 1:학생 2:교수/조교
 export type TGrade = 1 | 2;
 
 export interface IPostAccountCreateRequest extends IPostLoginRequest {

@@ -12,7 +12,7 @@ interface Props extends INursingRecord {
 }
 
 const RecordItemWrapper = (props: Props) => {
-  const { nurseName, user_id, patient_id, nursing_record_id, refetch } = props;
+  const { user_id, nurseName, patient_id, nursing_record_id, refetch } = props;
 
   const displayProps = {
     ...props,

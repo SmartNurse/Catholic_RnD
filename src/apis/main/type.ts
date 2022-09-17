@@ -30,6 +30,7 @@ export interface ICreateNursingRecord {
   userId: number;
   patientId: number;
   recordType: number;
+  recordTime: string;
   content: string;
 }
 
@@ -50,6 +51,8 @@ export interface INursingRecord {
   create_at: string;
   nursing_record_id: number;
   patient_id: number;
+  // 0:nanda 1:soapie 2:focusdar 3:서술기록 4:특기사항
   record_type: 0 | 1 | 2 | 3 | 4;
+  record_time: string;
   user_id: number;
 }

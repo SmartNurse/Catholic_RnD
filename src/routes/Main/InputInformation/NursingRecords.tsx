@@ -1,6 +1,6 @@
 import { useForm } from 'react-hook-form';
 import { useEffect, useState } from 'react';
-import { TabContext, TabList } from '@mui/lab';
+import { TabContext, TabList, TimePicker } from '@mui/lab';
 import { Box, Button, ButtonGroup, Tab, Typography } from '@mui/material';
 
 import { INames } from 'apis/main/type';
@@ -19,16 +19,18 @@ import NarrativeRecord from './NarrativeRecord';
 import { RECORD_TYPE } from '../type';
 import { StyledTabPanel } from '../style';
 import { initialNursingRecord } from '../initialStates';
+import MuiTextField from 'components/Form/MuiTextField';
+import { format } from 'date-fns';
 
 const NursingRecords = () => {
   const { student_uuid: user_id } = useUser();
   const { patientInfo, onUpdateNursingRecord } = usePatient();
   const { onSuccess, onFail, onRequired } = useNotification();
-  const { register, watch, setValue, handleSubmit, reset } = useForm({
-    defaultValues: { recordType: RECORD_TYPE.NANDA } as any,
-  });
+  const { register, watch, setValue, handleSubmit, reset } = useForm();
 
-  const currentTab = watch('recordType');
+  const [recordType, setRecordType] = useState(RECORD_TYPE.NANDA);
+  const [recordTime, setRecordTime] = useState<Date | null>(new Date());
+  const [isOpenTimePicker, setIsOpenTimePicker] = useState(false);
 
   // GetNandaDomains
   const [domainNames, setDomainNames] = useState<INames[]>([]);
@@ -37,10 +39,11 @@ const NursingRecords = () => {
     getNandaDomain().then(({ data }) => setDomainNames(data.names));
   }, [domainNames]);
 
-  // Submit
   const onSubmit = (data: any) => {
+    // 간호기록 시간 입력 체크
+    if (!recordTime) return onRequired('REQUIRED.RECORD.TIME');
+
     let contentKeys: string[] = [];
-    const { recordType } = data;
 
     // update content
     switch (recordType) {
@@ -85,6 +88,7 @@ const NursingRecords = () => {
       userId: user_id,
       patientId: patientInfo!.patient_id,
       recordType: Number(recordType),
+      recordTime: format(recordTime, 'yyyy-MM-dd HH:mm'),
       content: JSON.stringify(content),
     })
       .then(() => {
@@ -99,18 +103,33 @@ const NursingRecords = () => {
     <form onSubmit={handleSubmit(onSubmit)}>
       <Box
         display="flex"
+        alignItems="center"
         justifyContent="space-between"
         sx={{ mt: 2.5, mb: 1.5 }}
       >
         <Typography variant="subtitle2" fontSize={13}>
           간호 기록 작성
         </Typography>
-        {/* TODO Time Picker */}
+        <TimePicker
+          value={recordTime}
+          open={isOpenTimePicker}
+          onChange={setRecordTime}
+          onClose={() => setIsOpenTimePicker(false)}
+          renderInput={params => (
+            <MuiTextField
+              fullWidth={false}
+              sx={{ width: 130 }}
+              InputProps={{ readOnly: true }}
+              onClick={() => setIsOpenTimePicker(true)}
+              {...params}
+            />
+          )}
+        />
       </Box>
-      <TabContext value={currentTab}>
+      <TabContext value={recordType}>
         <TabList
           variant="fullWidth"
-          onChange={(_, value) => setValue('recordType', value)}
+          onChange={(_, value) => setRecordType(value)}
         >
           <Tab label="NANDA" value={RECORD_TYPE.NANDA} />
           <Tab label="SOAPIE" value={RECORD_TYPE.SOAPIE} />
