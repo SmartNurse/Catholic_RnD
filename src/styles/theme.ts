@@ -1,4 +1,4 @@
-import { createTheme } from '@mui/material/styles';
+import { createTheme, css } from '@mui/material/styles';
 
 const theme = createTheme({
   palette: {
@@ -35,28 +35,30 @@ const theme = createTheme({
 
   components: {
     MuiCssBaseline: {
-      styleOverrides: `
-        /* Hide scrollbar for Chrome, Safari and Opera */
-        ::-webkit-scrollbar {
-          display: none;
-        }
+      styleOverrides: {
+        ...css`
+          /* Hide scrollbar for Chrome, Safari and Opera */
+          ::-webkit-scrollbar {
+            display: none;
+          }
 
-        /* Hide scrollbar for IE, Edge and Firefox */
-        -ms-overflow-style: none;  /* IE and Edge */
-        scrollbar-width: none;  /* Firefox */
+          /* Hide scrollbar for IE, Edge and Firefox */
+          -ms-overflow-style: none; /* IE and Edge */
+          scrollbar-width: none; /* Firefox */
 
-        /* Hide input[type="number"] arrow button */
-        input[type="number"]::-webkit-outer-spin-button,
-        input[type="number"]::-webkit-inner-spin-button {
+          /* Hide input[type="number"] arrow button */
+          input[type='number']::-webkit-outer-spin-button,
+          input[type='number']::-webkit-inner-spin-button {
             -webkit-appearance: none;
             margin: 0;
-        }
-        
-        /* SnackbarItem styles */
-        .SnackbarItem-message {
-          white-space: pre-wrap;
-        }
-      `,
+          }
+
+          /* SnackbarItem styles */
+          .SnackbarItem-message {
+            white-space: pre-wrap;
+          }
+        `,
+      },
     },
     MuiButton: {
       defaultProps: {
@@ -117,6 +119,13 @@ const theme = createTheme({
             color: '#fff',
             backgroundColor: '#2264A8',
           },
+        },
+      },
+    },
+    MuiTypography: {
+      styleOverrides: {
+        root: {
+          wordBreak: 'break-word',
         },
       },
     },
