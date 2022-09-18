@@ -1,6 +1,7 @@
 import { useForm } from 'react-hook-form';
 import { useEffect, useState } from 'react';
-import { TabContext, TabList, TimePicker } from '@mui/lab';
+import { TabContext, TabList } from '@mui/lab';
+
 import { Box, Button, ButtonGroup, Tab, Typography } from '@mui/material';
 
 import { INames } from 'apis/main/type';
@@ -21,6 +22,7 @@ import { StyledTabPanel } from '../style';
 import { initialNursingRecord } from '../initialStates';
 import MuiTextField from 'components/Form/MuiTextField';
 import { format } from 'date-fns';
+import { TimePicker } from '@mui/x-date-pickers';
 
 const NursingRecords = () => {
   const { student_uuid: user_id } = useUser();
