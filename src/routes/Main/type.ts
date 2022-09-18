@@ -9,6 +9,7 @@ import { SaveFormProps } from 'components/MuiDialog/SaveForm';
 import {
   initialOutHospitalSurvey,
   initialHospitalizationSurvey,
+  initialMedicationSurvey,
 } from './initialStates';
 
 export enum ACTIVE_MENU {
@@ -65,5 +66,5 @@ export interface SurveyDialogProps<T> extends Omit<SaveFormProps, 'children'> {
 
 export type THospitalizationSurveyDefaultValues =
   typeof initialHospitalizationSurvey;
-
 export type TOutHospitalSurveyDefaultValues = typeof initialOutHospitalSurvey;
+export type TMedicationSurveyDefaultValues = typeof initialMedicationSurvey;

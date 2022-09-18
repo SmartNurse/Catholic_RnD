@@ -1,5 +1,4 @@
 import { Fragment } from 'react';
-import { Grid, Stack, Typography, TypographyProps } from '@mui/material';
 
 import Form from 'components/Form';
 import { IPatientInfo } from 'apis/admin/type';
@@ -7,6 +6,7 @@ import { IFormRegister } from 'routes/Main/type';
 
 import RowContainer from '../components/RowContainer';
 import RowContent from '../components/RowContent';
+import RowTable from '../components/RowTable';
 
 interface Props extends IFormRegister {
   nurseName: string;
@@ -16,12 +16,29 @@ interface Props extends IFormRegister {
 const PatientInfo = (props: Props) => {
   const { nurseName, patientInfo, register } = props;
 
-  const contactTitleProps: TypographyProps = {
-    variant: 'caption',
-    fontWeight: 'bold',
-  };
+  const columns = [
+    { id: 'contact', label: '비상 연락처', xs: 6 },
+    { id: 'name', label: '이름', xs: 3 },
+    { id: 'relation', label: '관계', xs: 3 },
+  ];
+  const rows = Array.from({ length: 3 }, (_, i) => {
+    const prefix = `contacts.${i}`;
+    return {
+      id: i,
+      contact: (
+        <Form.MuiTextField
+          type="tel"
+          required={!i}
+          {...register(`${prefix}.contact`)}
+        />
+      ),
+      name: <Form.MuiTextField required={!i} {...register(`${prefix}.name`)} />,
+      relation: (
+        <Form.MuiTextField required={!i} {...register(`${prefix}.relation`)} />
+      ),
+    };
+  });
 
-  const contacts = Array.from({ length: 3 }, (_, i) => i);
   return (
     <Fragment>
       <RowContainer>
@@ -71,43 +88,7 @@ const PatientInfo = (props: Props) => {
         </RowContent>
       </RowContainer>
       <RowContainer sx={{ mt: 'auto' }}>
-        <Grid item xs={6}>
-          <Stack spacing={1}>
-            <Typography {...contactTitleProps}>비상 연락처</Typography>
-            {contacts.map(i => (
-              <Form.MuiTextField
-                key={i}
-                type="tel"
-                required={!i}
-                {...register(`contacts.${i}.contact`)}
-              />
-            ))}
-          </Stack>
-        </Grid>
-        <Grid item xs={3}>
-          <Stack spacing={1}>
-            <Typography {...contactTitleProps}>이름</Typography>
-            {contacts.map(i => (
-              <Form.MuiTextField
-                key={i}
-                required={!i}
-                {...register(`contacts.${i}.name`)}
-              />
-            ))}
-          </Stack>
-        </Grid>
-        <Grid item xs={3}>
-          <Stack spacing={1}>
-            <Typography {...contactTitleProps}>관계</Typography>
-            {contacts.map(i => (
-              <Form.MuiTextField
-                key={i}
-                required={!i}
-                {...register(`contacts.${i}.relation`)}
-              />
-            ))}
-          </Stack>
-        </Grid>
+        <RowTable rows={rows} columns={columns} />
       </RowContainer>
     </Fragment>
   );

@@ -6,7 +6,9 @@ import {
   ICreateHospitalization,
   ICreateOutHospital,
   IGetHospitalization,
+  IGetMedication,
   IGetOutHospital,
+  IUpdateMedication,
 } from './type';
 
 export const getHospitalization = (request: IGetHospitalization) => {
@@ -26,5 +28,15 @@ export const getOutHospital = (request: IGetOutHospital) => {
 
 export const createOutHospital = (request: ICreateOutHospital) => {
   const url = `/survey/out/hospital`;
+  return apiGateway.post(url, camelcaseKeys(request));
+};
+
+export const getMedication = (request: IGetMedication) => {
+  const url = `/survey/medication?${formatToRequestParameter(request)}`;
+  return apiGateway.get(url);
+};
+
+export const updateMedication = (request: IUpdateMedication) => {
+  const url = `/survey/medication`;
   return apiGateway.post(url, camelcaseKeys(request));
 };

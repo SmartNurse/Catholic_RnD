@@ -93,9 +93,9 @@ const Hospitalization = (
     <MuiDialog.SaveForm
       title={title}
       isOpen={isOpen}
-      update_at={defaultValues.update_at}
       onClose={onClose}
       onSubmit={handleSubmit(onSubmit)}
+      update_at={defaultValues.update_at}
     >
       <Grid
         container

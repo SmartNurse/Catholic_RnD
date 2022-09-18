@@ -46,3 +46,27 @@ export interface ICreateOutHospital extends GetSurvey {
     education: string;
   };
 }
+export interface IGetMedication extends GetSurvey {}
+export interface IMedication {
+  pt_medication_uuid: number;
+  pt_medication_no: number;
+  patient_id: number;
+  medication_id: string;
+  medication_content: string;
+  medication_measure: string;
+  medication_amount: string;
+  medication_freq: string;
+  medication_note: string;
+  prescription_time: string;
+  medication_time: string | null;
+  medication_do: number;
+  create_at: string;
+  update_at: string;
+}
+
+export interface IUpdateMedication extends GetSurvey {
+  patientMedicationList: Pick<
+    IMedication,
+    'medication_do' | 'pt_medication_uuid' | 'medication_time'
+  >[];
+}

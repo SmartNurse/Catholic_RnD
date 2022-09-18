@@ -63,6 +63,7 @@ const OutHospital = (
       isOpen={isOpen}
       onClose={onClose}
       onSubmit={handleSubmit(onSubmit)}
+      update_at={defaultValues.update_at}
     >
       <Grid
         container

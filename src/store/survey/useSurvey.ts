@@ -34,7 +34,7 @@ const useSurvey = () => {
       if (isConfirm) return dispatch(closeSave());
     },
     // eslint-disable-next-line
-    [dispatch]
+    [dispatch, isSave]
   );
 
   const onCloseReadOnly = useCallback(

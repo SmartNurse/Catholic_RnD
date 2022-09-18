@@ -1,9 +1,10 @@
-import { getHospitalization, getOutHospital } from 'apis/survey';
+import { getHospitalization, getMedication, getOutHospital } from 'apis/survey';
 import { findKeyValueToObj } from 'utils/convert';
 
 import {
   initialOutHospitalSurvey,
   initialHospitalizationSurvey,
+  initialMedicationSurvey,
 } from '../initialStates';
 
 interface Props {
@@ -43,7 +44,13 @@ const useDefaultValues = ({ setDefaultValues, user_id }: Props) => {
     });
   };
 
-  return { onGetHospitalization, onGetOutHospital };
+  const onGetMedication = (patient_id: number) => {
+    getMedication({ user_id, patient_id }).then(({ data }) => {
+      convertDataToStates(data, initialMedicationSurvey);
+    });
+  };
+
+  return { onGetHospitalization, onGetOutHospital, onGetMedication };
 };
 
 export default useDefaultValues;

@@ -1,12 +1,15 @@
 import { useForm } from 'react-hook-form';
 import { useEffect, useState } from 'react';
 import { TabContext, TabList } from '@mui/lab';
-
+import { format } from 'date-fns';
+import { MobileTimePicker } from '@mui/x-date-pickers';
+import { AccessTime } from '@mui/icons-material';
 import { Box, Button, ButtonGroup, Tab, Typography } from '@mui/material';
 
 import { INames } from 'apis/main/type';
 import { getNandaDomain, createNursingRecord } from 'apis/main';
 import { findKeyValue } from 'utils/convert';
+import MuiTextField from 'components/Form/MuiTextField';
 import { requiredSelect } from 'components/Form/requiredItems';
 import useNotification from 'hooks/useNotification';
 import useUser from 'store/user/useUser';
@@ -20,9 +23,6 @@ import NarrativeRecord from './NarrativeRecord';
 import { RECORD_TYPE } from '../type';
 import { StyledTabPanel } from '../style';
 import { initialNursingRecord } from '../initialStates';
-import MuiTextField from 'components/Form/MuiTextField';
-import { format } from 'date-fns';
-import { TimePicker } from '@mui/x-date-pickers';
 
 const NursingRecords = () => {
   const { student_uuid: user_id } = useUser();
@@ -32,7 +32,6 @@ const NursingRecords = () => {
 
   const [recordType, setRecordType] = useState(RECORD_TYPE.NANDA);
   const [recordTime, setRecordTime] = useState<Date | null>(new Date());
-  const [isOpenTimePicker, setIsOpenTimePicker] = useState(false);
 
   // GetNandaDomains
   const [domainNames, setDomainNames] = useState<INames[]>([]);
@@ -112,18 +111,15 @@ const NursingRecords = () => {
         <Typography variant="subtitle2" fontSize={13}>
           간호 기록 작성
         </Typography>
-        <TimePicker
+        <MobileTimePicker
           value={recordTime}
-          open={isOpenTimePicker}
           onChange={setRecordTime}
-          onClose={() => setIsOpenTimePicker(false)}
           renderInput={params => (
             <MuiTextField
+              {...params}
               fullWidth={false}
               sx={{ width: 130 }}
-              InputProps={{ readOnly: true }}
-              onClick={() => setIsOpenTimePicker(true)}
-              {...params}
+              InputProps={{ endAdornment: <AccessTime /> }}
             />
           )}
         />

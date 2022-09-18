@@ -10,6 +10,7 @@ import useDefaultValues from './useDefaultValues';
 import OutHospital from './OutHospital';
 import Prescription from './Prescription';
 import Nurse from './Nurse';
+import Medication from './Medication';
 
 const Survey = () => {
   const { patientInfo } = usePatient();
@@ -17,10 +18,11 @@ const Survey = () => {
   const { onUpdateIsSave, surveyType, onCloseSave, onCloseReadOnly } =
     useSurvey();
   const [defaultValues, setDefaultValues] = useState(null);
-  const { onGetHospitalization, onGetOutHospital } = useDefaultValues({
-    user_id,
-    setDefaultValues,
-  });
+  const { onGetHospitalization, onGetOutHospital, onGetMedication } =
+    useDefaultValues({
+      user_id,
+      setDefaultValues,
+    });
 
   useEffect(() => {
     if (!patientInfo) return;
@@ -34,6 +36,9 @@ const Survey = () => {
         break;
       case ACTIVE_MENU.DISCHARGE:
         onGetOutHospital(patient_id);
+        break;
+      case ACTIVE_MENU.DOSAGE:
+        onGetMedication(patient_id);
         break;
       default:
         setDefaultValues(null);
@@ -88,6 +93,16 @@ const Survey = () => {
           {...dialogProps}
           defaultValues={null}
           onClose={onCloseReadOnly}
+        />
+      );
+    }
+    case ACTIVE_MENU.DOSAGE: {
+      if (!defaultValues) return null;
+      return (
+        <Medication
+          {...dialogProps}
+          defaultValues={defaultValues}
+          onClose={onCloseSave}
         />
       );
     }

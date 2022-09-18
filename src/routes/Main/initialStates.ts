@@ -134,3 +134,8 @@ export const initialOutHospitalSurvey = {
   ],
   education: '',
 };
+
+export const initialMedicationSurvey = {
+  update_at: '',
+  patient_medications: [],
+};
