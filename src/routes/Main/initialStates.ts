@@ -137,5 +137,5 @@ export const initialOutHospitalSurvey = {
 
 export const initialMedicationSurvey = {
   update_at: '',
-  patient_medications: [],
+  medication_surveys: [],
 };

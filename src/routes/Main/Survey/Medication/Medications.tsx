@@ -15,13 +15,13 @@ interface Props extends IFormValues, IFormWatch {}
 
 const Medications = (props: Props) => {
   const { watch, getValues, setValue } = props;
-  const medicationList: IMedication[] = getValues('patient_medications');
+  const medicationList: IMedication[] = getValues('medication_surveys');
 
   const columns = [
     { id: 'pt_medication_no', label: '약물처방번호', xs: 1.5 },
     { id: 'prescription_time', label: '처방시간', xs: 1 },
     { id: 'medication_time', label: '투여시간', xs: 1.5 },
-    { id: 'medication_id', label: '약물명', xs: 1.5 },
+    { id: 'medication_name', label: '약물명', xs: 1.5 },
     { id: 'medication_content', label: '함량', xs: 1 },
     { id: 'medication_measure', label: '단위', xs: 1 },
     { id: 'medication_amount', label: '투여량', xs: 1 },
@@ -30,10 +30,10 @@ const Medications = (props: Props) => {
     { id: 'medication_do', label: '투여완료', xs: 1 },
   ];
 
-  const rows = medicationList.map((item, i) => {
-    const prefix = `patient_medications.${i}`;
+  const rows = medicationList?.map((item, i) => {
+    const prefix = `medication_surveys.${i}`;
     return {
-      id: item.pt_medication_uuid,
+      id: item.pt_medication_no,
       pt_medication_no: (
         <Typography variant="caption">{item.pt_medication_no}</Typography>
       ),
@@ -53,8 +53,8 @@ const Medications = (props: Props) => {
           )}
         />
       ),
-      medication_id: (
-        <Typography variant="caption">{item.medication_id}</Typography>
+      medication_name: (
+        <Typography variant="caption">{item.medication_name}</Typography>
       ),
       medication_content: (
         <Typography variant="caption">{item.medication_content}</Typography>

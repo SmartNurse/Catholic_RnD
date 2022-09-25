@@ -48,10 +48,10 @@ export interface ICreateOutHospital extends GetSurvey {
 }
 export interface IGetMedication extends GetSurvey {}
 export interface IMedication {
-  pt_medication_uuid: number;
-  pt_medication_no: number;
   patient_id: number;
-  medication_id: string;
+  survey_uuid: number;
+  pt_medication_no: number;
+  medication_name: string;
   medication_content: string;
   medication_measure: string;
   medication_amount: string;
@@ -60,13 +60,11 @@ export interface IMedication {
   prescription_time: string;
   medication_time: string | null;
   medication_do: number;
-  create_at: string;
-  update_at: string;
 }
 
 export interface IUpdateMedication extends GetSurvey {
-  patientMedicationList: Pick<
+  infos: Pick<
     IMedication,
-    'medication_do' | 'pt_medication_uuid' | 'medication_time'
+    'survey_uuid' | 'pt_medication_no' | 'medication_time' | 'medication_do'
   >[];
 }

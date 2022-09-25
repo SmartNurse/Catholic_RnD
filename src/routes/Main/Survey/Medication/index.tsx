@@ -28,22 +28,24 @@ const Medication = (
   });
 
   const onSubmit = (data: TMedicationSurveyDefaultValues) => {
-    const { patient_medications } = data;
+    const { medication_surveys } = data;
 
     const request = {
       user_id,
       patient_id: patientInfo.patient_id,
-      patientMedicationList: patient_medications.map(
+      infos: medication_surveys.map(
         ({
-          pt_medication_uuid,
+          survey_uuid,
+          pt_medication_no,
           medication_time,
           medication_do,
         }: IMedication) => ({
-          medication_do,
-          pt_medication_uuid,
+          survey_uuid,
+          pt_medication_no,
           medication_time: medication_time
             ? format(new Date(medication_time), 'hh:mm a')
             : null,
+          medication_do,
         })
       ),
     };

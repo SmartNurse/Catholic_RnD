@@ -67,7 +67,7 @@ function SignUpForm(props: Props) {
                 required
                 fullWidth
                 type="email"
-                helperText="반드시 본인의 대학교 이메일을 입력해주세요."
+                helperText="본인의 대학교 이메일을 입력해주세요(없을시 개인 이메일을 입력해주세요)"
                 {...register('userEmail')}
               />
               <LoadingButton
