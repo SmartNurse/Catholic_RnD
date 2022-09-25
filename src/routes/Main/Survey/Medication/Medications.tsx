@@ -18,15 +18,15 @@ const Medications = (props: Props) => {
   const medicationList: IMedication[] = getValues('medication_surveys');
 
   const columns = [
-    { id: 'pt_medication_no', label: '약물처방번호', xs: 1.5 },
+    { id: 'pt_medication_no', label: '약물처방번호', xs: 1 },
     { id: 'prescription_time', label: '처방시간', xs: 1 },
     { id: 'medication_time', label: '투여시간', xs: 1.5 },
-    { id: 'medication_name', label: '약물명', xs: 1.5 },
-    { id: 'medication_content', label: '함량', xs: 1 },
-    { id: 'medication_measure', label: '단위', xs: 1 },
+    { id: 'medication_name', label: '약물명', xs: 1 },
+    { id: 'medication_content', label: '함량', xs: 0.5 },
+    { id: 'medication_measure', label: '단위', xs: 0.5 },
     { id: 'medication_amount', label: '투여량', xs: 1 },
     { id: 'medication_freq', label: '투여횟수', xs: 1 },
-    { id: 'medication_note', label: '상세투여방법', xs: 1.5 },
+    { id: 'medication_note', label: '상세투여방법', xs: 3 },
     { id: 'medication_do', label: '투여완료', xs: 1 },
   ];
 
