@@ -5,3 +5,6 @@ export const formatToRequestParameter = (params: object) =>
 
 export const formatToSearchQueryObject = (query: string) =>
   queryString.parse(query);
+
+export const formatWithComma = (num: number) =>
+  String(num).replace(/\B(?=(\d{3})+(?!\d))/g, ',');
