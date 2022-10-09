@@ -12,6 +12,8 @@ import {
   initialMedicationSurvey,
   initialRadiology,
   initialPathology,
+  initialBedScore,
+  initialFall,
 } from './initialStates';
 
 export enum ACTIVE_MENU {
@@ -73,3 +75,5 @@ export type TOutHospitalSurveyDefaultValues = typeof initialOutHospitalSurvey;
 export type TMedicationSurveyDefaultValues = typeof initialMedicationSurvey;
 export type TRadiologySurveyDefaultValues = typeof initialRadiology;
 export type TPathologySurveyDefaultValues = typeof initialPathology;
+export type TBedScoreSurveyDefaultValues = typeof initialBedScore;
+export type TFallDefaultValues = typeof initialFall;

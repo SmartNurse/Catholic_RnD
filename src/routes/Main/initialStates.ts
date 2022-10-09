@@ -147,3 +147,22 @@ export const initialRadiology = {
 export const initialPathology = {
   pathologies: [],
 };
+
+export const initialBedScore = {
+  date: '',
+  contents: '',
+  update_at: '',
+};
+
+export const initialFall = {
+  date: '',
+  contents: {
+    experience: '',
+    diagnosis: '',
+    walkingAids: '',
+    intravenousLine: '',
+    gait: '',
+    consciousness: '',
+  },
+  update_at: '',
+};

@@ -13,6 +13,7 @@ import Nurse from './Nurse';
 import Medication from './Medication';
 import Radiology from './Radiology';
 import Pathology from './Pathology';
+import Fall from './Fall';
 
 const Survey = () => {
   const { patientInfo } = usePatient();
@@ -21,43 +22,17 @@ const Survey = () => {
     useSurvey();
 
   const [defaultValues, setDefaultValues] = useState(null);
-  const {
-    onGetHospitalization,
-    onGetOutHospital,
-    onGetMedication,
-    onGetRadiology,
-    onGetPathology,
-  } = useDefaultValues({
+  const { onGetDefaultValues } = useDefaultValues({
     user_id,
     setDefaultValues,
   });
 
   useEffect(() => {
-    if (!patientInfo) return;
+    if (!patientInfo || !surveyType) return;
 
     onUpdateIsSave(false);
     const { patient_id } = patientInfo;
-
-    switch (surveyType) {
-      case ACTIVE_MENU.ADMISSION:
-        onGetHospitalization(patient_id);
-        break;
-      case ACTIVE_MENU.DISCHARGE:
-        onGetOutHospital(patient_id);
-        break;
-      case ACTIVE_MENU.DOSAGE:
-        onGetMedication(patient_id);
-        break;
-      case ACTIVE_MENU.IMAGING:
-        onGetRadiology(patient_id);
-        break;
-      case ACTIVE_MENU.CLINICAL_PATHOLOGY:
-        onGetPathology(patient_id);
-        break;
-      default:
-        setDefaultValues(null);
-        break;
-    }
+    onGetDefaultValues(patient_id, surveyType);
     // eslint-disable-next-line
   }, [surveyType, patientInfo]);
 
@@ -71,6 +46,16 @@ const Survey = () => {
     isOpen: Boolean(surveyType),
   };
 
+  const onCloseSaveSurvey = () => {
+    onCloseSave();
+    setDefaultValues(null);
+  };
+
+  const onCloseReadOnlySurvey = () => {
+    onCloseReadOnly();
+    setDefaultValues(null);
+  };
+
   switch (surveyType) {
     case ACTIVE_MENU.ADMISSION: {
       if (!defaultValues) return null;
@@ -78,7 +63,7 @@ const Survey = () => {
         <Hospitalization
           {...dialogProps}
           defaultValues={defaultValues}
-          onClose={onCloseSave}
+          onClose={onCloseSaveSurvey}
         />
       );
     }
@@ -88,7 +73,7 @@ const Survey = () => {
         <OutHospital
           {...dialogProps}
           defaultValues={defaultValues}
-          onClose={onCloseSave}
+          onClose={onCloseSaveSurvey}
         />
       );
     }
@@ -97,7 +82,7 @@ const Survey = () => {
         <Prescription
           {...dialogProps}
           defaultValues={null}
-          onClose={onCloseReadOnly}
+          onClose={onCloseReadOnlySurvey}
         />
       );
     }
@@ -106,7 +91,7 @@ const Survey = () => {
         <Nurse
           {...dialogProps}
           defaultValues={null}
-          onClose={onCloseReadOnly}
+          onClose={onCloseReadOnlySurvey}
         />
       );
     }
@@ -116,7 +101,7 @@ const Survey = () => {
         <Medication
           {...dialogProps}
           defaultValues={defaultValues}
-          onClose={onCloseSave}
+          onClose={onCloseSaveSurvey}
         />
       );
     }
@@ -126,7 +111,7 @@ const Survey = () => {
         <Radiology
           {...dialogProps}
           defaultValues={defaultValues}
-          onClose={onCloseReadOnly}
+          onClose={onCloseReadOnlySurvey}
         />
       );
     }
@@ -136,7 +121,28 @@ const Survey = () => {
         <Pathology
           {...dialogProps}
           defaultValues={defaultValues}
-          onClose={onCloseReadOnly}
+          onClose={onCloseReadOnlySurvey}
+        />
+      );
+    }
+    case ACTIVE_MENU.RISK_OF_BEDSORES: {
+      if (!defaultValues) return null;
+      return null;
+      // return (
+      // <BedScore
+      //   {...dialogProps}
+      //   defaultValues={defaultValues}
+      //   onClose={onCloseSaveSurvey}
+      // />
+      // );
+    }
+    case ACTIVE_MENU.FALL_RISK_ASSESSMENT: {
+      if (!defaultValues) return null;
+      return (
+        <Fall
+          {...dialogProps}
+          defaultValues={defaultValues}
+          onClose={onCloseSaveSurvey}
         />
       );
     }

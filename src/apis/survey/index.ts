@@ -7,6 +7,7 @@ import {
   ICreateHospitalization,
   ICreateOutHospital,
   IUpdateMedication,
+  IUpdateFall,
 } from './type';
 
 export const getHospitalization = (request: IGetSurvey) => {
@@ -47,4 +48,19 @@ export const getRadiology = (request: IGetSurvey) => {
 export const getPathology = (request: IGetSurvey) => {
   const url = `/survey/pathology?${formatToRequestParameter(request)}`;
   return apiGateway.get(url);
+};
+
+export const getBedScore = (request: IGetSurvey) => {
+  const url = `/survey/bedsore?${formatToRequestParameter(request)}`;
+  return apiGateway.get(url);
+};
+
+export const getFall = (request: IGetSurvey) => {
+  const url = `/survey/fall?${formatToRequestParameter(request)}`;
+  return apiGateway.get(url);
+};
+
+export const updateFall = (request: IUpdateFall) => {
+  const url = `/survey/fall`;
+  return apiGateway.post(url, camelcaseKeys(request));
 };

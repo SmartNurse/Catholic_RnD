@@ -73,7 +73,7 @@ const OutHospital = (
         columnSpacing={3}
         sx={{ py: 5, px: 1 }}
       >
-        <PatientInfo register={register} patientInfo={patientInfo} />
+        <PatientInfo register={register} {...patientInfo} />
         <DefaultInfo
           register={register}
           setValue={setValue}

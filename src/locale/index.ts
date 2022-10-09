@@ -169,6 +169,19 @@ const locale = {
     'OUT.HOSPITAL.SHOWER.2': '통목욕',
     'OUT.HOSPITAL.ACTIVITY.1': '제한',
     'OUT.HOSPITAL.ACTIVITY.2': '제한없음',
+
+    // fall
+    'FALL.0': '없음 (0점)',
+    'FALL.15': '있음 (15점)',
+    'FALL.25': '있음 (25점)',
+    'FALL.20': '있음 (20점)',
+    'FALL.WALKING.AIDS.0': '없음/침상안정/간호보조 (0점)',
+    'FALL.WALKING.AIDS.15': '목발/지팡이/보행기 (15점)',
+    'FALL.WALKING.AIDS.30': '기구를 잡고 이동 (30점)',
+    'FALL.GAIT.0': '정상/침상안정/부동 (0점)',
+    'FALL.GAIT.10': '허약 (10점)',
+    'FALL.GAIT.20': '장애 (20점)',
+    'REQUIRED.FALL': '모든 선택지를 선택해주세요',
   },
 };
 
