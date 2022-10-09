@@ -139,3 +139,11 @@ export const initialMedicationSurvey = {
   update_at: '',
   medication_surveys: [],
 };
+
+export const initialRadiology = {
+  radiologies: [],
+};
+
+export const initialPathology = {
+  pathologies: [],
+};

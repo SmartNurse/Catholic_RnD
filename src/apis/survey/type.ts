@@ -3,14 +3,12 @@ import {
   initialOutHospitalSurvey,
 } from '../../routes/Main/initialStates';
 
-interface GetSurvey {
+export interface IGetSurvey {
   user_id: number;
   patient_id: number;
 }
 
-export interface IGetHospitalization extends GetSurvey {}
-
-export interface ICreateHospitalization extends GetSurvey {
+export interface ICreateHospitalization extends IGetSurvey {
   hospitalization_survey: {
     patient_name: string;
     age: string;
@@ -32,9 +30,7 @@ export interface ICreateHospitalization extends GetSurvey {
   };
 }
 
-export interface IGetOutHospital extends GetSurvey {}
-
-export interface ICreateOutHospital extends GetSurvey {
+export interface ICreateOutHospital extends IGetSurvey {
   out_hospital_survey: {
     patient_name: string;
     patient_id: number;
@@ -46,7 +42,6 @@ export interface ICreateOutHospital extends GetSurvey {
     education: string;
   };
 }
-export interface IGetMedication extends GetSurvey {}
 export interface IMedication {
   patient_id: number;
   survey_uuid: number;
@@ -62,9 +57,36 @@ export interface IMedication {
   medication_do: number;
 }
 
-export interface IUpdateMedication extends GetSurvey {
+export interface IUpdateMedication extends IGetSurvey {
   infos: Pick<
     IMedication,
-    'survey_uuid' | 'pt_medication_no' | 'medication_time' | 'medication_do'
+    'survey_uuid' | 'medication_time' | 'medication_do'
   >[];
+}
+
+export interface IRadiology {
+  pt_radiology_no: number;
+  fee_kor: string;
+  fee_eng: string;
+  radiology_result: string;
+  radiology_note: string;
+  radiology_time: string;
+  radiology_image1?: string;
+  radiology_image2?: string;
+  radiology_image3?: string;
+  radiology_image4?: string;
+  radiology_image5?: string;
+  create_at: string;
+  update_at: string;
+}
+
+export interface IPathology {
+  pt_pathology_no: number;
+  pathology_time: string;
+  fee_id: string;
+  fee_kor: string;
+  fee_eng: string;
+  pathology_result: string;
+  pathology_range: string;
+  pathology_note: string;
 }

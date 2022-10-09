@@ -1,15 +1,15 @@
 import { Fragment } from 'react';
 import { AccessTime } from '@mui/icons-material';
-import { Checkbox, Typography } from '@mui/material';
+import { Checkbox, Grid } from '@mui/material';
 import { MobileTimePicker } from '@mui/x-date-pickers';
 
 import { IMedication } from 'apis/survey/type';
 import { IFormValues, IFormWatch } from 'routes/Main/type';
 import MuiTextField from 'components/Form/MuiTextField';
 
-import RowTable from '../components/RowTable';
-import RowContainer from '../components/RowContainer';
 import SectionTitle from '../components/SectionTitle';
+import MuiTable from 'components/MuiTable';
+import { formatStringToDate } from 'utils/formatting';
 
 interface Props extends IFormValues, IFormWatch {}
 
@@ -18,66 +18,65 @@ const Medications = (props: Props) => {
   const medicationList: IMedication[] = getValues('medication_surveys');
 
   const columns = [
-    { id: 'pt_medication_no', label: '약물처방번호', xs: 1 },
-    { id: 'prescription_time', label: '처방시간', xs: 1 },
-    { id: 'medication_time', label: '투여시간', xs: 1.5 },
-    { id: 'medication_name', label: '약물명', xs: 1 },
-    { id: 'medication_content', label: '함량', xs: 0.5 },
-    { id: 'medication_measure', label: '단위', xs: 0.5 },
-    { id: 'medication_amount', label: '투여량', xs: 1 },
-    { id: 'medication_freq', label: '투여횟수', xs: 1 },
-    { id: 'medication_note', label: '상세투여방법', xs: 3 },
-    { id: 'medication_do', label: '투여완료', xs: 1 },
+    { fieldId: 'pt_medication_no', label: '약물처방번호' },
+    { fieldId: 'prescription_time', label: '처방시간' },
+    { fieldId: 'medication_time', label: '투여시간' },
+    { fieldId: 'medication_name', label: '약물명', width: 150 },
+    { fieldId: 'medication_content', label: '함량' },
+    { fieldId: 'medication_measure', label: '단위' },
+    { fieldId: 'medication_amount', label: '투여량' },
+    { fieldId: 'medication_freq', label: '투여횟수' },
+    { fieldId: 'medication_note', label: '상세투여방법', width: 250 },
+    { fieldId: 'medication_do', label: '투여완료' },
   ];
 
-  const rows = medicationList?.map((item, i) => {
-    const prefix = `medication_surveys.${i}`;
+  const getRowEditing = (prefix: string) => {
+    const medicationTime = watch(`${prefix}.medication_time`);
+    const onChangeMedicationTime = (value: any) =>
+      setValue(`${prefix}.medication_time`, value);
+    const medicationDo = Boolean(watch(`${prefix}.medication_do`));
+    const onChangeMedicationDo = (_: any, checked: boolean) =>
+      setValue(`${prefix}.medication_do`, checked ? 1 : 0);
+
     return {
+      medicationTime,
+      onChangeMedicationTime,
+      medicationDo,
+      onChangeMedicationDo,
+    };
+  };
+
+  const rows = medicationList?.map((item, i) => {
+    const {
+      medicationTime,
+      onChangeMedicationTime,
+      medicationDo,
+      onChangeMedicationDo,
+    } = getRowEditing(`medication_surveys.${i}`);
+
+    return {
+      ...item,
       id: item.pt_medication_no,
-      pt_medication_no: (
-        <Typography variant="caption">{item.pt_medication_no}</Typography>
-      ),
-      prescription_time: (
-        <Typography variant="caption">{item.prescription_time}</Typography>
-      ),
+      prescription_time: formatStringToDate(item.prescription_time, 'hh:mm a'),
       medication_time: (
         <MobileTimePicker
-          value={watch(`${prefix}.medication_time`)}
-          onChange={value => setValue(`${prefix}.medication_time`, value)}
+          value={medicationTime}
+          onChange={onChangeMedicationTime}
           renderInput={params => (
             <MuiTextField
               {...params}
               placeholder="00:00 pm"
               InputProps={{ endAdornment: <AccessTime /> }}
+              sx={{ width: 150 }}
             />
           )}
         />
       ),
-      medication_name: (
-        <Typography variant="caption">{item.medication_name}</Typography>
-      ),
-      medication_content: (
-        <Typography variant="caption">{item.medication_content}</Typography>
-      ),
-      medication_measure: (
-        <Typography variant="caption">{item.medication_measure}</Typography>
-      ),
-      medication_amount: (
-        <Typography variant="caption">{item.medication_amount}</Typography>
-      ),
-      medication_freq: (
-        <Typography variant="caption">{item.medication_freq}</Typography>
-      ),
-      medication_note: (
-        <Typography variant="caption">{item.medication_note}</Typography>
-      ),
       medication_do: (
         <Checkbox
           size="small"
-          checked={Boolean(watch(`${prefix}.medication_do`))}
-          onChange={(_, checked) =>
-            setValue(`${prefix}.medication_do`, checked ? 1 : 0)
-          }
+          checked={medicationDo}
+          onChange={onChangeMedicationDo}
         />
       ),
     };
@@ -86,10 +85,9 @@ const Medications = (props: Props) => {
   return (
     <Fragment>
       <SectionTitle title="처방 내역" />
-
-      <RowContainer ratio={12}>
-        <RowTable rows={rows} columns={columns} />
-      </RowContainer>
+      <Grid item xs={12}>
+        <MuiTable columns={columns} rows={rows} />
+      </Grid>
     </Fragment>
   );
 };

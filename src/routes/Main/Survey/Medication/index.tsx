@@ -1,4 +1,3 @@
-import { format } from 'date-fns';
 import { Grid } from '@mui/material';
 import { useForm } from 'react-hook-form';
 
@@ -34,17 +33,9 @@ const Medication = (
       user_id,
       patient_id: patientInfo.patient_id,
       infos: medication_surveys.map(
-        ({
+        ({ survey_uuid, medication_time, medication_do }: IMedication) => ({
           survey_uuid,
-          pt_medication_no,
           medication_time,
-          medication_do,
-        }: IMedication) => ({
-          survey_uuid,
-          pt_medication_no,
-          medication_time: medication_time
-            ? format(new Date(medication_time), 'hh:mm a')
-            : null,
           medication_do,
         })
       ),
@@ -61,7 +52,7 @@ const Medication = (
   };
 
   return (
-    <MuiDialog.SaveForm
+    <MuiDialog.SurveyForm
       title={title}
       isOpen={isOpen}
       onClose={onClose}
@@ -75,10 +66,10 @@ const Medication = (
         columnSpacing={3}
         sx={{ py: 5, px: 1 }}
       >
-        <PatientInfo patientInfo={patientInfo} />
+        <PatientInfo {...patientInfo} />
         <Medications watch={watch} getValues={getValues} setValue={setValue} />
       </Grid>
-    </MuiDialog.SaveForm>
+    </MuiDialog.SurveyForm>
   );
 };
 

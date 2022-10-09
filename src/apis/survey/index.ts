@@ -3,15 +3,13 @@ import camelcaseKeys from 'camelcase-keys';
 import { formatToRequestParameter } from 'utils/formatting';
 import apiGateway from '../axios';
 import {
+  IGetSurvey,
   ICreateHospitalization,
   ICreateOutHospital,
-  IGetHospitalization,
-  IGetMedication,
-  IGetOutHospital,
   IUpdateMedication,
 } from './type';
 
-export const getHospitalization = (request: IGetHospitalization) => {
+export const getHospitalization = (request: IGetSurvey) => {
   const url = `/survey/hospital?${formatToRequestParameter(request)}`;
   return apiGateway.get(url);
 };
@@ -21,7 +19,7 @@ export const createHospitalization = (request: ICreateHospitalization) => {
   return apiGateway.post(url, camelcaseKeys(request));
 };
 
-export const getOutHospital = (request: IGetOutHospital) => {
+export const getOutHospital = (request: IGetSurvey) => {
   const url = `/survey/out/hospital?${formatToRequestParameter(request)}`;
   return apiGateway.get(url);
 };
@@ -31,7 +29,7 @@ export const createOutHospital = (request: ICreateOutHospital) => {
   return apiGateway.post(url, camelcaseKeys(request));
 };
 
-export const getMedication = (request: IGetMedication) => {
+export const getMedication = (request: IGetSurvey) => {
   const url = `/survey/medication?${formatToRequestParameter(request)}`;
   return apiGateway.get(url);
 };
@@ -39,4 +37,14 @@ export const getMedication = (request: IGetMedication) => {
 export const updateMedication = (request: IUpdateMedication) => {
   const url = `/survey/medication`;
   return apiGateway.post(url, camelcaseKeys(request));
+};
+
+export const getRadiology = (request: IGetSurvey) => {
+  const url = `/survey/radiology?${formatToRequestParameter(request)}`;
+  return apiGateway.get(url);
+};
+
+export const getPathology = (request: IGetSurvey) => {
+  const url = `/survey/pathology?${formatToRequestParameter(request)}`;
+  return apiGateway.get(url);
 };

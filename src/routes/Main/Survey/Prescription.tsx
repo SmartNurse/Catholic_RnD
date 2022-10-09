@@ -9,7 +9,7 @@ const Prescription = (props: SurveyDialogProps<null>) => {
   const { title, isOpen, patientInfo, onClose } = props;
 
   return (
-    <MuiDialog.SaveForm title={title} isOpen={isOpen} onClose={onClose}>
+    <MuiDialog.SurveyForm title={title} isOpen={isOpen} onClose={onClose}>
       <Box component="section" sx={{ py: 5, px: 1 }}>
         <Typography variant="caption" component="p" color="#00000080" mb={1}>
           처방일시 {today}
@@ -18,7 +18,7 @@ const Prescription = (props: SurveyDialogProps<null>) => {
           {patientInfo.medical_note}
         </Typography>
       </Box>
-    </MuiDialog.SaveForm>
+    </MuiDialog.SurveyForm>
   );
 };
 

@@ -122,6 +122,13 @@ const theme = createTheme({
         },
       },
     },
+    MuiTableCell: {
+      styleOverrides: {
+        root: {
+          borderBottom: 0,
+        },
+      },
+    },
     MuiTypography: {
       styleOverrides: {
         root: {

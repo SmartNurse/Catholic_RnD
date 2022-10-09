@@ -1,21 +1,22 @@
 import { Fragment } from 'react';
+import { Grid } from '@mui/material';
 
 import Form from 'components/Form';
+import MuiTable from 'components/MuiTable';
 import { IFormRegister } from 'routes/Main/type';
 
 import RowContainer from '../components/RowContainer';
 import SectionTitle from '../components/SectionTitle';
-import RowTable from '../components/RowTable';
 
 const CheckReservations = (props: IFormRegister) => {
   const { register } = props;
 
   const columns = [
-    { id: 'name', label: '검사명', xs: 2.4 },
-    { id: 'destination', label: '장소', xs: 2.4 },
-    { id: 'warning', label: '주의사항', xs: 2.4 },
-    { id: 'call_number', label: '전화번호', xs: 2.4 },
-    { id: 'date', label: '예약일시', xs: 2.4 },
+    { fieldId: 'name', label: '검사명' },
+    { fieldId: 'destination', label: '장소' },
+    { fieldId: 'warning', label: '주의사항' },
+    { fieldId: 'call_number', label: '전화번호' },
+    { fieldId: 'date', label: '예약일시' },
   ];
   const rows = Array.from({ length: 2 }, (_, i) => {
     const prefix = `check_reservations.${i}`;
@@ -53,7 +54,9 @@ const CheckReservations = (props: IFormRegister) => {
       <SectionTitle title="검사 예약" />
 
       <RowContainer xs={12}>
-        <RowTable rows={rows} columns={columns} />
+        <Grid item xs={12}>
+          <MuiTable columns={columns} rows={rows} />
+        </Grid>
       </RowContainer>
     </Fragment>
   );

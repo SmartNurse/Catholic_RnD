@@ -5,11 +5,13 @@ import {
   UseFormWatch,
 } from 'react-hook-form';
 import { IPatientInfo } from 'apis/admin/type';
-import { SaveFormProps } from 'components/MuiDialog/SaveForm';
+import { SurveyFormProps } from 'components/MuiDialog/SurveyForm';
 import {
   initialOutHospitalSurvey,
   initialHospitalizationSurvey,
   initialMedicationSurvey,
+  initialRadiology,
+  initialPathology,
 } from './initialStates';
 
 export enum ACTIVE_MENU {
@@ -57,7 +59,8 @@ export interface IFormWatch {
   watch: UseFormWatch<any>;
 }
 
-export interface SurveyDialogProps<T> extends Omit<SaveFormProps, 'children'> {
+export interface SurveyDialogProps<T>
+  extends Omit<SurveyFormProps, 'children'> {
   user_id: number;
   nurseName: string;
   patientInfo: IPatientInfo;
@@ -68,3 +71,5 @@ export type THospitalizationSurveyDefaultValues =
   typeof initialHospitalizationSurvey;
 export type TOutHospitalSurveyDefaultValues = typeof initialOutHospitalSurvey;
 export type TMedicationSurveyDefaultValues = typeof initialMedicationSurvey;
+export type TRadiologySurveyDefaultValues = typeof initialRadiology;
+export type TPathologySurveyDefaultValues = typeof initialPathology;

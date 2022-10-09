@@ -11,18 +11,26 @@ import OutHospital from './OutHospital';
 import Prescription from './Prescription';
 import Nurse from './Nurse';
 import Medication from './Medication';
+import Radiology from './Radiology';
+import Pathology from './Pathology';
 
 const Survey = () => {
   const { patientInfo } = usePatient();
   const { name, student_uuid: user_id } = useUser();
   const { onUpdateIsSave, surveyType, onCloseSave, onCloseReadOnly } =
     useSurvey();
+
   const [defaultValues, setDefaultValues] = useState(null);
-  const { onGetHospitalization, onGetOutHospital, onGetMedication } =
-    useDefaultValues({
-      user_id,
-      setDefaultValues,
-    });
+  const {
+    onGetHospitalization,
+    onGetOutHospital,
+    onGetMedication,
+    onGetRadiology,
+    onGetPathology,
+  } = useDefaultValues({
+    user_id,
+    setDefaultValues,
+  });
 
   useEffect(() => {
     if (!patientInfo) return;
@@ -39,6 +47,12 @@ const Survey = () => {
         break;
       case ACTIVE_MENU.DOSAGE:
         onGetMedication(patient_id);
+        break;
+      case ACTIVE_MENU.IMAGING:
+        onGetRadiology(patient_id);
+        break;
+      case ACTIVE_MENU.CLINICAL_PATHOLOGY:
+        onGetPathology(patient_id);
         break;
       default:
         setDefaultValues(null);
@@ -103,6 +117,26 @@ const Survey = () => {
           {...dialogProps}
           defaultValues={defaultValues}
           onClose={onCloseSave}
+        />
+      );
+    }
+    case ACTIVE_MENU.IMAGING: {
+      if (!defaultValues) return null;
+      return (
+        <Radiology
+          {...dialogProps}
+          defaultValues={defaultValues}
+          onClose={onCloseReadOnly}
+        />
+      );
+    }
+    case ACTIVE_MENU.CLINICAL_PATHOLOGY: {
+      if (!defaultValues) return null;
+      return (
+        <Pathology
+          {...dialogProps}
+          defaultValues={defaultValues}
+          onClose={onCloseReadOnly}
         />
       );
     }

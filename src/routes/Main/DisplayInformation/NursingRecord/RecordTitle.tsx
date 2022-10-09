@@ -1,5 +1,5 @@
-import { format } from 'date-fns/esm';
 import { Grid, Typography } from '@mui/material';
+import { formatStringToDate } from 'utils/formatting';
 
 interface Props {
   title: string;
@@ -13,8 +13,8 @@ const RecordTitle = (props: Props) => {
   const { title, nurseName, create_at, record_time, actionButtons } = props;
 
   const dateTime = () => {
-    const createAt = format(new Date(create_at), 'yyyy-MM-dd');
-    const recordTime = format(new Date(record_time), 'hh:mm a');
+    const createAt = formatStringToDate(create_at, 'yyyy-MM-dd');
+    const recordTime = formatStringToDate(record_time, 'hh:mm a');
     return `${createAt} ${recordTime}`;
   };
 

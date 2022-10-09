@@ -15,6 +15,9 @@ const PatientInfo = (props: IPatientInfo) => {
       <RowContent title="환자등록번호" titleRatio={1} childrenRatio={2}>
         <Form.MuiTextField value={patient_id} InputProps={{ readOnly: true }} />
       </RowContent>
+      <RowContent title="나이" titleRatio={1} childrenRatio={2}>
+        <Form.MuiTextField value={age} InputProps={{ readOnly: true }} />
+      </RowContent>
       <RowContent title="성별" titleRatio={1} childrenRatio={2}>
         <Form.MuiRadioGroup
           i18nKey="GENDER"
@@ -22,9 +25,6 @@ const PatientInfo = (props: IPatientInfo) => {
           value={gender}
           defaultValue={gender}
         />
-      </RowContent>
-      <RowContent title="나이" titleRatio={1} childrenRatio={2}>
-        <Form.MuiTextField value={age} InputProps={{ readOnly: true }} />
       </RowContent>
       <RowContent title="병동" titleRatio={1} childrenRatio={2}>
         <Form.MuiTextField value={department} InputProps={{ readOnly: true }} />

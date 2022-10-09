@@ -1,11 +1,11 @@
 import Confirm from './Confirm';
 import ConfirmButton from './ConfirmButton';
-import SaveForm from './SaveForm';
+import SurveyForm from './SurveyForm';
 
 const MuiDialog = {
   Confirm,
   ConfirmButton,
-  SaveForm,
+  SurveyForm,
 };
 
 export default MuiDialog;

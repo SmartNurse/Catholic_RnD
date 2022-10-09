@@ -10,7 +10,7 @@ import {
   useTheme,
 } from '@mui/material';
 
-export interface SaveFormProps {
+export interface SurveyFormProps {
   title: string;
   isOpen?: boolean;
   onClose: () => void;
@@ -19,7 +19,7 @@ export interface SaveFormProps {
   onSubmit?: React.FormEventHandler<HTMLFormElement>;
 }
 
-function SaveForm(props: SaveFormProps) {
+function SurveyForm(props: SurveyFormProps) {
   const { zIndex, breakpoints } = useTheme();
   const isMobile = useMediaQuery(breakpoints.down('sm'));
 
@@ -77,4 +77,4 @@ function SaveForm(props: SaveFormProps) {
   );
 }
 
-export default SaveForm;
+export default SurveyForm;

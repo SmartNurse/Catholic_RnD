@@ -90,7 +90,7 @@ const Hospitalization = (
   };
 
   return (
-    <MuiDialog.SaveForm
+    <MuiDialog.SurveyForm
       title={title}
       isOpen={isOpen}
       onClose={onClose}
@@ -148,7 +148,7 @@ const Hospitalization = (
           getValues={getValues}
         />
       </Grid>
-    </MuiDialog.SaveForm>
+    </MuiDialog.SurveyForm>
   );
 };
 

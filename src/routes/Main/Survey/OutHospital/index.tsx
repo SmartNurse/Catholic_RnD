@@ -56,9 +56,10 @@ const OutHospital = (
       })
       .catch(e => onFail('퇴원기록지 저장에 실패하였습니다.', e));
   };
+  console.log(defaultValues);
 
   return (
-    <MuiDialog.SaveForm
+    <MuiDialog.SurveyForm
       title={title}
       isOpen={isOpen}
       onClose={onClose}
@@ -83,7 +84,7 @@ const OutHospital = (
         <CheckReservations register={register} />
         <Education register={register} />
       </Grid>
-    </MuiDialog.SaveForm>
+    </MuiDialog.SurveyForm>
   );
 };
 
