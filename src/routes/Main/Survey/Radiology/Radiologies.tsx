@@ -22,6 +22,7 @@ const Radiologies = ({ getValues }: Props) => {
 
   const columns = [
     { fieldId: 'pt_radiology_no', label: '검사번호' },
+    { fieldId: 'radiology_time', label: '검사시간' },
     { fieldId: 'fee_kor', label: '검사명(한글)', width: 150 },
     { fieldId: 'fee_eng', label: '검사명(영문)', width: 150 },
     { fieldId: 'radiology_result', label: '판독결과', width: 250 },
