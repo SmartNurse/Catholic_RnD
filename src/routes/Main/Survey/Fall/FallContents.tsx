@@ -171,13 +171,13 @@ const FallContents = (props: Props) => {
         <Box display={'flex'} flexDirection={'column'} alignItems={'flex-end'}>
           <Typography
             gutterBottom
-            minWidth={114}
+            minWidth={115}
             fontWeight={700}
             variant="subtitle1"
           >
             합계 : {sumValues}점
           </Typography>
-          <Typography color="#2264A8" variant="caption">
+          <Typography minWidth={115} color="#2264A8" variant="caption">
             <Typography variant="inherit">
               <Box component={'strong'} mr={0.5}>
                 고위험군:
