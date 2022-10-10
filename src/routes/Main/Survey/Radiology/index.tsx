@@ -2,15 +2,12 @@ import { Grid } from '@mui/material';
 import { useForm } from 'react-hook-form';
 
 import MuiDialog from 'components/MuiDialog';
-import {
-  TRadiologySurveyDefaultValues,
-  SurveyDialogProps,
-} from 'routes/Main/type';
+import { TRadiologyDefaultValues, SurveyDialogProps } from 'routes/Main/type';
 
 import PatientInfo from './PatientInfo';
 import Radiologies from './Radiologies';
 
-const Radiology = (props: SurveyDialogProps<TRadiologySurveyDefaultValues>) => {
+const Radiology = (props: SurveyDialogProps<TRadiologyDefaultValues>) => {
   const { title, isOpen, defaultValues, patientInfo, onClose } = props;
   const { getValues } = useForm({ defaultValues });
 

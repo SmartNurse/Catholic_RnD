@@ -6,10 +6,7 @@ import { createOutHospital } from 'apis/survey';
 import useSurvey from 'store/survey/useSurvey';
 import useNotification from 'hooks/useNotification';
 import MuiDialog from 'components/MuiDialog';
-import {
-  TOutHospitalSurveyDefaultValues,
-  SurveyDialogProps,
-} from 'routes/Main/type';
+import { TOutHospitalDefaultValues, SurveyDialogProps } from 'routes/Main/type';
 
 import PatientInfo from './PatientInfo';
 import DefaultInfo from './DefaultInfo';
@@ -18,9 +15,7 @@ import OutPatients from './OutPatients';
 import Education from './Education';
 import CheckReservations from './CheckReservations';
 
-const OutHospital = (
-  props: SurveyDialogProps<TOutHospitalSurveyDefaultValues>
-) => {
+const OutHospital = (props: SurveyDialogProps<TOutHospitalDefaultValues>) => {
   const { title, isOpen, defaultValues, user_id, patientInfo, onClose } = props;
 
   const { onUpdateIsSave } = useSurvey();
@@ -30,7 +25,7 @@ const OutHospital = (
     defaultValues,
   });
 
-  const onSubmit = (data: TOutHospitalSurveyDefaultValues) => {
+  const onSubmit = (data: TOutHospitalDefaultValues) => {
     const { default_info } = data;
 
     const request = {

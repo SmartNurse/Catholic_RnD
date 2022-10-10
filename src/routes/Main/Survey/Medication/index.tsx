@@ -5,18 +5,13 @@ import { IMedication } from 'apis/survey/type';
 import useSurvey from 'store/survey/useSurvey';
 import useNotification from 'hooks/useNotification';
 import MuiDialog from 'components/MuiDialog';
-import {
-  TMedicationSurveyDefaultValues,
-  SurveyDialogProps,
-} from 'routes/Main/type';
+import { TMedicationDefaultValues, SurveyDialogProps } from 'routes/Main/type';
 
 import PatientInfo from './PatientInfo';
 import Medications from './Medications';
 import { updateMedication } from 'apis/survey';
 
-const Medication = (
-  props: SurveyDialogProps<TMedicationSurveyDefaultValues>
-) => {
+const Medication = (props: SurveyDialogProps<TMedicationDefaultValues>) => {
   const { title, isOpen, defaultValues, user_id, patientInfo, onClose } = props;
 
   const { onUpdateIsSave } = useSurvey();
@@ -26,7 +21,7 @@ const Medication = (
     defaultValues,
   });
 
-  const onSubmit = (data: TMedicationSurveyDefaultValues) => {
+  const onSubmit = (data: TMedicationDefaultValues) => {
     const { medication_surveys } = data;
 
     const request = {

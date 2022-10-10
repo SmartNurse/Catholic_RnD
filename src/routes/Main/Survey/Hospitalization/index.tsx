@@ -3,7 +3,7 @@ import { useForm } from 'react-hook-form';
 
 import {
   SurveyDialogProps,
-  THospitalizationSurveyDefaultValues,
+  THospitalizationDefaultValues,
 } from 'routes/Main/type';
 import MuiDialog from 'components/MuiDialog';
 import { findKeyValueToStr } from 'utils/convert';
@@ -23,7 +23,7 @@ import Education from './Education';
 import OutHospitalPlan from './OutHospitalPlan';
 
 const Hospitalization = (
-  props: SurveyDialogProps<THospitalizationSurveyDefaultValues>
+  props: SurveyDialogProps<THospitalizationDefaultValues>
 ) => {
   const {
     title,
@@ -42,7 +42,7 @@ const Hospitalization = (
     defaultValues,
   });
 
-  const onSubmit = (data: THospitalizationSurveyDefaultValues) => {
+  const onSubmit = (data: THospitalizationDefaultValues) => {
     const {
       body_status,
       disease_history,

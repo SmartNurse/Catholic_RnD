@@ -69,11 +69,10 @@ export interface SurveyDialogProps<T>
   defaultValues: T;
 }
 
-export type THospitalizationSurveyDefaultValues =
-  typeof initialHospitalizationSurvey;
-export type TOutHospitalSurveyDefaultValues = typeof initialOutHospitalSurvey;
-export type TMedicationSurveyDefaultValues = typeof initialMedicationSurvey;
-export type TRadiologySurveyDefaultValues = typeof initialRadiology;
-export type TPathologySurveyDefaultValues = typeof initialPathology;
-export type TBedScoreSurveyDefaultValues = typeof initialBedScore;
+export type THospitalizationDefaultValues = typeof initialHospitalizationSurvey;
+export type TOutHospitalDefaultValues = typeof initialOutHospitalSurvey;
+export type TMedicationDefaultValues = typeof initialMedicationSurvey;
+export type TRadiologyDefaultValues = typeof initialRadiology;
+export type TPathologyDefaultValues = typeof initialPathology;
+export type TBedScoreDefaultValues = typeof initialBedScore;
 export type TFallDefaultValues = typeof initialFall;

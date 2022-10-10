@@ -1,16 +1,16 @@
 import { Grid } from '@mui/material';
 import { useForm } from 'react-hook-form';
 
-import { updateFall } from 'apis/survey';
+import { updateBedScore } from 'apis/survey';
 import useSurvey from 'store/survey/useSurvey';
 import useNotification from 'hooks/useNotification';
 import MuiDialog from 'components/MuiDialog';
-import { TFallDefaultValues, SurveyDialogProps } from 'routes/Main/type';
+import { TBedScoreDefaultValues, SurveyDialogProps } from 'routes/Main/type';
 
 import PatientInfo from './PatientInfo';
-import FallContents from './FallContents';
+import BedScoreContents from './BedScoreContents';
 
-const Fall = (props: SurveyDialogProps<TFallDefaultValues>) => {
+const BedScore = (props: SurveyDialogProps<TBedScoreDefaultValues>) => {
   const { title, isOpen, defaultValues, user_id, patientInfo, onClose } = props;
 
   const { onUpdateIsSave } = useSurvey();
@@ -20,12 +20,12 @@ const Fall = (props: SurveyDialogProps<TFallDefaultValues>) => {
     defaultValues,
   });
 
-  const onSubmit = (data: TFallDefaultValues) => {
+  const onSubmit = (data: TBedScoreDefaultValues) => {
     const { patient_id } = patientInfo;
     const { contents, date } = data;
 
     const contentsValues = Object.values(contents);
-    if (contentsValues.includes('')) return onRequired('REQUIRED.FALL');
+    if (contentsValues.includes('')) return onRequired('REQUIRED.BED.SCORE');
 
     const request = {
       user_id,
@@ -34,13 +34,13 @@ const Fall = (props: SurveyDialogProps<TFallDefaultValues>) => {
       contents: JSON.stringify(contents),
     };
 
-    updateFall(request)
+    updateBedScore(request)
       .then(({ data: { rc } }) => {
         if (rc !== 1) return onResultCode(rc);
         onUpdateIsSave(true);
-        onSuccess('낙상위험도 평가도구 저장에 성공하였습니다.');
+        onSuccess('욕창위험도 평가도구 저장에 성공하였습니다.');
       })
-      .catch(e => onFail('낙상위험도 평가도구 저장에 실패하였습니다.', e));
+      .catch(e => onFail('욕창위험도 평가도구 저장에 실패하였습니다.', e));
   };
 
   return (
@@ -59,10 +59,14 @@ const Fall = (props: SurveyDialogProps<TFallDefaultValues>) => {
         sx={{ py: 5, px: 1 }}
       >
         <PatientInfo register={register} {...patientInfo} />
-        <FallContents watch={watch} getValues={getValues} setValue={setValue} />
+        <BedScoreContents
+          watch={watch}
+          getValues={getValues}
+          setValue={setValue}
+        />
       </Grid>
     </MuiDialog.SurveyForm>
   );
 };
 
-export default Fall;
+export default BedScore;

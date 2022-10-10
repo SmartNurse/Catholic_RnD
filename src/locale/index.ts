@@ -170,6 +170,32 @@ const locale = {
     'OUT.HOSPITAL.ACTIVITY.1': '제한',
     'OUT.HOSPITAL.ACTIVITY.2': '제한없음',
 
+    // bedScore
+    'BED.SCORE.SENSORY.PERCEPTION.1': '완전 제한',
+    'BED.SCORE.SENSORY.PERCEPTION.2': '매우 제한',
+    'BED.SCORE.SENSORY.PERCEPTION.3': '약간 제한',
+    'BED.SCORE.SENSORY.PERCEPTION.4': '제한 없음',
+    'BED.SCORE.HUMIDITY.1': '항상 촉촉함',
+    'BED.SCORE.HUMIDITY.2': '촉촉함',
+    'BED.SCORE.HUMIDITY.3': '가끔 촉촉함',
+    'BED.SCORE.HUMIDITY.4': '거의 촉촉하지 않음',
+    'BED.SCORE.ACTIVITY.1': '침대에만 있음',
+    'BED.SCORE.ACTIVITY.2': '주로 앉아 있음',
+    'BED.SCORE.ACTIVITY.3': '가끔 보행함',
+    'BED.SCORE.ACTIVITY.4': '자주 보행함',
+    'BED.SCORE.MOBILITY.1': '완전 부동',
+    'BED.SCORE.MOBILITY.2': '매우 제한',
+    'BED.SCORE.MOBILITY.3': '약간 제한',
+    'BED.SCORE.MOBILITY.4': '제한 없음',
+    'BED.SCORE.NUTRITION.1': '매우 불량',
+    'BED.SCORE.NUTRITION.2': '불량함',
+    'BED.SCORE.NUTRITION.3': '적절함',
+    'BED.SCORE.NUTRITION.4': '우수함',
+    'BED.SCORE.FRICTION.1': '문제가 있음',
+    'BED.SCORE.FRICTION.2': '잠재적 문제',
+    'BED.SCORE.FRICTION.3': '문제 없음',
+    'REQUIRED.BED.SCORE': '평가항목을 모두 선택해주세요',
+
     // fall
     'FALL.0': '없음 (0점)',
     'FALL.15': '있음 (15점)',
@@ -181,7 +207,7 @@ const locale = {
     'FALL.GAIT.0': '정상/침상안정/부동 (0점)',
     'FALL.GAIT.10': '허약 (10점)',
     'FALL.GAIT.20': '장애 (20점)',
-    'REQUIRED.FALL': '모든 선택지를 선택해주세요',
+    'REQUIRED.FALL': '평가항목을 모두 선택해주세요',
   },
 };
 

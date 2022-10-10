@@ -156,12 +156,10 @@ const FallContents = (props: Props) => {
     },
   ];
 
-  const sumValues = () => {
-    return rows.reduce(
-      (prev, next) => prev + Number(watch(`contents.${next.id}`)),
-      0
-    );
-  };
+  const sumValues = rows.reduce(
+    (prev, next) => prev + Number(watch(`contents.${next.id}`)),
+    0
+  );
 
   return (
     <Fragment>
@@ -177,7 +175,7 @@ const FallContents = (props: Props) => {
             fontWeight={700}
             variant="subtitle1"
           >
-            합계 : {sumValues()}점
+            합계 : {sumValues}점
           </Typography>
           <Typography color="#2264A8" variant="caption">
             <Typography variant="inherit">
@@ -190,13 +188,13 @@ const FallContents = (props: Props) => {
               <Box component={'strong'} mr={0.5}>
                 중위험군:
               </Box>
-              25점 ~ 45점
+              25점 - 45점
             </Typography>
             <Typography variant="inherit">
               <Box component={'strong'} mr={0.5}>
                 저위험군:
               </Box>
-              0 ~ 24점
+              0 - 24점
             </Typography>
           </Typography>
         </Box>

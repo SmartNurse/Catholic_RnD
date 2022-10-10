@@ -13,6 +13,7 @@ import Nurse from './Nurse';
 import Medication from './Medication';
 import Radiology from './Radiology';
 import Pathology from './Pathology';
+import BedScore from './BedScore';
 import Fall from './Fall';
 
 const Survey = () => {
@@ -127,14 +128,13 @@ const Survey = () => {
     }
     case ACTIVE_MENU.RISK_OF_BEDSORES: {
       if (!defaultValues) return null;
-      return null;
-      // return (
-      // <BedScore
-      //   {...dialogProps}
-      //   defaultValues={defaultValues}
-      //   onClose={onCloseSaveSurvey}
-      // />
-      // );
+      return (
+        <BedScore
+          {...dialogProps}
+          defaultValues={defaultValues}
+          onClose={onCloseSaveSurvey}
+        />
+      );
     }
     case ACTIVE_MENU.FALL_RISK_ASSESSMENT: {
       if (!defaultValues) return null;

@@ -150,12 +150,20 @@ export const initialPathology = {
 
 export const initialBedScore = {
   date: '',
-  contents: '',
   update_at: '',
+  contents: {
+    sensoryPerception: '',
+    humidity: '',
+    activity: '',
+    mobility: '',
+    nutrition: '',
+    frictionAndDissolutionForce: '',
+  },
 };
 
 export const initialFall = {
   date: '',
+  update_at: '',
   contents: {
     experience: '',
     diagnosis: '',
@@ -164,5 +172,4 @@ export const initialFall = {
     gait: '',
     consciousness: '',
   },
-  update_at: '',
 };

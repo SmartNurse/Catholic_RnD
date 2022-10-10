@@ -96,13 +96,9 @@ export interface IBedScore {
   contents: string;
 }
 
-export interface IFallContents {
-  experience: number;
-  diagnosis: number;
-  walkingAids: number;
-  intravenousLine: number;
-  gait: number;
-  consciousness: number;
+export interface IUpdateBedScore extends IGetSurvey {
+  date: string;
+  contents: string;
 }
 
 export interface IUpdateFall extends IGetSurvey {
