@@ -27,8 +27,8 @@ interface Props {
 
 const useDefaultValues = ({ setDefaultValues, user_id }: Props) => {
   const convertDataToStates = (data: any, states: any) => {
+    const values = { ...states };
     const keys = Object.keys(states);
-    const values = states;
 
     for (let key of keys) {
       const getValue = data[key];
