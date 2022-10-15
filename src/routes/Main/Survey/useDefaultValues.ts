@@ -18,7 +18,7 @@ import {
   initialBedScore,
   initialFall,
 } from './initialStates';
-import { ACTIVE_MENU } from './type';
+import { MENU } from './type';
 
 interface Props {
   user_id: number;
@@ -45,7 +45,7 @@ const useDefaultValues = ({ setDefaultValues, user_id }: Props) => {
 
   const onGetDefaultValues = (patient_id: number, type: string) => {
     switch (type) {
-      case ACTIVE_MENU.ADMISSION:
+      case MENU.HOSPITALIZATION:
         getHospitalization({ user_id, patient_id }).then(({ data }) => {
           const { hospitalization_survey } = data;
           convertDataToStates(
@@ -54,35 +54,35 @@ const useDefaultValues = ({ setDefaultValues, user_id }: Props) => {
           );
         });
         break;
-      case ACTIVE_MENU.DISCHARGE:
+      case MENU.OUT_HOSPITAL:
         getOutHospital({ user_id, patient_id }).then(({ data }) => {
           const { out_hospital_survey } = data;
           convertDataToStates(out_hospital_survey, initialOutHospitalSurvey);
         });
         break;
-      case ACTIVE_MENU.DOSAGE:
+      case MENU.MEDICATION:
         getMedication({ user_id, patient_id }).then(({ data }) => {
           convertDataToStates(data, initialMedicationSurvey);
         });
         break;
-      case ACTIVE_MENU.IMAGING:
+      case MENU.RADIOLOGY:
         getRadiology({ user_id, patient_id }).then(({ data }) => {
           convertDataToStates(data, initialRadiology);
         });
         break;
-      case ACTIVE_MENU.CLINICAL_PATHOLOGY:
+      case MENU.PATHOLOGY:
         getPathology({ user_id, patient_id }).then(({ data }) => {
           convertDataToStates(data, initialPathology);
         });
         break;
-      case ACTIVE_MENU.RISK_OF_BEDSORES:
+      case MENU.BEDSORES:
         getBedScore({ user_id, patient_id }).then(({ data }) => {
           const { contents } = data;
           const m_data = { ...data, contents: JSON.parse(contents) };
           convertDataToStates(m_data, initialBedScore);
         });
         break;
-      case ACTIVE_MENU.FALL_RISK_ASSESSMENT:
+      case MENU.FALL:
         getFall({ user_id, patient_id }).then(({ data }) => {
           const { contents } = data;
           const m_data = { ...data, contents: JSON.parse(contents) };

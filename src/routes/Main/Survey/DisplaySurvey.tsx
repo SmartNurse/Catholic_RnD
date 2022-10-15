@@ -1,4 +1,4 @@
-import { ACTIVE_MENU, SurveyDialogProps } from './type';
+import { MENU, SurveyDialogProps } from './type';
 
 import Hospitalization from './Hospitalization';
 import OutHospital from './OutHospital';
@@ -24,15 +24,15 @@ const DisplaySurvey = (props: Props) => {
   const { defaultValues } = dialogProps;
 
   switch (surveyType) {
-    case ACTIVE_MENU.ADMISSION: {
+    case MENU.HOSPITALIZATION: {
       if (!defaultValues) return null;
       return <Hospitalization {...dialogProps} onClose={onCloseSaveSurvey} />;
     }
-    case ACTIVE_MENU.DISCHARGE: {
+    case MENU.OUT_HOSPITAL: {
       if (!defaultValues) return null;
       return <OutHospital {...dialogProps} onClose={onCloseSaveSurvey} />;
     }
-    case ACTIVE_MENU.PRESCRIPTION: {
+    case MENU.PRESCRIPTION: {
       return (
         <Prescription
           {...dialogProps}
@@ -41,7 +41,7 @@ const DisplaySurvey = (props: Props) => {
         />
       );
     }
-    case ACTIVE_MENU.NURSE: {
+    case MENU.NURSE: {
       return (
         <Nurse
           {...dialogProps}
@@ -50,19 +50,19 @@ const DisplaySurvey = (props: Props) => {
         />
       );
     }
-    case ACTIVE_MENU.DOSAGE: {
+    case MENU.MEDICATION: {
       if (!defaultValues) return null;
       return <Medication {...dialogProps} onClose={onCloseSaveSurvey} />;
     }
-    case ACTIVE_MENU.IMAGING: {
+    case MENU.RADIOLOGY: {
       if (!defaultValues) return null;
       return <Radiology {...dialogProps} onClose={onCloseReadOnlySurvey} />;
     }
-    case ACTIVE_MENU.CLINICAL_PATHOLOGY: {
+    case MENU.PATHOLOGY: {
       if (!defaultValues) return null;
       return <Pathology {...dialogProps} onClose={onCloseReadOnlySurvey} />;
     }
-    case ACTIVE_MENU.RISK_OF_BEDSORES: {
+    case MENU.BEDSORES: {
       if (!defaultValues) return null;
       return (
         <BedScore
@@ -72,7 +72,7 @@ const DisplaySurvey = (props: Props) => {
         />
       );
     }
-    case ACTIVE_MENU.FALL_RISK_ASSESSMENT: {
+    case MENU.FALL: {
       if (!defaultValues) return null;
       return <Fall {...dialogProps} onClose={onCloseSaveSurvey} />;
     }
