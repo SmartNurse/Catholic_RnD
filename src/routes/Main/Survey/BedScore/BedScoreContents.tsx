@@ -3,7 +3,7 @@ import { Box, Grid, Typography } from '@mui/material';
 
 import Form from 'components/Form';
 import MuiTable from 'components/MuiTable';
-import { IFormValues, IFormWatch } from 'routes/Main/Survey/type';
+import { IFormValues, IFormWatch } from 'routes/Main/type';
 
 import SectionTitle from '../components/SectionTitle';
 

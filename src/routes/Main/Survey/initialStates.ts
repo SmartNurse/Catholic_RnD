@@ -161,6 +161,15 @@ export const initialBedScore = {
   },
 };
 
+export const initialNeeds = {
+  date: '',
+  update_at: '',
+  body_status: '',
+  disease_status: '',
+  reason1: '',
+  reason2: '',
+};
+
 export const initialFall = {
   date: '',
   update_at: '',

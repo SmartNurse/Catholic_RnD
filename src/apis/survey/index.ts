@@ -61,6 +61,11 @@ export const updateBedScore = (request: IUpdateBedScore) => {
   return apiGateway.post(url, camelcaseKeys(request));
 };
 
+export const getNeeds = (request: IGetSurvey) => {
+  const url = `/survey/needs?${formatToRequestParameter(request)}`;
+  return apiGateway.get(url);
+};
+
 export const getFall = (request: IGetSurvey) => {
   const url = `/survey/fall?${formatToRequestParameter(request)}`;
   return apiGateway.get(url);

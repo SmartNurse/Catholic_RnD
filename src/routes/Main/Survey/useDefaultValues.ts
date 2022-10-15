@@ -3,6 +3,7 @@ import {
   getFall,
   getHospitalization,
   getMedication,
+  getNeeds,
   getOutHospital,
   getPathology,
   getRadiology,
@@ -17,6 +18,7 @@ import {
   initialPathology,
   initialBedScore,
   initialFall,
+  initialNeeds,
 } from './initialStates';
 import { MENU } from './type';
 
@@ -77,16 +79,17 @@ const useDefaultValues = ({ setDefaultValues, user_id }: Props) => {
         break;
       case MENU.BEDSORES:
         getBedScore({ user_id, patient_id }).then(({ data }) => {
-          const { contents } = data;
-          const m_data = { ...data, contents: JSON.parse(contents) };
-          convertDataToStates(m_data, initialBedScore);
+          convertDataToStates(data, initialBedScore);
+        });
+        break;
+      case MENU.NEEDS:
+        getNeeds({ user_id, patient_id }).then(({ data }) => {
+          convertDataToStates(data, initialNeeds);
         });
         break;
       case MENU.FALL:
         getFall({ user_id, patient_id }).then(({ data }) => {
-          const { contents } = data;
-          const m_data = { ...data, contents: JSON.parse(contents) };
-          convertDataToStates(m_data, initialFall);
+          convertDataToStates(data, initialFall);
         });
         break;
       default:

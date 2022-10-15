@@ -4,10 +4,10 @@ import { UseFormGetValues } from 'react-hook-form';
 
 import MuiTable from 'components/MuiTable';
 import { IPathology } from 'apis/survey/type';
+import { formatStringToDate } from 'utils/formatting';
 
 import RowContainer from '../components/RowContainer';
 import SectionTitle from '../components/SectionTitle';
-import { formatStringToDate } from 'utils/formatting';
 
 interface Props {
   getValues: UseFormGetValues<any>;

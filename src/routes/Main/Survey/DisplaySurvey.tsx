@@ -9,6 +9,7 @@ import Radiology from './Radiology';
 import Pathology from './Pathology';
 import BedScore from './BedScore';
 import Fall from './Fall';
+import Needs from './Needs';
 
 interface Props {
   surveyType: string;
@@ -64,13 +65,12 @@ const DisplaySurvey = (props: Props) => {
     }
     case MENU.BEDSORES: {
       if (!defaultValues) return null;
-      return (
-        <BedScore
-          {...dialogProps}
-          defaultValues={defaultValues}
-          onClose={onCloseSaveSurvey}
-        />
-      );
+      return <BedScore {...dialogProps} onClose={onCloseSaveSurvey} />;
+    }
+    case MENU.NEEDS: {
+      console.log(defaultValues);
+      if (!defaultValues) return null;
+      return <Needs {...dialogProps} onClose={onCloseSaveSurvey} />;
     }
     case MENU.FALL: {
       if (!defaultValues) return null;

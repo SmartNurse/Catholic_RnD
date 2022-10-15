@@ -15,14 +15,15 @@ import useNotification from 'hooks/useNotification';
 import useUser from 'store/user/useUser';
 import usePatient from 'store/patient/usePatient';
 
+import { RECORD_TYPE } from '../Survey/type';
+import { initialNursingRecord } from '../Survey/initialStates';
+
 import Nanda from './Nanda';
 import Soapie from './Soapie';
 import Remarks from './Remarks';
 import FocusDar from './FocusDar';
 import NarrativeRecord from './NarrativeRecord';
-import { RECORD_TYPE } from '../type';
 import { StyledTabPanel } from '../style';
-import { initialNursingRecord } from '../Survey/initialStates';
 
 const NursingRecords = () => {
   const { student_uuid: user_id } = useUser();

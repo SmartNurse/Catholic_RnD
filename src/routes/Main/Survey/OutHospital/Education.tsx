@@ -2,7 +2,7 @@ import { Fragment } from 'react';
 import { Grid } from '@mui/material';
 
 import Form from 'components/Form';
-import { IFormRegister } from 'routes/Main/Survey/type';
+import { IFormRegister } from 'routes/Main/type';
 
 import RowContainer from '../components/RowContainer';
 import SectionTitle from '../components/SectionTitle';

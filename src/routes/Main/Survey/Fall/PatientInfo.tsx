@@ -1,9 +1,9 @@
 import Form from 'components/Form';
 import { IPatientInfo } from 'apis/admin/type';
+import { IFormRegister } from 'routes/Main/type';
 
 import RowContainer from '../components/RowContainer';
 import RowContent from '../components/RowContent';
-import { IFormRegister } from 'routes/Main/Survey/type';
 
 interface Props extends IPatientInfo, IFormRegister {}
 
