@@ -28,8 +28,14 @@ const Medication = (props: SurveyDialogProps<TMedicationDefaultValues>) => {
       user_id,
       patient_id: patientInfo.patient_id,
       infos: medication_surveys.map(
-        ({ survey_uuid, medication_time, medication_do }: IMedication) => ({
+        ({
           survey_uuid,
+          pt_medication_uuid,
+          medication_time,
+          medication_do,
+        }: IMedication) => ({
+          survey_uuid,
+          pt_medication_uuid,
           medication_time,
           medication_do,
         })
