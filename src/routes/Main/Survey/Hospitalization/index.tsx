@@ -4,7 +4,7 @@ import { useForm } from 'react-hook-form';
 import {
   SurveyDialogProps,
   THospitalizationDefaultValues,
-} from 'routes/Main/type';
+} from 'routes/Main/Survey/type';
 import MuiDialog from 'components/MuiDialog';
 import { findKeyValueToStr } from 'utils/convert';
 import { createHospitalization } from 'apis/survey';

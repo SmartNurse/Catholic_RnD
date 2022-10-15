@@ -2,7 +2,7 @@ import { useRef } from 'react';
 import { Box } from '@mui/material';
 
 import MuiDialog from 'components/MuiDialog';
-import { SurveyDialogProps } from 'routes/Main/type';
+import { SurveyDialogProps } from 'routes/Main/Survey/type';
 import RecordList from './RecordList';
 
 const Nurse = (props: SurveyDialogProps<null>) => {

@@ -2,7 +2,7 @@ import { Fragment } from 'react';
 
 import Form from 'components/Form';
 import { IPatientInfo } from 'apis/admin/type';
-import { IFormRegister } from 'routes/Main/type';
+import { IFormRegister } from 'routes/Main/Survey/type';
 
 import RowContainer from '../components/RowContainer';
 import RowContent from '../components/RowContent';

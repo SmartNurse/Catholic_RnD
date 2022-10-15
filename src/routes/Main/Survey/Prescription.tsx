@@ -2,7 +2,7 @@ import { format } from 'date-fns/esm';
 import { Box, Typography } from '@mui/material';
 
 import MuiDialog from 'components/MuiDialog';
-import { SurveyDialogProps } from 'routes/Main/type';
+import { SurveyDialogProps } from 'routes/Main/Survey/type';
 
 const Prescription = (props: SurveyDialogProps<null>) => {
   const today = format(new Date(), 'yyyy-MM-dd');

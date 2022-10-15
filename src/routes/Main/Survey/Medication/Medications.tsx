@@ -4,7 +4,7 @@ import { Checkbox, Grid } from '@mui/material';
 import { MobileTimePicker } from '@mui/x-date-pickers';
 
 import { IMedication } from 'apis/survey/type';
-import { IFormValues, IFormWatch } from 'routes/Main/type';
+import { IFormValues, IFormWatch } from 'routes/Main/Survey/type';
 import MuiTextField from 'components/Form/MuiTextField';
 
 import SectionTitle from '../components/SectionTitle';

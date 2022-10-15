@@ -22,7 +22,7 @@ import FocusDar from './FocusDar';
 import NarrativeRecord from './NarrativeRecord';
 import { RECORD_TYPE } from '../type';
 import { StyledTabPanel } from '../style';
-import { initialNursingRecord } from '../initialStates';
+import { initialNursingRecord } from '../Survey/initialStates';
 
 const NursingRecords = () => {
   const { student_uuid: user_id } = useUser();

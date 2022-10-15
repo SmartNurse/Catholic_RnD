@@ -17,8 +17,8 @@ import {
   initialPathology,
   initialBedScore,
   initialFall,
-} from '../initialStates';
-import { ACTIVE_MENU } from '../type';
+} from './initialStates';
+import { ACTIVE_MENU } from './type';
 
 interface Props {
   user_id: number;

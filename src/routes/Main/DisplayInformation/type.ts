@@ -2,7 +2,7 @@ import React from 'react';
 
 import { INursingRecord } from 'apis/main/type';
 
-import { initialNursingRecord } from '../initialStates';
+import { initialNursingRecord } from '../Survey/initialStates';
 
 export interface IDisplayNursingRecord extends INursingRecord {
   nurseName: string;

@@ -6,7 +6,10 @@ import { createOutHospital } from 'apis/survey';
 import useSurvey from 'store/survey/useSurvey';
 import useNotification from 'hooks/useNotification';
 import MuiDialog from 'components/MuiDialog';
-import { TOutHospitalDefaultValues, SurveyDialogProps } from 'routes/Main/type';
+import {
+  TOutHospitalDefaultValues,
+  SurveyDialogProps,
+} from 'routes/Main/Survey/type';
 
 import PatientInfo from './PatientInfo';
 import DefaultInfo from './DefaultInfo';

@@ -1,5 +1,5 @@
 import Form from 'components/Form';
-import { IFormRegister, IFormValues } from 'routes/Main/type';
+import { IFormRegister, IFormValues } from 'routes/Main/Survey/type';
 
 import RowContent from '../components/RowContent';
 import RowContainer from '../components/RowContainer';

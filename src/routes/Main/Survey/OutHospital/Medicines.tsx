@@ -3,7 +3,7 @@ import { Grid } from '@mui/material';
 
 import Form from 'components/Form';
 import MuiTable from 'components/MuiTable';
-import { IFormRegister } from 'routes/Main/type';
+import { IFormRegister } from 'routes/Main/Survey/type';
 
 import RowContainer from '../components/RowContainer';
 import SectionTitle from '../components/SectionTitle';

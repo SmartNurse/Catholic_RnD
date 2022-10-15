@@ -5,7 +5,10 @@ import { IMedication } from 'apis/survey/type';
 import useSurvey from 'store/survey/useSurvey';
 import useNotification from 'hooks/useNotification';
 import MuiDialog from 'components/MuiDialog';
-import { TMedicationDefaultValues, SurveyDialogProps } from 'routes/Main/type';
+import {
+  TMedicationDefaultValues,
+  SurveyDialogProps,
+} from 'routes/Main/Survey/type';
 
 import PatientInfo from './PatientInfo';
 import Medications from './Medications';

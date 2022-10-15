@@ -1,7 +1,7 @@
 import {
   initialHospitalizationSurvey,
   initialOutHospitalSurvey,
-} from '../../routes/Main/initialStates';
+} from '../../routes/Main/Survey/initialStates';
 
 export interface IGetSurvey {
   user_id: number;

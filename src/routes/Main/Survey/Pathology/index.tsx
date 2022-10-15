@@ -2,7 +2,10 @@ import { Grid } from '@mui/material';
 import { useForm } from 'react-hook-form';
 
 import MuiDialog from 'components/MuiDialog';
-import { TPathologyDefaultValues, SurveyDialogProps } from 'routes/Main/type';
+import {
+  TPathologyDefaultValues,
+  SurveyDialogProps,
+} from 'routes/Main/Survey/type';
 
 import PatientInfo from './PatientInfo';
 import Pathologies from './Pathologies';
