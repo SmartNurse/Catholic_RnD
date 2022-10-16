@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react';
 import usePatient from 'store/patient/usePatient';
 import useSurvey from 'store/survey/useSurvey';
 import useUser from 'store/user/useUser';
-import useDefaultValues from './useDefaultValues';
+import useDefaultValues from './hooks/useDefaultValues';
 import DisplaySurvey from './DisplaySurvey';
 
 const Survey = () => {
@@ -18,18 +18,10 @@ const Survey = () => {
     setDefaultValues,
   });
 
-  const onCloseSaveSurvey = () => {
-    onCloseSave();
-    setDefaultValues(null);
-  };
-
-  const onCloseReadOnlySurvey = () => {
-    onCloseReadOnly();
-    setDefaultValues(null);
-  };
-
   useEffect(() => {
-    if (!patientInfo || !surveyType) return;
+    if (!patientInfo || !surveyType) {
+      return setDefaultValues(null);
+    }
 
     onUpdateIsSave(false);
     const { patient_id } = patientInfo;
@@ -52,8 +44,8 @@ const Survey = () => {
     <DisplaySurvey
       surveyType={surveyType}
       dialogProps={dialogProps}
-      onCloseSaveSurvey={onCloseSaveSurvey}
-      onCloseReadOnlySurvey={onCloseReadOnlySurvey}
+      onCloseSave={onCloseSave}
+      onCloseReadOnly={onCloseReadOnly}
     />
   );
 };

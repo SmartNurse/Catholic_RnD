@@ -1,11 +1,8 @@
 import { Table, TableHead } from '@mui/material';
-import TableBodyList from './TableBodyList';
-import TableHeadList from './TableHeadList';
+import TableHeadList, { Props as TableHeadListProps } from './TableHeadList';
+import TableBodyList, { Props as TableBodyListProps } from './TableBodyList';
 
-interface Props {
-  columns: { fieldId: string; label: string }[];
-  rows: { id: string | number; [key: string]: any }[];
-}
+interface Props extends TableHeadListProps, TableBodyListProps {}
 
 const MuiTable = ({ columns, rows }: Props) => (
   <Table size="small">

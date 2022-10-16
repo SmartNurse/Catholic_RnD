@@ -3,11 +3,12 @@ import {
   Radio,
   RadioGroup,
   RadioGroupProps,
+  Stack,
 } from '@mui/material';
 import useI18n, { Ti18nId } from 'hooks/useI18n';
 
 interface Props extends RadioGroupProps {
-  i18nKey: string;
+  i18nKey?: string;
   i18nNullKey?: string;
   value?: number;
   values: number[];
@@ -25,27 +26,29 @@ const MuiRadioGroup = ({
 }: Props) => {
   const i18n = useI18n();
   const label = (value: number) => {
-    return value
-      ? i18n(`${i18nKey}.${value}` as Ti18nId)
-      : i18n(i18nNullKey as Ti18nId);
+    if (!value && i18nNullKey) return i18n(i18nNullKey as Ti18nId);
+    if (i18nKey) return i18n(`${i18nKey}.${value}` as Ti18nId);
+    return '';
   };
 
   return (
     <RadioGroup
       row
       defaultValue={defaultValue}
-      sx={{ flexWrap: 'nowrap', whiteSpace: 'nowrap' }}
+      sx={{ flexWrap: 'nowrap', whiteSpace: 'nowrap', display: 'inline-flex' }}
       onChange={(_, value) => onChange && onChange(value)}
       {...props}
     >
-      {values.map(value => (
-        <FormControlLabel
-          key={value}
-          value={value}
-          control={<Radio size="small" />}
-          label={label(value)}
-        />
-      ))}
+      <Stack direction={'row'} spacing={1}>
+        {values.map(value => (
+          <FormControlLabel
+            key={value}
+            value={value}
+            control={<Radio size="small" />}
+            label={label(value)}
+          />
+        ))}
+      </Stack>
     </RadioGroup>
   );
 };

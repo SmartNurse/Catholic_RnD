@@ -150,6 +150,7 @@ const theme = createTheme({
     MuiFormControlLabel: {
       styleOverrides: {
         root: {
+          marginRight: 0,
           '.MuiTypography-root': {
             fontSize: 14,
           },

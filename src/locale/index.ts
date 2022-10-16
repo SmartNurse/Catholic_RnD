@@ -196,6 +196,9 @@ const locale = {
     'BED.SCORE.FRICTION.3': '문제 없음',
     'REQUIRED.BED.SCORE': '평가항목을 모두 선택해주세요',
 
+    // needs
+    'REQUIRED.NEEDS.BODY.STATUS': '신체상태 항목을 모두 선택해주세요',
+
     // fall
     'FALL.0': '없음 (0점)',
     'FALL.15': '있음 (15점)',

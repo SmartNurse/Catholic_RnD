@@ -101,6 +101,14 @@ export interface IUpdateBedScore extends IGetSurvey {
   contents: string;
 }
 
+export interface IUpdateNeeds extends IGetSurvey {
+  date: string;
+  body_status: string;
+  disease_status: string;
+  reason1: string;
+  reason2: string;
+}
+
 export interface IUpdateFall extends IGetSurvey {
   date: string;
   contents: string;

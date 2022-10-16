@@ -10,7 +10,10 @@ import {
 } from 'routes/Main/Survey/type';
 
 import PatientInfo from './PatientInfo';
-// import FallContents from './FallContents';
+import BodyStatus from './BodyStatus';
+import Reason from './Reason';
+import DiseaseStatus from './DiseaseStatus';
+import { updateNeeds } from 'apis/survey';
 
 const Needs = (props: SurveyDialogProps<TNeedsDefaultValues>) => {
   const { title, isOpen, defaultValues, user_id, patientInfo, onClose } = props;
@@ -24,16 +27,30 @@ const Needs = (props: SurveyDialogProps<TNeedsDefaultValues>) => {
 
   const onSubmit = (data: TNeedsDefaultValues) => {
     const { patient_id } = patientInfo;
+    const { body_status, disease_status, reason1, reason2, date } = data;
 
-    // if (contentsValues.includes('')) return onRequired('REQUIRED.NEEDS');
+    const bodyStatusValues = Object.values(body_status);
+    if (bodyStatusValues.includes('')) {
+      return onRequired('REQUIRED.NEEDS.BODY.STATUS');
+    }
 
-    // updateNeeds(request)
-    //   .then(({ data: { rc } }) => {
-    //     if (rc !== 1) return onResultCode(rc);
-    //     onUpdateIsSave(true);
-    //     onSuccess('낙상위험도 평가도구 저장에 성공하였습니다.');
-    //   })
-    //   .catch(e => onFail('낙상위험도 평가도구 저장에 실패하였습니다.', e));
+    const request = {
+      user_id,
+      patient_id,
+      date,
+      reason1,
+      reason2,
+      body_status: JSON.stringify(body_status),
+      disease_status: JSON.stringify(disease_status),
+    };
+
+    updateNeeds(request)
+      .then(({ data: { rc } }) => {
+        if (rc !== 1) return onResultCode(rc);
+        onUpdateIsSave(true);
+        onSuccess('욕구평가기록지 저장에 성공하였습니다.');
+      })
+      .catch(e => onFail('욕구평가기록지 저장에 실패하였습니다.', e));
   };
 
   return (
@@ -52,7 +69,15 @@ const Needs = (props: SurveyDialogProps<TNeedsDefaultValues>) => {
         sx={{ py: 5, px: 1 }}
       >
         <PatientInfo register={register} {...patientInfo} />
-        {/* <NeedsContents watch={watch} getValues={getValues} setValue={setValue} /> */}
+        <BodyStatus watch={watch} getValues={getValues} setValue={setValue} />
+        <Reason register={register} registerKey="reason1" />
+        <DiseaseStatus
+          watch={watch}
+          register={register}
+          getValues={getValues}
+          setValue={setValue}
+        />
+        <Reason register={register} registerKey="reason2" />
       </Grid>
     </MuiDialog.SurveyForm>
   );

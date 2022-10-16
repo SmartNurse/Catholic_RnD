@@ -1,86 +1,86 @@
 import { Fragment } from 'react';
 import { Box, Grid, Typography } from '@mui/material';
 
-import Form from 'components/Form';
 import MuiTable from 'components/MuiTable';
 import { IFormValues, IFormWatch } from 'routes/Main/type';
 
 import SectionTitle from '../components/SectionTitle';
+import useTableForm from '../hooks/useTableForm';
 
 interface Props extends IFormValues, IFormWatch {}
 
 const BedScoreContents = (props: Props) => {
-  const { watch, getValues, setValue } = props;
+  const { radioGroup, sumValues } = useTableForm(props);
 
   const columns = [
     { fieldId: 'title', label: '평가항목' },
-    { fieldId: '1', label: '1점' },
-    { fieldId: '2', label: '2점' },
-    { fieldId: '3', label: '3점' },
-    { fieldId: '4', label: '4점' },
+    { fieldId: '0', label: '1점' },
+    { fieldId: '1', label: '2점' },
+    { fieldId: '2', label: '3점' },
+    { fieldId: '3', label: '4점' },
   ];
-
-  const forms = (key: string) => ({
-    value: watch(key) && Number(watch(key)),
-    defaultValue: getValues(key),
-    onChange: (v: any) => setValue(key, v),
-  });
-
-  const rowRadioGroup = (length: number, i18nKey: string, key: string) => {
-    let groups = {} as any;
-    for (let i = 1; i <= length; i++) {
-      groups[i] = (
-        <Form.MuiRadioGroup i18nKey={i18nKey} values={[i]} {...forms(key)} />
-      );
-    }
-    return groups;
-  };
 
   const rows = [
     {
       id: 'sensoryPerception',
       title: '감각지각',
-      ...rowRadioGroup(
-        4,
-        'BED.SCORE.SENSORY.PERCEPTION',
-        'contents.sensoryPerception'
-      ),
+      ...radioGroup({
+        key: 'contents.sensoryPerception',
+        options: [1, 2, 3, 4],
+        i18nKey: 'BED.SCORE.SENSORY.PERCEPTION',
+      }),
     },
     {
       id: 'humidity',
       title: '습기',
-      ...rowRadioGroup(4, 'BED.SCORE.HUMIDITY', 'contents.humidity'),
+      ...radioGroup({
+        key: 'contents.humidity',
+        options: [1, 2, 3, 4],
+        i18nKey: 'BED.SCORE.HUMIDITY',
+      }),
     },
     {
       id: 'activity',
       title: '활동',
-      ...rowRadioGroup(4, 'BED.SCORE.ACTIVITY', 'contents.activity'),
+      ...radioGroup({
+        key: 'contents.activity',
+        options: [1, 2, 3, 4],
+        i18nKey: 'BED.SCORE.ACTIVITY',
+      }),
     },
     {
       id: 'mobility',
       title: '기동성',
-      ...rowRadioGroup(4, 'BED.SCORE.MOBILITY', 'contents.mobility'),
+      ...radioGroup({
+        key: 'contents.mobility',
+        options: [1, 2, 3, 4],
+        i18nKey: 'BED.SCORE.MOBILITY',
+      }),
     },
     {
       id: 'nutrition',
       title: '영양',
-      ...rowRadioGroup(4, 'BED.SCORE.NUTRITION', 'contents.nutrition'),
+      ...radioGroup({
+        key: 'contents.nutrition',
+        options: [1, 2, 3, 4],
+        i18nKey: 'BED.SCORE.NUTRITION',
+      }),
     },
     {
       id: 'frictionAndDissolutionForce',
       title: '영양',
-      ...rowRadioGroup(
-        3,
-        'BED.SCORE.FRICTION',
-        'contents.frictionAndDissolutionForce'
-      ),
+      ...radioGroup({
+        key: 'contents.frictionAndDissolutionForce',
+        options: [1, 2, 3],
+        i18nKey: 'BED.SCORE.FRICTION',
+      }),
     },
   ];
 
-  const sumValues = rows.reduce(
-    (prev, next) => prev + Number(watch(`contents.${next.id}`)),
-    0
-  );
+  const watchSumValues = () => {
+    const values = rows.map(({ id }) => Number(props.watch(`contents.${id}`)));
+    return sumValues(values);
+  };
 
   return (
     <Fragment>
@@ -96,7 +96,7 @@ const BedScoreContents = (props: Props) => {
             fontWeight={700}
             variant="subtitle1"
           >
-            합계 : {sumValues}점
+            합계 : {watchSumValues()}점
           </Typography>
           <Typography minWidth={115} color="#2264A8" variant="caption">
             <Typography variant="inherit">

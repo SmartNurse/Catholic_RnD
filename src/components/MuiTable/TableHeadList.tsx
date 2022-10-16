@@ -1,21 +1,22 @@
-import { TableCell, TableRow } from '@mui/material';
+import { SxProps, TableCell, TableRow } from '@mui/material';
 
-interface Props {
-  columns: { fieldId: string; label: string }[];
+export interface Props {
+  columns: { fieldId: string; label: string; width?: number; sx?: SxProps }[];
 }
 
 const TableHeadList = ({ columns }: Props) => (
   <TableRow>
-    {columns.map(column => (
+    {columns.map(({ fieldId, label, sx }) => (
       <TableCell
-        key={column.fieldId}
+        key={fieldId}
         sx={{
           fontSize: 12,
           fontWeight: 700,
           whiteSpace: 'nowrap',
+          ...sx,
         }}
       >
-        {column.label}
+        {label}
       </TableCell>
     ))}
   </TableRow>

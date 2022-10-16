@@ -13,68 +13,54 @@ import Needs from './Needs';
 
 interface Props {
   surveyType: string;
-  onCloseSaveSurvey: () => void;
-  onCloseReadOnlySurvey: () => void;
+  onCloseSave: () => void;
+  onCloseReadOnly: () => void;
   dialogProps: Omit<SurveyDialogProps<any>, 'onClose'>;
 }
 
 const DisplaySurvey = (props: Props) => {
-  const { surveyType, onCloseSaveSurvey, onCloseReadOnlySurvey, dialogProps } =
-    props;
+  const { surveyType, onCloseSave, onCloseReadOnly, dialogProps } = props;
 
   const { defaultValues } = dialogProps;
 
   switch (surveyType) {
     case MENU.HOSPITALIZATION: {
       if (!defaultValues) return null;
-      return <Hospitalization {...dialogProps} onClose={onCloseSaveSurvey} />;
+      return <Hospitalization {...dialogProps} onClose={onCloseSave} />;
     }
     case MENU.OUT_HOSPITAL: {
       if (!defaultValues) return null;
-      return <OutHospital {...dialogProps} onClose={onCloseSaveSurvey} />;
+      return <OutHospital {...dialogProps} onClose={onCloseSave} />;
     }
     case MENU.PRESCRIPTION: {
-      return (
-        <Prescription
-          {...dialogProps}
-          defaultValues={null}
-          onClose={onCloseReadOnlySurvey}
-        />
-      );
+      return <Prescription {...dialogProps} onClose={onCloseReadOnly} />;
     }
     case MENU.NURSE: {
-      return (
-        <Nurse
-          {...dialogProps}
-          defaultValues={null}
-          onClose={onCloseReadOnlySurvey}
-        />
-      );
+      return <Nurse {...dialogProps} onClose={onCloseReadOnly} />;
     }
     case MENU.MEDICATION: {
       if (!defaultValues) return null;
-      return <Medication {...dialogProps} onClose={onCloseSaveSurvey} />;
+      return <Medication {...dialogProps} onClose={onCloseSave} />;
     }
     case MENU.RADIOLOGY: {
       if (!defaultValues) return null;
-      return <Radiology {...dialogProps} onClose={onCloseReadOnlySurvey} />;
+      return <Radiology {...dialogProps} onClose={onCloseReadOnly} />;
     }
     case MENU.PATHOLOGY: {
       if (!defaultValues) return null;
-      return <Pathology {...dialogProps} onClose={onCloseReadOnlySurvey} />;
+      return <Pathology {...dialogProps} onClose={onCloseReadOnly} />;
     }
     case MENU.BEDSORES: {
       if (!defaultValues) return null;
-      return <BedScore {...dialogProps} onClose={onCloseSaveSurvey} />;
+      return <BedScore {...dialogProps} onClose={onCloseSave} />;
     }
     case MENU.NEEDS: {
-      console.log(defaultValues);
       if (!defaultValues) return null;
-      return <Needs {...dialogProps} onClose={onCloseSaveSurvey} />;
+      return <Needs {...dialogProps} onClose={onCloseSave} />;
     }
     case MENU.FALL: {
       if (!defaultValues) return null;
-      return <Fall {...dialogProps} onClose={onCloseSaveSurvey} />;
+      return <Fall {...dialogProps} onClose={onCloseSave} />;
     }
     default:
       return null;

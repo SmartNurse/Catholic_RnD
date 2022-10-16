@@ -9,6 +9,7 @@ import {
   IUpdateMedication,
   IUpdateFall,
   IUpdateBedScore,
+  IUpdateNeeds,
 } from './type';
 
 export const getHospitalization = (request: IGetSurvey) => {
@@ -64,6 +65,11 @@ export const updateBedScore = (request: IUpdateBedScore) => {
 export const getNeeds = (request: IGetSurvey) => {
   const url = `/survey/needs?${formatToRequestParameter(request)}`;
   return apiGateway.get(url);
+};
+
+export const updateNeeds = (request: IUpdateNeeds) => {
+  const url = `/survey/needs`;
+  return apiGateway.post(url, camelcaseKeys(request));
 };
 
 export const getFall = (request: IGetSurvey) => {

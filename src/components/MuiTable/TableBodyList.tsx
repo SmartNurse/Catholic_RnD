@@ -5,9 +5,9 @@ import {
   Tooltip,
   Typography,
 } from '@mui/material';
+import { Props as TableHeadListProps } from './TableHeadList';
 
-interface Props {
-  columns: { fieldId: string; label: string; width?: number }[];
+export interface Props extends TableHeadListProps {
   rows: { id: string | number; [key: string]: any }[];
 }
 
@@ -36,27 +36,31 @@ const TableBodyList = ({ columns, rows }: Props) => {
     <TableBody>
       {rows.map(row => (
         <TableRow key={row.id}>
-          {columns.map(({ fieldId, width }) => (
-            <TableCell key={`${fieldId}-${row.id}`}>
-              {typeof row[fieldId] === 'object' ? (
-                row[fieldId]
-              ) : (
-                <Tooltip title={<TooltipTitle title={row[fieldId]} />}>
-                  <Typography
-                    maxWidth={width ?? 'auto'}
-                    maxHeight={20}
-                    display="block"
-                    variant="caption"
-                    overflow="hidden"
-                    textOverflow="ellipsis"
-                    whiteSpace={width ? 'nowrap' : 'pre-line'}
-                  >
-                    {row[fieldId]}
-                  </Typography>
-                </Tooltip>
-              )}
-            </TableCell>
-          ))}
+          {columns.map(({ fieldId, width, sx: columnSx }) => {
+            const rowData = row[fieldId];
+            const isObjectRowData = typeof rowData === 'object';
+            return (
+              <TableCell key={`${fieldId}-${row.id}`} sx={{ ...columnSx }}>
+                {isObjectRowData ? (
+                  rowData
+                ) : (
+                  <Tooltip title={<TooltipTitle title={rowData} />}>
+                    <Typography
+                      maxWidth={width ?? 'auto'}
+                      maxHeight={20}
+                      display="block"
+                      variant="caption"
+                      overflow="hidden"
+                      textOverflow="ellipsis"
+                      whiteSpace={width ? 'nowrap' : 'pre-line'}
+                    >
+                      {rowData}
+                    </Typography>
+                  </Tooltip>
+                )}
+              </TableCell>
+            );
+          })}
         </TableRow>
       ))}
     </TableBody>

@@ -27,7 +27,15 @@ export const findKeyValueToStr = (values: any) => {
 export const findKeyValueToObj = (values: any, keys: string[]) => {
   return keys.reduce(
     (prev, next) =>
-      values[next] ? { ...prev, [next]: JSON.parse(values[next]) } : prev,
+      values[next]
+        ? {
+            ...prev,
+            [next]:
+              typeof values[next] === 'string'
+                ? JSON.parse(values[next])
+                : values[next],
+          }
+        : prev,
     {}
   );
 };

@@ -19,8 +19,8 @@ import {
   initialBedScore,
   initialFall,
   initialNeeds,
-} from './initialStates';
-import { MENU } from './type';
+} from '../initialStates';
+import { MENU } from '../type';
 
 interface Props {
   user_id: number;
@@ -38,6 +38,7 @@ const useDefaultValues = ({ setDefaultValues, user_id }: Props) => {
       if (typeof getValue !== 'object' || Array.isArray(getValue)) {
         values[key] = getValue;
       } else if (getValue) {
+        console.log(values[key], getValue);
         values[key] = findKeyValueToObj(getValue, Object.keys(getValue));
       }
     }
@@ -79,17 +80,27 @@ const useDefaultValues = ({ setDefaultValues, user_id }: Props) => {
         break;
       case MENU.BEDSORES:
         getBedScore({ user_id, patient_id }).then(({ data }) => {
-          convertDataToStates(data, initialBedScore);
+          const { contents } = data;
+          const m_data = { ...data, contents: JSON.parse(contents) };
+          convertDataToStates(m_data, initialBedScore);
         });
         break;
       case MENU.NEEDS:
         getNeeds({ user_id, patient_id }).then(({ data }) => {
-          convertDataToStates(data, initialNeeds);
+          const { body_status, disease_status } = data;
+          const m_data = {
+            ...data,
+            body_status: JSON.parse(body_status),
+            disease_status: JSON.parse(disease_status),
+          };
+          convertDataToStates(m_data, initialNeeds);
         });
         break;
       case MENU.FALL:
         getFall({ user_id, patient_id }).then(({ data }) => {
-          convertDataToStates(data, initialFall);
+          const { contents } = data;
+          const m_data = { ...data, contents: JSON.parse(contents) };
+          convertDataToStates(m_data, initialFall);
         });
         break;
       default:
