@@ -1,16 +1,14 @@
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
-import { useNavigate } from 'react-router-dom';
 
 import regex from 'utils/regex';
+import useUser from 'store/user/useUser';
 import useNotification from 'hooks/useNotification';
 import { postChangePassword, postLogin } from 'apis/account';
 
 import MyPageForm from './MyPageForm';
-import useUser from 'store/user/useUser';
 
 function MyPage() {
-  const navigate = useNavigate();
   const {
     student_uuid: userId,
     student_id,
