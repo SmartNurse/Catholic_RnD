@@ -12,8 +12,10 @@ import {
 } from '@mui/icons-material';
 
 import useUser from 'store/user/useUser';
+import { useNavigate } from 'react-router-dom';
 
 const MenuSettings = () => {
+  const navigate = useNavigate();
   const { onSignOut } = useUser();
 
   const settings = [
@@ -28,6 +30,9 @@ const MenuSettings = () => {
     {
       icon: <AccountCircleOutlined />,
       label: '계정설정',
+      buttonClick: {
+        onClick: () => navigate('/mypage'),
+      },
     },
     {
       icon: <LogoutOutlined />,

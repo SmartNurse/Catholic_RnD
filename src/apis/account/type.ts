@@ -23,3 +23,13 @@ export interface IPostAccountCreateRequest extends IPostLoginRequest {
   studentNo: number;
   grade: TGrade;
 }
+
+export interface IPostChangePassword {
+  userId: number;
+  password: string;
+  newPassword: string;
+}
+
+export interface IGetUserInfo {
+  user_id?: number;
+}
