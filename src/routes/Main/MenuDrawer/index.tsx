@@ -29,7 +29,7 @@ const MenuDrawer = ({ name }: Props) => (
       </Typography>
       <List>
         <MenuRecords />
-        <Box sx={{ mt: 'auto' }} />
+        <Box sx={{ mt: '90px' }} />
         <MenuSettings />
         <CopyRight />
       </List>

@@ -18,7 +18,10 @@ import {
   VerifiedUserOutlined,
   ExpandMore,
   MonitorHeartOutlined,
+  MasksOutlined,
+  BabyChangingStation,
 } from '@mui/icons-material';
+import { ReactComponent as ProPlus } from "../../../assets/proPlus.svg";
 import Survey from '../Survey';
 import useSurvey from 'store/survey/useSurvey';
 
@@ -73,21 +76,70 @@ const MenuRecords = () => {
       label: '낙상위험도 평가도구',
     },
     {
-      label: '인지기능검사',
+      isPro: true,
+      label: '통증평가도구',
+    },
+    {
+      isPro: true,
+      label: 'BDI',
+    },
+    {
+      isPro: true,
+      label: 'BAI',
+    },
+    {
+      isPro: true,
+      label: 'MMSE',
+    },
+    {
+      isPro: true,
+      label: 'K-CIST',
+    },
+    {
+      isPro: true,
+      disabled: true,
+      icon: <MasksOutlined />,
+      label: '특수파트 기록지',
+    },
+    {
+      isPro: true,
+      label: '수술 기록지',
+    },
+    {
+      isPro: true,
+      label: '수혈 기록지',
+    },
+    {
+      isPro: true,
+      label: '투석 기록지',
+    },
+    {
+      isPro: true,
+      label: '응급간호 기록지',
+    },
+    {
+      isPro: true,
+      label: '가정간호 기록지',
     },
     {
       icon: <RestaurantMenu />,
       label: '식이/영양 기록지',
     },
     {
+      disabled: true,
       icon: <VerifiedUserOutlined />,
       label: '동의서',
+    },
+    {
+      isPro: true,
+      icon: <BabyChangingStation />,
+      label: '영유아 건강검진 문진'
     },
   ];
 
   return (
     <Fragment>
-      {menus.map(({ icon, label, disabled }) => {
+      {menus.map(({ icon, label, disabled, isPro }) => {
         const onClick = () => onUpdateSurveyType(label);
 
         const MoreIcon = () => {
@@ -95,11 +147,17 @@ const MenuRecords = () => {
           return <ExpandMore fontSize="small" sx={{ color: '#fff' }} />;
         };
 
+        const ProIcon = () => {
+          if (!isPro) return null;
+          return <ProPlus />;
+        };
+
         return (
           <ListItem key={label} disablePadding>
-            <ListItemButton disabled={disabled} onClick={onClick}>
+            <ListItemButton className={isPro && !disabled ? "isPro" : ""} disabled={disabled} onClick={onClick}>
               <ListItemIcon>{icon}</ListItemIcon>
               <ListItemText primary={label} />
+              <ProIcon />
               <MoreIcon />
             </ListItemButton>
           </ListItem>

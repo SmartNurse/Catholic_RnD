@@ -30,8 +30,12 @@ export const StyledDrawerWrapper = styled('div')`
     background-color: ${theme.palette.primary.main};
 
     .MuiListItem-root {
+      .isPro {
+        padding-right: 28px !important;
+      }
+
       .MuiListItemButton-root {
-        padding: 8px 18px;
+        padding: 8px 8px;
         line-height: 18px;
         border-radius: 4px;
 

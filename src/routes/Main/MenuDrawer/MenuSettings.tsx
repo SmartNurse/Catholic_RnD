@@ -9,7 +9,11 @@ import {
   AccountCircleOutlined,
   LogoutOutlined,
   NotificationsOutlined,
+  DateRangeOutlined,
+  VideocamOutlined,
+  ComputerOutlined,
 } from '@mui/icons-material';
+import { ReactComponent as ProPlus } from "../../../assets/proPlus.svg";
 
 import useUser from 'store/user/useUser';
 import { useNavigate } from 'react-router-dom';
@@ -20,12 +24,27 @@ const MenuSettings = () => {
 
   const settings = [
     {
+      isPro: true,
+      icon: <DateRangeOutlined />,
+      label: '간호사 근무 스케줄표',
+    },
+    {
       icon: <NotificationsOutlined />,
       label: '공지사항',
       buttonClick: {
         target: '_blank',
         href: 'https://www.smartnurse.co.kr/enrnotice',
       },
+    },
+    {
+      isPro: true,
+      icon: <VideocamOutlined />,
+      label: '핵심간호술기영상 저장',
+    },
+    {
+      isPro: true,
+      icon: <ComputerOutlined />,
+      label: '화면설정',
     },
     {
       icon: <AccountCircleOutlined />,
@@ -45,12 +64,18 @@ const MenuSettings = () => {
 
   return (
     <Fragment>
-      {settings.map(({ icon, label, buttonClick }) => {
+      {settings.map(({ icon, label, buttonClick, isPro}) => {
+        const ProIcon = () => {
+          if (!isPro) return null;
+          return <ProPlus />;
+        };
+        
         return (
           <ListItem key={label} disablePadding>
             <ListItemButton {...buttonClick}>
               <ListItemIcon>{icon}</ListItemIcon>
               <ListItemText primary={label} />
+              <ProIcon />
             </ListItemButton>
           </ListItem>
         );
