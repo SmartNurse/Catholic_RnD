@@ -10,7 +10,7 @@ import MenuDrawer from './MenuDrawer';
 
 function Main() {
   const navigate = useNavigate();
-  const { name, student_uuid } = useUser();
+  const { student_name, student_uuid } = useUser();
 
   useEffect(() => {
     if (student_uuid) return;
@@ -19,7 +19,7 @@ function Main() {
 
   return (
     <Box display="flex" minWidth={1440}>
-      <MenuDrawer name={name} />
+      <MenuDrawer name={student_name} />
       <DisplayInformation />
       <InputInformation />
     </Box>

@@ -1,13 +1,19 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 export interface UserState {
-  name: string;
   student_uuid: number;
+  student_id?: string;
+  student_name: string;
+  student_gender?: number;
+  student_grade?: number;
+  college_name?: string;
+  student_birth?: string;
+  student_no?: string;
 }
 
 const initialState: UserState = {
-  name: '',
   student_uuid: 0,
+  student_name: '',
 };
 
 // name, initialState, reducers.

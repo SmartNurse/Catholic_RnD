@@ -8,7 +8,7 @@ import DisplaySurvey from './DisplaySurvey';
 
 const Survey = () => {
   const { patientInfo } = usePatient();
-  const { name, student_uuid: user_id } = useUser();
+  const { student_name, student_uuid: user_id } = useUser();
   const { onUpdateIsSave, surveyType, onCloseSave, onCloseReadOnly } =
     useSurvey();
 
@@ -35,7 +35,7 @@ const Survey = () => {
     user_id,
     patientInfo,
     defaultValues,
-    nurseName: name,
+    nurseName: student_name,
     title: surveyType,
     isOpen: Boolean(surveyType),
   };

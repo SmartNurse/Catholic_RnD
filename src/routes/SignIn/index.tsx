@@ -2,7 +2,7 @@ import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { FieldValues, useForm } from 'react-hook-form';
 
-import { postLogin } from 'apis/account';
+import { getUserInfo, postLogin } from 'apis/account';
 import useNotification from 'hooks/useNotification';
 import useUser from 'store/user/useUser';
 import {
@@ -31,25 +31,33 @@ function SignIn() {
     defaultValues: { userEmail: getLocalStorage('USER_EMAIL') },
   });
 
-  const onSubmit = (data: any) => {
+  const onSubmit = async (data: any) => {
     // 이메일 저장 체크된 경우 로컬스토리지에 이메일 저장
     if (data.saveEmail) setLocalStorage('USER_EMAIL', data.userEmail);
     else removeLocalStorage('USER_EMAIL');
 
-    const request = {
-      user_email: data.userEmail,
-      user_password: data.userPassword,
-    };
+    try {
+      const request = {
+        user_email: data.userEmail,
+        user_password: data.userPassword,
+      };
 
-    postLogin(request)
-      .then(({ data: { rc, ...response } }) => {
-        if (rc !== 1) return onResultCode(rc);
+      const {
+        data: { rc: loginRc, student_uuid },
+      } = await postLogin(request);
+      if (loginRc !== 1) return onResultCode(loginRc);
 
-        onSignIn({ ...response });
-        onSuccess('로그인 되었습니다.');
-        navigate('/', { replace: true });
-      })
-      .catch(e => onFail('로그인에 실패하였습니다.', e));
+      const {
+        data: { rc: userInfoRc, ...userInfo },
+      } = await getUserInfo({ user_id: student_uuid });
+      if (userInfoRc !== 1) return onResultCode(userInfoRc);
+
+      onSignIn({ student_uuid, ...userInfo });
+      onSuccess('로그인 되었습니다.');
+      navigate('/', { replace: true });
+    } catch (e) {
+      onFail('로그인에 실패하였습니다.', e);
+    }
   };
 
   const onSignUp = () => navigate('/signup', { replace: true });

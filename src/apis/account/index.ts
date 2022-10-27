@@ -1,11 +1,18 @@
 import { formatToRequestParameter } from 'utils/formatting';
 import apiGateway from '../axios';
 import {
+  IGetUserInfo,
   IPostAccountCreateRequest,
+  IPostChangePassword,
   IPostLoginRequest,
   IPostSendMailRequest,
   IPostVerifyMailRequest,
 } from './type';
+
+export const getUserInfo = (request: IGetUserInfo) => {
+  const url = `/account/info?${formatToRequestParameter(request)}`;
+  return apiGateway.get(url);
+};
 
 export const postSendMail = (request: IPostSendMailRequest) => {
   const url = `/account/send_mail?${formatToRequestParameter(request)}`;
@@ -25,4 +32,9 @@ export const postAccountCreate = (request: IPostAccountCreateRequest) => {
 export const postLogin = (request: IPostLoginRequest) => {
   const url = `/account/login?${formatToRequestParameter(request)}`;
   return apiGateway.post(url);
+};
+
+export const postChangePassword = (request: IPostChangePassword) => {
+  const url = `/account/changePassword`;
+  return apiGateway.post(url, request);
 };

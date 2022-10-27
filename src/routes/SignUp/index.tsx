@@ -67,7 +67,7 @@ function SignUp() {
       return onRequired('REQUIRED.EMAIL.VERIFICATION');
     }
 
-    // 이메일 유효성 검사
+    // 비밀번호 유효성 검사
     if (!regex.password.test(data.userPassword)) {
       return onRequired('REQUIRED.PASSWORD.FORMAT');
     }

@@ -10,7 +10,7 @@ import useInfiniteScroll from 'hooks/useInfiniteScroll';
 import RecordItemWrapper from './RecordItemWrapper';
 
 const NursingRecord = () => {
-  const { student_uuid: user_id, name } = useUser();
+  const { student_uuid: user_id, student_name } = useUser();
   const { patientInfo, isUpdateNursingRecord, onUpdateNursingRecord } =
     usePatient();
 
@@ -54,7 +54,7 @@ const NursingRecord = () => {
         {list.map((record: INursingRecord) => {
           const itemWrapperProps = {
             ...record,
-            nurseName: name,
+            nurseName: student_name,
             refetch: onResetList,
           };
 

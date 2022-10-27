@@ -19,7 +19,7 @@ import PatientInfoItem from './PatientInfoItem';
 const PatientInfo = () => {
   const i18n = useI18n();
   const { onFail } = useNotification();
-  const { name: userName } = useUser();
+  const { student_name: userName } = useUser();
   const { patient, patientInfo, onSelectedPatientInfo } = usePatient();
 
   // 부진단 코드 index

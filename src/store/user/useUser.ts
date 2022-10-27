@@ -10,9 +10,7 @@ import { signIn, signOut, UserState } from '.';
 const useUser = () => {
   const dispatch = useDispatch();
 
-  const { name, student_uuid } = useSelector<ReducerType, UserState>(
-    state => state.user
-  );
+  const userState = useSelector<ReducerType, UserState>(state => state.user);
 
   const onSignIn = useCallback(
     (user: UserState) => dispatch(signIn(user)),
@@ -24,7 +22,7 @@ const useUser = () => {
     removeLocalStorage(`persist:${persistKey}`);
   }, [dispatch]);
 
-  return { name, student_uuid, onSignIn, onSignOut };
+  return { ...userState, onSignIn, onSignOut };
 };
 
 export default useUser;
