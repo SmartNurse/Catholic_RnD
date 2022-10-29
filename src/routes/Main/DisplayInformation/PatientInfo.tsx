@@ -11,7 +11,7 @@ import {
 import { getPatientInfo } from 'apis/admin';
 import useI18n from 'hooks/useI18n';
 import useNotification from 'hooks/useNotification';
-import useUser from 'store/user/useUser';
+import useStudent from 'store/student/useStudent';
 import usePatient from 'store/patient/usePatient';
 
 import PatientInfoItem from './PatientInfoItem';
@@ -19,7 +19,7 @@ import PatientInfoItem from './PatientInfoItem';
 const PatientInfo = () => {
   const i18n = useI18n();
   const { onFail } = useNotification();
-  const { student_name: userName } = useUser();
+  const { student_name: userName } = useStudent();
   const { patient, patientInfo, onSelectedPatientInfo } = usePatient();
 
   // 부진단 코드 index

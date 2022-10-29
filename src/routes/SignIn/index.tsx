@@ -5,6 +5,7 @@ import { FieldValues, useForm } from 'react-hook-form';
 import { getUserInfo, postLogin } from 'apis/account';
 import useNotification from 'hooks/useNotification';
 import useUser from 'store/user/useUser';
+import useStudent from 'store/student/useStudent';
 import {
   getLocalStorage,
   setLocalStorage,
@@ -18,6 +19,7 @@ import { ISignInForm } from './type';
 function SignIn() {
   const navigate = useNavigate();
   const { onSignIn } = useUser();
+  const { onSelectedStudent } = useStudent();
   const { onResultCode, onSuccess, onFail } = useNotification();
 
   // 로그인 화면으로 오는 경우 로컬스토리지 클리어
@@ -52,8 +54,11 @@ function SignIn() {
       } = await getUserInfo({ user_id: student_uuid });
       if (userInfoRc !== 1) return onResultCode(userInfoRc);
 
-      onSignIn({ student_uuid, ...userInfo });
       onSuccess('로그인 되었습니다.');
+      const info = { student_uuid, ...userInfo };
+      onSignIn(info);
+      // 학생인 경우 학생 스토어 정보 업떼이트
+      if (userInfo.student_grade === 1) onSelectedStudent(info);
       navigate('/', { replace: true });
     } catch (e) {
       onFail('로그인에 실패하였습니다.', e);

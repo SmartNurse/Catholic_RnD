@@ -4,13 +4,13 @@ import { Box, Card, Skeleton, Typography } from '@mui/material';
 import { getNursingRecords } from 'apis/main';
 import { INursingRecord } from 'apis/main/type';
 import usePatient from 'store/patient/usePatient';
-import useUser from 'store/user/useUser';
+import useStudent from 'store/student/useStudent';
 import useInfiniteScroll from 'hooks/useInfiniteScroll';
 
 import RecordItemWrapper from './RecordItemWrapper';
 
 const NursingRecord = () => {
-  const { student_uuid: user_id, student_name } = useUser();
+  const { student_uuid: user_id, student_name } = useStudent();
   const { patientInfo, isUpdateNursingRecord, onUpdateNursingRecord } =
     usePatient();
 

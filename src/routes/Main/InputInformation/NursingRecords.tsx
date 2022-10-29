@@ -12,7 +12,7 @@ import { findKeyValue } from 'utils/convert';
 import MuiTextField from 'components/Form/MuiTextField';
 import { requiredSelect } from 'components/Form/requiredItems';
 import useNotification from 'hooks/useNotification';
-import useUser from 'store/user/useUser';
+import useStudent from 'store/student/useStudent';
 import usePatient from 'store/patient/usePatient';
 
 import { RECORD_TYPE } from '../Survey/type';
@@ -26,7 +26,7 @@ import NarrativeRecord from './NarrativeRecord';
 import { StyledTabPanel } from '../style';
 
 const NursingRecords = () => {
-  const { student_uuid: user_id } = useUser();
+  const { student_uuid: user_id } = useStudent();
   const { patientInfo, onUpdateNursingRecord } = usePatient();
   const { onSuccess, onFail, onRequired } = useNotification();
   const { register, watch, setValue, handleSubmit, reset } = useForm();

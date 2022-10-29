@@ -1,13 +1,13 @@
 import { useEffect, useState } from 'react';
 import { TextField } from '@mui/material';
 
-import useUser from 'store/user/useUser';
+import useStudent from 'store/student/useStudent';
 import usePatient from 'store/patient/usePatient';
 import { getPatientMemo, postPatientMemo } from 'apis/admin';
 
 const PatientMemo = () => {
   const { patientInfo } = usePatient();
-  const { student_uuid: user_id } = useUser();
+  const { student_uuid: user_id } = useStudent();
   const [memo, setMemo] = useState('');
 
   useEffect(() => {

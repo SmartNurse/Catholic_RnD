@@ -2,13 +2,13 @@ import { useEffect, useState } from 'react';
 
 import usePatient from 'store/patient/usePatient';
 import useSurvey from 'store/survey/useSurvey';
-import useUser from 'store/user/useUser';
+import useStudent from 'store/student/useStudent';
 import useDefaultValues from './hooks/useDefaultValues';
 import DisplaySurvey from './DisplaySurvey';
 
 const Survey = () => {
   const { patientInfo } = usePatient();
-  const { student_name, student_uuid: user_id } = useUser();
+  const { student_name, student_uuid: user_id } = useStudent();
   const { onUpdateIsSave, surveyType, onCloseSave, onCloseReadOnly } =
     useSurvey();
 
