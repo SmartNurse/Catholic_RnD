@@ -7,6 +7,7 @@ import Nurse from './Nurse';
 import Medication from './Medication';
 import Radiology from './Radiology';
 import Pathology from './Pathology';
+import ClinicalObservation from './ClinicalObservation';
 import BedScore from './BedScore';
 import Fall from './Fall';
 import Needs from './Needs';
@@ -49,6 +50,10 @@ const DisplaySurvey = (props: Props) => {
     case MENU.PATHOLOGY: {
       if (!defaultValues) return null;
       return <Pathology {...dialogProps} onClose={onCloseReadOnly} />;
+    }
+    case MENU.CLINICAL_OBSERVATION: {
+      if (!defaultValues) return null;
+      return <ClinicalObservation {...dialogProps} onClose={onCloseSave} />;
     }
     case MENU.BEDSORES: {
       if (!defaultValues) return null;

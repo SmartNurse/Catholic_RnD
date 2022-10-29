@@ -1,5 +1,6 @@
 import {
   getBedScore,
+  getClinicObservation,
   getFall,
   getHospitalization,
   getMedication,
@@ -19,6 +20,7 @@ import {
   initialBedScore,
   initialFall,
   initialNeeds,
+  initialClinicalObservation,
 } from '../initialStates';
 import { MENU } from '../type';
 
@@ -38,7 +40,6 @@ const useDefaultValues = ({ setDefaultValues, user_id }: Props) => {
       if (typeof getValue !== 'object' || Array.isArray(getValue)) {
         values[key] = getValue;
       } else if (getValue) {
-        console.log(values[key], getValue);
         values[key] = findKeyValueToObj(getValue, Object.keys(getValue));
       }
     }
@@ -77,6 +78,21 @@ const useDefaultValues = ({ setDefaultValues, user_id }: Props) => {
         getPathology({ user_id, patient_id }).then(({ data }) => {
           convertDataToStates(data, initialPathology);
         });
+        break;
+      case MENU.CLINICAL_OBSERVATION:
+        // getClinicObservation({ user_id, patient_id }).then(({ data }) => {
+        //   const { vital_sign, io_check } = data;
+        //   const m_data = {
+        //     ...data,
+        //     vital_sign: JSON.parse(vital_sign),
+        //     io_check: JSON.parse(io_check),
+        //   };
+        //   convertDataToStates(m_data, initialClinicalObservation);
+        // });
+        convertDataToStates(
+          { vital_sign: [], io_check: [] },
+          initialClinicalObservation
+        );
         break;
       case MENU.BEDSORES:
         getBedScore({ user_id, patient_id }).then(({ data }) => {

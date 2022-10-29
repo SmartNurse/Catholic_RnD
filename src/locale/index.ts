@@ -170,6 +170,9 @@ const locale = {
     'OUT.HOSPITAL.ACTIVITY.1': '제한',
     'OUT.HOSPITAL.ACTIVITY.2': '제한없음',
 
+    // clinical observation
+    'CLINICAL.OBSERVATION.ADD.ROW': '입력하지 않은 값이 있습니다.',
+
     // bedScore
     'BED.SCORE.SENSORY.PERCEPTION.1': '완전 제한',
     'BED.SCORE.SENSORY.PERCEPTION.2': '매우 제한',
