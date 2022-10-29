@@ -91,6 +91,27 @@ export interface IPathology {
   pathology_note: string;
 }
 
+export interface IVitalSign {
+  checkTime: string;
+  sbp: number;
+  dbp: number;
+  pr: number;
+  rr: number;
+  bt: number;
+  sp02: number;
+}
+
+export interface IIOCheck {
+  checkTime: string;
+  intake: number;
+  output: number;
+}
+export interface IUpdateClinicObservation extends IGetSurvey {
+  survey_uuid: string;
+  vital_sign: string;
+  io_check: string;
+}
+
 export interface IBedScore {
   date: string;
   contents: string;

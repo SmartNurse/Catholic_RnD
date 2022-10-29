@@ -9,6 +9,7 @@ import {
   initialBedScore,
   initialFall,
   initialNeeds,
+  initialClinicalObservation,
 } from './initialStates';
 
 export enum MENU {
@@ -49,6 +50,8 @@ export type TOutHospitalDefaultValues = typeof initialOutHospitalSurvey;
 export type TMedicationDefaultValues = typeof initialMedicationSurvey;
 export type TRadiologyDefaultValues = typeof initialRadiology;
 export type TPathologyDefaultValues = typeof initialPathology;
+export type TClinicalObservationDefaultValues =
+  typeof initialClinicalObservation;
 export type TBedScoreDefaultValues = typeof initialBedScore;
 export type TNeedsDefaultValues = typeof initialNeeds;
 export type TFallDefaultValues = typeof initialFall;

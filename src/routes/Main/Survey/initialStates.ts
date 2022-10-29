@@ -148,6 +148,13 @@ export const initialPathology = {
   pathologies: [],
 };
 
+export const initialClinicalObservation = {
+  update_at: '',
+  survey_uuid: '',
+  vital_sign: [],
+  io_check: [],
+};
+
 export const initialBedScore = {
   date: '',
   update_at: '',

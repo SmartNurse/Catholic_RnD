@@ -10,6 +10,7 @@ import {
   IUpdateFall,
   IUpdateBedScore,
   IUpdateNeeds,
+  IUpdateClinicObservation,
 } from './type';
 
 export const getHospitalization = (request: IGetSurvey) => {
@@ -50,6 +51,16 @@ export const getRadiology = (request: IGetSurvey) => {
 export const getPathology = (request: IGetSurvey) => {
   const url = `/survey/pathology?${formatToRequestParameter(request)}`;
   return apiGateway.get(url);
+};
+
+export const getClinicObservation = (request: IGetSurvey) => {
+  const url = `/survey/clinicObservation?${formatToRequestParameter(request)}`;
+  return apiGateway.get(url);
+};
+
+export const updateClinicObservation = (request: IUpdateClinicObservation) => {
+  const url = `/survey/clinicObservation`;
+  return apiGateway.post(url, camelcaseKeys(request));
 };
 
 export const getBedScore = (request: IGetSurvey) => {
