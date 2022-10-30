@@ -4,9 +4,9 @@ import { inputInformationWidth } from '../InputInformation';
 import { StyledContentContainer } from '../style';
 import { menuDrawerWidth } from '../MenuDrawer';
 import NursingRecord from './NursingRecord';
-import PatientsList from './PatientsList';
 import MedicalNote from './MedicalNote';
 import PatientInfo from './PatientInfo';
+import SearchToolbar from './SearchToolbar';
 
 const DisplayInformation = () => {
   const containerWidth = {
@@ -22,7 +22,7 @@ const DisplayInformation = () => {
       width={containerWidth}
     >
       <Toolbar sx={{ boxShadow: '-4px 4px 10px rgba(0, 0, 0, 0.04)' }}>
-        <PatientsList />
+        <SearchToolbar />
       </Toolbar>
 
       <StyledContentContainer

@@ -1,10 +1,10 @@
-import React, { Fragment, useEffect, useState } from 'react';
+import React, { Fragment, useCallback, useEffect, useState } from 'react';
 import { AxiosResponse } from 'axios';
 import {
   Autocomplete,
   CircularProgress,
-  debounce,
   TextField,
+  debounce,
 } from '@mui/material';
 import { Search } from '@mui/icons-material';
 
@@ -18,8 +18,9 @@ interface Props {
   helperText?: string;
   placeholder?: string;
   onChange: (value: any) => void;
-  getApi: (request: IGetSearch) => Promise<AxiosResponse<any>>;
   getOptionLabel: (option: any) => string;
+  renderOption?: (props: any, option: any) => React.ReactNode;
+  getApi: (request: IGetSearch) => Promise<AxiosResponse<any>>;
 }
 
 const MuiAutocomplete = (props: Props) => {
@@ -35,18 +36,22 @@ const MuiAutocomplete = (props: Props) => {
     helperText,
     placeholder,
     onChange,
-    getApi,
+    renderOption,
     getOptionLabel,
+    getApi,
   } = props;
 
-  const onChangeOptions = (keyword: string) => {
+  const onChangeOptions = useCallback((keyword: string) => {
     getApi({ page: 1, keyword })
       .then(({ data }) => setOptions(data[listKey]))
       .finally(() => setIsLoading(false));
-  };
+    // eslint-disable-next-line
+  }, []);
 
-  // eslint-disable-next-line
-  useEffect(() => onChangeOptions(''), []);
+  useEffect(() => onChangeOptions(''), [onChangeOptions]);
+
+  const isOptionEqualToValue = (option: any, value: any) =>
+    option[valueKey] === value[valueKey];
 
   const onChangeTextField = debounce(e => {
     const keyword = e.target.value;
@@ -70,9 +75,8 @@ const MuiAutocomplete = (props: Props) => {
       open={open}
       onOpen={() => setOpen(true)}
       onClose={() => setOpen(false)}
-      isOptionEqualToValue={(option, value) =>
-        option[valueKey] === value[valueKey]
-      }
+      isOptionEqualToValue={isOptionEqualToValue}
+      renderOption={renderOption}
       getOptionLabel={getOptionLabel}
       noOptionsText={noOptionsText}
       options={options}
@@ -88,12 +92,15 @@ const MuiAutocomplete = (props: Props) => {
           onChange={onChangeTextField}
           InputProps={{
             ...params.InputProps,
-            startAdornment: <Search color="disabled" />,
+            startAdornment: (
+              <Search color="disabled" sx={{ fontSize: 16, mr: 1 }} />
+            ),
             endAdornment: (
               <TextFieldEndAdornment
                 endAdornment={params.InputProps.endAdornment}
               />
             ),
+            sx: { fontSize: 14 },
           }}
         />
       )}

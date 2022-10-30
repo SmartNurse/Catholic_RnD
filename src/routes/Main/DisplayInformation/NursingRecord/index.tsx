@@ -3,13 +3,15 @@ import { Box, Card, Skeleton, Typography } from '@mui/material';
 
 import { getNursingRecords } from 'apis/main';
 import { INursingRecord } from 'apis/main/type';
+import useUser from 'store/user/useUser';
 import usePatient from 'store/patient/usePatient';
 import useStudent from 'store/student/useStudent';
 import useInfiniteScroll from 'hooks/useInfiniteScroll';
 
-import RecordItemWrapper from './RecordItemWrapper';
+import RecordItem from './RecordItem';
 
 const NursingRecord = () => {
+  const { isStudent } = useUser();
   const { student_uuid: user_id, student_name } = useStudent();
   const { patientInfo, isUpdateNursingRecord, onUpdateNursingRecord } =
     usePatient();
@@ -51,20 +53,14 @@ const NursingRecord = () => {
 
     return (
       <Fragment>
-        {list.map((record: INursingRecord) => {
-          const itemWrapperProps = {
-            ...record,
-            nurseName: student_name,
-            refetch: onResetList,
-          };
-
-          return (
-            <RecordItemWrapper
-              key={record.nursing_record_id}
-              {...itemWrapperProps}
-            />
-          );
-        })}
+        {list.map((record: INursingRecord) => (
+          <RecordItem
+            {...record}
+            key={record.nursing_record_id}
+            nurseName={student_name}
+            refetch={isStudent ? onResetList : undefined}
+          />
+        ))}
       </Fragment>
     );
   };

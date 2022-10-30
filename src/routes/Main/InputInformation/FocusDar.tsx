@@ -4,7 +4,11 @@ import Form from 'components/Form';
 
 import { IFormRegister } from '../type';
 
-function FocusDar({ register }: IFormRegister) {
+interface Props extends IFormRegister {
+  disabled?: boolean;
+}
+
+function FocusDar({ register, disabled }: Props) {
   return (
     <Stack spacing={2}>
       <Form.Item label="포커스 Focus">
@@ -15,6 +19,7 @@ function FocusDar({ register }: IFormRegister) {
           rows={2}
           size="small"
           variant="outlined"
+          disabled={disabled}
           {...register('focus')}
         />
       </Form.Item>
@@ -27,6 +32,7 @@ function FocusDar({ register }: IFormRegister) {
           rows={4}
           size="small"
           variant="outlined"
+          disabled={disabled}
           {...register('data')}
         />
       </Form.Item>
@@ -39,6 +45,7 @@ function FocusDar({ register }: IFormRegister) {
           rows={3}
           size="small"
           variant="outlined"
+          disabled={disabled}
           {...register('action')}
         />
       </Form.Item>
@@ -51,6 +58,7 @@ function FocusDar({ register }: IFormRegister) {
           rows={5}
           size="small"
           variant="outlined"
+          disabled={disabled}
           {...register('response')}
         />
       </Form.Item>

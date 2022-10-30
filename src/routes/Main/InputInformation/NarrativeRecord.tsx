@@ -5,7 +5,11 @@ import useI18n from 'hooks/useI18n';
 
 import { IFormRegister } from '../type';
 
-function NarrativeRecord({ register }: IFormRegister) {
+interface Props extends IFormRegister {
+  disabled?: boolean;
+}
+
+function NarrativeRecord({ register, disabled }: Props) {
   const i18n = useI18n();
 
   return (
@@ -18,6 +22,7 @@ function NarrativeRecord({ register }: IFormRegister) {
           rows={20}
           size="small"
           variant="outlined"
+          disabled={disabled}
           {...register('narrativeNote')}
         />
       </Form.Item>

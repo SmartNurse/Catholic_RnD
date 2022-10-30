@@ -25,7 +25,7 @@ const MenuDrawer = ({ name }: Props) => (
         <img src={imgSmartNurseLogoText} alt="SmartNurse" width={86} />
       </Toolbar>
       <Typography className="userName" variant="subtitle2">
-        {name} 간호사
+        {name}
       </Typography>
       <List>
         <MenuRecords />

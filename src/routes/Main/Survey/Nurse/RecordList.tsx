@@ -4,7 +4,7 @@ import { Typography } from '@mui/material';
 import { getNursingRecords } from 'apis/main';
 import { INursingRecord } from 'apis/main/type';
 import useInfiniteScroll from 'hooks/useInfiniteScroll';
-import RecordItemWrapper from 'routes/Main/DisplayInformation/NursingRecord/RecordItemWrapper';
+import RecordItemWrapper from 'routes/Main/DisplayInformation/NursingRecord/RecordItem';
 
 interface Props {
   user_id: number;
@@ -34,19 +34,13 @@ const RecordList = (props: Props) => {
 
   return (
     <Fragment>
-      {list.map((record: INursingRecord) => {
-        const itemWrapperProps = {
-          ...record,
-          nurseName,
-        };
-
-        return (
-          <RecordItemWrapper
-            key={record.nursing_record_id}
-            {...itemWrapperProps}
-          />
-        );
-      })}
+      {list.map((record: INursingRecord) => (
+        <RecordItemWrapper
+          {...record}
+          nurseName={nurseName}
+          key={record.nursing_record_id}
+        />
+      ))}
     </Fragment>
   );
 };
