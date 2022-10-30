@@ -42,6 +42,7 @@ export interface SurveyDialogProps<T>
   user_id: number;
   nurseName: string;
   patientInfo: IPatientInfo;
+  disabled?: boolean;
   defaultValues: T;
 }
 

@@ -28,6 +28,7 @@ const Hospitalization = (
   const {
     title,
     isOpen,
+    disabled,
     defaultValues,
     user_id,
     nurseName,
@@ -89,12 +90,14 @@ const Hospitalization = (
       .catch(e => onFail('입원기록지 저장에 실패하였습니다.', e));
   };
 
+  const formProps = { disabled, register, getValues, setValue };
+
   return (
     <MuiDialog.SurveyForm
       title={title}
       isOpen={isOpen}
       onClose={onClose}
-      onSubmit={handleSubmit(onSubmit)}
+      onSubmit={disabled ? undefined : handleSubmit(onSubmit)}
       update_at={defaultValues.update_at}
     >
       <Grid
@@ -105,48 +108,19 @@ const Hospitalization = (
         sx={{ py: 5, px: 1 }}
       >
         <PatientInfo
-          register={register}
+          {...formProps}
           nurseName={nurseName}
           patientInfo={patientInfo}
         />
-        <DefaultInfo
-          register={register}
-          setValue={setValue}
-          getValues={getValues}
-        />
-        <DiseaseHistory
-          register={register}
-          setValue={setValue}
-          getValues={getValues}
-        />
-        <BodyStatus
-          register={register}
-          setValue={setValue}
-          getValues={getValues}
-        />
-        <Habit
-          register={register}
-          setValue={setValue}
-          getValues={getValues}
-          gender={patientInfo.gender}
-        />
-        <FunctionalEvaluation getValues={getValues} setValue={setValue} />
-        <SocialHistory
-          register={register}
-          setValue={setValue}
-          getValues={getValues}
-        />
-        <EconomyHistory getValues={getValues} setValue={setValue} />
-        <Education
-          register={register}
-          setValue={setValue}
-          getValues={getValues}
-        />
-        <OutHospitalPlan
-          register={register}
-          setValue={setValue}
-          getValues={getValues}
-        />
+        <DefaultInfo {...formProps} />
+        <DiseaseHistory {...formProps} />
+        <BodyStatus {...formProps} />
+        <Habit {...formProps} gender={patientInfo.gender} />
+        <FunctionalEvaluation {...formProps} />
+        <SocialHistory {...formProps} />
+        <EconomyHistory {...formProps} />
+        <Education {...formProps} />
+        <OutHospitalPlan {...formProps} />
       </Grid>
     </MuiDialog.SurveyForm>
   );

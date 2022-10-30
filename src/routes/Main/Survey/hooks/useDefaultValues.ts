@@ -80,15 +80,15 @@ const useDefaultValues = ({ setDefaultValues, user_id }: Props) => {
         });
         break;
       case MENU.CLINICAL_OBSERVATION:
-        // getClinicObservation({ user_id, patient_id }).then(({ data }) => {
-        //   const { vital_sign, io_check } = data;
-        //   const m_data = {
-        //     ...data,
-        //     vital_sign: JSON.parse(vital_sign),
-        //     io_check: JSON.parse(io_check),
-        //   };
-        //   convertDataToStates(m_data, initialClinicalObservation);
-        // });
+        getClinicObservation({ user_id, patient_id }).then(({ data }) => {
+          const { vital_sign, io_check } = data;
+          const m_data = {
+            ...data,
+            vital_sign: JSON.parse(vital_sign),
+            io_check: JSON.parse(io_check),
+          };
+          // convertDataToStates(m_data, initialClinicalObservation);
+        });
         convertDataToStates(
           { vital_sign: [], io_check: [] },
           initialClinicalObservation

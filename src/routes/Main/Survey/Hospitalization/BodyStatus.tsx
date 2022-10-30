@@ -8,10 +8,12 @@ import RowContainer from '../components/RowContainer';
 import RowContent from '../components/RowContent';
 import SectionTitle from '../components/SectionTitle';
 
-interface Props extends IFormRegister, IFormValues {}
+interface Props extends IFormRegister, IFormValues {
+  disabled?: boolean;
+}
 
 const BodyStatus = (props: Props) => {
-  const { register, getValues, setValue } = props;
+  const { disabled, register, getValues, setValue } = props;
 
   return (
     <Fragment>
@@ -22,11 +24,13 @@ const BodyStatus = (props: Props) => {
           <Form.MuiRadioGroup
             i18nKey="EXIST"
             values={[1, 2]}
+            disabled={disabled}
             defaultValue={getValues('body_status.cycle.value')}
             onChange={v => setValue('body_status.cycle.value', v)}
           />
           <Form.MuiCheckboxGroup
             i18nNullKey="ETC"
+            disabled={disabled}
             i18nKey="HOSPITALIZATION.BODY.CYCLE"
             values={[1, 2, 3, 4, 0]}
             defaultValue={getValues('body_status.cycle.checked')}
@@ -34,6 +38,7 @@ const BodyStatus = (props: Props) => {
           />
           <Form.MuiTextField
             required={false}
+            disabled={disabled}
             placeholder="직접 입력"
             {...register('body_status.cycle.input')}
           />
@@ -42,6 +47,7 @@ const BodyStatus = (props: Props) => {
           <Form.MuiRadioGroup
             i18nKey="EXIST"
             values={[1, 2]}
+            disabled={disabled}
             defaultValue={getValues('body_status.breath.value')}
             onChange={v => setValue('body_status.breath.value', v)}
           />
@@ -49,11 +55,13 @@ const BodyStatus = (props: Props) => {
             i18nNullKey="ETC"
             i18nKey="HOSPITALIZATION.BODY.BREATH"
             values={[1, 2, 3, 4, 0]}
+            disabled={disabled}
             defaultValue={getValues('body_status.breath.checked')}
             onChange={v => setValue('body_status.breath.checked', v)}
           />
           <Form.MuiTextField
             required={false}
+            disabled={disabled}
             placeholder="직접 입력"
             {...register('body_status.breath.input')}
           />
@@ -62,11 +70,13 @@ const BodyStatus = (props: Props) => {
           <Form.MuiRadioGroup
             i18nKey="EXIST"
             values={[1, 2]}
+            disabled={disabled}
             defaultValue={getValues('body_status.camouflage.value')}
             onChange={v => setValue('body_status.camouflage.value', v)}
           />
           <Form.MuiCheckboxGroup
             i18nNullKey="ETC"
+            disabled={disabled}
             i18nKey="HOSPITALIZATION.BODY.CAMOUFLAGE"
             values={[1, 2, 3, 4, 0]}
             defaultValue={getValues('body_status.camouflage.checked')}
@@ -74,6 +84,7 @@ const BodyStatus = (props: Props) => {
           />
           <Form.MuiTextField
             required={false}
+            disabled={disabled}
             placeholder="직접 입력"
             {...register('body_status.camouflage.input')}
           />
@@ -82,6 +93,7 @@ const BodyStatus = (props: Props) => {
           <Form.MuiRadioGroup
             i18nKey="EXIST"
             values={[1, 2]}
+            disabled={disabled}
             defaultValue={getValues('body_status.nerve.value')}
             onChange={v => setValue('body_status.nerve.value', v)}
           />
@@ -89,11 +101,13 @@ const BodyStatus = (props: Props) => {
             i18nNullKey="ETC"
             i18nKey="HOSPITALIZATION.BODY.CAMOUFLAGE"
             values={[1, 2, 3, 4, 0]}
+            disabled={disabled}
             defaultValue={getValues('body_status.nerve.checked')}
             onChange={v => setValue('body_status.nerve.checked', v)}
           />
           <Form.MuiTextField
             required={false}
+            disabled={disabled}
             placeholder="직접 입력"
             {...register('body_status.nerve.input')}
           />
@@ -105,6 +119,7 @@ const BodyStatus = (props: Props) => {
           <Form.MuiRadioGroup
             i18nKey="EXIST"
             values={[1, 2]}
+            disabled={disabled}
             defaultValue={getValues('body_status.skin.value')}
             onChange={v => setValue('body_status.skin.value', v)}
           />
@@ -112,11 +127,13 @@ const BodyStatus = (props: Props) => {
             i18nNullKey="ETC"
             i18nKey="HOSPITALIZATION.BODY.CAMOUFLAGE"
             values={[1, 2, 3, 0]}
+            disabled={disabled}
             defaultValue={getValues('body_status.skin.checked')}
             onChange={v => setValue('body_status.skin.checked', v)}
           />
           <Form.MuiTextField
             required={false}
+            disabled={disabled}
             placeholder="직접 입력"
             {...register('body_status.skin.input')}
           />
@@ -126,11 +143,13 @@ const BodyStatus = (props: Props) => {
             <Form.MuiRadioGroup
               i18nKey="EXIST"
               values={[1, 2]}
+              disabled={disabled}
               defaultValue={getValues('body_status.operation_history.value')}
               onChange={v => setValue('body_status.operation_history.value', v)}
             />
             <Form.MuiTextField
               required={false}
+              disabled={disabled}
               placeholder="보조기구 유/무"
               {...register('body_status.operation_history.input')}
             />
@@ -141,11 +160,13 @@ const BodyStatus = (props: Props) => {
             <Form.MuiRadioGroup
               i18nKey="EXIST"
               values={[1, 2]}
+              disabled={disabled}
               defaultValue={getValues('body_status.medicine_history.value')}
               onChange={v => setValue('body_status.medicine_history.value', v)}
             />
             <Form.MuiTextField
               required={false}
+              disabled={disabled}
               placeholder="보조기구 유/무"
               {...register('body_status.medicine_history.input')}
             />
@@ -154,6 +175,7 @@ const BodyStatus = (props: Props) => {
         <RowContent title="낙상">
           <Form.MuiCheckbox
             label="시행"
+            disabled={disabled}
             defaultValue={getValues('body_status.fall.checked')}
             {...register('body_status.fall.checked')}
           />
@@ -161,6 +183,7 @@ const BodyStatus = (props: Props) => {
         <RowContent title="욕창">
           <Form.MuiCheckbox
             label="시행"
+            disabled={disabled}
             defaultValue={getValues('body_status.yukchang.checked')}
             {...register('body_status.yukchang.checked')}
           />
@@ -168,6 +191,7 @@ const BodyStatus = (props: Props) => {
         <RowContent title="통증">
           <Form.MuiCheckbox
             label="시행"
+            disabled={disabled}
             defaultValue={getValues('body_status.fain.checked')}
             {...register('body_status.fain.checked')}
           />

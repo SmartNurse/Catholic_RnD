@@ -5,8 +5,12 @@ import RowContainer from '../components/RowContainer';
 import RowContent from '../components/RowContent';
 import SectionTitle from '../components/SectionTitle';
 
-const EconomyHistory = (props: IFormValues) => {
-  const { getValues, setValue } = props;
+interface Props extends IFormValues {
+  disabled?: boolean;
+}
+
+const EconomyHistory = (props: Props) => {
+  const { disabled, getValues, setValue } = props;
 
   return (
     <RowContainer>
@@ -17,6 +21,7 @@ const EconomyHistory = (props: IFormValues) => {
           <Form.MuiRadioGroup
             i18nKey="NEED"
             values={[1, 2]}
+            disabled={disabled}
             defaultValue={getValues('economy_history.counseling')}
             onChange={v => setValue('economy_history.counseling', v)}
           />
@@ -26,6 +31,7 @@ const EconomyHistory = (props: IFormValues) => {
             i18nNullKey="ETC"
             i18nKey="HOSPITALIZATION.ECONOMY.MIND"
             values={[1, 2, 3, 4, 5]}
+            disabled={disabled}
             defaultValue={getValues('economy_history.mind_status.checked')}
             onChange={v => setValue('economy_history.mind_status.checked', v)}
           />

@@ -5,10 +5,12 @@ import RowContent from '../components/RowContent';
 import RowContainer from '../components/RowContainer';
 import SectionTitle from '../components/SectionTitle';
 
-interface Props extends IFormRegister, IFormValues {}
+interface Props extends IFormRegister, IFormValues {
+  disabled?: boolean;
+}
 
 const Education = (props: Props) => {
-  const { register, getValues, setValue } = props;
+  const { disabled, register, getValues, setValue } = props;
 
   return (
     <RowContainer>
@@ -19,6 +21,7 @@ const Education = (props: Props) => {
           <Form.MuiRadioGroup
             i18nKey="HOSPITALIZATION.EDUCATION.WAY"
             values={[1, 2, 3, 4]}
+            disabled={disabled}
             defaultValue={getValues('education.education_way')}
             onChange={v => setValue('education.education_way', v)}
           />
@@ -28,11 +31,13 @@ const Education = (props: Props) => {
             i18nNullKey="ETC"
             i18nKey="HOSPITALIZATION.EDUCATION.CONTENTS"
             values={[1, 2, 3, 0]}
+            disabled={disabled}
             defaultValue={getValues('education.education_contents.checked')}
             onChange={v => setValue('education.education_contents.checked', v)}
           />
           <Form.MuiTextField
             required={false}
+            disabled={disabled}
             placeholder="직접 입력"
             {...register('education.education_contents.input')}
           />

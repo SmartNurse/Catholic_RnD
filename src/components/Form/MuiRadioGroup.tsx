@@ -13,6 +13,7 @@ interface Props extends RadioGroupProps {
   value?: number;
   values: number[];
   defaultValue: number;
+  disabled?: boolean;
   onChange?: (value: any) => void;
 }
 
@@ -21,6 +22,7 @@ const MuiRadioGroup = ({
   i18nNullKey,
   values,
   defaultValue,
+  disabled,
   onChange,
   ...props
 }: Props) => {
@@ -44,6 +46,7 @@ const MuiRadioGroup = ({
           <FormControlLabel
             key={value}
             value={value}
+            disabled={disabled}
             control={<Radio size="small" />}
             label={label(value)}
           />

@@ -5,8 +5,10 @@ import useSurvey from 'store/survey/useSurvey';
 import useStudent from 'store/student/useStudent';
 import useDefaultValues from './hooks/useDefaultValues';
 import DisplaySurvey from './DisplaySurvey';
+import useUser from 'store/user/useUser';
 
 const Survey = () => {
+  const { isStudent } = useUser();
   const { patientInfo } = usePatient();
   const { student_name, student_uuid: user_id } = useStudent();
   const { onUpdateIsSave, surveyType, onCloseSave, onCloseReadOnly } =
@@ -38,14 +40,15 @@ const Survey = () => {
     nurseName: student_name,
     title: surveyType,
     isOpen: Boolean(surveyType),
+    disabled: !isStudent,
   };
 
   return (
     <DisplaySurvey
       surveyType={surveyType}
       dialogProps={dialogProps}
-      onCloseSave={onCloseSave}
       onCloseReadOnly={onCloseReadOnly}
+      onCloseSave={isStudent ? onCloseSave : onCloseReadOnly}
     />
   );
 };

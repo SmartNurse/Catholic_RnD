@@ -5,8 +5,12 @@ import RowContainer from '../components/RowContainer';
 import RowContent from '../components/RowContent';
 import SectionTitle from '../components/SectionTitle';
 
-const FunctionalEvaluation = (props: IFormValues) => {
-  const { getValues, setValue } = props;
+interface Props extends IFormValues {
+  disabled?: boolean;
+}
+
+const FunctionalEvaluation = (props: Props) => {
+  const { disabled, getValues, setValue } = props;
 
   return (
     <RowContainer>
@@ -17,6 +21,7 @@ const FunctionalEvaluation = (props: IFormValues) => {
           <Form.MuiRadioGroup
             i18nKey="HOSPITALIZATION.FUNCTIONAL.EVALUATION"
             values={[1, 2, 3]}
+            disabled={disabled}
             defaultValue={getValues('functional_evaluation.sit')}
             onChange={v => setValue('functional_evaluation.sit', v)}
           />
@@ -29,6 +34,7 @@ const FunctionalEvaluation = (props: IFormValues) => {
           <Form.MuiRadioGroup
             i18nKey="HOSPITALIZATION.FUNCTIONAL.EVALUATION"
             values={[1, 2, 3]}
+            disabled={disabled}
             defaultValue={getValues('functional_evaluation.stand_up')}
             onChange={v => setValue('functional_evaluation.stand_up', v)}
           />
@@ -41,6 +47,7 @@ const FunctionalEvaluation = (props: IFormValues) => {
           <Form.MuiRadioGroup
             i18nKey="HOSPITALIZATION.FUNCTIONAL.EVALUATION"
             values={[1, 2, 3]}
+            disabled={disabled}
             defaultValue={getValues('functional_evaluation.wheel_chair')}
             onChange={v => setValue('functional_evaluation.wheel_chair', v)}
           />
@@ -49,6 +56,7 @@ const FunctionalEvaluation = (props: IFormValues) => {
           <Form.MuiRadioGroup
             i18nKey="HOSPITALIZATION.FUNCTIONAL.EVALUATION"
             values={[1, 2, 3]}
+            disabled={disabled}
             defaultValue={getValues('functional_evaluation.walk')}
             onChange={v => setValue('functional_evaluation.walk', v)}
           />

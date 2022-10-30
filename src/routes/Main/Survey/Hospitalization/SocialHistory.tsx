@@ -7,10 +7,12 @@ import RowContainer from '../components/RowContainer';
 import RowContent from '../components/RowContent';
 import SectionTitle from '../components/SectionTitle';
 
-interface Props extends IFormRegister, IFormValues {}
+interface Props extends IFormRegister, IFormValues {
+  disabled?: boolean;
+}
 
 const SocialHistory = (props: Props) => {
-  const { register, getValues, setValue } = props;
+  const { disabled, register, getValues, setValue } = props;
 
   return (
     <RowContainer>
@@ -21,18 +23,21 @@ const SocialHistory = (props: Props) => {
           <Form.MuiRadioGroup
             i18nKey="HOSPITALIZATION.MARRY"
             values={[1, 2]}
+            disabled={disabled}
             defaultValue={getValues('social_history.marry')}
             onChange={v => setValue('social_history.marry', v)}
           />
         </RowContent>
         <RowContent title="언어">
           <Form.MuiSelect
+            disabled={disabled}
             options={['한국어', '영어', '일본어', '중국어', '기타 언어']}
             {...register('social_history.language')}
           />
         </RowContent>
         <RowContent title="직업">
           <Form.MuiTextField
+            disabled={disabled}
             placeholder="직접 입력"
             {...register('social_history.job')}
           />
@@ -42,11 +47,13 @@ const SocialHistory = (props: Props) => {
             <Form.MuiRadioGroup
               i18nKey="EXIST"
               values={[1, 2]}
+              disabled={disabled}
               defaultValue={getValues('social_history.religion.value')}
               onChange={v => setValue('social_history.religion.value', v)}
             />
             <Form.MuiTextField
               required={false}
+              disabled={disabled}
               placeholder="직접 입력"
               {...register('social_history.religion.input')}
             />

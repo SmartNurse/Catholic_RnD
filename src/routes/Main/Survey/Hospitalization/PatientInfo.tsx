@@ -9,12 +9,13 @@ import RowContent from '../components/RowContent';
 import RowTable from '../components/RowTable';
 
 interface Props extends IFormRegister {
+  disabled?: boolean;
   nurseName: string;
   patientInfo: IPatientInfo;
 }
 
 const PatientInfo = (props: Props) => {
-  const { nurseName, patientInfo, register } = props;
+  const { disabled, nurseName, patientInfo, register } = props;
 
   const columns = [
     { id: 'contact', label: '비상 연락처', xs: 6 },
@@ -23,18 +24,27 @@ const PatientInfo = (props: Props) => {
   ];
   const rows = Array.from({ length: 3 }, (_, i) => {
     const prefix = `contacts.${i}`;
+    const textFieldProps = { required: !i, disabled };
     return {
       id: i,
       contact: (
         <Form.MuiTextField
-          type="tel"
-          required={!i}
+          {...textFieldProps}
           {...register(`${prefix}.contact`)}
+          type="tel"
         />
       ),
-      name: <Form.MuiTextField required={!i} {...register(`${prefix}.name`)} />,
+      name: (
+        <Form.MuiTextField
+          {...textFieldProps}
+          {...register(`${prefix}.name`)}
+        />
+      ),
       relation: (
-        <Form.MuiTextField required={!i} {...register(`${prefix}.relation`)} />
+        <Form.MuiTextField
+          {...textFieldProps}
+          {...register(`${prefix}.relation`)}
+        />
       ),
     };
   });
@@ -84,7 +94,7 @@ const PatientInfo = (props: Props) => {
           />
         </RowContent>
         <RowContent title="정보제공자" childrenRatio={4}>
-          <Form.MuiTextField {...register('offer')} />
+          <Form.MuiTextField {...register('offer')} disabled={disabled} />
         </RowContent>
       </RowContainer>
       <RowContainer sx={{ mt: 'auto' }}>

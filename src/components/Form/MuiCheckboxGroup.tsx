@@ -7,6 +7,7 @@ interface Props {
   i18nNullKey?: string;
   values: number[];
   defaultValue: number[];
+  disabled?: boolean;
   onChange: (values: number[]) => void;
 }
 
@@ -15,6 +16,7 @@ const MuiCheckboxGroup = ({
   i18nNullKey,
   values,
   defaultValue,
+  disabled,
   onChange,
 }: Props) => {
   const i18n = useI18n();
@@ -46,6 +48,7 @@ const MuiCheckboxGroup = ({
               key={value}
               value={value}
               label={label(value)}
+              disabled={disabled}
               control={
                 <Checkbox size="small" defaultChecked={defaultChecked} />
               }

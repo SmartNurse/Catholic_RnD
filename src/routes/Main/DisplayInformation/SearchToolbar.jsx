@@ -8,7 +8,7 @@ import PatientsList from './PatientsList';
 const SearchToolbar = () => {
   const { isStudent, college_name } = useUser();
 
-  //   if (isStudent) return <PatientsList getApi={getPatients} />;
+  if (isStudent) return <PatientsList getApi={getPatients} />;
   return (
     <Grid container alignItems="center" spacing={1}>
       <Grid item xs={2}>
