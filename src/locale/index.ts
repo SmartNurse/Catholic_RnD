@@ -37,6 +37,10 @@ const locale = {
     'REQUIRED.STUDENT.NO':
       '학번은 "-"를 제외한 15자리 이하 숫자만 입력가능합니다',
 
+    // Main
+    'REQUIRED.STUDENT': '학생이 선택되지 않았습니다.',
+    'REQUIRED.PATIENT': '가상환자가 선택되지 않았습니다.',
+
     // nursing record
     'RECORD.0': 'NANDA',
     'RECORD.1': 'SOAPIE',

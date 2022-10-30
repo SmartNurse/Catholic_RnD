@@ -22,7 +22,7 @@ import {
 } from 'react-hook-form';
 
 import Form from 'components/Form';
-import { getCollegeLists } from 'apis/admin';
+import { getCollegeList } from 'apis/admin';
 import MuiAutocomplete from 'components/MuiAutocomplete';
 
 import { ISendMailProps, IVerifyMailProps } from './types';
@@ -155,7 +155,7 @@ function SignUpForm(props: Props) {
               helperText="본인 학교 명칭을 직접 입력해주세요. 대학 재학 또는 재직 중이 아닐 시 ‘기타대학’ 이라고 입력해주세요"
               placeholder="학교 검색"
               onChange={value => setValue('college', value.college_id)}
-              getApi={getCollegeLists}
+              getApi={getCollegeList}
               getOptionLabel={option => option.college_name}
             />
           </Form.Item>

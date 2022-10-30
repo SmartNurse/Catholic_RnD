@@ -13,10 +13,16 @@ import {
 
 import useUser from 'store/user/useUser';
 import { useNavigate } from 'react-router-dom';
+import useStudent from 'store/student/useStudent';
+import useSurvey from 'store/survey/useSurvey';
+import usePatient from 'store/patient/usePatient';
 
 const MenuSettings = () => {
   const navigate = useNavigate();
   const { onSignOut } = useUser();
+  const { onCloseReadOnly } = useSurvey();
+  const { onResetStudent } = useStudent();
+  const { onResetPatient } = usePatient();
 
   const settings = [
     {
@@ -38,23 +44,27 @@ const MenuSettings = () => {
       icon: <LogoutOutlined />,
       label: '로그아웃',
       buttonClick: {
-        onClick: onSignOut,
+        onClick: () => {
+          onSignOut();
+          // 로그아웃 시 스토어 초기화
+          onResetStudent();
+          onCloseReadOnly();
+          onResetPatient();
+        },
       },
     },
   ];
 
   return (
     <Fragment>
-      {settings.map(({ icon, label, buttonClick }) => {
-        return (
-          <ListItem key={label} disablePadding>
-            <ListItemButton {...buttonClick}>
-              <ListItemIcon>{icon}</ListItemIcon>
-              <ListItemText primary={label} />
-            </ListItemButton>
-          </ListItem>
-        );
-      })}
+      {settings.map(({ icon, label, buttonClick }) => (
+        <ListItem key={label} disablePadding>
+          <ListItemButton {...buttonClick}>
+            <ListItemIcon>{icon}</ListItemIcon>
+            <ListItemText primary={label} />
+          </ListItemButton>
+        </ListItem>
+      ))}
     </Fragment>
   );
 };

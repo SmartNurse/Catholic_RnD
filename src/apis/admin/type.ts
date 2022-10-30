@@ -1,4 +1,4 @@
-export interface IGetCollegeLists {
+export interface IGetCollegeList {
   page: number;
   keyword: string;
 }
@@ -10,7 +10,7 @@ export interface ICollege {
   college_ci: string;
 }
 
-export interface IGetPatients extends IGetCollegeLists {}
+export interface IGetPatients extends IGetCollegeList {}
 
 export interface IPatient {
   patient_id: number;

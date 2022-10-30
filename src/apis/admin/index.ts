@@ -1,14 +1,14 @@
 import { formatToRequestParameter } from 'utils/formatting';
 import apiGateway from '../axios';
 import {
-  IGetCollegeLists,
+  IGetCollegeList,
   IGetPatientInfo,
   IGetPatientMemo,
   IGetPatients,
   IPostPatientMemo,
 } from './type';
 
-export const getCollegeLists = (request: IGetCollegeLists) => {
+export const getCollegeList = (request: IGetCollegeList) => {
   const url = `/admin/college/search?${formatToRequestParameter(request)}`;
   return apiGateway.get(url);
 };

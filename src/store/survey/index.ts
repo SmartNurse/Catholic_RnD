@@ -5,9 +5,14 @@ export interface SurveyState {
   surveyType?: string;
 }
 
+const initialState = {
+  isSave: false,
+  surveyType: '',
+};
+
 export const surveySlice = createSlice({
   name: 'survey',
-  initialState: {} as SurveyState,
+  initialState,
   reducers: {
     updateSurveyType(state, action: PayloadAction<string>) {
       state.isSave = false;
@@ -16,16 +21,13 @@ export const surveySlice = createSlice({
     updateIsSave(state, action: PayloadAction<boolean>) {
       state.isSave = action.payload;
     },
-    closeSave(state) {
+    resetSurvey(state) {
       state.isSave = false;
-      state.surveyType = undefined;
-    },
-    closeReadOnly(state) {
-      state.surveyType = undefined;
+      state.surveyType = '';
     },
   },
 });
 
-export const { updateSurveyType, updateIsSave, closeSave, closeReadOnly } =
+export const { updateSurveyType, updateIsSave, resetSurvey } =
   surveySlice.actions;
 export default surveySlice.reducer;

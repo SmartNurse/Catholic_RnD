@@ -55,10 +55,12 @@ function SignIn() {
       if (userInfoRc !== 1) return onResultCode(userInfoRc);
 
       onSuccess('로그인 되었습니다.');
+
       const info = { student_uuid, ...userInfo };
       onSignIn(info);
       // 학생인 경우 학생 스토어 정보 업떼이트
       if (userInfo.student_grade === 1) onSelectedStudent(info);
+
       navigate('/', { replace: true });
     } catch (e) {
       onFail('로그인에 실패하였습니다.', e);
