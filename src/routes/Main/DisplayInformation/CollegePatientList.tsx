@@ -1,6 +1,6 @@
 import { ListItemButton, Typography } from '@mui/material';
 
-import { getPatients } from 'apis/admin';
+import { getCollegePatientList } from 'apis/admin';
 import usePatient from 'store/patient/usePatient';
 import MuiAutocomplete from 'components/MuiAutocomplete';
 
@@ -10,7 +10,7 @@ interface IOption {
   age: string;
 }
 
-const PatientsList = () => {
+const CollegePatientList = ({ user_id }: { user_id: number }) => {
   const { onSelectedPatient } = usePatient();
 
   const optionLabel = ({ patient_id, name }: IOption) =>
@@ -32,15 +32,15 @@ const PatientsList = () => {
     <MuiAutocomplete
       variant="standard"
       valueKey="patient_id"
-      listKey="admin_patients"
+      listKey="patients"
       placeholder="환자 검색"
       noOptionsText="검색한 환자가 없습니다 다른 환자 이름을 입력해주세요"
       getOptionLabel={optionLabel}
       renderOption={(props, option) => <Option {...props} {...option} />}
       onChange={onSelectedPatient}
-      getApi={getPatients}
+      getApi={request => getCollegePatientList({ user_id, ...request })}
     />
   );
 };
 
-export default PatientsList;
+export default CollegePatientList;

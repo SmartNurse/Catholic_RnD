@@ -5,6 +5,7 @@ import {
   CircularProgress,
   TextField,
   debounce,
+  Typography,
 } from '@mui/material';
 import { Search } from '@mui/icons-material';
 
@@ -78,7 +79,7 @@ const MuiAutocomplete = (props: Props) => {
       isOptionEqualToValue={isOptionEqualToValue}
       renderOption={renderOption}
       getOptionLabel={getOptionLabel}
-      noOptionsText={noOptionsText}
+      noOptionsText={<Typography variant="caption">{noOptionsText}</Typography>}
       options={options}
       loading={isLoading}
       onChangeCapture={() => setIsLoading(true)}

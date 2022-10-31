@@ -26,7 +26,6 @@ export const patientSlice = createSlice({
     },
     selectedPatientInfo(state, action: PayloadAction<IPatientInfo | null>) {
       state.patientInfo = action.payload;
-      state.isUpdateNursingRecord = true;
     },
     updateNursingRecord(state, action: PayloadAction<boolean>) {
       state.isUpdateNursingRecord = action.payload;

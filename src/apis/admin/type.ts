@@ -1,7 +1,4 @@
-export interface IGetCollegeList {
-  page: number;
-  keyword: string;
-}
+import { IGetSearch } from 'apis/type';
 
 export interface ICollege {
   college_id: number;
@@ -9,8 +6,6 @@ export interface ICollege {
   college_email: string;
   college_ci: string;
 }
-
-export interface IGetPatients extends IGetCollegeList {}
 
 export interface IPatient {
   patient_id: number;
@@ -56,3 +51,9 @@ export interface IPostPatientMemo extends IGetPatientMemo {
 export interface IPatientMemo {
   memo: string;
 }
+
+export interface IGetStudentList extends IGetSearch {
+  user_id: number;
+}
+
+export interface IGetCollegePatientList extends IGetStudentList {}

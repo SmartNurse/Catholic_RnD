@@ -20,7 +20,10 @@ const usePatient = () => {
     PatientState
   >(state => state.patient);
 
-  const onResetPatient = useCallback(() => dispatch(resetPatient), [dispatch]);
+  const onResetPatient = useCallback(
+    () => dispatch(resetPatient()),
+    [dispatch]
+  );
 
   const onSelectedPatient = useCallback(
     (patient: IPatient | null) => dispatch(selectedPatient(patient)),

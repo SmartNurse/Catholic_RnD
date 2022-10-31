@@ -48,8 +48,8 @@ const MenuSettings = () => {
           onSignOut();
           // 로그아웃 시 스토어 초기화
           onResetStudent();
-          onCloseReadOnly();
           onResetPatient();
+          onCloseReadOnly();
         },
       },
     },

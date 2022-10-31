@@ -1,8 +1,9 @@
 import { Fragment, useEffect, useRef } from 'react';
-import { Box, Card, Skeleton, Typography } from '@mui/material';
+import { Box, Card, Typography } from '@mui/material';
 
 import { getNursingRecords } from 'apis/main';
 import { INursingRecord } from 'apis/main/type';
+import { IPatientInfo } from 'apis/admin/type';
 import useUser from 'store/user/useUser';
 import usePatient from 'store/patient/usePatient';
 import useStudent from 'store/student/useStudent';
@@ -10,11 +11,14 @@ import useInfiniteScroll from 'hooks/useInfiniteScroll';
 
 import RecordItem from './RecordItem';
 
-const NursingRecord = () => {
+interface Props {
+  patientInfo: IPatientInfo;
+}
+
+const NursingRecord = ({ patientInfo }: Props) => {
   const { isStudent } = useUser();
   const { student_uuid: user_id, student_name } = useStudent();
-  const { patientInfo, isUpdateNursingRecord, onUpdateNursingRecord } =
-    usePatient();
+  const { isUpdateNursingRecord, onUpdateNursingRecord } = usePatient();
 
   const moreRef = useRef(null);
   const { list, onResetList } = useInfiniteScroll({
@@ -35,14 +39,6 @@ const NursingRecord = () => {
     onUpdateNursingRecord(false);
     // eslint-disable-next-line
   }, [isUpdateNursingRecord]);
-
-  if (!patientInfo) {
-    return (
-      <Box flex={1} display="flex" flexDirection="column" overflow="auto">
-        <Skeleton variant="rectangular" sx={{ flex: 1 }} />
-      </Box>
-    );
-  }
 
   const RecordList = () => {
     if (list.length === 0) {

@@ -1,24 +1,25 @@
 import { Grid, Typography } from '@mui/material';
 
-import { getPatients } from 'apis/admin';
 import useUser from 'store/user/useUser';
+import CollegePatientList from './CollegePatientList';
 
 import PatientsList from './PatientsList';
+import StudentList from './StudentList';
 
 const SearchToolbar = () => {
-  const { isStudent, college_name } = useUser();
+  const { student_uuid: user_id, isStudent, college_name } = useUser();
 
-  if (isStudent) return <PatientsList getApi={getPatients} />;
+  if (isStudent) return <PatientsList />;
   return (
     <Grid container alignItems="center" spacing={1}>
       <Grid item xs={2}>
         <Typography>{college_name}</Typography>
       </Grid>
       <Grid item xs={5}>
-        <PatientsList getApi={getPatients} />
+        <StudentList user_id={user_id} />
       </Grid>
       <Grid item xs={5}>
-        <PatientsList getApi={getPatients} />
+        <CollegePatientList user_id={user_id} />
       </Grid>
     </Grid>
   );

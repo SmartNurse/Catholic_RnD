@@ -87,12 +87,8 @@ const useDefaultValues = ({ setDefaultValues, user_id }: Props) => {
             vital_sign: JSON.parse(vital_sign),
             io_check: JSON.parse(io_check),
           };
-          // convertDataToStates(m_data, initialClinicalObservation);
+          convertDataToStates(m_data, initialClinicalObservation);
         });
-        convertDataToStates(
-          { vital_sign: [], io_check: [] },
-          initialClinicalObservation
-        );
         break;
       case MENU.BEDSORES:
         getBedScore({ user_id, patient_id }).then(({ data }) => {

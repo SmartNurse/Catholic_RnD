@@ -9,6 +9,7 @@ import {
   useMediaQuery,
   useTheme,
 } from '@mui/material';
+import { formatStringToDate } from 'utils/formatting';
 
 export interface SurveyFormProps {
   title: string;
@@ -58,7 +59,7 @@ function SurveyForm(props: SurveyFormProps) {
           {title}
 
           <Typography variant="caption" color="gray" sx={{ ml: 'auto', mr: 2 }}>
-            {update_at && `최근 저장한 시간: ${update_at}`}
+            {update_at && `최근 저장한 시간: ${formatStringToDate(update_at)}`}
           </Typography>
 
           <Button
