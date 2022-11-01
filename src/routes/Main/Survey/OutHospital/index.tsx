@@ -19,7 +19,15 @@ import Education from './Education';
 import CheckReservations from './CheckReservations';
 
 const OutHospital = (props: SurveyDialogProps<TOutHospitalDefaultValues>) => {
-  const { title, isOpen, defaultValues, user_id, patientInfo, onClose } = props;
+  const {
+    title,
+    isOpen,
+    disabled,
+    defaultValues,
+    user_id,
+    patientInfo,
+    onClose,
+  } = props;
 
   const { onUpdateIsSave } = useSurvey();
   const { onSuccess, onFail, onResultCode } = useNotification();
@@ -54,14 +62,15 @@ const OutHospital = (props: SurveyDialogProps<TOutHospitalDefaultValues>) => {
       })
       .catch(e => onFail('퇴원기록지 저장에 실패하였습니다.', e));
   };
-  console.log(defaultValues);
+
+  const formProps = { disabled, register, getValues, setValue };
 
   return (
     <MuiDialog.SurveyForm
       title={title}
       isOpen={isOpen}
       onClose={onClose}
-      onSubmit={handleSubmit(onSubmit)}
+      onSubmit={disabled ? undefined : handleSubmit(onSubmit)}
       update_at={defaultValues.update_at}
     >
       <Grid
@@ -71,16 +80,12 @@ const OutHospital = (props: SurveyDialogProps<TOutHospitalDefaultValues>) => {
         columnSpacing={3}
         sx={{ py: 5, px: 1 }}
       >
-        <PatientInfo register={register} {...patientInfo} />
-        <DefaultInfo
-          register={register}
-          setValue={setValue}
-          getValues={getValues}
-        />
-        <Medicines register={register} />
-        <OutPatients register={register} />
-        <CheckReservations register={register} />
-        <Education register={register} />
+        <PatientInfo {...formProps} {...patientInfo} />
+        <DefaultInfo {...formProps} />
+        <Medicines {...formProps} />
+        <OutPatients {...formProps} />
+        <CheckReservations {...formProps} />
+        <Education {...formProps} />
       </Grid>
     </MuiDialog.SurveyForm>
   );

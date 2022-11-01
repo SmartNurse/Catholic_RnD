@@ -8,8 +8,12 @@ import { IFormRegister } from 'routes/Main/type';
 import RowContainer from '../components/RowContainer';
 import SectionTitle from '../components/SectionTitle';
 
-const Medicines = (props: IFormRegister) => {
-  const { register } = props;
+interface Props extends IFormRegister {
+  disabled?: boolean;
+}
+
+const Medicines = (props: Props) => {
+  const { disabled, register } = props;
 
   const columns = [
     { fieldId: 'name', label: '약품명' },
@@ -26,16 +30,22 @@ const Medicines = (props: IFormRegister) => {
         <Form.MuiTextField
           fullWidth
           required={!i}
+          disabled={disabled}
           {...register(`${prefix}.name`)}
         />
       ),
       amount: (
-        <Form.MuiTextField required={!i} {...register(`${prefix}.amount`)} />
+        <Form.MuiTextField
+          required={!i}
+          disabled={disabled}
+          {...register(`${prefix}.amount`)}
+        />
       ),
       count: (
         <Form.MuiTextField
           type="number"
           required={!i}
+          disabled={disabled}
           {...register(`${prefix}.count`)}
         />
       ),
@@ -43,11 +53,16 @@ const Medicines = (props: IFormRegister) => {
         <Form.MuiTextField
           type="number"
           required={!i}
+          disabled={disabled}
           {...register(`${prefix}.days`)}
         />
       ),
       how_to: (
-        <Form.MuiTextField required={!i} {...register(`${prefix}.how_to`)} />
+        <Form.MuiTextField
+          required={!i}
+          disabled={disabled}
+          {...register(`${prefix}.how_to`)}
+        />
       ),
     };
   });

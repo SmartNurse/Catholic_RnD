@@ -5,17 +5,20 @@ import { IPatientInfo } from 'apis/admin/type';
 import RowContainer from '../components/RowContainer';
 import RowContent from '../components/RowContent';
 
-interface Props extends IPatientInfo, IFormRegister {}
+interface Props extends IPatientInfo, IFormRegister {
+  disabled?: boolean;
+}
 
 const PatientInfo = (props: Props) => {
-  const { name, patient_id, register } = props;
+  const { name, patient_id, disabled, register } = props;
 
   return (
     <RowContainer xs={12}>
       <RowContent title="환자명" titleRatio={1} childrenRatio={3}>
         <Form.MuiTextField
-          fullWidth={false}
           value={name}
+          fullWidth={false}
+          disabled={disabled}
           InputProps={{ readOnly: true }}
         />
       </RowContent>
@@ -23,6 +26,7 @@ const PatientInfo = (props: Props) => {
         <Form.MuiTextField
           fullWidth={false}
           value={patient_id}
+          disabled={disabled}
           InputProps={{ readOnly: true }}
         />
       </RowContent>
@@ -30,6 +34,7 @@ const PatientInfo = (props: Props) => {
         <Form.MuiTextField
           type="date"
           fullWidth={false}
+          disabled={disabled}
           {...register('date')}
         />
       </RowContent>

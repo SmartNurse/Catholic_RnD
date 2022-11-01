@@ -7,8 +7,12 @@ import { IFormRegister } from 'routes/Main/type';
 import RowContainer from '../components/RowContainer';
 import SectionTitle from '../components/SectionTitle';
 
-const Education = (props: IFormRegister) => {
-  const { register } = props;
+interface Props extends IFormRegister {
+  disabled?: boolean;
+}
+
+const Education = (props: Props) => {
+  const { disabled, register } = props;
 
   return (
     <Fragment>
@@ -16,7 +20,12 @@ const Education = (props: IFormRegister) => {
 
       <RowContainer xs={12}>
         <Grid item flex={1}>
-          <Form.MuiTextField multiline minRows={5} {...register('education')} />
+          <Form.MuiTextField
+            multiline
+            minRows={5}
+            disabled={disabled}
+            {...register('education')}
+          />
         </Grid>
       </RowContainer>
     </Fragment>

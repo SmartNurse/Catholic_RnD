@@ -8,10 +8,12 @@ import RowContainer from '../components/RowContainer';
 import RowContent from '../components/RowContent';
 import SectionTitle from '../components/SectionTitle';
 
-interface Props extends IFormRegister, IFormValues {}
+interface Props extends IFormRegister, IFormValues {
+  disabled?: boolean;
+}
 
 const DefaultInfo = (props: Props) => {
-  const { register, getValues, setValue } = props;
+  const { disabled, register, getValues, setValue } = props;
 
   return (
     <Fragment>
@@ -24,12 +26,14 @@ const DefaultInfo = (props: Props) => {
               i18nKey="OUT.HOSPITAL.DESTINATION"
               i18nNullKey="ETC"
               values={[1, 2, 3, 0]}
+              disabled={disabled}
               defaultValue={getValues('default_info.destination.value')}
               onChange={v => setValue('default_info.destination.value', v)}
             />
             <Form.MuiTextField
               required={false}
               fullWidth={false}
+              disabled={disabled}
               placeholder="직접 입력"
               {...register('default_info.destination.input')}
             />
@@ -40,12 +44,14 @@ const DefaultInfo = (props: Props) => {
             <Form.MuiRadioGroup
               i18nKey="OUT.HOSPITAL.WAY"
               i18nNullKey="ETC"
+              disabled={disabled}
               values={[1, 2, 3, 0]}
               defaultValue={getValues('default_info.out_hospital_way.value')}
               onChange={v => setValue('default_info.out_hospital_way.value', v)}
             />
             <Form.MuiTextField
               required={false}
+              disabled={disabled}
               placeholder="직접 입력"
               {...register('default_info.out_hospital_way.input')}
             />
@@ -55,12 +61,14 @@ const DefaultInfo = (props: Props) => {
           <Form.MuiRadioGroup
             i18nKey="HOSPITALIZATION.GUARDIAN"
             i18nNullKey="ETC"
+            disabled={disabled}
             values={[1, 2, 3, 4, 5, 0]}
             defaultValue={getValues('default_info.guardians.value')}
             onChange={v => setValue('default_info.guardians.value', v)}
           />
           <Form.MuiTextField
             required={false}
+            disabled={disabled}
             placeholder="직접 입력"
             {...register('default_info.guardians.input')}
           />
@@ -74,12 +82,14 @@ const DefaultInfo = (props: Props) => {
               i18nKey="OUT.HOSPITAL.FOOD"
               i18nNullKey="ETC"
               values={[1, 0]}
+              disabled={disabled}
               defaultValue={getValues('default_info.food.value')}
               onChange={v => setValue('default_info.food.value', v)}
             />
             <Form.MuiTextField
               required={false}
               fullWidth={false}
+              disabled={disabled}
               placeholder="직접 입력"
               {...register('default_info.food.input')}
             />
@@ -91,12 +101,14 @@ const DefaultInfo = (props: Props) => {
               i18nKey="OUT.HOSPITAL.SHOWER"
               i18nNullKey="ETC"
               values={[1, 2, 0]}
+              disabled={disabled}
               defaultValue={getValues('default_info.shower.value')}
               onChange={v => setValue('default_info.shower.value', v)}
             />
             <Form.MuiTextField
               required={false}
               fullWidth={false}
+              disabled={disabled}
               placeholder="직접 입력"
               {...register('default_info.shower.input')}
             />
@@ -106,6 +118,7 @@ const DefaultInfo = (props: Props) => {
           <Form.MuiRadioGroup
             i18nKey="OUT.HOSPITAL.ACTIVITY"
             values={[1, 2]}
+            disabled={disabled}
             defaultValue={getValues('default_info.activity')}
             onChange={v => setValue('default_info.activity', v)}
           />

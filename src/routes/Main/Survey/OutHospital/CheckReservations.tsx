@@ -8,8 +8,12 @@ import { IFormRegister } from 'routes/Main/type';
 import RowContainer from '../components/RowContainer';
 import SectionTitle from '../components/SectionTitle';
 
-const CheckReservations = (props: IFormRegister) => {
-  const { register } = props;
+interface Props extends IFormRegister {
+  disabled?: boolean;
+}
+
+const CheckReservations = (props: Props) => {
+  const { disabled, register } = props;
 
   const columns = [
     { fieldId: 'name', label: '검사명' },
@@ -22,20 +26,32 @@ const CheckReservations = (props: IFormRegister) => {
     const prefix = `check_reservations.${i}`;
     return {
       id: i,
-      name: <Form.MuiTextField required={!i} {...register(`${prefix}.name`)} />,
+      name: (
+        <Form.MuiTextField
+          required={!i}
+          disabled={disabled}
+          {...register(`${prefix}.name`)}
+        />
+      ),
       destination: (
         <Form.MuiTextField
           required={!i}
+          disabled={disabled}
           {...register(`${prefix}.destination`)}
         />
       ),
       warning: (
-        <Form.MuiTextField required={!i} {...register(`${prefix}.warning`)} />
+        <Form.MuiTextField
+          required={!i}
+          disabled={disabled}
+          {...register(`${prefix}.warning`)}
+        />
       ),
       call_number: (
         <Form.MuiTextField
           type="tel"
           required={!i}
+          disabled={disabled}
           {...register(`${prefix}.call_number`)}
         />
       ),
@@ -43,6 +59,7 @@ const CheckReservations = (props: IFormRegister) => {
         <Form.MuiTextField
           type="date"
           required={!i}
+          disabled={disabled}
           {...register(`${prefix}.date`)}
         />
       ),
