@@ -69,7 +69,7 @@ const Medication = (props: SurveyDialogProps<TMedicationDefaultValues>) => {
       isOpen={isOpen}
       onClose={onClose}
       onSubmit={disabled ? undefined : handleSubmit(onSubmit)}
-      update_at={defaultValues.update_at}
+      update_at={defaultValues?.update_at}
     >
       <Grid
         container
