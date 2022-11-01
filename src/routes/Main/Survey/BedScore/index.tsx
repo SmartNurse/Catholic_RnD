@@ -14,7 +14,15 @@ import PatientInfo from './PatientInfo';
 import BedScoreContents from './BedScoreContents';
 
 const BedScore = (props: SurveyDialogProps<TBedScoreDefaultValues>) => {
-  const { title, isOpen, defaultValues, user_id, patientInfo, onClose } = props;
+  const {
+    title,
+    isOpen,
+    disabled,
+    defaultValues,
+    user_id,
+    patientInfo,
+    onClose,
+  } = props;
 
   const { onUpdateIsSave } = useSurvey();
   const { onSuccess, onFail, onResultCode, onRequired } = useNotification();
@@ -46,13 +54,15 @@ const BedScore = (props: SurveyDialogProps<TBedScoreDefaultValues>) => {
       .catch(e => onFail('욕창위험도 평가도구 저장에 실패하였습니다.', e));
   };
 
+  const formProps = { disabled, watch, register, getValues, setValue };
+
   return (
     <MuiDialog.SurveyForm
       title={title}
       isOpen={isOpen}
       onClose={onClose}
-      onSubmit={handleSubmit(onSubmit)}
-      update_at={defaultValues.update_at}
+      onSubmit={disabled ? undefined : handleSubmit(onSubmit)}
+      update_at={defaultValues?.update_at}
     >
       <Grid
         container
@@ -61,12 +71,8 @@ const BedScore = (props: SurveyDialogProps<TBedScoreDefaultValues>) => {
         columnSpacing={3}
         sx={{ py: 5, px: 1 }}
       >
-        <PatientInfo register={register} {...patientInfo} />
-        <BedScoreContents
-          watch={watch}
-          getValues={getValues}
-          setValue={setValue}
-        />
+        <PatientInfo {...formProps} {...patientInfo} />
+        <BedScoreContents {...formProps} />
       </Grid>
     </MuiDialog.SurveyForm>
   );

@@ -13,12 +13,13 @@ import { formatStringToDate } from 'utils/formatting';
 import SectionTitle from '../components/SectionTitle';
 
 interface Props extends IFormValues, IFormWatch {
+  disabled?: boolean;
   onRequired: (id: Ti18nId) => void;
   onSuccess: (message: string) => void;
 }
 
 const VitalSign = (props: Props) => {
-  const { watch, setValue, onRequired, onSuccess } = props;
+  const { disabled, watch, setValue, onRequired, onSuccess } = props;
   const vitalSignList: IVitalSign[] = watch('vital_sign');
 
   const [checkTime, setCheckTime] = useState(null);
@@ -57,7 +58,7 @@ const VitalSign = (props: Props) => {
     setSp02('');
   };
 
-  const addRow = {
+  const inputRow = {
     id: 'add-vital-sign',
     checkTime: (
       <MobileTimePicker
@@ -129,22 +130,28 @@ const VitalSign = (props: Props) => {
     );
   };
 
-  const rows = vitalSignList?.map((item, i) => ({
+  const displayRows = vitalSignList?.map((item, i) => ({
     ...item,
     id: i,
     checkTime: formatStringToDate(item.checkTime, 'hh:mm a'),
     action: (
-      <IconButton size="small" onClick={() => onDeleteRow(i)}>
+      <IconButton
+        size="small"
+        onClick={() => onDeleteRow(i)}
+        sx={{ display: disabled ? 'none' : 'block' }}
+      >
         <Delete />
       </IconButton>
     ),
   }));
 
+  const tableRow = disabled ? displayRows : [inputRow, ...displayRows];
+
   return (
     <Fragment>
       <SectionTitle title="Vital Sign" />
       <Grid item xs={12}>
-        <MuiTable columns={columns} rows={[addRow, ...rows]} />
+        <MuiTable columns={columns} rows={tableRow} />
       </Grid>
     </Fragment>
   );

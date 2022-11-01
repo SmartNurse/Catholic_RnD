@@ -17,7 +17,15 @@ import IOCheck from './IOCheck';
 const ClinicalObservation = (
   props: SurveyDialogProps<TClinicalObservationDefaultValues>
 ) => {
-  const { title, isOpen, defaultValues, user_id, patientInfo, onClose } = props;
+  const {
+    title,
+    isOpen,
+    disabled,
+    defaultValues,
+    user_id,
+    patientInfo,
+    onClose,
+  } = props;
 
   const { onUpdateIsSave } = useSurvey();
   const { onSuccess, onFail, onResultCode, onRequired } = useNotification();
@@ -47,12 +55,21 @@ const ClinicalObservation = (
       .catch(e => onFail('임상관찰 기록지 저장에 실패하였습니다.', e));
   };
 
+  const formProps = {
+    disabled,
+    watch,
+    getValues,
+    setValue,
+    onSuccess,
+    onRequired,
+  };
+
   return (
     <MuiDialog.SurveyForm
       title={title}
       isOpen={isOpen}
       onClose={onClose}
-      onSubmit={handleSubmit(onSubmit)}
+      onSubmit={disabled ? undefined : handleSubmit(onSubmit)}
       update_at={defaultValues?.update_at}
     >
       <Grid
@@ -63,20 +80,8 @@ const ClinicalObservation = (
         sx={{ py: 5, px: 1 }}
       >
         <PatientInfo {...patientInfo} />
-        <VitalSign
-          watch={watch}
-          getValues={getValues}
-          setValue={setValue}
-          onSuccess={onSuccess}
-          onRequired={onRequired}
-        />
-        <IOCheck
-          watch={watch}
-          getValues={getValues}
-          setValue={setValue}
-          onSuccess={onSuccess}
-          onRequired={onRequired}
-        />
+        <VitalSign {...formProps} />
+        <IOCheck {...formProps} />
       </Grid>
     </MuiDialog.SurveyForm>
   );
