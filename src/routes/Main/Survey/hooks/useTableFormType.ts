@@ -3,7 +3,9 @@ import { IFormRegister, IFormValues, IFormWatch } from 'routes/Main/type';
 export interface IUseTableFormProps
   extends IFormValues,
     IFormWatch,
-    Partial<IFormRegister> {}
+    Partial<IFormRegister> {
+  disabled?: boolean;
+}
 export interface IUseTableRadioGroup {
   key: string;
   options: number[];
