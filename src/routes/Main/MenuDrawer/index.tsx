@@ -25,7 +25,7 @@ const MenuDrawer = ({ name, college_ci, college_name }: Props) => (
     <StyledDrawerWrapper>
       <Toolbar>
         <img
-          width={86}
+          height={35}
           alt={college_name ? college_name : 'SmartNurse'}
           src={college_ci ? college_ci : imgSmartNurseLogoText}
         />
