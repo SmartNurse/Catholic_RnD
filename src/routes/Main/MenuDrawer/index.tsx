@@ -24,10 +24,12 @@ const MenuDrawer = ({ name, college_ci, college_name }: Props) => (
   >
     <StyledDrawerWrapper>
       <Toolbar>
-        <img
+        <Box
           height={35}
+          component="img"
           alt={college_name ? college_name : 'SmartNurse'}
           src={college_ci ? college_ci : imgSmartNurseLogoText}
+          sx={{ objectFit: 'contain' }}
         />
       </Toolbar>
       <Typography className="userName" variant="subtitle2">
