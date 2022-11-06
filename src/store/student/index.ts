@@ -1,15 +1,7 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { UserState } from 'store/user';
 
-export interface StudentState {
-  student_uuid: number;
-  student_id?: string;
-  student_name: string;
-  student_gender?: number;
-  student_grade?: number;
-  college_name?: string;
-  student_birth?: string;
-  student_no?: string;
-}
+export interface StudentState extends UserState {}
 
 const initialState: StudentState = {
   student_uuid: 0,

@@ -11,9 +11,11 @@ export const menuDrawerWidth = 220;
 
 interface Props {
   name?: string;
+  college_ci?: string;
+  college_name?: string;
 }
 
-const MenuDrawer = ({ name }: Props) => (
+const MenuDrawer = ({ name, college_ci, college_name }: Props) => (
   <Drawer
     open
     variant="permanent"
@@ -22,7 +24,11 @@ const MenuDrawer = ({ name }: Props) => (
   >
     <StyledDrawerWrapper>
       <Toolbar>
-        <img src={imgSmartNurseLogoText} alt="SmartNurse" width={86} />
+        <img
+          width={86}
+          alt={college_name ? college_name : 'SmartNurse'}
+          src={college_ci ? college_ci : imgSmartNurseLogoText}
+        />
       </Toolbar>
       <Typography className="userName" variant="subtitle2">
         {name}

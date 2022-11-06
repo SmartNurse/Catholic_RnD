@@ -45,7 +45,7 @@ function SignIn() {
       };
 
       const {
-        data: { rc: loginRc, student_uuid },
+        data: { rc: loginRc, student_uuid, college_ci },
       } = await postLogin(request);
       if (loginRc !== 1) return onResultCode(loginRc);
 
@@ -56,7 +56,7 @@ function SignIn() {
 
       onSuccess('로그인 되었습니다.');
 
-      const info = { student_uuid, ...userInfo };
+      const info = { student_uuid, college_ci, ...userInfo };
       onSignIn(info);
       // 학생인 경우 학생 스토어 정보 업떼이트
       if (userInfo.student_grade === 1) onSelectedStudent(info);

@@ -6,6 +6,7 @@ export interface UserState {
   student_name: string;
   student_gender?: number;
   student_grade?: number;
+  college_ci?: string;
   college_name?: string;
   student_birth?: string;
   student_no?: string;
