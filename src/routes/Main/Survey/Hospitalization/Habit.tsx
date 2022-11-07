@@ -11,10 +11,11 @@ import SectionTitle from '../components/SectionTitle';
 
 interface Props extends IFormRegister, IFormValues {
   gender: TGender;
+  disabled?: boolean;
 }
 
 const Habit = (props: Props) => {
-  const { gender, register, getValues, setValue } = props;
+  const { gender, disabled, register, getValues, setValue } = props;
 
   // gender 여성인 경우 필수
   const isRequiredObstetric = gender === 1;
@@ -29,11 +30,13 @@ const Habit = (props: Props) => {
             <Form.MuiTextField
               type="number"
               textAlign="right"
+              disabled={disabled}
               InputProps={{ ...Form.adornment('횟수', '회/day') }}
               {...register('habit.feces.value')}
             />
             <Form.MuiTextField
               required={false}
+              disabled={disabled}
               placeholder="기타"
               {...register('habit.feces.input')}
             />
@@ -43,6 +46,7 @@ const Habit = (props: Props) => {
           <Form.MuiCheckboxGroup
             i18nKey="HOSPITALIZATION.HABIT.FECES"
             values={[1, 2, 3, 4, 5]}
+            disabled={disabled}
             defaultValue={getValues('habit.feces_info.checked')}
             onChange={v => setValue('habit.feces_info.checked', v)}
           />
@@ -52,11 +56,13 @@ const Habit = (props: Props) => {
             <Form.MuiTextField
               type="number"
               textAlign="right"
+              disabled={disabled}
               InputProps={{ ...Form.adornment('횟수', '회/day') }}
               {...register('habit.urine.value')}
             />
             <Form.MuiTextField
               required={false}
+              disabled={disabled}
               placeholder="기타"
               {...register('habit.urine.input')}
             />
@@ -66,6 +72,7 @@ const Habit = (props: Props) => {
           <Form.MuiCheckboxGroup
             i18nKey="HOSPITALIZATION.HABIT.URINE"
             values={[1, 2, 3, 4, 5]}
+            disabled={disabled}
             defaultValue={getValues('habit.urine_info.checked')}
             onChange={v => setValue('habit.urine_info.checked', v)}
           />
@@ -75,21 +82,25 @@ const Habit = (props: Props) => {
             <Form.MuiRadioGroup
               i18nKey="EXIST.SHORT"
               values={[1, 2]}
+              disabled={disabled}
               defaultValue={getValues('habit.drink.value')}
               onChange={v => setValue('habit.drink.value', v)}
             />
             <Form.MuiTextField
               required={false}
+              disabled={disabled}
               placeholder="기간"
               {...register('habit.drink.input')}
             />
             <Form.MuiCheckbox
               label="금주"
+              disabled={disabled}
               defaultValue={getValues('habit.drink.checked')}
               {...register('habit.drink.checked')}
             />
             <Form.MuiTextField
               required={false}
+              disabled={disabled}
               placeholder="기간"
               {...register('habit.drink.input2')}
             />
@@ -100,22 +111,26 @@ const Habit = (props: Props) => {
             <Form.MuiRadioGroup
               i18nKey="EXIST.SHORT"
               values={[1, 2]}
+              disabled={disabled}
               defaultValue={getValues('habit.smoke.value')}
               onChange={v => setValue('habit.smoke.value', v)}
             />
             <Form.MuiTextField
               required={false}
+              disabled={disabled}
               placeholder="기간"
               {...register('habit.smoke.input')}
             />
             <Form.MuiCheckbox
               label="금연"
+              disabled={disabled}
               defaultValue={getValues('habit.smoke.checked')}
               {...register('habit.smoke.checked')}
             />
             <Form.MuiTextField
               required={false}
               placeholder="기간"
+              disabled={disabled}
               {...register('habit.smoke.input2')}
             />
           </Stack>
@@ -127,6 +142,7 @@ const Habit = (props: Props) => {
           <Form.MuiRadioGroup
             i18nKey="EXIST"
             values={[1, 2]}
+            disabled={disabled}
             defaultValue={getValues('habit.sleep')}
             onChange={v => setValue('habit.sleep', v)}
           />
@@ -139,6 +155,7 @@ const Habit = (props: Props) => {
             <Form.MuiRadioGroup
               i18nKey="EXIST"
               values={[1, 2]}
+              disabled={disabled}
               defaultValue={getValues('habit.nutrition.weight')}
               onChange={v => setValue('habit.nutrition.weight', v)}
             />
@@ -150,6 +167,7 @@ const Habit = (props: Props) => {
             <Form.MuiRadioGroup
               i18nKey="EXIST"
               values={[1, 2]}
+              disabled={disabled}
               defaultValue={getValues('habit.nutrition.appetite')}
               onChange={v => setValue('habit.nutrition.appetite', v)}
             />
@@ -159,30 +177,35 @@ const Habit = (props: Props) => {
           <Stack direction="row" spacing={1}>
             <Form.MuiTextField
               fullWidth={false}
+              disabled={disabled}
               required={isRequiredObstetric}
               InputProps={{ ...Form.adornment('G') }}
               {...register('habit.obstetric.G')}
             />
             <Form.MuiTextField
               fullWidth={false}
+              disabled={disabled}
               required={isRequiredObstetric}
               InputProps={{ ...Form.adornment('T') }}
               {...register('habit.obstetric.T')}
             />
             <Form.MuiTextField
               fullWidth={false}
+              disabled={disabled}
               required={isRequiredObstetric}
               InputProps={{ ...Form.adornment('P') }}
               {...register('habit.obstetric.P')}
             />
             <Form.MuiTextField
               fullWidth={false}
+              disabled={disabled}
               required={isRequiredObstetric}
               InputProps={{ ...Form.adornment('A') }}
               {...register('habit.obstetric.A')}
             />
             <Form.MuiTextField
               fullWidth={false}
+              disabled={disabled}
               required={isRequiredObstetric}
               InputProps={{ ...Form.adornment('L') }}
               {...register('habit.obstetric.L')}

@@ -16,7 +16,15 @@ import DiseaseStatus from './DiseaseStatus';
 import { updateNeeds } from 'apis/survey';
 
 const Needs = (props: SurveyDialogProps<TNeedsDefaultValues>) => {
-  const { title, isOpen, defaultValues, user_id, patientInfo, onClose } = props;
+  const {
+    title,
+    isOpen,
+    disabled,
+    defaultValues,
+    user_id,
+    patientInfo,
+    onClose,
+  } = props;
 
   const { onUpdateIsSave } = useSurvey();
   const { onSuccess, onFail, onResultCode, onRequired } = useNotification();
@@ -53,13 +61,15 @@ const Needs = (props: SurveyDialogProps<TNeedsDefaultValues>) => {
       .catch(e => onFail('욕구평가기록지 저장에 실패하였습니다.', e));
   };
 
+  const formProps = { disabled, watch, register, getValues, setValue };
+
   return (
     <MuiDialog.SurveyForm
       title={title}
       isOpen={isOpen}
       onClose={onClose}
-      onSubmit={handleSubmit(onSubmit)}
-      update_at={defaultValues.update_at}
+      onSubmit={disabled ? undefined : handleSubmit(onSubmit)}
+      update_at={defaultValues?.update_at}
     >
       <Grid
         container
@@ -68,16 +78,11 @@ const Needs = (props: SurveyDialogProps<TNeedsDefaultValues>) => {
         columnSpacing={3}
         sx={{ py: 5, px: 1 }}
       >
-        <PatientInfo register={register} {...patientInfo} />
-        <BodyStatus watch={watch} getValues={getValues} setValue={setValue} />
-        <Reason register={register} registerKey="reason1" />
-        <DiseaseStatus
-          watch={watch}
-          register={register}
-          getValues={getValues}
-          setValue={setValue}
-        />
-        <Reason register={register} registerKey="reason2" />
+        <PatientInfo {...formProps} {...patientInfo} />
+        <BodyStatus {...formProps} />
+        <Reason {...formProps} registerKey="reason1" />
+        <DiseaseStatus {...formProps} />
+        <Reason {...formProps} registerKey="reason2" />
       </Grid>
     </MuiDialog.SurveyForm>
   );

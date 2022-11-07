@@ -8,10 +8,12 @@ import RowContainer from '../components/RowContainer';
 import RowContent from '../components/RowContent';
 import SectionTitle from '../components/SectionTitle';
 
-interface Props extends IFormRegister, IFormValues {}
+interface Props extends IFormRegister, IFormValues {
+  disabled?: boolean;
+}
 
 const OutHospitalPlan = (props: Props) => {
-  const { register, getValues, setValue } = props;
+  const { disabled, register, getValues, setValue } = props;
 
   return (
     <Fragment>
@@ -22,6 +24,7 @@ const OutHospitalPlan = (props: Props) => {
           <Form.MuiRadioGroup
             i18nKey="HOSPITALIZATION.LIFE"
             values={[1, 2, 3]}
+            disabled={disabled}
             defaultValue={getValues('out_hospital_plan.life')}
             onChange={v => setValue('out_hospital_plan.life', v)}
           />
@@ -32,11 +35,13 @@ const OutHospitalPlan = (props: Props) => {
               i18nNullKey="ETC"
               i18nKey="HOSPITALIZATION.DESTINATION"
               values={[1, 2, 3, 0]}
+              disabled={disabled}
               defaultValue={getValues('out_hospital_plan.destination.value')}
               onChange={v => setValue('out_hospital_plan.destination.value', v)}
             />
             <Form.MuiTextField
               required={false}
+              disabled={disabled}
               placeholder="직접 입력"
               {...register('out_hospital_plan.destination.input')}
             />
@@ -48,6 +53,7 @@ const OutHospitalPlan = (props: Props) => {
         <RowContent title="주요 보호자">
           <Form.MuiRadioGroup
             i18nNullKey="ETC"
+            disabled={disabled}
             i18nKey="HOSPITALIZATION.GUARDIAN"
             values={[1, 2, 3, 4, 5, 0]}
             defaultValue={getValues('out_hospital_plan.guardian.value')}
@@ -55,6 +61,7 @@ const OutHospitalPlan = (props: Props) => {
           />
           <Form.MuiTextField
             required={false}
+            disabled={disabled}
             placeholder="직접 입력"
             {...register('out_hospital_plan.guardian.input')}
           />

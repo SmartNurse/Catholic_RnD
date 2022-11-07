@@ -5,10 +5,12 @@ import { IFormRegister } from 'routes/Main/type';
 import RowContainer from '../components/RowContainer';
 import RowContent from '../components/RowContent';
 
-interface Props extends IPatientInfo, IFormRegister {}
+interface Props extends IPatientInfo, IFormRegister {
+  disabled?: boolean;
+}
 
 const PatientInfo = (props: Props) => {
-  const { name, patient_id, age, gender, register } = props;
+  const { disabled, name, patient_id, age, gender, register } = props;
 
   return (
     <RowContainer xs={12}>
@@ -30,7 +32,12 @@ const PatientInfo = (props: Props) => {
         <Form.MuiTextField value={age} InputProps={{ readOnly: true }} />
       </RowContent>
       <RowContent title="평가일" titleRatio={1} childrenRatio={2}>
-        <Form.MuiTextField required type="date" {...register('date')} />
+        <Form.MuiTextField
+          required
+          type="date"
+          disabled={disabled}
+          {...register('date')}
+        />
       </RowContent>
     </RowContainer>
   );

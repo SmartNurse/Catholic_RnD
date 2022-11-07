@@ -2,13 +2,7 @@ import { useCallback } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { ReducerType } from '../reducer';
-import {
-  closeReadOnly,
-  closeSave,
-  SurveyState,
-  updateIsSave,
-  updateSurveyType,
-} from '.';
+import { resetSurvey, SurveyState, updateIsSave, updateSurveyType } from '.';
 
 const useSurvey = () => {
   const dispatch = useDispatch();
@@ -29,16 +23,16 @@ const useSurvey = () => {
 
   const onCloseSave = useCallback(
     () => {
-      if (isSave) return dispatch(closeSave());
+      if (isSave) return dispatch(resetSurvey());
       const isConfirm = window.confirm('저장하지 않고 종료하시겠습니까?');
-      if (isConfirm) return dispatch(closeSave());
+      if (isConfirm) return dispatch(resetSurvey());
     },
     // eslint-disable-next-line
     [dispatch, isSave]
   );
 
   const onCloseReadOnly = useCallback(
-    () => dispatch(closeReadOnly()),
+    () => dispatch(resetSurvey()),
     [dispatch]
   );
 

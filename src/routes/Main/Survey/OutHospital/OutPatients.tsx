@@ -8,8 +8,12 @@ import { IFormRegister } from 'routes/Main/type';
 import RowContainer from '../components/RowContainer';
 import SectionTitle from '../components/SectionTitle';
 
-const OutPatients = (props: IFormRegister) => {
-  const { register } = props;
+interface Props extends IFormRegister {
+  disabled?: boolean;
+}
+
+const OutPatients = (props: Props) => {
+  const { disabled, register } = props;
 
   const columns = [
     { fieldId: 'department', label: '진료과' },
@@ -25,19 +29,29 @@ const OutPatients = (props: IFormRegister) => {
       department: (
         <Form.MuiTextField
           required={!i}
+          disabled={disabled}
           {...register(`${prefix}.department`)}
         />
       ),
       doctor: (
-        <Form.MuiTextField required={!i} {...register(`${prefix}.doctor`)} />
+        <Form.MuiTextField
+          required={!i}
+          disabled={disabled}
+          {...register(`${prefix}.doctor`)}
+        />
       ),
       location: (
-        <Form.MuiTextField required={!i} {...register(`${prefix}.location`)} />
+        <Form.MuiTextField
+          required={!i}
+          disabled={disabled}
+          {...register(`${prefix}.location`)}
+        />
       ),
       call_number: (
         <Form.MuiTextField
           type="tel"
           required={!i}
+          disabled={disabled}
           {...register(`${prefix}.call_number`)}
         />
       ),
@@ -45,6 +59,7 @@ const OutPatients = (props: IFormRegister) => {
         <Form.MuiTextField
           type="date"
           required={!i}
+          disabled={disabled}
           {...register(`${prefix}.date`)}
         />
       ),

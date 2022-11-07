@@ -7,7 +7,9 @@ import { IFormRegister, IFormWatch, IFormValues } from 'routes/Main/type';
 import SectionTitle from '../components/SectionTitle';
 import useTableForm from '../hooks/useTableForm';
 
-interface Props extends IFormValues, IFormWatch, IFormRegister {}
+interface Props extends IFormValues, IFormWatch, IFormRegister {
+  disabled?: boolean;
+}
 
 const DiseaseStatus = (props: Props) => {
   const { checkbox } = useTableForm(props);

@@ -11,9 +11,11 @@ export const menuDrawerWidth = 220;
 
 interface Props {
   name?: string;
+  college_ci?: string;
+  college_name?: string;
 }
 
-const MenuDrawer = ({ name }: Props) => (
+const MenuDrawer = ({ name, college_ci, college_name }: Props) => (
   <Drawer
     open
     variant="permanent"
@@ -22,10 +24,16 @@ const MenuDrawer = ({ name }: Props) => (
   >
     <StyledDrawerWrapper>
       <Toolbar>
-        <img src={imgSmartNurseLogoText} alt="SmartNurse" width={86} />
+        <Box
+          height={35}
+          component="img"
+          alt={college_name ? college_name : 'SmartNurse'}
+          src={college_ci ? college_ci : imgSmartNurseLogoText}
+          sx={{ objectFit: 'contain' }}
+        />
       </Toolbar>
       <Typography className="userName" variant="subtitle2">
-        {name} 간호사
+        {name}
       </Typography>
       <List>
         <MenuRecords />

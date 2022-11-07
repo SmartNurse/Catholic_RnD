@@ -1,18 +1,24 @@
 import { Fragment, useEffect, useRef } from 'react';
-import { Box, Card, Skeleton, Typography } from '@mui/material';
+import { Box, Card, Typography } from '@mui/material';
 
 import { getNursingRecords } from 'apis/main';
 import { INursingRecord } from 'apis/main/type';
-import usePatient from 'store/patient/usePatient';
+import { IPatientInfo } from 'apis/admin/type';
 import useUser from 'store/user/useUser';
+import usePatient from 'store/patient/usePatient';
+import useStudent from 'store/student/useStudent';
 import useInfiniteScroll from 'hooks/useInfiniteScroll';
 
-import RecordItemWrapper from './RecordItemWrapper';
+import RecordItem from './RecordItem';
 
-const NursingRecord = () => {
-  const { student_uuid: user_id, student_name } = useUser();
-  const { patientInfo, isUpdateNursingRecord, onUpdateNursingRecord } =
-    usePatient();
+interface Props {
+  patientInfo: IPatientInfo;
+}
+
+const NursingRecord = ({ patientInfo }: Props) => {
+  const { isStudent } = useUser();
+  const { student_uuid: user_id, student_name } = useStudent();
+  const { isUpdateNursingRecord, onUpdateNursingRecord } = usePatient();
 
   const moreRef = useRef(null);
   const { list, onResetList } = useInfiniteScroll({
@@ -34,14 +40,6 @@ const NursingRecord = () => {
     // eslint-disable-next-line
   }, [isUpdateNursingRecord]);
 
-  if (!patientInfo) {
-    return (
-      <Box flex={1} display="flex" flexDirection="column" overflow="auto">
-        <Skeleton variant="rectangular" sx={{ flex: 1 }} />
-      </Box>
-    );
-  }
-
   const RecordList = () => {
     if (list.length === 0) {
       return (
@@ -51,20 +49,14 @@ const NursingRecord = () => {
 
     return (
       <Fragment>
-        {list.map((record: INursingRecord) => {
-          const itemWrapperProps = {
-            ...record,
-            nurseName: student_name,
-            refetch: onResetList,
-          };
-
-          return (
-            <RecordItemWrapper
-              key={record.nursing_record_id}
-              {...itemWrapperProps}
-            />
-          );
-        })}
+        {list.map((record: INursingRecord) => (
+          <RecordItem
+            {...record}
+            key={record.nursing_record_id}
+            nurseName={student_name}
+            refetch={isStudent ? onResetList : undefined}
+          />
+        ))}
       </Fragment>
     );
   };

@@ -9,21 +9,23 @@ export interface PatientState {
   isUpdateNursingRecord: boolean;
 }
 
+const initialState: PatientState = {
+  patient: null,
+  patientInfo: null,
+  isUpdateNursingRecord: false,
+};
+
 export const patientSlice = createSlice({
   name: 'patients',
-  initialState: {
-    patient: null,
-    patientInfo: null,
-    isUpdateNursingRecord: false,
-  } as PatientState,
+  initialState,
   reducers: {
+    resetPatient: () => initialState,
     selectedPatient(state, action: PayloadAction<IPatient | null>) {
       state.patient = action.payload;
       state.patientInfo = null;
     },
     selectedPatientInfo(state, action: PayloadAction<IPatientInfo | null>) {
       state.patientInfo = action.payload;
-      state.isUpdateNursingRecord = true;
     },
     updateNursingRecord(state, action: PayloadAction<boolean>) {
       state.isUpdateNursingRecord = action.payload;
@@ -31,6 +33,10 @@ export const patientSlice = createSlice({
   },
 });
 
-export const { selectedPatient, selectedPatientInfo, updateNursingRecord } =
-  patientSlice.actions;
+export const {
+  resetPatient,
+  selectedPatient,
+  selectedPatientInfo,
+  updateNursingRecord,
+} = patientSlice.actions;
 export default patientSlice.reducer;

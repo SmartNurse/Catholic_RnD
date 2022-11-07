@@ -4,7 +4,11 @@ import Form from 'components/Form';
 
 import { IFormRegister } from '../type';
 
-function Soapie({ register }: IFormRegister) {
+interface Props extends IFormRegister {
+  disabled?: boolean;
+}
+
+function Soapie({ register, disabled }: Props) {
   return (
     <Stack spacing={2}>
       <Form.Item label="주관적 증상 Subjective Data">
@@ -15,6 +19,7 @@ function Soapie({ register }: IFormRegister) {
           rows={2}
           size="small"
           variant="outlined"
+          disabled={disabled}
           {...register('subjective')}
         />
       </Form.Item>
@@ -27,6 +32,7 @@ function Soapie({ register }: IFormRegister) {
           rows={2}
           size="small"
           variant="outlined"
+          disabled={disabled}
           {...register('objective')}
         />
       </Form.Item>
@@ -39,6 +45,7 @@ function Soapie({ register }: IFormRegister) {
           rows={2}
           size="small"
           variant="outlined"
+          disabled={disabled}
           {...register('assessment')}
         />
       </Form.Item>
@@ -51,6 +58,7 @@ function Soapie({ register }: IFormRegister) {
           rows={2}
           size="small"
           variant="outlined"
+          disabled={disabled}
           {...register('planning')}
         />
       </Form.Item>
@@ -63,6 +71,7 @@ function Soapie({ register }: IFormRegister) {
           rows={2}
           size="small"
           variant="outlined"
+          disabled={disabled}
           {...register('interventions')}
         />
       </Form.Item>
@@ -75,6 +84,7 @@ function Soapie({ register }: IFormRegister) {
           rows={2}
           size="small"
           variant="outlined"
+          disabled={disabled}
           {...register('evaluation')}
         />
       </Form.Item>

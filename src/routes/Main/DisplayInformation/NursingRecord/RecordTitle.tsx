@@ -19,8 +19,13 @@ const RecordTitle = (props: Props) => {
   };
 
   return (
-    <Grid container alignItems="center" justifyContent="space-between">
-      <Typography variant="caption" component="p">
+    <Grid
+      container
+      alignItems="center"
+      justifyContent="space-between"
+      sx={{ mb: 0.5 }}
+    >
+      <Typography component="p">
         <Typography variant="caption" fontWeight="bold" mr={1}>
           {title}
         </Typography>

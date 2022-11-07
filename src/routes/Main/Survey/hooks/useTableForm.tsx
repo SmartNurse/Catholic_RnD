@@ -7,7 +7,7 @@ import {
 } from './useTableFormType';
 
 const useTableForm = (props: IUseTableFormProps) => {
-  const { watch, register, getValues, setValue } = props;
+  const { disabled, watch, register, getValues, setValue } = props;
 
   const radioGroup = ({
     key,
@@ -27,6 +27,7 @@ const useTableForm = (props: IUseTableFormProps) => {
           i18nKey={i18nKey}
           i18nNullKey={i18nNullKey}
           defaultValue={getValues(key)}
+          disabled={disabled}
           value={value}
           onChange={(v: any) => setValue(key, v)}
         />
@@ -47,6 +48,7 @@ const useTableForm = (props: IUseTableFormProps) => {
           required={false}
           fullWidth={false}
           placeholder="직접입력"
+          disabled={disabled}
           {...register(inputKey)}
         />
       );
@@ -56,6 +58,7 @@ const useTableForm = (props: IUseTableFormProps) => {
       <Stack direction={'row'} spacing={1}>
         <Form.MuiCheckbox
           label={label}
+          disabled={disabled}
           defaultValue={defaultValue}
           onChange={(_, checked) => setValue(key, checked)}
         />

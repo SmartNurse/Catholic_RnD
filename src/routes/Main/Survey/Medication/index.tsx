@@ -15,7 +15,15 @@ import Medications from './Medications';
 import { updateMedication } from 'apis/survey';
 
 const Medication = (props: SurveyDialogProps<TMedicationDefaultValues>) => {
-  const { title, isOpen, defaultValues, user_id, patientInfo, onClose } = props;
+  const {
+    title,
+    isOpen,
+    disabled,
+    defaultValues,
+    user_id,
+    patientInfo,
+    onClose,
+  } = props;
 
   const { onUpdateIsSave } = useSurvey();
   const { onSuccess, onFail, onResultCode } = useNotification();
@@ -60,8 +68,8 @@ const Medication = (props: SurveyDialogProps<TMedicationDefaultValues>) => {
       title={title}
       isOpen={isOpen}
       onClose={onClose}
-      onSubmit={handleSubmit(onSubmit)}
-      update_at={defaultValues.update_at}
+      onSubmit={disabled ? undefined : handleSubmit(onSubmit)}
+      update_at={defaultValues?.update_at}
     >
       <Grid
         container
@@ -71,7 +79,12 @@ const Medication = (props: SurveyDialogProps<TMedicationDefaultValues>) => {
         sx={{ py: 5, px: 1 }}
       >
         <PatientInfo {...patientInfo} />
-        <Medications watch={watch} getValues={getValues} setValue={setValue} />
+        <Medications
+          watch={watch}
+          disabled={disabled}
+          getValues={getValues}
+          setValue={setValue}
+        />
       </Grid>
     </MuiDialog.SurveyForm>
   );

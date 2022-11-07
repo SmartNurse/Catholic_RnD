@@ -7,7 +7,9 @@ import { IFormValues, IFormWatch } from 'routes/Main/type';
 import SectionTitle from '../components/SectionTitle';
 import useTableForm from '../hooks/useTableForm';
 
-interface Props extends IFormValues, IFormWatch {}
+interface Props extends IFormValues, IFormWatch {
+  disabled?: boolean;
+}
 
 const BodyStatus = (props: Props) => {
   const { radioGroup } = useTableForm(props);

@@ -11,7 +11,15 @@ import PatientInfo from './PatientInfo';
 import FallContents from './FallContents';
 
 const Fall = (props: SurveyDialogProps<TFallDefaultValues>) => {
-  const { title, isOpen, defaultValues, user_id, patientInfo, onClose } = props;
+  const {
+    title,
+    isOpen,
+    disabled,
+    defaultValues,
+    user_id,
+    patientInfo,
+    onClose,
+  } = props;
 
   const { onUpdateIsSave } = useSurvey();
   const { onSuccess, onFail, onResultCode, onRequired } = useNotification();
@@ -43,13 +51,21 @@ const Fall = (props: SurveyDialogProps<TFallDefaultValues>) => {
       .catch(e => onFail('낙상위험도 평가도구 저장에 실패하였습니다.', e));
   };
 
+  const formProps = {
+    disabled,
+    watch,
+    register,
+    getValues,
+    setValue,
+  };
+
   return (
     <MuiDialog.SurveyForm
       title={title}
       isOpen={isOpen}
       onClose={onClose}
-      onSubmit={handleSubmit(onSubmit)}
-      update_at={defaultValues.update_at}
+      onSubmit={disabled ? undefined : handleSubmit(onSubmit)}
+      update_at={defaultValues?.update_at}
     >
       <Grid
         container
@@ -58,8 +74,8 @@ const Fall = (props: SurveyDialogProps<TFallDefaultValues>) => {
         columnSpacing={3}
         sx={{ py: 5, px: 1 }}
       >
-        <PatientInfo register={register} {...patientInfo} />
-        <FallContents watch={watch} getValues={getValues} setValue={setValue} />
+        <PatientInfo {...formProps} {...patientInfo} />
+        <FallContents {...formProps} />
       </Grid>
     </MuiDialog.SurveyForm>
   );

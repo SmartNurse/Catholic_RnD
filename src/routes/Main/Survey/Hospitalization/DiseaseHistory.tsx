@@ -8,10 +8,12 @@ import RowContainer from '../components/RowContainer';
 import RowContent from '../components/RowContent';
 import SectionTitle from '../components/SectionTitle';
 
-interface Props extends IFormRegister, IFormValues {}
+interface Props extends IFormRegister, IFormValues {
+  disabled?: boolean;
+}
 
 const DiseaseHistory = (props: Props) => {
-  const { register, getValues, setValue } = props;
+  const { disabled, register, getValues, setValue } = props;
 
   return (
     <Fragment>
@@ -23,6 +25,7 @@ const DiseaseHistory = (props: Props) => {
             <Form.MuiRadioGroup
               i18nKey="EXIST"
               values={[1, 2]}
+              disabled={disabled}
               defaultValue={getValues('disease_history.history.value')}
               onChange={v => setValue('disease_history.history.value', v)}
             />
@@ -30,12 +33,14 @@ const DiseaseHistory = (props: Props) => {
               type="date"
               required={false}
               fullWidth={false}
+              disabled={disabled}
               placeholder="날짜 선택"
               {...register('disease_history.history.date')}
             />
           </Stack>
           <Form.MuiCheckboxGroup
             i18nNullKey="ETC"
+            disabled={disabled}
             i18nKey="HOSPITALIZATION.DISEASE.HISTORY"
             values={[1, 2, 3, 4, 5, 0]}
             defaultValue={getValues('disease_history.history.checked')}
@@ -43,6 +48,7 @@ const DiseaseHistory = (props: Props) => {
           />
           <Form.MuiTextField
             required={false}
+            disabled={disabled}
             placeholder="직접 입력"
             {...register('disease_history.history.input')}
           />
@@ -52,6 +58,7 @@ const DiseaseHistory = (props: Props) => {
             <Form.MuiRadioGroup
               i18nKey="EXIST"
               values={[1, 2]}
+              disabled={disabled}
               defaultValue={getValues(
                 'disease_history.operation_history.value'
               )}
@@ -61,6 +68,7 @@ const DiseaseHistory = (props: Props) => {
             />
             <Form.MuiTextField
               required={false}
+              disabled={disabled}
               placeholder="ex. 2.22 01-ㅇㅇ대학교병원-층수절제술"
               {...register('disease_history.operation_history.input')}
             />
@@ -71,6 +79,7 @@ const DiseaseHistory = (props: Props) => {
             <Form.MuiRadioGroup
               i18nKey="EXIST"
               values={[1, 2]}
+              disabled={disabled}
               defaultValue={getValues('disease_history.latest_medicine.value')}
               onChange={v =>
                 setValue('disease_history.latest_medicine.value', v)
@@ -78,6 +87,7 @@ const DiseaseHistory = (props: Props) => {
             />
             <Form.MuiTextField
               required={false}
+              disabled={disabled}
               placeholder="직접 입력"
               {...register('disease_history.latest_medicine.input')}
             />
@@ -91,6 +101,7 @@ const DiseaseHistory = (props: Props) => {
             <Form.MuiRadioGroup
               i18nKey="EXIST"
               values={[1, 2]}
+              disabled={disabled}
               defaultValue={getValues('disease_history.family_history.value')}
               onChange={v =>
                 setValue('disease_history.family_history.value', v)
@@ -98,6 +109,7 @@ const DiseaseHistory = (props: Props) => {
             />
             <Form.MuiTextField
               required={false}
+              disabled={disabled}
               placeholder="ex. 부-고혈압"
               {...register('disease_history.family_history.input')}
             />
@@ -108,6 +120,7 @@ const DiseaseHistory = (props: Props) => {
             <Form.MuiRadioGroup
               i18nKey="EXIST"
               values={[1, 2]}
+              disabled={disabled}
               defaultValue={getValues('disease_history.medicine_allergy.value')}
               onChange={v =>
                 setValue('disease_history.medicine_allergy.value', v)
@@ -115,6 +128,7 @@ const DiseaseHistory = (props: Props) => {
             />
             <Form.MuiTextField
               required={false}
+              disabled={disabled}
               placeholder="직접 입력"
               {...register('disease_history.medicine_allergy.input')}
             />
@@ -125,11 +139,13 @@ const DiseaseHistory = (props: Props) => {
             <Form.MuiRadioGroup
               i18nKey="EXIST"
               values={[1, 2]}
+              disabled={disabled}
               defaultValue={getValues('disease_history.allergy.value')}
               onChange={v => setValue('disease_history.allergy.value', v)}
             />
             <Form.MuiTextField
               required={false}
+              disabled={disabled}
               placeholder="직접 입력"
               {...register('disease_history.allergy.input')}
             />
@@ -140,11 +156,13 @@ const DiseaseHistory = (props: Props) => {
             <Form.MuiRadioGroup
               i18nKey="EXIST"
               values={[1, 2]}
+              disabled={disabled}
               defaultValue={getValues('disease_history.food_allergy.value')}
               onChange={v => setValue('disease_history.food_allergy.value', v)}
             />
             <Form.MuiTextField
               required={false}
+              disabled={disabled}
               placeholder="직접 입력"
               {...register('disease_history.food_allergy.input')}
             />

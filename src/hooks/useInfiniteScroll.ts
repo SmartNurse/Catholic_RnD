@@ -15,6 +15,7 @@ const useInfiniteScroll = ({ listKey, moreRef, getApi }: Props) => {
   const [list, setList] = useState<any[]>([]);
 
   const onGetList = () => {
+    if (!moreRef.current) return null;
     getApi({ page }).then(({ data }) => {
       const responseList = data[listKey];
       if (responseList.length === 0)

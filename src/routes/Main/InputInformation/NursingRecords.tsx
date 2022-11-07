@@ -8,12 +8,13 @@ import { Box, Button, ButtonGroup, Tab, Typography } from '@mui/material';
 
 import { INames } from 'apis/main/type';
 import { getNandaDomain, createNursingRecord } from 'apis/main';
-import { findKeyValue } from 'utils/convert';
+import useUser from 'store/user/useUser';
+import useStudent from 'store/student/useStudent';
+import usePatient from 'store/patient/usePatient';
 import MuiTextField from 'components/Form/MuiTextField';
 import { requiredSelect } from 'components/Form/requiredItems';
 import useNotification from 'hooks/useNotification';
-import useUser from 'store/user/useUser';
-import usePatient from 'store/patient/usePatient';
+import { findKeyValue } from 'utils/convert';
 
 import { RECORD_TYPE } from '../Survey/type';
 import { initialNursingRecord } from '../Survey/initialStates';
@@ -26,7 +27,9 @@ import NarrativeRecord from './NarrativeRecord';
 import { StyledTabPanel } from '../style';
 
 const NursingRecords = () => {
-  const { student_uuid: user_id } = useUser();
+  const { isStudent } = useUser();
+  const { student_uuid: user_id } = useStudent();
+
   const { patientInfo, onUpdateNursingRecord } = usePatient();
   const { onSuccess, onFail, onRequired } = useNotification();
   const { register, watch, setValue, handleSubmit, reset } = useForm();
@@ -115,6 +118,7 @@ const NursingRecords = () => {
         <MobileTimePicker
           value={recordTime}
           onChange={setRecordTime}
+          disabled={!isStudent}
           renderInput={params => (
             <MuiTextField
               {...params}
@@ -141,20 +145,21 @@ const NursingRecords = () => {
             watch={watch}
             setValue={setValue}
             register={register}
+            disabled={!isStudent}
             domainNames={domainNames}
           />
         </StyledTabPanel>
         <StyledTabPanel value={RECORD_TYPE.SOAPIE}>
-          <Soapie register={register} />
+          <Soapie register={register} disabled={!isStudent} />
         </StyledTabPanel>
         <StyledTabPanel value={RECORD_TYPE.FOCUS_DAR}>
-          <FocusDar register={register} />
+          <FocusDar register={register} disabled={!isStudent} />
         </StyledTabPanel>
         <StyledTabPanel value={RECORD_TYPE.NARRATIVE_RECORD}>
-          <NarrativeRecord register={register} />
+          <NarrativeRecord register={register} disabled={!isStudent} />
         </StyledTabPanel>
         <StyledTabPanel value={RECORD_TYPE.REMARKS}>
-          <Remarks register={register} />
+          <Remarks register={register} disabled={!isStudent} />
         </StyledTabPanel>
 
         <ButtonGroup
@@ -162,10 +167,19 @@ const NursingRecords = () => {
           color="info"
           sx={{ display: 'flex', justifyContent: 'flex-end' }}
         >
-          <Button variant="text" color="inherit" onClick={() => reset()}>
+          <Button
+            variant="text"
+            color="inherit"
+            disabled={!isStudent}
+            onClick={() => reset()}
+          >
             취소
           </Button>
-          <Button variant="text" type="submit" disabled={!patientInfo}>
+          <Button
+            variant="text"
+            type="submit"
+            disabled={!patientInfo || !isStudent}
+          >
             저장
           </Button>
         </ButtonGroup>

@@ -14,13 +14,14 @@ import SectionTitle from '../components/SectionTitle';
 import useTableForm from '../hooks/useTableForm';
 
 interface Props extends IFormValues, IFormWatch {
+  disabled?: boolean;
   onRequired: (id: Ti18nId) => void;
   onSuccess: (message: string) => void;
 }
 
 const IOCheck = (props: Props) => {
   const { sumValues } = useTableForm(props);
-  const { watch, setValue, onRequired, onSuccess } = props;
+  const { disabled, watch, setValue, onRequired, onSuccess } = props;
   const ioCheckList: IIOCheck[] = watch('io_check');
 
   const [checkTime, setCheckTime] = useState(null);
@@ -47,7 +48,7 @@ const IOCheck = (props: Props) => {
     setOutput('');
   };
 
-  const addRow = {
+  const inputRow = {
     id: 'add-io-check',
     checkTime: (
       <MobileTimePicker
@@ -91,12 +92,16 @@ const IOCheck = (props: Props) => {
     );
   };
 
-  const rows = ioCheckList?.map((item, i) => ({
+  const displayRows = ioCheckList?.map((item, i) => ({
     ...item,
     id: i,
     checkTime: formatStringToDate(item.checkTime, 'hh:mm a'),
     action: (
-      <IconButton size="small" onClick={() => onDeleteRow(i)}>
+      <IconButton
+        size="small"
+        onClick={() => onDeleteRow(i)}
+        sx={{ display: disabled ? 'none' : 'block' }}
+      >
         <Delete />
       </IconButton>
     ),
@@ -118,25 +123,30 @@ const IOCheck = (props: Props) => {
     </Typography>
   );
 
-  const sumRow = [
-    {
-      id: 'total-io-check',
-      checkTime: sumTypo('TOTAL'),
-      intake: sumTypo(watchSumIntake()),
-      output: sumTypo(watchSumOutput()),
-    },
-    {
-      id: 'result-io-check',
-      checkTime: sumTypo('+/-'),
-      intake: sumTypo(watchSumIntake() - watchSumOutput()),
-    },
-  ];
+  const tableRow = disabled ? displayRows : [inputRow, ...displayRows];
+
+  const sumRow =
+    tableRow.length > 0
+      ? [
+          {
+            id: 'total-io-check',
+            checkTime: sumTypo('TOTAL'),
+            intake: sumTypo(watchSumIntake()),
+            output: sumTypo(watchSumOutput()),
+          },
+          {
+            id: 'result-io-check',
+            checkTime: sumTypo('+/-'),
+            intake: sumTypo(watchSumIntake() - watchSumOutput()),
+          },
+        ]
+      : [];
 
   return (
     <Fragment>
       <SectionTitle title="I/O Check" />
       <Grid item xs={12}>
-        <MuiTable columns={columns} rows={[addRow, ...rows, ...sumRow]} />
+        <MuiTable columns={columns} rows={[...tableRow, ...sumRow]} />
       </Grid>
     </Fragment>
   );

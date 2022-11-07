@@ -11,10 +11,12 @@ import SectionTitle from '../components/SectionTitle';
 import MuiTable from 'components/MuiTable';
 import { formatStringToDate } from 'utils/formatting';
 
-interface Props extends IFormValues, IFormWatch {}
+interface Props extends IFormValues, IFormWatch {
+  disabled?: boolean;
+}
 
 const Medications = (props: Props) => {
-  const { watch, getValues, setValue } = props;
+  const { disabled, watch, getValues, setValue } = props;
   const medicationList: IMedication[] = getValues('medication_surveys');
 
   const columns = [
@@ -65,6 +67,7 @@ const Medications = (props: Props) => {
           renderInput={params => (
             <MuiTextField
               {...params}
+              disabled={disabled}
               placeholder="00:00 pm"
               InputProps={{ endAdornment: <AccessTime /> }}
               sx={{ width: 150 }}
@@ -75,6 +78,7 @@ const Medications = (props: Props) => {
       medication_do: (
         <Checkbox
           size="small"
+          disabled={disabled}
           checked={medicationDo}
           onChange={onChangeMedicationDo}
         />

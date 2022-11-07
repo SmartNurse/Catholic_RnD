@@ -22,7 +22,12 @@ const locale = {
     'ERROR.CODE.105': '간호기록지 정보를 찾을 수 없습니다.',
     'ERROR.CODE.106': '승인되지 않은 유저입니다. 관리자에게 문의해주세요',
     'ERROR.CODE.107': '비밀번호가 일치하지 않습니다.',
-    'ERROR.CODE.108': '이미 가입된 Email 주소 입니다.',
+    'ERROR.CODE.108':
+      '이미 가입된 Email 주소 입니다. 다른 Email을 입력해주세요.',
+    'ERROR.CODE.109':
+      '이미 존재하는 가상환자 ID 입니다. 다른 ID를 입력해주세요.',
+    'ERROR.CODE.110': '학교 정보를 찾지 못했습니다. 관리자에게 문의해주세요.',
+    'ERROR.CODE.111': '권한이 없습니다. 관리자에게 문의해주세요.',
     'ERROR.CODE.201': '수가코드 정보를 찾을 수 없습니다.',
     'ERROR.CODE.202': '약품코드 정보를 찾을 수 없습니다.',
     'ERROR.CODE.702': '유효한 파일이 아닙니다. 파일을 다시 한번 확인해주세요',
@@ -36,6 +41,10 @@ const locale = {
     'REQUIRED.COLLEGE': '학교를 선택해주세요',
     'REQUIRED.STUDENT.NO':
       '학번은 "-"를 제외한 15자리 이하 숫자만 입력가능합니다',
+
+    // Main
+    'REQUIRED.STUDENT': '학생이 선택되지 않았습니다.',
+    'REQUIRED.PATIENT': '가상환자가 선택되지 않았습니다.',
 
     // nursing record
     'RECORD.0': 'NANDA',

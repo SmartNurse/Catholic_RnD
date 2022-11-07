@@ -11,6 +11,7 @@ const useUser = () => {
   const dispatch = useDispatch();
 
   const userState = useSelector<ReducerType, UserState>(state => state.user);
+  const isStudent = userState.student_grade === 1 ? true : false;
 
   const onSignIn = useCallback(
     (user: UserState) => dispatch(signIn(user)),
@@ -22,7 +23,7 @@ const useUser = () => {
     removeLocalStorage(`persist:${persistKey}`);
   }, [dispatch]);
 
-  return { ...userState, onSignIn, onSignOut };
+  return { ...userState, isStudent, onSignIn, onSignOut };
 };
 
 export default useUser;

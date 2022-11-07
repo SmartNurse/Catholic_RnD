@@ -24,8 +24,14 @@ import {
 import { ReactComponent as ProPlus } from "../../../assets/proPlus.svg";
 import Survey from '../Survey';
 import useSurvey from 'store/survey/useSurvey';
+import usePatient from 'store/patient/usePatient';
+import useStudent from 'store/student/useStudent';
+import useNotification from 'hooks/useNotification';
 
 const MenuRecords = () => {
+  const { student_uuid } = useStudent();
+  const { patientInfo } = usePatient();
+  const { onRequired } = useNotification();
   const { onUpdateSurveyType } = useSurvey();
 
   const menus = [
@@ -137,10 +143,16 @@ const MenuRecords = () => {
     },
   ];
 
+  const onClickListItem = (label: string) => {
+    if (!student_uuid) return onRequired('REQUIRED.STUDENT');
+    if (!patientInfo) return onRequired('REQUIRED.PATIENT');
+    onUpdateSurveyType(label);
+  };
+
   return (
     <Fragment>
       {menus.map(({ icon, label, disabled, isPro }) => {
-        const onClick = () => onUpdateSurveyType(label);
+        const onClick = () => onClickListItem(label);
 
         const MoreIcon = () => {
           if (!disabled) return null;

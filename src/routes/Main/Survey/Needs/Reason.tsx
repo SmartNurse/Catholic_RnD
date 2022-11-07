@@ -5,9 +5,10 @@ import { IFormRegister } from 'routes/Main/type';
 
 interface Props extends IFormRegister {
   registerKey: string;
+  disabled?: boolean;
 }
 
-const Reason = ({ registerKey, register }: Props) => {
+const Reason = ({ disabled, registerKey, register }: Props) => {
   return (
     <Grid item xs={12}>
       <Typography fontSize={12} fontWeight={500} sx={{ mb: 1.5 }}>
@@ -17,6 +18,7 @@ const Reason = ({ registerKey, register }: Props) => {
         required
         multiline
         minRows={5}
+        disabled={disabled}
         {...register(registerKey)}
       />
     </Grid>

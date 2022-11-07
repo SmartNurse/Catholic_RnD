@@ -9,11 +9,12 @@ interface Props {
   watch: any;
   setValue: any;
   register: any;
+  disabled?: boolean;
   domainNames?: INames[];
 }
 
 function Nanda(props: Props) {
-  const { domainNames, watch, register, setValue } = props;
+  const { watch, register, setValue, domainNames, disabled } = props;
 
   const m_domain = watch('domain');
 
@@ -56,6 +57,7 @@ function Nanda(props: Props) {
         <Grid item xs={8}>
           <Form.MuiSelect
             isNone
+            disabled={disabled}
             options={domainNames}
             getOptionValue={getOptionValue}
             getOptionLabel={getOptionLabel}
@@ -68,6 +70,7 @@ function Nanda(props: Props) {
         <Grid item xs={8}>
           <Form.MuiSelect
             isNone
+            disabled={disabled}
             options={classNames}
             getOptionValue={getOptionValue}
             getOptionLabel={getOptionLabel}
@@ -80,6 +83,7 @@ function Nanda(props: Props) {
         <Grid item xs={8}>
           <Form.MuiSelect
             isNone
+            disabled={disabled}
             options={diagnosisNames}
             getOptionValue={getOptionValue}
             getOptionLabel={getOptionLabel}
@@ -96,6 +100,7 @@ function Nanda(props: Props) {
           minRows={3}
           size="small"
           variant="outlined"
+          disabled={disabled}
           {...register('collectingData')}
         />
       </Form.Item>
@@ -108,6 +113,7 @@ function Nanda(props: Props) {
           minRows={3}
           size="small"
           variant="outlined"
+          disabled={disabled}
           {...register('goal')}
         />
       </Form.Item>
@@ -120,6 +126,7 @@ function Nanda(props: Props) {
           minRows={3}
           size="small"
           variant="outlined"
+          disabled={disabled}
           {...register('plan')}
         />
       </Form.Item>
@@ -132,6 +139,7 @@ function Nanda(props: Props) {
           minRows={5}
           size="small"
           variant="outlined"
+          disabled={disabled}
           {...register('interventions')}
         />
       </Form.Item>
@@ -144,6 +152,7 @@ function Nanda(props: Props) {
           minRows={3}
           size="small"
           variant="outlined"
+          disabled={disabled}
           {...register('evaluation')}
         />
       </Form.Item>

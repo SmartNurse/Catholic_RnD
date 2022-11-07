@@ -6,6 +6,7 @@ import { IPatient, IPatientInfo } from 'apis/admin/type';
 import { ReducerType } from '../reducer';
 import {
   PatientState,
+  resetPatient,
   selectedPatient,
   selectedPatientInfo,
   updateNursingRecord,
@@ -18,6 +19,11 @@ const usePatient = () => {
     ReducerType,
     PatientState
   >(state => state.patient);
+
+  const onResetPatient = useCallback(
+    () => dispatch(resetPatient()),
+    [dispatch]
+  );
 
   const onSelectedPatient = useCallback(
     (patient: IPatient | null) => dispatch(selectedPatient(patient)),
@@ -37,6 +43,7 @@ const usePatient = () => {
 
   return {
     patient,
+    onResetPatient,
     onSelectedPatient,
     patientInfo,
     onSelectedPatientInfo,
