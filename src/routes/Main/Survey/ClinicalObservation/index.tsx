@@ -11,6 +11,7 @@ import {
 } from 'routes/Main/Survey/type';
 
 import PatientInfo from './PatientInfo';
+import VitalSignGraph from './VitalSignGraph';
 import VitalSign from './VitalSign';
 import IOCheck from './IOCheck';
 
@@ -80,6 +81,7 @@ const ClinicalObservation = (
         sx={{ py: 5, px: 1 }}
       >
         <PatientInfo {...patientInfo} />
+        <VitalSignGraph {...formProps} />
         <VitalSign {...formProps} />
         <IOCheck {...formProps} />
       </Grid>
