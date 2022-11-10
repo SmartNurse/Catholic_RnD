@@ -1,6 +1,6 @@
 import { Fragment, useState, useEffect } from 'react';
 import { AccessTime, Delete } from '@mui/icons-material';
-import { Button, Grid, IconButton } from '@mui/material';
+import { Button, FormHelperText, Grid, IconButton } from '@mui/material';
 import { MobileTimePicker } from '@mui/x-date-pickers';
 
 import { Ti18nId } from 'hooks/useI18n';
@@ -33,6 +33,13 @@ const VitalSign = (props: Props) => {
   const [rr, setRr] = useState('');
   const [bt, setBt] = useState('');
   const [sp02, setSp02] = useState('');
+  const [errors, setErrors] = useState({
+    sbp: 0,
+    dbp: 0,
+    pr: 0,
+    rr: 0,
+    bt: 0
+  }); 
 
   const columns = [
     { fieldId: 'checkTime', label: '체크시간', sx: { width: 200 } },
@@ -80,39 +87,84 @@ const VitalSign = (props: Props) => {
       />
     ),
     sbp: (
-      <MuiTextField
-        value={sbp}
-        required={false}
-        onChange={({ target: { value } }) => setSbp(value)}
-      />
+      <>
+        <MuiTextField
+          value={sbp}
+          required={false}
+          onChange={({ target: { value } }) => {
+            setSbp(value);
+
+            if (Number(value) >= 250) setErrors({...errors, sbp: 1});
+            else setErrors({...errors, sbp: 0});
+          }}
+          error={Number(sbp) >= 250 ? true : false}
+        />
+        {errors.sbp ? <FormHelperText error={true}>SBP 값은 250 미만입니다</FormHelperText> : null}
+      </>
     ),
     dbp: (
-      <MuiTextField
-        value={dbp}
-        required={false}
-        onChange={({ target: { value } }) => setDbp(value)}
-      />
+      <>
+        <MuiTextField
+          value={dbp}
+          required={false}
+          onChange={({ target: { value } }) => {
+            setDbp(value);
+
+            if (Number(value) >= 250) setErrors({...errors, dbp: 1});
+            else setErrors({...errors, dbp: 0});
+          }}
+          error={Number(dbp) >= 250 ? true : false}
+        />
+        {errors.dbp ? <FormHelperText error={true}>DBP 값은 250 미만입니다</FormHelperText> : null}
+      </>
     ),
     pr: (
-      <MuiTextField
-        value={pr}
-        required={false}
-        onChange={({ target: { value } }) => setPr(value)}
-      />
+      <>
+        <MuiTextField
+          value={pr}
+          required={false}
+          onChange={({ target: { value } }) => {
+            setPr(value);
+
+            if (Number(value) >= 200) setErrors({...errors, pr: 1});
+            else setErrors({...errors, pr: 0});
+          }}
+          error={Number(pr) >= 200 ? true : false}
+        />
+        {errors.pr ? <FormHelperText error={true}>PR 값은 200 미만입니다</FormHelperText> : null}
+      </>
     ),
     rr: (
-      <MuiTextField
-        value={rr}
-        required={false}
-        onChange={({ target: { value } }) => setRr(value)}
-      />
+      <>
+        <MuiTextField
+          value={rr}
+          required={false}
+          onChange={({ target: { value } }) => {
+            setRr(value);
+
+            if (Number(value) >= 200) setErrors({...errors, rr: 1});
+            else setErrors({...errors, rr: 0});
+          }}
+          error={Number(rr) >= 200 ? true : false}
+        />
+        {errors.rr ? <FormHelperText error={true}>RR 값은 200 미만입니다</FormHelperText> : null}
+      </>
     ),
     bt: (
-      <MuiTextField
-        value={bt}
-        required={false}
-        onChange={({ target: { value } }) => setBt(value)}
-      />
+      <>
+        <MuiTextField
+          value={bt}
+          required={false}
+          onChange={({ target: { value } }) => {
+            setBt(value);
+
+            if (value === "" || Number(value) > 30 && Number(value) < 43) setErrors({...errors, bt: 0});
+            else setErrors({...errors, bt: 1});
+          }}
+          error={bt === "" || Number(bt) > 30 && Number(bt) < 43 ? false : true}
+        />
+        {errors.bt ? <FormHelperText error={true}>BT 값은 30 초과 43 미만입니다</FormHelperText> : null}
+      </>
     ),
     sp02: (
       <MuiTextField
