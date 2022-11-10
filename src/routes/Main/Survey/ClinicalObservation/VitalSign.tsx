@@ -1,4 +1,4 @@
-import { Fragment, useState } from 'react';
+import { Fragment, useState, useEffect } from 'react';
 import { AccessTime, Delete } from '@mui/icons-material';
 import { Button, Grid, IconButton } from '@mui/material';
 import { MobileTimePicker } from '@mui/x-date-pickers';
@@ -12,6 +12,8 @@ import { formatStringToDate } from 'utils/formatting';
 
 import SectionTitle from '../components/SectionTitle';
 
+import useVitalSign from "store/vitalsign/useVitalsign";
+
 interface Props extends IFormValues, IFormWatch {
   disabled?: boolean;
   onRequired: (id: Ti18nId) => void;
@@ -19,6 +21,8 @@ interface Props extends IFormValues, IFormWatch {
 }
 
 const VitalSign = (props: Props) => {
+  const { vitalsign, onUpdateSign } = useVitalSign();
+  
   const { disabled, watch, setValue, onRequired, onSuccess } = props;
   const vitalSignList: IVitalSign[] = watch('vital_sign');
 
@@ -49,6 +53,7 @@ const VitalSign = (props: Props) => {
 
     onSuccess('Vital Sign 추가되었습니다.');
     setValue('vital_sign', [...vitalSignList, request]);
+    onUpdateSign({isUpdated: !vitalsign.isUpdated, data: [...vitalsign.data, { checkTime: checkTime !== null ? formatStringToDate(checkTime, 'hh:mm a') : "", sbp: Number(sbp), dbp: Number(dbp), pr: Number(pr), rr: Number(rr), bt: Number(bt)}]});
     setCheckTime(null);
     setSbp('');
     setDbp('');
@@ -128,6 +133,7 @@ const VitalSign = (props: Props) => {
       'vital_sign',
       vitalSignList.filter((_, i) => i !== index)
     );
+    onUpdateSign({isUpdated: !vitalsign.isUpdated, data: vitalsign.data.filter((_, i) => i !== index)});
   };
 
   const displayRows = vitalSignList?.map((item, i) => ({
@@ -146,6 +152,20 @@ const VitalSign = (props: Props) => {
   }));
 
   const tableRow = disabled ? displayRows : [inputRow, ...displayRows];
+
+  useEffect(() => {
+    const initialVitalsign = vitalSignList.map((obj) => {
+      return {
+        checkTime: formatStringToDate(obj.checkTime, 'hh:mm a'),
+        bt: Number(obj.bt),
+        pr: Number(obj.pr),
+        rr: Number(obj.rr),
+        sbp: Number(obj.sbp),
+        dbp: Number(obj.dbp),
+      }
+    });
+    onUpdateSign({isUpdated: !vitalsign.isUpdated, data: [...initialVitalsign]});
+  }, []);
 
   return (
     <Fragment>

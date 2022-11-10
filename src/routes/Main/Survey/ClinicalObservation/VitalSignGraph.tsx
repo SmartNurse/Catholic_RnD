@@ -1,11 +1,13 @@
-import { Fragment } from "react";
+import { Fragment, useState, useEffect } from "react";
 import { Box } from "@mui/material";
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
 
-import { Ti18nId } from "hooks/useI18n";
+import { Ti18nId } from "hooks/useI18n"
 import { IFormValues, IFormWatch } from "routes/Main/type";
 
 import SectionTitle from '../components/SectionTitle';
+
+import useVitalsign from "store/vitalsign/useVitalsign";
 
 interface Props extends IFormValues, IFormWatch {
     disabled?: boolean;
@@ -13,53 +15,29 @@ interface Props extends IFormValues, IFormWatch {
     onSuccess: (message: string) => void;
 }
 
-const series = [
-    {
-      name: 'BT (℃)',
-      data: [
-        { timestamp: 'A', value: Math.random()*200, temp: Math.random()*35 },
-        { timestamp: 'B', value: Math.random()*200, temp: Math.random()*35 },
-        { timestamp: 'C', value: Math.random()*200, temp: Math.random()*35 },
-      ],
-    },
-    {
-      name: 'PR (회)',
-      data: [
-        { timestamp: 'B', value: Math.random()*200, temp: Math.random()*35 },
-        { timestamp: 'C', value: Math.random()*200, temp: Math.random()*35 },
-        { timestamp: 'D', value: Math.random()*200, temp: Math.random()*35 },
-      ],
-    },
-    {
-      name: 'RR (회)',
-      data: [
-        { timestamp: 'C', value: Math.random()*200, temp: Math.random()*35 },
-        { timestamp: 'D', value: Math.random()*200, temp: Math.random()*35 },
-        { timestamp: 'E', value: Math.random()*200, temp: Math.random()*35 },
-      ],
-    },
-    {
-        name: 'SBP (mmHg)',
-        data: [
-          { timestamp: 'C', value: Math.random()*200, temp: Math.random()*35 },
-          { timestamp: 'D', value: Math.random()*200, temp: Math.random()*35 },
-          { timestamp: 'E', value: Math.random()*200, temp: Math.random()*35 },
-        ],
-      },
-      {
-        name: 'DBP (mmHg)',
-        data: [
-          { timestamp: 'C', value: Math.random()*200, temp: Math.random()*35 },
-          { timestamp: 'D', value: Math.random()*200, temp: Math.random()*35 },
-          { timestamp: 'E', value: Math.random()*200, temp: Math.random()*35 },
-        ],
-      },
-  
-  ];
-
 const colors = ["#FE2503", "#FF9200", "#02F900", "#0333FF", "#942092"];
 
 const VitalSignGraph = (props: Props) => {
+    const { vitalsign } = useVitalsign();
+    const [vitalsignData, setVitalsignData] = useState<{name: string, data: {timestamp: string, value?: number, temp?: number}[]}[]>([]);
+
+    useEffect(() => {
+      const btData = vitalsign.data.map((v) => { return {timestamp: v.checkTime, temp: v.bt} });
+      const prData = vitalsign.data.map((v) => { return {timestamp: v.checkTime, value: v.pr }});
+      const rrData = vitalsign.data.map((v) => { return {timestamp: v.checkTime, value: v.rr }});
+      const sbpData = vitalsign.data.map((v) => { return {timestamp: v.checkTime, value: v.sbp }});
+      const dbpData = vitalsign.data.map((v) => { return {timestamp: v.checkTime, value: v.dbp }});
+
+      setVitalsignData([
+        { name: "BT (℃)", data: [...btData] }, 
+        { name: "PR (회)", data: [...prData] }, 
+        { name: "RR (회)", data: [...rrData] }, 
+        { name: "SBP (mmHg)", data: [...sbpData] }, 
+        { name: "DBP (mmHg)", data: [...dbpData] }, 
+      ]);
+
+      console.log(vitalsignData);
+    }, [vitalsign.isUpdated]);
 
     return (
         <Fragment>
@@ -68,9 +46,30 @@ const VitalSignGraph = (props: Props) => {
                 <ResponsiveContainer width="100%" height="100%">
                     <LineChart margin={{ top:5, right: 5, bottom: 5, left: 5 }}>
                         <CartesianGrid horizontal={false} />
-                        <XAxis dataKey="timestamp" type="category" allowDuplicatedCategory={false} />
-                        <YAxis yAxisId={0} orientation="left" dataKey="value" type="number" tickCount={11} domain={[0, 200]} />
-                        <YAxis yAxisId={1} orientation="right" dataKey="temp" type="number" domain={[30, 42]} />
+                        <XAxis
+                          dataKey="timestamp"
+                          type="category"
+                          allowDuplicatedCategory={false}
+                          padding={{ left: 50, right: 50 }}
+                          tickMargin={10}
+                        />
+                        <YAxis
+                          yAxisId={0}
+                          orientation="left"
+                          dataKey="value"
+                          type="number"
+                          tickCount={11}
+                          domain={[0, 200]}
+                          tickMargin={10}
+                        />
+                        <YAxis
+                          yAxisId={1}
+                          orientation="right"
+                          dataKey="temp"
+                          type="number"
+                          domain={[30, 42]}
+                          tickMargin={10}
+                        />
                         <Tooltip />
                         <Legend
                             layout="vertical"
@@ -79,8 +78,16 @@ const VitalSignGraph = (props: Props) => {
                             formatter={(value) => <span style={{ color: "black" }}>{value}</span>}
                             wrapperStyle={{ backgroundColor: "#EBEBEB", padding: "15px 10px", marginLeft: "10px" }}
                         />
-                        {series.map((s, idx) => (
-                            <Line dataKey="value" data={s.data} name={s.name} key={s.name} stroke={colors[idx]} dot={{ stroke: colors[idx], strokeWidth: 4 }} />
+                        {vitalsignData.map((v, idx) => (
+                            <Line
+                              dataKey={v.name === "BT (℃)" ? "temp" : "value"}
+                              data={v.data}
+                              name={v.name}
+                              key={v.name}
+                              stroke={colors[idx]}
+                              dot={{ stroke: colors[idx], strokeWidth: 4 }}
+                              yAxisId={v.name === "BT (℃)" ? 1 : 0}
+                            />
                         ))}
                     </LineChart>
                 </ResponsiveContainer>
