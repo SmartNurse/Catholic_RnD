@@ -134,3 +134,8 @@ export interface IUpdateFall extends IGetSurvey {
   date: string;
   contents: string;
 }
+
+export interface IPainScore {
+  checkTime: string;
+  painScore: number;
+}

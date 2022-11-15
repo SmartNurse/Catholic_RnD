@@ -11,6 +11,8 @@ import ClinicalObservation from './ClinicalObservation';
 import BedScore from './BedScore';
 import Fall from './Fall';
 import Needs from './Needs';
+import NRS from "./Pain/NRS";
+import FLACC from "./Pain/FLACC";
 
 interface Props {
   surveyType: string;
@@ -66,6 +68,14 @@ const DisplaySurvey = (props: Props) => {
     case MENU.FALL: {
       if (!defaultValues) return null;
       return <Fall {...dialogProps} onClose={onCloseSave} />;
+    }
+    case MENU.NRS: {
+      if (!defaultValues) return null;
+      return <NRS {...dialogProps} onClose={onCloseSave} />;
+    }
+    case MENU.FLACC: {
+      if (!defaultValues) return null;
+      return <FLACC {...dialogProps} onClose={onCloseSave} />;
     }
     default:
       return null;

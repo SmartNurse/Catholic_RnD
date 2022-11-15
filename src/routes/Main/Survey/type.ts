@@ -10,6 +10,8 @@ import {
   initialFall,
   initialNeeds,
   initialClinicalObservation,
+  initialNRS,
+  initialFLACC
 } from './initialStates';
 
 export enum MENU {
@@ -24,6 +26,9 @@ export enum MENU {
   BEDSORES = '욕창위험도 평가도구',
   NEEDS = '욕구평가 기록지',
   FALL = '낙상위험도 평가도구',
+  PAIN = '통증평가도구',
+  NRS = 'NRS',
+  FLACC = 'FLACC Scale',
   COGNITIVE_FUNCTION = '인지기능검사',
   DIET_NUTRITION = '식이/영양 기록지',
   AGREEMENT = '동의서',
@@ -56,3 +61,5 @@ export type TClinicalObservationDefaultValues =
 export type TBedScoreDefaultValues = typeof initialBedScore;
 export type TNeedsDefaultValues = typeof initialNeeds;
 export type TFallDefaultValues = typeof initialFall;
+export type TNRSDefaultValues = typeof initialNRS;
+export type TFLACCDefaultValues = typeof initialFLACC;

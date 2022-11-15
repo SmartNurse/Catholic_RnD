@@ -22,6 +22,8 @@ import {
   initialFall,
   initialNeeds,
   initialClinicalObservation,
+  initialNRS,
+  initialFLACC,
 } from '../initialStates';
 import { MENU } from '../type';
 
@@ -150,6 +152,18 @@ const useDefaultValues = ({ setDefaultValues, user_id }: Props) => {
             convertDataToStates(m_data, initialFall);
           })
           .catch(e => onFail('알 수 없는 오류가 발생했습니다.', e));
+        break;
+      case MENU.NRS:
+        convertDataToStates(
+          { pain_score: [] },
+          initialNRS
+        );
+        break;
+      case MENU.FLACC:
+        convertDataToStates(
+          { scale: { face: '', legs: '', activity: '', cry: '', consolability: ''} },
+          initialFLACC
+        );
         break;
       default:
         setDefaultValues(null);

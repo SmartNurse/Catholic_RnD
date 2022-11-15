@@ -256,3 +256,19 @@ export const initialFall = {
     consciousness: '',
   },
 };
+
+export const initialNRS = {
+  update_at: '',
+  pain_score: [],
+};
+
+export const initialFLACC = {
+  update_at: '',
+  scale: {
+    face: '',
+    legs: '',
+    activity: '',
+    cry: '',
+    consolability: '',
+  },
+};

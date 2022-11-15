@@ -1,7 +1,9 @@
+import { Slider } from '@mui/material';
 import { TabPanel } from '@mui/lab';
 import { styled } from '@mui/material';
 
 import theme from 'styles/theme';
+import { NoEncryption } from '@mui/icons-material';
 
 export const StyledDrawerWrapper = styled('div')`
   flex: 1;
@@ -108,3 +110,40 @@ export const sxRecordItem = {
     pb: 2,
   },
 };
+
+export const StyledMiniBox = styled('div')`
+  width: 75px;
+  border: 1px solid #00000080;
+  border-radius: 4px;
+
+  color: #00000080;
+  font-size: 13px;
+  text-align: center;
+  word-break: keep-all;
+`;
+
+export const StyledSlider = styled(Slider)({
+  color: "#2E85DC",
+  '& .MuiSlider-track': {
+
+  },
+  '& .MuiSlider-thumb': {
+    width: 12,
+    height: 12,
+  },
+  '& .MuiSlider-rail': {
+    color: "#00000033",
+  },
+  '& .MuiSlider-mark': {
+    width: 12,
+    height: 12,
+    marginLeft: "-5px",
+    borderRadius: "8px",
+    color: "#00000033",
+
+    '&.MuiSlider-markActive': {
+      backgroundColor: "#2E85DC",
+      opacity: 1,
+    }
+  } 
+});
