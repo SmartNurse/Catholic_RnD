@@ -30,6 +30,10 @@ export const StyledDrawerWrapper = styled('div')`
     background-color: ${theme.palette.primary.main};
 
     .MuiListItem-root {
+      .isMinor {
+        padding-left: 24px !important;
+      }
+
       .isPro {
         padding-right: 28px !important;
       }
