@@ -259,7 +259,7 @@ export const initialFall = {
 
 export const initialNRS = {
   update_at: '',
-  pain_score: [],
+  nrs: [],
 };
 
 export const initialFLACC = {

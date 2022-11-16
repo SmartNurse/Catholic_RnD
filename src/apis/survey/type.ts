@@ -135,7 +135,7 @@ export interface IUpdateFall extends IGetSurvey {
   contents: string;
 }
 
-export interface IPainScore {
+export interface INRS {
   checkTime: string;
   painScore: number;
 }

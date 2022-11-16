@@ -223,6 +223,9 @@ const locale = {
     'FALL.GAIT.10': '허약 (10점)',
     'FALL.GAIT.20': '장애 (20점)',
     'REQUIRED.FALL': '평가항목을 모두 선택해주세요',
+
+    // nrs
+    'NRS.ADD.ROW': '입력하지 않은 값이 있습니다.',
   },
 };
 
