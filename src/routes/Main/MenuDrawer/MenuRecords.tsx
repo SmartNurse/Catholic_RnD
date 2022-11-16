@@ -73,12 +73,15 @@ const MenuRecords = () => {
       label: '환자평가 기록지',
     },
     {
+      isMinor: true,
       label: '욕창위험도 평가도구',
     },
     {
+      isMinor: true,
       label: '욕구평가 기록지',
     },
     {
+      isMinor: true,
       label: '낙상위험도 평가도구',
     },
     {
