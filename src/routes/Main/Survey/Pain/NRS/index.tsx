@@ -42,7 +42,7 @@ const NRS = (props: SurveyDialogProps<TNRSDefaultValues>) => {
             title={title}
             isOpen={isOpen}
             onClose={onClose}
-            onSubmit={undefined}
+            onSubmit={undefined /* 저장 기능 업데이트 테되면 수정할 부분 */}
             update_at={defaultValues?.update_at}
         >
             <Typography fontSize={16} fontWeight="bold" align="center" sx={{ marginTop: "12px", marginBottom: "40px" }}>NRS (테스트 중)<br/> PAIN SCORE 0-10 NUMERICAL RATING</Typography>

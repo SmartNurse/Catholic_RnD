@@ -131,7 +131,13 @@ const NrsContents = (props: Props) => {
                     <img src={NRS_face5} />
                     <img src={NRS_face6} />
                 </Box>
-                <StyledSlider min={0} max={10} marks={Array(11).fill(0).map((_, i) => { return { value: i, label: i}; })} sx={{ width: "800px"}}/>
+                <StyledSlider
+                    min={0}
+                    max={10}
+                    marks={Array(11).fill(0).map((_, i) => { return { value: i, label: i}; })}
+                    sx={{ width: "800px"}}
+                    onChange={(_, value) => setPainScore(String(value))}
+                />
                 <Box sx={{ width: "800px", display: "flex", justifyContent: "space-between", marginTop: "20px" }}>
                     <StyledMiniBox>No <br/> Pain</StyledMiniBox>
                     <StyledMiniBox>Mild <br/> Pain</StyledMiniBox>
