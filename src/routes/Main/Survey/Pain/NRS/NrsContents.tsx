@@ -136,6 +136,7 @@ const NrsContents = (props: Props) => {
                     max={10}
                     marks={Array(11).fill(0).map((_, i) => { return { value: i, label: i}; })}
                     sx={{ width: "800px"}}
+                    value={painScore === "" ? 0 : parseInt(painScore)}
                     onChange={(_, value) => setPainScore(String(value))}
                 />
                 <Box sx={{ width: "800px", display: "flex", justifyContent: "space-between", marginTop: "20px" }}>
