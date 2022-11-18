@@ -264,11 +264,5 @@ export const initialNRS = {
 
 export const initialFLACC = {
   update_at: '',
-  scale: {
-    face: '',
-    legs: '',
-    activity: '',
-    cry: '',
-    consolability: '',
-  },
+  flacc: [],
 };

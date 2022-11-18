@@ -139,3 +139,8 @@ export interface INRS {
   checkTime: string;
   painScore: number;
 }
+
+export interface IFLACC {
+  checkTime: string;
+  flaccSum: number;
+}
