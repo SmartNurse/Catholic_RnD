@@ -20,6 +20,7 @@ import {
   MonitorHeartOutlined,
   MasksOutlined,
   BabyChangingStation,
+  SickOutlined,
 } from '@mui/icons-material';
 import { ReactComponent as ProPlus } from "../../../assets/proPlus.svg";
 import Survey from '../Survey';
@@ -85,6 +86,7 @@ const MenuRecords = () => {
       label: '낙상위험도 평가도구',
     },
     {
+      icon: <SickOutlined />,
       disabled: true,
       isPro: true,
       label: '통증평가도구',
