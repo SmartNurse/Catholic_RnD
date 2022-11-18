@@ -1,9 +1,8 @@
-import { Slider } from '@mui/material';
+import { Slider, FormControlLabel } from '@mui/material';
 import { TabPanel } from '@mui/lab';
 import { styled } from '@mui/material';
 
 import theme from 'styles/theme';
-import { NoEncryption } from '@mui/icons-material';
 
 export const StyledDrawerWrapper = styled('div')`
   flex: 1;
@@ -146,4 +145,14 @@ export const StyledSlider = styled(Slider)({
       opacity: 1,
     }
   } 
+});
+
+export const StyledFormControlLabel = styled(FormControlLabel)({
+  '&.MuiFormControlLabel-root': {
+    width: "200px",
+    
+    '& .MuiFormControlLabel-label': {
+      wordBreak: "keep-all",
+    }      
+  }
 });
