@@ -43,12 +43,11 @@ const FlaccContents = (props: Props) => {
 
     const onAddRow = () => {
         const request = { checkTime, sumValue };
-        console.log(request);
 
-        if (!checkTime) return onRequired('FLACC.ADD.ROW');
-        radioId.forEach((v) => {
-            if (!watch(v)) return onRequired('FLACC.ADD.ROW');
-        });
+        if (checkTime === null) return onRequired('FLACC.ADD.ROW');
+        for (let i=0; i<radioId.length; i++) {
+            if (watch(radioId[i]) === undefined) return onRequired('FLACC.ADD.ROW');
+        }
 
         onSuccess('FLACC Scale 추가되었습니다.');
         setValue('flacc', flaccList ? [...flaccList, request] : [request]);
