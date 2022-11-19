@@ -226,6 +226,9 @@ const locale = {
 
     // nrs
     'NRS.ADD.ROW': '입력하지 않은 값이 있습니다.',
+
+    // flacc
+    'FLACC.ADD.ROW': '입력하지 않은 값이 있습니다.',
   },
 };
 

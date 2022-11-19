@@ -142,5 +142,5 @@ export interface INRS {
 
 export interface IFLACC {
   checkTime: string;
-  flaccSum: number;
+  sumValue: number;
 }
