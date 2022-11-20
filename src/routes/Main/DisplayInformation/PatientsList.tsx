@@ -10,7 +10,11 @@ interface IOption {
   age: string;
 }
 
-const PatientsList = () => {
+interface Props {
+  user_id: number;
+}
+
+const PatientsList = ({ user_id }: Props) => {
   const { onSelectedPatient } = usePatient();
 
   const optionLabel = ({ patient_id, name }: IOption) =>
@@ -38,7 +42,7 @@ const PatientsList = () => {
       getOptionLabel={optionLabel}
       renderOption={(props, option) => <Option {...props} {...option} />}
       onChange={onSelectedPatient}
-      getApi={getPatients}
+      getApi={params => getPatients({ ...params, user_id })}
     />
   );
 };

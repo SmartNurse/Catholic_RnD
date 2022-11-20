@@ -2,7 +2,7 @@ import { IGetSearch } from 'apis/type';
 import { formatToRequestParameter } from 'utils/formatting';
 import apiGateway from '../axios';
 import {
-  IGetCollegePatientList,
+  IGetPatientList,
   IGetPatientInfo,
   IGetPatientMemo,
   IGetStudentList,
@@ -14,7 +14,7 @@ export const getCollegeList = (request: IGetSearch) => {
   return apiGateway.get(url);
 };
 
-export const getPatients = (request: IGetSearch) => {
+export const getPatients = (request: IGetPatientList) => {
   const searchType = isNaN(Number(request.keyword)) ? 1 : 2;
   const url = `/admin/patients/search?${formatToRequestParameter({
     ...request,
@@ -45,7 +45,7 @@ export const getStudentList = (request: IGetStudentList) => {
   return apiGateway.get(url);
 };
 
-export const getCollegePatientList = (request: IGetCollegePatientList) => {
+export const getCollegePatientList = (request: IGetPatientList) => {
   const searchType = isNaN(Number(request.keyword)) ? 1 : 2;
   const url = `/main/admin/patientSearch?size=20&${formatToRequestParameter({
     ...request,
