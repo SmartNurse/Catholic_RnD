@@ -3,14 +3,22 @@ import { useSnackbar } from 'notistack';
 import { IconButton, Menu, MenuItem } from '@mui/material';
 import MoreHorizIcon from '@mui/icons-material/MoreHoriz';
 
-import { IDeleteNursingRecord } from 'apis/main/type';
+import { IUpdateNursingRecord } from 'apis/main/type';
 import { deleteNursingRecord } from 'apis/main';
+import usePatient from 'store/patient/usePatient';
 
-interface Props extends IDeleteNursingRecord {
+interface Props extends IUpdateNursingRecord {
   refetch: () => void;
 }
 
-const ActionButtons = ({ refetch, ...request }: Props) => {
+const ActionButtons = ({
+  refetch,
+  content,
+  record_type,
+  record_time,
+  ...otherProps
+}: Props) => {
+  const { onSelectedNursingRecord } = usePatient();
   const { enqueueSnackbar } = useSnackbar();
 
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
@@ -19,11 +27,24 @@ const ActionButtons = ({ refetch, ...request }: Props) => {
     setAnchorEl(event.currentTarget);
   const handleClose = () => setAnchorEl(null);
 
+  const onConfig = () => {
+    onSelectedNursingRecord({
+      content,
+      record_type,
+      record_time,
+      ...otherProps,
+    });
+    handleClose();
+  };
+
   const onDelete = () => {
     const isConfirm = window.confirm('간호기록을 삭제하시겠습니까?');
     if (!isConfirm) return handleClose();
 
-    deleteNursingRecord(request)
+    deleteNursingRecord({
+      ...otherProps,
+      record_id: otherProps.nursing_record_id,
+    })
       .then(() => {
         refetch();
         const message = '간호기록을 삭제하였습니다.';
@@ -47,6 +68,7 @@ const ActionButtons = ({ refetch, ...request }: Props) => {
         onClose={handleClose}
         PaperProps={{ sx: { width: 180 } }}
       >
+        <MenuItem onClick={onConfig}>수정</MenuItem>
         <MenuItem onClick={onDelete}>삭제</MenuItem>
       </Menu>
     </Fragment>

@@ -1,5 +1,5 @@
 import { useForm } from 'react-hook-form';
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import { TabContext, TabList } from '@mui/lab';
 import { format } from 'date-fns';
 import { MobileTimePicker } from '@mui/x-date-pickers';
@@ -7,7 +7,11 @@ import { AccessTime } from '@mui/icons-material';
 import { Box, Button, ButtonGroup, Tab, Typography } from '@mui/material';
 
 import { INames } from 'apis/main/type';
-import { getNandaDomain, createNursingRecord } from 'apis/main';
+import {
+  getNandaDomain,
+  createNursingRecord,
+  updateNursingRecord,
+} from 'apis/main';
 import useUser from 'store/user/useUser';
 import useStudent from 'store/student/useStudent';
 import usePatient from 'store/patient/usePatient';
@@ -30,19 +34,39 @@ const NursingRecords = () => {
   const { isStudent } = useUser();
   const { student_uuid: user_id } = useStudent();
 
-  const { patientInfo, onUpdateNursingRecord } = usePatient();
+  const {
+    nursingRecord,
+    patientInfo,
+    onUpdateNursingRecord,
+    onClearNursingRecord,
+  } = usePatient();
   const { onSuccess, onFail, onRequired } = useNotification();
   const { register, watch, setValue, handleSubmit, reset } = useForm();
 
-  const [recordType, setRecordType] = useState(RECORD_TYPE.NANDA);
+  const [recordType, setRecordType] = useState<string>(RECORD_TYPE.NANDA);
   const [recordTime, setRecordTime] = useState<Date | null>(new Date());
 
-  // GetNandaDomains
   const [domainNames, setDomainNames] = useState<INames[]>([]);
   useEffect(() => {
     if (domainNames.length !== 0) return;
     getNandaDomain().then(({ data }) => setDomainNames(data.names));
   }, [domainNames]);
+
+  const onClearForm = useCallback(() => {
+    reset();
+    setRecordTime(new Date());
+    setRecordType(RECORD_TYPE.NANDA);
+    onClearNursingRecord();
+  }, [reset, onClearNursingRecord]);
+
+  useEffect(() => {
+    if (!nursingRecord) return onClearForm();
+
+    const { record_time, record_type, content } = nursingRecord;
+    reset(JSON.parse(content));
+    setRecordTime(new Date(record_time));
+    setRecordType(`${record_type}`);
+  }, [nursingRecord, onClearForm, reset]);
 
   const onSubmit = (data: any) => {
     // 간호기록 시간 입력 체크
@@ -89,15 +113,31 @@ const NursingRecords = () => {
       }
     }
 
-    createNursingRecord({
-      userId: user_id,
-      patientId: patientInfo!.patient_id,
+    const request = {
       recordType: Number(recordType),
       recordTime: format(recordTime, 'yyyy-MM-dd HH:mm'),
       content: JSON.stringify(content),
+    };
+
+    // 간호기록 수정
+    if (nursingRecord) {
+      return updateNursingRecord({ ...nursingRecord, ...request })
+        .then(() => {
+          onClearForm();
+          onUpdateNursingRecord(true);
+          onSuccess('간호기록을 수정하였습니다.');
+        })
+        .catch(e => onFail('간호기록 수정 실패하였습니다.', e));
+    }
+
+    // 간호기록 생성
+    createNursingRecord({
+      userId: user_id,
+      patientId: patientInfo!.patient_id,
+      ...request,
     })
       .then(() => {
-        reset();
+        onClearForm();
         onUpdateNursingRecord(true);
         onSuccess('간호기록을 저장하였습니다.');
       })
@@ -171,7 +211,7 @@ const NursingRecords = () => {
             variant="text"
             color="inherit"
             disabled={!isStudent}
-            onClick={() => reset()}
+            onClick={onClearForm}
           >
             취소
           </Button>

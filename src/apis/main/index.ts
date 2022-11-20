@@ -1,3 +1,4 @@
+import camelcaseKeys from 'camelcase-keys';
 import { formatToRequestParameter } from 'utils/formatting';
 import apiGateway from '../axios';
 import {
@@ -6,6 +7,7 @@ import {
   ICreateNursingRecord,
   IGetNursingRecords,
   IDeleteNursingRecord,
+  IUpdateNursingRecord,
 } from './type';
 
 export const getNandaDomain = () => {
@@ -33,6 +35,11 @@ export const deleteNursingRecord = (request: IDeleteNursingRecord) => {
     request
   )}`;
   return apiGateway.post(url);
+};
+
+export const updateNursingRecord = (request: IUpdateNursingRecord) => {
+  const url = `/main/update/nursing_record`;
+  return apiGateway.post(url, camelcaseKeys(request));
 };
 
 export const getNursingRecords = (request: IGetNursingRecords) => {

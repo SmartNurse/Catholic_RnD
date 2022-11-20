@@ -23,7 +23,7 @@ function SignIn() {
   const { onResultCode, onSuccess, onFail } = useNotification();
 
   // 로그인 화면으로 오는 경우 로컬스토리지 클리어
-  useEffect(clearLocalStorage, []);
+  useEffect(() => clearLocalStorage, []);
 
   const {
     handleSubmit,

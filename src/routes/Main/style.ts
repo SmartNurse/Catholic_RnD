@@ -92,11 +92,16 @@ export const StyledTabPanel = styled(TabPanel)`
 
 export const sxRecordItem = {
   pt: 0,
+
+  '&.active': {
+    backgroundColor: theme.palette.grey[100],
+  },
   ':not(:first-of-type)': {
-    pt: 2,
+    mt: 2,
+    px: 1,
     borderTop: '1px solid rgba(0, 0, 0, 0.05)',
   },
   ':not(:last-of-type)': {
-    pb: 2,
+    px: 1,
   },
 };

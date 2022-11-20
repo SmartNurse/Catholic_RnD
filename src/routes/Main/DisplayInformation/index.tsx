@@ -1,6 +1,6 @@
 import { Box, Skeleton, Toolbar } from '@mui/material';
 
-import usePatient from 'store/patient/usePatient';
+import useSelectorTyped from 'store/useSelectorTyped';
 
 import { inputInformationWidth } from '../InputInformation';
 import { StyledContentContainer } from '../style';
@@ -9,13 +9,10 @@ import NursingRecord from './NursingRecord';
 import MedicalNote from './MedicalNote';
 import PatientInfo from './PatientInfo';
 import SearchToolbar from './SearchToolbar';
-import useStudent from 'store/student/useStudent';
 
 const DisplayInformation = () => {
-  const { student_uuid } = useStudent();
-  const { patientInfo } = usePatient();
-
-  const isSkeleton = !student_uuid || !patientInfo;
+  // shallowEqual 해도 리렌더링 발생해서 이곳만 별도로 선택해서 사용
+  const patientInfo = useSelectorTyped(state => state.patient.patientInfo);
 
   const containerWidth = {
     xs: `calc(100% - ${menuDrawerWidth}px - ${inputInformationWidth.xs}px)`,
@@ -31,7 +28,7 @@ const DisplayInformation = () => {
       height: 'calc(100% - 180px)',
     };
 
-    if (isSkeleton) {
+    if (!patientInfo) {
       return (
         <Box {...contentBoxProps}>
           <Box flex={1} display="flex" flexDirection="column" overflow="auto">

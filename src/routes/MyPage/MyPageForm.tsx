@@ -50,7 +50,7 @@ function MyPageForm(props: Props) {
     <Box>
       <Container maxWidth="sm" sx={{ mt: 7.5, mb: 6 }}>
         <Button
-          href="/"
+          href="/#/"
           size="large"
           color="inherit"
           startIcon={<KeyboardArrowLeft />}

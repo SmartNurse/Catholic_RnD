@@ -1,16 +1,13 @@
 import { useCallback } from 'react';
-import { shallowEqual, useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 
-import { ReducerType } from '../reducer';
 import { selected, reset, StudentState } from '.';
+import useSelectorTyped from 'store/useSelectorTyped';
 
 const useStudent = () => {
   const dispatch = useDispatch();
 
-  const studentState = useSelector<ReducerType, StudentState>(
-    state => state.student,
-    shallowEqual
-  );
+  const studentState = useSelectorTyped(state => state.student);
 
   const onSelectedStudent = useCallback(
     (student: StudentState) => dispatch(selected(student)),
