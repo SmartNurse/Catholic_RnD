@@ -1,5 +1,5 @@
 import { useCallback } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { shallowEqual, useDispatch, useSelector } from 'react-redux';
 
 import { ReducerType } from '../reducer';
 import { selected, reset, StudentState } from '.';
@@ -8,7 +8,8 @@ const useStudent = () => {
   const dispatch = useDispatch();
 
   const studentState = useSelector<ReducerType, StudentState>(
-    state => state.student
+    state => state.student,
+    shallowEqual
   );
 
   const onSelectedStudent = useCallback(

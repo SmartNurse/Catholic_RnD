@@ -1,5 +1,5 @@
 import { useCallback } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { shallowEqual, useDispatch, useSelector } from 'react-redux';
 
 import { removeLocalStorage } from 'utils/storage';
 
@@ -10,7 +10,10 @@ import { signIn, signOut, UserState } from '.';
 const useUser = () => {
   const dispatch = useDispatch();
 
-  const userState = useSelector<ReducerType, UserState>(state => state.user);
+  const userState = useSelector<ReducerType, UserState>(
+    state => state.user,
+    shallowEqual
+  );
   const isStudent = userState.student_grade === 1 ? true : false;
 
   const onSignIn = useCallback(

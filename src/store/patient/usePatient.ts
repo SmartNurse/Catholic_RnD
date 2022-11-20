@@ -1,5 +1,5 @@
 import { useCallback } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { shallowEqual, useDispatch, useSelector } from 'react-redux';
 
 import { IPatient, IPatientInfo } from 'apis/admin/type';
 
@@ -18,7 +18,7 @@ const usePatient = () => {
   const { patient, patientInfo, isUpdateNursingRecord } = useSelector<
     ReducerType,
     PatientState
-  >(state => state.patient);
+  >(state => state.patient, shallowEqual);
 
   const onResetPatient = useCallback(
     () => dispatch(resetPatient()),
