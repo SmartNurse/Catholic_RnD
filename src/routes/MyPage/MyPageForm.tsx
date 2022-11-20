@@ -108,7 +108,7 @@ function MyPageForm(props: Props) {
             />
           </Form.Item>
 
-          <Form.Item label="">
+          <Form.Item isHidden={!isConfirmPassword}>
             <Button fullWidth size="large" type="submit" variant="contained">
               저장하기
             </Button>
