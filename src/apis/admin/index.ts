@@ -15,7 +15,11 @@ export const getCollegeList = (request: IGetSearch) => {
 };
 
 export const getPatients = (request: IGetSearch) => {
-  const url = `/admin/patients/search?${formatToRequestParameter(request)}`;
+  const searchType = isNaN(Number(request.keyword)) ? 1 : 2;
+  const url = `/admin/patients/search?${formatToRequestParameter({
+    ...request,
+    searchType,
+  })}`;
   return apiGateway.get(url);
 };
 
@@ -42,8 +46,10 @@ export const getStudentList = (request: IGetStudentList) => {
 };
 
 export const getCollegePatientList = (request: IGetCollegePatientList) => {
-  const url = `/main/admin/patientSearch?size=20&${formatToRequestParameter(
-    request
-  )}`;
+  const searchType = isNaN(Number(request.keyword)) ? 1 : 2;
+  const url = `/main/admin/patientSearch?size=20&${formatToRequestParameter({
+    ...request,
+    searchType,
+  })}`;
   return apiGateway.get(url);
 };
