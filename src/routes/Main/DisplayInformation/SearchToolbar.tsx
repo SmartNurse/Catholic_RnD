@@ -9,7 +9,7 @@ import StudentList from './StudentList';
 const SearchToolbar = () => {
   const { student_uuid: user_id, isStudent, college_name } = useUser();
 
-  if (isStudent) return <PatientsList />;
+  if (isStudent) return <PatientsList user_id={user_id} />;
   return (
     <Grid container alignItems="center" spacing={1}>
       <Grid item xs={2}>

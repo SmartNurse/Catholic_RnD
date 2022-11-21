@@ -50,7 +50,7 @@ function MyPageForm(props: Props) {
     <Box>
       <Container maxWidth="sm" sx={{ mt: 7.5, mb: 6 }}>
         <Button
-          href="/"
+          href="/#/"
           size="large"
           color="inherit"
           startIcon={<KeyboardArrowLeft />}
@@ -108,7 +108,7 @@ function MyPageForm(props: Props) {
             />
           </Form.Item>
 
-          <Form.Item label="">
+          <Form.Item isHidden={!isConfirmPassword}>
             <Button fullWidth size="large" type="submit" variant="contained">
               저장하기
             </Button>

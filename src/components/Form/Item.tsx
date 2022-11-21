@@ -1,8 +1,8 @@
 import { FormControl, FormControlProps, FormLabel } from '@mui/material';
 
 interface Props extends FormControlProps {
-  label: string;
   children: React.ReactNode;
+  label?: string;
   isHidden?: boolean;
 }
 

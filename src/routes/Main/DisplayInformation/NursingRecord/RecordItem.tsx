@@ -1,14 +1,15 @@
-import { List } from '@mui/material';
+import { Fragment } from 'react';
+import { List, Typography } from '@mui/material';
 
 import useI18n from 'hooks/useI18n';
 import { INursingRecord } from 'apis/main/type';
 import { sxRecordItem } from 'routes/Main/style';
 
 import RecordTitle from './RecordTitle';
-import RecordContent from './RecordContent';
 import ActionButtons from './ActionButtons';
 
 interface Props extends INursingRecord {
+  activeId?: number;
   nurseName: string;
   refetch?: () => void;
 }
@@ -16,44 +17,55 @@ interface Props extends INursingRecord {
 const RecordItem = (props: Props) => {
   const i18n = useI18n();
   const {
-    user_id,
+    activeId,
+    nurseName,
+    create_at,
     content,
-    record_type,
-    patient_id,
     nursing_record_id,
+    record_type,
     refetch,
+    ...otherProps
   } = props;
 
   const actionButtons = refetch ? (
     <ActionButtons
-      user_id={user_id}
-      patient_id={patient_id}
-      record_id={nursing_record_id}
+      {...otherProps}
+      content={content}
+      record_type={record_type}
+      nursing_record_id={nursing_record_id}
       refetch={refetch}
     />
   ) : null;
 
   const titleProps = {
     actionButtons,
-    nurseName: props.nurseName,
-    create_at: props.create_at,
+    nurseName: nurseName,
+    create_at: create_at,
     record_time: props.record_time,
     title: i18n(`RECORD.${record_type}`),
   };
 
+  const className = activeId === nursing_record_id ? 'active' : '';
   const contents = JSON.parse(content);
   const type = i18n(`RECORD.TYPE.${record_type}`);
   const contentKeys = Object.keys(contents) as any[];
 
   return (
-    <List sx={sxRecordItem} component="ul">
+    <List sx={sxRecordItem} className={className} component="ul">
       <RecordTitle {...titleProps} />
       {contentKeys.map(contentKey => (
-        <RecordContent
-          key={contentKey}
-          title={i18n(`${type}.${contentKey}` as any)}
-          content={contents[contentKey]}
-        />
+        <Fragment key={contentKey}>
+          <Typography component="li" variant="caption" fontWeight="bold">
+            • {i18n(`${type}.${contentKey}` as any)}
+          </Typography>
+          <Typography
+            component="li"
+            variant="caption"
+            sx={{ pl: 1, whiteSpace: 'pre-wrap' }}
+          >
+            {contents[contentKey]}
+          </Typography>
+        </Fragment>
       ))}
     </List>
   );

@@ -6,6 +6,7 @@ import {
   TextField,
   debounce,
   Typography,
+  colors,
 } from '@mui/material';
 import { Search } from '@mui/icons-material';
 
@@ -28,6 +29,7 @@ const MuiAutocomplete = (props: Props) => {
   const [open, setOpen] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [options, setOptions] = useState<any[]>([]);
+  const [totalCount, setTotalCount] = useState(0);
 
   const {
     listKey,
@@ -44,7 +46,10 @@ const MuiAutocomplete = (props: Props) => {
 
   const onChangeOptions = useCallback((keyword: string) => {
     getApi({ page: 1, keyword })
-      .then(({ data }) => setOptions(data[listKey]))
+      .then(({ data }) => {
+        setTotalCount(data?.count);
+        setOptions(data[listKey]);
+      })
       .finally(() => setIsLoading(false));
     // eslint-disable-next-line
   }, []);
@@ -93,7 +98,15 @@ const MuiAutocomplete = (props: Props) => {
           onChange={onChangeTextField}
           InputProps={{
             ...params.InputProps,
-            startAdornment: (
+            startAdornment: totalCount ? (
+              <Typography
+                variant="caption"
+                color={colors.grey[500]}
+                sx={{ mr: 1 }}
+              >
+                (총 {totalCount}명)
+              </Typography>
+            ) : (
               <Search color="disabled" sx={{ fontSize: 16, mr: 1 }} />
             ),
             endAdornment: (

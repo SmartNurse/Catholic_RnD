@@ -40,6 +40,9 @@ export interface IDeleteNursingRecord {
   record_id: number;
 }
 
+export interface IUpdateNursingRecord
+  extends Omit<INursingRecord, 'create_at'> {}
+
 export interface IGetNursingRecords {
   patient_id: number;
   user_id: number;

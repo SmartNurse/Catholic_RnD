@@ -1,24 +1,24 @@
 import { useCallback } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 
 import { IPatient, IPatientInfo } from 'apis/admin/type';
 
-import { ReducerType } from '../reducer';
 import {
-  PatientState,
   resetPatient,
   selectedPatient,
   selectedPatientInfo,
   updateNursingRecord,
+  selectedNursingRecord,
+  clearNursingRecord,
 } from '.';
+import { IUpdateNursingRecord } from 'apis/main/type';
+import useSelectorTyped from 'store/useSelectorTyped';
 
 const usePatient = () => {
   const dispatch = useDispatch();
 
-  const { patient, patientInfo, isUpdateNursingRecord } = useSelector<
-    ReducerType,
-    PatientState
-  >(state => state.patient);
+  const { patient, patientInfo, isUpdateNursingRecord, nursingRecord } =
+    useSelectorTyped(state => state.patient);
 
   const onResetPatient = useCallback(
     () => dispatch(resetPatient()),
@@ -41,6 +41,16 @@ const usePatient = () => {
     [dispatch]
   );
 
+  const onSelectedNursingRecord = useCallback(
+    (value: IUpdateNursingRecord) => dispatch(selectedNursingRecord(value)),
+    [dispatch]
+  );
+
+  const onClearNursingRecord = useCallback(
+    () => dispatch(clearNursingRecord()),
+    [dispatch]
+  );
+
   return {
     patient,
     onResetPatient,
@@ -49,6 +59,9 @@ const usePatient = () => {
     onSelectedPatientInfo,
     isUpdateNursingRecord,
     onUpdateNursingRecord,
+    nursingRecord,
+    onSelectedNursingRecord,
+    onClearNursingRecord,
   };
 };
 

@@ -1,15 +1,12 @@
 import { useCallback } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-
-import { ReducerType } from '../reducer';
-import { resetSurvey, SurveyState, updateIsSave, updateSurveyType } from '.';
+import { useDispatch } from 'react-redux';
+import { resetSurvey, updateIsSave, updateSurveyType } from '.';
+import useSelectorTyped from 'store/useSelectorTyped';
 
 const useSurvey = () => {
   const dispatch = useDispatch();
 
-  const { isSave, surveyType } = useSelector<ReducerType, SurveyState>(
-    state => state.survey
-  );
+  const { isSave, surveyType } = useSelectorTyped(state => state.survey);
 
   const onUpdateSurveyType = useCallback(
     (value: string) => dispatch(updateSurveyType(value)),

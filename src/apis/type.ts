@@ -5,5 +5,5 @@ export interface IGetList {
 
 export interface IGetSearch {
   page: number;
-  keyword: string;
+  keyword: string | number;
 }

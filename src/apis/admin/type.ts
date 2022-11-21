@@ -56,4 +56,4 @@ export interface IGetStudentList extends IGetSearch {
   user_id: number;
 }
 
-export interface IGetCollegePatientList extends IGetStudentList {}
+export interface IGetPatientList extends IGetStudentList {}
