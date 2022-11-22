@@ -56,7 +56,7 @@ const DietNutrition = (props: SurveyDialogProps<TDietNutritionDefaultValues>) =>
                 <DefaultDiet {...formProps} dietList={dietList} setDietList={setDietList} />
                 <Treatment {...formProps} dietList={dietList} setDietList={setDietList} />
                 <Controlled {...formProps} dietList={dietList} setDietList={setDietList} />
-                <Special {...formProps} dietList={dietList} setDietList={setDietList} setEtc={setEtc} />
+                <Special {...formProps} dietList={dietList} setDietList={setDietList} etc={etc} setEtc={setEtc} />
             </Grid>
         </MuiDialog.SurveyForm>
     );
