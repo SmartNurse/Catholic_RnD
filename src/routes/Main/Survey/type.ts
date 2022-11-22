@@ -11,7 +11,8 @@ import {
   initialNeeds,
   initialClinicalObservation,
   initialNRS,
-  initialFLACC
+  initialFLACC,
+  initialDietNutrition
 } from './initialStates';
 
 export enum MENU {
@@ -63,3 +64,4 @@ export type TNeedsDefaultValues = typeof initialNeeds;
 export type TFallDefaultValues = typeof initialFall;
 export type TNRSDefaultValues = typeof initialNRS;
 export type TFLACCDefaultValues = typeof initialFLACC;
+export type TDietNutritionDefaultValues = typeof initialDietNutrition;

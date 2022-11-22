@@ -24,6 +24,7 @@ import {
   initialClinicalObservation,
   initialNRS,
   initialFLACC,
+  initialDietNutrition,
 } from '../initialStates';
 import { MENU } from '../type';
 
@@ -163,6 +164,12 @@ const useDefaultValues = ({ setDefaultValues, user_id }: Props) => {
         convertDataToStates(
           { scale: { face: '', legs: '', activity: '', cry: '', consolability: ''} },
           initialFLACC
+        );
+        break;
+      case MENU.DIET_NUTRITION:
+        convertDataToStates(
+          { ...initialDietNutrition },
+          initialDietNutrition
         );
         break;
       default:
