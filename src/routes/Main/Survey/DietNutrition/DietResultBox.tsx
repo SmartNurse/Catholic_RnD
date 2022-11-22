@@ -18,7 +18,7 @@ const DietResultBox = (props: Props) => {
                 <Box sx={{ width: "30%", display: "flex", flexDirection: "column" }}>
                     <Typography sx={{ fontWeight: "500", fontSize: "13px", lineHeight: "24px", paddingLeft: "16px" }}>{v}</Typography> 
                     <TextField
-                        placeholder={selected[i] ? `${dietList}${etc && (dietList.length !== 0 ? ',' + etc : etc)}\n-> ${calorie && calorie + " KCAL/day"}` : v + " 목록"}
+                        placeholder={selected[i] ? `${dietList}${etc && (dietList.length !== 0 ? ',' + etc : etc)}\n${calorie && "-> " + calorie + " KCAL/day"}` : v + " 목록"}
                         multiline={true}
                         minRows={3}
                         InputProps={{ readOnly: true }}
