@@ -65,6 +65,7 @@ const RecordItem = (props: Props) => {
           >
             {contents[contentKey]}
           </Typography>
+          <br />
         </Fragment>
       ))}
     </List>
