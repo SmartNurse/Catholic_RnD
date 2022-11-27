@@ -5,7 +5,7 @@ import RowContainer from '../components/RowContainer';
 import RowContent from '../components/RowContent';
 
 const PatientInfo = (props: IPatientInfo) => {
-  const { name, patient_id, age, gender, department, ward } = props;
+  const { name, patient_id, age, gender, room, ward } = props;
 
   return (
     <RowContainer xs={12}>
@@ -27,10 +27,10 @@ const PatientInfo = (props: IPatientInfo) => {
         />
       </RowContent>
       <RowContent title="병동" titleRatio={1} childrenRatio={2}>
-        <Form.MuiTextField value={department} InputProps={{ readOnly: true }} />
+        <Form.MuiTextField value={ward} InputProps={{ readOnly: true }} />
       </RowContent>
       <RowContent title="병실" titleRatio={1} childrenRatio={2}>
-        <Form.MuiTextField value={ward} InputProps={{ readOnly: true }} />
+        <Form.MuiTextField value={room} InputProps={{ readOnly: true }} />
       </RowContent>
     </RowContainer>
   );
