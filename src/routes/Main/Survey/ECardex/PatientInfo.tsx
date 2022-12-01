@@ -51,7 +51,7 @@ const PatientInfo = (props: Props) => {
         <Form.MuiTextField value={ward} InputProps={{ readOnly: true }} />
       </RowContent>
       <RowContent title="담당간호사" titleRatio={1} childrenRatio={2}>
-        <Form.MuiTextField value={patient_id} InputProps={{ readOnly: true }} />
+        <Form.MuiTextField value={nurseName} InputProps={{ readOnly: true }} />
       </RowContent>
       <RowContent title="나이" titleRatio={1} childrenRatio={2}>
         <Form.MuiTextField value={age} InputProps={{ readOnly: true }} />
