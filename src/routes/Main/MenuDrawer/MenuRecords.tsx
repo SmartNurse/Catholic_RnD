@@ -74,15 +74,12 @@ const MenuRecords = () => {
       label: '환자평가 기록지',
     },
     {
-      isMinor: true,
       label: '욕창위험도 평가도구',
     },
     {
-      isMinor: true,
       label: '욕구평가 기록지',
     },
     {
-      isMinor: true,
       label: '낙상위험도 평가도구',
     },
     {
@@ -92,11 +89,9 @@ const MenuRecords = () => {
       label: '통증평가도구',
     },
     {
-      isMinor: true,
       label: 'NRS'
     },
     {
-      isMinor: true,
       label: 'FLACC Scale'
     },
     {
@@ -170,7 +165,7 @@ const MenuRecords = () => {
 
   return (
     <Fragment>
-      {menus.map(({ icon, label, disabled, isPro, isMinor }) => {
+      {menus.map(({ icon, label, disabled, isPro }) => {
         const onClick = () => onClickListItem(label);
 
         const MoreIcon = () => {
@@ -185,7 +180,7 @@ const MenuRecords = () => {
 
         return (
           <ListItem key={label} disablePadding>
-            <ListItemButton className={isMinor ? "isMinor" : (isPro && !disabled ? "isPro" : "")} disabled={disabled} onClick={onClick}>
+            <ListItemButton className={isPro && !disabled ? "isPro" : ""} disabled={disabled} onClick={onClick}>
               <ListItemIcon>{icon}</ListItemIcon>
               <ListItemText primary={label} />
               <ProIcon />
