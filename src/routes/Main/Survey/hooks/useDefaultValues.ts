@@ -13,6 +13,7 @@ import useNotification from 'hooks/useNotification';
 import { findKeyValueToObj } from 'utils/convert';
 
 import {
+  initialECardex,
   initialOutHospitalSurvey,
   initialHospitalizationSurvey,
   initialMedicationSurvey,
@@ -55,6 +56,12 @@ const useDefaultValues = ({ setDefaultValues, user_id }: Props) => {
 
   const onGetDefaultValues = (patient_id: number, type: string) => {
     switch (type) {
+      case MENU.E_CARDEX: 
+        convertDataToStates(
+          initialECardex,
+          initialECardex,
+        );
+        break;
       case MENU.HOSPITALIZATION:
         getHospitalization({ user_id, patient_id })
           .then(({ data }) => {

@@ -144,3 +144,30 @@ export interface IFLACC {
   checkTime: string;
   sumValue: number;
 }
+
+export interface IECardexRemark {
+  date: string;
+  remark: string;
+}
+
+export interface IECardexDosage {
+  date: '',
+  dosage: '',
+  method: '',
+  time: '',
+  termination: '',
+}
+
+export interface IECardexLab {
+  date: '',
+  lab: '',
+  receipt: '',
+  result: '',
+}
+
+export interface IECardexImageTest {
+  date: '',
+  image_test: '',
+  receipt: '',
+  result: '',
+}

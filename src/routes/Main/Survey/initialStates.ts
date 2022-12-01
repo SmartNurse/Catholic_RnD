@@ -22,6 +22,39 @@ export const initialNursingRecord = {
   remarks: { cbe: '' },
 };
 
+export const initialECardex = {
+  update_at: '',
+  etc: {
+    text: '',
+    remark: {
+      date: '',
+      remark: '',
+    },
+    dosage: {
+      date: '',
+      dosage: '',
+      method: '',
+      time: '',
+      termination: '',
+    },
+    lab: {
+      date: '',
+      lab: '',
+      receipt: '',
+      result: '',
+    },
+    image_test: {
+      date: '',
+      image_test: '',
+      receipt: '',
+      result: '',
+    },
+  },
+  problem: '',
+  plan: '',
+  evaluation: '',
+};
+
 export const initialHospitalizationSurvey = {
   offer: '',
   update_at: '',
