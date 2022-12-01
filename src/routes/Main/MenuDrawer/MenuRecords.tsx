@@ -22,6 +22,8 @@ import {
   BabyChangingStation,
   SickOutlined,
 } from '@mui/icons-material';
+import { ReactComponent as ECardex } from "assets/menu-icon-e-cardex.svg";
+import { ReactComponent as TakingOver } from "assets/menu-icon-taking-over.svg"; 
 import { ReactComponent as ProPlus } from "../../../assets/proPlus.svg";
 import Survey from '../Survey';
 import useSurvey from 'store/survey/useSurvey';
@@ -36,6 +38,14 @@ const MenuRecords = () => {
   const { onUpdateSurveyType } = useSurvey();
 
   const menus = [
+    {
+      icon: <ECardex />,
+      label: 'e-CARDEX',
+    },
+    {
+      icon: <TakingOver />,
+      label: '간호 인수인계',
+    },
     {
       icon: <Healing />,
       label: '입원간호 기록지',
