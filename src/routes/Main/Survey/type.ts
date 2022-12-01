@@ -14,6 +14,7 @@ import {
   initialClinicalObservation,
   initialNRS,
   initialFLACC,
+  initialOperation,
   initialDietNutrition
 } from './initialStates';
 
@@ -35,6 +36,7 @@ export enum MENU {
   NRS = 'NRS',
   FLACC = 'FLACC Scale',
   COGNITIVE_FUNCTION = '인지기능검사',
+  OPERATION = '수술 기록지',
   DIET_NUTRITION = '식이/영양 기록지',
   AGREEMENT = '동의서',
 }
@@ -71,3 +73,4 @@ export type TNRSDefaultValues = typeof initialNRS;
 export type TFLACCDefaultValues = typeof initialFLACC;
 export type TDietNutritionDefaultValues = typeof initialDietNutrition;
 export type TTakingOverDefaultValues = typeof initialTakingOver;
+export type TOperationDefaultValues = typeof initialOperation;

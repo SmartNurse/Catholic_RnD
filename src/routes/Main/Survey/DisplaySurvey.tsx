@@ -15,6 +15,7 @@ import Fall from './Fall';
 import Needs from './Needs';
 import NRS from "./Pain/NRS";
 import FLACC from "./Pain/FLACC";
+import Operation from "./Special/Operation";
 import DietNutrition from "./DietNutrition";
 
 interface Props {
@@ -87,6 +88,10 @@ const DisplaySurvey = (props: Props) => {
     case MENU.FLACC: {
       if (!defaultValues) return null;
       return <FLACC {...dialogProps} onClose={onCloseSave} />;
+    }
+    case MENU.OPERATION: {
+      if (!defaultValues) return null;
+      return <Operation {...dialogProps} onClose={onCloseSave} />;
     }
     case MENU.DIET_NUTRITION: {
       if (!defaultValues) return null;

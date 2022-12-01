@@ -311,6 +311,32 @@ export const initialFLACC = {
   flacc: [],
 };
 
+export const initialOperation = {
+  update_at: '',
+  operation_date: '',
+  operation_info: {
+    main_code: '',
+    main_title: '',
+    sub_code: [],
+    sub_title: [],
+    main_doctor: '',
+    sub_doctor: '',
+    disinfection_nurse: '',
+    circular_nurse: '',
+  },
+  operation_content: {
+    desc: '',
+    arrived: '',
+    anesthesia_start: '',
+    op_start: '',
+    op_end: '',
+    anesthesia_end: '',
+    left: '',
+    method: '',
+    doctor: '',
+  },
+};
+
 export const initialDietNutrition = {
   update_at: '',
   target: '',
