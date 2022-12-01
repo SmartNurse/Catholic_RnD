@@ -151,23 +151,35 @@ export interface IECardexRemark {
 }
 
 export interface IECardexDosage {
-  date: '',
-  dosage: '',
-  method: '',
-  time: '',
-  termination: '',
+  date: string;
+  dosage: string;
+  method: string;
+  time: string;
+  termination: string;
 }
 
 export interface IECardexLab {
-  date: '',
-  lab: '',
-  receipt: '',
-  result: '',
+  date: string;
+  lab: string;
+  receipt: string;
+  result: string;
 }
 
 export interface IECardexImageTest {
-  date: '',
-  image_test: '',
-  receipt: '',
-  result: '',
+  date: string;
+  image_test: string;
+  receipt: string;
+  result: string;
+}
+
+export interface IBloodRecord {
+  checkTime: string;
+  division: string;
+  sbp: string;
+  dbp: string;
+  pr: string;
+  rr: string;
+  bt: string;
+  sideEffect: number;
+  etc: string;
 }

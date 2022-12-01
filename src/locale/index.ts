@@ -229,6 +229,10 @@ const locale = {
 
     // flacc
     'FLACC.ADD.ROW': '입력하지 않은 값이 있습니다.',
+
+    // transfusion
+    'BLOOD.RECORD.SIDE.EFFECT.1': '유',
+    'BLOOD.RECORD.SIDE.EFFECT.2': '무',
   },
 };
 

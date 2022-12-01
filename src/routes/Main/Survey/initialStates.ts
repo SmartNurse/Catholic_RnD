@@ -337,6 +337,22 @@ export const initialOperation = {
   },
 };
 
+export const initialTransfusion = {
+  update_at: '',
+  id: '',
+  title: '',
+  cc: '',
+  arrivedTime: '',
+  arrivedChecker: '',
+  checker1: '',
+  checker2: '',
+  startTime: '',
+  startStaff: '',
+  endTime: '',
+  endStaff: '',
+  blood_record: [],
+};
+
 export const initialDietNutrition = {
   update_at: '',
   target: '',
