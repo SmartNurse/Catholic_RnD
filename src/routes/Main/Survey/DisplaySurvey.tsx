@@ -1,6 +1,7 @@
 import { MENU, SurveyDialogProps } from './type';
 
 import ECardex from './ECardex';
+import TakingOver from './TakingOver';
 import Hospitalization from './Hospitalization';
 import OutHospital from './OutHospital';
 import Prescription from './Prescription';
@@ -32,6 +33,10 @@ const DisplaySurvey = (props: Props) => {
     case MENU.E_CARDEX: {
       if (!defaultValues) return null;
       return <ECardex {...dialogProps} onClose={onCloseSave} />;
+    }
+    case MENU.TAKING_OVER: {
+      if (!defaultValues) return null;
+      return <TakingOver {...dialogProps} onClose={onCloseSave} />;
     }
     case MENU.HOSPITALIZATION: {
       if (!defaultValues) return null;

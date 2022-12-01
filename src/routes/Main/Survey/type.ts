@@ -2,6 +2,7 @@ import { IPatientInfo } from 'apis/admin/type';
 import { SurveyFormProps } from 'components/MuiDialog/SurveyForm';
 import {
   initialECardex,
+  initialTakingOver,
   initialOutHospitalSurvey,
   initialHospitalizationSurvey,
   initialMedicationSurvey,
@@ -18,6 +19,7 @@ import {
 
 export enum MENU {
   E_CARDEX = 'e-CARDEX',
+  TAKING_OVER = '간호 인수인계',
   HOSPITALIZATION = '입원간호 기록지',
   OUT_HOSPITAL = '퇴원간호 기록지',
   PRESCRIPTION = '처방 기록지',
@@ -68,3 +70,4 @@ export type TFallDefaultValues = typeof initialFall;
 export type TNRSDefaultValues = typeof initialNRS;
 export type TFLACCDefaultValues = typeof initialFLACC;
 export type TDietNutritionDefaultValues = typeof initialDietNutrition;
+export type TTakingOverDefaultValues = typeof initialTakingOver;

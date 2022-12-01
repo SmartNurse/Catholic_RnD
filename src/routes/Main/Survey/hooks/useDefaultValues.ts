@@ -14,6 +14,7 @@ import { findKeyValueToObj } from 'utils/convert';
 
 import {
   initialECardex,
+  initialTakingOver,
   initialOutHospitalSurvey,
   initialHospitalizationSurvey,
   initialMedicationSurvey,
@@ -60,6 +61,12 @@ const useDefaultValues = ({ setDefaultValues, user_id }: Props) => {
         convertDataToStates(
           initialECardex,
           initialECardex,
+        );
+        break;
+      case MENU.TAKING_OVER:
+        convertDataToStates(
+          initialTakingOver,
+          initialTakingOver,
         );
         break;
       case MENU.HOSPITALIZATION:
