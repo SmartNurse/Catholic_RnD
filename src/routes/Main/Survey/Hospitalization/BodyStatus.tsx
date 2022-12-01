@@ -99,7 +99,7 @@ const BodyStatus = (props: Props) => {
           />
           <Form.MuiCheckboxGroup
             i18nNullKey="ETC"
-            i18nKey="HOSPITALIZATION.BODY.CAMOUFLAGE"
+            i18nKey="HOSPITALIZATION.BODY.NERVE"
             values={[1, 2, 3, 4, 0]}
             disabled={disabled}
             defaultValue={getValues('body_status.nerve.checked')}
@@ -125,7 +125,7 @@ const BodyStatus = (props: Props) => {
           />
           <Form.MuiCheckboxGroup
             i18nNullKey="ETC"
-            i18nKey="HOSPITALIZATION.BODY.CAMOUFLAGE"
+            i18nKey="HOSPITALIZATION.BODY.SKIN"
             values={[1, 2, 3, 0]}
             disabled={disabled}
             defaultValue={getValues('body_status.skin.checked')}
