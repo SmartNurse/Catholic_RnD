@@ -7,14 +7,12 @@ import { IUpdateNursingRecord } from 'apis/main/type';
 export interface PatientState {
   patient?: IPatient | null;
   patientInfo?: IPatientInfo | null;
-  isUpdateNursingRecord: boolean;
   nursingRecord?: IUpdateNursingRecord | null;
 }
 
 const initialState: PatientState = {
   patient: null,
   patientInfo: null,
-  isUpdateNursingRecord: false,
   nursingRecord: null,
 };
 
@@ -31,9 +29,6 @@ export const patientSlice = createSlice({
     selectedPatientInfo(state, action: PayloadAction<IPatientInfo | null>) {
       state.patientInfo = action.payload;
     },
-    updateNursingRecord(state, action: PayloadAction<boolean>) {
-      state.isUpdateNursingRecord = action.payload;
-    },
     selectedNursingRecord(state, action: PayloadAction<IUpdateNursingRecord>) {
       state.nursingRecord = action.payload;
     },
@@ -47,7 +42,6 @@ export const {
   resetPatient,
   selectedPatient,
   selectedPatientInfo,
-  updateNursingRecord,
   selectedNursingRecord,
   clearNursingRecord,
 } = patientSlice.actions;
