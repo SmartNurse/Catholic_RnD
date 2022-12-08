@@ -99,12 +99,14 @@ export interface IVitalSign {
   rr: number;
   bt: number;
   sp02: number;
+  etc: string;
 }
 
 export interface IIOCheck {
   checkTime: string;
   intake: number;
   output: number;
+  etc: string;
 }
 export interface IUpdateClinicObservation extends IGetSurvey {
   survey_uuid: string;

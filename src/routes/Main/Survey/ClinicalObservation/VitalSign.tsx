@@ -33,6 +33,7 @@ const VitalSign = (props: Props) => {
   const [rr, setRr] = useState('');
   const [bt, setBt] = useState('');
   const [sp02, setSp02] = useState('');
+  const [etc, setEtc] = useState('');
   const [errors, setErrors] = useState({
     sbp: 0,
     dbp: 0,
@@ -49,6 +50,7 @@ const VitalSign = (props: Props) => {
     { fieldId: 'rr', label: 'RR (회)' },
     { fieldId: 'bt', label: 'BT (℃)' },
     { fieldId: 'sp02', label: 'SPO2 (%)' },
+    { fieldId: 'etc', label: '비고' },
     { fieldId: 'action', label: '', sx: { width: 100 } },
   ];
 
@@ -59,7 +61,7 @@ const VitalSign = (props: Props) => {
     }
 
     onSuccess('Vital Sign 추가되었습니다.');
-    setValue('vital_sign', [...vitalSignList, request]);
+    setValue('vital_sign', [...vitalSignList, {...request, etc }]);
     onUpdateSign({isUpdated: !vitalsign.isUpdated, data: [...vitalsign.data, { checkTime: checkTime !== null ? formatStringToDate(checkTime, 'hh:mm a') : "", sbp: Number(sbp), dbp: Number(dbp), pr: Number(pr), rr: Number(rr), bt: Number(bt)}]});
     setCheckTime(null);
     setSbp('');
@@ -68,6 +70,7 @@ const VitalSign = (props: Props) => {
     setRr('');
     setBt('');
     setSp02('');
+    setEtc('');
   };
 
   const inputRow = {
@@ -171,6 +174,13 @@ const VitalSign = (props: Props) => {
         value={sp02}
         required={false}
         onChange={({ target: { value } }) => setSp02(value)}
+      />
+    ),
+    etc: (
+      <MuiTextField
+        value={etc}
+        required={false}
+        onChange={({ target: { value }}) => setEtc(value)}
       />
     ),
     action: (

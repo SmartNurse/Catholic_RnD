@@ -27,11 +27,13 @@ const IOCheck = (props: Props) => {
   const [checkTime, setCheckTime] = useState(null);
   const [intake, setIntake] = useState('');
   const [output, setOutput] = useState('');
+  const [etc, setEtc] = useState('');
 
   const columns = [
     { fieldId: 'checkTime', label: '체크시간', sx: { width: 200 } },
     { fieldId: 'intake', label: 'INTAKE' },
     { fieldId: 'output', label: 'OUTPUT' },
+    { fieldId: 'etc', label: '비고' },
     { fieldId: 'action', label: '', sx: { width: 100 } },
   ];
 
@@ -42,10 +44,11 @@ const IOCheck = (props: Props) => {
     }
 
     onSuccess('I/O Check 추가되었습니다.');
-    setValue('io_check', [...ioCheckList, request]);
+    setValue('io_check', [...ioCheckList, {...request, etc}]);
     setCheckTime(null);
     setIntake('');
     setOutput('');
+    setEtc('');
   };
 
   const inputRow = {
@@ -76,6 +79,13 @@ const IOCheck = (props: Props) => {
         value={output}
         required={false}
         onChange={({ target: { value } }) => setOutput(value)}
+      />
+    ),
+    etc: (
+      <MuiTextField
+        value={etc}
+        required={false}
+        onChange={({ target: { value }}) => setEtc(value)}
       />
     ),
     action: (
