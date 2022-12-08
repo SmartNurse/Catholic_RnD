@@ -73,7 +73,7 @@ const FallContents = (props: Props) => {
       ...radioGroup({
         key: 'contents.consciousness',
         options: [0, 15],
-        i18nKey: 'FALL',
+        i18nKey: 'FALL.CONSCIOUSNESS',
       }),
     },
   ];

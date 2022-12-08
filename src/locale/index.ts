@@ -222,6 +222,8 @@ const locale = {
     'FALL.GAIT.0': '정상/침상안정/부동 (0점)',
     'FALL.GAIT.10': '허약 (10점)',
     'FALL.GAIT.20': '장애 (20점)',
+    'FALL.CONSCIOUSNESS.0': '자신의 기능수준을 인지함 (0점)',
+    'FALL.CONSCIOUSNESS.15': '자신의 기능수준을 인지하지 못함 (15점)',
     'REQUIRED.FALL': '평가항목을 모두 선택해주세요',
 
     // nrs
