@@ -54,7 +54,7 @@ const BloodInfo = (props: Props) => {
         { title: "혈액번호", variable: "id", type: "text" },
         { title: "혈액명", variable: "name", type: "text" },
         { title: "혈액형*", variable: "type", type: "label" },
-        { title: "용량(CC)*", variable: "cc", type: "text" },
+        { title: "용량(mL)*", variable: "cc", type: "text" },
         { title: "도착확인시간", variable: "arrivedTime", type: "time" },
         { title: "수혈도착확인자", variable: "arrivedChecker", type: "text" },
         { title: "수혈확인자1", variable: "checker1", type: "text" },
