@@ -16,6 +16,7 @@ import {
   initialFLACC,
   initialOperation,
   initialTransfusion,
+  initialDialysis,
   initialEmergency,
   initialDietNutrition,
 } from './initialStates';
@@ -40,6 +41,7 @@ export enum MENU {
   COGNITIVE_FUNCTION = '인지기능검사',
   OPERATION = '수술 기록지',
   TRANSFUSION = '수혈 기록지',
+  DIALYSIS = '투석 기록지',
   EMERGENCY = '응급 기록지',
   DIET_NUTRITION = '식이/영양 기록지',
   AGREEMENT = '동의서',
@@ -78,5 +80,6 @@ export type TNRSDefaultValues = typeof initialNRS;
 export type TFLACCDefaultValues = typeof initialFLACC;
 export type TOperationDefaultValues = typeof initialOperation;
 export type TTransfusionDefaultValues = typeof initialTransfusion;
+export type TDialysisDefaultValues = typeof initialDialysis;
 export type TEmergencyDefaultValues = typeof initialEmergency;
 export type TDietNutritionDefaultValues = typeof initialDietNutrition;

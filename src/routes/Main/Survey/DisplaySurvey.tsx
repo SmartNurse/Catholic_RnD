@@ -13,12 +13,13 @@ import ClinicalObservation from './ClinicalObservation';
 import BedScore from './BedScore';
 import Fall from './Fall';
 import Needs from './Needs';
-import NRS from "./Pain/NRS";
-import FLACC from "./Pain/FLACC";
-import Operation from "./Special/Operation";
+import NRS from './Pain/NRS';
+import FLACC from './Pain/FLACC';
+import Operation from './Special/Operation';
 import Transfusion from './Special/Transfusion';
-import Emergency from  "./Special/Emergency";
-import DietNutrition from "./DietNutrition";
+import Dialysis from './Special/Dialysis';
+import Emergency from  './Special/Emergency';
+import DietNutrition from './DietNutrition';
 
 interface Props {
   surveyType: string;
@@ -98,6 +99,10 @@ const DisplaySurvey = (props: Props) => {
     case MENU.TRANSFUSION: {
       if (!defaultValues) return null;
       return <Transfusion {...dialogProps} onClose={onCloseSave} />;
+    }
+    case MENU.DIALYSIS: {
+      if (!defaultValues) return null;
+      return <Dialysis {...dialogProps} onClose={onCloseSave} />;
     }
     case MENU.EMERGENCY: {
       if (!defaultValues) return null;

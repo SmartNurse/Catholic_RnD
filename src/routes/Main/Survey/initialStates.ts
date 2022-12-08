@@ -353,6 +353,35 @@ export const initialTransfusion = {
   blood_record: [],
 };
 
+export const initialDialysis = {
+  update_at: "",
+  dialysis_info: {
+    date: "",
+    time: "",
+    route: "",
+    machine: "",
+    catapult: "",
+    amount: "",
+    blood_vessel: "",
+    start_nurse: "",
+    end_nurse: "",
+  },
+  weight_info: {
+    pre: {
+      prev: "",
+      today: "",
+      diff: "",
+    },
+    post: {
+      prev: "",
+      today: "",
+      diff: "",
+    },
+  },
+  dialysis_db: [],
+  etc: ""
+};
+
 export const initialEmergency = {
   update_at: '',
   accident_type: 1,

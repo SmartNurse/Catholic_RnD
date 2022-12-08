@@ -28,6 +28,7 @@ import {
   initialFLACC,
   initialOperation,
   initialTransfusion,
+  initialDialysis,
   initialEmergency,
   initialDietNutrition,
 } from '../initialStates';
@@ -193,6 +194,12 @@ const useDefaultValues = ({ setDefaultValues, user_id }: Props) => {
         convertDataToStates(
           initialTransfusion,
           initialTransfusion
+        );
+        break;
+      case MENU.DIALYSIS:
+        convertDataToStates(
+          initialDialysis,
+          initialDialysis
         );
         break;
       case MENU.EMERGENCY:
