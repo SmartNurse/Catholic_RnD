@@ -24,6 +24,7 @@ import {
 } from '@mui/icons-material';
 import { ReactComponent as ECardex } from "assets/menu-icon-e-cardex.svg";
 import { ReactComponent as TakingOver } from "assets/menu-icon-taking-over.svg"; 
+import { ReactComponent as Psychology } from "assets/menu-icon-psychology.svg";
 import { ReactComponent as ProPlus } from "../../../assets/proPlus.svg";
 import Survey from '../Survey';
 import useSurvey from 'store/survey/useSurvey';
@@ -99,10 +100,18 @@ const MenuRecords = () => {
       label: '통증평가도구',
     },
     {
+      isPro: true,
       label: 'NRS'
     },
     {
+      isPro: true,
       label: 'FLACC Scale'
+    },
+    {
+      icon: <Psychology />,
+      disabled: true,
+      isPro: true,
+      label: '정신간호 기록지',
     },
     {
       isPro: true,
@@ -140,7 +149,7 @@ const MenuRecords = () => {
     },
     {
       isPro: true,
-      label: '응급간호 기록지',
+      label: '응급 기록지',
     },
     {
       isPro: true,
