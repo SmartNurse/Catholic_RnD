@@ -353,6 +353,30 @@ export const initialTransfusion = {
   blood_record: [],
 };
 
+export const initialEmergency = {
+  update_at: '',
+  accident_type: 1,
+  identification: '',
+  address: '',
+  division: '',
+  place: '',  
+  accident_date: '',
+  accident_time: '',
+  arrived_date: '',
+  arrived_time: '',
+  accident_reason: '',
+  primary_handling: '',
+  doctor_instruction: '',
+  handler: {
+    opinion: '',
+    organization: '',
+    certificate: '',
+    name: '',
+    phone: '', 
+  },
+  hospital_record: '',
+};
+
 export const initialDietNutrition = {
   update_at: '',
   target: '',

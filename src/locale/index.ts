@@ -233,6 +233,17 @@ const locale = {
     // transfusion
     'BLOOD.RECORD.SIDE.EFFECT.1': '유',
     'BLOOD.RECORD.SIDE.EFFECT.2': '무',
+
+    // emergency
+    'EMERGENCY.ACCIDENT_TYPE.1': '긴급',
+    'EMERGENCY.ACCIDENT_TYPE.2': '응급',
+    'EMERGENCY.ACCIDENT_TYPE.3': '비응급',
+
+    'EMERGENCY.DIVISION.1': '사고',
+    'EMERGENCY.DIVISION.2': '재해',
+    'EMERGENCY.DIVISION.3': '급성질환',
+    'EMERGENCY.DIVISION.4': '만성질환 급속악화',
+    'EMERGENCY.DIVISION.0': '기타',
   },
 };
 

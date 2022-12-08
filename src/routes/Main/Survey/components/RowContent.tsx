@@ -2,7 +2,7 @@ import { Fragment } from 'react';
 import { Grid, GridSize, Typography } from '@mui/material';
 
 interface Props {
-  title: string;
+  title?: string;
   children?: React.ReactNode;
   titleRatio?: GridSize;
   childrenRatio?: GridSize;
