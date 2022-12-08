@@ -46,13 +46,12 @@ const BloodRecords = (props: Props) => {
     { fieldId: 'action', label: '', sx: { width: 100 } }
   ];
 
-  const divisions = ['수혈 직후', '수혈 후 15분', '수혈 후 30분'];
+  const divisions = ['수혈 시작 전', '수혈 시작 15분 후', '수혈 시작 30분 후', '수혈 시작 1시간 후', '수혈 시작 1시간 30분 후', '수혈 종료 시'];
 
   const onAddRow = () => {
     const request = { checkTime, division, sbp, dbp, pr, rr, bt, sideEffect, etc };
 
-    console.log(request);
-    if (Object.values(request).filter(v => !v).length > 0) {
+    if (checkTime === null || division === "" || sbp === "" || dbp === "" || pr === "" || rr === "" || bt === "") {
       return onRequired('CLINICAL.OBSERVATION.ADD.ROW');
     }
 
