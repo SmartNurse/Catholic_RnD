@@ -7,7 +7,6 @@ import {
   resetPatient,
   selectedPatient,
   selectedPatientInfo,
-  updateNursingRecord,
   selectedNursingRecord,
   clearNursingRecord,
 } from '.';
@@ -17,8 +16,9 @@ import useSelectorTyped from 'store/useSelectorTyped';
 const usePatient = () => {
   const dispatch = useDispatch();
 
-  const { patient, patientInfo, isUpdateNursingRecord, nursingRecord } =
-    useSelectorTyped(state => state.patient);
+  const { patient, patientInfo, nursingRecord } = useSelectorTyped(
+    state => state.patient
+  );
 
   const onResetPatient = useCallback(
     () => dispatch(resetPatient()),
@@ -33,11 +33,6 @@ const usePatient = () => {
   const onSelectedPatientInfo = useCallback(
     (patientInfo: IPatientInfo | null) =>
       dispatch(selectedPatientInfo(patientInfo)),
-    [dispatch]
-  );
-
-  const onUpdateNursingRecord = useCallback(
-    (value: boolean) => dispatch(updateNursingRecord(value)),
     [dispatch]
   );
 
@@ -57,8 +52,6 @@ const usePatient = () => {
     onSelectedPatient,
     patientInfo,
     onSelectedPatientInfo,
-    isUpdateNursingRecord,
-    onUpdateNursingRecord,
     nursingRecord,
     onSelectedNursingRecord,
     onClearNursingRecord,

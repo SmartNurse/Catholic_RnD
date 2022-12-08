@@ -7,6 +7,8 @@ import usePatient from 'store/patient/usePatient';
 import useStudent from 'store/student/useStudent';
 
 import RecordItem from './RecordItem';
+import { getSearchQuery } from 'utils/searchQuery';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 interface Props {
   list: any[];
@@ -16,14 +18,17 @@ interface Props {
 const RecordList = ({ list, onResetList }: Props) => {
   const { isStudent } = useUser();
   const { student_name } = useStudent();
-  const { nursingRecord, isUpdateNursingRecord, onUpdateNursingRecord } =
-    usePatient();
+  const { nursingRecord } = usePatient();
+
+  const navigate = useNavigate();
+  const { pathname, search } = useLocation();
+  const { isUpdateNursingRecord } = getSearchQuery(search);
 
   useEffect(() => {
     if (!isUpdateNursingRecord) return;
 
     onResetList();
-    onUpdateNursingRecord(false);
+    navigate(pathname, { replace: true });
     // eslint-disable-next-line
   }, [isUpdateNursingRecord]);
 

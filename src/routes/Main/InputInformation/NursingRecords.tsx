@@ -5,6 +5,7 @@ import { format } from 'date-fns';
 import { MobileTimePicker } from '@mui/x-date-pickers';
 import { AccessTime } from '@mui/icons-material';
 import { Box, Button, ButtonGroup, Tab, Typography } from '@mui/material';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 import { INames } from 'apis/main/type';
 import {
@@ -33,13 +34,10 @@ import { StyledTabPanel } from '../style';
 const NursingRecords = () => {
   const { isStudent } = useUser();
   const { student_uuid: user_id } = useStudent();
+  const navigate = useNavigate();
+  const { pathname } = useLocation();
 
-  const {
-    nursingRecord,
-    patientInfo,
-    onUpdateNursingRecord,
-    onClearNursingRecord,
-  } = usePatient();
+  const { nursingRecord, patientInfo, onClearNursingRecord } = usePatient();
   const { onSuccess, onFail, onRequired } = useNotification();
   const { register, watch, setValue, handleSubmit, reset } = useForm();
 
@@ -52,21 +50,21 @@ const NursingRecords = () => {
     getNandaDomain().then(({ data }) => setDomainNames(data.names));
   }, [domainNames]);
 
-  const onClearForm = useCallback(() => {
-    reset();
+  const onRestNursingRecord = useCallback(() => {
     setRecordTime(new Date());
     setRecordType(RECORD_TYPE.NANDA);
+    reset(initialNursingRecord.nanda);
     onClearNursingRecord();
   }, [reset, onClearNursingRecord]);
 
   useEffect(() => {
-    if (!nursingRecord) return onClearForm();
+    if (!nursingRecord) return onRestNursingRecord();
 
     const { record_time, record_type, content } = nursingRecord;
     reset(JSON.parse(content));
-    setRecordTime(new Date(record_time));
     setRecordType(`${record_type}`);
-  }, [nursingRecord, onClearForm, reset]);
+    setRecordTime(new Date(record_time));
+  }, [nursingRecord, reset, onRestNursingRecord]);
 
   const onSubmit = (data: any) => {
     // 간호기록 시간 입력 체크
@@ -123,8 +121,8 @@ const NursingRecords = () => {
     if (nursingRecord) {
       return updateNursingRecord({ ...nursingRecord, ...request })
         .then(() => {
-          onClearForm();
-          onUpdateNursingRecord(true);
+          onRestNursingRecord();
+          navigate(`${pathname}?isUpdateNursingRecord=true`);
           onSuccess('간호기록을 수정하였습니다.');
         })
         .catch(e => onFail('간호기록 수정 실패하였습니다.', e));
@@ -137,8 +135,8 @@ const NursingRecords = () => {
       ...request,
     })
       .then(() => {
-        onClearForm();
-        onUpdateNursingRecord(true);
+        onRestNursingRecord();
+        navigate(`${pathname}?isUpdateNursingRecord=true`);
         onSuccess('간호기록을 저장하였습니다.');
       })
       .catch(e => onFail('간호기록 저장 실패하였습니다.', e));
@@ -211,7 +209,7 @@ const NursingRecords = () => {
             variant="text"
             color="inherit"
             disabled={!isStudent}
-            onClick={onClearForm}
+            onClick={onRestNursingRecord}
           >
             취소
           </Button>
