@@ -68,7 +68,7 @@ const BedScoreContents = (props: Props) => {
     },
     {
       id: 'frictionAndDissolutionForce',
-      title: '영양',
+      title: '마찰력과 응전력',
       ...radioGroup({
         key: 'contents.frictionAndDissolutionForce',
         options: [1, 2, 3],
