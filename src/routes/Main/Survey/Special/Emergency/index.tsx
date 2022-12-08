@@ -18,7 +18,7 @@ import RowContainer from '../../components/RowContainer';
 import RowContent from '../../components/RowContent';
 import Form from 'components/Form';
 
-const Transfusion = (props: SurveyDialogProps<TEmergencyDefaultValues>) => {
+const Emergency = (props: SurveyDialogProps<TEmergencyDefaultValues>) => {
     const {
         title,
         isOpen,
@@ -84,4 +84,4 @@ const Transfusion = (props: SurveyDialogProps<TEmergencyDefaultValues>) => {
     );
 }
 
-export default Transfusion;
+export default Emergency;

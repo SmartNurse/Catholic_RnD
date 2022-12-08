@@ -18,7 +18,7 @@ import WeightInfo from "./WeightInfo";
 import DialysisDB from "./DialysisDB";
 import TextAreaSection from "../../components/TextAreaSection";
 
-const Transfusion = (props: SurveyDialogProps<TDialysisDefaultValues>) => {
+const Dialysis = (props: SurveyDialogProps<TDialysisDefaultValues>) => {
     const {
         title,
         isOpen,
@@ -72,4 +72,4 @@ const Transfusion = (props: SurveyDialogProps<TDialysisDefaultValues>) => {
     );
 }
 
-export default Transfusion;
+export default Dialysis;
