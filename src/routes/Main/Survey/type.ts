@@ -12,6 +12,7 @@ import {
   initialFall,
   initialNeeds,
   initialClinicalObservation,
+  initialGlucose,
   initialNRS,
   initialFLACC,
   initialOperation,
@@ -32,6 +33,7 @@ export enum MENU {
   RADIOLOGY = '영상검사 기록지',
   PATHOLOGY = '임상병리검사 기록지',
   CLINICAL_OBSERVATION = '임상관찰 기록지',
+  GLUCOSE = '혈당 기록지',
   BEDSORES = '욕창위험도 평가도구',
   NEEDS = '욕구평가 기록지',
   FALL = '낙상위험도 평가도구',
@@ -73,6 +75,7 @@ export type TRadiologyDefaultValues = typeof initialRadiology;
 export type TPathologyDefaultValues = typeof initialPathology;
 export type TClinicalObservationDefaultValues =
   typeof initialClinicalObservation;
+export type TGlucoseDefaultValues = typeof initialGlucose;
 export type TBedScoreDefaultValues = typeof initialBedScore;
 export type TNeedsDefaultValues = typeof initialNeeds;
 export type TFallDefaultValues = typeof initialFall;

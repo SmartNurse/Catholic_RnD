@@ -24,6 +24,7 @@ import {
   initialFall,
   initialNeeds,
   initialClinicalObservation,
+  initialGlucose,
   initialNRS,
   initialFLACC,
   initialOperation,
@@ -139,6 +140,12 @@ const useDefaultValues = ({ setDefaultValues, user_id }: Props) => {
         convertDataToStates(
           { vital_sign: [], io_check: [] },
           initialClinicalObservation
+        );
+        break;
+      case MENU.GLUCOSE:
+        convertDataToStates(
+          initialGlucose,
+          initialGlucose,
         );
         break;
       case MENU.BEDSORES:

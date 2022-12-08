@@ -183,3 +183,23 @@ export interface IBloodRecord {
   sideEffect: number;
   etc: string;
 }
+
+export interface IGlucoseRecord {
+  date: string;
+  time: string;
+  meal: string;
+  item: string;
+  result: string;
+}
+
+export interface IPrescriptionRecord {
+  date: string;
+  time: string;
+  title: string;
+  content: string;
+  unit: string;
+  amount: string;
+  count: string;
+  detail: string;
+  finished: boolean;
+}

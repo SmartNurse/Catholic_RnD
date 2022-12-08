@@ -199,6 +199,12 @@ export const initialClinicalObservation = {
   io_check: [],
 };
 
+export const initialGlucose = {
+  update_at: "",
+  glucose_records: [],
+  prescription_records: [],
+};
+
 export const initialBedScore = {
   date: '',
   update_at: '',
