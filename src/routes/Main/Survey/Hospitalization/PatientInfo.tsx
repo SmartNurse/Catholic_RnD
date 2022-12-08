@@ -81,7 +81,7 @@ const PatientInfo = (props: Props) => {
             InputProps={{ readOnly: true }}
           />
         </RowContent>
-        <RowContent title="딤딩 의사" childrenRatio={4}>
+        <RowContent title="담당 의사" childrenRatio={4}>
           <Form.MuiTextField
             value={patientInfo.main_doctor}
             InputProps={{ readOnly: true }}
