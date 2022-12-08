@@ -24,6 +24,7 @@ import {
 } from '@mui/icons-material';
 import { ReactComponent as ECardex } from "assets/menu-icon-e-cardex.svg";
 import { ReactComponent as TakingOver } from "assets/menu-icon-taking-over.svg"; 
+import { ReactComponent as Glucose } from "assets/menu-icon-glucose.svg";
 import { ReactComponent as Psychology } from "assets/menu-icon-psychology.svg";
 import { ReactComponent as ProPlus } from "../../../assets/proPlus.svg";
 import Survey from '../Survey';
@@ -80,6 +81,10 @@ const MenuRecords = () => {
       label: '임상관찰 기록지',
     },
     {
+      icon: <Glucose />,
+      label: '혈당 기록지',
+    },
+    {
       disabled: true,
       icon: <SentimentSatisfiedOutlined />,
       label: '환자평가 기록지',
@@ -106,6 +111,10 @@ const MenuRecords = () => {
     {
       isPro: true,
       label: 'FLACC Scale'
+    },
+    {
+      isPro: true,
+      label: 'CNPS'
     },
     {
       icon: <Psychology />,
