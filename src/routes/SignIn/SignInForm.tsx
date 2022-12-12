@@ -14,8 +14,8 @@ import {
 } from '@mui/material';
 import { FieldValues, UseFormRegister } from 'react-hook-form';
 
-import { imgNaverCloudLogo } from 'assets';
-import smartnurseLogoFree from 'assets/smartnurse-logo-free.svg';
+import awsAhnlabCloudLogo from 'assets/aws-ahnlab-cloud-logo.svg';
+import smartnurseLogoStandard from 'assets/smartnurse-logo-standard.svg';
 import Form from 'components/Form';
 import MuiDialog from 'components/MuiDialog';
 
@@ -38,14 +38,14 @@ function SignInForm({ errors, register, onSignUp }: Props) {
           <CardMedia
             height={120}
             component="img"
-            image={smartnurseLogoFree}
+            image={smartnurseLogoStandard}
             sx={{ objectFit: 'contain', mt: 5, mb: 5 }}
           />
           <CardContent sx={{ width: "100%", textAlign: "center", padding: "0 0 40px 0" }}>
             <Typography>
               현실감 있는 환자데이터 제공으로
             </Typography>
-            <Typography sx={{ color: "#2264A8" }}>
+            <Typography sx={{ color: "#0D7E54" }}>
               실제 병원 현장을 경험하게 됩니다!
             </Typography>
           </CardContent>
@@ -127,7 +127,7 @@ function SignInForm({ errors, register, onSignUp }: Props) {
           <CardMedia
             height={23}
             component="img"
-            image={imgNaverCloudLogo}
+            image={awsAhnlabCloudLogo}
             sx={{ objectFit: 'contain', mb: 4 }}
           />
         </Card>

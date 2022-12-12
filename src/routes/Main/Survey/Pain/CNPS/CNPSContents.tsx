@@ -120,7 +120,7 @@ const CNPSContents = (props: Props) => {
                     >
                         합계: {sumValue}점
                     </Typography>
-                    <Typography minWidth={115} color="#2264A8" variant="caption">
+                    <Typography minWidth={115} color="#0D7E54" variant="caption">
                         {scoreLabel.map(({ score, label }) => 
                             <Typography variant="inherit">
                                 <Box component={'strong'} mr={0.5}>
