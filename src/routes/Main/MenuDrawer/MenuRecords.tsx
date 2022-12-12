@@ -179,6 +179,12 @@ const MenuRecords = () => {
       label: '동의서',
     },
     {
+      label: '입원 안내 확인서',
+    },
+    {
+      label: '낙상 예방교육 확인서',
+    },
+    {
       isPro: true,
       icon: <BabyChangingStation />,
       label: '영유아 건강검진 문진'

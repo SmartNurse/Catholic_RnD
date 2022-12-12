@@ -22,6 +22,7 @@ import Transfusion from './Special/Transfusion';
 import Dialysis from './Special/Dialysis';
 import Emergency from  './Special/Emergency';
 import DietNutrition from './DietNutrition';
+import HospitalizationInfo from './Agreement/HospitalizationInfo';
 
 interface Props {
   surveyType: string;
@@ -121,6 +122,10 @@ const DisplaySurvey = (props: Props) => {
     case MENU.DIET_NUTRITION: {
       if (!defaultValues) return null;
       return <DietNutrition {...dialogProps} onClose={onCloseSave} />;
+    }
+    case MENU.HOSPITALIZATION_INFO: {
+      if (!defaultValues) return null;
+      return <HospitalizationInfo {...dialogProps} onClose={onCloseSave} />;
     }
     default:
       return null;

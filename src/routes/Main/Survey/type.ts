@@ -21,6 +21,7 @@ import {
   initialDialysis,
   initialEmergency,
   initialDietNutrition,
+  initialHospitalizationInfo,
 } from './initialStates';
 
 export enum MENU {
@@ -49,6 +50,7 @@ export enum MENU {
   EMERGENCY = '응급 기록지',
   DIET_NUTRITION = '식이/영양 기록지',
   AGREEMENT = '동의서',
+  HOSPITALIZATION_INFO = '입원 안내 확인서',
 }
 
 export enum RECORD_TYPE {
@@ -89,3 +91,4 @@ export type TTransfusionDefaultValues = typeof initialTransfusion;
 export type TDialysisDefaultValues = typeof initialDialysis;
 export type TEmergencyDefaultValues = typeof initialEmergency;
 export type TDietNutritionDefaultValues = typeof initialDietNutrition;
+export type THospitalizationInfoDefaultValues = typeof initialHospitalizationInfo;
