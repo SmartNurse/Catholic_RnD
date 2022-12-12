@@ -27,6 +27,7 @@ import {
   initialGlucose,
   initialNRS,
   initialFLACC,
+  initialCNPS,
   initialOperation,
   initialTransfusion,
   initialDialysis,
@@ -189,6 +190,11 @@ const useDefaultValues = ({ setDefaultValues, user_id }: Props) => {
         convertDataToStates(
           { scale: { face: '', legs: '', activity: '', cry: '', consolability: ''} },
           initialFLACC
+        );
+        break;
+      case MENU.CNPS:
+        convertDataToStates(
+          initialCNPS, initialCNPS
         );
         break;
       case MENU.OPERATION:

@@ -15,6 +15,7 @@ import {
   initialGlucose,
   initialNRS,
   initialFLACC,
+  initialCNPS,
   initialOperation,
   initialTransfusion,
   initialDialysis,
@@ -40,6 +41,7 @@ export enum MENU {
   PAIN = '통증평가도구',
   NRS = 'NRS',
   FLACC = 'FLACC Scale',
+  CNPS = 'CNPS',
   COGNITIVE_FUNCTION = '인지기능검사',
   OPERATION = '수술 기록지',
   TRANSFUSION = '수혈 기록지',
@@ -81,6 +83,7 @@ export type TNeedsDefaultValues = typeof initialNeeds;
 export type TFallDefaultValues = typeof initialFall;
 export type TNRSDefaultValues = typeof initialNRS;
 export type TFLACCDefaultValues = typeof initialFLACC;
+export type TCNPSDefaultValues = typeof initialCNPS;
 export type TOperationDefaultValues = typeof initialOperation;
 export type TTransfusionDefaultValues = typeof initialTransfusion;
 export type TDialysisDefaultValues = typeof initialDialysis;

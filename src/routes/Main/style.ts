@@ -1,4 +1,4 @@
-import { Slider, FormControlLabel } from '@mui/material';
+import { Slider, FormControlLabel, TableCell } from '@mui/material';
 import { TabPanel } from '@mui/lab';
 import { styled } from '@mui/material';
 
@@ -156,4 +156,28 @@ export const StyledFormControlLabel = styled(FormControlLabel)({
       wordBreak: "keep-all",
     }      
   }
+});
+
+export const StyledTableCell = styled(TableCell)({
+  border: "1px solid lightgray",
+  padding: "0px",
+});
+
+export const StyledTableCellWithoutLeft = styled(TableCell)({
+  border: "1px solid lightgray",
+  borderLeft: "none",
+  padding: "0px",
+});
+
+export const StyledTableCellWithoutRight = styled(TableCell)({
+  border: "1px solid lightgray",
+  borderRight: "none",
+  padding: "0px",
+});
+
+export const StyledTableCellWithoutLeftRight = styled(TableCell)({
+  border: "1px solid lightgray",
+  borderLeft: "none",
+  borderRight: "none",
+  padding: "0px",
 });

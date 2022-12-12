@@ -317,6 +317,15 @@ export const initialFLACC = {
   flacc: [],
 };
 
+export const initialCNPS = {
+  update_at: '',
+  face: '',
+  reaction: '',
+  respiration: '',
+  vocalization: '',
+  sum: '',
+};
+
 export const initialOperation = {
   update_at: '',
   operation_date: '',
