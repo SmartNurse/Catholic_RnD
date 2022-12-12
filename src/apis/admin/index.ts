@@ -39,7 +39,7 @@ export const postPatientMemo = (request: IPostPatientMemo) => {
 };
 
 export const getStudentList = (request: IGetStudentList) => {
-  const url = `/main/admin/userSearch?size=20&${formatToRequestParameter(
+  const url = `/main/admin/userSearch?size=100&${formatToRequestParameter(
     request
   )}`;
   return apiGateway.get(url);
@@ -47,7 +47,7 @@ export const getStudentList = (request: IGetStudentList) => {
 
 export const getCollegePatientList = (request: IGetPatientList) => {
   const searchType = isNaN(Number(request.keyword)) ? 1 : 2;
-  const url = `/main/admin/patientSearch?size=20&${formatToRequestParameter({
+  const url = `/main/admin/patientSearch?size=100&${formatToRequestParameter({
     ...request,
     searchType,
   })}`;
