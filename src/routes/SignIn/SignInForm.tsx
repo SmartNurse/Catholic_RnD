@@ -14,7 +14,8 @@ import {
 } from '@mui/material';
 import { FieldValues, UseFormRegister } from 'react-hook-form';
 
-import { imgNaverCloudLogo, imgSmartNurseLogo } from 'assets';
+import { imgNaverCloudLogo } from 'assets';
+import smartnurseLogoFree from 'assets/smartnurse-logo-free.svg';
 import Form from 'components/Form';
 import MuiDialog from 'components/MuiDialog';
 
@@ -37,9 +38,17 @@ function SignInForm({ errors, register, onSignUp }: Props) {
           <CardMedia
             height={120}
             component="img"
-            image={imgSmartNurseLogo}
+            image={smartnurseLogoFree}
             sx={{ objectFit: 'contain', mt: 5, mb: 5 }}
           />
+          <CardContent sx={{ width: "100%", textAlign: "center", padding: "0 0 40px 0" }}>
+            <Typography>
+              현실감 있는 환자데이터 제공으로
+            </Typography>
+            <Typography sx={{ color: "#2264A8" }}>
+              실제 병원 현장을 경험하게 됩니다!
+            </Typography>
+          </CardContent>
           <CardContent sx={{ ml: 5, mr: 5 }}>
             <TextField
               fullWidth
@@ -93,11 +102,24 @@ function SignInForm({ errors, register, onSignUp }: Props) {
                 title="아이디/비밀번호를 잊으셨나요?"
                 message={`아이디는 본인 학교 이메일입니다.\n비밀번호를 잊으셨다면 스마트널스 관리자 이메일(nurse@smartnurse.co.kr)로 문의해주세요. `}
               />
+
+              <Button
+                fullWidth
+                size="large"
+                variant="outlined"
+                sx={{ mt: 2.5, mb: 2.5 }}
+                onClick={() => window.open("https://www.smartnurse.co.kr/")}
+              >
+                스마트널스 홈페이지 바로가기
+              </Button>
+
+              <Typography sx={{ fontSize: "0.8125rem" }}>문의: nurse@smartnurse.co.kr</Typography>
+
             </Box>
           </CardActions>
 
           <Typography fontSize={10} align="center" sx={{ mb: 2 }}>
-            copyright © 2022 DKMediInfo.
+            copyright © 2023 DKMediInfo.
             <br />
             All rights reserved.
           </Typography>
