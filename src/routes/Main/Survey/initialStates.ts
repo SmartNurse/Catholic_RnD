@@ -581,3 +581,20 @@ export const initialHospitalizationInfo = {
   date: "",
   staff_sign: "",
 };
+
+export const initialFallPrevention = {
+  update_at: '',
+  education_list: {
+    checked1: false,
+    checked2: false,
+    checked3: false,
+    checked4: false,
+    checked5: false,
+    checked6: false,
+    checked7: false,
+    checked8: false,
+  },
+  sign: "",
+  date: "",
+  staff_sign: "",
+}
