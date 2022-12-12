@@ -45,22 +45,22 @@ const PatientInfo = () => {
   }
 
   const {
-    // title
-    name,
-    patient_id,
     // column1
+    patient_id,
+    name,
+    age,
     gender,
-    height,
     blood,
-    weight,
     // column2
+    height,
+    weight,
+    admin_hod,
+    admin_pod,
+    // column3
     department,
     ward,
     room,
     main_doctor,
-    // column3
-    admin_hod,
-    admin_pod,
     // column4
     disease_main,
     disease_sub,
@@ -100,11 +100,18 @@ const PatientInfo = () => {
       >
         <Stack spacing={1.25}>
           <PatientInfoItem title="등록번호" content={patient_id} />
+          <PatientInfoItem title="이름" content={name} />
+          <PatientInfoItem title="나이" content={age} />
           <PatientInfoItem title="성별" content={i18n(`GENDER.${gender}`)} />
-          <PatientInfoItem title="키" content={height.toLowerCase()} />
           <PatientInfoItem title="혈액형" content={blood} />
-          <PatientInfoItem title="체중" content={weight.toLowerCase()} />
         </Stack>
+        <Divider orientation="horizontal" />
+        <Stack spacing={1.25}>
+          <PatientInfoItem title="키" content={height.toLowerCase()} />
+          <PatientInfoItem title="체중" content={weight.toLowerCase()} />
+          <PatientInfoItem title="HOD" content={admin_hod} />
+          <PatientInfoItem title="POD" content={admin_pod} />
+         </Stack>
         <Divider orientation="horizontal" />
         <Stack spacing={1.25}>
           <PatientInfoItem title="진료과" content={department} />
@@ -112,11 +119,6 @@ const PatientInfo = () => {
           <PatientInfoItem title="병실" content={room} />
           <PatientInfoItem title="담당간호사" content={userName} />
           <PatientInfoItem title="담당의사" content={main_doctor} />
-        </Stack>
-        <Divider orientation="horizontal" />
-        <Stack spacing={1.25}>
-          <PatientInfoItem title="HOD" content={admin_hod} />
-          <PatientInfoItem title="POD" content={admin_pod} />
         </Stack>
         <Divider orientation="horizontal" />
         <Stack spacing={1.25}>
