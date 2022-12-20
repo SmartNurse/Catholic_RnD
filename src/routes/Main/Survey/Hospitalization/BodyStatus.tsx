@@ -150,7 +150,7 @@ const BodyStatus = (props: Props) => {
             <Form.MuiTextField
               required={false}
               disabled={disabled}
-              placeholder="보조기구 유/무"
+              placeholder="직접 입력"
               {...register('body_status.operation_history.input')}
             />
           </Stack>
@@ -167,7 +167,7 @@ const BodyStatus = (props: Props) => {
             <Form.MuiTextField
               required={false}
               disabled={disabled}
-              placeholder="보조기구 유/무"
+              placeholder="약물명"
               {...register('body_status.medicine_history.input')}
             />
           </Stack>
