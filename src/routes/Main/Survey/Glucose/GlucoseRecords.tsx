@@ -75,7 +75,7 @@ const GlucoseRecords = (props: Props) => {
             type="date"
             required={false}
             disabled={disabled}
-            {...register("glucose_ate", {
+            {...register("glucose_date", {
                 onChange: (e) => setDate(e.target.value)
             })}
         />

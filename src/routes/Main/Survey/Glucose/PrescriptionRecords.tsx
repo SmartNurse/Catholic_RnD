@@ -47,7 +47,7 @@ const GlucoseRecords = (props: Props) => {
   ];
 
   const onAddRow = () => {
-    const request = { date, time, title, content, unit, amount, count, detail, finished };
+    const request = { date, time, title, content, unit, amount, count, detail };
 
     if (Object.values(request).filter(v => !v).length > 0) {
       return onRequired('CLINICAL.OBSERVATION.ADD.ROW');
@@ -66,6 +66,7 @@ const GlucoseRecords = (props: Props) => {
     setDetail("");
     setFinished(false);
   };
+  console.log(finished);
 
   const inputRow = {
     id: 'add-prescription-record',
@@ -136,7 +137,7 @@ const GlucoseRecords = (props: Props) => {
       />
     ),
     finished: (
-        <Checkbox size="small" defaultChecked={false} value={finished} onChange={(e) => setFinished(Boolean(e.target.value))} />
+        <Checkbox size="small" defaultChecked={false} value={finished} onChange={(e) => setFinished(e.target.checked)} />
     ),
     action: (
       <Button variant="contained" size="small" onClick={onAddRow}>
