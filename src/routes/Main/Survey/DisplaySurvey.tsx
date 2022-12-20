@@ -17,6 +17,7 @@ import Needs from './Needs';
 import NRS from './Pain/NRS';
 import FLACC from './Pain/FLACC';
 import CNPS from "./Pain/CNPS";
+import MentalNursing from './MentalHealth/MentalNursing';
 import Operation from './Special/Operation';
 import Transfusion from './Special/Transfusion';
 import Dialysis from './Special/Dialysis';
@@ -103,6 +104,10 @@ const DisplaySurvey = (props: Props) => {
     case MENU.CNPS: {
       if (!defaultValues) return null;
       return <CNPS {...dialogProps} onClose={onCloseSave} />;
+    }
+    case MENU.MENTAL_NURSING: {
+      if (!defaultValues) return null;
+      return <MentalNursing {...dialogProps} onClose={onCloseSave} />;
     }
     case MENU.OPERATION: {
       if (!defaultValues) return null;

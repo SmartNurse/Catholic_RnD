@@ -326,6 +326,11 @@ export const initialCNPS = {
   sum: '',
 };
 
+export const initialMentalNursing = {
+  update_at: '',
+  mental_nursing_records: [],
+};
+
 export const initialOperation = {
   update_at: '',
   operation_date: '',

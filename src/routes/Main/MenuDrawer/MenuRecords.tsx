@@ -120,6 +120,10 @@ const MenuRecords = () => {
       icon: <Psychology />,
       disabled: true,
       isPro: true,
+      label: '정신건강 평가도구',
+    },
+    {
+      isPro: true,
       label: '정신간호 기록지',
     },
     {
