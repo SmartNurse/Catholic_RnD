@@ -49,7 +49,8 @@
     "start:dev": "dotenv -e .env.development react-scripts start",
     "build:dev": "rm -rf build && dotenv -e .env.development react-scripts build",
     "prepublish:dev": "yarn build:dev",
-    "publish:dev": "aws --endpoint-url=https://kr.object.ncloudstorage.com s3 sync build s3://smartnurse"
+    "deploy": "aws s3 sync ./build s3://smartnurse-standard --profile=Diane",
+    "invalidate": "aws cloudfront create-invalidation --profile=Diane --distribution-id E2I5U4MU0K1EIQ --paths /*"
   },
   "eslintConfig": {
     "extends": [
