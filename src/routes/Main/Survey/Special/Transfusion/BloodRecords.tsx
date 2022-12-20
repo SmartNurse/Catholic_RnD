@@ -30,7 +30,7 @@ const BloodRecords = (props: Props) => {
   const [pr, setPr] = useState("");
   const [rr, setRr] = useState("");
   const [bt, setBt] = useState("");
-  const [sideEffect, setSideEffect] = useState(1);
+  const [sideEffect, setSideEffect] = useState(-1);
   const [etc, setEtc] = useState("");
 
   const columns = [
@@ -51,12 +51,12 @@ const BloodRecords = (props: Props) => {
   const onAddRow = () => {
     const request = { checkTime, division, sbp, dbp, pr, rr, bt, sideEffect, etc };
 
-    if (checkTime === null || division === "" || sbp === "" || dbp === "" || pr === "" || rr === "" || bt === "") {
+    if (checkTime === null || division === "" || sbp === "" || dbp === "" || pr === "" || rr === "" || bt === "" || sideEffect === -1) {
       return onRequired('CLINICAL.OBSERVATION.ADD.ROW');
     }
 
     onSuccess('투약 추가되었습니다.');
-    setValue('blood_record', bloodRecordList ? [...bloodRecordList, request] : [request]);
+    setValue('blood_record', bloodRecordList ? [...bloodRecordList, {...request}] : [{...request}]);
     setCheckTime(null);
     setDivision("");
     setSbp("");
@@ -170,7 +170,7 @@ const BloodRecords = (props: Props) => {
         ...item,
         id: i,
         checkTime: formatStringToDate(item.checkTime, 'hh:mm a'),
-        sideEffect: sideEffect === 1 ? "유" : "무",
+        sideEffect: item.sideEffect == 1 ? "유" : "무",
         action: (
         <IconButton
             size="small"
