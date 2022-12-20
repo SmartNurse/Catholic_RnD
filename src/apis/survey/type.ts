@@ -215,3 +215,9 @@ export interface IMentalNursingRecord {
   evaluation: string;
   desc: string;
 }
+
+export interface INursingRecord {
+  date: string;
+  time: string;
+  desc: string;
+}

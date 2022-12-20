@@ -258,6 +258,16 @@ const locale = {
     'EMERGENCY.DIVISION.3': '급성질환',
     'EMERGENCY.DIVISION.4': '만성질환 급속악화',
     'EMERGENCY.DIVISION.0': '기타',
+
+    // childbirth
+    'CHILDBIRTH.BABY_STATUS.GENDER.1': '남아',
+    'CHILDBIRTH.BABY_STATUS.GENDER.2': '여아',
+
+    'CHILDBIRTH.YES_OR_NO.0': '무',
+    'CHILDBIRTH.YES_OR_NO.1': '유',
+
+    'CHILDBIRTH.PLACENTA_REMOVAL.METHOD.1' : '자연박리',
+    'CHILDBIRTH.PLACENTA_REMOVAL.METHOD.2' : '용수박리',
   },
 };
 

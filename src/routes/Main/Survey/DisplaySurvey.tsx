@@ -22,6 +22,7 @@ import Operation from './Special/Operation';
 import Transfusion from './Special/Transfusion';
 import Dialysis from './Special/Dialysis';
 import Emergency from  './Special/Emergency';
+import Childbirth from './Special/Childbirth';
 import DietNutrition from './DietNutrition';
 import HospitalizationInfo from './Agreement/HospitalizationInfo';
 import FallPrevention from './Agreement/FallPrevention';
@@ -124,6 +125,10 @@ const DisplaySurvey = (props: Props) => {
     case MENU.EMERGENCY: {
       if (!defaultValues) return null;
       return <Emergency {...dialogProps} onClose={onCloseSave} />;
+    }
+    case MENU.CHILDBIRTH: {
+      if (!defaultValues) return null;
+      return <Childbirth {...dialogProps} onClose={onCloseSave} />;
     }
     case MENU.DIET_NUTRITION: {
       if (!defaultValues) return null;

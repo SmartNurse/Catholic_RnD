@@ -168,7 +168,10 @@ const MenuRecords = () => {
       isPro: true,
       label: 'NEDIS',
     },
-    
+    {
+      isPro: true,
+      label: '분만 기록지',
+    },
     {
       isPro: true,
       label: '가정간호 기록지',

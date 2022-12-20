@@ -33,6 +33,7 @@ import {
   initialTransfusion,
   initialDialysis,
   initialEmergency,
+  initialChildbirth,
   initialDietNutrition,
   initialHospitalizationInfo,
   initialFallPrevention,
@@ -227,6 +228,12 @@ const useDefaultValues = ({ setDefaultValues, user_id }: Props) => {
         convertDataToStates(
           initialEmergency,
           initialEmergency
+        );
+        break;
+      case MENU.CHILDBIRTH:
+        convertDataToStates(
+          initialChildbirth,
+          initialChildbirth
         );
         break;
       case MENU.DIET_NUTRITION:
