@@ -1,27 +1,39 @@
+import useUser from 'store/user/useUser';
+
 import Form from 'components/Form';
 import RowContainer from '../Main/Survey/components/RowContainer';
 import RowContent from '../Main/Survey/components/RowContent';
 
+import { Typography, Box } from "@mui/material";
+
 interface Props {
   disabled?: boolean;
-  student_no: string | undefined;
-  student_name: string;
+  totalSize: number;
 }
 
 const StudentInfo = (props: Props) => {
-  const { student_no, student_name  } = props;
+  const { totalSize } = props;
+  const { student_name, student_no } = useUser();
 
   const infos = [
     {title: "간호사", value: student_name},
     {title: "학번", value: student_no},
-    {title: "용량", value: "10GB/10GB"},
+    {title: "용량", value: String(totalSize) + "GB" },
   ];
 
   return (
     <RowContainer xs={12}>
       {infos.map(({ title, value }) => 
-        <RowContent title={title} titleRatio={1} childrenRatio={2}>
+        <RowContent title={title} titleRatio={1} childrenRatio={3}>
+          {title === "용량" 
+          ?
+          <Box sx={{ width: "100%", textAlign: "right" }}>
+            <Typography sx={{ color: "#2264A8" }} fontSize="14px" lineHeight="37.125px" display="inline">{value}</Typography>
+            <Typography fontSize="14px" display="inline"> / 10GB</Typography>
+          </Box>
+          :
           <Form.MuiTextField value={value} InputProps={{ readOnly: true }} />
+          }
         </RowContent>
       )}
     </RowContainer>
