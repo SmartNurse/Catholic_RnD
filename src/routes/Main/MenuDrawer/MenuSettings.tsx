@@ -46,6 +46,9 @@ const MenuSettings = () => {
       isPro: true,
       icon: <VideocamOutlined />,
       label: '핵심간호술기영상 저장',
+      buttonClick: {
+        onClick: () => navigate('/core_nursing_skill_video'),
+      },
     },
     {
       isPro: true,
