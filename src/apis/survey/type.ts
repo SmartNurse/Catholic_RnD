@@ -205,3 +205,19 @@ export interface IPrescriptionRecord {
   detail: string;
   finished: boolean;
 }
+
+export interface IMentalNursingRecord {
+  date: string;
+  time: string;
+  patient: string;
+  student: string;
+  basis: string;
+  evaluation: string;
+  desc: string;
+}
+
+export interface INursingRecord {
+  date: string;
+  time: string;
+  desc: string;
+}

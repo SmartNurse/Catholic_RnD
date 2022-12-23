@@ -16,10 +16,12 @@ import {
   initialNRS,
   initialFLACC,
   initialCNPS,
+  initialMentalNursing,
   initialOperation,
   initialTransfusion,
   initialDialysis,
   initialEmergency,
+  initialChildbirth,
   initialDietNutrition,
   initialHospitalizationInfo,
   initialFallPrevention,
@@ -44,11 +46,13 @@ export enum MENU {
   NRS = 'NRS',
   FLACC = 'FLACC Scale',
   CNPS = 'CNPS',
+  MENTAL_NURSING = '정신간호 기록지',
   COGNITIVE_FUNCTION = '인지기능검사',
   OPERATION = '수술 기록지',
   TRANSFUSION = '수혈 기록지',
   DIALYSIS = '투석 기록지',
   EMERGENCY = '응급 기록지',
+  CHILDBIRTH = '분만 기록지',
   DIET_NUTRITION = '식이/영양 기록지',
   AGREEMENT = '동의서',
   HOSPITALIZATION_INFO = '입원 안내 확인서',
@@ -88,10 +92,12 @@ export type TFallDefaultValues = typeof initialFall;
 export type TNRSDefaultValues = typeof initialNRS;
 export type TFLACCDefaultValues = typeof initialFLACC;
 export type TCNPSDefaultValues = typeof initialCNPS;
+export type TMentalNursingDefaultValues = typeof initialMentalNursing;
 export type TOperationDefaultValues = typeof initialOperation;
 export type TTransfusionDefaultValues = typeof initialTransfusion;
 export type TDialysisDefaultValues = typeof initialDialysis;
 export type TEmergencyDefaultValues = typeof initialEmergency;
+export type TChildbirthDefaultValues = typeof initialChildbirth;
 export type TDietNutritionDefaultValues = typeof initialDietNutrition;
 export type THospitalizationInfoDefaultValues = typeof initialHospitalizationInfo;
 export type TFallPreventionDefaultValues = typeof initialFallPrevention;

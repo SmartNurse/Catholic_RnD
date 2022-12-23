@@ -147,7 +147,7 @@ const DefaultInfo = (props: Props) => {
             />
           </Stack>
         </RowContent>
-        <RowContent title="의식상태">
+        <RowContent title="대화수준">
           <Form.MuiRadioGroup
             disabled={disabled}
             i18nKey="HOSPITALIZATION.STATUS02"

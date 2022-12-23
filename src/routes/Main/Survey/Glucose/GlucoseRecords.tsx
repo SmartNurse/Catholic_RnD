@@ -10,6 +10,7 @@ import { IGlucoseRecord } from 'apis/survey/type';
 import { IFormRegister, IFormValues, IFormWatch } from 'routes/Main/type';
 import MuiTable from 'components/MuiTable';
 import MuiTextField from 'components/Form/MuiTextField';
+import SectionTitle from '../components/SectionTitle';
 
 import { formatStringToDate } from "utils/formatting";
 
@@ -75,7 +76,7 @@ const GlucoseRecords = (props: Props) => {
             type="date"
             required={false}
             disabled={disabled}
-            {...register("glucose_ate", {
+            {...register("glucose_date", {
                 onChange: (e) => setDate(e.target.value)
             })}
         />
@@ -176,6 +177,7 @@ const GlucoseRecords = (props: Props) => {
 
   return (
     <Fragment>
+      <SectionTitle title="혈당 기록" />
       <Grid item xs={12}>
         <MuiTable columns={columns} rows={[...tableRow]} />
       </Grid>

@@ -17,10 +17,12 @@ import Needs from './Needs';
 import NRS from './Pain/NRS';
 import FLACC from './Pain/FLACC';
 import CNPS from "./Pain/CNPS";
+import MentalNursing from './MentalHealth/MentalNursing';
 import Operation from './Special/Operation';
 import Transfusion from './Special/Transfusion';
 import Dialysis from './Special/Dialysis';
 import Emergency from  './Special/Emergency';
+import Childbirth from './Special/Childbirth';
 import DietNutrition from './DietNutrition';
 import HospitalizationInfo from './Agreement/HospitalizationInfo';
 import FallPrevention from './Agreement/FallPrevention';
@@ -104,6 +106,10 @@ const DisplaySurvey = (props: Props) => {
       if (!defaultValues) return null;
       return <CNPS {...dialogProps} onClose={onCloseSave} />;
     }
+    case MENU.MENTAL_NURSING: {
+      if (!defaultValues) return null;
+      return <MentalNursing {...dialogProps} onClose={onCloseSave} />;
+    }
     case MENU.OPERATION: {
       if (!defaultValues) return null;
       return <Operation {...dialogProps} onClose={onCloseSave} />;
@@ -119,6 +125,10 @@ const DisplaySurvey = (props: Props) => {
     case MENU.EMERGENCY: {
       if (!defaultValues) return null;
       return <Emergency {...dialogProps} onClose={onCloseSave} />;
+    }
+    case MENU.CHILDBIRTH: {
+      if (!defaultValues) return null;
+      return <Childbirth {...dialogProps} onClose={onCloseSave} />;
     }
     case MENU.DIET_NUTRITION: {
       if (!defaultValues) return null;

@@ -326,6 +326,11 @@ export const initialCNPS = {
   sum: '',
 };
 
+export const initialMentalNursing = {
+  update_at: '',
+  mental_nursing_records: [],
+};
+
 export const initialOperation = {
   update_at: '',
   operation_date: '',
@@ -419,6 +424,38 @@ export const initialEmergency = {
     phone: '', 
   },
   hospital_record: '',
+};
+
+export const initialChildbirth = {
+  update_at: '',
+  childbirth_info: {
+    date: '',
+    time: '',
+    type: '',
+  },
+  baby_status: {
+    gender: '',
+    weight: '',
+    apgar: { one_min: '', five_min: '' },
+    breathe: '',
+    urine: '',
+    placenta_discharge: '',
+    placenta_color: '',
+    nuchal_cord: { value: '', input: '' },
+    resuscitation: { value: '', input: '' },
+    special_note: '',
+  },
+  placenta_removal: {
+    time: '',
+    method: '',
+    curettage: '',
+  },
+  mother_status: {
+    incision: { value: '', select: '' },
+    laceration: { value: '', select: '' },
+    contraction: '',
+  },
+  nursing_records: [],
 };
 
 export const initialDietNutrition = {

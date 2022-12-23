@@ -28,10 +28,12 @@ import {
   initialNRS,
   initialFLACC,
   initialCNPS,
+  initialMentalNursing,
   initialOperation,
   initialTransfusion,
   initialDialysis,
   initialEmergency,
+  initialChildbirth,
   initialDietNutrition,
   initialHospitalizationInfo,
   initialFallPrevention,
@@ -199,6 +201,11 @@ const useDefaultValues = ({ setDefaultValues, user_id }: Props) => {
           initialCNPS, initialCNPS
         );
         break;
+      case MENU.MENTAL_NURSING: 
+        convertDataToStates(
+          initialMentalNursing, initialMentalNursing
+        );
+        break;
       case MENU.OPERATION:
         convertDataToStates(
           initialOperation,
@@ -221,6 +228,12 @@ const useDefaultValues = ({ setDefaultValues, user_id }: Props) => {
         convertDataToStates(
           initialEmergency,
           initialEmergency
+        );
+        break;
+      case MENU.CHILDBIRTH:
+        convertDataToStates(
+          initialChildbirth,
+          initialChildbirth
         );
         break;
       case MENU.DIET_NUTRITION:
