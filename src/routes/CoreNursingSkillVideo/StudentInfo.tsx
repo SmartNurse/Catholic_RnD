@@ -28,7 +28,7 @@ const StudentInfo = (props: Props) => {
           {title === "용량" 
           ?
           <Box sx={{ width: "100%", textAlign: "right" }}>
-            <Typography sx={{ color: "#2264A8" }} fontSize="14px" lineHeight="37.125px" display="inline">{value}</Typography>
+            <Typography sx={{ color: "#0D7E54" }} fontSize="14px" lineHeight="37.125px" display="inline">{value}</Typography>
             <Typography fontSize="14px" display="inline"> / 10GB</Typography>
           </Box>
           :
