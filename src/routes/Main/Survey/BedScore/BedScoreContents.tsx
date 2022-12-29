@@ -7,6 +7,8 @@ import { IFormValues, IFormWatch } from 'routes/Main/type';
 import SectionTitle from '../components/SectionTitle';
 import useTableForm from '../hooks/useTableForm';
 
+import theme from 'styles/theme';
+
 interface Props extends IFormValues, IFormWatch {}
 
 const BedScoreContents = (props: Props) => {
@@ -98,7 +100,7 @@ const BedScoreContents = (props: Props) => {
           >
             합계 : {watchSumValues()}점
           </Typography>
-          <Typography minWidth={115} color="#2264A8" variant="caption">
+          <Typography minWidth={115} variant="caption" sx={{ color: `${theme.palette.primary.main}`}}>
             <Typography variant="inherit">
               <Box component={'strong'} mr={0.5}>
                 초고위험군:

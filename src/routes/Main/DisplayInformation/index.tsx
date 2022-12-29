@@ -10,6 +10,8 @@ import MedicalNote from './MedicalNote';
 import PatientInfo from './PatientInfo';
 import SearchToolbar from './SearchToolbar';
 
+import theme from 'styles/theme';
+
 const DisplayInformation = () => {
   // shallowEqual 해도 리렌더링 발생해서 이곳만 별도로 선택해서 사용
   const patientInfo = useSelectorTyped(state => state.patient.patientInfo);
@@ -64,7 +66,7 @@ const DisplayInformation = () => {
         style={{
           display: 'flex',
           flexDirection: 'column',
-          backgroundColor: '#EDF3FA',
+          backgroundColor: `${theme.palette.primary.light}`,
         }}
       >
         <PatientInfo />

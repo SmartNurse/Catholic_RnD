@@ -4,6 +4,8 @@ import { StyledTableCell, StyledTableCellWithoutLeft, StyledTableCellWithoutRigh
 
 import { IFormValues, IFormWatch } from 'routes/Main/type';
 
+import theme from "styles/theme";
+
 const radioId = ["face", "reaction", "respiration", "vocalization"];
 const contentLabel = [
     {
@@ -120,7 +122,7 @@ const CNPSContents = (props: Props) => {
                     >
                         합계: {sumValue}점
                     </Typography>
-                    <Typography minWidth={115} color="#2264A8" variant="caption">
+                    <Typography minWidth={115} variant="caption" sx={{ color: `${theme.palette.primary.main}`}}>
                         {scoreLabel.map(({ score, label }) => 
                             <Typography variant="inherit">
                                 <Box component={'strong'} mr={0.5}>

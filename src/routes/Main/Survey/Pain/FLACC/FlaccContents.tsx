@@ -12,6 +12,8 @@ import { IFormValues, IFormWatch } from 'routes/Main/type';
 import { IFLACC } from "apis/survey/type";
 import { formatStringToDate } from "utils/formatting";
 
+import theme from "styles/theme";
+
 interface Props extends IFormValues, IFormWatch {
     disabled?: boolean;
     onRequired: (id: Ti18nId) => void;
@@ -170,7 +172,7 @@ const FlaccContents = (props: Props) => {
                         >
                             합계: {sumValue}점
                         </Typography>
-                        <Typography minWidth={115} color="#2264A8" variant="caption">
+                        <Typography minWidth={115} variant="caption" sx={{ color: `${theme.palette.primary.main}`}}>
                             <Typography variant="inherit">
                             <Box component={'strong'} mr={0.5}>
                                 0점:
