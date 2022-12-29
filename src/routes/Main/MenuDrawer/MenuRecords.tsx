@@ -200,6 +200,12 @@ const MenuRecords = () => {
 
   const onClickListItem = (label: string) => {
     if (!student_uuid) return onRequired('REQUIRED.STUDENT');
+
+    if (label === '영유아 건강검진 문진') {
+      window.open("http://www.imomhospital.co.kr/page/wellbaby/interview?PHPSESSID=57edd94c10d035ad8b305d29981c98ed");
+      return;
+    }
+
     if (!patientInfo) return onRequired('REQUIRED.PATIENT');
     onUpdateSurveyType(label);
   };

@@ -1,6 +1,6 @@
 import { Fragment } from 'react';
 import { AccessTime } from '@mui/icons-material';
-import { Checkbox, Grid } from '@mui/material';
+import { Checkbox, Grid, Box } from '@mui/material';
 import { MobileTimePicker } from '@mui/x-date-pickers';
 
 import { IMedication } from 'apis/survey/type';
@@ -10,6 +10,8 @@ import MuiTextField from 'components/Form/MuiTextField';
 import SectionTitle from '../components/SectionTitle';
 import MuiTable from 'components/MuiTable';
 import { formatStringToDate } from 'utils/formatting';
+
+import { ReactComponent as DrugInfo } from "assets/drug-info.svg";
 
 interface Props extends IFormValues, IFormWatch {
   disabled?: boolean;
@@ -30,6 +32,7 @@ const Medications = (props: Props) => {
     { fieldId: 'medication_freq', label: '투여횟수' },
     { fieldId: 'medication_note', label: '상세투여방법', width: 250 },
     { fieldId: 'medication_do', label: '투여완료' },
+    { fieldId: 'medication_info', label: '약물정보' },
   ];
 
   const getRowEditing = (prefix: string) => {
@@ -82,6 +85,14 @@ const Medications = (props: Props) => {
           checked={medicationDo}
           onChange={onChangeMedicationDo}
         />
+      ),
+      medication_info: (
+        <Box sx={{ display: "flex", alignItems: "center", justifyContent: "center" }}>
+          <DrugInfo
+            style={{ cursor: "pointer" }}
+            onClick={() => window.open("https://terms.naver.com/search.naver?query=" + item.medication_name)}
+          />
+        </Box>
       ),
     };
   });
