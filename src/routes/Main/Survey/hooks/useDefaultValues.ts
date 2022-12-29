@@ -30,6 +30,7 @@ import {
   initialCNPS,
   initialMentalNursing,
   initialOperation,
+  initialAnesthesia,
   initialTransfusion,
   initialDialysis,
   initialEmergency,
@@ -210,6 +211,12 @@ const useDefaultValues = ({ setDefaultValues, user_id }: Props) => {
         convertDataToStates(
           initialOperation,
           initialOperation
+        );
+        break;
+      case MENU.ANESTHESIA:
+        convertDataToStates(
+          initialAnesthesia,
+          initialAnesthesia
         );
         break;
       case MENU.TRANSFUSION:

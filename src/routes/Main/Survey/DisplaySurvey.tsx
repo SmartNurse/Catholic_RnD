@@ -19,6 +19,7 @@ import FLACC from './Pain/FLACC';
 import CNPS from "./Pain/CNPS";
 import MentalNursing from './MentalHealth/MentalNursing';
 import Operation from './Special/Operation';
+import Anesthesia from './Special/Anesthesia';
 import Transfusion from './Special/Transfusion';
 import Dialysis from './Special/Dialysis';
 import Emergency from  './Special/Emergency';
@@ -113,6 +114,10 @@ const DisplaySurvey = (props: Props) => {
     case MENU.OPERATION: {
       if (!defaultValues) return null;
       return <Operation {...dialogProps} onClose={onCloseSave} />;
+    }
+    case MENU.ANESTHESIA: {
+      if (!defaultValues) return null;
+      return <Anesthesia {...dialogProps} onClose={onCloseSave} />;
     }
     case MENU.TRANSFUSION: {
       if (!defaultValues) return null;
