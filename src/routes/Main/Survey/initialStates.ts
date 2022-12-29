@@ -357,6 +357,10 @@ export const initialOperation = {
   },
 };
 
+export const initialAnesthesia = {
+  update_at: '',
+};
+
 export const initialTransfusion = {
   update_at: '',
   id: '',

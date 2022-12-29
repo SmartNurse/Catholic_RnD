@@ -154,6 +154,10 @@ const MenuRecords = () => {
     },
     {
       isPro: true,
+      label: '마취 기록지',
+    },
+    {
+      isPro: true,
       label: '수혈 기록지',
     },
     {
