@@ -19,6 +19,8 @@ import smartnurseLogoStandard from 'assets/smartnurse-logo-standard.svg';
 import Form from 'components/Form';
 import MuiDialog from 'components/MuiDialog';
 
+import theme from 'styles/theme';
+
 interface Props {
   errors: { [x: string]: any };
   register: UseFormRegister<FieldValues>;
@@ -45,7 +47,7 @@ function SignInForm({ errors, register, onSignUp }: Props) {
             <Typography>
               현실감 있는 환자데이터 제공으로
             </Typography>
-            <Typography sx={{ color: "#0D7E54" }}>
+            <Typography sx={{ color: `${theme.palette.primary.main}`}}>
               실제 병원 현장을 경험하게 됩니다!
             </Typography>
           </CardContent>

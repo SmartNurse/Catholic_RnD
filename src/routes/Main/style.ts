@@ -18,7 +18,7 @@ export const StyledDrawerWrapper = styled('div')`
     height: 46px;
     line-height: 46px;
     font-weight: 600;
-    background-color: #2e85dc;
+    background-color: ${theme.palette.secondary.main};
     text-align: center;
   }
 
@@ -123,7 +123,7 @@ export const StyledMiniBox = styled('div')`
 `;
 
 export const StyledSlider = styled(Slider)({
-  color: "#2E85DC",
+  color: `${theme.palette.secondary.main}`,
   '& .MuiSlider-track': {
 
   },
@@ -142,7 +142,7 @@ export const StyledSlider = styled(Slider)({
     color: "#00000033",
 
     '&.MuiSlider-markActive': {
-      backgroundColor: "#2E85DC",
+      backgroundColor: `${theme.palette.secondary.main}`,
       opacity: 1,
     }
   } 

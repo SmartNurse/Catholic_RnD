@@ -3,7 +3,11 @@ import { createTheme, css } from '@mui/material/styles';
 const theme = createTheme({
   palette: {
     primary: {
-      main: '#0D7E54',
+      light: '#EBF8F3',
+      main: '#14855B',
+    },
+    secondary: {
+      main: '#13AD74',
     },
     text: {
       primary: '#000000E5',
@@ -113,11 +117,11 @@ const theme = createTheme({
           padding: '4px 8px',
           wordBreak: 'keep-all',
           textTransform: 'none',
-          backgroundColor: '#EDF3FA',
+          backgroundColor: '#EBF8F3',
 
           '&.Mui-selected': {
             color: '#fff',
-            backgroundColor: '#0D7E54',
+            backgroundColor: '#14855B',
           },
         },
       },
