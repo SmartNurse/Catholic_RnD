@@ -359,6 +359,34 @@ export const initialOperation = {
 
 export const initialAnesthesia = {
   update_at: '',
+  operation_info: {
+    department: '',
+    date: '',
+    time: '',
+    title: '',
+    fast: '',
+    x_ray: false,
+    ecg: false,
+    posture: '',
+    emergency: '',
+    asa_class: '',
+    antibiotics: '',
+    method: '',
+  },
+  prescription_records: [],
+  patient_status: {
+    intake: {
+      infusione: '',
+      transfusion: '',
+      etc: '',
+    },
+    output: {
+      urine: '',
+      blood_lost: '',
+      etc: '',
+    },
+    records: [],
+  },
 };
 
 export const initialTransfusion = {

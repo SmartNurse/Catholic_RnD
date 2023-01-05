@@ -221,3 +221,8 @@ export interface INursingRecord {
   time: string;
   desc: string;
 }
+
+export interface IPrescriptionRecord {
+  time: string;
+  desc: string;
+}
