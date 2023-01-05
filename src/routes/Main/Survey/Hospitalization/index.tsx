@@ -104,7 +104,7 @@ const Hospitalization = (
         container
         wrap="wrap"
         rowSpacing={5}
-        columnSpacing={3}
+        columnSpacing={2}
         sx={{ py: 5, px: 1 }}
       >
         <PatientInfo

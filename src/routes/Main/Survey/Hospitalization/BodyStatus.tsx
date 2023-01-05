@@ -172,7 +172,7 @@ const BodyStatus = (props: Props) => {
             />
           </Stack>
         </RowContent>
-        <RowContent title="낙상">
+        <RowContent title="낙상 교육">
           <Form.MuiCheckbox
             label="시행"
             disabled={disabled}
@@ -180,7 +180,7 @@ const BodyStatus = (props: Props) => {
             {...register('body_status.fall.checked')}
           />
         </RowContent>
-        <RowContent title="욕창">
+        <RowContent title="욕창 사정">
           <Form.MuiCheckbox
             label="시행"
             disabled={disabled}
@@ -188,7 +188,7 @@ const BodyStatus = (props: Props) => {
             {...register('body_status.yukchang.checked')}
           />
         </RowContent>
-        <RowContent title="통증">
+        <RowContent title="통증 사정">
           <Form.MuiCheckbox
             label="시행"
             disabled={disabled}

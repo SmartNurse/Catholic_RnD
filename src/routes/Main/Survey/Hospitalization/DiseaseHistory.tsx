@@ -69,7 +69,7 @@ const DiseaseHistory = (props: Props) => {
             <Form.MuiTextField
               required={false}
               disabled={disabled}
-              placeholder="ex. 2.22 01-ㅇㅇ대학교병원-층수절제술"
+              placeholder="ex. 2022.01-ㅇㅇ대학교병원 충수절제술"
               {...register('disease_history.operation_history.input')}
             />
           </Stack>

@@ -117,7 +117,7 @@ export const initialHospitalizationSurvey = {
     feces: { value: '', input: '' },
     feces_info: { checked: [] },
     nutrition: { weight: 1, appetite: 1 },
-    obstetric: { G: '', T: '', P: '', A: '' },
+    obstetric: { G: '0', T: '0', P: '0', A: '0', L: '0' },
     sleep: 1,
     smoke: { value: 1, checked: [], input: '', input2: '' },
     urine: { value: '', input: '' },
