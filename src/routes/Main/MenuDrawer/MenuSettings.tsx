@@ -20,13 +20,15 @@ import { useNavigate } from 'react-router-dom';
 import useStudent from 'store/student/useStudent';
 import useSurvey from 'store/survey/useSurvey';
 import usePatient from 'store/patient/usePatient';
+import useNotification from 'hooks/useNotification';
 
 const MenuSettings = () => {
   const navigate = useNavigate();
   const { onSignOut } = useUser();
   const { onCloseReadOnly, onUpdateSurveyType } = useSurvey();
-  const { onResetStudent } = useStudent();
-  const { onResetPatient } = usePatient();
+  const { student_uuid, onResetStudent } = useStudent();
+  const { patientInfo, onSelectedPatient, onResetPatient } = usePatient();
+  const { onRequired } = useNotification();
 
   const settings = [
     {
@@ -47,7 +49,23 @@ const MenuSettings = () => {
       icon: <VideocamOutlined />,
       label: '핵심간호술기영상 저장',
       buttonClick: {
-        onClick: () => onUpdateSurveyType("핵심간호술기영상 저장"),
+        onClick: () => {
+          if (!student_uuid) return onRequired('REQUIRED.STUDENT');
+          if (!patientInfo) {
+            onSelectedPatient({
+              patient_id: 92000001,
+              name: "핵심간호술기1(활력징후)",
+              age: "21",
+              gender: 2,
+              department: "호흡기내과",
+              ward: "11병동",
+              disease_main: "폐렴막대균에 의한 폐렴",
+              college: 0,
+            });
+          }
+
+          onUpdateSurveyType("핵심간호술기영상 저장");
+        },
       }
     },
     {

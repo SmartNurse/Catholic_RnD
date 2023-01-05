@@ -1,8 +1,7 @@
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 
-import { Box, Container, Button } from "@mui/material";
-import { KeyboardArrowLeft } from '@mui/icons-material';
+import { Container } from "@mui/material";
 
 import MuiDialog from 'components/MuiDialog';
 import {
@@ -11,12 +10,15 @@ import {
 } from 'routes/Main/Survey/type';
 import useSurvey from 'store/survey/useSurvey';
 import useNotification from 'hooks/useNotification';
+import useUser from 'store/user/useUser';
 
 import VideoForm from './VideoForm';
-import StudentInfo from './StudentInfo';
+import StudentInfo from './StudentModeInfo';
+import ProfModeInfo from './ProfModeInfo';
 
 const CoreNursingSkillVideo = (props: SurveyDialogProps<TCoreNursingSkillVideoDefaultValues>) => {
   const [totalSize, setTotalSize] = useState(0);
+  const { isStudent } = useUser();
 
   const {
       title,
@@ -50,7 +52,12 @@ const CoreNursingSkillVideo = (props: SurveyDialogProps<TCoreNursingSkillVideoDe
       update_at={defaultValues?.update_at}
     >
       <Container maxWidth="md" sx={{ mt: 7.5, mb: 6 }}>
+        {isStudent 
+        ?
         <StudentInfo totalSize={totalSize} />
+        :
+        <ProfModeInfo totalSize={totalSize} />
+        }
         <VideoForm totalSize={totalSize} setTotalSize={setTotalSize} />
       </Container>
     </MuiDialog.SurveyForm>

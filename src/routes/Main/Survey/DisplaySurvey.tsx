@@ -149,7 +149,7 @@ const DisplaySurvey = (props: Props) => {
       return <FallPrevention {...dialogProps} onClose={onCloseSave} />;
     }
     case MENU.CORE_NURSING_SKILL_VIDEO: {
-      console.log("hello");
+      if (!defaultValues) return null;
       return <CoreNursingSkillVideo {...dialogProps} onClose={onCloseSave} />;
     }
     default:
