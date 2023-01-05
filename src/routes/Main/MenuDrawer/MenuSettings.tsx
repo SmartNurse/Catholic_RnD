@@ -51,19 +51,7 @@ const MenuSettings = () => {
       buttonClick: {
         onClick: () => {
           if (!student_uuid) return onRequired('REQUIRED.STUDENT');
-          if (!patientInfo) {
-            onSelectedPatient({
-              patient_id: 92000001,
-              name: "핵심간호술기1(활력징후)",
-              age: "21",
-              gender: 2,
-              department: "호흡기내과",
-              ward: "11병동",
-              disease_main: "폐렴막대균에 의한 폐렴",
-              college: 0,
-            });
-          }
-
+          if (!patientInfo) return onRequired('REQUIRED.PATIENT');
           onUpdateSurveyType("핵심간호술기영상 저장");
         },
       }
