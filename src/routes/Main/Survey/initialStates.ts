@@ -667,3 +667,8 @@ export const initialFallPrevention = {
   date: "",
   staff_sign: "",
 }
+
+export const initialCoreNursingSkillVideo = {
+  update_at: "",
+  files: [],
+}

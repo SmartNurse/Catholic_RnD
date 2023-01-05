@@ -44,6 +44,7 @@ const VideoForm = (props: Props) => {
             </TableCell>
             <TableCell sx={{ width: "40%"}}>
               <MuiTextField
+                required={false}
                 type="file"
                 value={files[i].path}
                 onChange={(e) => {

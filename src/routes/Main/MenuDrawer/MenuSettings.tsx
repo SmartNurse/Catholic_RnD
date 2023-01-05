@@ -24,7 +24,7 @@ import usePatient from 'store/patient/usePatient';
 const MenuSettings = () => {
   const navigate = useNavigate();
   const { onSignOut } = useUser();
-  const { onCloseReadOnly } = useSurvey();
+  const { onCloseReadOnly, onUpdateSurveyType } = useSurvey();
   const { onResetStudent } = useStudent();
   const { onResetPatient } = usePatient();
 
@@ -47,8 +47,8 @@ const MenuSettings = () => {
       icon: <VideocamOutlined />,
       label: '핵심간호술기영상 저장',
       buttonClick: {
-        onClick: () => navigate('/core_nursing_skill_video'),
-      },
+        onClick: () => onUpdateSurveyType("핵심간호술기영상 저장"),
+      }
     },
     {
       isPro: true,
