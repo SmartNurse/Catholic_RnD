@@ -1,5 +1,5 @@
 import { Fragment, useState, useEffect } from 'react';
-import { AccessTime, Delete } from '@mui/icons-material';
+import { AccessTime, Delete, DetailsTwoTone, Sort } from '@mui/icons-material';
 import { Button, FormHelperText, Grid, IconButton } from '@mui/material';
 import { MobileTimePicker } from '@mui/x-date-pickers';
 
@@ -8,7 +8,7 @@ import { IVitalSign } from 'apis/survey/type';
 import { IFormValues, IFormWatch } from 'routes/Main/type';
 import MuiTable from 'components/MuiTable';
 import MuiTextField from 'components/Form/MuiTextField';
-import { formatStringToDate } from 'utils/formatting';
+import { formatStringToDate, formatTimeStrToNum } from 'utils/formatting';
 
 import SectionTitle from '../components/SectionTitle';
 
@@ -62,7 +62,17 @@ const VitalSign = (props: Props) => {
 
     onSuccess('Vital Sign 추가되었습니다.');
     setValue('vital_sign', [...vitalSignList, {...request, etc }]);
-    onUpdateSign({isUpdated: !vitalsign.isUpdated, data: [...vitalsign.data, { checkTime: checkTime !== null ? formatStringToDate(checkTime, 'hh:mm a') : "", sbp: Number(sbp), dbp: Number(dbp), pr: Number(pr), rr: Number(rr), bt: Number(bt)}]});
+    onUpdateSign({
+      isUpdated: !vitalsign.isUpdated,
+      data: [...vitalsign.data, {
+        checkTime: checkTime !== null ? formatStringToDate(checkTime, 'hh:mm a') : "",
+        sbp: Number(sbp),
+        dbp: Number(dbp),
+        pr: Number(pr),
+        rr: Number(rr),
+        bt: Number(bt)
+      }].sort((a, b) => formatTimeStrToNum(a.checkTime) - formatTimeStrToNum(b.checkTime))
+    });
     setCheckTime(null);
     setSbp('');
     setDbp('');
@@ -198,7 +208,7 @@ const VitalSign = (props: Props) => {
     onUpdateSign({isUpdated: !vitalsign.isUpdated, data: vitalsign.data.filter((_, i) => i !== index)});
   };
 
-  const displayRows = vitalSignList?.map((item, i) => ({
+  const displayRows = vitalSignList.slice().sort((a, b) => Number(new Date(a.checkTime)) - Number(new Date(b.checkTime))).map((item, i) => ({
     ...item,
     id: i,
     checkTime: formatStringToDate(item.checkTime, 'hh:mm a'),
@@ -226,7 +236,7 @@ const VitalSign = (props: Props) => {
         dbp: Number(obj.dbp),
       }
     });
-    onUpdateSign({isUpdated: !vitalsign.isUpdated, data: [...initialVitalsign]});
+    onUpdateSign({isUpdated: !vitalsign.isUpdated, data: [...initialVitalsign].sort((a, b) => formatTimeStrToNum(a.checkTime) - formatTimeStrToNum(b.checkTime))});
   }, []);
 
   return (

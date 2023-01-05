@@ -46,6 +46,8 @@ const ClinicalObservation = (
       io_check: io_check ? JSON.stringify(io_check) : '',
     };
 
+    console.log(vital_sign);
+
     updateClinicObservation(request)
       .then(({ data: { rc } }) => {
         if (rc !== 1) return onResultCode(rc);

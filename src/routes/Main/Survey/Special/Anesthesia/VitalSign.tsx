@@ -19,27 +19,33 @@ interface Props extends IFormValues, IFormWatch {
   onSuccess: (message: string) => void;
 }
 
-const colors = ["#FE2503", "#FF9200", "#02F900", "#0333FF", "#942092"];
-
-const columns = [
-  { fieldId: 'checkTime', label: '체크시간', sx: { width: 200 } },
-  { fieldId: 'sbp', label: 'SBP (mmHg)' },
-  { fieldId: 'dbp', label: 'DBP (mmHg)' },
-  { fieldId: 'pr', label: 'PR (회)' },
-  { fieldId: 'rr', label: 'RR (회)' },
-  { fieldId: 'bt', label: 'BT (℃)' },
-  { fieldId: 'sp02', label: 'SPO2 (%)' },
-  { fieldId: 'etc', label: '비고', sx: { width: 200 } },
-  { fieldId: 'action', label: '', sx: { width: 100 } },
-];
-
-const etc_labels = ["환자 도착", "마취 시작", "마취 중", "마취 종료", "수술 시작", "수술 중", "수술 종료", "환자 퇴실", "기타"];
-
 const VitalSign = (props: Props) => {
+  const colors = ["#FE2503", "#FF9200", "#02F900", "#0333FF", "#942092"];
+
+  const columns = [
+    { fieldId: 'checkTime', label: '체크시간', sx: { width: 200 } },
+    { fieldId: 'sbp', label: 'SBP (mmHg)' },
+    { fieldId: 'dbp', label: 'DBP (mmHg)' },
+    { fieldId: 'pr', label: 'PR (회)' },
+    { fieldId: 'rr', label: 'RR (회)' },
+    { fieldId: 'bt', label: 'BT (℃)' },
+    { fieldId: 'sp02', label: 'SPO2 (%)' },
+    { fieldId: 'etc', label: '비고', sx: { width: 200 } },
+    { fieldId: 'action', label: '', sx: { width: 100 } },
+  ];
+
+  const etc_labels = ["환자 도착", "마취 시작", "마취 중", "마취 종료", "수술 시작", "수술 중", "수술 종료", "환자 퇴실", "기타"];
+
   const { disabled, watch, setValue, onRequired, onSuccess } = props;
 
   const vitalSignList: IVitalSign[] = watch('anesthesia.patient_status.records');
-  const [vitalsignData, setVitalsignData] = useState<{name: string, data: {timestamp: string, value?: number, temp?: number}[]}[]>([]);
+  const [vitalsignData, setVitalsignData] = useState<{name: string, data: {timestamp: string, value?: number, temp?: number}[]}[]>([
+    { name: "BT (℃)", data: [] }, 
+    { name: "PR (회)", data: [] }, 
+    { name: "RR (회)", data: [] }, 
+    { name: "SBP (mmHg)", data: [] }, 
+    { name: "DBP (mmHg)", data: [] }, 
+  ]);
 
   const [checkTime, setCheckTime] = useState(null);
   const [sbp, setSbp] = useState('');
@@ -203,7 +209,7 @@ const VitalSign = (props: Props) => {
   };
 
   const displayRows = vitalSignList ?
-    vitalSignList.map((item, i) => ({
+    vitalSignList.slice().sort((a, b) => Number(new Date(a.checkTime)) - Number(new Date(b.checkTime))).map((item, i) => ({
     ...item,
     id: i,
     checkTime: formatStringToDate(item.checkTime, 'hh:mm a'),
@@ -223,19 +229,23 @@ const VitalSign = (props: Props) => {
   const tableRow = disabled ? displayRows : [inputRow, ...displayRows];
 
   useEffect(() => {
-    const btData = vitalSignList ? vitalSignList.map((v) => { return {timestamp: formatStringToDate(v.checkTime, 'hh:mm:a'), temp: v.bt} }) : [];
-    const prData = vitalSignList ? vitalSignList.map((v) => { return {timestamp: formatStringToDate(v.checkTime, 'hh:mm:a'), value: v.pr }}) : [];
-    const rrData = vitalSignList ? vitalSignList.map((v) => { return {timestamp: formatStringToDate(v.checkTime, 'hh:mm:a'), value: v.rr }}) : [];
-    const sbpData = vitalSignList ? vitalSignList.map((v) => { return {timestamp: formatStringToDate(v.checkTime, 'hh:mm:a'), value: v.sbp }}) : [];
-    const dbpData = vitalSignList? vitalSignList.map((v) => { return {timestamp: formatStringToDate(v.checkTime, 'hh:mm:a'), value: v.dbp }}) : [];
+    const sortedVitalSignList = vitalSignList ? vitalSignList.slice().sort((a, b) => Number(new Date(a.checkTime)) - Number(new Date(b.checkTime))) : [];
+    
+    if (sortedVitalSignList.length) {
+      const btData = sortedVitalSignList.map((v) => { return {timestamp: formatStringToDate(v.checkTime, 'hh:mm:a'), temp: v.bt} });
+      const prData = sortedVitalSignList.map((v) => { return {timestamp: formatStringToDate(v.checkTime, 'hh:mm:a'), value: v.pr }});
+      const rrData = sortedVitalSignList.map((v) => { return {timestamp: formatStringToDate(v.checkTime, 'hh:mm:a'), value: v.rr }});
+      const sbpData = sortedVitalSignList.map((v) => { return {timestamp: formatStringToDate(v.checkTime, 'hh:mm:a'), value: v.sbp }});
+      const dbpData = sortedVitalSignList.map((v) => { return {timestamp: formatStringToDate(v.checkTime, 'hh:mm:a'), value: v.dbp }});  
 
-    setVitalsignData([
-      { name: "BT (℃)", data: [...btData] }, 
-      { name: "PR (회)", data: [...prData] }, 
-      { name: "RR (회)", data: [...rrData] }, 
-      { name: "SBP (mmHg)", data: [...sbpData] }, 
-      { name: "DBP (mmHg)", data: [...dbpData] }, 
-    ]);
+      setVitalsignData([
+        { name: "BT (℃)", data: [...btData] }, 
+        { name: "PR (회)", data: [...prData] }, 
+        { name: "RR (회)", data: [...rrData] }, 
+        { name: "SBP (mmHg)", data: [...sbpData] }, 
+        { name: "DBP (mmHg)", data: [...dbpData] }, 
+      ]);
+    }
   }, [vitalSignList]);
 
   return (
