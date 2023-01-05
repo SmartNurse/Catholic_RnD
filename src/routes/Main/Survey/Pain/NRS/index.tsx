@@ -5,6 +5,8 @@ import useNotification from 'hooks/useNotification';
 
 import { Typography} from '@mui/material';
 import MuiDialog from "components/MuiDialog";
+
+import CommonPatientInfo from "../../components/CommonPatientInfo";
 import NrsContents from "./NrsContents";
 
 import { SurveyDialogProps, TNRSDefaultValues } from "../../type";
@@ -15,6 +17,8 @@ const NRS = (props: SurveyDialogProps<TNRSDefaultValues>) => {
         isOpen,
         disabled,
         defaultValues,
+        patientInfo,
+        nurseName,
         onClose
     } = props;
 
@@ -42,10 +46,11 @@ const NRS = (props: SurveyDialogProps<TNRSDefaultValues>) => {
             title={title}
             isOpen={isOpen}
             onClose={onClose}
-            onSubmit={undefined /* 저장 기능 업데이트 테되면 수정할 부분 */}
+            onSubmit={disabled ? undefined : handleSubmit(onSubmit)}
             update_at={defaultValues?.update_at}
         >
             <Typography fontSize={16} fontWeight="bold" align="center" sx={{ marginTop: "12px", marginBottom: "40px" }}>NRS (테스트 중)<br/> PAIN SCORE 0-10 NUMERICAL RATING</Typography>
+            <CommonPatientInfo patientInfo={patientInfo} nurseName={nurseName} />
             <NrsContents {...formProps} />
         </MuiDialog.SurveyForm>
     );

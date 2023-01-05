@@ -7,15 +7,16 @@ import RowContent from '../Main/Survey/components/RowContent';
 import { Typography, Box } from "@mui/material";
 
 import theme from 'styles/theme';
+import useStudent from 'store/student/useStudent';
 
 interface Props {
   disabled?: boolean;
   totalSize: number;
 }
 
-const StudentInfo = (props: Props) => {
+const ProfModeInfo = (props: Props) => {
   const { totalSize } = props;
-  const { student_name, student_no } = useUser();
+  const { student_name, student_no } = useStudent();  
 
   const infos = [
     {title: "간호사", value: student_name},
@@ -43,4 +44,4 @@ const StudentInfo = (props: Props) => {
 
 };
 
-export default StudentInfo;
+export default ProfModeInfo;

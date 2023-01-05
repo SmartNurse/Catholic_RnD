@@ -27,6 +27,7 @@ import Childbirth from './Special/Childbirth';
 import DietNutrition from './DietNutrition';
 import HospitalizationInfo from './Agreement/HospitalizationInfo';
 import FallPrevention from './Agreement/FallPrevention';
+import CoreNursingSkillVideo from 'routes/CoreNursingSkillVideo';
 
 interface Props {
   surveyType: string;
@@ -146,6 +147,10 @@ const DisplaySurvey = (props: Props) => {
     case MENU.FALL_PREVENTION: {
       if (!defaultValues) return null;
       return <FallPrevention {...dialogProps} onClose={onCloseSave} />;
+    }
+    case MENU.CORE_NURSING_SKILL_VIDEO: {
+      if (!defaultValues) return null;
+      return <CoreNursingSkillVideo {...dialogProps} onClose={onCloseSave} />;
     }
     default:
       return null;

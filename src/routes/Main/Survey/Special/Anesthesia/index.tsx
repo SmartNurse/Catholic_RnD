@@ -10,6 +10,9 @@ import MuiDialog from "components/MuiDialog";
 import { SurveyDialogProps, TAnesthesiaDefaultValues } from "../../type";
 
 import CommonPatientInfo from "../../components/CommonPatientInfo";
+import OperationInfo from "./OperationInfo";
+import PrescriptionRecords from "./PrescriptionRecords";
+import PatientStatus from "./PatientStatus";
 
 const Anesthesia = (props: SurveyDialogProps<TAnesthesiaDefaultValues>) => {
     const {
@@ -42,9 +45,7 @@ const Anesthesia = (props: SurveyDialogProps<TAnesthesiaDefaultValues>) => {
         onRequired,
     };
 
-    const [childbirthTime, setChildbirthTime] = useState<string | null>(null);
-    const [placentaTime, setPlacentaTime] = useState<string | null>(null);
-    const [dialysisTime, setDialysisTime] = useState<string | null>(null);
+    const [operationTime, setOperationTime] = useState<string | null>(null);
 
     return (
         <MuiDialog.SurveyForm
@@ -62,9 +63,12 @@ const Anesthesia = (props: SurveyDialogProps<TAnesthesiaDefaultValues>) => {
             sx={{ py: 5, px: 1 }}
             >
                 <Typography sx={{ margin: "40px auto 0px auto", fontWeight: "700", fontSize: "20px", textAlign: "center" }}>
-                    마취 기록지 <br/> - 1월 중순 오픈 예정 -
+                    마취 기록지 <br/> - Test 중 입니다 -
                 </Typography>
                 <CommonPatientInfo patientInfo={patientInfo} nurseName={nurseName} />
+                <OperationInfo {...formProps} time={operationTime} setTime={setOperationTime} />
+                <PrescriptionRecords {...formProps} />
+                <PatientStatus {...formProps} />
             </Grid>
         </MuiDialog.SurveyForm>
     );

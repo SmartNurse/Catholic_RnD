@@ -1,6 +1,5 @@
 import { HashRouter, Route, Routes } from 'react-router-dom';
 import useUser from 'store/user/useUser';
-import CoreNursingSkillVideo from './CoreNursingSkillVideo';
 
 import Main from './Main';
 import MyPage from './MyPage';
@@ -24,7 +23,6 @@ function RouterContainer() {
       <Routes>
         <Route path="*" element={<Main />} />
         <Route path="/mypage" element={<MyPage />} />
-        <Route path="/core_nursing_skill_video" element={<CoreNursingSkillVideo />} />
       </Routes>
     </HashRouter>
   );

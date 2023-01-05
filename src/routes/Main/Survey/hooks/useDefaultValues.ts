@@ -38,6 +38,7 @@ import {
   initialDietNutrition,
   initialHospitalizationInfo,
   initialFallPrevention,
+  initialCoreNursingSkillVideo,
 } from '../initialStates';
 import { MENU } from '../type';
 
@@ -259,6 +260,12 @@ const useDefaultValues = ({ setDefaultValues, user_id }: Props) => {
         convertDataToStates(
           initialFallPrevention,
           initialFallPrevention
+        );
+        break;
+      case MENU.CORE_NURSING_SKILL_VIDEO:
+        convertDataToStates(
+          initialCoreNursingSkillVideo,
+          initialCoreNursingSkillVideo
         );
         break;
       default:

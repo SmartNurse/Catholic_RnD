@@ -20,13 +20,15 @@ import { useNavigate } from 'react-router-dom';
 import useStudent from 'store/student/useStudent';
 import useSurvey from 'store/survey/useSurvey';
 import usePatient from 'store/patient/usePatient';
+import useNotification from 'hooks/useNotification';
 
 const MenuSettings = () => {
   const navigate = useNavigate();
   const { onSignOut } = useUser();
-  const { onCloseReadOnly } = useSurvey();
-  const { onResetStudent } = useStudent();
-  const { onResetPatient } = usePatient();
+  const { onCloseReadOnly, onUpdateSurveyType } = useSurvey();
+  const { student_uuid, onResetStudent } = useStudent();
+  const { patientInfo, onSelectedPatient, onResetPatient } = usePatient();
+  const { onRequired } = useNotification();
 
   const settings = [
     {
@@ -47,8 +49,12 @@ const MenuSettings = () => {
       icon: <VideocamOutlined />,
       label: '핵심간호술기영상 저장',
       buttonClick: {
-        onClick: () => navigate('/core_nursing_skill_video'),
-      },
+        onClick: () => {
+          if (!student_uuid) return onRequired('REQUIRED.STUDENT');
+          if (!patientInfo) return onRequired('REQUIRED.PATIENT');
+          onUpdateSurveyType("핵심간호술기영상 저장");
+        },
+      }
     },
     {
       isPro: true,

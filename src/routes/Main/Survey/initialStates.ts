@@ -117,7 +117,7 @@ export const initialHospitalizationSurvey = {
     feces: { value: '', input: '' },
     feces_info: { checked: [] },
     nutrition: { weight: 1, appetite: 1 },
-    obstetric: { G: '', T: '', P: '', A: '' },
+    obstetric: { G: '0', T: '0', P: '0', A: '0', L: '0' },
     sleep: 1,
     smoke: { value: 1, checked: [], input: '', input2: '' },
     urine: { value: '', input: '' },
@@ -359,6 +359,34 @@ export const initialOperation = {
 
 export const initialAnesthesia = {
   update_at: '',
+  operation_info: {
+    department: '',
+    date: '',
+    time: '',
+    title: '',
+    fast: '',
+    x_ray: false,
+    ecg: false,
+    posture: '',
+    emergency: '',
+    asa_class: '',
+    antibiotics: '',
+    method: '',
+  },
+  prescription_records: [],
+  patient_status: {
+    intake: {
+      infusione: '',
+      transfusion: '',
+      etc: '',
+    },
+    output: {
+      urine: '',
+      blood_lost: '',
+      etc: '',
+    },
+    records: [],
+  },
 };
 
 export const initialTransfusion = {
@@ -638,4 +666,9 @@ export const initialFallPrevention = {
   sign: "",
   date: "",
   staff_sign: "",
+}
+
+export const initialCoreNursingSkillVideo = {
+  update_at: "",
+  files: [],
 }
