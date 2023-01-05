@@ -122,7 +122,7 @@ const NrsContents = (props: Props) => {
 
     return (
         <>
-            <Box sx={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
+            <Box sx={{ display: "flex", flexDirection: "column", alignItems: "center", marginTop: "24px" }}>
                 <Box sx={{ width: "800px", display: "flex", justifyContent: "space-between", marginBottom: "10px" }}>
                     <img src={NRS_face1} />
                     <img src={NRS_face2} />

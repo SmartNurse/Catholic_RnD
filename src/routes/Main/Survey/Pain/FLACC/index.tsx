@@ -5,6 +5,8 @@ import useNotification from 'hooks/useNotification';
 
 import { Typography } from "@mui/material";
 import MuiDialog from "components/MuiDialog";
+
+import CommonPatientInfo from "../../components/CommonPatientInfo";
 import FlaccContents from "./FlaccContents";
 
 import { SurveyDialogProps, TFLACCDefaultValues } from "../../type";
@@ -17,6 +19,7 @@ const FLACC = (props: SurveyDialogProps<TFLACCDefaultValues>) => {
         defaultValues,
         user_id,
         patientInfo,
+        nurseName,
         onClose
     } = props;
 
@@ -44,10 +47,11 @@ const FLACC = (props: SurveyDialogProps<TFLACCDefaultValues>) => {
             title={title}
             isOpen={isOpen}
             onClose={onClose}
-            onSubmit={undefined}
+            onSubmit={disabled ? undefined : handleSubmit(onSubmit)}
             update_at={defaultValues?.update_at}
         >
             <Typography fontSize={16} fontWeight="bold" align="center" sx={{ marginTop: "12px", marginBottom: "40px" }}>FLACC Scale (테스트 중)</Typography>
+            <CommonPatientInfo patientInfo={patientInfo} nurseName={nurseName} />
             <FlaccContents {...formProps} />
         </MuiDialog.SurveyForm>
     );

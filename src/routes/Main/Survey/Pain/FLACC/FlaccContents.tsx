@@ -118,7 +118,7 @@ const FlaccContents = (props: Props) => {
 
     return (
         <>
-            <Box sx={{ width: "850px", margin: "0 auto" }}>
+            <Box sx={{ width: "850px", margin: "24px auto" }}>
                 <Grid container spacing={1}>
                 <GridItem bgColor="#0000001F" text=""/>
                     <GridItem bgColor="#0000001F" text="0"/>
@@ -128,7 +128,7 @@ const FlaccContents = (props: Props) => {
                     <GridItem bgColor="#0000001F" text="얼굴 (face)"/>
                     <RadioGroup name={"face"} row sx={{ width: "75%", display: "flex", justifyContent: "space-around" }} onChange={onChange}>
                         <StyledFormControlLabel value={0} label={"특별한 표정 없음 또는 미소"} control={<Radio />} />
-                        <StyledFormControlLabel value={1} label={"때때로 찡그린 얼굴 또는 찌푸림, 물러남, 무관시함"} control={<Radio />} />
+                        <StyledFormControlLabel value={1} label={"때때로 찡그린 얼굴 또는 찌푸림, 물러남, 무관심함"} control={<Radio />} />
                         <StyledFormControlLabel value={2} label={"자주 지속되는 찌푸림, 꽉 다문 턱, 아래턱 떨림"} control={<Radio />} />
                     </RadioGroup>
 
@@ -140,7 +140,7 @@ const FlaccContents = (props: Props) => {
                     </RadioGroup>
 
 
-                    <GridItem bgColor="#0000001F" text="활동 (acitivity))"/>
+                    <GridItem bgColor="#0000001F" text="활동 (acitivity)"/>
                     <RadioGroup name={"activity"} row sx={{ width: "75%", display: "flex", justifyContent: "space-around" }} onChange={onChange}>
                         <StyledFormControlLabel value={0} label={"조용히 눕기, 정상적인 자세, 쉽게 움직임"} control={<Radio />} />
                         <StyledFormControlLabel value={1} label={"몸부림침, 몸을 앞뒤로 뒤척거림 긴장"} control={<Radio />} />
@@ -157,8 +157,8 @@ const FlaccContents = (props: Props) => {
 
                     <GridItem bgColor="#0000001F" text="진정 (consolability)"/>
                     <RadioGroup name={"consolability"} row sx={{ width: "75%", display: "flex", justifyContent: "space-around" }} onChange={onChange}>
-                        <StyledFormControlLabel value={0} label={"만족, 이완 됨"} control={<Radio />} />
-                        <StyledFormControlLabel value={1} label={"때때로 접촉, 안김, 말 걸기, 안심 됨"} control={<Radio />} />
+                        <StyledFormControlLabel value={0} label={"만족, 이완됨"} control={<Radio />} />
+                        <StyledFormControlLabel value={1} label={"때때로 접촉, 안김, 말 걸기, 안심됨"} control={<Radio />} />
                         <StyledFormControlLabel value={2} label={"진정되거나 안위가 어려움"} control={<Radio />} />
                     </RadioGroup>
                 </Grid>
