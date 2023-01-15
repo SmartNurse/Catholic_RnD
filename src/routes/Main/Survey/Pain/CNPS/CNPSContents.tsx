@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Box, Typography, RadioGroup, Radio, Table, TableBody, TableHead, TableRow } from "@mui/material";
 import { StyledTableCell, StyledTableCellWithoutLeft, StyledTableCellWithoutRight, StyledTableCellWithoutLeftRight } from "routes/Main/style";
 
@@ -6,7 +6,7 @@ import { IFormValues, IFormWatch } from 'routes/Main/type';
 
 import theme from "styles/theme";
 
-const radioId = ["face", "reaction", "respiration", "vocalization"];
+const radioId = ["face", "activity", "respiratory", "vocalization"];
 const contentLabel = [
     {
         id: 1,
@@ -39,17 +39,25 @@ const scoreLabel = [
 interface Props extends IFormValues, IFormWatch {}
 
 const CNPSContents = (props: Props) => {
-    const { watch, setValue } = props;
+    const { setValue, getValues } = props;
 
     const [sumValue, setSumValue] = useState(0);
-    
-    const handleChange = (e: React.ChangeEvent<HTMLInputElement>, checked: boolean) => {
-        setValue(e.target.name, e.target.value);
+
+    const calculateSumValue = () => {
         setSumValue(radioId.reduce((acc, cur) => { 
-            const value = Number(watch(cur));
+            const value = Number(getValues(cur));
             return value ? acc + value : acc;
         }, 0));
     }
+    
+    const handleChange = (e: React.ChangeEvent<HTMLInputElement>, checked: boolean) => {
+        setValue(e.target.name, e.target.value);
+        calculateSumValue();
+    }
+
+    useEffect(() => {
+        calculateSumValue();
+    }, []);
 
     return (
         <>
@@ -94,7 +102,7 @@ const CNPSContents = (props: Props) => {
                                         )}
                                 </StyledTableCellWithoutLeftRight>
                                 <StyledTableCellWithoutLeft>
-                                    <RadioGroup name={radioId[content.id-1]}>
+                                    <RadioGroup name={radioId[content.id-1]} defaultValue={Number(getValues(radioId[content.id-1]))}>
                                         {content.desc.map((_, i) =>
                                             <TableRow sx={{
                                                 height: "44px",
@@ -103,7 +111,7 @@ const CNPSContents = (props: Props) => {
                                                 borderBottom: i !== content.desc.length-1 ? "1px solid lightgray" : ""
                                             }}>
                                                 <Box sx={{ width: "100px" }}>
-                                                    <Radio name={radioId[content.id-1]} value={i} onChange={handleChange}/>
+                                                    <Radio name={radioId[content.id-1]} value={i} onChange={handleChange} />
                                                 </Box>
                                             </TableRow>
                                         )}

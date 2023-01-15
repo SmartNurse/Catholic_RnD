@@ -11,6 +11,8 @@ import { SurveyDialogProps, TCNPSDefaultValues } from "../../type";
 import CommonPatientInfo from "../../components/CommonPatientInfo";
 import CNPSContents from "./CNPSContents";
 
+import { updateCNPS } from "apis/survey";
+
 const CNPS = (props: SurveyDialogProps<TCNPSDefaultValues>) => {
     const {
         title,
@@ -30,6 +32,22 @@ const CNPS = (props: SurveyDialogProps<TCNPSDefaultValues>) => {
     });
 
     const onSubmit = (data: TCNPSDefaultValues) => {
+        const { face, activity, respiratory, vocalization } = data;
+
+        const request = {
+          user_id,
+          patient_id: patientInfo.patient_id,
+          cnps_survey: {...data}
+        };
+        
+        updateCNPS(request)
+        .then(({ data: { rc } }) => {
+          if (rc !== 1) return onResultCode(rc);
+  
+          onUpdateIsSave(true);
+          onSuccess('CNPS 저장에 성공하였습니다.');
+        })
+        .catch(e => onFail('CNPS 저장에 실패하였습니다.', e));
     }
 
     const formProps = {
@@ -53,8 +71,6 @@ const CNPS = (props: SurveyDialogProps<TCNPSDefaultValues>) => {
                 CNPS
                 <br/>
                 (Critical care Nonverbal Pain Scale)
-                <br/>
-                - 해당 메뉴 저장은 스탠다드 버전에서 가능합니다 -
             </Typography>
             <CommonPatientInfo patientInfo={patientInfo} nurseName={nurseName} />
             <CNPSContents {...formProps} />

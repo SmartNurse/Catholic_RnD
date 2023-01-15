@@ -241,6 +241,16 @@ export interface IFLACC {
   sumValue: number;
 }
 
+// CNPS
+export interface IUpdateCNPS extends IGetSurvey {
+  cnps_survey: {
+    face: string;
+    activity: string;
+    respiratory: string;
+    vocalization: string;
+  }
+}
+
 // 정신간호기록지
 export interface IMentalNursingRecord {
   date: string;

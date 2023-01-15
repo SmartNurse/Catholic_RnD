@@ -299,8 +299,8 @@ export const initialFLACC = {
 export const initialCNPS = {
   update_at: '',
   face: '',
-  reaction: '',
-  respiration: '',
+  activity: '',
+  respiratory: '',
   vocalization: '',
   sum: '',
 };

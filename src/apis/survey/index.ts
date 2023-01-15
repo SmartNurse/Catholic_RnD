@@ -14,6 +14,7 @@ import {
   IUpdateTakingOver,
   IUpdateECardex,
   IUpdateGlucose,
+  IUpdateCNPS,
 } from './type';
 
 // e-CARDEX
@@ -135,5 +136,16 @@ export const getFall = (request: IGetSurvey) => {
 
 export const updateFall = (request: IUpdateFall) => {
   const url = `/survey/fall`;
+  return apiGateway.post(url, camelcaseKeys(request));
+};
+
+// CNPS
+export const getCNPS = (request: IGetSurvey) => {
+  const url = `/survey/cnps?${formatToRequestParameter(request)}`;
+  return apiGateway.get(url);
+};
+
+export const updateCNPS = (request: IUpdateCNPS) => {
+  const url = `/survey/cnps`;
   return apiGateway.post(url, camelcaseKeys(request));
 };

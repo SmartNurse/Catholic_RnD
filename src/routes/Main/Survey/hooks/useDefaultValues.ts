@@ -11,6 +11,7 @@ import {
   getOutHospital,
   getPathology,
   getRadiology,
+  getCNPS,
 } from 'apis/survey';
 import useNotification from 'hooks/useNotification';
 import { findKeyValueToObj } from 'utils/convert';
@@ -208,9 +209,12 @@ const useDefaultValues = ({ setDefaultValues, user_id }: Props) => {
         );
         break;
       case MENU.CNPS:
-        convertDataToStates(
-          initialCNPS, initialCNPS
-        );
+        getCNPS({ user_id, patient_id })
+          .then(({ data }) => {
+            const { update_at, cnps_survey } = data;
+            convertDataToStates({ update_at, ...cnps_survey }, initialCNPS);
+          })
+          .catch(e => onFail('알 수 없는 오류가 발생했습니다.', e));
         break;
       case MENU.MENTAL_NURSING: 
         convertDataToStates(
