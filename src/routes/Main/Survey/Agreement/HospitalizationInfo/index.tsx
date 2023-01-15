@@ -56,7 +56,7 @@ const HospitalizationInfo = (props: SurveyDialogProps<THospitalizationInfoDefaul
             <Typography fontSize={16} fontWeight="bold" align="center" sx={{ marginTop: "12px", marginBottom: "40px" }}>
                 입원 안내 확인서
                 <br/>
-                - Test 중 입니다 -
+                - 해당 메뉴 저장은 스탠다드 버전에서 가능합니다 -
             </Typography>
             <CommonPatientInfo patientInfo={patientInfo} nurseName={nurseName} />
             <Box sx={{ marginTop: "48px" }}>

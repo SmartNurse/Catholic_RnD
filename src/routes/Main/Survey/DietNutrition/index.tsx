@@ -49,7 +49,11 @@ const DietNutrition = (props: SurveyDialogProps<TDietNutritionDefaultValues>) =>
                 columnSpacing={3}
                 sx={{ py: 5, px: 10 }}
             >
-                <Typography sx={{ margin: "12px auto", fontWeight: "700", fontSize: "16px" }}>(Test 중 입니다)</Typography>
+                <Typography sx={{ margin: "12px auto", fontWeight: "700", fontSize: "16px", textAlign: "center" }}>
+                    식이/영양 기록지
+                    <br />
+                    - 해당 메뉴 저장은 스탠다드 버전에서 가능합니다 -
+                </Typography>
                 <PatientInfo {...formProps} {...patientInfo} />
                 <DietResultBox selected={selected} calorie={calorie} dietList={dietList} etc={etc} />
                 <DietSelection {...formProps} selected={selected} setSelected={setSelected} setCalorie={setCalorie} />
