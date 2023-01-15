@@ -16,29 +16,42 @@ export interface IECardexRemark {
 
 export interface IECardexDosage {
   date: string;
-  dosage: string;
+  medication: string;
   method: string;
   time: string;
-  termination: string;
+  end: string;
 }
 
 export interface IECardexLab {
   date: string;
   lab: string;
-  receipt: string;
+  implementing_and_inspection: string;
   result: string;
 }
 
-export interface IECardexImageTest {
+export interface IECardexImagingTest {
   date: string;
-  image_test: string;
-  receipt: string;
+  imaging_test: string;
+  implementing_and_inspection: string;
   result: string;
+}
+
+export interface IUpdateECardex extends IGetSurvey {
+  e_cardex_survey: {
+    other_remarks: string;
+    remark_data: IECardexRemark[];
+    medication_data: IECardexDosage[];
+    lab_data: IECardexLab[];
+    imaging_test_data: IECardexImagingTest[];
+    concerns: string;
+    plans: string;
+    evaluation: string;
+  }
 }
 
 // 간호인수인계
 export interface IUpdateTakingOver extends IGetSurvey {
-  takeOverSurvey: {
+  take_over_survey: {
     loc: string;
     vital_sign: string;
     current_condition: string;

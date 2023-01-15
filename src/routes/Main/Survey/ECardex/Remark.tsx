@@ -18,7 +18,7 @@ interface Props extends IFormValues, IFormWatch, IFormRegister {
 
 const Remark = (props: Props) => {
   const { disabled, watch, setValue, onRequired, onSuccess, register } = props;
-  const remarkList: IECardexRemark[] = watch('remark');
+  const remarkList: IECardexRemark[] = watch('remark_data');
 
   const [date, setDate] = useState("");
   const [remark, setRemark] = useState("");
@@ -38,7 +38,7 @@ const Remark = (props: Props) => {
     }
 
     onSuccess('Remark 추가되었습니다.');
-    setValue('remark', remarkList ? [...remarkList, request] : [request]);
+    setValue('remark_data', remarkList ? [...remarkList, request] : [request]);
     setValue("etc.remark.date", "");
     setDate("");
     setRemark("");
@@ -72,7 +72,7 @@ const Remark = (props: Props) => {
 
   const onDeleteRow = (index: number) => {
     setValue(
-      'remark',
+      'remark_data',
       remarkList.filter((_, i) => i !== index)
     );
   };

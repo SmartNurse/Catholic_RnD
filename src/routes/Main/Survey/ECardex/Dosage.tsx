@@ -21,7 +21,7 @@ interface Props extends IFormValues, IFormWatch, IFormRegister {
 
 const Dosage = (props: Props) => {
   const { disabled, watch, setValue, onRequired, onSuccess, register } = props;
-  const dosageList: IECardexDosage[] = watch('dosage');
+  const dosageList: IECardexDosage[] = watch('medication_data');
 
   const [date, setDate] = useState("");
   const [dosage, setDosage] = useState("");
@@ -31,15 +31,15 @@ const Dosage = (props: Props) => {
 
   const columns = [
     { fieldId: 'date', label: '일시', sx: { width: 200 } },
-    { fieldId: 'dosage', label: '투약' },
+    { fieldId: 'medication', label: '투약' },
     { fieldId: 'method', label: '방법', sx: { width: 200 } },
     { fieldId: 'time', label: '시간', sx: { width: 200 } },
-    { fieldId: 'termination', label: '중지', sx: { width: 200 } },
+    { fieldId: 'end', label: '중지', sx: { width: 200 } },
     { fieldId: 'action', label: '', sx: { width: 100 } },
   ];
 
   const onAddRow = () => {
-    const request = { date, dosage, method, time, termination };
+    const request = { date, medication: dosage, method, time, end: termination };
 
     console.log(request);
     if (Object.values(request).filter(v => !v).length > 0) {
@@ -47,7 +47,7 @@ const Dosage = (props: Props) => {
     }
 
     onSuccess('투약 추가되었습니다.');
-    setValue('dosage', dosageList ? [...dosageList, request] : [request]);
+    setValue('medication_data', dosageList ? [...dosageList, request] : [request]);
     setValue("etc.dosage.date", "");
     setDate("");
     setDosage("");
@@ -68,9 +68,8 @@ const Dosage = (props: Props) => {
             })}
           />
     ),
-    dosage: (
+    medication: (
       <MuiTextField
-        value={dosage}
         required={false}
         onChange={({ target: { value } }) => setDosage(value)}
       />
@@ -96,7 +95,7 @@ const Dosage = (props: Props) => {
         )}
       />
     ),
-    termination: (
+    end: (
       <MuiTextField
         value={termination}
         required={false}
@@ -112,7 +111,7 @@ const Dosage = (props: Props) => {
 
   const onDeleteRow = (index: number) => {
     setValue(
-      'dosage',
+      'medication_data',
       dosageList.filter((_, i) => i !== index)
     );
   };

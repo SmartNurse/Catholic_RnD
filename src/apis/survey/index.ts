@@ -12,7 +12,19 @@ import {
   IUpdateNeeds,
   IUpdateClinicObservation,
   IUpdateTakingOver,
+  IUpdateECardex,
 } from './type';
+
+// e-CARDEX
+export const getECardex = (request: IGetSurvey) => {
+  const url = `/survey/ecardex?${formatToRequestParameter(request)}`;
+  return apiGateway.get(url);
+};
+
+export const updateECardex = (request: IUpdateECardex) => {
+  const url = `/survey/ecardex`;
+  return apiGateway.post(url, camelcaseKeys(request)); 
+};
 
 // 간호인수인계
 export const getTakingOver = (request: IGetSurvey) => {

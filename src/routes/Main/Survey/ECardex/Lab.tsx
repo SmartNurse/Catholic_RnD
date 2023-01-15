@@ -18,7 +18,7 @@ interface Props extends IFormValues, IFormWatch, IFormRegister {
 
 const Lab = (props: Props) => {
   const { disabled, watch, setValue, onRequired, onSuccess, register } = props;
-  const labList: IECardexLab[] = watch('lab');
+  const labList: IECardexLab[] = watch('lab_data');
 
   const [date, setDate] = useState("");
   const [lab, setLab] = useState("");
@@ -28,13 +28,13 @@ const Lab = (props: Props) => {
   const columns = [
     { fieldId: 'date', label: '일시', sx: { width: 200 } },
     { fieldId: 'lab', label: 'LAB' },
-    { fieldId: 'receipt', label: '접수/시행', sx: { width: 200 } },
+    { fieldId: 'implementing_and_inspection', label: '접수/시행', sx: { width: 200 } },
     { fieldId: 'result', label: '결과', sx: { width: 200 } },
     { fieldId: 'action', label: '', sx: { width: 100 } },
   ];
 
   const onAddRow = () => {
-    const request = { date, lab, receipt, result };
+    const request = { date, lab, implementing_and_inspection: receipt, result };
 
     console.log(request);
     if (Object.values(request).filter(v => !v).length > 0) {
@@ -42,7 +42,7 @@ const Lab = (props: Props) => {
     }
 
     onSuccess('LAB 추가되었습니다.');
-    setValue('lab', labList ? [...labList, request] : [request]);
+    setValue('lab_data', labList ? [...labList, request] : [request]);
     setValue("etc.lab.date", "");
     setDate("");
     setLab("");
@@ -69,7 +69,7 @@ const Lab = (props: Props) => {
         onChange={({ target: { value } }) => setLab(value)}
       />
     ),
-    receipt: (
+    implementing_and_inspection: (
       <MuiTextField
         value={receipt}
         required={false}
@@ -92,7 +92,7 @@ const Lab = (props: Props) => {
 
   const onDeleteRow = (index: number) => {
     setValue(
-      'lab',
+      'lab_data',
       labList.filter((_, i) => i !== index)
     );
   };

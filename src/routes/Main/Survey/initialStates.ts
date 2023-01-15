@@ -24,34 +24,13 @@ export const initialNursingRecord = {
 
 export const initialECardex = {
   update_at: '',
-  etc: {
-    text: '',
-    remark: {
-      date: '',
-      remark: '',
-    },
-    dosage: {
-      date: '',
-      dosage: '',
-      method: '',
-      time: '',
-      termination: '',
-    },
-    lab: {
-      date: '',
-      lab: '',
-      receipt: '',
-      result: '',
-    },
-    image_test: {
-      date: '',
-      image_test: '',
-      receipt: '',
-      result: '',
-    },
-  },
-  problem: '',
-  plan: '',
+  other_remarks:  '',
+  remark_data: [],
+  medication_data: [],
+  lab_data: [],
+  imaging_test_data: [],
+  concerns: '',
+  plans: '',
   evaluation: '',
 };
 
