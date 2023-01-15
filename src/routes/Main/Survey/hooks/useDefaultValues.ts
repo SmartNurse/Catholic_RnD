@@ -1,4 +1,5 @@
 import {
+  getECardex,
   getTakingOver,
   getBedScore,
   getClinicObservation,
@@ -70,11 +71,14 @@ const useDefaultValues = ({ setDefaultValues, user_id }: Props) => {
 
   const onGetDefaultValues = (patient_id: number, type: string) => {
     switch (type) {
-      case MENU.E_CARDEX: 
-        convertDataToStates(
-          initialECardex,
-          initialECardex,
-        );
+      case MENU.E_CARDEX:
+        getECardex({ user_id, patient_id })
+          .then(({ data }) => {
+            const { update_at, ecardex_survey } = data;
+            console.log(data);
+            convertDataToStates({ update_at, ...ecardex_survey }, initialECardex);
+          })
+          .catch(e => onFail('알 수 없는 오류가 발생했습니다.', e)); 
         break;
       case MENU.TAKING_OVER:
         getTakingOver({ user_id, patient_id })

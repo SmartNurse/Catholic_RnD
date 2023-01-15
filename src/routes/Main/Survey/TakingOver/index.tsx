@@ -39,7 +39,7 @@ const TakingOver = (props: SurveyDialogProps<TTakingOverDefaultValues>) => {
       const request = {
         user_id,
         patient_id: patientInfo.patient_id,
-        takeOverSurvey: {...data}
+        take_over_survey: {...data}
       };
 
       updateTakingOver(request)
