@@ -10,7 +10,7 @@ import {
   SurveyDialogProps,
 } from 'routes/Main/Survey/type';
 
-import PatientInfo from './PatientInfo';
+import CommonPatientInfo from '../components/CommonPatientInfo';
 import BedScoreContents from './BedScoreContents';
 
 const BedScore = (props: SurveyDialogProps<TBedScoreDefaultValues>) => {
@@ -21,6 +21,7 @@ const BedScore = (props: SurveyDialogProps<TBedScoreDefaultValues>) => {
     defaultValues,
     user_id,
     patientInfo,
+    nurseName,
     onClose,
   } = props;
 
@@ -71,7 +72,7 @@ const BedScore = (props: SurveyDialogProps<TBedScoreDefaultValues>) => {
         columnSpacing={3}
         sx={{ py: 5, px: 1 }}
       >
-        <PatientInfo {...formProps} {...patientInfo} />
+        <CommonPatientInfo patientInfo={patientInfo} nurseName={nurseName} />
         <BedScoreContents {...formProps} />
       </Grid>
     </MuiDialog.SurveyForm>

@@ -9,7 +9,7 @@ import {
 import useSurvey from 'store/survey/useSurvey';
 import useNotification from 'hooks/useNotification';
 
-import PatientInfo from './PatientInfo';
+import CommonPatientInfo from '../components/CommonPatientInfo';
 import TextareaSection from '../components/TextAreaSection';
 
 const TakingOver = (props: SurveyDialogProps<TTakingOverDefaultValues>) => {
@@ -54,7 +54,7 @@ const TakingOver = (props: SurveyDialogProps<TTakingOverDefaultValues>) => {
             <Typography sx={{ margin: "40px auto 0px auto", fontWeight: "700", fontSize: "16px", textAlign: "center" }}>
                 간호 인수인계 <br/> - Test 중 입니다 -
             </Typography>
-            <PatientInfo {...patientInfo} />
+            <CommonPatientInfo patientInfo={patientInfo} nurseName={nurseName} />
             <TextareaSection {...formProps} title="의식 상태(현재 상태)" registerId="consciousness" />
             <TextareaSection {...formProps} title="활력 징후(특이 사항)" registerId="vitalsign" />
             <TextareaSection {...formProps} title="현재 상태(수술 후 경과일,치료,현재 통증 상태, 현재 가지고 있는 catheter,약물,치료식이 등)" registerId="current" />

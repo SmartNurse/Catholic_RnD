@@ -7,7 +7,7 @@ import useNotification from 'hooks/useNotification';
 import MuiDialog from 'components/MuiDialog';
 import { TFallDefaultValues, SurveyDialogProps } from 'routes/Main/Survey/type';
 
-import PatientInfo from './PatientInfo';
+import CommonPatientInfo from '../components/CommonPatientInfo';
 import FallContents from './FallContents';
 
 const Fall = (props: SurveyDialogProps<TFallDefaultValues>) => {
@@ -18,6 +18,7 @@ const Fall = (props: SurveyDialogProps<TFallDefaultValues>) => {
     defaultValues,
     user_id,
     patientInfo,
+    nurseName,
     onClose,
   } = props;
 
@@ -74,7 +75,7 @@ const Fall = (props: SurveyDialogProps<TFallDefaultValues>) => {
         columnSpacing={3}
         sx={{ py: 5, px: 1 }}
       >
-        <PatientInfo {...formProps} {...patientInfo} />
+        <CommonPatientInfo patientInfo={patientInfo} nurseName={nurseName} />
         <FallContents {...formProps} />
       </Grid>
     </MuiDialog.SurveyForm>

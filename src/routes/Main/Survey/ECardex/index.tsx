@@ -10,7 +10,7 @@ import useSurvey from 'store/survey/useSurvey';
 import useNotification from 'hooks/useNotification';
 
 import TextareaSection from '../components/TextAreaSection';
-import PatientInfo from './PatientInfo';
+import CommonPatientInfo from '../components/CommonPatientInfo';
 import Remark from './Remark';
 import Dosage from './Dosage';
 import Lab from './Lab';
@@ -56,7 +56,7 @@ const ECardex = (props: SurveyDialogProps<TECardexDefaultValues>) => {
           sx={{ py: 5, px: 1 }}
         >
             <Typography sx={{ margin: "40px auto 0px auto", fontWeight: "700", fontSize: "16px", textAlign: "center" }}>e-Cardex (Kardex) <br/> - Test 중 입니다 -</Typography>
-            <PatientInfo patientInfo={patientInfo} nurseName={nurseName} />
+            <CommonPatientInfo patientInfo={patientInfo} nurseName={nurseName} />
             <TextareaSection {...formProps} title="기타 인계사항" registerId="etc.text" />
             <Remark {...formProps} />
             <Dosage {...formProps} />
