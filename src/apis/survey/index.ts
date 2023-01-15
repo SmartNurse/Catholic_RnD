@@ -11,8 +11,21 @@ import {
   IUpdateBedScore,
   IUpdateNeeds,
   IUpdateClinicObservation,
+  IUpdateTakingOver,
 } from './type';
 
+// 간호인수인계
+export const getTakingOver = (request: IGetSurvey) => {
+  const url = `/survey/takeover?${formatToRequestParameter(request)}`;
+  return apiGateway.get(url);
+};
+
+export const updateTakingOver = (request: IUpdateTakingOver) => {
+  const url = `/survey/takeover`;
+  return apiGateway.post(url, camelcaseKeys(request)); 
+};
+
+// 입원간호기록지
 export const getHospitalization = (request: IGetSurvey) => {
   const url = `/survey/hospital?${formatToRequestParameter(request)}`;
   return apiGateway.get(url);
@@ -23,6 +36,7 @@ export const createHospitalization = (request: ICreateHospitalization) => {
   return apiGateway.post(url, camelcaseKeys(request));
 };
 
+// 퇴원간호기록지
 export const getOutHospital = (request: IGetSurvey) => {
   const url = `/survey/out/hospital?${formatToRequestParameter(request)}`;
   return apiGateway.get(url);
@@ -33,6 +47,7 @@ export const createOutHospital = (request: ICreateOutHospital) => {
   return apiGateway.post(url, camelcaseKeys(request));
 };
 
+// 처방기록지
 export const getMedication = (request: IGetSurvey) => {
   const url = `/survey/medication?${formatToRequestParameter(request)}`;
   return apiGateway.get(url);
@@ -43,16 +58,19 @@ export const updateMedication = (request: IUpdateMedication) => {
   return apiGateway.post(url, camelcaseKeys(request));
 };
 
+// 영상검사기록지
 export const getRadiology = (request: IGetSurvey) => {
   const url = `/survey/radiology?${formatToRequestParameter(request)}`;
   return apiGateway.get(url);
 };
 
+// 임상병리검사기록지
 export const getPathology = (request: IGetSurvey) => {
   const url = `/survey/pathology?${formatToRequestParameter(request)}`;
   return apiGateway.get(url);
 };
 
+// 임상관찰기록지
 export const getClinicObservation = (request: IGetSurvey) => {
   const url = `/survey/clinicObservation?${formatToRequestParameter(request)}`;
   return apiGateway.get(url);
