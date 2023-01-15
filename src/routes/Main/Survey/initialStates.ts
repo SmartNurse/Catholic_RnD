@@ -368,10 +368,13 @@ export const initialAnesthesia = {
     x_ray: false,
     ecg: false,
     posture: '',
+    posture_etc: '',
+    history: '',
     emergency: '',
     asa_class: '',
     antibiotics: '',
     method: '',
+    method_etc: '',
   },
   prescription_records: [],
   patient_status: {
