@@ -174,6 +174,7 @@ const locale = {
     'OUT.HOSPITAL.WAY.2': '대중교통',
     'OUT.HOSPITAL.WAY.3': '구급차',
     'OUT.HOSPITAL.FOOD.1': '일반식',
+    'OUT.HOSPITAL.FOOD.2': '처방식',
     'OUT.HOSPITAL.SHOWER.1': '샤워',
     'OUT.HOSPITAL.SHOWER.2': '통목욕',
     'OUT.HOSPITAL.ACTIVITY.1': '제한',
