@@ -57,13 +57,13 @@ export const initialECardex = {
 
 export const initialTakingOver = {
   update_at: '',
-  consciousness: '',
-  vitalsign: '',
-  current: '',
-  presence: '',
-  base: '',
+  loc: '',
+  vital_sign: '',
+  current_condition: '',
+  rbfi: '',
+  reasons: '',
   intervention: '',
-  etc: '',
+  other: '',
 };
 
 export const initialHospitalizationSurvey = {

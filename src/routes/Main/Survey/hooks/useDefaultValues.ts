@@ -1,4 +1,5 @@
 import {
+  getTakingOver,
   getBedScore,
   getClinicObservation,
   getFall,
@@ -76,10 +77,12 @@ const useDefaultValues = ({ setDefaultValues, user_id }: Props) => {
         );
         break;
       case MENU.TAKING_OVER:
-        convertDataToStates(
-          initialTakingOver,
-          initialTakingOver,
-        );
+        getTakingOver({ user_id, patient_id })
+          .then(({ data }) => {
+            const { update_at, take_over_survey } = data;
+            convertDataToStates({ update_at, ...take_over_survey }, initialTakingOver);
+          })
+          .catch(e => onFail('알 수 없는 오류가 발생했습니다.', e));
         break;
       case MENU.HOSPITALIZATION:
         getHospitalization({ user_id, patient_id })
