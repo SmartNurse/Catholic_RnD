@@ -57,7 +57,7 @@ const Transfusion = (props: SurveyDialogProps<TECardexDefaultValues>) => {
           sx={{ py: 5, px: 1 }}
         >
             <Typography sx={{ margin: "40px auto 0px auto", fontWeight: "700", fontSize: "16px", textAlign: "center" }}>
-                수혈 기록지 <br/> - 해당 메뉴 저장은 스탠다드 버전에서 가능합니다 -
+                수혈 기록지 <br/> - TEST 중입니다 -
             </Typography>
             <CommonPatientInfo patientInfo={patientInfo} nurseName={nurseName} />
             <BloodInfo {...formProps} blood={patientInfo.blood} />

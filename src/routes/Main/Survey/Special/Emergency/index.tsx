@@ -57,7 +57,7 @@ const Emergency = (props: SurveyDialogProps<TEmergencyDefaultValues>) => {
           sx={{ py: 5, px: 1 }}
         >
             <Typography sx={{ margin: "40px auto 0px auto", fontWeight: "700", fontSize: "16px", textAlign: "center" }}>
-                응급 기록지 <br/> - 해당 메뉴 저장은 스탠다드 버전에서 가능합니다 -
+                응급 기록지 <br/> - TEST 중입니다 -
             </Typography>
             <PatientInfo {...formProps} patientInfo={patientInfo} />
             <TextAreaSection {...formProps} title="환자 발생 사유" registerId="accident_reason"/>

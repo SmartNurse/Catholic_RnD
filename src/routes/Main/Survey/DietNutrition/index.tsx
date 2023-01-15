@@ -52,7 +52,7 @@ const DietNutrition = (props: SurveyDialogProps<TDietNutritionDefaultValues>) =>
                 <Typography sx={{ margin: "12px auto", fontWeight: "700", fontSize: "16px", textAlign: "center" }}>
                     식이/영양 기록지
                     <br />
-                    - 해당 메뉴 저장은 스탠다드 버전에서 가능합니다 -
+                    - TEST 중입니다 -
                 </Typography>
                 <PatientInfo {...formProps} {...patientInfo} />
                 <DietResultBox selected={selected} calorie={calorie} dietList={dietList} etc={etc} />
