@@ -8,7 +8,7 @@ import { MobileTimePicker } from '@mui/x-date-pickers';
 
 import { formatStringToDate } from 'utils/formatting';
 import { Ti18nId } from 'hooks/useI18n';
-import { IPrescriptionRecord } from 'apis/survey/type';
+import { IAnesthesiaPrescriptionRecord } from 'apis/survey/type';
 import { IFormRegister, IFormValues, IFormWatch } from 'routes/Main/type';
 
 import MuiTable from 'components/MuiTable';
@@ -23,7 +23,7 @@ interface Props extends IFormValues, IFormWatch, IFormRegister {
 
 const PrescriptionRecords = (props: Props) => {
   const { disabled, watch, setValue, onRequired, onSuccess, register } = props;
-  const prescriptionRecordList: IPrescriptionRecord[] = watch('anesthesia.prescription_records');
+  const prescriptionRecordList: IAnesthesiaPrescriptionRecord[] = watch('anesthesia.prescription_records');
 
   const [time, setTime] = useState(null);
   const [desc, setDesc] = useState("");
