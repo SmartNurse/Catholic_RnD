@@ -83,7 +83,7 @@ const Glucose = (props: SurveyDialogProps<TGlucoseDefaultValues>) => {
           sx={{ py: 5, px: 1 }}
         >
             <Typography sx={{ margin: "40px auto 0px auto", fontWeight: "700", fontSize: "16px", textAlign: "center" }}>
-                혈당 기록지 <br/> - Test 중 입니다 -
+                혈당 기록지
             </Typography>
             <PatientInfo patientInfo={patientInfo} nurseName={nurseName} />
             <GlucoseRecords {...formProps} />
