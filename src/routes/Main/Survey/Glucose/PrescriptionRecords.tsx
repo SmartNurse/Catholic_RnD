@@ -6,7 +6,7 @@ import { Button, Grid, IconButton, MenuItem, TextField, Checkbox } from '@mui/ma
 import { MobileTimePicker } from '@mui/x-date-pickers';
 
 import { Ti18nId } from 'hooks/useI18n';
-import { IPrescriptionRecord } from 'apis/survey/type';
+import { IGlucosePrescriptionRecord } from 'apis/survey/type';
 import { IFormRegister, IFormValues, IFormWatch } from 'routes/Main/type';
 import MuiTable from 'components/MuiTable';
 import MuiTextField from 'components/Form/MuiTextField';
@@ -22,7 +22,7 @@ interface Props extends IFormValues, IFormWatch, IFormRegister {
 
 const GlucoseRecords = (props: Props) => {
   const { disabled, watch, setValue, onRequired, onSuccess, register } = props;
-  const prescriptionRecordList: IPrescriptionRecord[] = watch('prescription_records');
+  const prescriptionRecordList: IGlucosePrescriptionRecord[] = watch('prescription_records');
 
   const [date, setDate] = useState("");
   const [time, setTime] = useState(null);
