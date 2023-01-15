@@ -180,8 +180,8 @@ export const initialClinicalObservation = {
 
 export const initialGlucose = {
   update_at: "",
-  glucose_records: [],
-  prescription_records: [],
+  blood_sugar_log: [],
+  prescription: [],
 };
 
 export const initialBedScore = {

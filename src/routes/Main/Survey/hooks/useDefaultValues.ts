@@ -3,6 +3,7 @@ import {
   getTakingOver,
   getBedScore,
   getClinicObservation,
+  getGlucose,
   getFall,
   getHospitalization,
   getMedication,
@@ -75,7 +76,6 @@ const useDefaultValues = ({ setDefaultValues, user_id }: Props) => {
         getECardex({ user_id, patient_id })
           .then(({ data }) => {
             const { update_at, ecardex_survey } = data;
-            console.log(data);
             convertDataToStates({ update_at, ...ecardex_survey }, initialECardex);
           })
           .catch(e => onFail('알 수 없는 오류가 발생했습니다.', e)); 
@@ -157,10 +157,12 @@ const useDefaultValues = ({ setDefaultValues, user_id }: Props) => {
         );
         break;
       case MENU.GLUCOSE:
-        convertDataToStates(
-          initialGlucose,
-          initialGlucose,
-        );
+        getGlucose({ user_id, patient_id })
+          .then(({ data }) => {
+            const { update_at, blood_sugar_survey } = data;
+            convertDataToStates({ update_at, ...blood_sugar_survey }, initialGlucose);
+          })
+          .catch(e => onFail('알 수 없는 오류가 발생했습니다.', e));
         break;
       case MENU.BEDSORES:
         getBedScore({ user_id, patient_id })
