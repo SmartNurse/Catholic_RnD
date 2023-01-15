@@ -46,10 +46,10 @@ const Glucose = (props: SurveyDialogProps<TGlucoseDefaultValues>) => {
         user_id,
         patient_id: patientInfo.patient_id,
         blood_sugar_survey: {
-          blood_sugar_log: blood_sugar_log.map(
+          blood_sugar_log: blood_sugar_log?.map(
             ({ date, time, activity, category, level }: IGlucoseRecord) => ({ date, time, activity, category, level })
           ),
-          prescription: prescription.map(
+          prescription: prescription?.map(
             ({ date, time, medication, content, unit, dose, administration_no, methods, completed }: IGlucosePrescriptionRecord) => ({ date, time, medication, content, unit, dose, administration_no, methods, completed })
           )
         }
