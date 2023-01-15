@@ -334,15 +334,27 @@ export const initialMentalNursing = {
 export const initialOperation = {
   update_at: '',
   operation_date: '',
-  operation_info: {
-    main_code: '',
-    main_title: '',
-    sub_code: [],
-    sub_title: [],
+  staff_info: {
     main_doctor: '',
     sub_doctor: '',
     disinfection_nurse: '',
     circular_nurse: '',
+  },
+  operation_info: {
+    department: '',
+    date: '',
+    time: '',
+    asa_class: '',
+    main_title: '',
+    sub_title: '',
+    history: '',
+    allergy: '',
+    fast: '',
+    antibiotics: '',
+    posture: '',
+    posture_etc: '',
+    x_ray: false,
+    ecg: false,
   },
   operation_content: {
     desc: '',
