@@ -11,8 +11,8 @@ import {
 import useSurvey from 'store/survey/useSurvey';
 import useNotification from 'hooks/useNotification';
 
-import PatientInfo from "./PatientInfo";
-import OpInfo from "./OpInfo";
+import PatientStaffInfo from "./PatientStaffInfo";
+import NewOpInfo from "./NewOpInfo";
 import OpContent from "./OpContent";
 
 const Operation = (props: SurveyDialogProps<TECardexDefaultValues>) => {
@@ -28,6 +28,7 @@ const Operation = (props: SurveyDialogProps<TECardexDefaultValues>) => {
     } = props;
 
     const [opDate, setOpDate] = useState("");
+    const [operationTime, setOperationTime] = useState<string | null>(null);
 
     const { onUpdateIsSave } = useSurvey();
     const { onSuccess, onFail, onResultCode, onRequired } = useNotification();
@@ -57,10 +58,10 @@ const Operation = (props: SurveyDialogProps<TECardexDefaultValues>) => {
           sx={{ py: 5, px: 1 }}
         >
             <Typography sx={{ margin: "40px auto 0px auto", fontWeight: "700", fontSize: "16px", textAlign: "center" }}>
-                수술 기록지 <br/> - Test 중 입니다 -
+                수술 기록지 <br/> - 해당 메뉴 저장은 스탠다드 버전에서 가능합니다 -
             </Typography>
-            <PatientInfo {...formProps} setOpDate={setOpDate} patientInfo={patientInfo} nurseName={nurseName} />
-            <OpInfo {...formProps} />
+            <PatientStaffInfo {...formProps} patientInfo={patientInfo} nurseName={nurseName} />
+            <NewOpInfo {...formProps} time={operationTime} setTime={setOperationTime} />
             <OpContent {...formProps} />
         </Grid>
       </MuiDialog.SurveyForm>  

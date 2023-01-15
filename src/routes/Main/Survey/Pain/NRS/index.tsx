@@ -49,7 +49,13 @@ const NRS = (props: SurveyDialogProps<TNRSDefaultValues>) => {
             onSubmit={disabled ? undefined : handleSubmit(onSubmit)}
             update_at={defaultValues?.update_at}
         >
-            <Typography fontSize={16} fontWeight="bold" align="center" sx={{ marginTop: "12px", marginBottom: "40px" }}>NRS (테스트 중)<br/> PAIN SCORE 0-10 NUMERICAL RATING</Typography>
+            <Typography fontSize={16} fontWeight="bold" align="center" sx={{ marginTop: "12px", marginBottom: "40px" }}>
+                NRS
+                <br/>
+                PAIN SCORE 0-10 NUMERICAL RATING
+                <br/>
+                - 해당 메뉴 저장은 스탠다드 버전에서 가능합니다 -
+            </Typography>
             <CommonPatientInfo patientInfo={patientInfo} nurseName={nurseName} />
             <NrsContents {...formProps} />
         </MuiDialog.SurveyForm>

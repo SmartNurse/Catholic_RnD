@@ -24,6 +24,7 @@ const BabyStatus = (props: Props) => {
                     values={[1, 2]}
                     defaultValue={getValues('childbirth.baby_status.gender')}
                     onChange={v => setValue('childbirth.baby_status.gender', v)}
+                    width="50px"
                 />
         },
         {
@@ -63,6 +64,7 @@ const BabyStatus = (props: Props) => {
                     values={[0, 1]}
                     defaultValue={getValues('childbirth.baby_status.breathe')}
                     onChange={v => setValue('childbirth.baby_status.breathe', v)}
+                    width="50px"
                 />
         },
         {
@@ -73,6 +75,7 @@ const BabyStatus = (props: Props) => {
                     values={[0, 1]}
                     defaultValue={getValues('childbirth.baby_status.urine')}
                     onChange={v => setValue('childbirth.baby_status.urine', v)}
+                    width="50px"
                 />
         }, 
         {
@@ -83,6 +86,7 @@ const BabyStatus = (props: Props) => {
                     values={[0, 1]}
                     defaultValue={getValues('childbirth.baby_status.placenta_discharge')}
                     onChange={v => setValue('childbirth.baby_status.placenta_discharge', v)}
+                    width="50px"
                 />
         },
         {
@@ -93,6 +97,7 @@ const BabyStatus = (props: Props) => {
                     values={[0, 1]}
                     defaultValue={getValues('childbirth.baby_status.placenta_color')}
                     onChange={v => setValue('childbirth.baby_status.placenta_color', v)}
+                    width="50px"
                 />
         },
         {
@@ -104,6 +109,7 @@ const BabyStatus = (props: Props) => {
                         values={[0, 1]}
                         defaultValue={getValues('childbirth.baby_status.nuchal_cord.value')}
                         onChange={v => setValue('childbirth.baby_status.nuchal_cord.value', v)}
+                        width="50px"
                     />
                     <Form.MuiTextField
                         required={false}
@@ -124,6 +130,7 @@ const BabyStatus = (props: Props) => {
                         values={[0, 1]}
                         defaultValue={getValues('childbirth.baby_status.resuscitation.value')}
                         onChange={v => setValue('childbirth.baby_status.resuscitation.value', v)}
+                        width="50px"
                     />
                     <Form.MuiTextField
                         required={false}

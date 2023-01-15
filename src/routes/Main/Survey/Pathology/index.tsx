@@ -7,11 +7,11 @@ import {
   SurveyDialogProps,
 } from 'routes/Main/Survey/type';
 
-import PatientInfo from './PatientInfo';
+import CommonPatientInfo from '../components/CommonPatientInfo';
 import Pathologies from './Pathologies';
 
 const Pathology = (props: SurveyDialogProps<TPathologyDefaultValues>) => {
-  const { title, isOpen, defaultValues, patientInfo, onClose } = props;
+  const { title, isOpen, defaultValues, patientInfo, nurseName, onClose } = props;
 
   const { getValues } = useForm({
     defaultValues,
@@ -26,7 +26,7 @@ const Pathology = (props: SurveyDialogProps<TPathologyDefaultValues>) => {
         columnSpacing={3}
         sx={{ py: 5, px: 1 }}
       >
-        <PatientInfo {...patientInfo} />
+        <CommonPatientInfo patientInfo={patientInfo} nurseName={nurseName} />
         <Pathologies getValues={getValues} />
       </Grid>
     </MuiDialog.SurveyForm>

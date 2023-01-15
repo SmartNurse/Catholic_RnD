@@ -55,6 +55,7 @@ const PlacentaRemoval = (props: Props) => {
                     values={[0, 1]}
                     defaultValue={getValues('childbirth.placenta_removal.curettage')}
                     onChange={v => setValue('childbirth.placenta_removal.curettage', v)}
+                    width="50px"
                 />,
         },
     ];

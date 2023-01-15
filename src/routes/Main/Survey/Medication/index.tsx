@@ -10,7 +10,7 @@ import {
   SurveyDialogProps,
 } from 'routes/Main/Survey/type';
 
-import PatientInfo from './PatientInfo';
+import CommonPatientInfo from '../components/CommonPatientInfo';
 import Medications from './Medications';
 import { updateMedication } from 'apis/survey';
 
@@ -22,6 +22,7 @@ const Medication = (props: SurveyDialogProps<TMedicationDefaultValues>) => {
     defaultValues,
     user_id,
     patientInfo,
+    nurseName,
     onClose,
   } = props;
 
@@ -78,7 +79,7 @@ const Medication = (props: SurveyDialogProps<TMedicationDefaultValues>) => {
         columnSpacing={3}
         sx={{ py: 5, px: 1 }}
       >
-        <PatientInfo {...patientInfo} />
+        <CommonPatientInfo patientInfo={patientInfo} nurseName={nurseName} />
         <Medications
           watch={watch}
           disabled={disabled}

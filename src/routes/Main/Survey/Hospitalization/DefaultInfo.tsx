@@ -61,10 +61,13 @@ const DefaultInfo = (props: Props) => {
             onChange={v => setValue('default_info.status', v)}
           />
         </RowContent>
-        <RowContent title="주호소">
-          <Form.MuiTextField
+        <RowContent title="대화수준">
+          <Form.MuiRadioGroup
             disabled={disabled}
-            {...register('default_info.joo_ho_so')}
+            i18nKey="HOSPITALIZATION.STATUS02"
+            values={[1, 2, 3]}
+            defaultValue={getValues('default_info.status02')}
+            onChange={v => setValue('default_info.status02', v)}
           />
         </RowContent>
         <RowContent title="발병일자">
@@ -73,15 +76,6 @@ const DefaultInfo = (props: Props) => {
             disabled={disabled}
             fullWidth={false}
             {...register('default_info.date')}
-          />
-        </RowContent>
-        <RowContent title="입원동기">
-          <Form.MuiTextField
-            multiline
-            disabled={disabled}
-            InputProps={{ sx: { height: 63 } }}
-            inputProps={{ style: { height: '100%' } }}
-            {...register('default_info.hospitalization_reason')}
           />
         </RowContent>
       </RowContainer>
@@ -147,13 +141,19 @@ const DefaultInfo = (props: Props) => {
             />
           </Stack>
         </RowContent>
-        <RowContent title="대화수준">
-          <Form.MuiRadioGroup
+        <RowContent title="주호소">
+          <Form.MuiTextField
             disabled={disabled}
-            i18nKey="HOSPITALIZATION.STATUS02"
-            values={[1, 2, 3]}
-            defaultValue={getValues('default_info.status02')}
-            onChange={v => setValue('default_info.status02', v)}
+            {...register('default_info.joo_ho_so')}
+          />
+        </RowContent>
+        <RowContent title="입원동기">
+          <Form.MuiTextField
+            multiline
+            disabled={disabled}
+            InputProps={{ sx: { height: 63 } }}
+            inputProps={{ style: { height: '100%' } }}
+            {...register('default_info.hospitalization_reason')}
           />
         </RowContent>
       </RowContainer>

@@ -21,10 +21,6 @@ interface IInfos {
     main_title: string;
     sub_code: string[];
     sub_title: string[];
-    main_doctor: string;
-    sub_doctor: string;
-    disinfection_nurse: string;
-    circular_nurse: string;
 }
 
 const OpInfo = (props: Props) => {
@@ -35,19 +31,8 @@ const OpInfo = (props: Props) => {
         main_title: "",
         sub_code: [],
         sub_title: [],
-        main_doctor: "",
-        sub_doctor: "",
-        disinfection_nurse: "",
-        circular_nurse: ""
     });
     const [subCount, setSubCount] = useState(1);
-
-    const staffs = [
-        { title: "집도의", variable: "main_doctor" },
-        { title: "보조의", variable: "sub_doctor" },
-        { title: "소독간호사", variable: "disinfection_nurse" },
-        { title: "순환간호사", variable: "circular_nurse" },
-    ];
 
     const onAddCode = () => {
         setSubCount(subCount+1);
@@ -61,7 +46,6 @@ const OpInfo = (props: Props) => {
         });
         setSubCount(subCount-1);
     }
-    console.log(infos);
 
     return (
         <>
@@ -131,20 +115,6 @@ const OpInfo = (props: Props) => {
                             }
                         </RowContent>
                     </Fragment>
-                )}
-
-                {staffs.map(({title, variable}, _) => 
-                    <RowContent key={variable} title={title} titleRatio={1} childrenRatio={2}>
-                        <MuiTextField
-                            value={infos[variable]}
-                            onChange={(e) => {
-                                const newInfos = {...infos};
-                                newInfos[variable] = e.target.value;
-                                setInfos({...newInfos});
-                            }}
-                            required={false}
-                        />
-                    </RowContent>
                 )}
             </RowContainer>
         </>

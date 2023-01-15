@@ -36,6 +36,7 @@ const PatientInfo = (props: Props) => {
           values={[1, 2, 3]}
           defaultValue={getValues('emergency.accident_type')}
           onChange={v => setValue('emergency.accident_type', v)}
+          width="130px"
         />
       </RowContent>
       <RowContent title="" titleRatio={1} childrenRatio={5} />
@@ -54,6 +55,7 @@ const PatientInfo = (props: Props) => {
           values={[1, 2, 3, 4, 0]}
           defaultValue={getValues('emergency.division')}
           onChange={v => setValue('emergency.division', v)}
+          width="130px"
         />
       </RowContent>
       <RowContent title="발생 장소" titleRatio={1} childrenRatio={2}>

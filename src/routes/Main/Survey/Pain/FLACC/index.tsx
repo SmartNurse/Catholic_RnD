@@ -50,7 +50,11 @@ const FLACC = (props: SurveyDialogProps<TFLACCDefaultValues>) => {
             onSubmit={disabled ? undefined : handleSubmit(onSubmit)}
             update_at={defaultValues?.update_at}
         >
-            <Typography fontSize={16} fontWeight="bold" align="center" sx={{ marginTop: "12px", marginBottom: "40px" }}>FLACC Scale (테스트 중)</Typography>
+            <Typography fontSize={16} fontWeight="bold" align="center" sx={{ marginTop: "12px", marginBottom: "40px" }}>
+                FLACC Scale
+                <br />
+                - 해당 메뉴 저장은 스탠다드 버전에서 가능합니다 -
+            </Typography>
             <CommonPatientInfo patientInfo={patientInfo} nurseName={nurseName} />
             <FlaccContents {...formProps} />
         </MuiDialog.SurveyForm>

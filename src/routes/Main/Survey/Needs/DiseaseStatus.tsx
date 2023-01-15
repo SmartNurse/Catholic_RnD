@@ -25,27 +25,6 @@ const DiseaseStatus = (props: Props) => {
 
   const rows = [
     {
-      id: 'chronic',
-      title: '만성질환',
-      0: checkbox({
-        label: '당뇨',
-        key: 'disease_status.chronic.checked1',
-      }),
-      1: checkbox({
-        label: '고혈압',
-        key: 'disease_status.chronic.checked2',
-      }),
-      2: checkbox({
-        label: '만성호흡기질환',
-        key: 'disease_status.chronic.checked3',
-      }),
-      3: checkbox({
-        label: '암',
-        inputKey: 'disease_status.chronic.cancer',
-        key: 'disease_status.chronic.checked4',
-      }),
-    },
-    {
       id: 'circulatory',
       title: '순환기계',
       0: checkbox({
@@ -71,6 +50,27 @@ const DiseaseStatus = (props: Props) => {
       }),
     },
     {
+      id: 'chronic',
+      title: '만성질환',
+      0: checkbox({
+        label: '당뇨',
+        key: 'disease_status.chronic.checked1',
+      }),
+      1: checkbox({
+        label: '고혈압',
+        key: 'disease_status.chronic.checked2',
+      }),
+      2: checkbox({
+        label: '만성호흡기질환',
+        key: 'disease_status.chronic.checked3',
+      }),
+      3: checkbox({
+        label: '암',
+        inputKey: 'disease_status.chronic.cancer',
+        key: 'disease_status.chronic.checked4',
+      }),
+    },
+    {
       id: 'nervous',
       title: '신경계',
       0: checkbox({
@@ -85,7 +85,7 @@ const DiseaseStatus = (props: Props) => {
         label: '간질',
         key: 'disease_status.nervous.checked3',
       }),
-      4: checkbox({
+      3: checkbox({
         label: '기타',
         inputKey: 'disease_status.nervous.etc',
         key: 'disease_status.nervous.checked5',
@@ -106,7 +106,7 @@ const DiseaseStatus = (props: Props) => {
         label: '골절 등 후유증',
         key: 'disease_status.musculoskeletal.checked3',
       }),
-      4: checkbox({
+      3: checkbox({
         label: '기타',
         inputKey: 'disease_status.musculoskeletal.etc',
         key: 'disease_status.musculoskeletal.checked5',
@@ -127,7 +127,7 @@ const DiseaseStatus = (props: Props) => {
         label: '정신질환',
         key: 'disease_status.mentalAndBehavioral.checked3',
       }),
-      4: checkbox({
+      3: checkbox({
         label: '기타',
         inputKey: 'disease_status.mentalAndBehavioral.etc',
         key: 'disease_status.mentalAndBehavioral.checked5',
@@ -144,7 +144,7 @@ const DiseaseStatus = (props: Props) => {
         label: '결핵',
         key: 'disease_status.respiratory.checked2',
       }),
-      4: checkbox({
+      2: checkbox({
         label: '기타',
         inputKey: 'disease_status.respiratory.etc',
         key: 'disease_status.respiratory.checked5',
@@ -157,7 +157,7 @@ const DiseaseStatus = (props: Props) => {
         key: 'disease_status.renal.checked1',
         label: '만성신부전증',
       }),
-      4: checkbox({
+      1: checkbox({
         label: '기타',
         inputKey: 'disease_status.renal.etc',
         key: 'disease_status.renal.checked5',
@@ -171,7 +171,7 @@ const DiseaseStatus = (props: Props) => {
         key: 'disease_status.other.checked1',
         inputKey: 'disease_status.other.allergy',
       }),
-      4: checkbox({
+      1: checkbox({
         label: '기타',
         inputKey: 'disease_status.other.etc',
         key: 'disease_status.other.checked5',

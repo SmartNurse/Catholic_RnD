@@ -14,6 +14,7 @@ const useTableForm = (props: IUseTableFormProps) => {
     options,
     i18nKey,
     i18nNullKey,
+    width,
   }: IUseTableRadioGroup) => {
     let radio = {} as any;
     if (!watch) return null;
@@ -30,6 +31,7 @@ const useTableForm = (props: IUseTableFormProps) => {
           disabled={disabled}
           value={value}
           onChange={(v: any) => setValue(key, v)}
+          width={width}
         />
       );
       return null;
@@ -46,7 +48,6 @@ const useTableForm = (props: IUseTableFormProps) => {
       return (
         <Form.MuiTextField
           required={false}
-          fullWidth={false}
           placeholder="직접입력"
           disabled={disabled}
           {...register(inputKey)}

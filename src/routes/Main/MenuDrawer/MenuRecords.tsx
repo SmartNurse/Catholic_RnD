@@ -1,4 +1,4 @@
-import { Fragment } from 'react';
+import { Fragment, useState } from 'react';
 import {
   ListItem,
   ListItemButton,
@@ -32,12 +32,16 @@ import useSurvey from 'store/survey/useSurvey';
 import usePatient from 'store/patient/usePatient';
 import useStudent from 'store/student/useStudent';
 import useNotification from 'hooks/useNotification';
+import { IToggleObj } from './type';
+import { initialToggleObj } from './initialStates';
 
 const MenuRecords = () => {
   const { student_uuid } = useStudent();
   const { patientInfo } = usePatient();
   const { onRequired } = useNotification();
   const { onUpdateSurveyType } = useSurvey();
+
+  const [toggle, setToggle] = useState<IToggleObj>(initialToggleObj);
 
   const menus = [
     {
@@ -88,97 +92,120 @@ const MenuRecords = () => {
       disabled: true,
       icon: <SentimentSatisfiedOutlined />,
       label: '환자평가 기록지',
+      id: 'patient_evaluation'
     },
     {
       label: '욕창위험도 평가도구',
+      toggle: toggle.patient_evaluation,
     },
     {
       label: '욕구평가 기록지',
+      toggle: toggle.patient_evaluation,
     },
     {
       label: '낙상위험도 평가도구',
+      toggle: toggle.patient_evaluation,
     },
     {
       icon: <SickOutlined />,
       disabled: true,
       isPro: true,
       label: '통증평가도구',
+      id: 'pain'
     },
     {
       isPro: true,
-      label: 'NRS'
+      label: 'NRS',
+      toggle: toggle.pain,
     },
     {
       isPro: true,
-      label: 'FLACC Scale'
+      label: 'FLACC Scale',
+      toggle: toggle.pain,
     },
     {
       isPro: true,
-      label: 'CNPS'
+      label: 'CNPS',
+      toggle: toggle.pain,
     },
     {
       icon: <Psychology />,
       disabled: true,
       isPro: true,
       label: '정신건강 평가도구',
+      id: 'mental_health'
     },
     {
       isPro: true,
       label: '정신간호 기록지',
+      toggle: toggle.mental_health,
     },
     {
       isPro: true,
       label: 'BDI',
+      toggle: toggle.mental_health,
     },
     {
       isPro: true,
       label: 'BAI',
+      toggle: toggle.mental_health,
     },
     {
       isPro: true,
       label: 'MMSE',
+      toggle: toggle.mental_health,
     },
     {
       isPro: true,
       label: 'K-CIST',
+      toggle: toggle.mental_health,
     },
     {
       isPro: true,
       disabled: true,
       icon: <MasksOutlined />,
       label: '특수파트 기록지',
+      id: 'special'
     },
     {
       isPro: true,
       label: '수술 기록지',
+      toggle: toggle.special,
     },
     {
       isPro: true,
       label: '마취 기록지',
+      toggle: toggle.special,
     },
     {
       isPro: true,
       label: '수혈 기록지',
+      toggle: toggle.special,
     },
     {
       isPro: true,
       label: '투석 기록지',
+      toggle: toggle.special,
     },
     {
       isPro: true,
       label: '응급 기록지',
+      toggle: toggle.special,
     },
     {
       isPro: true,
       label: 'NEDIS',
+      toggle: toggle.special,
     },
     {
       isPro: true,
       label: '분만 기록지',
+      toggle: toggle.special,
     },
     {
       isPro: true,
       label: '가정간호 기록지',
+      toggle: toggle.special,
     },
     {
       icon: <RestaurantMenu />,
@@ -188,12 +215,15 @@ const MenuRecords = () => {
       disabled: true,
       icon: <VerifiedUserOutlined />,
       label: '동의서',
+      id: 'agreement'
     },
     {
       label: '입원 안내 확인서',
+      toggle: toggle.agreement,
     },
     {
       label: '낙상 예방교육 확인서',
+      toggle: toggle.agreement,
     },
     {
       isPro: true,
@@ -214,10 +244,19 @@ const MenuRecords = () => {
     onUpdateSurveyType(label);
   };
 
+  const onClickDisabledItem = (sublabel: string | undefined) => {
+    let newToggle = {...toggle};
+    if (sublabel) newToggle[sublabel] = !newToggle[sublabel];
+    setToggle(newToggle);
+  }
+
   return (
     <Fragment>
-      {menus.map(({ icon, label, disabled, isPro }) => {
-        const onClick = () => onClickListItem(label);
+      {menus.map(({ icon, label, disabled, isPro, toggle, id }) => {
+        const onClick = () => {
+          if (disabled) onClickDisabledItem(id);
+          else onClickListItem(label);
+        }
 
         const MoreIcon = () => {
           if (!disabled) return null;
@@ -230,14 +269,32 @@ const MenuRecords = () => {
         };
 
         return (
-          <ListItem key={label} disablePadding>
-            <ListItemButton className={isPro && !disabled ? "isPro" : ""} disabled={disabled} onClick={onClick}>
-              <ListItemIcon>{icon}</ListItemIcon>
-              <ListItemText primary={label} />
-              <ProIcon />
-              <MoreIcon />
-            </ListItemButton>
-          </ListItem>
+          <>
+            {icon
+            ?
+            <ListItem key={label} disablePadding>
+              <ListItemButton onClick={onClick}>
+                <ListItemIcon>{icon}</ListItemIcon>
+                <ListItemText primary={label} />
+                <ProIcon />
+                <MoreIcon />
+              </ListItemButton>
+            </ListItem>
+            :
+            (toggle
+            ?
+            <ListItem key={label} disablePadding>
+              <ListItemButton className={isPro ? "isPro" : ""} onClick={onClick}>
+                <ListItemIcon>{icon}</ListItemIcon>
+                <ListItemText primary={label} />
+                <ProIcon />
+                <MoreIcon />
+              </ListItemButton>
+            </ListItem>
+            :
+            <></>
+          )}
+          </>
         );
       })}
 

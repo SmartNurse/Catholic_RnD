@@ -11,7 +11,6 @@ import MuiTextField from 'components/Form/MuiTextField';
 
 import RowContainer from '../../components/RowContainer';
 import RowContent from '../../components/RowContent';
-import SectionTitle from '../../components/SectionTitle';
 
 interface Props extends IFormRegister {
     disabled?: boolean;
@@ -67,7 +66,7 @@ const BloodInfo = (props: Props) => {
 
     return (
         <>
-            <RowContainer xs={12}>
+            <RowContainer xs={12} sx={{ marginTop: "-32px" }}>
                 {rows.map(({title, variable, type }) => 
                 <RowContent key={variable} title={title} titleRatio={1} childrenRatio={2}>
                     {type === "text"

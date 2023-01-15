@@ -9,7 +9,7 @@ import {
   SurveyDialogProps,
 } from 'routes/Main/Survey/type';
 
-import PatientInfo from './PatientInfo';
+import CommonPatientInfo from '../components/CommonPatientInfo';
 import BodyStatus from './BodyStatus';
 import Reason from './Reason';
 import DiseaseStatus from './DiseaseStatus';
@@ -23,6 +23,7 @@ const Needs = (props: SurveyDialogProps<TNeedsDefaultValues>) => {
     defaultValues,
     user_id,
     patientInfo,
+    nurseName,
     onClose,
   } = props;
 
@@ -78,7 +79,7 @@ const Needs = (props: SurveyDialogProps<TNeedsDefaultValues>) => {
         columnSpacing={3}
         sx={{ py: 5, px: 1 }}
       >
-        <PatientInfo {...formProps} {...patientInfo} />
+        <CommonPatientInfo patientInfo={patientInfo} nurseName={nurseName} />
         <BodyStatus {...formProps} />
         <Reason {...formProps} registerKey="reason1" />
         <DiseaseStatus {...formProps} />

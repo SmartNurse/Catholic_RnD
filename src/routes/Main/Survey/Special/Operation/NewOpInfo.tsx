@@ -17,7 +17,7 @@ interface Props extends IFormRegister, IFormValues, IFormWatch {
     setTime: (time: null | string) => void;
 }  
 
-const OperationInfo = (props: Props) => {
+const NewOpInfo = (props: Props) => {
     const { disabled, register, watch, time, setTime } = props;
 
     const [postureEtc, setPostureEtc] = useState(0);
@@ -30,7 +30,7 @@ const OperationInfo = (props: Props) => {
             label: "수술과",
             element: 
                 <Form.MuiTextField
-                    {...register("anesthesia.operation_info.department")}
+                    {...register("operation.operation_info.department")}
                 />,
         },
         {
@@ -40,7 +40,7 @@ const OperationInfo = (props: Props) => {
                     type="date"
                     required={false}
                     disabled={disabled}
-                    {...register("anesthesia.operation_info.date")}
+                    {...register("operation.operation_info.date")}
                 />
         },
         {
@@ -60,10 +60,42 @@ const OperationInfo = (props: Props) => {
                 />
         },
         {
-            label: "수술명",
+            label: "ASA class",
             element: 
                 <Form.MuiTextField
-                    {...register("anesthesia.operation_info.title")}
+                    select
+                    required={false}
+                    {...register("operation.operation_info.asa_class")}
+                >
+                    {asa_class_labels.map((option) => <MenuItem value={option}>{option}</MenuItem>)}
+                </Form.MuiTextField>
+        },
+        {
+            label: "주수술명",
+            element: 
+                <Form.MuiTextField
+                    {...register("operation.operation_info.main_title")}
+                />,
+        },
+        {
+            label: "부수술명",
+            element: 
+                <Form.MuiTextField
+                    {...register("operation.operation_info.sub_title")}
+                />,
+        },
+        {
+            label: "과거력",
+            element: 
+                <Form.MuiTextField
+                    {...register("operation.operation_info.history")}
+                />,
+        },
+        {
+            label: "알레르기",
+            element: 
+                <Form.MuiTextField
+                    {...register("operation.operation_info.allergy")}
                 />,
         },
         {
@@ -72,12 +104,25 @@ const OperationInfo = (props: Props) => {
                 <Form.MuiTextField
                     select
                     required={false}
-                    {...register("anethesia.operation_info.fast")}
+                    {...register("operation.operation_info.fast")}
                 >
                     <MenuItem value="금식">금식</MenuItem>
                     <MenuItem value="금식안함">금식안함</MenuItem>
                 </Form.MuiTextField>
-        }, 
+        },
+        {
+            label: "예방적 항생제",
+            element: 
+                <Form.MuiTextField
+                    select
+                    required={false}
+                    {...register("operation.operation_info.antibiotics")}
+                >
+                    <MenuItem value="투여완료">투여완료</MenuItem>
+                    <MenuItem value="없음">없음</MenuItem>
+                </Form.MuiTextField>
+        },
+
         {
             label: "수술자세",
             element: 
@@ -85,7 +130,8 @@ const OperationInfo = (props: Props) => {
                     <Form.MuiTextField
                         select
                         required={false}
-                        {...register("anethesia.operation_info.posture")}
+                        sx={{ width: `${postureEtc ? "18%" : "37%"}` }}
+                        {...register("operation.operation_info.posture")}
                         onChange={(e) => {
                             if (e.target.value === "etc") setPostureEtc(1);
                             else setPostureEtc(0);
@@ -104,100 +150,24 @@ const OperationInfo = (props: Props) => {
                     {postureEtc
                     ?
                     <Form.MuiTextField
-                        {...register("anethesia.operation_info.posture_etc")}
+                        {...register("operation.operation_info.posture_etc")}
                         placeholder="직접 입력"
-                        sx={{ marginLeft: "5px" }}
+                        sx={{ marginLeft: "5px", width: "18%" }}
                     />
                     :
                     null
                     }
+                    <FormControlLabel
+                        control={<Checkbox defaultChecked {...register("operation.operation_info.x_ray")} />}
+                        label="수술 전 흉부 X-ray"
+                        sx={{ marginLeft: "20px" }}
+                    />
+                    <FormControlLabel
+                        control={<Checkbox defaultChecked {...register("operation.operation_info.ecg")} />}
+                        label="수술 전 심전도"
+                        sx={{ marginLeft: "20px" }}
+                    />
                 </Box>
-        },
-        {
-            label: "과거력",
-            element: 
-            <Box display="flex">
-                <Form.MuiTextField
-                    sx={{ width: "37%" }}
-                    {...register("anesthesia.operation_info.history")}
-                />
-                <FormControlLabel
-                    control={<Checkbox defaultChecked {...register("anesthesia.operation_info.x_ray")} />}
-                    label="수술 전 흉부 X-ray"
-                    sx={{ marginLeft: "20px" }}
-                />
-                <FormControlLabel
-                    control={<Checkbox defaultChecked {...register("anesthesia.operation_info.ecg")} />}
-                    label="수술 전 심전도"
-                    sx={{ marginLeft: "20px" }}
-                />
-            </Box>,
-        },
-        {
-            label: "응급여부",
-            element: 
-                <Form.MuiTextField
-                    select
-                    required={false}
-                    {...register("anethesia.operation_info.emergency")}
-                >
-                    <MenuItem value="응급">응급</MenuItem>
-                    <MenuItem value="비응급">비응급</MenuItem>
-                </Form.MuiTextField>
-        },
-        {
-            label: "ASA class",
-            element: 
-                <Form.MuiTextField
-                    select
-                    required={false}
-                    {...register("anethesia.operation_info.asa_class")}
-                >
-                    {asa_class_labels.map((option) => <MenuItem value={option}>{option}</MenuItem>)}
-                </Form.MuiTextField>
-        },
-        {
-            label: "예방적 항생제",
-            element: 
-                <Form.MuiTextField
-                    select
-                    required={false}
-                    {...register("anethesia.operation_info.antibiotics")}
-                >
-                    <MenuItem value="투여완료">투여완료</MenuItem>
-                    <MenuItem value="없음">없음</MenuItem>
-                </Form.MuiTextField>
-        },
-        {
-            label: "마취방법",
-            element: 
-            <Box display="flex">
-                <Form.MuiTextField
-                    select
-                    required={false}
-                    {...register("anethesia.operation_info.method")}
-                    onChange={(e) => {
-                        if (e.target.value === "etc") setMethodEtc(1);
-                        else setMethodEtc(0);
-                    }}
-                >
-                    <MenuItem value="local">Local Anesthesia</MenuItem>
-                    <MenuItem value="general">General Anesthesia</MenuItem>
-                    <MenuItem value="spinal">Spinal Anesthesia</MenuItem>
-                    <MenuItem value="epidural">Epidural Anesthesia</MenuItem>
-                    <MenuItem value="etc">직접 입력</MenuItem>
-                </Form.MuiTextField>
-                {methodEtc
-                ?
-                <Form.MuiTextField
-                    {...register("anethesia.operation_info.method_etc")}
-                    placeholder="직접 입력"
-                    sx={{ marginLeft: "5px" }}
-                />
-                :
-                null
-                }
-            </Box>
         },
     ];
 
@@ -210,7 +180,7 @@ const OperationInfo = (props: Props) => {
                         <RowContent
                             title={label}
                             titleRatio={1}
-                            childrenRatio={label === "과거력" ? 5 : 2}
+                            childrenRatio={label === "수술자세" ? 5 : 2}
                         >
                             {element}
                         </RowContent>
@@ -221,4 +191,4 @@ const OperationInfo = (props: Props) => {
     );
 }
 
-export default OperationInfo;
+export default NewOpInfo;

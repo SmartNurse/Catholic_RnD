@@ -24,6 +24,7 @@ const FunctionalEvaluation = (props: Props) => {
             disabled={disabled}
             defaultValue={getValues('functional_evaluation.sit')}
             onChange={v => setValue('functional_evaluation.sit', v)}
+            width="125px"
           />
         </RowContent>
         <RowContent
@@ -37,6 +38,7 @@ const FunctionalEvaluation = (props: Props) => {
             disabled={disabled}
             defaultValue={getValues('functional_evaluation.stand_up')}
             onChange={v => setValue('functional_evaluation.stand_up', v)}
+            width="125px"
           />
         </RowContent>
         <RowContent
@@ -50,6 +52,7 @@ const FunctionalEvaluation = (props: Props) => {
             disabled={disabled}
             defaultValue={getValues('functional_evaluation.wheel_chair')}
             onChange={v => setValue('functional_evaluation.wheel_chair', v)}
+            width="125px"
           />
         </RowContent>
         <RowContent title="독립보행" titleRatio={4} childrenRatio={8}>
@@ -59,6 +62,7 @@ const FunctionalEvaluation = (props: Props) => {
             disabled={disabled}
             defaultValue={getValues('functional_evaluation.walk')}
             onChange={v => setValue('functional_evaluation.walk', v)}
+            width="125px"
           />
         </RowContent>
       </RowContainer>
