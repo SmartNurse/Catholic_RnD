@@ -48,7 +48,6 @@ const useTableForm = (props: IUseTableFormProps) => {
       return (
         <Form.MuiTextField
           required={false}
-          fullWidth={false}
           placeholder="직접입력"
           disabled={disabled}
           {...register(inputKey)}
