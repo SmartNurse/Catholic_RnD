@@ -32,6 +32,7 @@ const MotherStatus = (props: Props) => {
                         values={[0, 1]}
                         defaultValue={getValues('childbirth.mother_status.incision.value')}
                         onChange={v => setValue('childbirth.mother_status.incision.value', v)}
+                        width="50px"
                     />
                     <MuiTextField
                         select
@@ -57,6 +58,7 @@ const MotherStatus = (props: Props) => {
                         values={[0, 1]}
                         defaultValue={getValues('childbirth.mother_status.laceration.value')}
                         onChange={v => setValue('childbirth.mother_status.laceration.value', v)}
+                        width="50px"
                     />
                     <MuiTextField
                         select
