@@ -55,16 +55,16 @@ const ECardex = (props: SurveyDialogProps<TECardexDefaultValues>) => {
         patient_id: patientInfo.patient_id,
         e_cardex_survey: {
           other_remarks,
-          remark_data: remark_data.map(
+          remark_data: remark_data?.map(
             ({ date, remark }: IECardexRemark) => ({ date, remark})
           ),
-          medication_data: medication_data.map(
+          medication_data: medication_data?.map(
             ({ date, medication, method, time, end }: IECardexDosage) => ({ date, medication, method, time, end })
           ),
-          lab_data: lab_data.map(
+          lab_data: lab_data?.map(
             ({ date, lab, implementing_and_inspection, result }: IECardexLab) => ({ date, lab, implementing_and_inspection, result })
           ),
-          imaging_test_data: imaging_test_data.map(
+          imaging_test_data: imaging_test_data?.map(
             ({ date, imaging_test, implementing_and_inspection, result }: IECardexImagingTest) => ({ date, imaging_test, implementing_and_inspection, result })
           ),
           concerns,
