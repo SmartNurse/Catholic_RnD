@@ -25,62 +25,62 @@ const BodyStatus = (props: Props) => {
     {
       id: 'takeOffClothes',
       title: '옷 벗고 입기',
-      ...radioGroup({ key: 'body_status.takeOffClothes', options: [1, 2, 3] }),
+      ...radioGroup({ key: 'body_status.takeOffClothes', options: [1, 2, 3], width: "25px" }),
     },
     {
       id: 'eat',
       title: '식사하기',
-      ...radioGroup({ key: 'body_status.eat', options: [1, 2, 3] }),
+      ...radioGroup({ key: 'body_status.eat', options: [1, 2, 3], width: "25px" }),
     },
     {
       id: 'sitUp',
       title: '일어나 앉기',
-      ...radioGroup({ key: 'body_status.sitUp', options: [1, 2, 3] }),
+      ...radioGroup({ key: 'body_status.sitUp', options: [1, 2, 3], width: "25px" }),
     },
     {
       id: 'toilet',
       title: '화장실 사용하기',
-      ...radioGroup({ key: 'body_status.toilet', options: [1, 2, 3] }),
+      ...radioGroup({ key: 'body_status.toilet', options: [1, 2, 3], width: "25px" }),
     },
     {
       id: 'washFace',
       title: '세수하기',
-      ...radioGroup({ key: 'body_status.washFace', options: [1, 2, 3] }),
+      ...radioGroup({ key: 'body_status.washFace', options: [1, 2, 3], width: "25px" }),
     },
     {
       id: 'bath',
       title: '목욕하기',
-      ...radioGroup({ key: 'body_status.bath', options: [1, 2, 3] }),
+      ...radioGroup({ key: 'body_status.bath', options: [1, 2, 3], width: "25px" }),
     },
     {
       id: 'transfer',
       title: '옮겨 앉기',
-      ...radioGroup({ key: 'body_status.transfer', options: [1, 2, 3] }),
+      ...radioGroup({ key: 'body_status.transfer', options: [1, 2, 3], width: "25px" }),
     },
     {
       id: 'controlStool',
       title: '대변 조절하기',
-      ...radioGroup({ key: 'body_status.controlStool', options: [1, 2, 3] }),
+      ...radioGroup({ key: 'body_status.controlStool', options: [1, 2, 3], width: "25px" }),
     },
     {
       id: 'brushTeeth',
       title: '양치질하기',
-      ...radioGroup({ key: 'body_status.brushTeeth', options: [1, 2, 3] }),
+      ...radioGroup({ key: 'body_status.brushTeeth', options: [1, 2, 3], width: "25px" }),
     },
     {
       id: 'changePosition',
       title: '체위 변경하기',
-      ...radioGroup({ key: 'body_status.changePosition', options: [1, 2, 3] }),
+      ...radioGroup({ key: 'body_status.changePosition', options: [1, 2, 3], width: "25px" }),
     },
     {
       id: 'getOutRoom',
       title: '방 밖으로 나오기',
-      ...radioGroup({ key: 'body_status.getOutRoom', options: [1, 2, 3] }),
+      ...radioGroup({ key: 'body_status.getOutRoom', options: [1, 2, 3], width: "25px" }),
     },
     {
       id: 'controlUrine',
       title: '소변 조절하기',
-      ...radioGroup({ key: 'body_status.controlUrine', options: [1, 2, 3] }),
+      ...radioGroup({ key: 'body_status.controlUrine', options: [1, 2, 3], width: "25px" }),
     },
   ];
 

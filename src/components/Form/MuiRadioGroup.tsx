@@ -14,6 +14,7 @@ interface Props extends RadioGroupProps {
   values: number[];
   defaultValue: number;
   disabled?: boolean;
+  width?: string;
   onChange?: (value: any) => void;
 }
 
@@ -23,6 +24,7 @@ const MuiRadioGroup = ({
   values,
   defaultValue,
   disabled,
+  width,
   onChange,
   ...props
 }: Props) => {
@@ -49,6 +51,7 @@ const MuiRadioGroup = ({
             disabled={disabled}
             control={<Radio size="small" />}
             label={label(value)}
+            sx={{ width: `${width ? width : "100px"}` }}
           />
         ))}
       </Stack>

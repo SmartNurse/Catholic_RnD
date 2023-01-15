@@ -31,6 +31,7 @@ const FallContents = (props: Props) => {
         key: 'contents.experience',
         options: [0, 25],
         i18nKey: 'FALL',
+        width: "200px",
       }),
     },
     {
@@ -40,6 +41,7 @@ const FallContents = (props: Props) => {
         key: 'contents.diagnosis',
         options: [0, 15],
         i18nKey: 'FALL',
+        width: "200px",
       }),
     },
     {
@@ -49,6 +51,7 @@ const FallContents = (props: Props) => {
         key: 'contents.walkingAids',
         options: [0, 15, 30],
         i18nKey: 'FALL.WALKING.AIDS',
+        width: "200px",
       }),
     },
     {
@@ -58,6 +61,7 @@ const FallContents = (props: Props) => {
         key: 'contents.intravenousLine',
         options: [0, 20],
         i18nKey: 'FALL',
+        width: "200px",
       }),
     },
     {
@@ -67,6 +71,7 @@ const FallContents = (props: Props) => {
         key: 'contents.gait',
         options: [0, 10, 20],
         i18nKey: 'FALL.GAIT',
+        width: "200px",
       }),
     },
     {
@@ -76,6 +81,7 @@ const FallContents = (props: Props) => {
         key: 'contents.consciousness',
         options: [0, 15],
         i18nKey: 'FALL.CONSCIOUSNESS',
+        width: "200px",
       }),
     },
   ];
