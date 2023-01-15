@@ -100,7 +100,7 @@ const ECardex = (props: SurveyDialogProps<TECardexDefaultValues>) => {
           columnSpacing={3}
           sx={{ py: 5, px: 1 }}
         >
-            <Typography sx={{ margin: "40px auto 0px auto", fontWeight: "700", fontSize: "16px", textAlign: "center" }}>e-Cardex (Kardex) <br/> - Test 중 입니다 -</Typography>
+            <Typography sx={{ margin: "40px auto 0px auto", fontWeight: "700", fontSize: "16px", textAlign: "center" }}>e-Cardex (Kardex)</Typography>
             <CommonPatientInfo patientInfo={patientInfo} nurseName={nurseName} />
             <TextareaSection {...formProps} title="기타 인계사항" registerId="other_remarks" />
             <Remark {...formProps} />
