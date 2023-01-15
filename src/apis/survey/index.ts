@@ -13,6 +13,7 @@ import {
   IUpdateClinicObservation,
   IUpdateTakingOver,
   IUpdateECardex,
+  IUpdateGlucose,
 } from './type';
 
 // e-CARDEX
@@ -93,6 +94,18 @@ export const updateClinicObservation = (request: IUpdateClinicObservation) => {
   return apiGateway.post(url, camelcaseKeys(request));
 };
 
+// 혈당기록지
+export const getGlucose = (request: IGetSurvey) => {
+  const url = `/survey/bloodSugar?${formatToRequestParameter(request)}`;
+  return apiGateway.get(url);
+};
+
+export const updateGlucose = (request: IUpdateGlucose) => {
+  const url = `/survey/bloodSugar`;
+  return apiGateway.post(url, camelcaseKeys(request));
+};
+
+// 욕창위험도평가도구
 export const getBedScore = (request: IGetSurvey) => {
   const url = `/survey/bedsore?${formatToRequestParameter(request)}`;
   return apiGateway.get(url);
@@ -103,6 +116,7 @@ export const updateBedScore = (request: IUpdateBedScore) => {
   return apiGateway.post(url, camelcaseKeys(request));
 };
 
+// 욕구평가기록지
 export const getNeeds = (request: IGetSurvey) => {
   const url = `/survey/needs?${formatToRequestParameter(request)}`;
   return apiGateway.get(url);
@@ -113,6 +127,7 @@ export const updateNeeds = (request: IUpdateNeeds) => {
   return apiGateway.post(url, camelcaseKeys(request));
 };
 
+// 낙상위험도평가도구
 export const getFall = (request: IGetSurvey) => {
   const url = `/survey/fall?${formatToRequestParameter(request)}`;
   return apiGateway.get(url);

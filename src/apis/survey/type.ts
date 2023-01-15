@@ -179,21 +179,28 @@ export interface IUpdateClinicObservation extends IGetSurvey {
 export interface IGlucoseRecord {
   date: string;
   time: string;
-  meal: string;
-  item: string;
-  result: string;
+  activity: string;
+  category: string;
+  level: string;
 }
 
 export interface IGlucosePrescriptionRecord {
   date: string;
   time: string;
-  title: string;
+  medication: string;
   content: string;
   unit: string;
-  amount: string;
-  count: string;
-  detail: string;
-  finished: boolean;
+  dose: string;
+  administration_no: string;
+  methods: string;
+  completed: string;
+}
+
+export interface IUpdateGlucose extends IGetSurvey {
+  blood_sugar_survey: {
+    blood_sugar_log: IGlucoseRecord[];
+    prescription: IGlucosePrescriptionRecord[];
+  }
 }
 
 // 욕창위험도평가도구

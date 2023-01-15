@@ -22,7 +22,7 @@ interface Props extends IFormValues, IFormWatch, IFormRegister {
 
 const GlucoseRecords = (props: Props) => {
   const { disabled, watch, setValue, onRequired, onSuccess, register } = props;
-  const prescriptionRecordList: IGlucosePrescriptionRecord[] = watch('prescription_records');
+  const prescriptionRecordList: IGlucosePrescriptionRecord[] = watch('prescription');
 
   const [date, setDate] = useState("");
   const [time, setTime] = useState(null);
@@ -37,25 +37,26 @@ const GlucoseRecords = (props: Props) => {
   const columns = [
     { fieldId: 'date', label: '일자', sx: { width: 200 } },
     { fieldId: 'time', label: '시간', sx: { width: 200 } },
-    { fieldId: 'title', label: '약물명', sx: { width: 200 } },
+    { fieldId: 'medication', label: '약물명', sx: { width: 200 } },
     { fieldId: 'content', label: '함량', sx: { width: 200 } },
     { fieldId: 'unit', label: '단위', sx: { width: 100 } },
-    { fieldId: 'amount', label: '투여량', sx: { width: 100 } },
-    { fieldId: 'count', label: '투여횟수', sx: { width: 100 } },
-    { fieldId: 'detail', label: '상세투여방법', sx: { width: 100 } },
-    { fieldId: 'finished', label: '완료', sx: { width: 50 } },
+    { fieldId: 'dose', label: '투여량', sx: { width: 100 } },
+    { fieldId: 'administration_no', label: '투여횟수', sx: { width: 100 } },
+    { fieldId: 'methods', label: '상세투여방법', sx: { width: 100 } },
+    { fieldId: 'completed', label: '완료', sx: { width: 50 } },
     { fieldId: 'action', label: '', sx: { width: 100 } }
   ];
 
   const onAddRow = () => {
-    const request = { date, time, title, content, unit, amount, count, detail };
+    const request = { date, time, medication: title, content, unit, dose: amount, administration_no: count, methods: detail };
 
     if (Object.values(request).filter(v => !v).length > 0) {
       return onRequired('CLINICAL.OBSERVATION.ADD.ROW');
     }
 
     onSuccess('처방 기록 추가되었습니다.');
-    setValue('prescription_records', prescriptionRecordList ? [...prescriptionRecordList, request] : [request]);
+    setValue('prescription', prescriptionRecordList ? [...prescriptionRecordList, {...request, completed: String(finished)}] : [{...request, completed: String(finished)}]);
+    console.log(prescriptionRecordList);
     setValue("prescription_date", "");
     setDate("");
     setTime(null);
@@ -67,7 +68,6 @@ const GlucoseRecords = (props: Props) => {
     setDetail("");
     setFinished(false);
   };
-  console.log(finished);
 
   const inputRow = {
     id: 'add-prescription-record',
@@ -95,7 +95,7 @@ const GlucoseRecords = (props: Props) => {
         )}
       />
     ),
-    title: (
+    medication: (
       <MuiTextField
         value={title}
         required={false}
@@ -116,28 +116,28 @@ const GlucoseRecords = (props: Props) => {
         onChange={({ target: { value } }) => setUnit(value)}
       />
     ),
-    amount: (
+    dose: (
       <MuiTextField
         value={amount}
         required={false}
         onChange={({ target: { value } }) => setAmount(value)}
       />
     ),
-    count: (
+    administration_no: (
       <MuiTextField
         value={count}
         required={false}
         onChange={({ target: { value } }) => setCount(value)}
       />
     ),
-    detail: (
+    methods: (
       <MuiTextField
         value={detail}
         required={false}
         onChange={({ target: { value } }) => setDetail(value)}
       />
     ),
-    finished: (
+    completed: (
         <Checkbox size="small" defaultChecked={false} value={finished} onChange={(e) => setFinished(e.target.checked)} />
     ),
     action: (
@@ -149,7 +149,7 @@ const GlucoseRecords = (props: Props) => {
 
   const onDeleteRow = (index: number) => {
     setValue(
-      'prescription_records',
+      'prescription',
       prescriptionRecordList.filter((_, i) => i !== index)
     );
   };
@@ -159,7 +159,7 @@ const GlucoseRecords = (props: Props) => {
         ...item,
         id: i,
         time: formatStringToDate(item.time, 'hh:mm a'),
-        finished: <Checkbox size="small" defaultChecked={item.finished} />,
+        completed: <Checkbox size="small" defaultChecked={item.completed === "true" ? true : false} />,
         action: (
         <IconButton
             size="small"

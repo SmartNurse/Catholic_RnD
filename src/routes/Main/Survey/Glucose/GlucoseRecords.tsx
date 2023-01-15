@@ -22,7 +22,7 @@ interface Props extends IFormValues, IFormWatch, IFormRegister {
 
 const GlucoseRecords = (props: Props) => {
   const { disabled, watch, setValue, onRequired, onSuccess, register } = props;
-  const glucoseRecordList: IGlucoseRecord[] = watch('glucose_records');
+  const glucoseRecordList: IGlucoseRecord[] = watch('blood_sugar_log');
 
   const [date, setDate] = useState("");
   const [time, setTime] = useState(null);
@@ -35,9 +35,9 @@ const GlucoseRecords = (props: Props) => {
   const columns = [
     { fieldId: 'date', label: '일자', sx: { width: 200 } },
     { fieldId: 'time', label: '시간', sx: { width: 200 } },
-    { fieldId: 'meal', label: '식사', sx: { width: 200 } },
-    { fieldId: 'item', label: '검사항목', sx: { width: 200 } },
-    { fieldId: 'result', label: '검사결과', sx: { width: 400 } },
+    { fieldId: 'activity', label: '식사', sx: { width: 200 } },
+    { fieldId: 'category', label: '검사항목', sx: { width: 200 } },
+    { fieldId: 'level', label: '검사결과', sx: { width: 400 } },
     { fieldId: 'action', label: '', sx: { width: 100 } }
   ];
 
@@ -48,9 +48,9 @@ const GlucoseRecords = (props: Props) => {
     const request = {
         date,
         time,
-        meal: meal === "기타(직접입력)" ? mealEtc : meal,
-        item: item === "기타(직접입력)" ? itemEtc : item,
-        result
+        activity: meal === "기타(직접입력)" ? mealEtc : meal,
+        category: item === "기타(직접입력)" ? itemEtc : item,
+        level: result
     };
 
     if (Object.values(request).filter(v => !v).length > 0) {
@@ -58,7 +58,7 @@ const GlucoseRecords = (props: Props) => {
     }
 
     onSuccess('혈당 기록 추가되었습니다.');
-    setValue('glucose_records', glucoseRecordList ? [...glucoseRecordList, request] : [request]);
+    setValue('blood_sugar_log', glucoseRecordList ? [...glucoseRecordList, request] : [request]);
     setValue("glucose_date", "");
     setDate("");
     setTime(null);
@@ -95,7 +95,7 @@ const GlucoseRecords = (props: Props) => {
         )}
       />
     ),
-    meal: (
+    activity: (
         <Box sx={{ display: "flex" }}>
             <MuiTextField
                 select
@@ -114,7 +114,7 @@ const GlucoseRecords = (props: Props) => {
             }
         </Box>
     ),
-    item: (
+    category: (
         <Box sx={{ display: "flex" }}>
             <MuiTextField
                 select
@@ -133,7 +133,7 @@ const GlucoseRecords = (props: Props) => {
             }
         </Box>
     ),
-    result: (
+    level: (
       <MuiTextField
         value={result}
         required={false}
@@ -149,7 +149,7 @@ const GlucoseRecords = (props: Props) => {
 
   const onDeleteRow = (index: number) => {
     setValue(
-      'glucose_records',
+      'blood_sugar_log',
       glucoseRecordList.filter((_, i) => i !== index)
     );
   };
