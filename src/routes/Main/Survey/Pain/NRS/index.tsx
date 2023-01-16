@@ -10,6 +10,8 @@ import CommonPatientInfo from "../../components/CommonPatientInfo";
 import NrsContents from "./NrsContents";
 
 import { SurveyDialogProps, TNRSDefaultValues } from "../../type";
+import { INRS } from "apis/survey/type";
+import { updateNRS } from "apis/survey";
 
 const NRS = (props: SurveyDialogProps<TNRSDefaultValues>) => {
     const {
@@ -19,6 +21,7 @@ const NRS = (props: SurveyDialogProps<TNRSDefaultValues>) => {
         defaultValues,
         patientInfo,
         nurseName,
+        user_id,
         onClose
     } = props;
 
@@ -29,7 +32,24 @@ const NRS = (props: SurveyDialogProps<TNRSDefaultValues>) => {
     });
 
     const onSubmit = (data: TNRSDefaultValues) => {
-        /* API 완성되면 작업할 부분 */
+        const { nrs_survey } = data;
+
+        const request = {
+          user_id,
+          patient_id: patientInfo.patient_id,
+          nrs_survey: nrs_survey?.map(
+            ({ time, pain_score }: INRS) => ({ time, pain_score })
+          )
+        }
+  
+        updateNRS(request)
+        .then(({ data: { rc } }) => {
+          if (rc !== 1) return onResultCode(rc);
+  
+          onUpdateIsSave(true);
+          onSuccess('NRS 저장에 성공하였습니다.');
+        })
+        .catch(e => onFail('NRS 저장에 실패하였습니다.', e));
     }
 
     const formProps = {
@@ -54,7 +74,7 @@ const NRS = (props: SurveyDialogProps<TNRSDefaultValues>) => {
                 <br/>
                 PAIN SCORE 0-10 NUMERICAL RATING
                 <br/>
-                - 해당 메뉴 저장은 스탠다드 버전에서 가능합니다 -
+                - TEST 중입니다 -
             </Typography>
             <CommonPatientInfo patientInfo={patientInfo} nurseName={nurseName} />
             <NrsContents {...formProps} />

@@ -24,7 +24,7 @@ const radioId = ["face", "legs", "activity", "cry", "consolability"];
 
 const FlaccContents = (props: Props) => {
     const { disabled, watch, setValue, onRequired, onSuccess } = props;
-    const flaccList: IFLACC[] = watch('flacc');
+    const flaccList: IFLACC[] = watch('flacc_survey');
 
     const [checkTime, setCheckTime] = useState(null);
     const [sumValue, setSumValue] = useState(0);
@@ -38,13 +38,13 @@ const FlaccContents = (props: Props) => {
     }
 
     const columns = [
-        { fieldId: "checkTime", label: "체크시간", sx: { width: 200} },
-        { fieldId: "sumValue", label: "합계" },
+        { fieldId: "time", label: "체크시간", sx: { width: 200} },
+        { fieldId: "sum", label: "합계" },
         { fieldId: "action", label: "", sx: { width: 100 } },
     ];
 
     const onAddRow = () => {
-        const request = { checkTime, sumValue };
+        const request = { time: checkTime, sum: sumValue };
 
         if (checkTime === null) return onRequired('FLACC.ADD.ROW');
         for (let i=0; i<radioId.length; i++) {
@@ -52,13 +52,13 @@ const FlaccContents = (props: Props) => {
         }
 
         onSuccess('FLACC Scale 추가되었습니다.');
-        setValue('flacc', flaccList ? [...flaccList, request] : [request]);
+        setValue('flacc_survey', flaccList ? [...flaccList, request] : [request]);
         setCheckTime(null);
     }
 
     const inputRow = {
         id: 'add-nrs',
-        checkTime: (
+        time: (
             <MobileTimePicker
               value={checkTime}
               onChange={setCheckTime}
@@ -72,11 +72,11 @@ const FlaccContents = (props: Props) => {
               )}
             />
         ),
-        sumValue: (
+        sum: (
             <>
                 <MuiTextField
                     value={sumValue}
-                    required={true}
+                    required={false}
                     disabled
                 />
             </>
@@ -90,7 +90,7 @@ const FlaccContents = (props: Props) => {
 
     const onDeleteRow = (index: number) => {
         setValue(
-            'flacc',
+            'flacc_survey',
             flaccList.filter((_, i) => i !== index)
         );
     }
@@ -99,7 +99,7 @@ const FlaccContents = (props: Props) => {
         flaccList.map((item, i) => ({
             ...item,
             id: i,
-            checkTime: formatStringToDate(item.checkTime, 'hh:mm a'),
+            time: formatStringToDate(item.time, 'hh:mm a'),
             action: (
                 <IconButton
                     size="small"

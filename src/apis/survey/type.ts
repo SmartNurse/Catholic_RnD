@@ -231,14 +231,22 @@ export interface IUpdateFall extends IGetSurvey {
 
 // NRS
 export interface INRS {
-  checkTime: string;
-  painScore: number;
+  time: string;
+  pain_score: number;
+}
+
+export interface IUpdateNRS extends IGetSurvey {
+  nrs_survey: INRS[];
 }
 
 // FLACC Scale
 export interface IFLACC {
-  checkTime: string;
-  sumValue: number;
+  time: string;
+  sum: number;
+}
+
+export interface IUpdateFLACC extends IGetSurvey {
+  flacc_survey: IFLACC[];
 }
 
 // CNPS

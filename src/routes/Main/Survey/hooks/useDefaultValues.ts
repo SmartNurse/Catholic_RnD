@@ -11,6 +11,8 @@ import {
   getOutHospital,
   getPathology,
   getRadiology,
+  getNRS,
+  getFLACC,
   getCNPS,
 } from 'apis/survey';
 import useNotification from 'hooks/useNotification';
@@ -197,16 +199,18 @@ const useDefaultValues = ({ setDefaultValues, user_id }: Props) => {
           .catch(e => onFail('알 수 없는 오류가 발생했습니다.', e));
         break;
       case MENU.NRS:
-        convertDataToStates(
-          { pain_score: [] },
-          initialNRS
-        );
+        getNRS({ user_id, patient_id })
+          .then(({ data }) => {
+            convertDataToStates(data, initialNRS);
+          })
+          .catch(e => onFail('알 수 없는 오류가 발생했습니다', e));
         break;
       case MENU.FLACC:
-        convertDataToStates(
-          { scale: { face: '', legs: '', activity: '', cry: '', consolability: ''} },
-          initialFLACC
-        );
+        getFLACC({ user_id, patient_id })
+          .then(({ data }) => {
+            convertDataToStates(data, initialFLACC);
+          })
+          .catch(e => onFail('알 수 없는 오류가 발생했습니다', e));
         break;
       case MENU.CNPS:
         getCNPS({ user_id, patient_id })

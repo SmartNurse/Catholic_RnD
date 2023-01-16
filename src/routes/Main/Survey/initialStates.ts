@@ -288,12 +288,12 @@ export const initialFall = {
 
 export const initialNRS = {
   update_at: '',
-  nrs: [],
+  nrs_survey: [],
 };
 
 export const initialFLACC = {
   update_at: '',
-  flacc: [],
+  flacc_survey: [],
 };
 
 export const initialCNPS = {

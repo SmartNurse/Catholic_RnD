@@ -15,6 +15,8 @@ import {
   IUpdateECardex,
   IUpdateGlucose,
   IUpdateCNPS,
+  IUpdateFLACC,
+  IUpdateNRS,
 } from './type';
 
 // e-CARDEX
@@ -136,6 +138,28 @@ export const getFall = (request: IGetSurvey) => {
 
 export const updateFall = (request: IUpdateFall) => {
   const url = `/survey/fall`;
+  return apiGateway.post(url, camelcaseKeys(request));
+};
+
+// NRS
+export const getNRS = (request: IGetSurvey) => {
+  const url = `/survey/nrs?${formatToRequestParameter(request)}`;
+  return apiGateway.get(url);
+};
+
+export const updateNRS = (request: IUpdateNRS) => {
+  const url = `/survey/nrs`;
+  return apiGateway.post(url, camelcaseKeys(request));
+};
+
+// FLACC
+export const getFLACC = (request: IGetSurvey) => {
+  const url = `/survey/flacc?${formatToRequestParameter(request)}`;
+  return apiGateway.get(url);
+};
+
+export const updateFLACC = (request: IUpdateFLACC) => {
+  const url = `/survey/flacc`;
   return apiGateway.post(url, camelcaseKeys(request));
 };
 

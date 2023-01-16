@@ -27,33 +27,33 @@ interface Props extends IFormValues, IFormWatch {
 
 const NrsContents = (props: Props) => {
     const { disabled, watch, setValue, onRequired, onSuccess } = props;
-    const nrsList: INRS[] = watch('nrs');
+    const nrsList: INRS[] = watch('nrs_survey');
 
     const [checkTime, setCheckTime] = useState(null);
     const [painScore, setPainScore] = useState('');
     const [inputError, setInputError] = useState(false);
 
     const columns = [
-        { fieldId: "checkTime", label: "체크시간", sx: { width: 200 } },
-        { fieldId: "painScore", label: "PAIN SCORE" },
+        { fieldId: "time", label: "체크시간", sx: { width: 200 } },
+        { fieldId: "pain_score", label: "PAIN SCORE" },
         { fieldId: "action", label: "", sx: { width: 100 } },
     ];
 
     const onAddRow = () => {
-        const request = { checkTime, painScore };
+        const request = { time: checkTime, pain_score: painScore };
         if (Object.values(request).filter(v => !v).length > 0) {
             return onRequired('NRS.ADD.ROW');
         }
 
         onSuccess('NRS 추가되었습니다.');
-        setValue('nrs', nrsList ? [...nrsList, request] : [request]);
+        setValue('nrs_survey', nrsList ? [...nrsList, request] : [request]);
         setCheckTime(null);
         setPainScore('');
     };
 
     const inputRow = {
         id: 'add-nrs',
-        checkTime: (
+        time: (
             <MobileTimePicker
               value={checkTime}
               onChange={setCheckTime}
@@ -67,11 +67,11 @@ const NrsContents = (props: Props) => {
               )}
             />
         ),
-        painScore: (
+        pain_score: (
             <>
                 <MuiTextField
                     value={painScore}
-                    required={true}
+                    required={false}
                     onChange={({ target: { value } }) => {
                         setPainScore(value);      
 
@@ -94,7 +94,7 @@ const NrsContents = (props: Props) => {
 
     const onDeleteRow = (index: number) => {
         setValue(
-            'nrs',
+            'nrs_survey',
             nrsList.filter((_, i) => i !== index)
         );
     }
@@ -103,7 +103,7 @@ const NrsContents = (props: Props) => {
         nrsList.map((item, i) => ({
             ...item,
             id: i,
-            checkTime: formatStringToDate(item.checkTime, 'hh:mm a'),
+            time: formatStringToDate(item.time, 'hh:mm a'),
             action: (
                 <IconButton
                     size="small"

@@ -10,6 +10,8 @@ import CommonPatientInfo from "../../components/CommonPatientInfo";
 import FlaccContents from "./FlaccContents";
 
 import { SurveyDialogProps, TFLACCDefaultValues } from "../../type";
+import { IFLACC } from "apis/survey/type";
+import { updateFLACC } from "apis/survey";
 
 const FLACC = (props: SurveyDialogProps<TFLACCDefaultValues>) => {
     const {
@@ -30,7 +32,24 @@ const FLACC = (props: SurveyDialogProps<TFLACCDefaultValues>) => {
     });
 
     const onSubmit = (data: TFLACCDefaultValues) => {
-        /* API 완성되면 작업할 부분 */
+        const { flacc_survey } = data;
+
+        const request = {
+          user_id,
+          patient_id: patientInfo.patient_id,
+          flacc_survey: flacc_survey?.map(
+            ({ time, sum }: IFLACC) => ({ time, sum })
+          )
+        }
+  
+        updateFLACC(request)
+        .then(({ data: { rc } }) => {
+          if (rc !== 1) return onResultCode(rc);
+  
+          onUpdateIsSave(true);
+          onSuccess('FLACC Scale 저장에 성공하였습니다.');
+        })
+        .catch(e => onFail('FLACC Scale 저장에 실패하였습니다.', e));
     }
 
     const formProps = {
@@ -52,8 +71,8 @@ const FLACC = (props: SurveyDialogProps<TFLACCDefaultValues>) => {
         >
             <Typography fontSize={16} fontWeight="bold" align="center" sx={{ marginTop: "12px", marginBottom: "40px" }}>
                 FLACC Scale
-                <br />
-                - 해당 메뉴 저장은 스탠다드 버전에서 가능합니다 -
+                <br/>
+                - TEST 중입니다 -
             </Typography>
             <CommonPatientInfo patientInfo={patientInfo} nurseName={nurseName} />
             <FlaccContents {...formProps} />
