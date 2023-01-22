@@ -243,11 +243,11 @@ const useDefaultValues = ({ setDefaultValues, user_id }: Props) => {
       case MENU.TRANSFUSION:
         getTransfusion({ user_id, patient_id })
         .then(({ data }) => {
-          const { update_at, transfusion_survey: { transfusion_information, transfusion_record} } = data;
+          const { update_at, transfusion_survey } = data;
           convertDataToStates({
             update_at,
-            ...transfusion_information,
-            transfusion_record,
+            ...transfusion_survey?.transfusion_information,
+            transfusion_record: transfusion_survey?.transfusion_record,
           }, initialTransfusion);
         })
         .catch(e => onFail('알 수 없는 오류가 발생했습니다.', e)); 
@@ -290,10 +290,14 @@ const useDefaultValues = ({ setDefaultValues, user_id }: Props) => {
           const { update_at, hospital_confirm } = data;
           convertDataToStates({
             update_at,
-            ...hospital_confirm,
-            nursing_care: JSON.parse(hospital_confirm.nursing_care),
-            facilities_in: JSON.parse(hospital_confirm.facilities_in),
-            facilities: JSON.parse(hospital_confirm.facilities),
+            nursing_care: hospital_confirm ? JSON.parse(hospital_confirm.nursing_care) : {},
+            facilities_in: hospital_confirm ? JSON.parse(hospital_confirm.facilities_in) : {},
+            facilities: hospital_confirm ? JSON.parse(hospital_confirm.facilities) : {},
+            name: hospital_confirm?.name,
+            relationship: hospital_confirm?.relationship,
+            signature: hospital_confirm?.signature,
+            date: hospital_confirm?.date,
+            personnel_signature: hospital_confirm?.personnel_signature,
           }, initialHospitalConfirm);
         })
         .catch(e => onFail('알 수 없는 오류가 발생했습니다.', e)); 
