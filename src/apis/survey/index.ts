@@ -18,6 +18,7 @@ import {
   IUpdateFLACC,
   IUpdateNRS,
   IUpdateTransfusion,
+  IUpdateDialysis,
   IUpdateHospitalConfirm,
   IUpdateFallConfirm,
 } from './type';
@@ -188,6 +189,16 @@ export const updateTransfusion = (request: IUpdateTransfusion) => {
   return apiGateway.post(url, camelcaseKeys(request));
 };
 
+// 투석기록지
+export const getDialysis = (request: IGetSurvey) => {
+  const url = `/survey/hemodialysis?${formatToRequestParameter(request)}`;
+  return apiGateway.get(url);
+};
+
+export const updateDialysis= (request: IUpdateDialysis) => {
+  const url = `/survey/hemodialysis`;
+  return apiGateway.post(url, camelcaseKeys(request));
+};
 
 // 입원안내확인서
 export const getHospitalConfirm = (request: IGetSurvey) => {

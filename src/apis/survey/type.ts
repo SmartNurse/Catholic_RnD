@@ -308,6 +308,50 @@ export interface IUpdateTransfusion extends IGetSurvey {
   }
 }
 
+// 투석기록지
+export interface IDialysisRecord {
+  [index: string]: string | null;
+  time: string | null;
+  volume: string;
+  blood_flow: string;
+  arterial_pressure: string;
+  venous_pressure: string;
+  ufr: string;
+  tmp: string;
+  heparin: string;
+  sbp: string;
+  dbp: string;
+  pr: string;
+  bt: string;
+  rr: string;
+}
+
+export interface IUpdateDialysis extends IGetSurvey {
+  hemodialysis_survey: {
+    dialysis_information: {
+      date: string;
+      time: string;
+      visiting_route: string;
+      dialysis_machine: string;
+      dialyzer: string;
+      dialysate: string;
+      vascular_access: string;
+      starting_nurse: string;
+      ending_nurse:string;
+    },
+    weight_information: {
+      pre_previous_weight: string;
+      pre_today_weight: string;
+      pre_weight_change: string;
+      post_previous_weight: string;
+      post_today_weight: string;
+      post_weight_change: string;
+    },
+    dialysis_db: IDialysisRecord[];
+    additional_information: string;
+  }
+}
+
 // 분만기록지
 export interface INursingRecord {
   date: string;

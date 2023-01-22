@@ -11,10 +11,11 @@ interface Props extends IFormRegister {
   disabled?: boolean;
   title: string;
   registerId: string;
+  required?: boolean;
 }
 
 const TextAreaSection = (props: Props) => {
-  const { title, registerId, disabled, register } = props;
+  const { required, title, registerId, disabled, register } = props;
 
   return (
     <Fragment>
@@ -27,6 +28,7 @@ const TextAreaSection = (props: Props) => {
             minRows={5}
             disabled={disabled}
             {...register(registerId)}
+            required={required === undefined ? true : required}
           />
         </Grid>
       </RowContainer>

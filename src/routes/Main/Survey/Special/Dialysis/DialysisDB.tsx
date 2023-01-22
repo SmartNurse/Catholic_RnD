@@ -1,5 +1,7 @@
+import { useEffect, useState } from 'react';
+
 import Form from 'components/Form';
-import { IFormRegister, IFormValues } from 'routes/Main/type';
+import { IFormRegister, IFormValues, IFormWatch } from 'routes/Main/type';
 
 import { Table, TableBody, TableCell, TableRow, Grid } from "@mui/material";
 import { AccessTime } from '@mui/icons-material';
@@ -8,18 +10,29 @@ import { MobileTimePicker } from '@mui/x-date-pickers';
 import MuiTextField from "components/Form/MuiTextField";
 import RowContainer from '../../components/RowContainer';
 import SectionTitle from '../../components/SectionTitle';
+import { IDialysisRecord } from 'apis/survey/type';
 
-interface Props extends IFormRegister, IFormValues {
+interface Props extends IFormRegister, IFormValues, IFormWatch {
     disabled?: boolean;
-    dbTime: (string | null)[];
-    setDbTime: (dbTime: (string | null)[]) => void;
 }  
 
 const DialysisDB = (props: Props) => {
-    const { dbTime, setDbTime, disabled, register, getValues, setValue } = props;
+    const { disabled, register, getValues, setValue, watch } = props;
 
     const labels = ["투석액온도/용량", "혈류속도", "동맥압", "정맥압", "초여과율", "막통과압", "헤파린", "SBP", "DBP", "PR", "BT", "RR"];
-    const registerIds = ["temp_amount", "speed", "arterial_pressure", "venous_pressure", "filteration_rate", "passing_pressure", "heparin", "sbp", "dbp", "pr", "bt", "rr"];
+    const registerIds = ["volume", "blood_flow", "arterial_pressure", "venous_pressure", "ufr", "tmp", "heparin", "sbp", "dbp", "pr", "bt", "rr"];
+
+    const [dialysisRecord, setDialysisRecord] = useState<IDialysisRecord[]>([
+        { time: null, volume: "", blood_flow: "", arterial_pressure: "", venous_pressure: "", ufr: "", tmp: "", heparin: "", sbp: "", dbp: "", pr: "", bt: "", rr: "", },
+        { time: null, volume: "", blood_flow: "", arterial_pressure: "", venous_pressure: "", ufr: "", tmp: "", heparin: "", sbp: "", dbp: "", pr: "", bt: "", rr: "", },
+        { time: null, volume: "", blood_flow: "", arterial_pressure: "", venous_pressure: "", ufr: "", tmp: "", heparin: "", sbp: "", dbp: "", pr: "", bt: "", rr: "", },
+        { time: null, volume: "", blood_flow: "", arterial_pressure: "", venous_pressure: "", ufr: "", tmp: "", heparin: "", sbp: "", dbp: "", pr: "", bt: "", rr: "", },
+    ]);
+
+    useEffect(() => {
+        if (getValues("dialysis_db")) setDialysisRecord(getValues("dialysis_db"));
+        else setValue("dialysis_db", dialysisRecord);
+    }, []);
 
     return (
         <>
@@ -33,13 +46,14 @@ const DialysisDB = (props: Props) => {
                                 시간
                             </TableCell>
                             {Array(4).fill(0).map((_, idx) =>
-                                <TableCell>
+                                <TableCell key={idx}>
                                     <MobileTimePicker
-                                        value={dbTime[idx]}
+                                        value={dialysisRecord ? dialysisRecord[idx].time : null}
                                         onChange={(v) => {
-                                            const newDbTime = [...dbTime];
-                                            newDbTime[idx] = v;
-                                            setDbTime([...newDbTime]);
+                                            let newRecord = dialysisRecord ? [...dialysisRecord] : [];
+                                            newRecord[idx]["time"] = v;
+                                            setDialysisRecord(newRecord);
+                                            setValue("dialysis_db", newRecord);
                                         }}
                                         renderInput={params => (
                                         <MuiTextField
@@ -53,7 +67,7 @@ const DialysisDB = (props: Props) => {
                                 </TableCell>
                             )}
                         </TableRow>
-                        {labels.map((label) => (
+                        {labels.map((label, labelIdx) => (
                             <TableRow
                             key={label}
                             sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
@@ -62,8 +76,17 @@ const DialysisDB = (props: Props) => {
                                     {label}
                                 </TableCell>
                                 {Array(4).fill(0).map((_, idx) =>
-                                    <TableCell>
-                                        <Form.MuiTextField {...register(`dialysis.dialysis_db.${registerIds[idx]}.${idx + 1}`)} />
+                                    <TableCell key={idx}>
+                                        <Form.MuiTextField
+                                            value={dialysisRecord ? dialysisRecord[idx][registerIds[labelIdx]] : ""}
+                                            onChange={(e) => {
+                                                let newRecord = dialysisRecord ? [...dialysisRecord] : [];
+                                                newRecord[idx][registerIds[labelIdx]] = e.target.value;
+                                                setDialysisRecord(newRecord);
+                                                setValue("dialysis_db", newRecord);
+                                            }}
+                                            required={false}
+                                        />
                                     </TableCell>
                                 )}
                             </TableRow>

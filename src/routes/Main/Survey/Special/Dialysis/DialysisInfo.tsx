@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 import Form from 'components/Form';
 import { IFormRegister, IFormValues, IFormWatch } from 'routes/Main/type';
@@ -14,15 +14,24 @@ import RowContent from '../../components/RowContent';
 import SectionTitle from '../../components/SectionTitle';
 
 interface Props extends IFormRegister, IFormValues, IFormWatch {
-    dialysisTime: string | null;
-    setDialysisTime: (dialysisTime: string | null) => void;
     disabled?: boolean;
 }  
 
 const DialysisInfo = (props: Props) => {
-    const { dialysisTime, setDialysisTime, disabled, register, getValues, setValue, watch } = props;
+    const { disabled, register, getValues, setValue, watch } = props;
 
     const [bloodVessel, setBloodVessel] = useState(-1);
+
+    useEffect(() => {
+        if (isNaN(Number(getValues("visiting_route")))) {
+            setValue("visiting_route_etc", getValues("visiting_route"));
+            setValue("visiting_route", "0");
+        }
+        if (isNaN(Number(getValues("vascular_access")))) {
+        setValue("vascular_access_etc", getValues("vascular_access"));
+        setValue("vascular_access", "0");
+        }
+    }, []);
 
     const contents = [
         {
@@ -32,7 +41,7 @@ const DialysisInfo = (props: Props) => {
                     required
                     type="date"
                     disabled={disabled}
-                    {...register('dialysis_info.date')}
+                    {...register('date')}
                     sx={{ marginRight: "10px" }}
                 />,
         },
@@ -40,8 +49,8 @@ const DialysisInfo = (props: Props) => {
             label: "투석시간*",
             element: 
                 <MobileTimePicker
-                    value={dialysisTime}
-                    onChange={setDialysisTime}
+                    value={watch("time") || null}
+                    onChange={(v) => setValue("time", v)}
                     renderInput={params => (
                     <MuiTextField
                         {...params}
@@ -56,14 +65,16 @@ const DialysisInfo = (props: Props) => {
             label: "투석기",
             element: 
                 <Form.MuiTextField
-                    {...register("dialysis.dialysis_info.catapult")}
+                    {...register("dialyzer")}
+                    required={false}
                 />,
         },
         {
             label: "투석기계",
             element: 
                 <Form.MuiTextField
-                    {...register("dialysis.dialysis_info.machine")}
+                    {...register("dialysis_machine")}
+                    required={false}
                 />,
         },
         {
@@ -73,14 +84,18 @@ const DialysisInfo = (props: Props) => {
                     <Form.MuiRadioGroup
                         i18nKey='DIALYSIS.DIALYSIS_INFO.ROUTE'
                         values={[1, 2, 3, 0]}
-                        defaultValue={getValues('dialysis.dialysis_info.route')}
-                        onChange={v => setValue('dialysis.dialysis_info.route', v)}
+                        defaultValue={getValues('visiting_route')}
+                        onChange={v => {
+                            setValue('visiting_route', v);
+                            if (v !== 0) setValue("visiting_route_etc", "");
+                        }}
                         width="80px"
                     />
                     <Form.MuiTextField
-                        {...register("anethesia.operation_info.method_etc")}
+                        {...register("visiting_route_etc")}
                         placeholder="직접 입력"
                         fullWidth={false}
+                        required={false}
                     />
                 </Box>
         },
@@ -88,7 +103,8 @@ const DialysisInfo = (props: Props) => {
             label: "투석액",
             element: 
                 <Form.MuiTextField
-                    {...register("dialysis.dialysis_info.amount")}
+                    {...register("dialysate")}
+                    required={false}
                 />,
         },
         {
@@ -100,8 +116,9 @@ const DialysisInfo = (props: Props) => {
                     defaultValue={bloodVessel}
                     value={bloodVessel}
                     onChange={v => {
-                        setValue('dialysis.dialysis_info.blood_vessel', v);
+                        setValue('vascular_access', v);
                         setBloodVessel(v);
+                        setValue("vascular_access_etc", "");
                     }}
                     width="80px"
                 />,
@@ -110,7 +127,8 @@ const DialysisInfo = (props: Props) => {
             label: "시작간호사",
             element: 
                 <Form.MuiTextField
-                    {...register("dialysis.dialysis_info.start_nurse")}
+                    {...register("starting_nurse")}
+                    required={false}
                 />,
         },
         {
@@ -123,15 +141,17 @@ const DialysisInfo = (props: Props) => {
                         defaultValue={bloodVessel}
                         value={bloodVessel}
                         onChange={v => {
-                            setValue('dialysis.dialysis_info.blood_vessel', v);
+                            setValue('vascular_access', v);
                             setBloodVessel(v);
+                            if (v !== 0) setValue("vascular_access_etc", "");
                         }}
                         width="80px"
                     />
                     <Form.MuiTextField
-                        {...register("anethesia.operation_info.method_etc")}
+                        {...register("vascular_access_etc")}
                         placeholder="직접 입력"
                         fullWidth={false}
+                        required={false}
                     />
                 </Box>
         },
@@ -139,7 +159,8 @@ const DialysisInfo = (props: Props) => {
             label: "종료간호사",
             element: 
                 <Form.MuiTextField
-                    {...register("dialysis.dialysis_info.end_nurse")}
+                    {...register("ending_nurse")}
+                    required={false}
                 />,
         },
     ];
@@ -149,7 +170,7 @@ const DialysisInfo = (props: Props) => {
             <RowContainer xs={12}>
                 {contents.map(({label, element}) => 
                     <>
-                        <RowContent title={label} titleRatio={1} childrenRatio={5}>
+                        <RowContent key={label} title={label} titleRatio={1} childrenRatio={5}>
                             {element}
                         </RowContent>
                     </>

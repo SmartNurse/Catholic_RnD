@@ -401,31 +401,25 @@ export const initialTransfusion = {
 
 export const initialDialysis = {
   update_at: "",
-  dialysis_info: {
-    date: "",
-    time: "",
-    route: "",
-    machine: "",
-    catapult: "",
-    amount: "",
-    blood_vessel: "",
-    start_nurse: "",
-    end_nurse: "",
-  },
-  weight_info: {
-    pre: {
-      prev: "",
-      today: "",
-      diff: "",
-    },
-    post: {
-      prev: "",
-      today: "",
-      diff: "",
-    },
-  },
+  date: "",
+  time: "",
+  visiting_route: "",
+  visiting_route_etc: "",
+  dialysis_machine: "",
+  dialyzer: "",
+  dialysate: "",
+  vascular_access: "",
+  vascular_access_etc: "",
+  starting_nurse: "",
+  ending_nurse:"",
+  pre_previous_weight: "",
+  pre_today_weight: "",
+  pre_weight_change: "",
+  post_previous_weight: "",
+  post_today_weight: "",
+  post_weight_change: "",
   dialysis_db: [],
-  etc: ""
+  additional_information: "",
 };
 
 export const initialEmergency = {

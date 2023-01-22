@@ -15,6 +15,7 @@ import {
   getFLACC,
   getCNPS,
   getTransfusion,
+  getDialysis,
   getHospitalConfirm,
 } from 'apis/survey';
 import useNotification from 'hooks/useNotification';
@@ -252,10 +253,18 @@ const useDefaultValues = ({ setDefaultValues, user_id }: Props) => {
         .catch(e => onFail('알 수 없는 오류가 발생했습니다.', e)); 
         break;
       case MENU.DIALYSIS:
-        convertDataToStates(
-          initialDialysis,
-          initialDialysis
-        );
+        getDialysis({ user_id, patient_id })
+        .then(({ data }) => {
+          const { update_at, hemodialysis_survey } = data;
+          convertDataToStates({
+            update_at,
+            ...hemodialysis_survey?.dialysis_information,
+            ...hemodialysis_survey?.weight_information,
+            dialysis_db: hemodialysis_survey?.dialysis_db,
+            additional_information: hemodialysis_survey?.additional_information,
+          }, initialDialysis);
+        })
+        .catch(e => onFail('알 수 없는 오류가 발생했습니다.', e));
         break;
       case MENU.EMERGENCY:
         convertDataToStates(
