@@ -5,7 +5,7 @@ import { IFormRegister } from 'routes/Main/type';
 
 import { AccessTime } from '@mui/icons-material';
 import { MobileTimePicker } from '@mui/x-date-pickers';
-import { Grid } from "@mui/material";
+import { Grid, Box, MenuItem } from "@mui/material";
 
 import MuiTextField from 'components/Form/MuiTextField';
 
@@ -44,6 +44,7 @@ const OpContent = (props: Props) => {
         method: "",
         doctor: "",
     });
+    const [methodEtc, setMethodEtc] = useState(0);
 
     const timePickers = [
         { title: "환자도착시간", variable: "arrived" },
@@ -52,11 +53,6 @@ const OpContent = (props: Props) => {
         { title: "수술종료시간", variable: "op_end" },
         { title: "마취종료시간", variable: "anesthesia_end" },
         { title: "환자퇴실시간", variable: "left" },
-    ];
-
-    const textAreas = [
-        { title: "마취 방법", variable: "method" },
-        { title: "마취 의사", variable: "doctor" },
     ];
 
     return (
@@ -92,19 +88,46 @@ const OpContent = (props: Props) => {
                         />
                     </RowContent>
                 )}
-                {textAreas.map(({title, variable}, _) => 
-                    <RowContent key={variable} title={title} titleRatio={1} childrenRatio={2}>
-                        <MuiTextField
-                            value={contents[variable]}
-                            onChange={(e) => {
-                                const newContents = {...contents};
-                                newContents[variable] = e.target.value;
-                                setContents({...newContents});
-                            }}
+                <RowContent title="마취 방법" titleRatio={1} childrenRatio={2}>
+                    <Box display="flex">
+                        <Form.MuiTextField
+                            select
                             required={false}
+                            {...register("anethesia.operation_info.method")}
+                            onChange={(e) => {
+                                if (e.target.value === "etc") setMethodEtc(1);
+                                else setMethodEtc(0);
+                            }}
+                        >
+                            <MenuItem value="local">Local Anesthesia</MenuItem>
+                            <MenuItem value="general">General Anesthesia</MenuItem>
+                            <MenuItem value="spinal">Spinal Anesthesia</MenuItem>
+                            <MenuItem value="epidural">Epidural Anesthesia</MenuItem>
+                            <MenuItem value="etc">직접 입력</MenuItem>
+                        </Form.MuiTextField>
+                        {methodEtc
+                        ?
+                        <Form.MuiTextField
+                            {...register("anethesia.operation_info.method_etc")}
+                            placeholder="직접 입력"
+                            sx={{ marginLeft: "5px" }}
                         />
-                    </RowContent>
-                )}
+                        :
+                        null
+                        }
+                    </Box>
+                </RowContent>
+                <RowContent title="마취 의사" titleRatio={1} childrenRatio={2}>
+                    <MuiTextField
+                        value={contents["doctor"]}
+                        onChange={(e) => {
+                            const newContents = {...contents};
+                            newContents["doctor"] = e.target.value;
+                            setContents({...newContents});
+                        }}
+                        required={false}
+                    />
+                </RowContent>
             </RowContainer>
         </>
     );

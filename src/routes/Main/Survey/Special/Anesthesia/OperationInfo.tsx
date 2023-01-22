@@ -114,7 +114,7 @@ const OperationInfo = (props: Props) => {
                 </Box>
         },
         {
-            label: "과거력",
+            label: "과거력/알레르기",
             element: 
             <Box display="flex">
                 <Form.MuiTextField
@@ -210,7 +210,7 @@ const OperationInfo = (props: Props) => {
                         <RowContent
                             title={label}
                             titleRatio={1}
-                            childrenRatio={label === "과거력" ? 5 : 2}
+                            childrenRatio={label === "과거력/알레르기" ? 5 : 2}
                         >
                             {element}
                         </RowContent>

@@ -14,24 +14,23 @@ interface Props extends IFormRegister {
 
 const PatientStaffInfo = (props: Props) => {
     const {
-        patientInfo: { patient_id, name, age, gender, ward, room, admin_hod, admin_pod, department, disease_main, main_doctor },
-        nurseName,
+        patientInfo: { patient_id, name, age, gender, ward, room, admin_hod, department, disease_main, main_doctor, height, weight, blood },
         register,
     } = props;
 
     const infos = [
-        {title: "환자등록번호", value: patient_id},
         {title: "환자명", value: name},
+        {title: "환자등록번호", value: patient_id},
         {title: "나이", value: age},
         {title: "성별", value: gender},
         {title: "병동", value: ward},
         {title: "병실", value: room},
-        {title: "HOD", value: admin_hod},
-        {title: "POD", value: admin_pod},
         {title: "진료과", value: department},
+        {title: "HOD", value: admin_hod},
+        {title: "키", value: height},
+        {title: "체중", value: weight},
+        {title: "혈액형", value: blood},
         {title: "진단명", value: disease_main.disease_kor},
-        {title: "담당 의사", value: main_doctor},
-        {title: "담당 간호사", value: nurseName},
     ];
 
     const staffs = [
