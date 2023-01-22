@@ -19,6 +19,7 @@ import {
   IUpdateNRS,
   IUpdateTransfusion,
   IUpdateDialysis,
+  IUpdateEmergency,
   IUpdateHospitalConfirm,
   IUpdateFallConfirm,
 } from './type';
@@ -197,6 +198,17 @@ export const getDialysis = (request: IGetSurvey) => {
 
 export const updateDialysis= (request: IUpdateDialysis) => {
   const url = `/survey/hemodialysis`;
+  return apiGateway.post(url, camelcaseKeys(request));
+};
+
+// 응급기록지
+export const getEmergency = (request: IGetSurvey) => {
+  const url = `/survey/emergency?${formatToRequestParameter(request)}`;
+  return apiGateway.get(url);
+};
+
+export const updateEmergency = (request: IUpdateEmergency) => {
+  const url = `/survey/emergency`;
   return apiGateway.post(url, camelcaseKeys(request));
 };
 

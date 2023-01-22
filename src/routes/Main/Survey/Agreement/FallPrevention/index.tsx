@@ -81,8 +81,6 @@ const FallPrevention = (props: SurveyDialogProps<TFallConfirmDefaultValues>) => 
         >
             <Typography fontSize={16} fontWeight="bold" align="center" sx={{ marginTop: "12px", marginBottom: "40px" }}>
                 낙상 예방교육 확인서
-                <br/>
-                - TEST 중입니다 -
             </Typography>
             <CommonPatientInfo patientInfo={patientInfo} nurseName={nurseName} />
             <Box sx={{ marginTop: "48px" }}>

@@ -352,6 +352,34 @@ export interface IUpdateDialysis extends IGetSurvey {
   }
 }
 
+// 응급기록지
+export interface IUpdateEmergency extends IGetSurvey {
+  emergency_survey: {
+    emergency_information: {
+      accident_type: string;
+      registration_number: string;
+      address: string;
+      classification: string;
+      accident_location: string;
+      accident_date: string;
+      accident_time: string;
+      arrival_date: string;
+      arrival_time: string;
+    },
+    emergency_contents: {
+      reasons: string;
+      primary_first_aid: string;
+      instructions: string;
+      observations: string;
+      affiliated_organization: string;
+      qualification_license: string;
+      name: string;
+      phone_number: string;
+      medical_history: string;
+    }
+  }
+}
+
 // 분만기록지
 export interface INursingRecord {
   date: string;

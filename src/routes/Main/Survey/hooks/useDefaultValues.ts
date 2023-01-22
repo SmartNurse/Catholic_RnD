@@ -16,6 +16,8 @@ import {
   getCNPS,
   getTransfusion,
   getDialysis,
+  getEmergency,
+  getFallConfirm,
   getHospitalConfirm,
 } from 'apis/survey';
 import useNotification from 'hooks/useNotification';
@@ -267,10 +269,16 @@ const useDefaultValues = ({ setDefaultValues, user_id }: Props) => {
         .catch(e => onFail('알 수 없는 오류가 발생했습니다.', e));
         break;
       case MENU.EMERGENCY:
-        convertDataToStates(
-          initialEmergency,
-          initialEmergency
-        );
+        getEmergency({ user_id, patient_id })
+        .then(({ data }) => {
+          const { update_at, emergency_survey } = data;
+          convertDataToStates({
+            update_at,
+            ...emergency_survey?.emergency_information,
+            ...emergency_survey?.emergency_contents,
+          }, initialEmergency);
+        })
+        .catch(e => onFail('알 수 없는 오류가 발생했습니다.', e));
         break;
       case MENU.CHILDBIRTH:
         convertDataToStates(
@@ -303,10 +311,18 @@ const useDefaultValues = ({ setDefaultValues, user_id }: Props) => {
         .catch(e => onFail('알 수 없는 오류가 발생했습니다.', e)); 
         break;
       case MENU.FALL_CONFIRM:
-        convertDataToStates(
-          initialFallConfirm,
-          initialFallConfirm,
-        );
+        getFallConfirm({ user_id, patient_id })
+        .then(({ data }) => {
+          const { update_at, fall_confirm } = data;
+          convertDataToStates({
+            update_at,
+            fall_education: fall_confirm ? JSON.parse(fall_confirm.fall_education) : {},
+            signature: fall_confirm?.signature,
+            date: fall_confirm?.date,
+            personnel_signature: fall_confirm?.personnel_signature,
+          }, initialFallConfirm);
+        })
+        .catch(e => onFail('알 수 없는 오류가 발생했습니다.', e));
         break;
       case MENU.CORE_NURSING_SKILL_VIDEO:
         convertDataToStates(
