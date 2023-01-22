@@ -45,7 +45,7 @@ const BloodInfo = (props: Props) => {
                     <MuiTextField
                         value={watch(`${variable}`)}
                         onChange={(e) => setValue(variable, e.target.value)}
-                        required={false}
+                        required={variable === "volume" || variable === "transfusion_start_time" || variable === "transfusion_end_time" ? true : false}
                     />
                     }
                     {type === "label"
