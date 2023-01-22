@@ -12,7 +12,7 @@ import {
 import useSurvey from 'store/survey/useSurvey';
 import useNotification from 'hooks/useNotification';
 
-import PatientInfo from "./PatientInfo";
+import CommonPatientInfo from "../../components/CommonPatientInfo";
 import DialysisInfo from "./DialysisInfo";
 import WeightInfo from "./WeightInfo";
 import DialysisDB from "./DialysisDB";
@@ -26,6 +26,7 @@ const Dialysis = (props: SurveyDialogProps<TDialysisDefaultValues>) => {
         defaultValues,
         user_id,
         patientInfo,
+        nurseName,
         onClose,
     } = props;
 
@@ -62,7 +63,7 @@ const Dialysis = (props: SurveyDialogProps<TDialysisDefaultValues>) => {
             <Typography sx={{ margin: "40px auto 0px auto", fontWeight: "700", fontSize: "16px", textAlign: "center" }}>
                 투석 기록지 <br/> - 해당 메뉴 저장은 스탠다드 버전에서 가능합니다 -
             </Typography>
-            <PatientInfo {...formProps} patientInfo={patientInfo} />
+            <CommonPatientInfo patientInfo={patientInfo} nurseName={nurseName}/>
             <DialysisInfo {...formProps} dialysisTime={dialysisTime} setDialysisTime={setDialysisTime} />
             <WeightInfo {...formProps} />
             <DialysisDB {...formProps} dbTime={dbTime} setDbTime={setDbTime} />

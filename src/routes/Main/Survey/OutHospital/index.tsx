@@ -26,6 +26,7 @@ const OutHospital = (props: SurveyDialogProps<TOutHospitalDefaultValues>) => {
     defaultValues,
     user_id,
     patientInfo,
+    nurseName,
     onClose,
   } = props;
 
@@ -80,7 +81,7 @@ const OutHospital = (props: SurveyDialogProps<TOutHospitalDefaultValues>) => {
         columnSpacing={3}
         sx={{ py: 5, px: 1 }}
       >
-        <PatientInfo {...formProps} {...patientInfo} />
+        <PatientInfo {...formProps} patientInfo={patientInfo} nurseName={nurseName} />
         <DefaultInfo {...formProps} />
         <Medicines {...formProps} />
         <OutPatients {...formProps} />

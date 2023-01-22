@@ -27,10 +27,11 @@ const OutHospitalPlan = (props: Props) => {
             disabled={disabled}
             defaultValue={getValues('out_hospital_plan.life')}
             onChange={v => setValue('out_hospital_plan.life', v)}
+            width="125px"
           />
         </RowContent>
         <RowContent title="퇴원예정지">
-          <Stack direction="row" spacing={1}>
+          <Stack direction="row">
             <Form.MuiRadioGroup
               i18nNullKey="ETC"
               i18nKey="HOSPITALIZATION.DESTINATION"
@@ -38,11 +39,13 @@ const OutHospitalPlan = (props: Props) => {
               disabled={disabled}
               defaultValue={getValues('out_hospital_plan.destination.value')}
               onChange={v => setValue('out_hospital_plan.destination.value', v)}
+              width="125px"
             />
             <Form.MuiTextField
               required={false}
               disabled={disabled}
               placeholder="직접 입력"
+              sx={{ marginLeft: "-35px" }}
               {...register('out_hospital_plan.destination.input')}
             />
           </Stack>
@@ -51,20 +54,24 @@ const OutHospitalPlan = (props: Props) => {
 
       <RowContainer sx={{ mb: 'auto' }}>
         <RowContent title="주요 보호자">
-          <Form.MuiRadioGroup
-            i18nNullKey="ETC"
-            disabled={disabled}
-            i18nKey="HOSPITALIZATION.GUARDIAN"
-            values={[1, 2, 3, 4, 5, 0]}
-            defaultValue={getValues('out_hospital_plan.guardian.value')}
-            onChange={v => setValue('out_hospital_plan.guardian.value', v)}
-          />
-          <Form.MuiTextField
-            required={false}
-            disabled={disabled}
-            placeholder="직접 입력"
-            {...register('out_hospital_plan.guardian.input')}
-          />
+          <Stack direction="row">
+            <Form.MuiRadioGroup
+              i18nNullKey="ETC"
+              disabled={disabled}
+              i18nKey="HOSPITALIZATION.GUARDIAN"
+              values={[1, 2, 3, 4, 5, 0]}
+              defaultValue={getValues('out_hospital_plan.guardian.value')}
+              onChange={v => setValue('out_hospital_plan.guardian.value', v)}
+              width="65px"
+            />
+            <Form.MuiTextField
+              required={false}
+              disabled={disabled}
+              placeholder="직접 입력"
+              sx={{ marginLeft: "25px" }}
+              {...register('out_hospital_plan.guardian.input')}
+            />
+          </Stack>
         </RowContent>
       </RowContainer>
     </Fragment>
