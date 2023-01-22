@@ -1,7 +1,7 @@
 import { useState } from "react";
 
 import Form from 'components/Form';
-import { IFormRegister } from 'routes/Main/type';
+import { IFormRegister, IFormValues, IFormWatch } from 'routes/Main/type';
 
 import { AccessTime } from '@mui/icons-material';
 import { MobileTimePicker } from '@mui/x-date-pickers';
@@ -12,56 +12,27 @@ import MuiTextField from 'components/Form/MuiTextField';
 import RowContainer from '../../components/RowContainer';
 import RowContent from '../../components/RowContent';
 
-interface Props extends IFormRegister {
+interface Props extends IFormRegister, IFormValues, IFormWatch {
     disabled?: boolean;
     blood: string;
 }  
 
-interface IBloodInfos {
-    [index: string]: string | null;
-    id: string;
-    title: string;
-    cc: string;
-    arrivedTime: string | null;
-    arrivedChecker: string;
-    checker1: string;
-    checker2: string;
-    startTime: string | null;
-    startStaff: string;
-    endTime: string | null;
-    endStaff: string;
-}
-
 const BloodInfo = (props: Props) => {
-    const { blood, disabled, register } = props;
-
-    const [bloodInfos, setBloodInfos] = useState<IBloodInfos>({
-        id: "",
-        title: "",
-        cc: "",
-        arrivedTime: "",
-        arrivedChecker: "",
-        checker1: "",
-        checker2: "",
-        startTime: "",
-        startStaff: "",
-        endTime: "",
-        endStaff: "",
-    });
+    const { blood, disabled, register, watch, setValue } = props;
 
     const rows = [
-        { title: "혈액번호", variable: "id", type: "text" },
-        { title: "혈액명", variable: "name", type: "text" },
+        { title: "혈액번호", variable: "blood_number", type: "text" },
+        { title: "혈액명", variable: "blood_name", type: "text" },
         { title: "혈액형*", variable: "type", type: "label" },
-        { title: "용량(mL)*", variable: "cc", type: "text" },
-        { title: "도착확인시간", variable: "arrivedTime", type: "time" },
-        { title: "수혈도착확인자", variable: "arrivedChecker", type: "text" },
-        { title: "수혈확인자1", variable: "checker1", type: "text" },
-        { title: "수혈확인자2", variable: "checker2", type: "text" },
-        { title: "수혈시작일시*", variable: "startTime", type: "time" },
-        { title: "수혈시작의료인", variable: "startStaff", type: "text" },
-        { title: "수혈종료일시*", variable: "endTime", type: "time" },
-        { title: "수혈종료의료인", variable: "endStaff", type: "text" },
+        { title: "용량(mL)*", variable: "volume", type: "text" },
+        { title: "도착확인시간", variable: "arrival_time", type: "time" },
+        { title: "수혈도착확인자", variable: "blood_transfusion_arrival", type: "text" },
+        { title: "수혈확인자1", variable: "transfusion_check1", type: "text" },
+        { title: "수혈확인자2", variable: "transfusion_check2", type: "text" },
+        { title: "수혈시작일시*", variable: "transfusion_start_time", type: "time" },
+        { title: "수혈시작의료인", variable: "practitioner_start", type: "text" },
+        { title: "수혈종료일시*", variable: "transfusion_end_time", type: "time" },
+        { title: "수혈종료의료인", variable: "practitioner_end", type: "text" },
     ]
 
     return (
@@ -72,12 +43,8 @@ const BloodInfo = (props: Props) => {
                     {type === "text"
                     &&
                     <MuiTextField
-                        value={bloodInfos[variable]}
-                        onChange={(e) => {
-                            const newBloodInfos = {...bloodInfos};
-                            newBloodInfos[variable] = e.target.value;
-                            setBloodInfos({...newBloodInfos});
-                        }}
+                        value={watch(`${variable}`)}
+                        onChange={(e) => setValue(variable, e.target.value)}
                         required={false}
                     />
                     }
@@ -91,12 +58,8 @@ const BloodInfo = (props: Props) => {
                     {type === "time"
                     &&
                     <MobileTimePicker
-                        value={bloodInfos[variable]}
-                        onChange={(value) => {
-                            const newBloodInfos = {...bloodInfos};
-                            newBloodInfos[variable] = value;
-                            setBloodInfos({...newBloodInfos});
-                        }}
+                        value={watch(`${variable}`)}
+                        onChange={(value) => setValue(variable, value)}
                         renderInput={params => (
                         <MuiTextField
                             {...params}

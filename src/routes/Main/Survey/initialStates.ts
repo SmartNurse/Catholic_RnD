@@ -385,18 +385,18 @@ export const initialAnesthesia = {
 
 export const initialTransfusion = {
   update_at: '',
-  id: '',
-  title: '',
-  cc: '',
-  arrivedTime: '',
-  arrivedChecker: '',
-  checker1: '',
-  checker2: '',
-  startTime: '',
-  startStaff: '',
-  endTime: '',
-  endStaff: '',
-  blood_record: [],
+  blood_number: '',
+  blood_name: '',
+  volume: '',
+  arrival_time: '',
+  blood_transfusion_arrival: '',
+  transfusion_check1: '',
+  transfusion_check2: '',
+  transfusion_start_time: '',
+  practitioner_start: '',
+  transfusion_end_time: '',
+  practitioner_end: '',
+  transfusion_record: [],
 };
 
 export const initialDialysis = {
@@ -645,9 +645,9 @@ export const initialHospitalConfirm = {
   personnel_signature: "",
 };
 
-export const initialFallPrevention = {
+export const initialFallConfirm = {
   update_at: '',
-  education_list: {
+  fall_education: {
     checked1: false,
     checked2: false,
     checked3: false,
@@ -657,9 +657,9 @@ export const initialFallPrevention = {
     checked7: false,
     checked8: false,
   },
-  sign: "",
+  signature: "",
   date: "",
-  staff_sign: "",
+  personnel_signature: "",
 }
 
 export const initialCoreNursingSkillVideo = {

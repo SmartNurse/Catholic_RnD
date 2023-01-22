@@ -6,14 +6,15 @@ import useNotification from 'hooks/useNotification';
 import { Typography, Box } from "@mui/material";
 import MuiDialog from "components/MuiDialog";
 
-import { SurveyDialogProps, TFallPreventionDefaultValues } from "../../type";
+import { SurveyDialogProps, TFallConfirmDefaultValues } from "../../type";
+import { updateFallConfirm } from "apis/survey";
 
 import CommonPatientInfo from "../../components/CommonPatientInfo";
 import CautionList from "./CautionList";
 import EducationList from "./EducationList";
 import Signature from "./Signature";
 
-const FallPrevention = (props: SurveyDialogProps<TFallPreventionDefaultValues>) => {
+const FallPrevention = (props: SurveyDialogProps<TFallConfirmDefaultValues>) => {
     const {
         title,
         isOpen,
@@ -31,7 +32,33 @@ const FallPrevention = (props: SurveyDialogProps<TFallPreventionDefaultValues>) 
         defaultValues,
     });
 
-    const onSubmit = (data: TFallPreventionDefaultValues) => {
+    const onSubmit = (data: TFallConfirmDefaultValues) => {
+        const { fall_education, signature, date, personnel_signature } = data;
+
+        const request = {
+          user_id,
+          patient_id: patientInfo.patient_id,
+          fall_confirm: {
+            fall_education: JSON.stringify(fall_education),
+            signature,
+            date,
+            personnel_signature,
+          }
+        }
+
+        console.log(request);
+  
+        updateFallConfirm(request)
+        .then(({ data: { rc } }) => {
+          if (rc !== 1) return onResultCode(rc);
+  
+          onUpdateIsSave(true);
+          onSuccess('낙상 예방교육 확인서 저장에 성공하였습니다.');
+        })
+        .catch(e => {
+            onFail('낙상 예방교육 확인서 저장에 실패하였습니다.', e);
+            console.log(e);
+        });
     }
 
     const formProps = {

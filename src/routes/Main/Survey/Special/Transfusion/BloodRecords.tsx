@@ -21,7 +21,7 @@ interface Props extends IFormValues, IFormWatch, IFormRegister {
 
 const BloodRecords = (props: Props) => {
   const { disabled, watch, setValue, onRequired, onSuccess, register } = props;
-  const bloodRecordList: IBloodRecord[] = watch('blood_record');
+  const bloodRecordList: IBloodRecord[] = watch('transfusion_record');
 
   const [checkTime, setCheckTime] = useState(null);
   const [division, setDivision] = useState("");
@@ -30,33 +30,33 @@ const BloodRecords = (props: Props) => {
   const [pr, setPr] = useState("");
   const [rr, setRr] = useState("");
   const [bt, setBt] = useState("");
-  const [sideEffect, setSideEffect] = useState(-1);
+  const [sideEffect, setSideEffect] = useState(1);
   const [etc, setEtc] = useState("");
 
   const columns = [
-    { fieldId: 'checkTime', label: '측정시간', sx: { width: 200 } },
+    { fieldId: 'time', label: '측정시간', sx: { width: 200 } },
     { fieldId: 'division', label: '구분', sx: { width: 200 } },
     { fieldId: 'sbp', label: 'SBP', sx: { width: 150 } },
     { fieldId: 'dbp', label: 'DBP', sx: { width: 150 } },
     { fieldId: 'pr', label: 'PR', sx: { width: 150 } },
     { fieldId: 'rr', label: 'RR', sx: { width: 150 } },
     { fieldId: 'bt', label: 'BT', sx: { width: 150 } },
-    { fieldId: 'sideEffect', label: '수혈 부작용', sx: { width: 200 } },
-    { fieldId: 'etc', label: '비고', sx: { width: 150 } },
+    { fieldId: 'side_effects', label: '수혈 부작용', sx: { width: 200 } },
+    { fieldId: 'notes', label: '비고', sx: { width: 150 } },
     { fieldId: 'action', label: '', sx: { width: 100 } }
   ];
 
   const divisions = ['수혈 시작 전', '수혈 시작 15분 후', '수혈 시작 30분 후', '수혈 시작 1시간 후', '수혈 시작 1시간 30분 후', '수혈 종료 시'];
 
   const onAddRow = () => {
-    const request = { checkTime, division, sbp, dbp, pr, rr, bt, sideEffect, etc };
-
-    if (checkTime === null || division === "" || sbp === "" || dbp === "" || pr === "" || rr === "" || bt === "" || sideEffect === -1) {
+    const request = { time: checkTime, division, sbp, dbp, pr, rr, bt, side_effects: sideEffect === 1 ? true : false, notes: etc };
+  
+    if (checkTime === null || division === "" || sbp === "" || dbp === "" || pr === "" || rr === "" || bt === "") {
       return onRequired('CLINICAL.OBSERVATION.ADD.ROW');
     }
 
-    onSuccess('투약 추가되었습니다.');
-    setValue('blood_record', bloodRecordList ? [...bloodRecordList, {...request}] : [{...request}]);
+    onSuccess('수혈 기록 추가되었습니다.');
+    setValue('transfusion_record', bloodRecordList ? [...bloodRecordList, {...request}] : [{...request}]);
     setCheckTime(null);
     setDivision("");
     setSbp("");
@@ -70,7 +70,7 @@ const BloodRecords = (props: Props) => {
 
   const inputRow = {
     id: 'add-blood-record',
-    checkTime: (
+    time: (
       <MobileTimePicker
         value={checkTime}
         onChange={setCheckTime}
@@ -133,7 +133,7 @@ const BloodRecords = (props: Props) => {
         onChange={({ target: { value } }) => setBt(value)}
       />
     ),
-    sideEffect: (
+    side_effects: (
       <Form.MuiRadioGroup
         disabled={disabled}
         i18nNullKey="ETC"
@@ -144,7 +144,7 @@ const BloodRecords = (props: Props) => {
         onChange={(value) => setSideEffect(value)}
       />
     ),
-    etc: (
+    notes: (
       <MuiTextField
         value={etc}
         required={false}
@@ -160,7 +160,7 @@ const BloodRecords = (props: Props) => {
 
   const onDeleteRow = (index: number) => {
     setValue(
-      'blood_record',
+      'transfusion_record',
       bloodRecordList.filter((_, i) => i !== index)
     );
   };
@@ -169,8 +169,8 @@ const BloodRecords = (props: Props) => {
     bloodRecordList.map((item, i) => ({
         ...item,
         id: i,
-        checkTime: formatStringToDate(item.checkTime, 'hh:mm a'),
-        sideEffect: item.sideEffect == 1 ? "유" : "무",
+        time: formatStringToDate(item.time, 'hh:mm a'),
+        side_effects: item.side_effects == true ? "유" : "무",
         action: (
         <IconButton
             size="small"

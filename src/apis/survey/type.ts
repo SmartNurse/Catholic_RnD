@@ -278,15 +278,34 @@ export interface IAnesthesiaPrescriptionRecord {
 
 // 수혈기록지
 export interface IBloodRecord {
-  checkTime: string;
+  time: string;
   division: string;
   sbp: string;
   dbp: string;
   pr: string;
   rr: string;
   bt: string;
-  sideEffect: number;
-  etc: string;
+  side_effects: boolean;
+  notes: string;
+}
+
+export interface IUpdateTransfusion extends IGetSurvey {
+  transfusion_survey: {
+    transfusion_information: {
+      blood_number: string;
+      blood_name: string;
+      volume: string;
+      arrival_time: string;
+      blood_transfusion_arrival: string;
+      transfusion_check1: string;
+      transfusion_check2: string;
+      transfusion_start_time: string;
+      practitioner_start: string;
+      transfusion_end_time: string;
+      practitioner_end: string;
+    },
+    transfusion_record: IBloodRecord[];  
+  }
 }
 
 // 분만기록지
@@ -297,12 +316,22 @@ export interface INursingRecord {
 }
 
 // 입원안내확인서
-export interface IUpdateHospitalConfirm {
+export interface IUpdateHospitalConfirm extends IGetSurvey {
   hospital_confirm: {
     nursing_care: string;
     facilities_in: string;
     name: string;
     relationship: string;
+    signature: string;
+    date: string;
+    personnel_signature: string;
+  }
+}
+
+// 낙상예방교육확인서
+export interface IUpdateFallConfirm extends IGetSurvey {
+  fall_confirm: {
+    fall_education: string;
     signature: string;
     date: string;
     personnel_signature: string;

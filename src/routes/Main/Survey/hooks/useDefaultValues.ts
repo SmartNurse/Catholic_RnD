@@ -14,6 +14,7 @@ import {
   getNRS,
   getFLACC,
   getCNPS,
+  getTransfusion,
   getHospitalConfirm,
 } from 'apis/survey';
 import useNotification from 'hooks/useNotification';
@@ -44,7 +45,7 @@ import {
   initialChildbirth,
   initialDietNutrition,
   initialHospitalConfirm,
-  initialFallPrevention,
+  initialFallConfirm,
   initialCoreNursingSkillVideo,
 } from '../initialStates';
 import { MENU } from '../type';
@@ -239,10 +240,16 @@ const useDefaultValues = ({ setDefaultValues, user_id }: Props) => {
         );
         break;
       case MENU.TRANSFUSION:
-        convertDataToStates(
-          initialTransfusion,
-          initialTransfusion
-        );
+        getTransfusion({ user_id, patient_id })
+        .then(({ data }) => {
+          const { update_at, transfusion_survey: { transfusion_information, transfusion_record} } = data;
+          convertDataToStates({
+            update_at,
+            ...transfusion_information,
+            transfusion_record,
+          }, initialTransfusion);
+        })
+        .catch(e => onFail('알 수 없는 오류가 발생했습니다.', e)); 
         break;
       case MENU.DIALYSIS:
         convertDataToStates(
@@ -279,20 +286,13 @@ const useDefaultValues = ({ setDefaultValues, user_id }: Props) => {
             facilities_in: JSON.parse(hospital_confirm.facilities_in),
             facilities: JSON.parse(hospital_confirm.facilities),
           }, initialHospitalConfirm);
-          console.log({
-            update_at,
-              ...hospital_confirm,
-              nursing_care: JSON.parse(hospital_confirm.nursing_care),
-              facilities_in: JSON.parse(hospital_confirm.facilities_in),
-              facilities: JSON.parse(hospital_confirm.facilities),
-            });
         })
         .catch(e => onFail('알 수 없는 오류가 발생했습니다.', e)); 
         break;
-      case MENU.FALL_PREVENTION:
+      case MENU.FALL_CONFIRM:
         convertDataToStates(
-          initialFallPrevention,
-          initialFallPrevention
+          initialFallConfirm,
+          initialFallConfirm,
         );
         break;
       case MENU.CORE_NURSING_SKILL_VIDEO:

@@ -144,7 +144,7 @@ const DisplaySurvey = (props: Props) => {
       if (!defaultValues) return null;
       return <HospitalizationInfo {...dialogProps} onClose={onCloseSave} />;
     }
-    case MENU.FALL_PREVENTION: {
+    case MENU.FALL_CONFIRM: {
       if (!defaultValues) return null;
       return <FallPrevention {...dialogProps} onClose={onCloseSave} />;
     }

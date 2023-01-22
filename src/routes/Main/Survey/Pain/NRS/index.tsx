@@ -41,7 +41,7 @@ const NRS = (props: SurveyDialogProps<TNRSDefaultValues>) => {
             ({ time, pain_score }: INRS) => ({ time, pain_score })
           )
         }
-  
+        console.log(request);
         updateNRS(request)
         .then(({ data: { rc } }) => {
           if (rc !== 1) return onResultCode(rc);

@@ -13,9 +13,9 @@ const Signature = (props: Props) => {
     const { disabled, register } = props;
 
     const labels = [
-        { title: "서명", variable: "sign" },
+        { title: "서명", variable: "signature" },
         { title: "작성일시", variable: "date" },
-        { title: "의료인 서명", variable: "staff_sign" },
+        { title: "의료인 서명", variable: "personnel_signature" },
     ];
 
     return (
@@ -28,17 +28,15 @@ const Signature = (props: Props) => {
                             <RowContent key={variable} title={title} titleRatio={1} childrenRatio={2}>
                                 <Form.MuiTextField
                                     type="date"
-                                    required={false}
                                     disabled={disabled}
-                                    {...register("hospitalization_info.date")}
+                                    {...register(`${variable}`)}
                                 />
                             </RowContent>
                             :
                             <RowContent key={variable} title={title} titleRatio={1} childrenRatio={2}>
                                 <Form.MuiTextField
-                                    required={false}
                                     disabled={disabled}
-                                    {...register(`hospitalization_info.${variable}`)}
+                                    {...register(`${variable}`)}
                                 />
                             </RowContent>
                         }

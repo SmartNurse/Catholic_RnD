@@ -17,7 +17,9 @@ import {
   IUpdateCNPS,
   IUpdateFLACC,
   IUpdateNRS,
+  IUpdateTransfusion,
   IUpdateHospitalConfirm,
+  IUpdateFallConfirm,
 } from './type';
 
 // e-CARDEX
@@ -175,6 +177,18 @@ export const updateCNPS = (request: IUpdateCNPS) => {
   return apiGateway.post(url, camelcaseKeys(request));
 };
 
+// 수혈기록지
+export const getTransfusion = (request: IGetSurvey) => {
+  const url = `/survey/transfusion?${formatToRequestParameter(request)}`;
+  return apiGateway.get(url);
+};
+
+export const updateTransfusion = (request: IUpdateTransfusion) => {
+  const url = `/survey/transfusion`;
+  return apiGateway.post(url, camelcaseKeys(request));
+};
+
+
 // 입원안내확인서
 export const getHospitalConfirm = (request: IGetSurvey) => {
   const url = `/survey/hospitalConfirm?${formatToRequestParameter(request)}`;
@@ -183,5 +197,16 @@ export const getHospitalConfirm = (request: IGetSurvey) => {
 
 export const updateHospitalConfirm = (request: IUpdateHospitalConfirm) => {
   const url = `/survey/hospitalConfirm`;
+  return apiGateway.post(url, camelcaseKeys(request));
+};
+
+// 낙상예방교육확인서
+export const getFallConfirm = (request: IGetSurvey) => {
+  const url = `/survey/fallConfirm?${formatToRequestParameter(request)}`;
+  return apiGateway.get(url);
+};
+
+export const updateFallConfirm = (request: IUpdateFallConfirm) => {
+  const url = `/survey/fallConfirm`;
   return apiGateway.post(url, camelcaseKeys(request));
 };
