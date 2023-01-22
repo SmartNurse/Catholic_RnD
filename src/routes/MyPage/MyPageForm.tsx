@@ -69,12 +69,12 @@ function MyPageForm(props: Props) {
               />
             </Box>
           </Form.Item>
-          <Form.Item label="비밀번호">
+          <Form.Item label="기존 비밀번호 입력">
             <Box display="flex" gap={1}>
               <Form.Password
                 required
                 fullWidth
-                helperText="영문+숫자+특수기호를 포함해서 8자리 이상 입력해 주세요."
+                helperText="비밀번호를 변경하기 위해 기존 비밀번호를 입력해주세요."
                 InputProps={{
                   readOnly: isConfirmPassword,
                   endAdornment: <VerificationIcon />,
@@ -92,12 +92,17 @@ function MyPageForm(props: Props) {
                   display: isConfirmPassword ? 'none' : 'block',
                 }}
               >
-                비밀번호 변경
+                확인
               </Button>
             </Box>
           </Form.Item>
-          <Form.Item label="새 비밀번호" isHidden={!isConfirmPassword}>
-            <Form.Password required fullWidth {...register('newPassword')} />
+          <Form.Item label="새 비밀번호 입력" isHidden={!isConfirmPassword}>
+            <Form.Password
+              required
+              fullWidth
+              helperText="영문+숫자+특수기호를 포함해서 8자리 이상 입력해 주세요."
+              {...register('newPassword')}
+            />
           </Form.Item>
           <Form.Item label="비밀번호 확인" isHidden={!isConfirmPassword}>
             <Form.Password
