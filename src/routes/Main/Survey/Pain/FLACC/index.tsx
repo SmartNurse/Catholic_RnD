@@ -71,8 +71,6 @@ const FLACC = (props: SurveyDialogProps<TFLACCDefaultValues>) => {
         >
             <Typography fontSize={16} fontWeight="bold" align="center" sx={{ marginTop: "12px", marginBottom: "40px" }}>
                 FLACC Scale
-                <br/>
-                - TEST 중입니다 -
             </Typography>
             <CommonPatientInfo patientInfo={patientInfo} nurseName={nurseName} />
             <FlaccContents {...formProps} />

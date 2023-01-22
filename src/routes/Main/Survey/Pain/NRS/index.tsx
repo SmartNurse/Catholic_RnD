@@ -73,8 +73,6 @@ const NRS = (props: SurveyDialogProps<TNRSDefaultValues>) => {
                 NRS
                 <br/>
                 PAIN SCORE 0-10 NUMERICAL RATING
-                <br/>
-                - TEST 중입니다 -
             </Typography>
             <CommonPatientInfo patientInfo={patientInfo} nurseName={nurseName} />
             <NrsContents {...formProps} />
