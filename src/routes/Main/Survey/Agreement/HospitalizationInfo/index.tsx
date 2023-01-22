@@ -6,7 +6,8 @@ import useNotification from 'hooks/useNotification';
 import { Typography, Box } from "@mui/material";
 import MuiDialog from "components/MuiDialog";
 
-import { SurveyDialogProps, THospitalizationInfoDefaultValues } from "../../type";
+import { SurveyDialogProps, THospitalConfirmDefaultValues } from "../../type";
+import { updateHospitalConfirm } from "apis/survey";
 
 import CommonPatientInfo from "../../components/CommonPatientInfo";
 import InitialEducation from "./InitialEducation";
@@ -14,7 +15,7 @@ import RoomFacilities from "./RoomFacilities";
 import HospitalFacilities from "./HospitalFacilities";
 import Signature from "./Signature";
 
-const HospitalizationInfo = (props: SurveyDialogProps<THospitalizationInfoDefaultValues>) => {
+const HospitalizationInfo = (props: SurveyDialogProps<THospitalConfirmDefaultValues>) => {
     const {
         title,
         isOpen,
@@ -32,7 +33,33 @@ const HospitalizationInfo = (props: SurveyDialogProps<THospitalizationInfoDefaul
         defaultValues,
     });
 
-    const onSubmit = (data: THospitalizationInfoDefaultValues) => {
+    const onSubmit = (data: THospitalConfirmDefaultValues) => {
+        const { nursing_care, facilities_in, facilities, name, relationship, signature, date, personnel_signature } = data;
+
+        const request = {
+          user_id,
+          patient_id: patientInfo.patient_id,
+          hospital_confirm: {
+            nursing_care: JSON.stringify(nursing_care),
+            facilities_in: JSON.stringify(facilities_in),
+            facilities: JSON.stringify(facilities),
+            name,
+            relationship,
+            signature,
+            date,
+            personnel_signature,
+          }
+        }
+  
+        updateHospitalConfirm(request)
+        .then(({ data: { rc } }) => {
+          if (rc !== 1) return onResultCode(rc);
+  
+          onUpdateIsSave(true);
+          onSuccess('입원 안내 확인서 저장에 성공하였습니다.');
+        })
+        .catch(e => onFail('입원 안내 확인서 저장에 실패하였습니다.', e));
+
     }
 
     const formProps = {
@@ -55,8 +82,6 @@ const HospitalizationInfo = (props: SurveyDialogProps<THospitalizationInfoDefaul
         >
             <Typography fontSize={16} fontWeight="bold" align="center" sx={{ marginTop: "12px", marginBottom: "40px" }}>
                 입원 안내 확인서
-                <br/>
-                - TEST 중입니다 -
             </Typography>
             <CommonPatientInfo patientInfo={patientInfo} nurseName={nurseName} />
             <Box sx={{ marginTop: "48px" }}>

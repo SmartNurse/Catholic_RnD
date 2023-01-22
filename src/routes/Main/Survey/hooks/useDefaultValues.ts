@@ -14,6 +14,7 @@ import {
   getNRS,
   getFLACC,
   getCNPS,
+  getHospitalConfirm,
 } from 'apis/survey';
 import useNotification from 'hooks/useNotification';
 import { findKeyValueToObj } from 'utils/convert';
@@ -42,7 +43,7 @@ import {
   initialEmergency,
   initialChildbirth,
   initialDietNutrition,
-  initialHospitalizationInfo,
+  initialHospitalConfirm,
   initialFallPrevention,
   initialCoreNursingSkillVideo,
 } from '../initialStates';
@@ -267,11 +268,26 @@ const useDefaultValues = ({ setDefaultValues, user_id }: Props) => {
           initialDietNutrition
         );
         break;
-      case MENU.HOSPITALIZATION_INFO:
-        convertDataToStates(
-          initialHospitalizationInfo,
-          initialHospitalizationInfo
-        );
+      case MENU.HOSPITAL_CONFIRM:
+        getHospitalConfirm({ user_id, patient_id })
+        .then(({ data }) => {
+          const { update_at, hospital_confirm } = data;
+          convertDataToStates({
+            update_at,
+            ...hospital_confirm,
+            nursing_care: JSON.parse(hospital_confirm.nursing_care),
+            facilities_in: JSON.parse(hospital_confirm.facilities_in),
+            facilities: JSON.parse(hospital_confirm.facilities),
+          }, initialHospitalConfirm);
+          console.log({
+            update_at,
+              ...hospital_confirm,
+              nursing_care: JSON.parse(hospital_confirm.nursing_care),
+              facilities_in: JSON.parse(hospital_confirm.facilities_in),
+              facilities: JSON.parse(hospital_confirm.facilities),
+            });
+        })
+        .catch(e => onFail('알 수 없는 오류가 발생했습니다.', e)); 
         break;
       case MENU.FALL_PREVENTION:
         convertDataToStates(

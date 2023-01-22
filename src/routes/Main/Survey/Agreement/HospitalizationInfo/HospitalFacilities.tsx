@@ -12,67 +12,67 @@ interface Props extends IFormRegister, IFormValues {
 const checks = [
     {
         label: "휴게실",
-        key: "hospital_facilities.checked1",
+        key: "facilities.checked1",
     },
     {
         label: "배선실",
-        key: "hospital_facilities.checked2",
+        key: "facilities.checked2",
     },
     {
         label: "샤워실",
-        key: "hospital_facilities.checked3",
+        key: "facilities.checked3",
     },
     {
         label :"은행",
-        key: "hospital_facilities.checked4",
+        key: "facilities.checked4",
     },
     {
         label: "식당/편의점",
-        key: "hospital_facilities.checked5",
+        key: "facilities.checked5",
     },
     {
         label: "환자 및 보호자 식사",
-        key: "hospital_facilities.checked6",
+        key: "facilities.checked6",
     },
     {
         label: "보호자 면회 및 시간",
-        key: "hospital_facilities.checked7",
+        key: "facilities.checked7",
     },
     {
         label: "낙상 방지",
-        key: "hospital_facilities.checked8",
+        key: "facilities.checked8",
     },
     {
         label: "귀중품 관리 및 도난 방지",
-        key: "hospital_facilities.checked9",
+        key: "facilities.checked9",
     },
     {
         label: "원내 금연",
-        key: "hospital_facilities.checked10",
+        key: "facilities.checked10",
     },
     {
         label: "가스, 전열기구 사용금지",
-        key: "hospital_facilities.checked11",
+        key: "facilities.checked11",
     },
     {
         label: "화재, 비상시 대피방법",
-        key: "hospital_facilities.checked12",
+        key: "facilities.checked12",
     },
     {
         label: "감염성폐기물 분리수거",
-        key: "hospital_facilities.checked13",
+        key: "facilities.checked13",
     },
     {
         label: "진단서 발급",
-        key: "hospital_facilities.checked14",
+        key: "facilities.checked14",
     },
     {
         label: "회진 시간",
-        key: "hospital_facilities.checked15",
+        key: "facilities.checked15",
     },
     {
         label: "입원생활 안내문 제공",
-        key: "hospital_facilities.checked16",
+        key: "facilities.checked16",
     },
 ];
 

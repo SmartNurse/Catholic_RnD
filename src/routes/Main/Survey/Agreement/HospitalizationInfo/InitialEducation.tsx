@@ -12,7 +12,7 @@ interface Props extends IFormRegister, IFormValues {
 const checks = [
     {
         label: "입원 시 준비물품",
-        key: "initial_education.checked1",
+        key: "nursing_care.checked1",
     },
 ];
 

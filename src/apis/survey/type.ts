@@ -295,3 +295,16 @@ export interface INursingRecord {
   time: string;
   desc: string;
 }
+
+// 입원안내확인서
+export interface IUpdateHospitalConfirm {
+  hospital_confirm: {
+    nursing_care: string;
+    facilities_in: string;
+    name: string;
+    relationship: string;
+    signature: string;
+    date: string;
+    personnel_signature: string;
+  }
+}

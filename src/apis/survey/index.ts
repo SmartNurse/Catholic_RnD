@@ -17,6 +17,7 @@ import {
   IUpdateCNPS,
   IUpdateFLACC,
   IUpdateNRS,
+  IUpdateHospitalConfirm,
 } from './type';
 
 // e-CARDEX
@@ -171,5 +172,16 @@ export const getCNPS = (request: IGetSurvey) => {
 
 export const updateCNPS = (request: IUpdateCNPS) => {
   const url = `/survey/cnps`;
+  return apiGateway.post(url, camelcaseKeys(request));
+};
+
+// 입원안내확인서
+export const getHospitalConfirm = (request: IGetSurvey) => {
+  const url = `/survey/hospitalConfirm?${formatToRequestParameter(request)}`;
+  return apiGateway.get(url);
+};
+
+export const updateHospitalConfirm = (request: IUpdateHospitalConfirm) => {
+  const url = `/survey/hospitalConfirm`;
   return apiGateway.post(url, camelcaseKeys(request));
 };

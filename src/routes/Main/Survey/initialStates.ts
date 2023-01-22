@@ -605,12 +605,12 @@ export const initialDietNutrition = {
   },
 };
 
-export const initialHospitalizationInfo = {
+export const initialHospitalConfirm = {
   update_at: '',
-  initial_education: { 
+  nursing_care: { 
     checked1: false,
   },
-  room_facilities: {
+  facilities_in: {
     checked1: false,
     checked2: false,
     checked3: false,
@@ -620,7 +620,7 @@ export const initialHospitalizationInfo = {
     checked7: false,
     checked8: false,
   },
-  hospital_facilities: {
+  facilities: {
     checked1: false,
     checked2: false,
     checked3: false,
@@ -640,9 +640,9 @@ export const initialHospitalizationInfo = {
   },
   name: "",
   relationship: "",
-  sign: "",
+  signature: "",
   date: "",
-  staff_sign: "",
+  personnel_signature: "",
 };
 
 export const initialFallPrevention = {

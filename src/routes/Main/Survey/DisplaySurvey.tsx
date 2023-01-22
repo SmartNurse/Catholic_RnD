@@ -140,7 +140,7 @@ const DisplaySurvey = (props: Props) => {
       if (!defaultValues) return null;
       return <DietNutrition {...dialogProps} onClose={onCloseSave} />;
     }
-    case MENU.HOSPITALIZATION_INFO: {
+    case MENU.HOSPITAL_CONFIRM: {
       if (!defaultValues) return null;
       return <HospitalizationInfo {...dialogProps} onClose={onCloseSave} />;
     }

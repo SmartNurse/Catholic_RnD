@@ -12,35 +12,35 @@ interface Props extends IFormRegister, IFormValues {
 const checks = [
     {
         label: "침대",
-        key: "room_facilities.checked1",
+        key: "facilities_in.checked1",
     },
     {
         label: "침상식탁",
-        key: "room_facilities.checked2",
+        key: "facilities_in.checked2",
     },
     {
         label: "침상 등",
-        key: "room_facilities.checked3",
+        key: "facilities_in.checked3",
     },
     {
         label :"전화",
-        key: "room_facilities.checked4",
+        key: "facilities_in.checked4",
     },
     {
         label: "TV",
-        key: "room_facilities.checked5",
+        key: "facilities_in.checked5",
     },
     {
         label: "응급시 호출방법",
-        key: "room_facilities.checked6",
+        key: "facilities_in.checked6",
     },
     {
         label: "간호사 호출기",
-        key: "room_facilities.checked7",
+        key: "facilities_in.checked7",
     },
     {
         label: "화장실 비상벨",
-        key: "room_facilities.checked8",
+        key: "facilities_in.checked8",
     },
 ];
 
