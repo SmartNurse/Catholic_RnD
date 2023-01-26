@@ -1,7 +1,7 @@
 import { useState } from "react";
 
 import Form from 'components/Form';
-import { IFormRegister, IFormValues } from 'routes/Main/type';
+import { IFormRegister, IFormValues, IFormWatch } from 'routes/Main/type';
 
 import { MenuItem } from "@mui/material";
 
@@ -11,12 +11,12 @@ import RowContainer from '../../components/RowContainer';
 import RowContent from '../../components/RowContent';
 import SectionTitle from '../../components/SectionTitle';
 
-interface Props extends IFormRegister, IFormValues {
+interface Props extends IFormRegister, IFormValues, IFormWatch {
     disabled?: boolean;
 } 
 
 const MotherStatus = (props: Props) => {
-    const { disabled, register, getValues, setValue } = props;
+    const { disabled, register, getValues, setValue, watch } = props;
 
     const incisions = ["RML", "Median", "LML"];
     const lacerations = ["1도", "2도", "3도", "4도"];
@@ -29,16 +29,25 @@ const MotherStatus = (props: Props) => {
                 <>
                     <Form.MuiRadioGroup
                         i18nKey='CHILDBIRTH.YES_OR_NO'
-                        values={[0, 1]}
-                        defaultValue={getValues('childbirth.mother_status.incision.value')}
-                        onChange={v => setValue('childbirth.mother_status.incision.value', v)}
+                        values={[1, 2]}
+                        defaultValue={watch("maternal_condition.episiotomy")}
+                        value={watch("maternal_condition.episiotomy")}
+                        onChange={v => {
+                            setValue('maternal_condition.episiotomy', v);
+                            if (v == 1) setValue("maternal_condition.episiotomy_content", "");
+                        }}
                         width="50px"
                     />
                     <MuiTextField
                         select
                         required={false}
                         sx={{ width: "50%", marginLeft: "18px" }}
-                        {...register('childbirth.mother_status.incision.select')}
+                        defaultValue={getValues("maternal_condition.episiotomy_content")}
+                        {...register('maternal_condition.episiotomy_content', {
+                            onChange: (v) => {
+                                if (v) setValue("maternal_condition.episiotomy", 2);
+                            }
+                        })}
                     >
                         {incisions.map((option) => (
                             <MenuItem key={option} value={option}>
@@ -55,16 +64,25 @@ const MotherStatus = (props: Props) => {
                 <>
                     <Form.MuiRadioGroup
                         i18nKey='CHILDBIRTH.YES_OR_NO'
-                        values={[0, 1]}
-                        defaultValue={getValues('childbirth.mother_status.laceration.value')}
-                        onChange={v => setValue('childbirth.mother_status.laceration.value', v)}
+                        values={[1, 2]}
+                        defaultValue={watch('maternal_condition.perineal_laceration')}
+                        value={watch("maternal_condition.perineal_laceration")}
+                        onChange={v => {
+                            setValue('maternal_condition.perineal_laceration', v);
+                            if (v == 1) setValue("maternal_condition.perineal_laceration_content", "");
+                        }}
                         width="50px"
                     />
                     <MuiTextField
                         select
                         required={false}
                         sx={{ width: "50%", marginLeft: "18px" }}
-                        {...register('childbirth.mother_status.laceration.select')}
+                        defaultValue={getValues('maternal_condition.perineal_laceration_content')}
+                        {...register('maternal_condition.perineal_laceration_content', {
+                            onChange: (v) => {
+                                if (v) setValue("maternal_condition.perineal_laceration", 2);
+                            }
+                        })}
                     >
                         {lacerations.map((option) => (
                             <MenuItem key={option} value={option}>
@@ -81,7 +99,8 @@ const MotherStatus = (props: Props) => {
                     select
                     required={false}
                     sx={{ width: "50%" }}
-                    {...register('childbirth.mother_status.contraction')}
+                    defaultValue={getValues('maternal_condition.uterus_contraction')}
+                    {...register('maternal_condition.uterus_contraction')}
                 >
                     {contractions.map((option) => (
                         <MenuItem key={option} value={option}>

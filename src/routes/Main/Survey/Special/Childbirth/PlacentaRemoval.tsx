@@ -1,5 +1,5 @@
 import Form from 'components/Form';
-import { IFormRegister, IFormValues } from 'routes/Main/type';
+import { IFormRegister, IFormValues, IFormWatch } from 'routes/Main/type';
 
 import { AccessTime } from '@mui/icons-material';
 import { MobileTimePicker } from '@mui/x-date-pickers';
@@ -10,23 +10,20 @@ import RowContainer from '../../components/RowContainer';
 import RowContent from '../../components/RowContent';
 import SectionTitle from '../../components/SectionTitle';
 
-interface Props extends IFormRegister, IFormValues {
+interface Props extends IFormRegister, IFormValues, IFormWatch {
     disabled?: boolean;
-    time: string | null;
-    setTime: (time: string | null) => void;  
 }  
 
 const PlacentaRemoval = (props: Props) => {
-    const { time, setTime, getValues, setValue } = props;
-
+    const { getValues, setValue, watch } = props;
 
     const contents = [
         {
             label: "시간",
             element: 
                 <MobileTimePicker
-                    value={time}
-                    onChange={setTime}
+                    value={watch("placenta_removal.time") || null}
+                    onChange={(v) => setValue("placenta_removal.time", v)}
                     renderInput={params => (
                     <MuiTextField
                         {...params}
@@ -43,8 +40,8 @@ const PlacentaRemoval = (props: Props) => {
                 <Form.MuiRadioGroup
                     i18nKey='CHILDBIRTH.PLACENTA_REMOVAL.METHOD'
                     values={[1, 2]}
-                    defaultValue={getValues('childbirth.placenta_removal.method')}
-                    onChange={v => setValue('childbirth.placenta_removal.method', v)}
+                    defaultValue={getValues('placenta_removal.methods')}
+                    onChange={v => setValue('placenta_removal.methods', v)}
                 />,
         },
         {
@@ -52,9 +49,9 @@ const PlacentaRemoval = (props: Props) => {
             element: 
                 <Form.MuiRadioGroup
                     i18nKey='CHILDBIRTH.YES_OR_NO'
-                    values={[0, 1]}
-                    defaultValue={getValues('childbirth.placenta_removal.curettage')}
-                    onChange={v => setValue('childbirth.placenta_removal.curettage', v)}
+                    values={[1, 2]}
+                    defaultValue={getValues('placenta_removal.curettage')}
+                    onChange={v => setValue('placenta_removal.curettage', v)}
                     width="50px"
                 />,
         },

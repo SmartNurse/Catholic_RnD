@@ -8,6 +8,7 @@ import { Typography, Grid } from "@mui/material";
 import MuiDialog from "components/MuiDialog";
 
 import { SurveyDialogProps, TChildbirthDefaultValues } from "../../type";
+import { updateChildbirth } from "apis/survey";
 
 import CommonPatientInfo from "../../components/CommonPatientInfo";
 import ChildbirthInfo from "./ChildbirthInfo";
@@ -35,6 +36,37 @@ const Childbirth = (props: SurveyDialogProps<TChildbirthDefaultValues>) => {
     });
 
     const onSubmit = (data: TChildbirthDefaultValues) => {
+        const { child_birth_information, newborn_condition, placenta_removal, maternal_condition, nursing_records } = data;
+
+        const request = {
+            user_id,
+            patient_id: patientInfo.patient_id,
+            delivery_survey: {
+                child_birth_information,
+                newborn_condition: {
+                    ...newborn_condition,
+                    gender: Number(newborn_condition.gender),
+                    oxygen_intake: Number(newborn_condition.oxygen_intake),
+                    first_urine: Number(newborn_condition.first_urine),
+                    placenta_discharge: Number(newborn_condition.placenta_discharge),
+                    fetal_staining: Number(newborn_condition.fetal_staining),
+                    nuchal_cord: Number(newborn_condition.nuchal_cord),
+                    resuscitation: Number(newborn_condition.resuscitation),
+                },
+                placenta_removal,
+                maternal_condition,
+                nursing_records
+            }
+        }
+        console.log(request);
+        updateChildbirth(request)
+        .then(({ data: { rc } }) => {
+            if (rc !== 1) return onResultCode(rc);
+  
+            onUpdateIsSave(true);
+            onSuccess('분만 기록지 저장에 성공하였습니다.');
+        })
+        .catch(e => onFail('분만 기록지 저장에 실패하였습니다.', e));
     }
 
     const formProps = {
@@ -46,10 +78,6 @@ const Childbirth = (props: SurveyDialogProps<TChildbirthDefaultValues>) => {
         onSuccess,
         onRequired,
     };
-
-    const [childbirthTime, setChildbirthTime] = useState<string | null>(null);
-    const [placentaTime, setPlacentaTime] = useState<string | null>(null);
-    const [dialysisTime, setDialysisTime] = useState<string | null>(null);
 
     return (
         <MuiDialog.SurveyForm
@@ -67,12 +95,12 @@ const Childbirth = (props: SurveyDialogProps<TChildbirthDefaultValues>) => {
             sx={{ py: 5, px: 1 }}
             >
                 <Typography sx={{ margin: "40px auto 0px auto", fontWeight: "700", fontSize: "20px", textAlign: "center" }}>
-                    분만 기록지 <br/> - TEST 중입니다 -
+                    분만 기록지
                 </Typography>
                 <CommonPatientInfo patientInfo={patientInfo} nurseName={nurseName} />
-                <ChildbirthInfo {...formProps} time={childbirthTime} setTime={setChildbirthTime} />
+                <ChildbirthInfo {...formProps} />
                 <BabyStatus {...formProps} />
-                <PlacentaRemoval {...formProps} time={placentaTime} setTime={setPlacentaTime} />
+                <PlacentaRemoval {...formProps} />
                 <MotherStatus {...formProps} />
                 <NursingRecords {...formProps} />
             </Grid>

@@ -14,12 +14,10 @@ interface Props extends IFormValues, IFormWatch, IFormRegister {
   disabled?: boolean;
   onRequired: (id: Ti18nId) => void;
   onSuccess: (message: string) => void;
-  time: string | null;
-  setTime: (time: string | null) => void;
 }
 
 const ChildbirthInfo = (props: Props) => {
-  const { disabled, register, time, setTime } = props;
+  const { disabled, register, watch, setValue } = props;
 
   const columns = [
     { fieldId: 'date', label: '분만 일자', sx: { width: 200 } },
@@ -33,11 +31,11 @@ const ChildbirthInfo = (props: Props) => {
       type="date"
       required={false}
       disabled={disabled}
-      {...register("childbirth_info.date")}
+      {...register("child_birth_information.date")}
     />,
     <MobileTimePicker
-      value={time}
-      onChange={setTime}
+      value={watch("child_birth_information.time") || null}
+      onChange={(v) => setValue("child_birth_information.time", v)}
       renderInput={params => (
         <MuiTextField
           {...params}
@@ -47,7 +45,10 @@ const ChildbirthInfo = (props: Props) => {
         />
       )}
     />,
-    <MuiTextField {...register("childbirth_info.type")} />
+    <MuiTextField
+      {...register("child_birth_information.type")}
+      required={false}
+    />
   ];
 
   return (

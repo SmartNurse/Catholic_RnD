@@ -311,7 +311,47 @@ export interface IUpdateOperation extends IGetSurvey {
 // 마취기록지
 export interface IAnesthesiaPrescriptionRecord {
   time: string;
-  desc: string;
+  content: string;
+}
+
+export interface IAnesthesiaVitalsignRecord {
+  time: string;
+  sbp: string;
+  dbp: string;
+  pr: string;
+  rr: string;
+  bt: string;
+  note: string;
+}
+
+export interface IUpdateAnesthesia extends IGetSurvey {
+  anesthetic_survey: {
+    operation_information: {
+      operating_department: string;
+      operating_date: string;
+      operating_time: string;
+      operation_name: string;
+      npo_status: string;
+      position: string;
+      past_history_and_allergy: string;
+      preoperative_xray: boolean;
+      preoperative_ekg: boolean;
+      emergency_status: string;
+      asa_class: string;
+      prophylactic_antibiotics: string;
+      prophylactic_method: string;
+    },
+    prescription_record: IAnesthesiaPrescriptionRecord[],
+    patient_status_record: {
+      infusion_amount: string;
+      transfusion_amount: string;
+      intake_etc: string;
+      urine_amount: string;
+      blood_clot_amount: string;
+      output_etc: string;
+    },
+    patient_status_list_record: IAnesthesiaVitalsignRecord[],
+  }
 }
 
 // 수혈기록지
@@ -422,7 +462,45 @@ export interface IUpdateEmergency extends IGetSurvey {
 export interface INursingRecord {
   date: string;
   time: string;
-  desc: string;
+  content: string;
+}
+
+export interface IUpdateChildbirth extends IGetSurvey {
+  delivery_survey: {
+    child_birth_information: {
+      date: string;
+      time: string;
+      type: string;
+    },
+    newborn_condition: {
+      gender: number;
+      weight: string;
+      apgar_score1m: string;
+      apgar_score5m: string;
+      oxygen_intake: number;
+      first_urine: number;
+      placenta_discharge: number;
+      fetal_staining: number;
+      nuchal_cord: number;
+      nuchal_cord_content: string;
+      resuscitation: number;
+      resuscitation_content: string;
+      specifications: string;
+    },
+    placenta_removal: {
+      time: string;
+      methods: number;
+      curettage: number;
+    },
+    maternal_condition: {
+      episiotomy: number;
+      episiotomy_content: string;
+      perineal_laceration: number;
+      perineal_laceration_content: string;
+      uterus_contraction: string;
+    },
+    nursing_records: INursingRecord[];
+  }
 }
 
 // 입원안내확인서

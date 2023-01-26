@@ -22,8 +22,8 @@ const BabyStatus = (props: Props) => {
                 <Form.MuiRadioGroup
                     i18nKey='CHILDBIRTH.BABY_STATUS.GENDER'
                     values={[1, 2]}
-                    defaultValue={getValues('childbirth.baby_status.gender')}
-                    onChange={v => setValue('childbirth.baby_status.gender', v)}
+                    defaultValue={getValues('newborn_condition.gender')}
+                    onChange={v => setValue('newborn_condition.gender', v)}
                     width="50px"
                 />
         },
@@ -35,7 +35,8 @@ const BabyStatus = (props: Props) => {
                     InputProps={{
                         endAdornment: <InputAdornment position="end">kg</InputAdornment>
                     }}
-                    {...register("childbirth.baby_status.weight")}
+                    required={false}
+                    {...register("newborn_condition.weight")}
                 />,
         },
         {
@@ -46,13 +47,15 @@ const BabyStatus = (props: Props) => {
                     <Form.MuiTextField
                         placeholder="0~10점까지 입력가능"
                         sx={{ width: "30%" }}
-                        {...register("childbirth.baby_status.apgar.one_min")}
+                        required={false}
+                        {...register("newborn_condition.apgar_score1m")}
                     />
                     <Typography fontSize="14px">5분</Typography>
                     <Form.MuiTextField
                         placeholder="0~10점까지 입력가능"
                         sx={{ width: "30%" }}
-                        {...register("childbirth.baby_status.apgar.five_min")}
+                        required={false}
+                        {...register("newborn_condition.apgar_score5m")}
                     />
                 </Box> 
         },
@@ -61,9 +64,9 @@ const BabyStatus = (props: Props) => {
             element: 
                 <Form.MuiRadioGroup
                     i18nKey='CHILDBIRTH.YES_OR_NO'
-                    values={[0, 1]}
-                    defaultValue={getValues('childbirth.baby_status.breathe')}
-                    onChange={v => setValue('childbirth.baby_status.breathe', v)}
+                    values={[1, 2]}
+                    defaultValue={getValues('newborn_condition.oxygen_intake')}
+                    onChange={v => setValue('newborn_condition.oxygen_intake', v)}
                     width="50px"
                 />
         },
@@ -72,9 +75,9 @@ const BabyStatus = (props: Props) => {
             element: 
                 <Form.MuiRadioGroup
                     i18nKey='CHILDBIRTH.YES_OR_NO'
-                    values={[0, 1]}
-                    defaultValue={getValues('childbirth.baby_status.urine')}
-                    onChange={v => setValue('childbirth.baby_status.urine', v)}
+                    values={[1, 2]}
+                    defaultValue={getValues('newborn_condition.first_urine')}
+                    onChange={v => setValue('newborn_condition.first_urine', v)}
                     width="50px"
                 />
         }, 
@@ -83,9 +86,9 @@ const BabyStatus = (props: Props) => {
             element: 
                 <Form.MuiRadioGroup
                     i18nKey='CHILDBIRTH.YES_OR_NO'
-                    values={[0, 1]}
-                    defaultValue={getValues('childbirth.baby_status.placenta_discharge')}
-                    onChange={v => setValue('childbirth.baby_status.placenta_discharge', v)}
+                    values={[1, 2]}
+                    defaultValue={getValues('newborn_condition.placenta_discharge')}
+                    onChange={v => setValue('newborn_condition.placenta_discharge', v)}
                     width="50px"
                 />
         },
@@ -94,9 +97,9 @@ const BabyStatus = (props: Props) => {
             element: 
                 <Form.MuiRadioGroup
                     i18nKey='CHILDBIRTH.YES_OR_NO'
-                    values={[0, 1]}
-                    defaultValue={getValues('childbirth.baby_status.placenta_color')}
-                    onChange={v => setValue('childbirth.baby_status.placenta_color', v)}
+                    values={[1, 2]}
+                    defaultValue={getValues('newborn_condition.fetal_staining')}
+                    onChange={v => setValue('newborn_condition.fetal_staining', v)}
                     width="50px"
                 />
         },
@@ -106,9 +109,12 @@ const BabyStatus = (props: Props) => {
                 <>
                     <Form.MuiRadioGroup
                         i18nKey='CHILDBIRTH.YES_OR_NO'
-                        values={[0, 1]}
-                        defaultValue={getValues('childbirth.baby_status.nuchal_cord.value')}
-                        onChange={v => setValue('childbirth.baby_status.nuchal_cord.value', v)}
+                        values={[1, 2]}
+                        defaultValue={getValues('newborn_condition.nuchal_cord')}
+                        onChange={v => {
+                            setValue('newborn_condition.nuchal_cord', v);
+                            if (v == 1) setValue("newborn_condition.nuchal_cord_content", "");
+                        }}
                         width="50px"
                     />
                     <Form.MuiTextField
@@ -117,7 +123,7 @@ const BabyStatus = (props: Props) => {
                         disabled={disabled}
                         placeholder="직접 입력"
                         sx={{ width: "50%", marginLeft: "36px" }}
-                        {...register('childbirth.baby_status.nuchal_cord.input')}
+                        {...register('newborn_condition.nuchal_cord_content')}
                     />
                 </>
         },
@@ -127,9 +133,12 @@ const BabyStatus = (props: Props) => {
                 <>
                     <Form.MuiRadioGroup
                         i18nKey='CHILDBIRTH.YES_OR_NO'
-                        values={[0, 1]}
-                        defaultValue={getValues('childbirth.baby_status.resuscitation.value')}
-                        onChange={v => setValue('childbirth.baby_status.resuscitation.value', v)}
+                        values={[1, 2]}
+                        defaultValue={getValues('newborn_condition.resuscitation')}
+                        onChange={v => {
+                            setValue('newborn_condition.resuscitation', v);
+                            if (v == 1) setValue("newborn_condition.resuscitation_content", "");
+                        }}
                         width="50px"
                     />
                     <Form.MuiTextField
@@ -138,7 +147,7 @@ const BabyStatus = (props: Props) => {
                         disabled={disabled}
                         placeholder="직접 입력"
                         sx={{ width: "50%", marginLeft: "36px" }}
-                        {...register('childbirth.baby_status.nuchal_cord.input')}
+                        {...register('newborn_condition.resuscitation_content')}
                     />
                 </>
         },
@@ -146,7 +155,8 @@ const BabyStatus = (props: Props) => {
             label: "외관상 기형 및 특이사항",
             element: 
                 <Form.MuiTextField
-                    {...register("childbirth.baby_status.special_note")}
+                required={false}
+                    {...register("newborn_condition.specifications")}
                 />,
         },
     ];

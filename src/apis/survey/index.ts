@@ -18,9 +18,11 @@ import {
   IUpdateFLACC,
   IUpdateNRS,
   IUpdateOperation,
+  IUpdateAnesthesia,
   IUpdateTransfusion,
   IUpdateDialysis,
   IUpdateEmergency,
+  IUpdateChildbirth,
   IUpdateHospitalConfirm,
   IUpdateFallConfirm,
 } from './type';
@@ -180,17 +182,6 @@ export const updateCNPS = (request: IUpdateCNPS) => {
   return apiGateway.post(url, camelcaseKeys(request));
 };
 
-// 수혈기록지
-export const getTransfusion = (request: IGetSurvey) => {
-  const url = `/survey/transfusion?${formatToRequestParameter(request)}`;
-  return apiGateway.get(url);
-};
-
-export const updateTransfusion = (request: IUpdateTransfusion) => {
-  const url = `/survey/transfusion`;
-  return apiGateway.post(url, camelcaseKeys(request));
-};
-
 // 수술기록지
 export const getOperation = (request: IGetSurvey) => {
   const url = `/survey/surgical?${formatToRequestParameter(request)}`;
@@ -199,6 +190,28 @@ export const getOperation = (request: IGetSurvey) => {
 
 export const updateOperation = (request: IUpdateOperation) => {
   const url = `/survey/surgical`;
+  return apiGateway.post(url, camelcaseKeys(request));
+};
+
+// 마취 기록지
+export const getAnesthesia = (request: IGetSurvey) => {
+  const url = `/survey/anesthetic?${formatToRequestParameter(request)}`;
+  return apiGateway.get(url);
+};
+
+export const updateAnestheia = (request: IUpdateAnesthesia) => {
+  const url = `/survey/anesthetic`;
+  return apiGateway.post(url, camelcaseKeys(request));
+};
+
+// 수혈기록지
+export const getTransfusion = (request: IGetSurvey) => {
+  const url = `/survey/transfusion?${formatToRequestParameter(request)}`;
+  return apiGateway.get(url);
+};
+
+export const updateTransfusion = (request: IUpdateTransfusion) => {
+  const url = `/survey/transfusion`;
   return apiGateway.post(url, camelcaseKeys(request));
 };
 
@@ -221,6 +234,17 @@ export const getEmergency = (request: IGetSurvey) => {
 
 export const updateEmergency = (request: IUpdateEmergency) => {
   const url = `/survey/emergency`;
+  return apiGateway.post(url, camelcaseKeys(request));
+};
+
+// 분만기록지
+export const getChildbirth = (request: IGetSurvey) => {
+  const url = `/survey/delivery?${formatToRequestParameter(request)}`;
+  return apiGateway.get(url);
+};
+
+export const updateChildbirth = (request: IUpdateChildbirth) => {
+  const url = `/survey/delivery`;
   return apiGateway.post(url, camelcaseKeys(request));
 };
 

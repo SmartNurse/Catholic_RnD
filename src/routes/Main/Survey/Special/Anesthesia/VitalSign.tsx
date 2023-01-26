@@ -5,7 +5,7 @@ import { Button, FormHelperText, Grid, IconButton, MenuItem, Box } from '@mui/ma
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
 
 import { Ti18nId } from 'hooks/useI18n';
-import { IVitalSign } from 'apis/survey/type';
+import { IAnesthesiaVitalsignRecord } from 'apis/survey/type';
 import { IFormValues, IFormWatch } from 'routes/Main/type';
 
 import { formatStringToDate } from 'utils/formatting';
@@ -23,14 +23,13 @@ const VitalSign = (props: Props) => {
   const colors = ["#FE2503", "#FF9200", "#02F900", "#0333FF", "#942092"];
 
   const columns = [
-    { fieldId: 'checkTime', label: '체크시간', sx: { width: 200 } },
+    { fieldId: 'time', label: '체크시간', sx: { width: 200 } },
     { fieldId: 'sbp', label: 'SBP (mmHg)' },
     { fieldId: 'dbp', label: 'DBP (mmHg)' },
     { fieldId: 'pr', label: 'PR (회)' },
     { fieldId: 'rr', label: 'RR (회)' },
     { fieldId: 'bt', label: 'BT (℃)' },
-    { fieldId: 'sp02', label: 'SPO2 (%)' },
-    { fieldId: 'etc', label: '비고', sx: { width: 200 } },
+    { fieldId: 'note', label: '비고', sx: { width: 200 } },
     { fieldId: 'action', label: '', sx: { width: 100 } },
   ];
 
@@ -38,8 +37,8 @@ const VitalSign = (props: Props) => {
 
   const { disabled, watch, setValue, onRequired, onSuccess } = props;
 
-  const vitalSignList: IVitalSign[] = watch('anesthesia.patient_status.records');
-  const [vitalsignData, setVitalsignData] = useState<{name: string, data: {timestamp: string, value?: number, temp?: number}[]}[]>([
+  const vitalSignList: IAnesthesiaVitalsignRecord[] = watch('patient_status_list_record');
+  const [vitalsignData, setVitalsignData] = useState<{name: string, data: {timestamp: string, value?: string, temp?: string}[]}[]>([
     { name: "BT (℃)", data: [] }, 
     { name: "PR (회)", data: [] }, 
     { name: "RR (회)", data: [] }, 
@@ -47,13 +46,12 @@ const VitalSign = (props: Props) => {
     { name: "DBP (mmHg)", data: [] }, 
   ]);
 
-  const [checkTime, setCheckTime] = useState(null);
+  const [time, settime] = useState(null);
   const [sbp, setSbp] = useState('');
   const [dbp, setDbp] = useState('');
   const [pr, setPr] = useState('');
   const [rr, setRr] = useState('');
   const [bt, setBt] = useState('');
-  const [sp02, setSp02] = useState('');
   const [etc, setEtc] = useState('');
   const [errors, setErrors] = useState({
     sbp: 0,
@@ -64,29 +62,28 @@ const VitalSign = (props: Props) => {
   }); 
 
   const onAddRow = () => {
-    const request = { checkTime, sbp, dbp, pr, rr, bt, sp02, etc };
+    const request = { time: time, sbp, dbp, pr, rr, bt, note: etc };
     if (Object.values(request).filter(v => !v).length > 0) {
       return onRequired('CLINICAL.OBSERVATION.ADD.ROW');
     }
 
     onSuccess('Vital Sign 추가되었습니다.');
-    setValue('anesthesia.patient_status.records', vitalSignList ? [...vitalSignList, {...request, etc }] : [request]);
-    setCheckTime(null);
+    setValue('patient_status_list_record', vitalSignList ? [...vitalSignList, {...request, etc }] : [request]);
+    settime(null);
     setSbp('');
     setDbp('');
     setPr('');
     setRr('');
     setBt('');
-    setSp02('');
     setEtc('');
   };
 
   const inputRow = {
     id: 'add-vital-sign',
-    checkTime: (
+    time: (
       <MobileTimePicker
-        value={checkTime}
-        onChange={setCheckTime}
+        value={time}
+        onChange={settime}
         renderInput={params => (
           <MuiTextField
             {...params}
@@ -177,14 +174,7 @@ const VitalSign = (props: Props) => {
         {errors.bt ? <FormHelperText error={true}>BT 값은 30 초과 43 미만입니다</FormHelperText> : null}
       </>
     ),
-    sp02: (
-      <MuiTextField
-        value={sp02}
-        required={false}
-        onChange={({ target: { value } }) => setSp02(value)}
-      />
-    ),
-    etc: (
+    note: (
       <MuiTextField
         select
         value={etc}
@@ -203,16 +193,16 @@ const VitalSign = (props: Props) => {
 
   const onDeleteRow = (index: number) => {
     setValue(
-      'anesthesia.patient_status.records',
+      'patient_status_list_record',
       vitalSignList.filter((_, i) => i !== index)
     );
   };
 
   const displayRows = vitalSignList ?
-    vitalSignList.slice().sort((a, b) => Number(new Date(a.checkTime)) - Number(new Date(b.checkTime))).map((item, i) => ({
+    vitalSignList.slice().sort((a, b) => Number(new Date(a.time)) - Number(new Date(b.time))).map((item, i) => ({
     ...item,
     id: i,
-    checkTime: formatStringToDate(item.checkTime, 'hh:mm a'),
+    time: formatStringToDate(item.time, 'hh:mm a'),
     action: (
       <IconButton
         size="small"
@@ -229,14 +219,14 @@ const VitalSign = (props: Props) => {
   const tableRow = disabled ? displayRows : [inputRow, ...displayRows];
 
   useEffect(() => {
-    const sortedVitalSignList = vitalSignList ? vitalSignList.slice().sort((a, b) => Number(new Date(a.checkTime)) - Number(new Date(b.checkTime))) : [];
+    const sortedVitalSignList = vitalSignList ? vitalSignList.slice().sort((a, b) => Number(new Date(a.time)) - Number(new Date(b.time))) : [];
     
     if (sortedVitalSignList.length) {
-      const btData = sortedVitalSignList.map((v) => { return {timestamp: formatStringToDate(v.checkTime, 'hh:mm:a'), temp: v.bt} });
-      const prData = sortedVitalSignList.map((v) => { return {timestamp: formatStringToDate(v.checkTime, 'hh:mm:a'), value: v.pr }});
-      const rrData = sortedVitalSignList.map((v) => { return {timestamp: formatStringToDate(v.checkTime, 'hh:mm:a'), value: v.rr }});
-      const sbpData = sortedVitalSignList.map((v) => { return {timestamp: formatStringToDate(v.checkTime, 'hh:mm:a'), value: v.sbp }});
-      const dbpData = sortedVitalSignList.map((v) => { return {timestamp: formatStringToDate(v.checkTime, 'hh:mm:a'), value: v.dbp }});  
+      const btData = sortedVitalSignList.map((v) => { return {timestamp: formatStringToDate(v.time, 'hh:mm:a'), temp: v.bt} });
+      const prData = sortedVitalSignList.map((v) => { return {timestamp: formatStringToDate(v.time, 'hh:mm:a'), value: v.pr }});
+      const rrData = sortedVitalSignList.map((v) => { return {timestamp: formatStringToDate(v.time, 'hh:mm:a'), value: v.rr }});
+      const sbpData = sortedVitalSignList.map((v) => { return {timestamp: formatStringToDate(v.time, 'hh:mm:a'), value: v.sbp }});
+      const dbpData = sortedVitalSignList.map((v) => { return {timestamp: formatStringToDate(v.time, 'hh:mm:a'), value: v.dbp }});  
 
       setVitalsignData([
         { name: "BT (℃)", data: [...btData] }, 

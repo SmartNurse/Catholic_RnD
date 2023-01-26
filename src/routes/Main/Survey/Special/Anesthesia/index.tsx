@@ -8,6 +8,7 @@ import { Typography, Grid } from "@mui/material";
 import MuiDialog from "components/MuiDialog";
 
 import { SurveyDialogProps, TAnesthesiaDefaultValues } from "../../type";
+import { updateAnestheia } from "apis/survey";
 
 import CommonPatientInfo from "../../components/CommonPatientInfo";
 import OperationInfo from "./OperationInfo";
@@ -33,6 +34,31 @@ const Anesthesia = (props: SurveyDialogProps<TAnesthesiaDefaultValues>) => {
     });
 
     const onSubmit = (data: TAnesthesiaDefaultValues) => {
+        const { operation_information, prescription_record, patient_status_record, patient_status_list_record } = data;
+        
+        const request = {
+            user_id,
+            patient_id: patientInfo.patient_id,
+            anesthetic_survey: {
+                operation_information: {
+                    ...operation_information,
+                    position: operation_information.position === "etc" ? operation_information.position_etc : operation_information.position,
+                    prophylactic_method: operation_information.prophylactic_method === "etc" ? operation_information.prophylactic_method_etc : operation_information.prophylactic_method,
+                },
+                prescription_record,
+                patient_status_record,
+                patient_status_list_record,    
+            }
+        }
+  
+        updateAnestheia(request)
+        .then(({ data: { rc } }) => {
+            if (rc !== 1) return onResultCode(rc);
+  
+            onUpdateIsSave(true);
+            onSuccess('마취 기록지 저장에 성공하였습니다.');
+        })
+        .catch(e => onFail('마취 기록지 저장에 실패하였습니다.', e));
     }
 
     const formProps = {
@@ -63,10 +89,10 @@ const Anesthesia = (props: SurveyDialogProps<TAnesthesiaDefaultValues>) => {
             sx={{ py: 5, px: 1 }}
             >
                 <Typography sx={{ margin: "40px auto 0px auto", fontWeight: "700", fontSize: "20px", textAlign: "center" }}>
-                    마취 기록지 <br/> - TEST 중입니다 -
+                    마취 기록지
                 </Typography>
                 <CommonPatientInfo patientInfo={patientInfo} nurseName={nurseName} />
-                <OperationInfo {...formProps} time={operationTime} setTime={setOperationTime} />
+                <OperationInfo {...formProps} />
                 <PrescriptionRecords {...formProps} />
                 <PatientStatus {...formProps} />
             </Grid>

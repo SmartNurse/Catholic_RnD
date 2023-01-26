@@ -23,26 +23,26 @@ interface Props extends IFormValues, IFormWatch, IFormRegister {
 
 const PrescriptionRecords = (props: Props) => {
   const { disabled, watch, setValue, onRequired, onSuccess, register } = props;
-  const prescriptionRecordList: IAnesthesiaPrescriptionRecord[] = watch('anesthesia.prescription_records');
+  const prescriptionRecordList: IAnesthesiaPrescriptionRecord[] = watch('prescription_record');
 
   const [time, setTime] = useState(null);
   const [desc, setDesc] = useState("");
 
   const columns = [
     { fieldId: 'time', label: '', sx: { width: 200 } },
-    { fieldId: 'desc', label: '' },
+    { fieldId: 'content', label: '' },
     { fieldId: 'action', label: '', sx: { width: 100 } },
   ];
 
   const onAddRow = () => {
-    const request = { time, desc };
+    const request = { time, content: desc };
 
     if (Object.values(request).filter(v => !v).length > 0) {
       return onRequired('CLINICAL.OBSERVATION.ADD.ROW');
     }
     console.log(request);
     onSuccess('처방 기록이 추가되었습니다.');
-    setValue('anesthesia.prescription_records', prescriptionRecordList ? [...prescriptionRecordList, request] : [request]);
+    setValue('prescription_record', prescriptionRecordList ? [...prescriptionRecordList, request] : [request]);
     setTime(null);
     setDesc("");
   };
@@ -63,7 +63,7 @@ const PrescriptionRecords = (props: Props) => {
             )}
         />
     ),
-    desc: (
+    content: (
       <MuiTextField
         value={desc}
         required={false}
@@ -79,7 +79,7 @@ const PrescriptionRecords = (props: Props) => {
 
   const onDeleteRow = (index: number) => {
     setValue(
-      'anesthesia.prescription_records',
+      'prescription_record',
       prescriptionRecordList.filter((_, i) => i !== index)
     );
   };

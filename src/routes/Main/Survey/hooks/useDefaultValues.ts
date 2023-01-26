@@ -15,9 +15,11 @@ import {
   getFLACC,
   getCNPS,
   getOperation,
+  getAnesthesia,
   getTransfusion,
   getDialysis,
   getEmergency,
+  getChildbirth,
   getFallConfirm,
   getHospitalConfirm,
 } from 'apis/survey';
@@ -238,17 +240,18 @@ const useDefaultValues = ({ setDefaultValues, user_id }: Props) => {
       case MENU.OPERATION:
         getOperation({ user_id, patient_id })
         .then(({ data }) => {
-          console.log(data);
           const { update_at, surgical_survey } = data;
           convertDataToStates({ update_at, ...surgical_survey }, initialOperation);
         })
         .catch(e => onFail('알 수 없는 오류가 발생했습니다.', e));
         break;
       case MENU.ANESTHESIA:
-        convertDataToStates(
-          initialAnesthesia,
-          initialAnesthesia
-        );
+        getAnesthesia({ user_id, patient_id })
+        .then(({ data }) => {
+          console.log(data);
+          convertDataToStates(data, initialAnesthesia);
+        })
+        .catch(e => onFail('알 수 없는 오류가 발생했습니다.', e));
         break;
       case MENU.TRANSFUSION:
         getTransfusion({ user_id, patient_id })
@@ -289,10 +292,12 @@ const useDefaultValues = ({ setDefaultValues, user_id }: Props) => {
         .catch(e => onFail('알 수 없는 오류가 발생했습니다.', e));
         break;
       case MENU.CHILDBIRTH:
-        convertDataToStates(
-          initialChildbirth,
-          initialChildbirth
-        );
+        getChildbirth({ user_id, patient_id })
+        .then(({ data }) => {
+          const { update_at, delivery_survey } = data;
+          convertDataToStates({ update_at, ...delivery_survey }, initialChildbirth);
+        })
+        .catch(e => onFail('알 수 없는 오류가 발생했습니다.', e));
         break;
       case MENU.DIET_NUTRITION:
         convertDataToStates(

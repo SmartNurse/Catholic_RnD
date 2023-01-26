@@ -31,7 +31,7 @@ const NursingRecords = (props: Props) => {
   const columns = [
     { fieldId: 'date', label: '', sx: { width: 200 } },
     { fieldId: 'time', label: '', sx: { width: 200 } },
-    { fieldId: 'desc', label: '' },
+    { fieldId: 'content', label: '' },
     { fieldId: 'action', label: '', sx: { width: 100 } }
   ];
 
@@ -39,7 +39,7 @@ const NursingRecords = (props: Props) => {
     const request = {
         date,
         time,
-        desc
+        content: desc,
     };
 
     if (Object.values(request).filter(v => !v).length > 0) {
@@ -80,7 +80,7 @@ const NursingRecords = (props: Props) => {
         )}
       />
     ),
-    desc: (
+    content: (
           <MuiTextField
               value={desc}
               required={false}
