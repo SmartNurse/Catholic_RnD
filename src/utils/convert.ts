@@ -39,3 +39,16 @@ export const findKeyValueToObj = (values: any, keys: string[]) => {
     {}
   );
 };
+
+export const findKeyValueToObjNoParse = (values: any, keys: string[]) => {
+  return keys.reduce(
+    (prev, next) =>
+      values[next]
+        ? {
+            ...prev,
+            [next]: values[next],
+          }
+        : prev,
+    {}
+  );
+};

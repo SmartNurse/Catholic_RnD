@@ -34,10 +34,10 @@ const PatientStaffInfo = (props: Props) => {
     ];
 
     const staffs = [
-        { title: "집도의", variable: "operation.staff_info.main_doctor" },
-        { title: "보조의", variable: "operation.staff_info.sub_doctor" },
-        { title: "소독간호사", variable: "operation.staff_info.disinfection_nurse" },
-        { title: "순환간호사", variable: "operation.staff_info.circular_nurse" },
+        { title: "집도의", variable: "surgery_information.operating_surgeon" },
+        { title: "보조의", variable: "surgery_information.assistant" },
+        { title: "소독간호사", variable: "surgery_information.scrubbing_nurse" },
+        { title: "순환간호사", variable: "surgery_information.circulating_nurse" },
     ];
 
     return (

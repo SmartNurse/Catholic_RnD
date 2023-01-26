@@ -17,6 +17,7 @@ import {
   IUpdateCNPS,
   IUpdateFLACC,
   IUpdateNRS,
+  IUpdateOperation,
   IUpdateTransfusion,
   IUpdateDialysis,
   IUpdateEmergency,
@@ -187,6 +188,17 @@ export const getTransfusion = (request: IGetSurvey) => {
 
 export const updateTransfusion = (request: IUpdateTransfusion) => {
   const url = `/survey/transfusion`;
+  return apiGateway.post(url, camelcaseKeys(request));
+};
+
+// 수술기록지
+export const getOperation = (request: IGetSurvey) => {
+  const url = `/survey/surgical?${formatToRequestParameter(request)}`;
+  return apiGateway.get(url);
+};
+
+export const updateOperation = (request: IUpdateOperation) => {
+  const url = `/survey/surgical`;
   return apiGateway.post(url, camelcaseKeys(request));
 };
 

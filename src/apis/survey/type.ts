@@ -270,6 +270,44 @@ export interface IMentalNursingRecord {
   desc: string;
 }
 
+// 수술기록지
+export interface IUpdateOperation extends IGetSurvey {
+  surgical_survey: {
+    surgery_information: {
+      operating_surgeon: string;
+      assistant: string;
+      scrubbing_nurse: string;
+      circulating_nurse: string;
+    },
+    operation_information: {
+      operating_department: string;
+      operating_date: string;
+      operating_time: string;
+      asa_class: string;
+      main_operation_name: string;
+      minor_operation_name: string;
+      past_history: string;
+      allergy: string;
+      npo_status: string;
+      prophylactic_antibiotics: string;
+      position: string;
+      preoperative_xray: boolean;
+      preoperative_ekg: boolean;
+    },
+    surgery_details: {
+      content: string;
+      arrival_time: string;
+      anesthesia_start_time: string;
+      surgery_start_time: string;
+      surgery_end_time: string;
+      anesthesia_end_time: string;
+      discharge_time: string;
+      anesthetic_method: string;
+      anesthesiologist: string;
+    }
+  }
+}
+
 // 마취기록지
 export interface IAnesthesiaPrescriptionRecord {
   time: string;

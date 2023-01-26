@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 import Form from 'components/Form';
 import { IFormRegister, IFormValues, IFormWatch } from 'routes/Main/type';
@@ -13,24 +13,23 @@ import { MobileTimePicker } from '@mui/x-date-pickers';
 
 interface Props extends IFormRegister, IFormValues, IFormWatch {
     disabled?: boolean;
-    time: null | string;
-    setTime: (time: null | string) => void;
 }  
 
 const NewOpInfo = (props: Props) => {
-    const { disabled, register, watch, time, setTime } = props;
+    const { disabled, register, watch, setValue, getValues } = props;
 
     const [postureEtc, setPostureEtc] = useState(0);
-    const [methodEtc, setMethodEtc] = useState(0);
 
     const asa_class_labels = ["ASAI", "ASAII", "ASAIII", "ASAIV", "ASAV", "ASAVI"];
+    const position_labels = ["Fowler", "Lateral", "Lithotomy", "Orthopnea", "Prone", "Recumbent", "Sims", "Supine"];
 
     const contents = [
         {
             label: "수술과",
             element: 
                 <Form.MuiTextField
-                    {...register("operation.operation_info.department")}
+                    {...register("operation_information.operating_department")}
+                    required={false}
                 />,
         },
         {
@@ -40,15 +39,15 @@ const NewOpInfo = (props: Props) => {
                     type="date"
                     required={false}
                     disabled={disabled}
-                    {...register("operation.operation_info.date")}
+                    {...register("operation_information.operating_date")}
                 />
         },
         {
             label: "수술시간",
             element:
                 <MobileTimePicker
-                    value={time}
-                    onChange={setTime}
+                    value={watch("operation_information.operating_time") || null}
+                    onChange={(v) => setValue("operation_information.operating_time", v)}
                     renderInput={params => (
                     <Form.MuiTextField
                         {...params}
@@ -65,7 +64,8 @@ const NewOpInfo = (props: Props) => {
                 <Form.MuiTextField
                     select
                     required={false}
-                    {...register("operation.operation_info.asa_class")}
+                    defaultValue={getValues("operation_information.asa_class")}
+                    {...register("operation_information.asa_class")}
                 >
                     {asa_class_labels.map((option) => <MenuItem value={option}>{option}</MenuItem>)}
                 </Form.MuiTextField>
@@ -74,28 +74,32 @@ const NewOpInfo = (props: Props) => {
             label: "주수술명",
             element: 
                 <Form.MuiTextField
-                    {...register("operation.operation_info.main_title")}
+                    {...register("operation_information.main_operation_name")}
+                    required={false}
                 />,
         },
         {
             label: "부수술명",
             element: 
                 <Form.MuiTextField
-                    {...register("operation.operation_info.sub_title")}
+                    {...register("operation_information.minor_operation_name")}
+                    required={false}
                 />,
         },
         {
             label: "과거력",
             element: 
                 <Form.MuiTextField
-                    {...register("operation.operation_info.history")}
+                    {...register("operation_information.past_history")}
+                    required={false}
                 />,
         },
         {
             label: "알레르기",
             element: 
                 <Form.MuiTextField
-                    {...register("operation.operation_info.allergy")}
+                    {...register("operation_information.allergy")}
+                    required={false}
                 />,
         },
         {
@@ -104,7 +108,8 @@ const NewOpInfo = (props: Props) => {
                 <Form.MuiTextField
                     select
                     required={false}
-                    {...register("operation.operation_info.fast")}
+                    defaultValue={getValues("operation_information.npo_status")}
+                    {...register("operation_information.npo_status")}
                 >
                     <MenuItem value="금식">금식</MenuItem>
                     <MenuItem value="금식안함">금식안함</MenuItem>
@@ -116,7 +121,8 @@ const NewOpInfo = (props: Props) => {
                 <Form.MuiTextField
                     select
                     required={false}
-                    {...register("operation.operation_info.antibiotics")}
+                    defaultValue={getValues("operation_information.prophylactic_antibiotics")}
+                    {...register("operation_information.prophylactic_antibiotics")}
                 >
                     <MenuItem value="투여완료">투여완료</MenuItem>
                     <MenuItem value="없음">없음</MenuItem>
@@ -131,26 +137,26 @@ const NewOpInfo = (props: Props) => {
                         select
                         required={false}
                         sx={{ width: `${postureEtc ? "18%" : "37%"}` }}
-                        {...register("operation.operation_info.posture")}
+                        defaultValue={
+                            [...position_labels, undefined].includes(getValues("operation_information.position"))
+                            ? getValues("operation_information.position")
+                            : "etc"
+                        }
+                        {...register("operation_information.position")}
                         onChange={(e) => {
                             if (e.target.value === "etc") setPostureEtc(1);
                             else setPostureEtc(0);
                         }}
                     >
-                        <MenuItem value="fowler">Fowler position</MenuItem>
-                        <MenuItem value="lateral">Lateral position</MenuItem>
-                        <MenuItem value="lithotomy">Lithotomy position</MenuItem>
-                        <MenuItem value="orthopnea">Orthopnea position</MenuItem>
-                        <MenuItem value="prone">Prone position</MenuItem>
-                        <MenuItem value="recumbent">Recumbent position</MenuItem>
-                        <MenuItem value="sims">Sims position</MenuItem>
-                        <MenuItem value="supine">Supine position</MenuItem>
+                        {position_labels.map((v) => 
+                            <MenuItem value={v}>{v} position</MenuItem>
+                        )}
                         <MenuItem value="etc">직접 입력</MenuItem>
                     </Form.MuiTextField>
                     {postureEtc
                     ?
                     <Form.MuiTextField
-                        {...register("operation.operation_info.posture_etc")}
+                        {...register("operation_information.position_etc")}
                         placeholder="직접 입력"
                         sx={{ marginLeft: "5px", width: "18%" }}
                     />
@@ -158,18 +164,26 @@ const NewOpInfo = (props: Props) => {
                     null
                     }
                     <FormControlLabel
-                        control={<Checkbox defaultChecked {...register("operation.operation_info.x_ray")} />}
+                        control={<Checkbox defaultChecked={getValues("operation_information.preoperative_xray")} {...register("operation_information.preoperative_xray")} />}
                         label="수술 전 흉부 X-ray"
                         sx={{ marginLeft: "20px" }}
                     />
                     <FormControlLabel
-                        control={<Checkbox defaultChecked {...register("operation.operation_info.ecg")} />}
+                        control={<Checkbox defaultChecked={getValues("operation_information.preoperative_ekg")} {...register("operation_information.preoperative_ekg")} />}
+                        defaultValue={getValues("operation_information.preoperative_ekg")}
                         label="수술 전 심전도"
                         sx={{ marginLeft: "20px" }}
                     />
                 </Box>
         },
     ];
+
+    useEffect(() => {
+        if (![...position_labels, undefined].includes(getValues("operation_information.position"))) {
+            setValue("operation_information.position_etc", getValues("operation_information.position"));
+            setPostureEtc(1);
+        }
+    }, []);
 
     return (
         <>

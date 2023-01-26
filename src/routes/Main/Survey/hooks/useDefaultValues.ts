@@ -14,6 +14,7 @@ import {
   getNRS,
   getFLACC,
   getCNPS,
+  getOperation,
   getTransfusion,
   getDialysis,
   getEmergency,
@@ -21,7 +22,7 @@ import {
   getHospitalConfirm,
 } from 'apis/survey';
 import useNotification from 'hooks/useNotification';
-import { findKeyValueToObj } from 'utils/convert';
+import { findKeyValueToObj, findKeyValueToObjNoParse } from 'utils/convert';
 
 import {
   initialECardex,
@@ -64,17 +65,21 @@ const useDefaultValues = ({ setDefaultValues, user_id }: Props) => {
   const convertDataToStates = (data: any, states: any) => {
     const values = { ...states };
     const keys = Object.keys(states);
-
+    
     for (let key of keys) {
       const getValue = data[key];
 
       if (typeof getValue !== 'object' || Array.isArray(getValue)) {
         values[key] = getValue;
       } else if (getValue) {
-        values[key] = findKeyValueToObj(getValue, Object.keys(getValue));
+        try {
+          values[key] = findKeyValueToObj(getValue, Object.keys(getValue));
+        } catch {
+          values[key] =findKeyValueToObjNoParse(getValue, Object.keys(getValue));
+        }
       }
     }
-
+    
     setDefaultValues(values);
   };
 
@@ -231,10 +236,13 @@ const useDefaultValues = ({ setDefaultValues, user_id }: Props) => {
         );
         break;
       case MENU.OPERATION:
-        convertDataToStates(
-          initialOperation,
-          initialOperation
-        );
+        getOperation({ user_id, patient_id })
+        .then(({ data }) => {
+          console.log(data);
+          const { update_at, surgical_survey } = data;
+          convertDataToStates({ update_at, ...surgical_survey }, initialOperation);
+        })
+        .catch(e => onFail('알 수 없는 오류가 발생했습니다.', e));
         break;
       case MENU.ANESTHESIA:
         convertDataToStates(
