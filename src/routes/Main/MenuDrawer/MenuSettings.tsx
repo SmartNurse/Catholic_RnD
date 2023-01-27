@@ -32,9 +32,12 @@ const MenuSettings = () => {
 
   const settings = [
     {
-      isPro: true,
       icon: <DateRangeOutlined />,
       label: '간호사 근무 스케줄표',
+      buttonClick: {
+        target: '_blank',
+        href: 'https://dutymaker.com/',
+      }
     },
     {
       icon: <NotificationsOutlined />,

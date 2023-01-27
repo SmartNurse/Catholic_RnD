@@ -193,9 +193,9 @@ const MenuRecords = () => {
       toggle: toggle.special,
     },
     {
-      isPro: true,
       label: 'NEDIS',
       toggle: toggle.special,
+
     },
     {
       isPro: true,
@@ -237,6 +237,10 @@ const MenuRecords = () => {
 
     if (label === '영유아 건강검진 문진') {
       window.open("http://www.imomhospital.co.kr/page/wellbaby/interview?PHPSESSID=57edd94c10d035ad8b305d29981c98ed");
+      return;
+    }
+    else if (label === 'NEDIS') {
+      window.open("http://edis.nemc.or.kr/edisweb/homeweb/board/board_01.jsp");
       return;
     }
 
