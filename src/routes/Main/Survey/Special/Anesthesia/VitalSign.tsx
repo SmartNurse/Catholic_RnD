@@ -2,7 +2,7 @@ import { Fragment, useState, useEffect } from 'react';
 import { AccessTime, Delete } from '@mui/icons-material';
 import { MobileTimePicker } from '@mui/x-date-pickers';
 import { Button, FormHelperText, Grid, IconButton, MenuItem, Box } from '@mui/material';
-import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
+import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer, LabelList } from 'recharts';
 
 import { Ti18nId } from 'hooks/useI18n';
 import { IAnesthesiaVitalsignRecord } from 'apis/survey/type';
@@ -12,6 +12,8 @@ import { formatStringToDate } from 'utils/formatting';
 
 import MuiTable from 'components/MuiTable';
 import MuiTextField from 'components/Form/MuiTextField';
+
+import theme from 'styles/theme';
 
 interface Props extends IFormValues, IFormWatch {
   disabled?: boolean;
@@ -68,7 +70,9 @@ const VitalSign = (props: Props) => {
     }
 
     onSuccess('Vital Sign 추가되었습니다.');
-    setValue('patient_status_list_record', vitalSignList ? [...vitalSignList, {...request, etc }] : [request]);
+
+    const newRecord = vitalSignList ? [...vitalSignList, {...request, etc}] : [request];
+    setValue('patient_status_list_record', newRecord.slice().sort((a, b) => a.time && b.time ? Number(new Date(a.time)) - Number(new Date(b.time)) : 0));
     settime(null);
     setSbp('');
     setDbp('');
@@ -199,7 +203,7 @@ const VitalSign = (props: Props) => {
   };
 
   const displayRows = vitalSignList ?
-    vitalSignList.slice().sort((a, b) => Number(new Date(a.time)) - Number(new Date(b.time))).map((item, i) => ({
+    vitalSignList.map((item, i) => ({
     ...item,
     id: i,
     time: formatStringToDate(item.time, 'hh:mm a'),
@@ -219,15 +223,15 @@ const VitalSign = (props: Props) => {
   const tableRow = disabled ? displayRows : [inputRow, ...displayRows];
 
   useEffect(() => {
-    const sortedVitalSignList = vitalSignList ? vitalSignList.slice().sort((a, b) => Number(new Date(a.time)) - Number(new Date(b.time))) : [];
+    const sortedVitalSignList = vitalSignList ? [...vitalSignList] : [];
     
     if (sortedVitalSignList.length) {
-      const btData = sortedVitalSignList.map((v) => { return {timestamp: formatStringToDate(v.time, 'hh:mm:a'), temp: v.bt} });
-      const prData = sortedVitalSignList.map((v) => { return {timestamp: formatStringToDate(v.time, 'hh:mm:a'), value: v.pr }});
-      const rrData = sortedVitalSignList.map((v) => { return {timestamp: formatStringToDate(v.time, 'hh:mm:a'), value: v.rr }});
-      const sbpData = sortedVitalSignList.map((v) => { return {timestamp: formatStringToDate(v.time, 'hh:mm:a'), value: v.sbp }});
-      const dbpData = sortedVitalSignList.map((v) => { return {timestamp: formatStringToDate(v.time, 'hh:mm:a'), value: v.dbp }});  
-
+      const btData = sortedVitalSignList.map((v) => { return {timestamp: formatStringToDate(v.time, 'hh:mm:a'), note: v.note, temp: v.bt} });
+      const prData = sortedVitalSignList.map((v) => { return {timestamp: formatStringToDate(v.time, 'hh:mm:a'), note: v.note, value: v.pr }});
+      const rrData = sortedVitalSignList.map((v) => { return {timestamp: formatStringToDate(v.time, 'hh:mm:a'), note: v.note, value: v.rr }});
+      const sbpData = sortedVitalSignList.map((v) => { return {timestamp: formatStringToDate(v.time, 'hh:mm:a'), note: v.note, value: v.sbp }});
+      const dbpData = sortedVitalSignList.map((v) => { return {timestamp: formatStringToDate(v.time, 'hh:mm:a'), note: v.note, value: v.dbp }});  
+      
       setVitalsignData([
         { name: "BT (℃)", data: [...btData] }, 
         { name: "PR (회)", data: [...prData] }, 
@@ -237,7 +241,7 @@ const VitalSign = (props: Props) => {
       ]);
     }
   }, [vitalSignList]);
-
+  
   return (
     <Fragment>
       <Box sx={{ width: "80%", height: "500px", margin: "50px auto 0px auto"}}>
@@ -245,11 +249,23 @@ const VitalSign = (props: Props) => {
             <LineChart margin={{ top:5, right: 5, bottom: 5, left: 5 }}>
                 <CartesianGrid horizontal={false} />
                 <XAxis
+                  xAxisId={0}
                   dataKey="timestamp"
                   type="category"
                   allowDuplicatedCategory={false}
                   padding={{ left: 50, right: 50 }}
                   tickMargin={10}
+                />
+                <XAxis
+                  xAxisId={1}
+                  dataKey="note"
+                  allowDuplicatedCategory={false}
+                  padding={{ left: 50, right: 50 }}
+                  tickMargin={10}
+                  tickLine={false}
+                  axisLine={false}
+                  stroke={theme.palette.primary.main}
+                  domain={[]}
                 />
                 <YAxis
                   yAxisId={0}
@@ -277,15 +293,16 @@ const VitalSign = (props: Props) => {
                     wrapperStyle={{ backgroundColor: "#EBEBEB", padding: "15px 10px", marginLeft: "10px" }}
                 />
                 {vitalsignData.map((v, idx) => (
-                    <Line
-                      dataKey={v.name === "BT (℃)" ? "temp" : "value"}
-                      data={v.data}
-                      name={v.name}
-                      key={v.name}
-                      stroke={colors[idx]}
-                      dot={{ stroke: colors[idx], strokeWidth: 4 }}
-                      yAxisId={v.name === "BT (℃)" ? 1 : 0}
-                    />
+                  <Line
+                    dataKey={v.name === "BT (℃)" ? "temp" : "value"}
+                    data={v.data}
+                    name={v.name}
+                    key={v.name}
+                    stroke={colors[idx]}
+                    dot={{ stroke: colors[idx], strokeWidth: 4 }}
+                    yAxisId={v.name === "BT (℃)" ? 1 : 0}
+                    xAxisId={v.name === "BT (℃)" ? 1 : 0}
+                  />
                 ))}
             </LineChart>
         </ResponsiveContainer>
