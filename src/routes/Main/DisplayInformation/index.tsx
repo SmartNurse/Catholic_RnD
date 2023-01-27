@@ -12,13 +12,19 @@ import SearchToolbar from './SearchToolbar';
 
 import theme from 'styles/theme';
 
-const DisplayInformation = () => {
+interface Props {
+  hideMenu: boolean;
+}
+
+const DisplayInformation = (props: Props) => {
+  const { hideMenu } = props;
+
   // shallowEqual 해도 리렌더링 발생해서 이곳만 별도로 선택해서 사용
   const patientInfo = useSelectorTyped(state => state.patient.patientInfo);
 
   const containerWidth = {
-    xs: `calc(100% - ${menuDrawerWidth}px - ${inputInformationWidth.xs}px)`,
-    xl: `calc(100% - ${menuDrawerWidth}px - ${inputInformationWidth.xl}px)`,
+    xs: hideMenu ? `calc(100% - ${inputInformationWidth.xs}px)` : `calc(100% - ${menuDrawerWidth}px - ${inputInformationWidth.xs}px)`,
+    xl: hideMenu ? `calc(100% - ${menuDrawerWidth}px - ${inputInformationWidth.xl}px)` : `calc(100% - ${menuDrawerWidth}px - ${inputInformationWidth.xl}px)`,
   };
 
   const Content = () => {

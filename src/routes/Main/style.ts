@@ -13,13 +13,25 @@ export const StyledDrawerWrapper = styled('div')`
     justify-content: center;
   }
 
-  .userName {
+  .userDiv {
+    position: relative;
     color: #fff;
     height: 46px;
     line-height: 46px;
     font-weight: 600;
+    font-size: 14px;
     background-color: ${theme.palette.secondary.main};
     text-align: center;
+  }
+
+  .hamburgerIcon {
+    position: absolute;
+    top: 10px;
+    left: 14px;
+  }
+
+  .hamburgerIcon:hover {
+    cursor: pointer;
   }
 
   .MuiList-root {

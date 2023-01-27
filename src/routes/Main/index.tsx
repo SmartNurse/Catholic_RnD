@@ -1,5 +1,5 @@
 import { Box } from '@mui/material';
-import { useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import useUser from 'store/user/useUser';
@@ -24,6 +24,7 @@ function Main() {
   }, [student_uuid, navigate]);
 
   const title = student_grade === 1 ? '간호사' : '(교수/조교)';
+  const [hideMenu, setHideMenu] = useState(false);
 
   return (
     <Box display="flex" minWidth={1440}>
@@ -31,8 +32,10 @@ function Main() {
         name={`${student_name} ${title}`}
         college_name={college_name}
         college_ci={college_ci}
+        hideMenu={hideMenu}
+        setHideMenu={setHideMenu}
       />
-      <DisplayInformation />
+      <DisplayInformation hideMenu={hideMenu} />
       <InputInformation />
     </Box>
   );
