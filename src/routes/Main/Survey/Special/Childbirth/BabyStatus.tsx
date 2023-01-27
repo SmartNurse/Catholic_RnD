@@ -1,19 +1,24 @@
+import { useState } from 'react';
+
 import Form from 'components/Form';
-import { IFormRegister, IFormValues } from 'routes/Main/type';
+import { IFormRegister, IFormValues, IFormWatch } from 'routes/Main/type';
 
 import RowContainer from '../../components/RowContainer';
 import RowContent from '../../components/RowContent';
 import SectionTitle from '../../components/SectionTitle';
 
-import { Box, Typography, InputAdornment } from "@mui/material";
+import { Box, Typography, InputAdornment, FormHelperText, Stack } from "@mui/material";
 
-interface Props extends IFormRegister, IFormValues {
+interface Props extends IFormRegister, IFormValues, IFormWatch {
     disabled?: boolean;
 }  
 
 const BabyStatus = (props: Props) => {
-    const { disabled, register, getValues, setValue } = props;
-
+    const { disabled, register, getValues, setValue, watch } = props;
+    const [errors, setErrors] = useState({
+        one_min: false,
+        five_min: false,
+    });
 
     const contents = [
         {
@@ -44,19 +49,35 @@ const BabyStatus = (props: Props) => {
             element:
                 <Box sx={{ display: "flex", justifyContent: "space-around", alignItems: "center" }}>
                     <Typography fontSize="14px">1분</Typography>
-                    <Form.MuiTextField
-                        placeholder="0~10점까지 입력가능"
-                        sx={{ width: "30%" }}
-                        required={false}
-                        {...register("newborn_condition.apgar_score1m")}
-                    />
+                    <Box>
+                        <Form.MuiTextField
+                            placeholder="0~10점까지 입력가능"
+                            required={false}
+                            error={errors.one_min}
+                            {...register("newborn_condition.apgar_score1m", {
+                                onChange: (e) => {
+                                    if (e.target.value < 0 || e.target.value > 10) setErrors({...errors, one_min: true});
+                                    else setErrors({...errors, one_min: false});
+                                }
+                            })}
+                        />
+                        {errors.one_min ? <FormHelperText error={true}>Apgar 점수는 1 이상 10 이하입니다</FormHelperText> : null}
+                    </Box>
                     <Typography fontSize="14px">5분</Typography>
-                    <Form.MuiTextField
-                        placeholder="0~10점까지 입력가능"
-                        sx={{ width: "30%" }}
-                        required={false}
-                        {...register("newborn_condition.apgar_score5m")}
-                    />
+                    <Box>
+                        <Form.MuiTextField
+                            placeholder="0~10점까지 입력가능"
+                            required={false}
+                            error={errors.five_min}
+                            {...register("newborn_condition.apgar_score5m", {
+                                onChange: (e) => {
+                                    if (e.target.value < 0 || e.target.value > 10) setErrors({...errors, five_min: true});
+                                    else setErrors({...errors, five_min: false});
+                                }
+                            })}
+                        />
+                        {errors.five_min ? <FormHelperText error={true}>Apgar 점수는 1 이상 10 이하입니다</FormHelperText> : null}
+                    </Box>
                 </Box> 
         },
         {
