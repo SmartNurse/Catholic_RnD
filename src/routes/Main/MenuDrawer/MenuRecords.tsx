@@ -91,7 +91,7 @@ const MenuRecords = () => {
     {
       disabled: true,
       icon: <SentimentSatisfiedOutlined />,
-      label: '환자평가 기록지',
+      label: '환자평가/환자안전',
       id: 'patient_evaluation'
     },
     {
@@ -104,6 +104,18 @@ const MenuRecords = () => {
     },
     {
       label: '낙상위험도 평가도구',
+      toggle: toggle.patient_evaluation,
+    },
+    {
+      label: '환자안전사고보고서',
+      toggle: toggle.patient_evaluation,
+    },
+    {
+      label: '환자안전보고학습시스템',
+      toggle: toggle.patient_evaluation,
+    },
+    {
+      label: '의약품이상사례보고시스템',
       toggle: toggle.patient_evaluation,
     },
     {
@@ -241,6 +253,14 @@ const MenuRecords = () => {
     }
     else if (label === 'NEDIS') {
       window.open("http://edis.nemc.or.kr/edisweb/homeweb/board/board_01.jsp");
+      return;
+    }
+    else if (label === '환자안전보고학습시스템') {
+      window.open("https://statistics.kops.or.kr/biWorks/dashBoardMain.do");
+      return;
+    }
+    else if (label === '의약품이상사례보고시스템') {
+      window.open("https://www.drugsafe.or.kr/iwt/ds/ko/report/WhatIsKAERS.do;jsessionid=aOUQlS7Cufvit9aLo8fGQHfXD1KflOcDMmW19GIp0Tc3b5AdbDZ1TqaXK5W7lYAQ.webint_2_servlet_engine1");
       return;
     }
 
