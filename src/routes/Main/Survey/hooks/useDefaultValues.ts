@@ -14,6 +14,7 @@ import {
   getNRS,
   getFLACC,
   getCNPS,
+  getBDI,
   getBAI,
   getOperation,
   getAnesthesia,
@@ -46,6 +47,7 @@ import {
   initialFLACC,
   initialCNPS,
   initialMentalNursing,
+  initialBDI,
   initialBAI,
   initialOperation,
   initialAnesthesia,
@@ -243,10 +245,17 @@ const useDefaultValues = ({ setDefaultValues, user_id }: Props) => {
           })
           .catch(e => onFail('알 수 없는 오류가 발생했습니다.', e));
         break;
+      case MENU.BDI: 
+        getBDI({ user_id, patient_id })
+          .then(({ data }) => {
+            const { update_at, bdi_survey } = data;
+            convertDataToStates({ update_at, ...bdi_survey }, initialBDI);
+          })
+          .catch(e => onFail('알 수 없는 오류가 발생했습니다.', e));
+        break;
       case MENU.BAI: 
         getBAI({ user_id, patient_id })
           .then(({ data }) => {
-            console.log(data);
             const { update_at, bai_survey } = data;
             convertDataToStates({ update_at, ...bai_survey }, initialBAI);
           })
@@ -263,7 +272,6 @@ const useDefaultValues = ({ setDefaultValues, user_id }: Props) => {
       case MENU.ANESTHESIA:
         getAnesthesia({ user_id, patient_id })
         .then(({ data }) => {
-          console.log(data);
           convertDataToStates(data, initialAnesthesia);
         })
         .catch(e => onFail('알 수 없는 오류가 발생했습니다.', e));

@@ -18,6 +18,7 @@ import NRS from './Pain/NRS';
 import FLACC from './Pain/FLACC';
 import CNPS from "./Pain/CNPS";
 import MentalNursing from './MentalHealth/MentalNursing';
+import BDI from './MentalHealth/BDI';
 import BAI from './MentalHealth/BAI';
 import Operation from './Special/Operation';
 import Anesthesia from './Special/Anesthesia';
@@ -112,6 +113,10 @@ const DisplaySurvey = (props: Props) => {
     case MENU.MENTAL_NURSING: {
       if (!defaultValues) return null;
       return <MentalNursing {...dialogProps} onClose={onCloseSave} />;
+    }
+    case MENU.BDI: {
+      if (!defaultValues) return null;
+      return <BDI {...dialogProps} onClose={onCloseSave} />;
     }
     case MENU.BAI: {
       if (!defaultValues) return null;

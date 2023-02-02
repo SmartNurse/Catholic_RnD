@@ -17,6 +17,7 @@ import {
   initialFLACC,
   initialCNPS,
   initialMentalNursing,
+  initialBDI,
   initialBAI,
   initialOperation,
   initialAnesthesia,
@@ -50,6 +51,7 @@ export enum MENU {
   FLACC = 'FLACC Scale',
   CNPS = 'CNPS',
   MENTAL_NURSING = '정신간호 기록지',
+  BDI = 'BDI',
   BAI = 'BAI',
   COGNITIVE_FUNCTION = '인지기능검사',
   OPERATION = '수술 기록지',
@@ -99,6 +101,7 @@ export type TNRSDefaultValues = typeof initialNRS;
 export type TFLACCDefaultValues = typeof initialFLACC;
 export type TCNPSDefaultValues = typeof initialCNPS;
 export type TMentalNursingDefaultValues = typeof initialMentalNursing;
+export type TBDIDefaultValues = typeof initialBDI;
 export type TBAIDefaultValues = typeof initialBAI;
 export type TOperationDefaultValues = typeof initialOperation;
 export type TAnesthesiaDefaultValues = typeof initialAnesthesia;

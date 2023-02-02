@@ -18,6 +18,7 @@ import {
   IUpdateFLACC,
   IUpdateNRS,
   IUpdateMentalNursing,
+  IUpdateBDI,
   IUpdateBAI,
   IUpdateOperation,
   IUpdateAnesthesia,
@@ -193,6 +194,17 @@ export const getMentalNursing = (request: IGetSurvey) => {
 
 export const updateMentalNursing = (request: IUpdateMentalNursing) => {
   const url = `/survey/mental`;
+  return apiGateway.post(url, camelcaseKeys(request));
+};
+
+// BDI
+export const getBDI = (request: IGetSurvey) => {
+  const url = `/survey/bdi?${formatToRequestParameter(request)}`;
+  return apiGateway.get(url);
+};
+
+export const updateBDI = (request: IUpdateBDI) => {
+  const url = `/survey/bdi`;
   return apiGateway.post(url, camelcaseKeys(request));
 };
 

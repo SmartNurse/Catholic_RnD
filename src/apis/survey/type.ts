@@ -274,6 +274,14 @@ export interface IUpdateMentalNursing extends IGetSurvey {
   mental_survey: IMentalNursingRecord[],
 }
 
+// BDI
+export interface IUpdateBDI extends IGetSurvey {
+  bdi_survey: {
+    content: number[];
+    sum: number;
+  }
+}
+
 // BAI
 export interface IUpdateBAI extends IGetSurvey {
   bai_survey: {
