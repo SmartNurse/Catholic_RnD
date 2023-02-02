@@ -22,7 +22,7 @@ interface Props extends IFormValues, IFormWatch, IFormRegister {
 
 const GlucoseRecords = (props: Props) => {
   const { disabled, watch, setValue, onRequired, onSuccess, register } = props;
-  const mentalNursingRecordList: IMentalNursingRecord[] = watch('mental_nursing_records');
+  const mentalNursingRecordList: IMentalNursingRecord[] = watch('mental_survey');
 
   const [date, setDate] = useState("");
   const [time, setTime] = useState(null);
@@ -33,14 +33,22 @@ const GlucoseRecords = (props: Props) => {
   const [desc, setDesc] = useState("");
 
   const onAddRow = () => {
-    const request = { date, time, patient, student, basis, evaluation, desc };
+    const request = {
+      date,
+      time,
+      patient_activity: patient,
+      student_activity: student,
+      student_rationale: basis,
+      evaluation,
+      mental_nursing: desc
+    };
 
     if (Object.values(request).filter(v => !v).length > 0) {
       return onRequired('CLINICAL.OBSERVATION.ADD.ROW');
     }
 
     onSuccess('정신간호 기록 추가되었습니다.');
-    setValue('mental_nursing_records', mentalNursingRecordList ? [...mentalNursingRecordList, request] : [request]);
+    setValue('mental_survey', mentalNursingRecordList ? [...mentalNursingRecordList, request] : [request]);
     setValue("mental_nursing_date", "");
     setDate("");
     setTime(null);
@@ -53,7 +61,7 @@ const GlucoseRecords = (props: Props) => {
 
   const onDeleteRow = (index: number) => {
     setValue(
-      'mental_nursing_records',
+      'mental_survey',
       mentalNursingRecordList.filter((_, i) => i !== index)
     );
   };
@@ -68,7 +76,6 @@ const GlucoseRecords = (props: Props) => {
             <Form.MuiTextField
                 type="date"
                 required={false}
-                disabled={disabled}
                 {...register("mental_nursing_date", {
                     onChange: (e) => setDate(e.target.value)
                 })}
@@ -220,7 +227,7 @@ const GlucoseRecords = (props: Props) => {
       <Grid item xs={12}>
         <Table sx={{ minWidth: 650 }} aria-label="simple table">
           <TableBody>
-            {!disabled && inputRows.map((row) => (
+            {inputRows.map((row) => (
               <TableRow
                 key={row.label}
                 sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
@@ -267,19 +274,19 @@ const GlucoseRecords = (props: Props) => {
                 <TableRow key="환자의 언어적/비언어적 행동" sx={{ '&:last-child td, &:last-child th': { border: 0 } }}>
                   <TableCell style={{ width: "20%", verticalAlign: "top" }}>환자의 언어적/비언어적 행동</TableCell>
                   <TableCell colSpan={3}>
-                    <Typography style={{ fontSize: "14px" }}>{row.patient}</Typography>
+                    <Typography style={{ fontSize: "14px" }}>{row.patient_activity}</Typography>
                   </TableCell>
                 </TableRow>
                 <TableRow key="학생의 언어적/비언어적 행동" sx={{ '&:last-child td, &:last-child th': { border: 0 } }}>
                   <TableCell style={{ width: "20%", verticalAlign: "top" }}>학생의 언어적/비언어적 행동</TableCell>
                   <TableCell colSpan={3}>
-                    <Typography style={{ fontSize: "14px" }}>{row.student}</Typography>
+                    <Typography style={{ fontSize: "14px" }}>{row.student_activity}</Typography>
                   </TableCell>
                 </TableRow>
                 <TableRow key="학생 반응의 이론적 근거" sx={{ '&:last-child td, &:last-child th': { border: 0 } }}>
                   <TableCell style={{ width: "20%", verticalAlign: "top" }}>학생 반응의 이론적 근거</TableCell>
                   <TableCell colSpan={3}>
-                    <Typography style={{ fontSize: "14px" }}>{row.basis}</Typography>
+                    <Typography style={{ fontSize: "14px" }}>{row.student_rationale}</Typography>
                   </TableCell>
                 </TableRow>
                 <TableRow key="평가" sx={{ '&:last-child td, &:last-child th': { border: 0 } }}>
@@ -291,7 +298,7 @@ const GlucoseRecords = (props: Props) => {
                 <TableRow key="정신간호 서술기록" sx={{ '&:last-child td, &:last-child th': { border: 0 } }}>
                   <TableCell style={{ width: "20%", verticalAlign: "top" }}>정신간호 서술기록</TableCell>
                   <TableCell colSpan={3}>
-                    <Typography style={{ fontSize: "14px" }}>{row.desc}</Typography>
+                    <Typography style={{ fontSize: "14px" }}>{row.mental_nursing}</Typography>
                   </TableCell>
                 </TableRow>
             </>

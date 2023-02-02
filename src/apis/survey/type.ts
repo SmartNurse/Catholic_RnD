@@ -263,11 +263,15 @@ export interface IUpdateCNPS extends IGetSurvey {
 export interface IMentalNursingRecord {
   date: string;
   time: string;
-  patient: string;
-  student: string;
-  basis: string;
+  patient_activity: string;
+  student_activity: string;
+  student_rationale: string;
   evaluation: string;
-  desc: string;
+  mental_nursing: string;
+}
+
+export interface IUpdateMentalNursing extends IGetSurvey {
+  mental_survey: IMentalNursingRecord[],
 }
 
 // 수술기록지

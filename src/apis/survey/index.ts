@@ -17,6 +17,7 @@ import {
   IUpdateCNPS,
   IUpdateFLACC,
   IUpdateNRS,
+  IUpdateMentalNursing,
   IUpdateOperation,
   IUpdateAnesthesia,
   IUpdateTransfusion,
@@ -180,6 +181,17 @@ export const getCNPS = (request: IGetSurvey) => {
 
 export const updateCNPS = (request: IUpdateCNPS) => {
   const url = `/survey/cnps`;
+  return apiGateway.post(url, camelcaseKeys(request));
+};
+
+// 정신간호 기록지
+export const getMentalNursing = (request: IGetSurvey) => {
+  const url = `/survey/mental?${formatToRequestParameter(request)}`;
+  return apiGateway.get(url);
+};
+
+export const updateMentalNursing = (request: IUpdateMentalNursing) => {
+  const url = `/survey/mental`;
   return apiGateway.post(url, camelcaseKeys(request));
 };
 

@@ -23,6 +23,7 @@ import {
   getDietNutrition,
   getFallConfirm,
   getHospitalConfirm,
+  getMentalNursing,
 } from 'apis/survey';
 import useNotification from 'hooks/useNotification';
 import { findKeyValueToObj, findKeyValueToObjNoParse } from 'utils/convert';
@@ -234,9 +235,11 @@ const useDefaultValues = ({ setDefaultValues, user_id }: Props) => {
           .catch(e => onFail('알 수 없는 오류가 발생했습니다.', e));
         break;
       case MENU.MENTAL_NURSING: 
-        convertDataToStates(
-          initialMentalNursing, initialMentalNursing
-        );
+        getMentalNursing({ user_id, patient_id })
+          .then(({ data }) => {
+            convertDataToStates(data, initialMentalNursing);
+          })
+          .catch(e => onFail('알 수 없는 오류가 발생했습니다.', e));
         break;
       case MENU.OPERATION:
         getOperation({ user_id, patient_id })

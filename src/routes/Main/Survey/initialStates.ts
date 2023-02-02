@@ -307,8 +307,8 @@ export const initialCNPS = {
 
 export const initialMentalNursing = {
   update_at: '',
-  mental_nursing_records: [],
-};
+  mental_survey: [],
+}
 
 export const initialOperation = {
   update_at: '',
