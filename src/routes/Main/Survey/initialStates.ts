@@ -310,6 +310,12 @@ export const initialMentalNursing = {
   mental_survey: [],
 }
 
+export const initialBAI = {
+  update_at: '',
+  content: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+  sum: 0,
+}
+
 export const initialOperation = {
   update_at: '',
   surgery_information: {

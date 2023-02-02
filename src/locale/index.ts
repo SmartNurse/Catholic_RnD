@@ -233,6 +233,9 @@ const locale = {
     // flacc
     'FLACC.ADD.ROW': '입력하지 않은 값이 있습니다.',
 
+    // bai
+    'REQUIRED.BAI': '평가항목을 모두 선택해주세요',
+    
     // transfusion
     'BLOOD.RECORD.SIDE.EFFECT.1': '유',
     'BLOOD.RECORD.SIDE.EFFECT.2': '무',

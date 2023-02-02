@@ -14,6 +14,7 @@ import {
   getNRS,
   getFLACC,
   getCNPS,
+  getBAI,
   getOperation,
   getAnesthesia,
   getTransfusion,
@@ -45,6 +46,7 @@ import {
   initialFLACC,
   initialCNPS,
   initialMentalNursing,
+  initialBAI,
   initialOperation,
   initialAnesthesia,
   initialTransfusion,
@@ -238,6 +240,15 @@ const useDefaultValues = ({ setDefaultValues, user_id }: Props) => {
         getMentalNursing({ user_id, patient_id })
           .then(({ data }) => {
             convertDataToStates(data, initialMentalNursing);
+          })
+          .catch(e => onFail('알 수 없는 오류가 발생했습니다.', e));
+        break;
+      case MENU.BAI: 
+        getBAI({ user_id, patient_id })
+          .then(({ data }) => {
+            console.log(data);
+            const { update_at, bai_survey } = data;
+            convertDataToStates({ update_at, ...bai_survey }, initialBAI);
           })
           .catch(e => onFail('알 수 없는 오류가 발생했습니다.', e));
         break;
