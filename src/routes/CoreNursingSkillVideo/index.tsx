@@ -11,6 +11,7 @@ import {
 import useSurvey from 'store/survey/useSurvey';
 import useNotification from 'hooks/useNotification';
 import useUser from 'store/user/useUser';
+import useStudent from 'store/student/useStudent';
 
 import VideoForm from './VideoForm';
 import StudentInfo from './StudentModeInfo';
@@ -22,6 +23,7 @@ const CoreNursingSkillVideo = (props: SurveyDialogProps<TCoreNursingSkillVideoDe
   const [refresh, setRefresh] = useState(false);
   const [totalSize, setTotalSize] = useState(0);
   const { isStudent } = useUser();
+  const { student_uuid } = useStudent();
 
   const {
       title,
@@ -111,7 +113,7 @@ const CoreNursingSkillVideo = (props: SurveyDialogProps<TCoreNursingSkillVideoDe
         :
         <ProfModeInfo totalSize={totalSize} />
         }
-        <VideoForm {...formProps} user_id={user_id} patient_id={patientInfo.patient_id} patient_name={patientInfo.name} totalSize={totalSize} setTotalSize={setTotalSize} refresh={refresh} />
+        <VideoForm {...formProps} user_id={isStudent ? user_id : student_uuid} patient_id={patientInfo.patient_id} patient_name={patientInfo.name} totalSize={totalSize} setTotalSize={setTotalSize} refresh={refresh} />
       </Container>
     </MuiDialog.SurveyForm>
   );
