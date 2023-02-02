@@ -503,6 +503,23 @@ export interface IUpdateChildbirth extends IGetSurvey {
   }
 }
 
+// 식이/영양 기록지
+export interface IUpdateDietNutrition extends IGetSurvey {
+  dietary_survey : {
+    birth: string;
+    classification: number;
+    select_meal: string;
+    basic_meal: string;
+    therapuetic_diet: {
+      intestinal: string;
+      kidney: string;
+      liver: string;
+    },
+    controlled_diet: string;
+    specifics: string;
+  }
+}
+
 // 입원안내확인서
 export interface IUpdateHospitalConfirm extends IGetSurvey {
   hospital_confirm: {

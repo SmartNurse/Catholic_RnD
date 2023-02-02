@@ -20,6 +20,7 @@ import {
   getDialysis,
   getEmergency,
   getChildbirth,
+  getDietNutrition,
   getFallConfirm,
   getHospitalConfirm,
 } from 'apis/survey';
@@ -300,10 +301,25 @@ const useDefaultValues = ({ setDefaultValues, user_id }: Props) => {
         .catch(e => onFail('알 수 없는 오류가 발생했습니다.', e));
         break;
       case MENU.DIET_NUTRITION:
-        convertDataToStates(
-          { ...initialDietNutrition },
-          initialDietNutrition
-        );
+        getDietNutrition({ user_id, patient_id })
+        .then(({ data }) => {
+          const { update_at, dietary_survey } = data;
+          convertDataToStates({
+            update_at,
+            birth: dietary_survey?.birth,
+            classification: dietary_survey ? dietary_survey.classification : 1,
+            select_meal: dietary_survey ? JSON.parse(dietary_survey.select_meal) : {},
+            basic_meal: dietary_survey ? JSON.parse(dietary_survey.basic_meal) : {},
+            therapuetic_diet: {
+              intestinal: dietary_survey ? JSON.parse(dietary_survey.therapuetic_diet.intestinal) : {},
+              kidney: dietary_survey ? JSON.parse(dietary_survey.therapuetic_diet.kidney) : {},
+              liver: dietary_survey ? JSON.parse(dietary_survey.therapuetic_diet.liver) : {},
+            },
+            controlled_diet: dietary_survey ? JSON.parse(dietary_survey.controlled_diet) : {},
+            specifics: dietary_survey ? JSON.parse(dietary_survey.specifics) : {},
+          }, initialDietNutrition);
+        })
+        .catch(e => onFail('알 수 없는 오류가 발생했습니다.', e));
         break;
       case MENU.HOSPITAL_CONFIRM:
         getHospitalConfirm({ user_id, patient_id })

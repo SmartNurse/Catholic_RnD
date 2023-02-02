@@ -2,64 +2,60 @@ import { useState } from "react";
 import { Box, TextField } from "@mui/material";
 
 import Form from "components/Form";
-import { IFormRegister, IFormValues } from "routes/Main/type";
+import { IFormRegister, IFormValues, IFormWatch } from "routes/Main/type";
 
 import SectionTitle from "../components/SectionTitle";
 
-interface Props extends IFormRegister, IFormValues {
+interface Props extends IFormRegister, IFormValues, IFormWatch {
     disabled?: boolean;
     dietList: string[];
     setDietList: (dietList: string[]) => void;
-    etc: string;
-    setEtc: (etc: string) => void;
 }
 
 const checks = [
-    { label: "적은밥", key: "special.checked1" },
-    { label: "진밥", key: "special.checked2" },
-    { label: "된밥", key: "special.checked3" },
-    { label: "잡곡밥", key: "special.checked4" },
-    { label: "흰 죽", key: "special.checked5" },
-    { label: "쌀 미음", key: "special.checked6" },
-    { label: "찬 죽", key: "special.checked7" },
-    { label: "찬 미음", key: "special.checked8" },
-    { label: "국 추가", key: "special.checked9" },
-    { label: "국만 맵지 않게", key: "special.checked10" },
-    { label: "맵지 않게", key: "special.checked11" },
-    { label: "모든 생선 제외", key: "special.checked12" },
-    { label: "등푸른 생선 제외", key: "special.checked13" },
-    { label: "해물 제외", key: "special.checked14" },
-    { label: "계란 제외", key: "special.checked15" },
-    { label: "모든 고기 제외", key: "special.checked16" },
-    { label: "돼지 고기 제외", key: "special.checked17" },
-    { label: "닭 고기 제외", key: "special.checked18" },
-    { label: "항상 배추 김치", key: "special.checked19" },
-    { label: "물김치", key: "special.checked20" },
-    { label: "김치 많이", key: "special.checked21" },
-    { label: "물김치 많이", key: "special.checked22" },
-    { label: "반찬 많이", key: "special.checked23" },
-    { label: "간장 추가", key: "special.checked24" },
-    { label: "고추장 추가", key: "special.checked25" },
-    { label: "고춧가루 추가", key: "special.checked26" },
-    { label: "소금 추가", key: "special.checked27" },
-    { label: "설탕 추가", key: "special.checked28" },
-    { label: "미역국", key: "special.checked29" },
-    { label: "두유", key: "special.checked30" },
-    { label: "요구르트", key: "special.checked31" },
-    { label: "모든 유제품 제외", key: "special.checked32" },
-    { label: "간식 제외", key: "special.checked33" },
-    { label: "치아보조 (갈아서)", key: "special.checked34" },
-    { label: "치아보조 (다져서)", key: "special.checked35" },
-    { label: "서양식", key: "special.checked36" },
-    { label: "이슬람 할랄식", key: "special.checked37" },
-    { label: "비건식", key: "special.checked38" },
-    { label: "기타 (직접 기재)", key: "special.checked39" },
+    { label: "적은밥", key: "specifics.checked1" },
+    { label: "진밥", key: "specifics.checked2" },
+    { label: "된밥", key: "specifics.checked3" },
+    { label: "잡곡밥", key: "specifics.checked4" },
+    { label: "흰 죽", key: "specifics.checked5" },
+    { label: "쌀 미음", key: "specifics.checked6" },
+    { label: "찬 죽", key: "specifics.checked7" },
+    { label: "찬 미음", key: "specifics.checked8" },
+    { label: "국 추가", key: "specifics.checked9" },
+    { label: "국만 맵지 않게", key: "specifics.checked10" },
+    { label: "맵지 않게", key: "specifics.checked11" },
+    { label: "모든 생선 제외", key: "specifics.checked12" },
+    { label: "등푸른 생선 제외", key: "specifics.checked13" },
+    { label: "해물 제외", key: "specifics.checked14" },
+    { label: "계란 제외", key: "specifics.checked15" },
+    { label: "모든 고기 제외", key: "specifics.checked16" },
+    { label: "돼지 고기 제외", key: "specifics.checked17" },
+    { label: "닭 고기 제외", key: "specifics.checked18" },
+    { label: "항상 배추 김치", key: "specifics.checked19" },
+    { label: "물김치", key: "specifics.checked20" },
+    { label: "김치 많이", key: "specifics.checked21" },
+    { label: "물김치 많이", key: "specifics.checked22" },
+    { label: "반찬 많이", key: "specifics.checked23" },
+    { label: "간장 추가", key: "specifics.checked24" },
+    { label: "고추장 추가", key: "specifics.checked25" },
+    { label: "고춧가루 추가", key: "specifics.checked26" },
+    { label: "소금 추가", key: "specifics.checked27" },
+    { label: "설탕 추가", key: "specifics.checked28" },
+    { label: "미역국", key: "specifics.checked29" },
+    { label: "두유", key: "specifics.checked30" },
+    { label: "요구르트", key: "specifics.checked31" },
+    { label: "모든 유제품 제외", key: "specifics.checked32" },
+    { label: "간식 제외", key: "specifics.checked33" },
+    { label: "치아보조 (갈아서)", key: "specifics.checked34" },
+    { label: "치아보조 (다져서)", key: "specifics.checked35" },
+    { label: "서양식", key: "specifics.checked36" },
+    { label: "이슬람 할랄식", key: "specifics.checked37" },
+    { label: "비건식", key: "specifics.checked38" },
+    { label: "기타 (직접 기재)", key: "specifics.checked39" },
 ];
 
 const Special = (props: Props) => {
-    const { disabled, register, getValues, setValue, dietList, setDietList, etc, setEtc } = props;
-
-    const [etcChecked, setEtcChecked] = useState(false);
+    const { disabled, register, getValues, setValue, dietList, setDietList, watch } = props;
 
     return (
         <>
@@ -117,11 +113,7 @@ const Special = (props: Props) => {
                                 setValue(v.key, checked);
 
                                 if (v.label === "기타 (직접 기재)") {
-                                    if (checked) setEtcChecked(true);
-                                    else {
-                                        setEtcChecked(false);
-                                        setEtc("");
-                                    }
+                                    if (!checked) setValue("specifics.placeholder", "");
                                 }
                                 else {
                                     if (checked) setDietList([...dietList, v.label]);
@@ -131,11 +123,10 @@ const Special = (props: Props) => {
                         />
                     )}
                     <TextField
+                        {...register("specifics.placeholder")}
                         multiline={true}
                         rows={6}
-                        value={etc}
-                        onChange={(e) => setEtc(e.target.value)}
-                        disabled={!etcChecked ? true : false}
+                        disabled={!watch("specifics.checked39") ? true : false}
                     />
                 </Box>
             </Box>

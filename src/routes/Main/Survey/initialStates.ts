@@ -479,14 +479,15 @@ export const initialChildbirth = {
 
 export const initialDietNutrition = {
   update_at: '',
-  target: '',
-  diet_time: {
+  birth: '',
+  classification: 1,
+  select_meal: {
     checked1: false,
     checked2: false,
     checked3: false,
+    calorie: '',
   },
-  calorie: '',
-  default_diet: {
+  basic_meal: {
     checked1: false,
     checked2: false,
     checked3: false,
@@ -498,8 +499,8 @@ export const initialDietNutrition = {
     checked9: false,
     checked10: false,
   },
-  treatment: {
-    stomach: {
+  therapuetic_diet: {
+    intestinal: {
       checked1: false,
       checked2: false,
       checked3: false,
@@ -541,7 +542,7 @@ export const initialDietNutrition = {
       checked12: false,      
     },
   },
-  controlled: {
+  controlled_diet: {
     checked1: false,
     checked2: false,
     checked3: false,
@@ -554,7 +555,7 @@ export const initialDietNutrition = {
     checked10: false,
     checked11: false,
   },
-  special: {
+  specifics: {
     checked1: false,
     checked2: false,
     checked3: false,

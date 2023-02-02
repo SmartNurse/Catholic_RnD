@@ -1,5 +1,5 @@
 import Form from "components/Form";
-import { IFormRegister } from "routes/Main/type";
+import { IFormRegister, IFormValues, } from "routes/Main/type";
 import { IPatientInfo } from "apis/admin/type";
 
 import { RadioGroup, Radio, Stack, FormControlLabel } from "@mui/material";
@@ -7,12 +7,12 @@ import { RadioGroup, Radio, Stack, FormControlLabel } from "@mui/material";
 import RowContainer from "../components/RowContainer";
 import RowContent from "../components/RowContent";
 
-interface Props extends IPatientInfo, IFormRegister {
+interface Props extends IPatientInfo, IFormRegister, IFormValues {
     disabled?: boolean;
 }
 
 const PatientInfo = (props: Props) => {
-    const { patient_id, name, age, disabled, register } = props;
+    const { patient_id, name, age, disabled, register, setValue, getValues } = props;
 
     return (
         <RowContainer xs={12}>
@@ -41,28 +41,13 @@ const PatientInfo = (props: Props) => {
                 />
             </RowContent>
             <RowContent title="구분" titleRatio={1} childrenRatio={2}>
-                <RadioGroup
-                    row
-                    defaultValue={0}
-                    sx={{ flexWrap: 'nowrap', whiteSpace: 'nowrap', display: 'inline-flex' }}
-                    >
-                    <Stack direction={'row'} spacing={1}>
-                        <FormControlLabel
-                            key={0}
-                            value={0}
-                            disabled={disabled}
-                            control={<Radio size="small" />}
-                            label={"환자"}
-                        />
-                        <FormControlLabel
-                            key={1}
-                            value={1}
-                            disabled={disabled}
-                            control={<Radio size="small" />}
-                            label={"보호자"}
-                        />
-                    </Stack>
-                </RadioGroup>
+                <Form.MuiRadioGroup
+                    i18nKey="DIET_NUTRITION.CLASSIFICATION"
+                    values={[1, 2]}
+                    disabled={disabled}
+                    defaultValue={getValues('classification')}
+                    onChange={v => setValue('classification', v)}
+                />
             </RowContent>
         </RowContainer>
     );

@@ -14,43 +14,43 @@ interface Props extends IFormRegister, IFormValues {
 const checks = [
     {
         label: "NPO",
-        key: "default_diet.checked1",
+        key: "basic_meal.checked1",
     },
     {
         label: "SOW",
-        key: "default_diet.checked2",
+        key: "basic_meal.checked2",
     },
     {
         label: "AQ",
-        key: "default_diet.checked3",
+        key: "basic_meal.checked3",
     },
     {
         label :"LD",
-        key: "default_diet.checked4",
+        key: "basic_meal.checked4",
     },
     {
         label: "SD",
-        key: "default_diet.checked5",
+        key: "basic_meal.checked5",
     },
     {
         label: "SBD",
-        key: "default_diet.checked6",
+        key: "basic_meal.checked6",
     },
     {
         label: "RD",
-        key: "default_diet.checked7",
+        key: "basic_meal.checked7",
     },
     {
         label: "TD",
-        key: "default_diet.checked8",
+        key: "basic_meal.checked8",
     },
     {
         label: "치료식",
-        key: "default_diet.checked9",
+        key: "basic_meal.checked9",
     },
     {
         label: "소아",
-        key: "default_diet.checked10",
+        key: "basic_meal.checked10",
     },
 ];
 

@@ -7,19 +7,16 @@ import SectionTitle from "../components/SectionTitle";
 
 interface Props extends IFormRegister, IFormValues {
     disabled?: boolean;
-    selected: boolean[];
-    setSelected: (selected: boolean[]) => void;
-    setCalorie: (calorie: string) => void;
 }
 
 const checks = [
-    { label: "조식", key: "diet_time.checked1" },
-    { label: "중식", key: "diet_time.checked2" },
-    { label: "석식", key: "diet_time.checked3" },
+    { label: "조식", key: "select_meal.checked1" },
+    { label: "중식", key: "select_meal.checked2" },
+    { label: "석식", key: "select_meal.checked3" },
 ];
 
 const DietSelection = (props: Props) => {
-    const { disabled, register, getValues, setValue, selected, setSelected, setCalorie } = props;
+    const { disabled, register, getValues, setValue } = props;
 
     return (
         <>
@@ -33,10 +30,6 @@ const DietSelection = (props: Props) => {
                         defaultValue={Boolean(getValues(v.key)) ? [v.label] : []}
                         onChange={(_, checked) => {
                             setValue(v.key, checked);
-                            
-                            let newSelected = [...selected];
-                            newSelected[i] = checked;
-                            setSelected([...newSelected]);
                         }}
                     />
                 )}
@@ -47,11 +40,9 @@ const DietSelection = (props: Props) => {
                     </Typography>
                     <Form.MuiTextField
                         placeholder="직접 입력"
-                        onChange={e => {
-                            setValue("calorie", e.target.value);
-                            setCalorie(e.target.value);
-                        }}
+                        {...register("select_meal.calorie")}
                         sx={{ width: "100px" }}
+                        required={false}
                     />
                     <Typography sx={{ fontWeight: "400", fontSize: "14px", lineHeight: "24px", paddingLeft: "12px" }}>
                         KCAL/day

@@ -12,50 +12,50 @@ interface Props extends IFormRegister, IFormValues {
 }
 
 const stomachChecks = [
-    { label: "위 절제 밥", key: "treatment.stomach.checked1" },
-    { label: "위 절제 죽", key: "treatment.stomach.checked2" },
-    { label: "저 섬유 밥", key: "treatment.stomach.checked3" },
-    { label: "저 섬유 죽", key: "treatment.stomach.checked4" },
-    { label: "저 잔사 밥", key: "treatment.stomach.checked5" },
-    { label: "위 절제 미음", key: "treatment.stomach.checked6" },
-    { label: "저 잔사 미음", key: "treatment.stomach.checked7" },
-    { label: "비만 수술 후 식사 (맑은 유동식)", key: "treatment.stomach.checked8" },
-    { label: "비만 수술 후 식사 (일반 유동식)", key: "treatment.stomach.checked9" },
+    { label: "위 절제 밥", key: "therapuetic_diet.intestinal.checked1" },
+    { label: "위 절제 죽", key: "therapuetic_diet.intestinal.checked2" },
+    { label: "저 섬유 밥", key: "therapuetic_diet.intestinal.checked3" },
+    { label: "저 섬유 죽", key: "therapuetic_diet.intestinal.checked4" },
+    { label: "저 잔사 밥", key: "therapuetic_diet.intestinal.checked5" },
+    { label: "위 절제 미음", key: "therapuetic_diet.intestinal.checked6" },
+    { label: "저 잔사 미음", key: "therapuetic_diet.intestinal.checked7" },
+    { label: "비만 수술 후 식사 (맑은 유동식)", key: "therapuetic_diet.intestinal.checked8" },
+    { label: "비만 수술 후 식사 (일반 유동식)", key: "therapuetic_diet.intestinal.checked9" },
 ];
 
 const kidneyChecks = [
-    { label: "신부전 밥", key: "treatment.kidney.checked1" },
-    { label: "신부전 죽", key: "treatment.kidney.checked2" },
-    { label: "신증후군 밥", key: "treatment.kidney.checked3" },
-    { label: "신증후군 죽", key: "treatment.kidney.checked4" },
-    { label: "당뇨신증 밥", key: "treatment.kidney.checked5" },
-    { label: "당뇨신증 죽", key: "treatment.kidney.checked6" },
-    { label: "혈액투석식 밥", key: "treatment.kidney.checked7" },
-    { label: "혈액투석식 죽", key: "treatment.kidney.checked8" },
-    { label: "복막투석식 밥", key: "treatment.kidney.checked9" },
-    { label: "복막투석식 죽", key: "treatment.kidney.checked10" },
-    { label: "신장이식 후 밥", key: "treatment.kidney.checked11" },
-    { label: "신장이식 후 죽", key: "treatment.kidney.checked12" },
-    { label: "신부전 당뇨 밥", key: "treatment.kidney.checked13" },
-    { label: "신부전 당뇨 죽", key: "treatment.kidney.checked14" },
+    { label: "신부전 밥", key: "therapuetic_diet.kidney.checked1" },
+    { label: "신부전 죽", key: "therapuetic_diet.kidney.checked2" },
+    { label: "신증후군 밥", key: "therapuetic_diet.kidney.checked3" },
+    { label: "신증후군 죽", key: "therapuetic_diet.kidney.checked4" },
+    { label: "당뇨신증 밥", key: "therapuetic_diet.kidney.checked5" },
+    { label: "당뇨신증 죽", key: "therapuetic_diet.kidney.checked6" },
+    { label: "혈액투석식 밥", key: "therapuetic_diet.kidney.checked7" },
+    { label: "혈액투석식 죽", key: "therapuetic_diet.kidney.checked8" },
+    { label: "복막투석식 밥", key: "therapuetic_diet.kidney.checked9" },
+    { label: "복막투석식 죽", key: "therapuetic_diet.kidney.checked10" },
+    { label: "신장이식 후 밥", key: "therapuetic_diet.kidney.checked11" },
+    { label: "신장이식 후 죽", key: "therapuetic_diet.kidney.checked12" },
+    { label: "신부전 당뇨 밥", key: "therapuetic_diet.kidney.checked13" },
+    { label: "신부전 당뇨 죽", key: "therapuetic_diet.kidney.checked14" },
 ];
 
 const liverChecks = [
-    { label: "중단백 간질환 밥", key: "treatment.liver.checked1" },
-    { label: "중단백 간질환 죽", key: "treatment.liver.checked2" },
-    { label: "저단백 간질환 밥", key: "treatment.liver.checked3" },
-    { label: "저단백 간질환 죽", key: "treatment.liver.checked4" },
-    { label: "중단백 간질환당뇨 밥", key: "treatment.liver.checked5" },
-    { label: "중단백 간질환당뇨 죽", key: "treatment.liver.checked6" },
-    { label: "저단백 간질환당뇨 밥", key: "treatment.liver.checked7" },
-    { label: "저단백 간질환당뇨 죽", key: "treatment.liver.checked8" },
-    { label: "고단백 고열량 간질환 밥", key: "treatment.liver.checked9" },
-    { label: "고단백 고열량 간질환 죽", key: "treatment.liver.checked10" },
-    { label: "고단백 고열량 간질환 당뇨 밥", key: "treatment.liver.checked11" },
-    { label: "고단백 고열량 간질환 당뇨 죽", key: "treatment.liver.checked12" },
+    { label: "중단백 간질환 밥", key: "therapuetic_diet.liver.checked1" },
+    { label: "중단백 간질환 죽", key: "therapuetic_diet.liver.checked2" },
+    { label: "저단백 간질환 밥", key: "therapuetic_diet.liver.checked3" },
+    { label: "저단백 간질환 죽", key: "therapuetic_diet.liver.checked4" },
+    { label: "중단백 간질환당뇨 밥", key: "therapuetic_diet.liver.checked5" },
+    { label: "중단백 간질환당뇨 죽", key: "therapuetic_diet.liver.checked6" },
+    { label: "저단백 간질환당뇨 밥", key: "therapuetic_diet.liver.checked7" },
+    { label: "저단백 간질환당뇨 죽", key: "therapuetic_diet.liver.checked8" },
+    { label: "고단백 고열량 간질환 밥", key: "therapuetic_diet.liver.checked9" },
+    { label: "고단백 고열량 간질환 죽", key: "therapuetic_diet.liver.checked10" },
+    { label: "고단백 고열량 간질환 당뇨 밥", key: "therapuetic_diet.liver.checked11" },
+    { label: "고단백 고열량 간질환 당뇨 죽", key: "therapuetic_diet.liver.checked12" },
 ];
 
-const Treatment = (props: Props) => {
+const therapuetic_diet = (props: Props) => {
     const { disabled, register, getValues, setValue, dietList, setDietList } = props;
 
     return (
@@ -156,4 +156,4 @@ const Treatment = (props: Props) => {
     );
 }
 
-export default Treatment;
+export default therapuetic_diet;

@@ -23,6 +23,7 @@ import {
   IUpdateDialysis,
   IUpdateEmergency,
   IUpdateChildbirth,
+  IUpdateDietNutrition,
   IUpdateHospitalConfirm,
   IUpdateFallConfirm,
 } from './type';
@@ -245,6 +246,17 @@ export const getChildbirth = (request: IGetSurvey) => {
 
 export const updateChildbirth = (request: IUpdateChildbirth) => {
   const url = `/survey/delivery`;
+  return apiGateway.post(url, camelcaseKeys(request));
+};
+
+// 식이/영양 기록지
+export const getDietNutrition = (request: IGetSurvey) => {
+  const url = `/survey/dietary?${formatToRequestParameter(request)}`;
+  return apiGateway.get(url);
+};
+
+export const updateDietNutrition = (request: IUpdateDietNutrition) => {
+  const url = `/survey/dietary`;
   return apiGateway.post(url, camelcaseKeys(request));
 };
 

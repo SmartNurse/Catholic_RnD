@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 
 import useSurvey from "store/survey/useSurvey";
@@ -17,29 +17,63 @@ import Special from "./Special";
 
 import { Grid, Typography } from "@mui/material";
 
+import { updateDietNutrition } from "apis/survey";
+
 const DietNutrition = (props: SurveyDialogProps<TDietNutritionDefaultValues>) => {
     const { title, isOpen, disabled, defaultValues, user_id, patientInfo, onClose } = props;
 
     const { onUpdateIsSave } = useSurvey();
     const { onSuccess, onFail, onResultCode } = useNotification();
   
-    const { handleSubmit, register, getValues, setValue } = useForm({
+    const { handleSubmit, register, getValues, setValue, watch } = useForm({
       defaultValues,
     });
 
-    const [selected, setSelected] = useState<boolean[]>([false, false, false]);
-    const [calorie, setCalorie] = useState<string>("");
     const [dietList, setDietList] = useState<string[]>([]);
-    const [etc, setEtc] = useState<string>("");
 
-    const formProps = { disabled, register, getValues, setValue };
+    const formProps = { disabled, register, getValues, setValue, watch };
+
+    const onSubmit = (data: TDietNutritionDefaultValues) => {
+        const { patient_id } = patientInfo;
+        const { classification, select_meal, basic_meal, therapuetic_diet, controlled_diet, specifics } = data;
+        
+        const request = {
+            user_id,
+            patient_id,
+            dietary_survey: {
+                birth: JSON.stringify(dietList),
+                classification,
+                select_meal: JSON.stringify(select_meal),
+                basic_meal: JSON.stringify(basic_meal),
+                therapuetic_diet: {
+                    intestinal: JSON.stringify(therapuetic_diet.intestinal),
+                    kidney: JSON.stringify(therapuetic_diet.kidney),
+                    liver: JSON.stringify(therapuetic_diet.liver),
+                },
+                controlled_diet: JSON.stringify(controlled_diet),
+                specifics: JSON.stringify(specifics),
+            }
+        };
+    
+        updateDietNutrition(request)
+          .then(({ data: { rc } }) => {
+            if (rc !== 1) return onResultCode(rc);
+            onUpdateIsSave(true);
+            onSuccess('식이/영양 기록지 저장에 성공하였습니다.');
+          })
+          .catch(e => onFail('식이/영양 기록지 저장에 실패하였습니다.', e));
+    };
+
+    useEffect(() => {
+        if (getValues("birth")) setDietList(JSON.parse(getValues("birth")));
+    }, []);
 
     return (
         <MuiDialog.SurveyForm
             title={title}
             isOpen={isOpen}
             onClose={onClose}
-            onSubmit={undefined /* 저장 기능 업데이트 되면 수정할 부분 */}
+            onSubmit={disabled ? undefined : handleSubmit(onSubmit)}
             update_at={defaultValues?.update_at}
         >
             <Grid
@@ -51,16 +85,14 @@ const DietNutrition = (props: SurveyDialogProps<TDietNutritionDefaultValues>) =>
             >
                 <Typography sx={{ margin: "12px auto", fontWeight: "700", fontSize: "16px", textAlign: "center" }}>
                     식이/영양 기록지
-                    <br />
-                    - TEST 중입니다 -
                 </Typography>
                 <PatientInfo {...formProps} {...patientInfo} />
-                <DietResultBox selected={selected} calorie={calorie} dietList={dietList} etc={etc} />
-                <DietSelection {...formProps} selected={selected} setSelected={setSelected} setCalorie={setCalorie} />
+                <DietResultBox {...formProps} dietList={dietList} />
+                <DietSelection {...formProps} />
                 <DefaultDiet {...formProps} dietList={dietList} setDietList={setDietList} />
                 <Treatment {...formProps} dietList={dietList} setDietList={setDietList} />
                 <Controlled {...formProps} dietList={dietList} setDietList={setDietList} />
-                <Special {...formProps} dietList={dietList} setDietList={setDietList} etc={etc} setEtc={setEtc} />
+                <Special {...formProps} dietList={dietList} setDietList={setDietList} />
             </Grid>
         </MuiDialog.SurveyForm>
     );

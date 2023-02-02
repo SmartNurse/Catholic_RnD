@@ -271,6 +271,10 @@ const locale = {
 
     'CHILDBIRTH.PLACENTA_REMOVAL.METHOD.1' : '자연박리',
     'CHILDBIRTH.PLACENTA_REMOVAL.METHOD.2' : '용수박리',
+
+    // diet_nutrition
+    'DIET_NUTRITION.CLASSIFICATION.1': '환자',
+    'DIET_NUTRITION.CLASSIFICATION.2': '보호자',
   },
 };
 

@@ -14,23 +14,23 @@ interface Props extends IFormRegister, IFormValues {
 const checks = [
     {
         label: "저칼륨밥",
-        key: "controlled.checked1",
+        key: "controlled_diet.checked1",
     },
     {
         label: "저칼륨죽",
-        key: "controlled.checked2",
+        key: "controlled_diet.checked2",
     },
     {
         label: "저칼슘밥",
-        key: "controlled.checked3",
+        key: "controlled_diet.checked3",
     },
     {
         label: "저칼슘죽",
-        key: "controlled.checked4",
+        key: "controlled_diet.checked4",
     },
     {
         label: "저칼슘미음",
-        key: "controlled.checked5",
+        key: "controlled_diet.checked5",
     },
     {
         label: "",
@@ -38,31 +38,31 @@ const checks = [
     },
     {
         label: "저퓨린밥",
-        key: "controlled.checked6",
+        key: "controlled_diet.checked6",
     },
     {
         label: "저퓨린죽",
-        key: "controlled.checked7",
+        key: "controlled_diet.checked7",
     },
     {
         label: "인제한밥",
-        key: "controlled.checked8",
+        key: "controlled_diet.checked8",
     },
     {
         label: "인제한죽",
-        key: "controlled.checked9",
+        key: "controlled_diet.checked9",
     },
     {
         label: "구리제한밥",
-        key: "controlled.checked10",
+        key: "controlled_diet.checked10",
     },
     {
         label: "구리제한죽",
-        key: "controlled.checked11",
+        key: "controlled_diet.checked11",
     },
 ];
 
-const Controlled = (props: Props) => {
+const Controlled_diet = (props: Props) => {
     const { disabled, register, getValues, setValue, dietList, setDietList } = props;
 
     return (
@@ -92,4 +92,4 @@ const Controlled = (props: Props) => {
     );
 }
 
-export default Controlled;
+export default Controlled_diet;
