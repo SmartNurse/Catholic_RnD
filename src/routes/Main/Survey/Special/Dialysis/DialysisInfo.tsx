@@ -110,18 +110,27 @@ const DialysisInfo = (props: Props) => {
         {
             label: "혈관 종류",
             element: 
-                <Form.MuiRadioGroup
-                    i18nKey='DIALYSIS.DIALYSIS_INFO.BLOOD_VESSEL'
-                    values={[1, 2, 3, 4]}
-                    defaultValue={bloodVessel}
-                    value={bloodVessel}
-                    onChange={v => {
-                        setValue('vascular_access', v);
-                        setBloodVessel(v);
-                        setValue("vascular_access_etc", "");
-                    }}
-                    width="80px"
-                />,
+                <>
+                    <Form.MuiRadioGroup
+                        i18nKey='DIALYSIS.DIALYSIS_INFO.BLOOD_VESSEL'
+                        values={[1, 2, 3, 0]}
+                        defaultValue={bloodVessel}
+                        value={bloodVessel}
+                        onChange={v => {
+                            setValue('vascular_access', v);
+                            setBloodVessel(v);
+                            setValue("vascular_access_etc", "");
+                        }}
+                        width="80px"
+                    />
+                    <Form.MuiTextField
+                        {...register("vascular_access_etc")}
+                        placeholder="직접 입력"
+                        fullWidth={false}
+                        required={false}
+                    />
+                </>
+            ,
         },
         {
             label: "시작간호사",
@@ -137,7 +146,7 @@ const DialysisInfo = (props: Props) => {
                 <Box display="flex">
                     <Form.MuiRadioGroup
                         i18nKey='DIALYSIS.DIALYSIS_INFO.BLOOD_VESSEL'
-                        values={[5, 6, 0]}
+                        values={[4, 5, 6]}
                         defaultValue={bloodVessel}
                         value={bloodVessel}
                         onChange={v => {
@@ -146,12 +155,6 @@ const DialysisInfo = (props: Props) => {
                             if (v !== 0) setValue("vascular_access_etc", "");
                         }}
                         width="80px"
-                    />
-                    <Form.MuiTextField
-                        {...register("vascular_access_etc")}
-                        placeholder="직접 입력"
-                        fullWidth={false}
-                        required={false}
                     />
                 </Box>
         },
