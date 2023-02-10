@@ -35,7 +35,14 @@ import useNotification from 'hooks/useNotification';
 import { IToggleObj } from './type';
 import { initialToggleObj } from './initialStates';
 
-const MenuRecords = () => {
+interface Props {
+  menuDrawerWidth: number;
+  setMenuDrawerWidth: (menuDrawerWidth: number) => void;
+}
+
+const MenuRecords = (props: Props) => {
+  const { menuDrawerWidth, setMenuDrawerWidth } = props;
+
   const { student_uuid } = useStudent();
   const { patientInfo } = usePatient();
   const { onRequired } = useNotification();
@@ -270,6 +277,14 @@ const MenuRecords = () => {
 
   const onClickDisabledItem = (sublabel: string | undefined) => {
     let newToggle = {...toggle};
+
+    if (menuDrawerWidth !== 220) {  
+      if (sublabel) newToggle[sublabel] = true;
+      setToggle(newToggle);
+      setMenuDrawerWidth(220);
+      return;
+    }
+
     if (sublabel) newToggle[sublabel] = !newToggle[sublabel];
     setToggle(newToggle);
   }
@@ -294,30 +309,41 @@ const MenuRecords = () => {
 
         return (
           <>
-            {icon
-            ?
-            <ListItem key={label} disablePadding>
-              <ListItemButton onClick={onClick}>
-                <ListItemIcon>{icon}</ListItemIcon>
-                <ListItemText primary={label} />
-                <ProIcon />
-                <MoreIcon />
-              </ListItemButton>
-            </ListItem>
+            {menuDrawerWidth !== 220 ?
+              (icon ?
+                <ListItem key={label} disablePadding>
+                  <ListItemButton onClick={onClick}>
+                    <ListItemIcon>{icon}</ListItemIcon>
+                  </ListItemButton>
+                </ListItem>
+              :
+                null
+              )
             :
-            (toggle
-            ?
-            <ListItem key={label} disablePadding>
-              <ListItemButton className={isPro ? "isPro" : ""} onClick={onClick}>
-                <ListItemIcon>{icon}</ListItemIcon>
-                <ListItemText primary={label} />
-                <ProIcon />
-                <MoreIcon />
-              </ListItemButton>
-            </ListItem>
-            :
-            <></>
-          )}
+              (icon ?
+                <ListItem key={label} disablePadding>
+                  <ListItemButton onClick={onClick}>
+                    <ListItemIcon>{icon}</ListItemIcon>
+                    <ListItemText primary={label} />
+                    <ProIcon />
+                    <MoreIcon />
+                  </ListItemButton>
+                </ListItem>
+              :
+                (toggle ?
+                  <ListItem key={label} disablePadding>
+                    <ListItemButton className={isPro ? "isPro" : ""} onClick={onClick}>
+                      <ListItemIcon>{icon}</ListItemIcon>
+                      <ListItemText primary={label} />
+                      <ProIcon />
+                      <MoreIcon />
+                    </ListItemButton>
+                  </ListItem>
+                :
+                  <></>
+                )
+              )
+            }
           </>
         );
       })}

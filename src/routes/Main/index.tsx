@@ -24,7 +24,7 @@ function Main() {
   }, [student_uuid, navigate]);
 
   const title = student_grade === 1 ? '간호사' : '(교수/조교)';
-  const [hideMenu, setHideMenu] = useState(false);
+  const [menuDrawerWidth, setMenuDrawerWidth] = useState(220);
 
   return (
     <Box display="flex" minWidth={1440}>
@@ -32,10 +32,12 @@ function Main() {
         name={`${student_name} ${title}`}
         college_name={college_name}
         college_ci={college_ci}
-        hideMenu={hideMenu}
-        setHideMenu={setHideMenu}
+        menuDrawerWidth={menuDrawerWidth}
+        setMenuDrawerWidth={setMenuDrawerWidth}
       />
-      <DisplayInformation hideMenu={hideMenu} />
+      <DisplayInformation
+        menuDrawerWidth={menuDrawerWidth}
+      />
       <InputInformation />
     </Box>
   );

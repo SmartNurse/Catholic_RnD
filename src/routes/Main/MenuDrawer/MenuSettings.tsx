@@ -26,7 +26,14 @@ import useNotification from 'hooks/useNotification';
 import { ISettingsToggleObj } from './type';
 import { initialSettingsToggleObj } from './initialStates';
 
-const MenuSettings = () => {
+interface Props {
+  menuDrawerWidth: number;
+  setMenuDrawerWidth: (menuDrawerWidth: number) => void;
+}
+
+const MenuSettings = (props: Props) => {
+  const { menuDrawerWidth, setMenuDrawerWidth } = props;
+
   const navigate = useNavigate();
   const { onSignOut } = useUser();
   const { onCloseReadOnly, onUpdateSurveyType } = useSurvey();
@@ -43,8 +50,13 @@ const MenuSettings = () => {
       label: '간호정보학',
       buttonClick: {
         onClick: () => {
-          if (toggle.medical_information === true) setToggle({...toggle, medical_information: false});
-          else setToggle({...toggle, medical_information: true});
+          if (menuDrawerWidth !== 220) {
+            setToggle({...toggle, medical_information: true});
+            setMenuDrawerWidth(220);
+            return;
+          }
+
+          setToggle({...toggle, medical_information: !toggle.medical_information});
         }
       }
     },
@@ -142,30 +154,41 @@ const MenuSettings = () => {
         
         return (
           <>
-            {icon
-            ?
-            <ListItem key={label} disablePadding>
-              <ListItemButton {...buttonClick}>
-                <ListItemIcon>{icon}</ListItemIcon>
-                <ListItemText primary={label} />
-                <ProIcon />
-                <MoreIcon />
-              </ListItemButton>
-            </ListItem>
+            {menuDrawerWidth !== 220 ?
+              (icon ?
+                <ListItem key={label} disablePadding>
+                  <ListItemButton {...buttonClick}>
+                    <ListItemIcon>{icon}</ListItemIcon>
+                  </ListItemButton>
+                </ListItem>
+              :
+                null
+              )
             :
-            (toggle
-            ?
-            <ListItem key={label} disablePadding>
-              <ListItemButton {...buttonClick}>
-                <ListItemIcon>{icon}</ListItemIcon>
-                <ListItemText primary={label} />
-                <ProIcon />
-                <MoreIcon />
-              </ListItemButton>
-            </ListItem>
-            :
-            <></>
-            )}
+              (icon ?
+                <ListItem key={label} disablePadding>
+                  <ListItemButton {...buttonClick}>
+                    <ListItemIcon>{icon}</ListItemIcon>
+                    <ListItemText primary={label} />
+                    <ProIcon />
+                    <MoreIcon />
+                  </ListItemButton>
+                </ListItem>
+              :
+                (toggle ?
+                  <ListItem key={label} disablePadding>
+                    <ListItemButton {...buttonClick}>
+                      <ListItemIcon>{icon}</ListItemIcon>
+                      <ListItemText primary={label} />
+                      <ProIcon />
+                      <MoreIcon />
+                    </ListItemButton>
+                  </ListItem>
+                :
+                  <></>
+                )
+              )
+            }
           </>
         );
       })}

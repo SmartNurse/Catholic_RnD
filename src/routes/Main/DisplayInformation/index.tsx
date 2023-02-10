@@ -4,7 +4,6 @@ import useSelectorTyped from 'store/useSelectorTyped';
 
 import { inputInformationWidth } from '../InputInformation';
 import { StyledContentContainer } from '../style';
-import { menuDrawerWidth } from '../MenuDrawer';
 import NursingRecord from './NursingRecord';
 import MedicalNote from './MedicalNote';
 import PatientInfo from './PatientInfo';
@@ -13,18 +12,18 @@ import SearchToolbar from './SearchToolbar';
 import theme from 'styles/theme';
 
 interface Props {
-  hideMenu: boolean;
+  menuDrawerWidth: number;
 }
 
 const DisplayInformation = (props: Props) => {
-  const { hideMenu } = props;
+  const { menuDrawerWidth } = props;
 
   // shallowEqual 해도 리렌더링 발생해서 이곳만 별도로 선택해서 사용
   const patientInfo = useSelectorTyped(state => state.patient.patientInfo);
 
   const containerWidth = {
-    xs: hideMenu ? `calc(100% - ${inputInformationWidth.xs}px)` : `calc(100% - ${menuDrawerWidth}px - ${inputInformationWidth.xs}px)`,
-    xl: hideMenu ? `calc(100% - ${menuDrawerWidth}px - ${inputInformationWidth.xl}px)` : `calc(100% - ${menuDrawerWidth}px - ${inputInformationWidth.xl}px)`,
+    xs: menuDrawerWidth !== 220 ? `calc(100% - ${inputInformationWidth.xs}px)` : `calc(100% - ${menuDrawerWidth}px - ${inputInformationWidth.xs}px)`,
+    xl: menuDrawerWidth !== 220 ? `calc(100% - ${menuDrawerWidth}px - ${inputInformationWidth.xl}px)` : `calc(100% - ${menuDrawerWidth}px - ${inputInformationWidth.xl}px)`,
   };
 
   const Content = () => {
