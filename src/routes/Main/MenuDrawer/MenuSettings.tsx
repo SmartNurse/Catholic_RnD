@@ -73,7 +73,7 @@ const MenuSettings = (props: Props) => {
       toggle: toggle.medical_information,
       buttonClick: {
         target: '_blank',
-        href: 'https://www.notion.so/smartnurse/3191f0bab929425d9385a31e5679412c#48edef031b66435397bc9c49c35fd75b',
+        href: 'https://opendata.hira.or.kr/home.do',
       }
     },
     {
