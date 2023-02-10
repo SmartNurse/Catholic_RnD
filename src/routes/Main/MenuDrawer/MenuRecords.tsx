@@ -21,11 +21,11 @@ import {
   MasksOutlined,
   BabyChangingStation,
   SickOutlined,
+  DvrOutlined,
+  PsychologyOutlined,
+  WashOutlined,
+  Diversity2Outlined,
 } from '@mui/icons-material';
-import { ReactComponent as ECardex } from "assets/menu-icon-e-cardex.svg";
-import { ReactComponent as TakingOver } from "assets/menu-icon-taking-over.svg"; 
-import { ReactComponent as Glucose } from "assets/menu-icon-glucose.svg";
-import { ReactComponent as Psychology } from "assets/menu-icon-psychology.svg";
 import { ReactComponent as ProPlus } from "../../../assets/proPlus.svg";
 import Survey from '../Survey';
 import useSurvey from 'store/survey/useSurvey';
@@ -52,11 +52,11 @@ const MenuRecords = (props: Props) => {
 
   const menus = [
     {
-      icon: <ECardex />,
+      icon: <DvrOutlined />,
       label: 'e-CARDEX',
     },
     {
-      icon: <TakingOver />,
+      icon: <Diversity2Outlined />,
       label: '간호 인수인계',
     },
     {
@@ -92,7 +92,7 @@ const MenuRecords = (props: Props) => {
       label: '임상관찰 기록지',
     },
     {
-      icon: <Glucose />,
+      icon: <WashOutlined />,
       label: '혈당 기록지',
     },
     {
@@ -148,7 +148,7 @@ const MenuRecords = (props: Props) => {
       toggle: toggle.pain,
     },
     {
-      icon: <Psychology />,
+      icon: <PsychologyOutlined />,
       disabled: true,
       isPro: true,
       label: '정신건강 평가도구',
