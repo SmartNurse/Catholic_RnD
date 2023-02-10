@@ -1,4 +1,4 @@
-import { Fragment } from 'react';
+import { Fragment, useState } from 'react';
 import {
   ListItem,
   ListItemButton,
@@ -12,6 +12,8 @@ import {
   DateRangeOutlined,
   VideocamOutlined,
   ComputerOutlined,
+  MedicalInformationOutlined,
+  ExpandMore,
 } from '@mui/icons-material';
 import { ReactComponent as ProPlus } from "../../../assets/proPlus.svg";
 
@@ -21,6 +23,8 @@ import useStudent from 'store/student/useStudent';
 import useSurvey from 'store/survey/useSurvey';
 import usePatient from 'store/patient/usePatient';
 import useNotification from 'hooks/useNotification';
+import { ISettingsToggleObj } from './type';
+import { initialSettingsToggleObj } from './initialStates';
 
 const MenuSettings = () => {
   const navigate = useNavigate();
@@ -30,7 +34,44 @@ const MenuSettings = () => {
   const { patientInfo, onSelectedPatient, onResetPatient } = usePatient();
   const { onRequired } = useNotification();
 
+  const [toggle, setToggle] = useState<ISettingsToggleObj>(initialSettingsToggleObj);
+
   const settings = [
+    {
+      disabled: true,
+      icon: <MedicalInformationOutlined />,
+      label: '간호정보학',
+      buttonClick: {
+        onClick: () => {
+          if (toggle.medical_information === true) setToggle({...toggle, medical_information: false});
+          else setToggle({...toggle, medical_information: true});
+        }
+      }
+    },
+    {
+      label: '응급 모니터링시스템',
+      toggle: toggle.medical_information,
+      buttonClick: {
+        target: '_blank',
+        href: 'http://dw.nemc.or.kr/nemcMonitoring/mainmgr/Main.do',
+      }
+    },
+    {
+      label: '보건의료빅데이터개방시스템',
+      toggle: toggle.medical_information,
+      buttonClick: {
+        target: '_blank',
+        href: 'https://www.notion.so/smartnurse/3191f0bab929425d9385a31e5679412c#48edef031b66435397bc9c49c35fd75b',
+      }
+    },
+    {
+      label: '한국보건의료정보원',
+      toggle: toggle.medical_information,
+      buttonClick: {
+        target: '_blank',
+        href: 'https://www.k-his.or.kr/',
+      }
+    },
     {
       icon: <DateRangeOutlined />,
       label: '간호사 근무 스케줄표',
@@ -88,20 +129,44 @@ const MenuSettings = () => {
 
   return (
     <Fragment>
-      {settings.map(({ icon, label, buttonClick, isPro}) => {
+      {settings.map(({ icon, label, buttonClick, isPro, disabled, toggle }) => {
         const ProIcon = () => {
           if (!isPro) return null;
           return <ProPlus />;
         };
+
+        const MoreIcon = () => {
+          if (!disabled) return null;
+          return <ExpandMore fontSize="small" sx={{ color: '#fff' }} />;
+        };
         
         return (
-          <ListItem key={label} disablePadding>
-            <ListItemButton {...buttonClick}>
-              <ListItemIcon>{icon}</ListItemIcon>
-              <ListItemText primary={label} />
-              <ProIcon />
-            </ListItemButton>
-          </ListItem>
+          <>
+            {icon
+            ?
+            <ListItem key={label} disablePadding>
+              <ListItemButton {...buttonClick}>
+                <ListItemIcon>{icon}</ListItemIcon>
+                <ListItemText primary={label} />
+                <ProIcon />
+                <MoreIcon />
+              </ListItemButton>
+            </ListItem>
+            :
+            (toggle
+            ?
+            <ListItem key={label} disablePadding>
+              <ListItemButton {...buttonClick}>
+                <ListItemIcon>{icon}</ListItemIcon>
+                <ListItemText primary={label} />
+                <ProIcon />
+                <MoreIcon />
+              </ListItemButton>
+            </ListItem>
+            :
+            <></>
+            )}
+          </>
         );
       })}
     </Fragment>

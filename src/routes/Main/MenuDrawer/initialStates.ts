@@ -5,3 +5,7 @@ export const initialToggleObj = {
     special: false,
     agreement: false,
 }
+
+export const initialSettingsToggleObj = {
+    medical_information: false,
+}
