@@ -15,6 +15,7 @@ interface Props extends RadioGroupProps {
   defaultValue: number;
   disabled?: boolean;
   width?: string;
+  direction?: string;
   onChange?: (value: any) => void;
 }
 
@@ -25,6 +26,7 @@ const MuiRadioGroup = ({
   defaultValue,
   disabled,
   width,
+  direction,
   onChange,
   ...props
 }: Props) => {
@@ -43,7 +45,7 @@ const MuiRadioGroup = ({
       onChange={(_, value) => onChange && onChange(value)}
       {...props}
     >
-      <Stack direction={'row'} spacing={1}>
+      <Stack direction={direction === "column" ? "column" : 'row'} spacing={direction === "column" ? 0 : 1}>
         {values.map(value => (
           <FormControlLabel
             key={value}

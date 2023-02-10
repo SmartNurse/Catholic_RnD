@@ -286,6 +286,46 @@ export const initialFall = {
   },
 };
 
+export const initialSafety = {
+  update_at: "",
+  accident_consequences_details: {
+    accidence_date: "",
+    discovery_date: "",
+    discovery_place: "",
+    discovery_place_etc: "",
+    accident_type: "",
+    accident_classification: "",
+    accident_classification_etc: "",
+  },
+  event_classification: "",
+  falling_type: {
+    consciousness_level: "",
+    activity_status: "",
+    assisting_devices: "",
+    place_falling_accident: "",
+    place_falling_accident_etc: "",
+    patient_risk_factors: "",
+    score: 0,
+    date: "",
+    fall_type: "",
+    risk_factor: "",
+    risk_factor_etc: "",
+  },
+  medication_type: {
+    prescription_error: "",
+    prescription_error_etc: "",
+    drug_preparation_error: "",
+    drug_preparation_error_etc: "",
+    confirm_error: "",
+    interpretation_error: "",
+  },
+  other_type: "",
+  other_type_etc: "",
+  accident_detail: "",
+  accident_handling: "",
+  accident_result: "",
+};
+
 export const initialNRS = {
   update_at: '',
   nrs_survey: [],

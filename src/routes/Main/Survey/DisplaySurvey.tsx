@@ -14,6 +14,7 @@ import Glucose from "./Glucose";
 import BedScore from './BedScore';
 import Fall from './Fall';
 import Needs from './Needs';
+import Safety from './Safety';
 import NRS from './Pain/NRS';
 import FLACC from './Pain/FLACC';
 import CNPS from "./Pain/CNPS";
@@ -97,6 +98,10 @@ const DisplaySurvey = (props: Props) => {
     case MENU.FALL: {
       if (!defaultValues) return null;
       return <Fall {...dialogProps} onClose={onCloseSave} />;
+    }
+    case MENU.SAFETY: {
+      if (!defaultValues) return null;
+      return <Safety {...dialogProps} onClose={onCloseSave} />;
     }
     case MENU.NRS: {
       if (!defaultValues) return null;

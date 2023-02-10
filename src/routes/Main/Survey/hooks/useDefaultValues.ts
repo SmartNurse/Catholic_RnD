@@ -11,6 +11,7 @@ import {
   getOutHospital,
   getPathology,
   getRadiology,
+  getSafety,
   getNRS,
   getFLACC,
   getCNPS,
@@ -43,6 +44,7 @@ import {
   initialNeeds,
   initialClinicalObservation,
   initialGlucose,
+  initialSafety,
   initialNRS,
   initialFLACC,
   initialCNPS,
@@ -213,6 +215,27 @@ const useDefaultValues = ({ setDefaultValues, user_id }: Props) => {
             const { contents } = data;
             const m_data = { ...data, contents: JSON.parse(contents) };
             convertDataToStates(m_data, initialFall);
+          })
+          .catch(e => onFail('알 수 없는 오류가 발생했습니다.', e));
+        break;
+      case MENU.SAFETY:
+        getSafety({ user_id, patient_id })
+          .then(({ data }) => {
+            const { update_at, safety_survey } = data;
+            convertDataToStates({
+              update_at,
+              accident_consequences_details: safety_survey?.accident_consequences_details,
+              event_classification: safety_survey?.event_classification,
+              falling_type: {
+                ...safety_survey?.falling_type,
+                patient_risk_factors: safety_survey ? JSON.parse(safety_survey.falling_type?.patient_risk_factors) : [],
+              },
+              medication_type: safety_survey?.medication_type,
+              other_type: safety_survey?.other_type,
+              accident_detail: safety_survey?.accident_detail,
+              accident_handling: safety_survey?.accident_handling,
+              accident_result: safety_survey?.accident_result,
+            }, initialSafety);
           })
           .catch(e => onFail('알 수 없는 오류가 발생했습니다.', e));
         break;

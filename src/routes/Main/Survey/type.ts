@@ -13,6 +13,7 @@ import {
   initialNeeds,
   initialClinicalObservation,
   initialGlucose,
+  initialSafety,
   initialNRS,
   initialFLACC,
   initialCNPS,
@@ -47,6 +48,7 @@ export enum MENU {
   NEEDS = '욕구평가 기록지',
   FALL = '낙상위험도 평가도구',
   PAIN = '통증평가도구',
+  SAFETY = '환자안전사고보고서',
   NRS = 'NRS',
   FLACC = 'FLACC Scale',
   CNPS = 'CNPS',
@@ -97,6 +99,7 @@ export type TGlucoseDefaultValues = typeof initialGlucose;
 export type TBedScoreDefaultValues = typeof initialBedScore;
 export type TNeedsDefaultValues = typeof initialNeeds;
 export type TFallDefaultValues = typeof initialFall;
+export type TSafetyDefaultValues = typeof initialSafety;
 export type TNRSDefaultValues = typeof initialNRS;
 export type TFLACCDefaultValues = typeof initialFLACC;
 export type TCNPSDefaultValues = typeof initialCNPS;

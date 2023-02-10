@@ -229,6 +229,41 @@ export interface IUpdateFall extends IGetSurvey {
   contents: string;
 }
 
+// 환자안전사고보고서
+export interface IUpdateSafety extends IGetSurvey {
+  safety_survey: {
+    accident_consequences_details: {
+      accidence_date: string;
+      discovery_date: string;
+      discovery_place: string;
+      accident_type: string;
+      accident_classification: string;
+    },
+    event_classification: string;
+    falling_type: {
+      consciousness_level: string;
+      activity_status: string;
+      assisting_devices: string;
+      place_falling_accident: string;
+      patient_risk_factors: string;
+      score: number;
+      date: string;
+      fall_type: string;
+      risk_factor: string;
+    },
+    medication_type: {
+      prescription_error: string;
+      drug_preparation_error: string;
+      confirm_error: string;
+      interpretation_error: string;
+    },
+    other_type: string;
+    accident_detail: string;
+    accident_handling: string;
+    accident_result: string;
+  },
+}
+
 // NRS
 export interface INRS {
   time: string;

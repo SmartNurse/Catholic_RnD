@@ -14,6 +14,7 @@ import {
   IUpdateTakingOver,
   IUpdateECardex,
   IUpdateGlucose,
+  IUpdateSafety,
   IUpdateCNPS,
   IUpdateFLACC,
   IUpdateNRS,
@@ -150,6 +151,17 @@ export const getFall = (request: IGetSurvey) => {
 
 export const updateFall = (request: IUpdateFall) => {
   const url = `/survey/fall`;
+  return apiGateway.post(url, camelcaseKeys(request));
+};
+
+// 환자안전사고보고서
+export const getSafety = (request: IGetSurvey) => {
+  const url = `/survey/safety?${formatToRequestParameter(request)}`;
+  return apiGateway.get(url);
+};
+
+export const updateSafety = (request: IUpdateSafety) => {
+  const url = `/survey/safety`;
   return apiGateway.post(url, camelcaseKeys(request));
 };
 
