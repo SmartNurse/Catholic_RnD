@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useForm } from "react-hook-form";
 
 import useSurvey from "store/survey/useSurvey";
@@ -13,6 +13,7 @@ import { updateChildbirth } from "apis/survey";
 import CommonPatientInfo from "../../components/CommonPatientInfo";
 import ChildbirthInfo from "./ChildbirthInfo";
 import BabyStatus from "./BabyStatus";
+import ApgarScore from "./ApgarSocre";
 import PlacentaRemoval from "./PlacentaRemoval";
 import MotherStatus from "./MotherStatus";
 import NursingRecords from "./NursingRecords";
@@ -36,29 +37,21 @@ const Childbirth = (props: SurveyDialogProps<TChildbirthDefaultValues>) => {
     });
 
     const onSubmit = (data: TChildbirthDefaultValues) => {
-        const { child_birth_information, newborn_condition, placenta_removal, maternal_condition, nursing_records } = data;
+        const { child_birth_information, newborn_condition, apgar, placenta_removal, maternal_condition, nursing_records } = data;
 
         const request = {
             user_id,
             patient_id: patientInfo.patient_id,
             delivery_survey: {
                 child_birth_information,
-                newborn_condition: {
-                    ...newborn_condition,
-                    gender: Number(newborn_condition.gender),
-                    oxygen_intake: Number(newborn_condition.oxygen_intake),
-                    first_urine: Number(newborn_condition.first_urine),
-                    placenta_discharge: Number(newborn_condition.placenta_discharge),
-                    fetal_staining: Number(newborn_condition.fetal_staining),
-                    nuchal_cord: Number(newborn_condition.nuchal_cord),
-                    resuscitation: Number(newborn_condition.resuscitation),
-                },
+                newborn_condition,
+                apgar,
                 placenta_removal,
                 maternal_condition,
-                nursing_records
+                nursing_records: [...nursing_records],
             }
         }
-        console.log(request);
+
         updateChildbirth(request)
         .then(({ data: { rc } }) => {
             if (rc !== 1) return onResultCode(rc);
@@ -78,7 +71,7 @@ const Childbirth = (props: SurveyDialogProps<TChildbirthDefaultValues>) => {
         onSuccess,
         onRequired,
     };
-
+    
     return (
         <MuiDialog.SurveyForm
             title={title}
@@ -100,6 +93,7 @@ const Childbirth = (props: SurveyDialogProps<TChildbirthDefaultValues>) => {
                 <CommonPatientInfo patientInfo={patientInfo} nurseName={nurseName} />
                 <ChildbirthInfo {...formProps} />
                 <BabyStatus {...formProps} />
+                <ApgarScore {...formProps} />
                 <PlacentaRemoval {...formProps} />
                 <MotherStatus {...formProps} />
                 <NursingRecords {...formProps} />

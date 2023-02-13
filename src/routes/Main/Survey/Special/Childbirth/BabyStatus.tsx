@@ -15,10 +15,6 @@ interface Props extends IFormRegister, IFormValues, IFormWatch {
 
 const BabyStatus = (props: Props) => {
     const { disabled, register, getValues, setValue, watch } = props;
-    const [errors, setErrors] = useState({
-        one_min: false,
-        five_min: false,
-    });
 
     const contents = [
         {
@@ -43,42 +39,6 @@ const BabyStatus = (props: Props) => {
                     required={false}
                     {...register("newborn_condition.weight")}
                 />,
-        },
-        {
-            label: "Apgar 점수",
-            element:
-                <Box sx={{ display: "flex", justifyContent: "space-around", alignItems: "center" }}>
-                    <Typography fontSize="14px">1분</Typography>
-                    <Box>
-                        <Form.MuiTextField
-                            placeholder="0~10점까지 입력가능"
-                            required={false}
-                            error={errors.one_min}
-                            {...register("newborn_condition.apgar_score1m", {
-                                onChange: (e) => {
-                                    if (e.target.value < 0 || e.target.value > 10) setErrors({...errors, one_min: true});
-                                    else setErrors({...errors, one_min: false});
-                                }
-                            })}
-                        />
-                        {errors.one_min ? <FormHelperText error={true}>Apgar 점수는 1 이상 10 이하입니다</FormHelperText> : null}
-                    </Box>
-                    <Typography fontSize="14px">5분</Typography>
-                    <Box>
-                        <Form.MuiTextField
-                            placeholder="0~10점까지 입력가능"
-                            required={false}
-                            error={errors.five_min}
-                            {...register("newborn_condition.apgar_score5m", {
-                                onChange: (e) => {
-                                    if (e.target.value < 0 || e.target.value > 10) setErrors({...errors, five_min: true});
-                                    else setErrors({...errors, five_min: false});
-                                }
-                            })}
-                        />
-                        {errors.five_min ? <FormHelperText error={true}>Apgar 점수는 1 이상 10 이하입니다</FormHelperText> : null}
-                    </Box>
-                </Box> 
         },
         {
             label: "산소 흡입",
@@ -127,50 +87,30 @@ const BabyStatus = (props: Props) => {
         {
             label: "Nuchal cord",
             element: 
-                <>
-                    <Form.MuiRadioGroup
-                        i18nKey='CHILDBIRTH.YES_OR_NO'
-                        values={[1, 2]}
-                        defaultValue={getValues('newborn_condition.nuchal_cord')}
-                        onChange={v => {
-                            setValue('newborn_condition.nuchal_cord', v);
-                            if (v == 1) setValue("newborn_condition.nuchal_cord_content", "");
-                        }}
-                        width="50px"
-                    />
-                    <Form.MuiTextField
-                        required={false}
-                        fullWidth={false}
-                        disabled={disabled}
-                        placeholder="직접 입력"
-                        sx={{ width: "50%", marginLeft: "36px" }}
-                        {...register('newborn_condition.nuchal_cord_content')}
-                    />
-                </>
+                <Form.MuiRadioGroup
+                    i18nKey='CHILDBIRTH.YES_OR_NO'
+                    values={[1, 2]}
+                    defaultValue={getValues('newborn_condition.nuchal_cord')}
+                    onChange={v => {
+                        setValue('newborn_condition.nuchal_cord', v);
+                        if (v == 1) setValue("newborn_condition.nuchal_cord_content", "");
+                    }}
+                    width="50px"
+                />
         },
         {
             label: "소생술",
             element: 
-                <>
-                    <Form.MuiRadioGroup
-                        i18nKey='CHILDBIRTH.YES_OR_NO'
-                        values={[1, 2]}
-                        defaultValue={getValues('newborn_condition.resuscitation')}
-                        onChange={v => {
-                            setValue('newborn_condition.resuscitation', v);
-                            if (v == 1) setValue("newborn_condition.resuscitation_content", "");
-                        }}
-                        width="50px"
-                    />
-                    <Form.MuiTextField
-                        required={false}
-                        fullWidth={false}
-                        disabled={disabled}
-                        placeholder="직접 입력"
-                        sx={{ width: "50%", marginLeft: "36px" }}
-                        {...register('newborn_condition.resuscitation_content')}
-                    />
-                </>
+                <Form.MuiRadioGroup
+                    i18nKey='CHILDBIRTH.YES_OR_NO'
+                    values={[1, 2]}
+                    defaultValue={getValues('newborn_condition.resuscitation')}
+                    onChange={v => {
+                        setValue('newborn_condition.resuscitation', v);
+                        if (v == 1) setValue("newborn_condition.resuscitation_content", "");
+                    }}
+                    width="50px"
+                />
         },
         {
             label: "외관상 기형 및 특이사항",
@@ -189,10 +129,8 @@ const BabyStatus = (props: Props) => {
                     <>
                         <RowContent
                             title={label}
-                            titleRatio={1}
-                            childrenRatio={
-                                label === "Apgar 점수" || label === "Nuchal cord" || label === "소생술" ? 5
-                                : (label === "외관상 기형 및 특이사항" ? 11 : 2)}
+                            titleRatio={label === "외관상 기형 및 특이사항" ? 1.5 : 1}
+                            childrenRatio={label === "외관상 기형 및 특이사항" ? 10.5 : 2}
                         >
                             {element}
                         </RowContent>

@@ -542,6 +542,13 @@ export interface IUpdateChildbirth extends IGetSurvey {
       resuscitation_content: string;
       specifications: string;
     },
+    apgar: {
+      appearance: number;
+      pulse: number;
+      grimace: number;
+      activity: number;
+      respiration: number;
+    },
     placenta_removal: {
       time: string;
       methods: number;

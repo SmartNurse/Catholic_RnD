@@ -514,6 +514,13 @@ export const initialChildbirth = {
     resuscitation_content: "",
     specifications: "",
   },
+  apgar: {
+    appearance: -1,
+    pulse: -1,
+    grimace: -1,
+    activity: -1,
+    respiration: -1,
+  },
   placenta_removal: {
     time: "",
     methods: -1,

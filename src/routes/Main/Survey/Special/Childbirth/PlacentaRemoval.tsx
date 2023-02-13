@@ -30,6 +30,7 @@ const PlacentaRemoval = (props: Props) => {
                         required={false}
                         placeholder="00:00 pm"
                         InputProps={{ endAdornment: <AccessTime /> }}
+                        fullWidth={false}
                     />
                     )}
                 />,
@@ -62,7 +63,7 @@ const PlacentaRemoval = (props: Props) => {
             <RowContainer xs={12}>
                 {contents.map(({label, element}) => 
                     <>
-                        <RowContent title={label} titleRatio={1} childrenRatio={2}>
+                        <RowContent title={label} titleRatio={1} childrenRatio={3}>
                             {element}
                         </RowContent>
                     </>
