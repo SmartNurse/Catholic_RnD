@@ -13,10 +13,11 @@ import theme from 'styles/theme';
 
 interface Props {
   menuDrawerWidth: number;
+  coachRef: any;
 }
 
 const DisplayInformation = (props: Props) => {
-  const { menuDrawerWidth } = props;
+  const { menuDrawerWidth, coachRef } = props;
 
   // shallowEqual 해도 리렌더링 발생해서 이곳만 별도로 선택해서 사용
   const patientInfo = useSelectorTyped(state => state.patient.patientInfo);
@@ -63,7 +64,7 @@ const DisplayInformation = (props: Props) => {
       flexDirection="column"
       width={containerWidth}
     >
-      <Toolbar sx={{ boxShadow: '-4px 4px 10px rgba(0, 0, 0, 0.04)' }}>
+      <Toolbar sx={{ boxShadow: '-4px 4px 10px rgba(0, 0, 0, 0.04)' }} ref={coachRef}>
         <SearchToolbar />
       </Toolbar>
 

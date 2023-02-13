@@ -16,10 +16,12 @@ interface Props {
   college_name?: string;
   menuDrawerWidth: number;
   setMenuDrawerWidth: (menuDrawerWidth: number) => void;
+  coachRefA: any;
+  coachRefB: any;
 }
 
 const MenuDrawer = (props: Props) => {
-  const { name, college_ci, college_name, menuDrawerWidth, setMenuDrawerWidth } = props;
+  const { name, college_ci, college_name, menuDrawerWidth, setMenuDrawerWidth, coachRefA, coachRefB } = props;
 
   return (
     <Drawer
@@ -49,10 +51,11 @@ const MenuDrawer = (props: Props) => {
           }}/>
           {menuDrawerWidth === 220 && name}
         </Box>
-        <List>
+        <List ref={coachRefA}>
             <MenuRecords
               menuDrawerWidth={menuDrawerWidth}
               setMenuDrawerWidth={setMenuDrawerWidth}
+              coachRef={coachRefB}
             />
             <Box sx={{ mt: '90px' }} />
             <MenuSettings

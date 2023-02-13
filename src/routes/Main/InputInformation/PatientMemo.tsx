@@ -6,7 +6,11 @@ import useStudent from 'store/student/useStudent';
 import usePatient from 'store/patient/usePatient';
 import { getPatientMemo, postPatientMemo } from 'apis/admin';
 
-const PatientMemo = () => {
+interface Props {
+  coachRef: any;
+}
+
+const PatientMemo = ({ coachRef }: Props) => {
   const { isStudent } = useUser();
   const { patientInfo } = usePatient();
   const { student_uuid: user_id } = useStudent();
@@ -48,6 +52,7 @@ const PatientMemo = () => {
       placeholder="진단명, 주의사항, 처방 등 인수인계를 입력해주세요."
       InputProps={{ sx: { height: 160 } }}
       inputProps={{ style: { height: '100%' } }}
+      ref={coachRef}
     />
   );
 };

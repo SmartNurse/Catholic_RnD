@@ -31,7 +31,11 @@ import FocusDar from './FocusDar';
 import NarrativeRecord from './NarrativeRecord';
 import { StyledTabPanel } from '../style';
 
-const NursingRecords = () => {
+interface Props {
+  coachRef: any;
+}
+
+const NursingRecords = ({ coachRef }: Props) => {
   const { isStudent } = useUser();
   const { student_uuid: user_id } = useStudent();
   const navigate = useNavigate();
@@ -171,6 +175,7 @@ const NursingRecords = () => {
         <TabList
           variant="fullWidth"
           onChange={(_, value) => setRecordType(value)}
+          ref={coachRef}
         >
           <Tab label="NANDA" value={RECORD_TYPE.NANDA} />
           <Tab label="SOAPIE" value={RECORD_TYPE.SOAPIE} />

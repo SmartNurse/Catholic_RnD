@@ -38,10 +38,11 @@ import { initialToggleObj } from './initialStates';
 interface Props {
   menuDrawerWidth: number;
   setMenuDrawerWidth: (menuDrawerWidth: number) => void;
+  coachRef: any;
 }
 
 const MenuRecords = (props: Props) => {
-  const { menuDrawerWidth, setMenuDrawerWidth } = props;
+  const { menuDrawerWidth, setMenuDrawerWidth, coachRef } = props;
 
   const { student_uuid } = useStudent();
   const { patientInfo } = usePatient();
@@ -321,7 +322,7 @@ const MenuRecords = (props: Props) => {
               )
             :
               (icon ?
-                <ListItem key={label} disablePadding>
+                <ListItem key={label} disablePadding ref={label === "특수파트 기록지" ? coachRef : null}>
                   <ListItemButton onClick={onClick}>
                     <ListItemIcon>{icon}</ListItemIcon>
                     <ListItemText primary={label} />

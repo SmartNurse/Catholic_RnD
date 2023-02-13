@@ -30,7 +30,7 @@ const TakingOver = (props: SurveyDialogProps<TTakingOverDefaultValues>) => {
     const { onSuccess, onFail, onResultCode, onRequired } = useNotification();
 
     const { handleSubmit, register, getValues, setValue, watch } = useForm({
-    defaultValues,
+      defaultValues,
     });
 
     const onSubmit = (data: TTakingOverDefaultValues) => {
