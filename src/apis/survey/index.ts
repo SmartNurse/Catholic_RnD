@@ -21,6 +21,7 @@ import {
   IUpdateMentalNursing,
   IUpdateBDI,
   IUpdateBAI,
+  IUpdateMMSE,
   IUpdateOperation,
   IUpdateAnesthesia,
   IUpdateTransfusion,
@@ -228,6 +229,17 @@ export const getBAI = (request: IGetSurvey) => {
 
 export const updateBAI = (request: IUpdateBAI) => {
   const url = `/survey/bai`;
+  return apiGateway.post(url, camelcaseKeys(request));
+};
+
+// MMSE
+export const getMMSE = (request: IGetSurvey) => {
+  const url = `/survey/mmse?${formatToRequestParameter(request)}`;
+  return apiGateway.get(url);
+};
+
+export const updateMMSE = (request: IUpdateMMSE) => {
+  const url = `/survey/mmse`;
   return apiGateway.post(url, camelcaseKeys(request));
 };
 

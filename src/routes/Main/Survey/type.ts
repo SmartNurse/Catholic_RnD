@@ -20,6 +20,7 @@ import {
   initialMentalNursing,
   initialBDI,
   initialBAI,
+  initialMMSE,
   initialOperation,
   initialAnesthesia,
   initialTransfusion,
@@ -55,6 +56,7 @@ export enum MENU {
   MENTAL_NURSING = '정신간호 기록지',
   BDI = 'BDI',
   BAI = 'BAI',
+  MMSE = 'MMSE-K',
   COGNITIVE_FUNCTION = '인지기능검사',
   OPERATION = '수술 기록지',
   ANESTHESIA = '마취 기록지',
@@ -106,6 +108,7 @@ export type TCNPSDefaultValues = typeof initialCNPS;
 export type TMentalNursingDefaultValues = typeof initialMentalNursing;
 export type TBDIDefaultValues = typeof initialBDI;
 export type TBAIDefaultValues = typeof initialBAI;
+export type TMMSEDefaultValues = typeof initialMMSE;
 export type TOperationDefaultValues = typeof initialOperation;
 export type TAnesthesiaDefaultValues = typeof initialAnesthesia;
 export type TTransfusionDefaultValues = typeof initialTransfusion;

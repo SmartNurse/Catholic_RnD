@@ -171,7 +171,7 @@ const MenuRecords = (props: Props) => {
     },
     {
       isPro: true,
-      label: 'MMSE',
+      label: 'MMSE-K',
       toggle: toggle.mental_health,
     },
     {

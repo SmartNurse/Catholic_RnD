@@ -21,6 +21,7 @@ import CNPS from "./Pain/CNPS";
 import MentalNursing from './MentalHealth/MentalNursing';
 import BDI from './MentalHealth/BDI';
 import BAI from './MentalHealth/BAI';
+import MMSE from './MentalHealth/MMSE';
 import Operation from './Special/Operation';
 import Anesthesia from './Special/Anesthesia';
 import Transfusion from './Special/Transfusion';
@@ -126,6 +127,10 @@ const DisplaySurvey = (props: Props) => {
     case MENU.BAI: {
       if (!defaultValues) return null;
       return <BAI {...dialogProps} onClose={onCloseSave} />;
+    }
+    case MENU.MMSE: {
+      if (!defaultValues) return null;
+      return <MMSE {...dialogProps} onClose={onCloseSave} />;
     }
     case MENU.OPERATION: {
       if (!defaultValues) return null;

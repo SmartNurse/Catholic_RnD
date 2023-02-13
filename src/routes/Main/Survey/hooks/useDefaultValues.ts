@@ -17,6 +17,7 @@ import {
   getCNPS,
   getBDI,
   getBAI,
+  getMMSE,
   getOperation,
   getAnesthesia,
   getTransfusion,
@@ -51,6 +52,7 @@ import {
   initialMentalNursing,
   initialBDI,
   initialBAI,
+  initialMMSE,
   initialOperation,
   initialAnesthesia,
   initialTransfusion,
@@ -281,6 +283,13 @@ const useDefaultValues = ({ setDefaultValues, user_id }: Props) => {
           .then(({ data }) => {
             const { update_at, bai_survey } = data;
             convertDataToStates({ update_at, ...bai_survey }, initialBAI);
+          })
+          .catch(e => onFail('알 수 없는 오류가 발생했습니다.', e));
+        break;
+      case MENU.MMSE: 
+        getMMSE({ user_id, patient_id })
+          .then(({ data }) => {
+            convertDataToStates(data, initialMMSE);
           })
           .catch(e => onFail('알 수 없는 오류가 발생했습니다.', e));
         break;

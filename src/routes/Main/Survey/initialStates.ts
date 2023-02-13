@@ -362,6 +362,12 @@ export const initialBAI = {
   sum: 0,
 }
 
+export const initialMMSE = {
+  update_at: '',
+  score: [undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined],
+  sum: 0,
+}
+
 export const initialOperation = {
   update_at: '',
   surgery_information: {
