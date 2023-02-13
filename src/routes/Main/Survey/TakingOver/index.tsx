@@ -78,7 +78,7 @@ const TakingOver = (props: SurveyDialogProps<TTakingOverDefaultValues>) => {
             <TextareaSection {...formProps} title="현재 상태(수술 후 경과일,치료,현재 통증 상태, 현재 가지고 있는 catheter,약물,치료식이 등)" registerId="current_condition" />
             <TextareaSection {...formProps} title="억제대 적용 유무 / 욕창상태 / 낙상 위험 여부 / 격리 유무" registerId="rbfi" />
             <TextareaSection {...formProps} title="입원 동기 / 과거력 / 동반 질환 / 알레르기" registerId="reasons" />
-            <TextareaSection {...formProps} title="간호 중재(시행해야 할 검사,처치,타괴 의뢰 등)" registerId="intervention" />
+            <TextareaSection {...formProps} title="간호 중재(시행해야 할 검사,처치,타과 의뢰 등)" registerId="intervention" />
             <TextareaSection {...formProps} title="기타 인계사항" registerId="other" />
         </Grid>
       </MuiDialog.SurveyForm>  
