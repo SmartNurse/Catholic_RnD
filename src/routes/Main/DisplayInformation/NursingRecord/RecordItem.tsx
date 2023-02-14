@@ -1,9 +1,9 @@
 import { Fragment } from 'react';
-import { List, Typography } from '@mui/material';
+import { List, Typography, useTheme } from '@mui/material';
 
 import useI18n from 'hooks/useI18n';
 import { INursingRecord } from 'apis/main/type';
-import { sxRecordItem } from 'routes/Main/style';
+// import { sxRecordItem } from 'routes/Main/style';
 
 import RecordTitle from './RecordTitle';
 import ActionButtons from './ActionButtons';
@@ -15,6 +15,7 @@ interface Props extends INursingRecord {
 }
 
 const RecordItem = (props: Props) => {
+  const { palette } = useTheme(); 
   const i18n = useI18n();
   const {
     activeId,
@@ -51,7 +52,21 @@ const RecordItem = (props: Props) => {
   const contentKeys = Object.keys(contents) as any[];
 
   return (
-    <List sx={sxRecordItem} className={className} component="ul">
+    <List sx={{
+      pt: 0,
+
+      '&.active': {
+        backgroundColor: palette.grey[100],
+      },
+      ':not(:first-of-type)': {
+        mt: 2,
+        px: 1,
+        borderTop: '1px solid rgba(0, 0, 0, 0.05)',
+      },
+      ':not(:last-of-type)': {
+        px: 1,
+      },
+    }} className={className} component="ul">
       <RecordTitle {...titleProps} />
       {contentKeys.map(contentKey => (
         <Fragment key={contentKey}>

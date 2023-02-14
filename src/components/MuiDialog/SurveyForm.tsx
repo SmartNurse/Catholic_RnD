@@ -53,7 +53,7 @@ function SurveyForm(props: SurveyFormProps) {
           }}
         >
           <IconButton size="small" onClick={onClose} sx={{ mr: 1.5 }}>
-            <Close />
+            <Close color="primary" />
           </IconButton>
 
           {title}

@@ -10,9 +10,9 @@ import MenuDrawer from './MenuDrawer';
 import Introduction from './Introduction';
 
 import { CoachMark, ICoachProps } from "react-coach-mark";
-import { Box, Typography, Stack, Dialog } from '@mui/material';
+import { Box, Typography, Stack, useTheme } from '@mui/material';
 
-import theme from 'styles/theme';
+import { greenTheme, blueTheme, redTheme, purpleTheme, blackTheme } from 'styles/theme';
 
 import { ReactComponent as Number01 } from "assets/icon-number-01.svg";
 import { ReactComponent as Number02 } from "assets/icon-number-02.svg";
@@ -21,6 +21,8 @@ import { ReactComponent as Number04 } from "assets/icon-number-04.svg";
 import { ReactComponent as Number05 } from "assets/icon-number-05.svg";
 
 function Main() {
+  const { palette } = useTheme();
+
   const navigate = useNavigate();
   const {
     student_name,
@@ -61,7 +63,7 @@ function Main() {
           <Stack direction="row" spacing={1} alignItems="center">
             <Number01 />
             <Typography sx={{ display: "flex"}}>
-              <Typography sx={{ color: `${theme.palette.primary.main}`}}>"환자 검색"</Typography>을 클릭해 가상환자를 선택해주세요!
+              <Typography sx={{ color: `${palette.primary.main}`}}>"환자 검색"</Typography>을 클릭해 가상환자를 선택해주세요!
             </Typography>
             {NextButton}
           </Stack>,
@@ -87,7 +89,7 @@ function Main() {
         <Stack direction="row" spacing={1} alignItems="center">
           <Number03 />
           <Typography sx={{ display: "flex"}}>
-            <Typography sx={{ color: `${theme.palette.primary.main}`}}>"V" 버튼</Typography>을 클릭하면 더 많은 메뉴가 보여요 확인해주세요!
+            <Typography sx={{ color: `${palette.primary.main}`}}>"V" 버튼</Typography>을 클릭하면 더 많은 메뉴가 보여요 확인해주세요!
           </Typography>
           {NextButton}
         </Stack>,
@@ -100,7 +102,7 @@ function Main() {
         <Stack direction="row" spacing={1} alignItems="center">
           <Number04 />
           <Typography sx={{ display: "flex"}}>
-            인수인계를 위한 간단한 <Typography sx={{ color: `${theme.palette.primary.main}`}}>메모는</Typography> 이곳에!
+            인수인계를 위한 간단한 <Typography sx={{ color: `${palette.primary.main}`}}>메모는</Typography> 이곳에!
           </Typography>
           {NextButton}
         </Stack>,

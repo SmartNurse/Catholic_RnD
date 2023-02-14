@@ -116,6 +116,9 @@ const MenuSettings = (props: Props) => {
       isPro: true,
       icon: <ComputerOutlined />,
       label: '화면설정',
+      buttonClick: {
+        onClick: () => navigate("/screensetting"),
+      },
     },
     {
       icon: <AccountCircleOutlined />,

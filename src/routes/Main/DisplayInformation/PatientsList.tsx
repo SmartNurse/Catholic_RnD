@@ -1,4 +1,4 @@
-import { ListItemButton, Typography } from '@mui/material';
+import { ListItemButton, Typography, useTheme } from '@mui/material';
 
 import { getPatients } from 'apis/admin';
 import usePatient from 'store/patient/usePatient';
@@ -15,6 +15,7 @@ interface Props {
 }
 
 const PatientsList = ({ user_id }: Props) => {
+  const { palette } = useTheme();
   const { onSelectedPatient } = usePatient();
 
   const optionLabel = ({ patient_id, name }: IOption) =>
@@ -23,10 +24,10 @@ const PatientsList = ({ user_id }: Props) => {
   const Option = ({ patient_id, name, age, ...props }: IOption) => (
     <ListItemButton {...props} sx={{ gap: 0.5 }}>
       <Typography variant="subtitle2">{patient_id}</Typography>
-      <Typography variant="caption" color={'#000000B2'}>
+      <Typography variant="caption" color={palette.mode === "dark" ? "lightgrey" : '#000000B2'}>
         {name}
       </Typography>
-      <Typography variant="caption" color={'#000000B2'}>
+      <Typography variant="caption" color={palette.mode === "dark" ? "lightgrey" : '#000000B2'}>
         {age}세
       </Typography>
     </ListItemButton>

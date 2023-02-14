@@ -1,4 +1,4 @@
-import { Box, Typography } from '@mui/material';
+import { Box, Typography, useTheme } from '@mui/material';
 
 interface Props {
   title: string;
@@ -12,13 +12,14 @@ const PatientInfoItem = ({ title, content }: Props) => {
   );
 
   const Content = () => {
+    const { palette } = useTheme();
     if (content && isContentElement) return content;
 
     return (
       <Typography
         component="span"
         variant="body2"
-        color="#000000E5"
+        color={palette.text.primary}
         sx={{ minWidth: 50 }}
       >
         {content ? content : '-'}

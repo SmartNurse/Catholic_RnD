@@ -1,15 +1,16 @@
 import { Fragment } from 'react';
-import { Grid, Box, Typography, Table, TableBody, TableRow, TableCell, RadioGroup, Radio, FormControlLabel } from '@mui/material';
+import { Grid, Box, Typography, Table, TableBody, TableRow, TableCell, RadioGroup, Radio, useTheme } from '@mui/material';
 import SectionTitle from '../../components/SectionTitle';
 import { IFormValues, IFormWatch } from 'routes/Main/type';
 import useTableForm from '../../hooks/useTableForm';
-import theme from 'styles/theme';
 
 interface Props extends IFormValues, IFormWatch {
   disabled?: boolean;
 }
 
 const BDIContents = (props: Props) => {
+  const { palette } = useTheme();
+
   const { radioGroup, sumValues } = useTableForm(props);
   const { watch, setValue, getValues } = props;
 
@@ -89,7 +90,7 @@ const BDIContents = (props: Props) => {
           >
             합계 : {watchSumValues()}점
           </Typography>
-          <Typography minWidth={115} variant="caption" sx={{ color: `${theme.palette.primary.main}`}}>
+          <Typography minWidth={115} variant="caption" sx={{ color: `${palette.primary.main}`}}>
             <Typography variant="inherit">
               <Box component={'strong'} mr={0.5}>
                 0~63점

@@ -3,15 +3,13 @@ import { useState } from "react";
 import useStudent from "store/student/useStudent";
 import { setCookie } from "utils/cookie";
 
-import { Dialog, Typography, Button, FormControlLabel, Checkbox, Stack, Grid } from "@mui/material";
+import { Dialog, Typography, Button, FormControlLabel, Checkbox, Stack, Grid, useTheme } from "@mui/material";
 
 import { ReactComponent as Number01 } from "assets/icon-number-01.svg";
 import { ReactComponent as Number02 } from "assets/icon-number-02.svg";
 import { ReactComponent as Number03 } from "assets/icon-number-03.svg";
 import { ReactComponent as Number04 } from "assets/icon-number-04.svg";
 import { ReactComponent as Number05 } from "assets/icon-number-05.svg";
-
-import theme from "styles/theme";
 
 export interface SimpleDialogProps {
     open: boolean;
@@ -20,6 +18,7 @@ export interface SimpleDialogProps {
 }
 
 function Introduction(props: SimpleDialogProps) {
+    const { palette } = useTheme();
     const { open, setOpen, setShow } = props;
     const { student_name } = useStudent();
 
@@ -52,13 +51,13 @@ function Introduction(props: SimpleDialogProps) {
         open={open}
     >
         <Stack direction="row">
-            <Typography sx={{ color: `${theme.palette.primary.main}`, fontWeight: "700", fontSize: "64px", lineHeight: "80px"}}>{student_name}</Typography>
+            <Typography sx={{ color: `${palette.primary.main}`, fontWeight: "700", fontSize: "64px", lineHeight: "80px"}}>{student_name}</Typography>
             <Typography sx={{ fontWeight: "700", fontSize: "64px", lineHeight: "80px" }}>님, 환영합니다</Typography>
         </Stack>
         <Typography sx={{ fontWeight: "700", fontSize: "64px", lineHeight: "80px" }}>SMARTNURSE ENR 입니다.</Typography>
-        <Typography sx={{ color: `${theme.palette.primary.main}`, fontWeight: "700", fontSize: "30px", lineHeight: "50px" }}>그럼, 간호기록 연습하러 가보까요?</Typography>
+        <Typography sx={{ color: `${palette.primary.main}`, fontWeight: "700", fontSize: "30px", lineHeight: "50px" }}>그럼, 간호기록 연습하러 가보까요?</Typography>
         <Button
-            sx={{ width: "187px", height: "48px", color: "white", backgroundColor: `${theme.palette.primary.main}`, marginTop: "15px" }}
+            sx={{ width: "187px", height: "48px", color: "white", backgroundColor: `${palette.primary.main}`, marginTop: "15px" }}
             variant="contained"
             onClick={() => {
                 setShow(true);
@@ -74,7 +73,7 @@ function Introduction(props: SimpleDialogProps) {
                         {icons[idx]}
                         <Typography
                             sx={{
-                                color: `${theme.palette.primary.main}`,
+                                color: `${palette.primary.main}`,
                                 fontWeight: "700",
                                 fontSize: "40px",
                                 lineHeight: "50px",
@@ -91,7 +90,7 @@ function Introduction(props: SimpleDialogProps) {
         </Grid>
         <Stack direction="row" spacing={2}>
             <Button
-                sx={{ width: "187px", height: "48px", color: `${theme.palette.primary.main}`}}
+                sx={{ width: "187px", height: "48px", color: `${palette.primary.main}`}}
                 variant="outlined"
                 onClick={() => {
                     if (check) setCookie("no_intro", "true", 30);

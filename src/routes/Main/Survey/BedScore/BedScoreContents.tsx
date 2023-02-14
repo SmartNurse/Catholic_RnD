@@ -1,5 +1,5 @@
 import { Fragment } from 'react';
-import { Box, Grid, Typography } from '@mui/material';
+import { Box, Grid, Typography, useTheme } from '@mui/material';
 
 import MuiTable from 'components/MuiTable';
 import { IFormValues, IFormWatch } from 'routes/Main/type';
@@ -7,11 +7,10 @@ import { IFormValues, IFormWatch } from 'routes/Main/type';
 import SectionTitle from '../components/SectionTitle';
 import useTableForm from '../hooks/useTableForm';
 
-import theme from 'styles/theme';
-
 interface Props extends IFormValues, IFormWatch {}
 
 const BedScoreContents = (props: Props) => {
+  const { palette } = useTheme();
   const { radioGroup, sumValues } = useTableForm(props);
 
   const columns = [
@@ -100,7 +99,7 @@ const BedScoreContents = (props: Props) => {
           >
             합계 : {watchSumValues()}점
           </Typography>
-          <Typography minWidth={115} variant="caption" sx={{ color: `${theme.palette.primary.main}`}}>
+          <Typography minWidth={115} variant="caption" sx={{ color: `${palette.primary.main}`}}>
             <Typography variant="inherit">
               <Box component={'strong'} mr={0.5}>
                 초고위험군:

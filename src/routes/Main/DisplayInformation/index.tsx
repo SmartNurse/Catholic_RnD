@@ -1,4 +1,4 @@
-import { Box, Skeleton, Toolbar } from '@mui/material';
+import { Box, Skeleton, Toolbar, useTheme } from '@mui/material';
 
 import useSelectorTyped from 'store/useSelectorTyped';
 
@@ -9,14 +9,13 @@ import MedicalNote from './MedicalNote';
 import PatientInfo from './PatientInfo';
 import SearchToolbar from './SearchToolbar';
 
-import theme from 'styles/theme';
-
 interface Props {
   menuDrawerWidth: number;
   coachRef: any;
 }
 
 const DisplayInformation = (props: Props) => {
+  const { palette } = useTheme();
   const { menuDrawerWidth, coachRef } = props;
 
   // shallowEqual 해도 리렌더링 발생해서 이곳만 별도로 선택해서 사용
@@ -72,7 +71,7 @@ const DisplayInformation = (props: Props) => {
         style={{
           display: 'flex',
           flexDirection: 'column',
-          backgroundColor: `${theme.palette.primary.light}`,
+          backgroundColor: `${palette.primary.light}`,
         }}
       >
         <PatientInfo />

@@ -5,6 +5,7 @@ import Main from './Main';
 import MyPage from './MyPage';
 import SignIn from './SignIn';
 import SignUp from './SignUp';
+import ScreenSetting from './ScreenSetting';
 
 function RouterContainer() {
   const { student_uuid } = useUser();
@@ -23,6 +24,7 @@ function RouterContainer() {
       <Routes>
         <Route path="*" element={<Main />} />
         <Route path="/mypage" element={<MyPage />} />
+        <Route path="/screensetting" element={<ScreenSetting />} />
       </Routes>
     </HashRouter>
   );

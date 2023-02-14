@@ -1,7 +1,7 @@
 import { Fragment, useState, useEffect } from 'react';
 import { AccessTime, Delete } from '@mui/icons-material';
 import { MobileTimePicker } from '@mui/x-date-pickers';
-import { Button, FormHelperText, Grid, IconButton, MenuItem, Box } from '@mui/material';
+import { Button, FormHelperText, Grid, IconButton, MenuItem, Box, useTheme } from '@mui/material';
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer, LabelList } from 'recharts';
 
 import { Ti18nId } from 'hooks/useI18n';
@@ -13,8 +13,6 @@ import { formatStringToDate } from 'utils/formatting';
 import MuiTable from 'components/MuiTable';
 import MuiTextField from 'components/Form/MuiTextField';
 
-import theme from 'styles/theme';
-
 interface Props extends IFormValues, IFormWatch {
   disabled?: boolean;
   onRequired: (id: Ti18nId) => void;
@@ -22,6 +20,8 @@ interface Props extends IFormValues, IFormWatch {
 }
 
 const VitalSign = (props: Props) => {
+  const { palette } = useTheme();
+
   const colors = ["#FE2503", "#FF9200", "#02F900", "#0333FF", "#942092"];
 
   const columns = [
@@ -264,7 +264,7 @@ const VitalSign = (props: Props) => {
                   tickMargin={10}
                   tickLine={false}
                   axisLine={false}
-                  stroke={theme.palette.primary.main}
+                  stroke={palette.primary.main}
                   domain={[]}
                 />
                 <YAxis

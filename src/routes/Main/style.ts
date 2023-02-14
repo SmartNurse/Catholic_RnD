@@ -1,8 +1,6 @@
-import { Slider, FormControlLabel, TableCell } from '@mui/material';
+import { Slider, FormControlLabel, TableCell, useTheme } from '@mui/material';
 import { TabPanel } from '@mui/lab';
 import { styled } from '@mui/material';
-
-import theme from 'styles/theme';
 
 export const StyledDrawerWrapper = styled('div')`
   flex: 1;
@@ -20,7 +18,7 @@ export const StyledDrawerWrapper = styled('div')`
     line-height: 46px;
     font-weight: 600;
     font-size: 14px;
-    background-color: ${theme.palette.secondary.main};
+    background-color: ${({ theme }) => theme.palette.secondary.main};
     text-align: center;
   }
 
@@ -40,7 +38,7 @@ export const StyledDrawerWrapper = styled('div')`
     /* 100% - MuiToolbar - userName */
     height: calc(100% - 98px);
     padding: 18px 10px;
-    background-color: ${theme.palette.primary.main};
+    background-color: ${({ theme }) => theme.palette.primary.main};
 
     .MuiListItem-root {
       .isPro {
@@ -75,10 +73,10 @@ export const StyledDrawerWrapper = styled('div')`
     .MuiListItemButton-root:hover {
       background-color: #fff;
       .MuiListItemText-root .MuiTypography-root {
-        color: ${theme.palette.primary.main};
+        color: ${({ theme }) => theme.palette.primary.main};
       }
       .MuiListItemIcon-root {
-        color: ${theme.palette.primary.main};
+        color: ${({ theme }) => theme.palette.primary.main};
       }
     }
 
@@ -107,6 +105,7 @@ export const StyledTabPanel = styled(TabPanel)`
   }
 `;
 
+/*
 export const sxRecordItem = {
   pt: 0,
 
@@ -122,6 +121,7 @@ export const sxRecordItem = {
     px: 1,
   },
 };
+*/
 
 export const StyledMiniBox = styled('div')`
   width: 75px;
@@ -134,31 +134,31 @@ export const StyledMiniBox = styled('div')`
   word-break: keep-all;
 `;
 
-export const StyledSlider = styled(Slider)({
-  color: `${theme.palette.secondary.main}`,
-  '& .MuiSlider-track': {
+export const StyledSlider = styled(Slider)`
+  color: ${({ theme }) => theme.palette.secondary.main};
 
-  },
-  '& .MuiSlider-thumb': {
-    width: 12,
-    height: 12,
-  },
-  '& .MuiSlider-rail': {
-    color: "#00000033",
-  },
-  '& .MuiSlider-mark': {
-    width: 12,
-    height: 12,
-    marginLeft: "-5px",
-    borderRadius: "8px",
-    color: "#00000033",
+  & .MuiSlider-thumb {
+    width: 12;
+    height: 12;
+  }
 
-    '&.MuiSlider-markActive': {
-      backgroundColor: `${theme.palette.secondary.main}`,
-      opacity: 1,
+  & .MuiSlider-rail {
+    color: #00000033;
+  }
+
+  & .MuiSlider-mark {
+    width: 12;
+    height: 12;
+    marginLeft: -5px;
+    borderRadius: 8px;
+    color: #00000033;
+
+    &.MuiSlider-markActive {
+      backgroundColor: ${({ theme }) => theme.palette.secondary.main};
+      opacity: 1;
     }
   } 
-});
+`;
 
 export const StyledFormControlLabel = styled(FormControlLabel)({
   '&.MuiFormControlLabel-root': {

@@ -1,10 +1,8 @@
 import { useEffect, useState } from "react";
-import { Box, Typography, RadioGroup, Radio, Table, TableBody, TableHead, TableRow } from "@mui/material";
+import { Box, Typography, RadioGroup, Radio, Table, TableBody, TableHead, TableRow, useTheme } from "@mui/material";
 import { StyledTableCell, StyledTableCellWithoutLeft, StyledTableCellWithoutRight, StyledTableCellWithoutLeftRight } from "routes/Main/style";
 
 import { IFormValues, IFormWatch } from 'routes/Main/type';
-
-import theme from "styles/theme";
 
 const radioId = ["face", "activity", "respiratory", "vocalization"];
 const contentLabel = [
@@ -39,6 +37,8 @@ const scoreLabel = [
 interface Props extends IFormValues, IFormWatch {}
 
 const CNPSContents = (props: Props) => {
+    const { palette } = useTheme();
+
     const { setValue, getValues } = props;
 
     const [sumValue, setSumValue] = useState(0);
@@ -130,7 +130,7 @@ const CNPSContents = (props: Props) => {
                     >
                         합계: {sumValue}점
                     </Typography>
-                    <Typography minWidth={115} variant="caption" sx={{ color: `${theme.palette.primary.main}`}}>
+                    <Typography minWidth={115} variant="caption" sx={{ color: `${palette.primary.main}`}}>
                         {scoreLabel.map(({ score, label }) => 
                             <Typography variant="inherit">
                                 <Box component={'strong'} mr={0.5}>

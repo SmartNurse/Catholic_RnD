@@ -1,15 +1,12 @@
 import { useState } from "react";
-import { Box, Typography, Table, TableBody, TableHead, TableRow, InputAdornment } from "@mui/material";
+import { Box, Typography, Table, TableBody, TableHead, TableRow, InputAdornment, useTheme } from "@mui/material";
 import { StyledTableCellWithoutLeft, StyledTableCellWithoutLeftRight } from "routes/Main/style";
 import Form from "components/Form";
-import SectionTitle from "../../components/SectionTitle";
 
 import useTableForm from "../../hooks/useTableForm";
 import { IFormValues, IFormWatch, IFormRegister } from 'routes/Main/type';
 
 import { ReactComponent as MMSE9pic } from "assets/MMSE_9_pic.svg";
-
-import theme from "styles/theme";
 
 const contentLabel = [
     {
@@ -82,6 +79,7 @@ const scoreLabel = [
 interface Props extends IFormValues, IFormWatch, IFormRegister {}
 
 const MMSEContents = (props: Props) => {
+    const { palette } = useTheme();
     const { setValue, getValues, register, watch } = props;
     const { sumValues } = useTableForm(props);
 
@@ -155,7 +153,7 @@ const MMSEContents = (props: Props) => {
                 >
                     합계: {watchSumValues()}점
                 </Typography>
-                <Typography minWidth={115} variant="caption" sx={{ color: `${theme.palette.primary.main}`}}>
+                <Typography minWidth={115} variant="caption" sx={{ color: `${palette.primary.main}`}}>
                     {scoreLabel.map(({ score, label }) => 
                         <Typography variant="inherit">
                             <Box component={'strong'} mr={0.5}>

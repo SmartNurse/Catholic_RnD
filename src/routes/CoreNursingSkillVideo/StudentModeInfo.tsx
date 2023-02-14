@@ -4,9 +4,7 @@ import Form from 'components/Form';
 import RowContainer from '../Main/Survey/components/RowContainer';
 import RowContent from '../Main/Survey/components/RowContent';
 
-import { Typography, Box } from "@mui/material";
-
-import theme from 'styles/theme';
+import { Typography, Box, useTheme } from "@mui/material";
 
 interface Props {
   disabled?: boolean;
@@ -14,6 +12,8 @@ interface Props {
 }
 
 const StudentModeInfo = (props: Props) => {
+  const { palette } = useTheme();
+
   const { totalSize } = props;
   const { student_name, student_no } = useUser();
   
@@ -30,7 +30,7 @@ const StudentModeInfo = (props: Props) => {
           {title === "용량" 
           ?
           <Box sx={{ width: "100%", textAlign: "right" }}>
-            <Typography sx={{ color: `${theme.palette.primary.main}` }} fontSize="14px" lineHeight="37.125px" display="inline">{value}</Typography>
+            <Typography sx={{ color: `${palette.primary.main}` }} fontSize="14px" lineHeight="37.125px" display="inline">{value}</Typography>
             <Typography fontSize="14px" display="inline"> / 10GB</Typography>
           </Box>
           :

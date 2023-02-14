@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Box, Grid, Typography, RadioGroup, Radio, Button, IconButton, FormHelperText } from "@mui/material";
+import { Box, Grid, Typography, RadioGroup, Radio, Button, IconButton, useTheme } from "@mui/material";
 import { AccessTime, Delete } from '@mui/icons-material';
 import { MobileTimePicker } from '@mui/x-date-pickers';
 import { StyledFormControlLabel } from "routes/Main/style";
@@ -12,8 +12,6 @@ import { IFormValues, IFormWatch } from 'routes/Main/type';
 import { IFLACC } from "apis/survey/type";
 import { formatStringToDate } from "utils/formatting";
 
-import theme from "styles/theme";
-
 interface Props extends IFormValues, IFormWatch {
     disabled?: boolean;
     onRequired: (id: Ti18nId) => void;
@@ -23,6 +21,8 @@ interface Props extends IFormValues, IFormWatch {
 const radioId = ["face", "legs", "activity", "cry", "consolability"];
 
 const FlaccContents = (props: Props) => {
+    const { palette } = useTheme();
+    
     const { disabled, watch, setValue, onRequired, onSuccess } = props;
     const flaccList: IFLACC[] = watch('flacc_survey');
 
@@ -172,7 +172,7 @@ const FlaccContents = (props: Props) => {
                         >
                             합계: {sumValue}점
                         </Typography>
-                        <Typography minWidth={115} variant="caption" sx={{ color: `${theme.palette.primary.main}`}}>
+                        <Typography minWidth={115} variant="caption" sx={{ color: `${palette.primary.main}`}}>
                             <Typography variant="inherit">
                             <Box component={'strong'} mr={0.5}>
                                 0점:
