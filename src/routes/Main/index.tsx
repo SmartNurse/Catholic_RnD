@@ -61,7 +61,7 @@ function Main() {
         activate: activatedNumber === 0,
         component: 
           <Stack direction="row" spacing={1} alignItems="center">
-            <Number01 />
+            <Number01 fill={palette.primary.main} />
             <Typography sx={{ display: "flex"}}>
               <Typography sx={{ color: `${palette.primary.main}`}}>"환자 검색"</Typography>을 클릭해 가상환자를 선택해주세요!
             </Typography>
@@ -74,7 +74,7 @@ function Main() {
       activate: activatedNumber === 1,
       component:
         <Stack direction="row" spacing={1} alignItems="center">
-          <Number02 />
+          <Number02 fill={palette.primary.main} />
           <Typography sx={{ display: "flex"}}>
             환자 처방 내역과 다양한 기록지가 준비되어 있어요!
           </Typography>
@@ -87,7 +87,7 @@ function Main() {
       activate: activatedNumber === 2,
       component: 
         <Stack direction="row" spacing={1} alignItems="center">
-          <Number03 />
+          <Number03 fill={palette.primary.main} />
           <Typography sx={{ display: "flex"}}>
             <Typography sx={{ color: `${palette.primary.main}`}}>"V" 버튼</Typography>을 클릭하면 더 많은 메뉴가 보여요 확인해주세요!
           </Typography>
@@ -99,10 +99,14 @@ function Main() {
     {
       activate: activatedNumber === 3,
       component: 
-        <Stack direction="row" spacing={1} alignItems="center">
-          <Number04 />
-          <Typography sx={{ display: "flex"}}>
-            인수인계를 위한 간단한 <Typography sx={{ color: `${palette.primary.main}`}}>메모는</Typography> 이곳에!
+        <Stack direction="row" spacing={0.5} alignItems="center">
+          <Number04 fill={palette.primary.main} />
+          <Typography>
+            인수인계를 위한 간단한
+          </Typography>
+          <Typography sx={{ color: `${palette.primary.main}`}}>메모는</Typography>
+          <Typography>
+            이곳에!
           </Typography>
           {NextButton}
         </Stack>,
@@ -113,7 +117,7 @@ function Main() {
       activate: activatedNumber === 4,
       component: 
         <Stack direction="row" spacing={1} alignItems="center">
-          <Number05 />
+          <Number05 fill={palette.primary.main} />
           <Typography sx={{ display: "flex"}}>
             간호기록을 작성해볼까요?
             <br/>

@@ -30,7 +30,13 @@ function Introduction(props: SimpleDialogProps) {
         { title: "Current Problem", desc1: "신규간호사 선생님 대부분이 간호기록에 어려움을 호소하고 있습니다.", desc2: "", },
     ];
 
-    const icons = [<Number01 />, <Number04 />, <Number02 />, <Number05 />, <Number03 />];
+    const icons = [
+        <Number01 fill={palette.primary.main} />,
+        <Number04 fill={palette.primary.main} />,
+        <Number02 fill={palette.primary.main} />,
+        <Number05 fill={palette.primary.main} />,
+        <Number03 fill={palette.primary.main} />
+    ];
 
     /* 다시 보지 않기 체크박스 관련 */
     const [check, setCheck] = useState(false);
@@ -44,6 +50,7 @@ function Introduction(props: SimpleDialogProps) {
                     width: "100%",
                     maxWidth: "75%",
                     padding: "50px 100px",
+                    backgroundColor: palette.mode === "dark" ? "grey" : "",
                 }
             }
         }}
@@ -55,7 +62,7 @@ function Introduction(props: SimpleDialogProps) {
             <Typography sx={{ fontWeight: "700", fontSize: "64px", lineHeight: "80px" }}>님, 환영합니다</Typography>
         </Stack>
         <Typography sx={{ fontWeight: "700", fontSize: "64px", lineHeight: "80px" }}>SMARTNURSE ENR 입니다.</Typography>
-        <Typography sx={{ color: `${palette.primary.main}`, fontWeight: "700", fontSize: "30px", lineHeight: "50px" }}>그럼, 간호기록 연습하러 가보까요?</Typography>
+        <Typography sx={{ color: `${palette.primary.main}`, fontWeight: "700", fontSize: "30px", lineHeight: "50px" }}>그럼, 간호기록 연습하러 가볼까요?</Typography>
         <Button
             sx={{ width: "187px", height: "48px", color: "white", backgroundColor: `${palette.primary.main}`, marginTop: "15px" }}
             variant="contained"
