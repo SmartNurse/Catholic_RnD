@@ -33,7 +33,7 @@ function SignInForm({ errors, register, onSignUp }: Props) {
     <Box>
       <Container maxWidth="sm" sx={{ mt: 10 }}>
         <Card
-          elevation={1}
+          elevation={palette.mode === "dark" ? 0 : 1}
           sx={{ borderTop: `solid 8px ${palette.primary.main}` }}
         >
           <CardMedia
@@ -46,7 +46,7 @@ function SignInForm({ errors, register, onSignUp }: Props) {
             <Typography>
               현실감 있는 환자데이터 제공으로
             </Typography>
-            <Typography sx={{ color: `${palette.primary.main}`}}>
+            <Typography sx={{ color: `${palette.mode === "dark" ? "grey" : palette.primary.main}`}}>
               실제 병원 현장을 경험하게 됩니다!
             </Typography>
           </CardContent>
@@ -93,8 +93,8 @@ function SignInForm({ errors, register, onSignUp }: Props) {
                 fullWidth
                 size="large"
                 variant="outlined"
-                sx={{ mb: 2.5 }}
                 onClick={onSignUp}
+                sx={{ mb: 2.5, color: `${palette.mode === "dark" ? "lightgrey" : ""}`, borderColor: `${palette.mode === "dark" ? "lightgrey" : ""}` }}
               >
                 회원가입
               </Button>
@@ -102,13 +102,14 @@ function SignInForm({ errors, register, onSignUp }: Props) {
               <MuiDialog.ConfirmButton
                 title="아이디/비밀번호를 잊으셨나요?"
                 message={`아이디는 본인 학교 이메일입니다.\n비밀번호를 잊으셨다면 스마트널스 관리자 이메일(nurse@smartnurse.co.kr)로 문의해주세요. `}
+                color={palette.mode === "dark" ? "lightgrey" : ""}
               />
 
               <Button
                 fullWidth
                 size="large"
                 variant="outlined"
-                sx={{ mt: 2.5, mb: 2.5 }}
+                sx={{ mt: 2.5, mb: 2.5, color: `${palette.mode === "dark" ? "lightgrey" : ""}`, borderColor: `${palette.mode === "dark" ? "lightgrey" : ""}` }}
                 onClick={() => window.open("https://www.smartnurse.co.kr/")}
               >
                 스마트널스 홈페이지 바로가기
