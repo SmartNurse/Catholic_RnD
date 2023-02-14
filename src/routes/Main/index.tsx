@@ -2,6 +2,7 @@ import { useState, useEffect, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import useUser from 'store/user/useUser';
+import { getCookie } from 'utils/cookie';
 
 import DisplayInformation from './DisplayInformation';
 import InputInformation from './InputInformation';
@@ -18,8 +19,6 @@ import { ReactComponent as Number02 } from "assets/icon-number-02.svg";
 import { ReactComponent as Number03 } from "assets/icon-number-03.svg";
 import { ReactComponent as Number04 } from "assets/icon-number-04.svg";
 import { ReactComponent as Number05 } from "assets/icon-number-05.svg";
-
-const emails = ['username@gmail.com', 'user02@gmail.com'];
 
 function Main() {
   const navigate = useNavigate();
@@ -129,11 +128,6 @@ function Main() {
   /**************/
 
   /* 다시 보지 않기 체크박스 관련 */
-  const getCookie = (key: string) => {
-    var value = document.cookie.match('(^|;) ?' + key + '=([^;]*)(;|$)');
-    return value? value[2] : null;
-  };
-
   useEffect(() => {
     if (getCookie("no_intro") !== "true") setOpen(true);
   }, []);

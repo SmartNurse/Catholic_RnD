@@ -1,6 +1,7 @@
 import { useState } from "react";
 
 import useStudent from "store/student/useStudent";
+import { setCookie } from "utils/cookie";
 
 import { Dialog, Typography, Button, FormControlLabel, Checkbox, Stack, Grid } from "@mui/material";
 
@@ -34,12 +35,6 @@ function Introduction(props: SimpleDialogProps) {
 
     /* 다시 보지 않기 체크박스 관련 */
     const [check, setCheck] = useState(false);
-
-    const setCookie = (key: string, value: string, expiredays: number) => {
-        let todayDate = new Date();
-        todayDate.setDate(todayDate.getDate() + expiredays);
-        document.cookie = key + "=" + value + "; expires=" + todayDate.toUTCString() + ";path=/;";
-    }
     /*************************/
       
     return (
