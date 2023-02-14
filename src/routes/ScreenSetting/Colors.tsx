@@ -1,9 +1,8 @@
 import { Button, Stack, Typography } from '@mui/material';
-import useColor from 'store/color/useColor';
+import { setLocalStorage } from 'utils/storage';
 import useNotification from 'hooks/useNotification';
 
 const Colors = () => {
-    const { onChangeColor } = useColor();
     const { onSuccess } = useNotification();
 
     const buttons = [
@@ -35,7 +34,7 @@ const Colors = () => {
                             backgroundColor: `${color}`,
                         }}
                         onClick={() => {
-                            onChangeColor({theme_color: param});
+                            setLocalStorage("theme_color", param);
                             onSuccess(`화면 색상이 ${param}으로 변경되었습니다`);
                             setTimeout(() => {
                                 window.location.replace("/");
