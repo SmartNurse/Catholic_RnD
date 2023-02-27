@@ -10,6 +10,7 @@ import ActionButtons from './ActionButtons';
 
 interface Props extends INursingRecord {
   activeId?: number;
+  studentNo: string | undefined;
   nurseName: string;
   refetch?: () => void;
 }
@@ -19,6 +20,7 @@ const RecordItem = (props: Props) => {
   const i18n = useI18n();
   const {
     activeId,
+    studentNo,
     nurseName,
     create_at,
     content,
@@ -40,6 +42,7 @@ const RecordItem = (props: Props) => {
 
   const titleProps = {
     actionButtons,
+    studentNo: studentNo,
     nurseName: nurseName,
     create_at: create_at,
     record_time: props.record_time,

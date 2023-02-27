@@ -17,7 +17,7 @@ interface Props {
 
 const RecordList = ({ list, onResetList }: Props) => {
   const { isStudent } = useUser();
-  const { student_name } = useStudent();
+  const { student_name, student_no } = useStudent();
   const { nursingRecord } = usePatient();
 
   const navigate = useNavigate();
@@ -44,6 +44,7 @@ const RecordList = ({ list, onResetList }: Props) => {
         <RecordItem
           {...record}
           key={record.nursing_record_id}
+          studentNo={student_no}
           nurseName={student_name}
           activeId={nursingRecord?.nursing_record_id}
           refetch={isStudent ? onResetList : undefined}

@@ -3,6 +3,7 @@ import { formatStringToDate } from 'utils/formatting';
 
 interface Props {
   title: string;
+  studentNo: string | undefined;
   nurseName: string;
   create_at: string;
   record_time: string;
@@ -10,7 +11,7 @@ interface Props {
 }
 
 const RecordTitle = (props: Props) => {
-  const { title, nurseName, create_at, record_time, actionButtons } = props;
+  const { title, studentNo, nurseName, create_at, record_time, actionButtons } = props;
 
   const dateTime = () => {
     const createAt = formatStringToDate(create_at, 'yyyy-MM-dd');
@@ -30,7 +31,7 @@ const RecordTitle = (props: Props) => {
           {title}
         </Typography>
         <Typography variant="caption" color="#00000080">
-          {nurseName} 간호사 {dateTime()}
+          {studentNo} {nurseName} 간호사 {dateTime()}
         </Typography>
       </Typography>
       {actionButtons}
