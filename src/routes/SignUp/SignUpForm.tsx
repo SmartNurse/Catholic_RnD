@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { CheckCircle } from '@mui/icons-material';
+import { CheckCircle, ContactlessOutlined, KeyboardArrowLeft } from '@mui/icons-material';
 import { LoadingButton } from '@mui/lab';
 import {
   Box,
@@ -56,10 +56,16 @@ function SignUpForm(props: Props) {
   return (
     <Box>
       <Container maxWidth="sm" sx={{ mt: 7.5, mb: 6 }}>
-        <Typography variant="subtitle1" fontWeight={700} sx={{ mb: 5 }}>
+        <Button
+          href="/#/"
+          size="large"
+          color="inherit"
+          startIcon={<KeyboardArrowLeft />}
+          sx={{ mb: 5, p: 0 }}
+        >
           회원가입
-        </Typography>
-
+        </Button>
+ 
         <Stack spacing={2.5}>
           <Form.Item label="이메일">
             <Box display="flex" gap={1}>
