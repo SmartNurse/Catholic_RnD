@@ -76,11 +76,13 @@ const scoreLabel = [
     {score: "19점 이하", label: "확정적 치매"},
 ];
 
-interface Props extends IFormValues, IFormWatch, IFormRegister {}
+interface Props extends IFormValues, IFormWatch, IFormRegister {
+    disabled?: boolean;
+}
 
 const MMSEContents = (props: Props) => {
     const { palette } = useTheme();
-    const { setValue, getValues, register, watch } = props;
+    const { disabled, setValue, getValues, register, watch } = props;
     const { sumValues } = useTableForm(props);
 
     const [sumValue, setSumValue] = useState(0);
@@ -131,6 +133,7 @@ const MMSEContents = (props: Props) => {
                                         }}>
                                             <Box sx={{ width: "120px", height: i === 3 ? "171.5px" : "48px", display: "flex", alignItems: "center" }}>
                                                 <Form.MuiTextField
+                                                    disabled={disabled}
                                                     InputProps={{
                                                         endAdornment: <InputAdornment position="end">/{score}</InputAdornment>
                                                     }}

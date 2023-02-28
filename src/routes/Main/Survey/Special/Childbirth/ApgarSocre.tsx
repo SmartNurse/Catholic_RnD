@@ -69,9 +69,9 @@ const ApgarScore = (props: Props) => {
                                 defaultValue={getValues(`apgar.${name}`)}
                                 onChange={(e) => setValue(`apgar.${name}`, e.target.value)}
                             >
-                                <StyledFormControlLabel value={1} label={labels[0]} control={<Radio />} />
-                                <StyledFormControlLabel value={2} label={labels[1]} control={<Radio />} />
-                                <StyledFormControlLabel value={3} label={labels[2]} control={<Radio />} />
+                                <StyledFormControlLabel disabled={disabled} value={1} label={labels[0]} control={<Radio />} />
+                                <StyledFormControlLabel disabled={disabled} value={2} label={labels[1]} control={<Radio />} />
+                                <StyledFormControlLabel disabled={disabled} value={3} label={labels[2]} control={<Radio />} />
                             </RadioGroup>                        
                         </Fragment>
                     ))}
@@ -84,6 +84,7 @@ const ApgarScore = (props: Props) => {
                         <Form.MuiTextField
                             placeholder="0~10점까지 입력가능"
                             required={false}
+                            disabled={disabled}
                             error={errors.one_min}
                             {...register("newborn_condition.apgar_score1m", {
                                 onChange: (e) => {
@@ -99,6 +100,7 @@ const ApgarScore = (props: Props) => {
                         <Form.MuiTextField
                             placeholder="0~10점까지 입력가능"
                             required={false}
+                            disabled={disabled}
                             error={errors.five_min}
                             {...register("newborn_condition.apgar_score5m", {
                                 onChange: (e) => {

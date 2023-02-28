@@ -26,16 +26,16 @@ const WeightInfo = (props: Props) => {
         {
             id: "pre",
             division: <Typography noWrap variant="caption" fontWeight="bold" lineHeight="38px">Pre</Typography>,
-            prev: <Form.MuiTextField {...register("pre_previous_weight")} required={false} />,
-            today: <Form.MuiTextField {...register("pre_today_weight")} required={false} />,
-            diff: <Form.MuiTextField {...register("pre_weight_change")} required={false} />,
+            prev: <Form.MuiTextField {...register("pre_previous_weight")} required={false} disabled={disabled} />,
+            today: <Form.MuiTextField {...register("pre_today_weight")} required={false} disabled={disabled} />,
+            diff: <Form.MuiTextField {...register("pre_weight_change")} required={false} disabled={disabled} />,
         },
         {
             id: "post",
             division: <Typography noWrap variant="caption" fontWeight="bold" lineHeight="38px">Post</Typography>,
-            prev: <Form.MuiTextField {...register("post_previous_weight")} required={false} />,
-            today: <Form.MuiTextField {...register("post_today_weight")} required={false} />,
-            diff: <Form.MuiTextField {...register("post_weight_change")} required={false} />,
+            prev: <Form.MuiTextField {...register("post_previous_weight")} required={false} disabled={disabled} />,
+            today: <Form.MuiTextField {...register("post_today_weight")} required={false} disabled={disabled} />,
+            diff: <Form.MuiTextField {...register("post_weight_change")} required={false} disabled={disabled} />,
         },
     ];
 

@@ -28,6 +28,7 @@ const MotherStatus = (props: Props) => {
             element: 
                 <>
                     <Form.MuiRadioGroup
+                        disabled={disabled}
                         i18nKey='CHILDBIRTH.YES_OR_NO'
                         values={[1, 2]}
                         defaultValue={watch("maternal_condition.episiotomy")}
@@ -41,6 +42,7 @@ const MotherStatus = (props: Props) => {
                     <MuiTextField
                         select
                         required={false}
+                        disabled={disabled}
                         sx={{ width: "50%", marginLeft: "18px" }}
                         defaultValue={getValues("maternal_condition.episiotomy_content")}
                         {...register('maternal_condition.episiotomy_content', {
@@ -63,6 +65,7 @@ const MotherStatus = (props: Props) => {
             element: 
                 <>
                     <Form.MuiRadioGroup
+                        disabled={disabled}
                         i18nKey='CHILDBIRTH.YES_OR_NO'
                         values={[1, 2]}
                         defaultValue={watch('maternal_condition.perineal_laceration')}
@@ -76,6 +79,7 @@ const MotherStatus = (props: Props) => {
                     <MuiTextField
                         select
                         required={false}
+                        disabled={disabled}
                         sx={{ width: "50%", marginLeft: "18px" }}
                         defaultValue={getValues('maternal_condition.perineal_laceration_content')}
                         {...register('maternal_condition.perineal_laceration_content', {
@@ -98,6 +102,7 @@ const MotherStatus = (props: Props) => {
                 <MuiTextField
                     select
                     required={false}
+                    disabled={disabled}
                     sx={{ width: "50%" }}
                     defaultValue={getValues('maternal_condition.uterus_contraction')}
                     {...register('maternal_condition.uterus_contraction')}

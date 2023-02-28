@@ -55,6 +55,7 @@ const OpContent = (props: Props) => {
                 {timePickers.map(({title, variable}, _) => 
                     <RowContent key={variable} title={title} titleRatio={1} childrenRatio={2}>
                         <MobileTimePicker
+                            disabled={disabled}
                             value={watch(variable) || null}
                             onChange={(value) => setValue(variable, value)}
                             renderInput={params => (
@@ -71,6 +72,7 @@ const OpContent = (props: Props) => {
                 <RowContent title="마취 방법" titleRatio={1} childrenRatio={2}>
                     <Box display="flex">
                         <Form.MuiTextField
+                            disabled={disabled}
                             select
                             required={false}
                             {...register("surgery_details.anesthetic_method")}
@@ -96,6 +98,7 @@ const OpContent = (props: Props) => {
                             placeholder="직접 입력"
                             sx={{ marginLeft: "5px" }}
                             required={false}
+                            disabled={disabled}
                         />
                         :
                         null
@@ -106,6 +109,7 @@ const OpContent = (props: Props) => {
                     <MuiTextField
                         {...register("surgery_details.anesthesiologist")}
                         required={false}
+                        disabled={disabled}
                     />
                 </RowContent>
             </RowContainer>

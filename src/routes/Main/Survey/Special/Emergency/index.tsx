@@ -90,16 +90,16 @@ const Emergency = (props: SurveyDialogProps<TEmergencyDefaultValues>) => {
             <TextAreaSection {...formProps} title="응급처치 의료종사자 소견" registerId="observations" required={false} />
             <RowContainer xs={12}>
                 <RowContent title="소속기관명" titleRatio={1} childrenRatio={2}>
-                    <Form.MuiTextField {...register("affiliated_organization")} required={false} />
+                    <Form.MuiTextField {...register("affiliated_organization")} required={false} disabled={disabled}/>
                 </RowContent>
                 <RowContent title="자격면허종류" titleRatio={1} childrenRatio={2}>
-                    <Form.MuiTextField {...register("qualification_license")} required={false} />
+                    <Form.MuiTextField {...register("qualification_license")} required={false} disabled={disabled} />
                 </RowContent>
                 <RowContent title="성명" titleRatio={1} childrenRatio={2}>
-                    <Form.MuiTextField {...register("name")} required={false} />
+                    <Form.MuiTextField {...register("name")} required={false} disabled={disabled} />
                 </RowContent>
                 <RowContent title="전화번호" titleRatio={1} childrenRatio={2}>
-                    <Form.MuiTextField {...register("phone_number")} required={false} />
+                    <Form.MuiTextField {...register("phone_number")} required={false} disabled={disabled} />
                 </RowContent>
             </RowContainer>
             <TextAreaSection {...formProps} title="환자 인수 병원 기록" registerId="medical_history" required={false}/>

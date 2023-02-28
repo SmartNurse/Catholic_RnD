@@ -127,39 +127,39 @@ const FlaccContents = (props: Props) => {
 
                     <GridItem bgColor="#0000001F" text="얼굴 (face)"/>
                     <RadioGroup name={"face"} row sx={{ width: "75%", display: "flex", justifyContent: "space-around" }} onChange={onChange}>
-                        <StyledFormControlLabel value={0} label={"특별한 표정 없음 또는 미소"} control={<Radio />} />
-                        <StyledFormControlLabel value={1} label={"때때로 찡그린 얼굴 또는 찌푸림, 물러남, 무관심함"} control={<Radio />} />
-                        <StyledFormControlLabel value={2} label={"자주 지속되는 찌푸림, 꽉 다문 턱, 아래턱 떨림"} control={<Radio />} />
+                        <StyledFormControlLabel disabled={disabled} value={0} label={"특별한 표정 없음 또는 미소"} control={<Radio />} />
+                        <StyledFormControlLabel disabled={disabled} value={1} label={"때때로 찡그린 얼굴 또는 찌푸림, 물러남, 무관심함"} control={<Radio />} />
+                        <StyledFormControlLabel disabled={disabled} value={2} label={"자주 지속되는 찌푸림, 꽉 다문 턱, 아래턱 떨림"} control={<Radio />} />
                     </RadioGroup>
 
                     <GridItem bgColor="#0000001F" text="다리 (legs)"/>
                     <RadioGroup name={"legs"} row sx={{ width: "75%", display: "flex", justifyContent: "space-around" }} onChange={onChange}>
-                        <StyledFormControlLabel value={0} label={"정상적 자세 또는 이완됨"} control={<Radio />} />
-                        <StyledFormControlLabel value={1} label={"불안함, 침착하지 못함, 긴장"} control={<Radio />} />
-                        <StyledFormControlLabel value={2} label={"발을 치거나 다리를 들어 올림"} control={<Radio />} />
+                        <StyledFormControlLabel disabled={disabled} value={0} label={"정상적 자세 또는 이완됨"} control={<Radio />} />
+                        <StyledFormControlLabel disabled={disabled} value={1} label={"불안함, 침착하지 못함, 긴장"} control={<Radio />} />
+                        <StyledFormControlLabel disabled={disabled} value={2} label={"발을 치거나 다리를 들어 올림"} control={<Radio />} />
                     </RadioGroup>
 
 
                     <GridItem bgColor="#0000001F" text="활동 (acitivity)"/>
                     <RadioGroup name={"activity"} row sx={{ width: "75%", display: "flex", justifyContent: "space-around" }} onChange={onChange}>
-                        <StyledFormControlLabel value={0} label={"조용히 눕기, 정상적인 자세, 쉽게 움직임"} control={<Radio />} />
-                        <StyledFormControlLabel value={1} label={"몸부림침, 몸을 앞뒤로 뒤척거림 긴장"} control={<Radio />} />
-                        <StyledFormControlLabel value={2} label={"아치형으로 됨,굳음 또는 경련"} control={<Radio />} />
+                        <StyledFormControlLabel disabled={disabled} value={0} label={"조용히 눕기, 정상적인 자세, 쉽게 움직임"} control={<Radio />} />
+                        <StyledFormControlLabel disabled={disabled} value={1} label={"몸부림침, 몸을 앞뒤로 뒤척거림 긴장"} control={<Radio />} />
+                        <StyledFormControlLabel disabled={disabled} value={2} label={"아치형으로 됨,굳음 또는 경련"} control={<Radio />} />
                     </RadioGroup>
 
                     <GridItem bgColor="#0000001F" text="울음 (cry)"/>
                     <RadioGroup name={"cry"} row sx={{ width: "75%", display: "flex", justifyContent: "space-around" }} onChange={onChange}>
-                        <StyledFormControlLabel value={0} label={"울음 없음 (깨거나 잠)"} control={<Radio />} />
-                        <StyledFormControlLabel value={1} label={"신음소리 또는 끙끙거리는 소리, 때때로 불평함"} control={<Radio />} />
-                        <StyledFormControlLabel value={2} label={"꾸준한 울음, 비명 또는 흐느낌, 잦은 불평"} control={<Radio />} />
+                        <StyledFormControlLabel disabled={disabled} value={0} label={"울음 없음 (깨거나 잠)"} control={<Radio />} />
+                        <StyledFormControlLabel disabled={disabled} value={1} label={"신음소리 또는 끙끙거리는 소리, 때때로 불평함"} control={<Radio />} />
+                        <StyledFormControlLabel disabled={disabled} value={2} label={"꾸준한 울음, 비명 또는 흐느낌, 잦은 불평"} control={<Radio />} />
                     </RadioGroup>
 
 
                     <GridItem bgColor="#0000001F" text="진정 (consolability)"/>
                     <RadioGroup name={"consolability"} row sx={{ width: "75%", display: "flex", justifyContent: "space-around" }} onChange={onChange}>
-                        <StyledFormControlLabel value={0} label={"만족, 이완됨"} control={<Radio />} />
-                        <StyledFormControlLabel value={1} label={"때때로 접촉, 안김, 말 걸기, 안심됨"} control={<Radio />} />
-                        <StyledFormControlLabel value={2} label={"진정되거나 안위가 어려움"} control={<Radio />} />
+                        <StyledFormControlLabel disabled={disabled} value={0} label={"만족, 이완됨"} control={<Radio />} />
+                        <StyledFormControlLabel disabled={disabled} value={1} label={"때때로 접촉, 안김, 말 걸기, 안심됨"} control={<Radio />} />
+                        <StyledFormControlLabel disabled={disabled} value={2} label={"진정되거나 안위가 어려움"} control={<Radio />} />
                     </RadioGroup>
                 </Grid>
                 <Grid item xs={12}>

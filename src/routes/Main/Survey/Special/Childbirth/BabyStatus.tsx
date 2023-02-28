@@ -21,6 +21,7 @@ const BabyStatus = (props: Props) => {
             label: "성별",
             element: 
                 <Form.MuiRadioGroup
+                    disabled={disabled}
                     i18nKey='CHILDBIRTH.BABY_STATUS.GENDER'
                     values={[1, 2]}
                     defaultValue={getValues('newborn_condition.gender')}
@@ -37,6 +38,7 @@ const BabyStatus = (props: Props) => {
                         endAdornment: <InputAdornment position="end">kg</InputAdornment>
                     }}
                     required={false}
+                    disabled={disabled}
                     {...register("newborn_condition.weight")}
                 />,
         },
@@ -44,6 +46,7 @@ const BabyStatus = (props: Props) => {
             label: "산소 흡입",
             element: 
                 <Form.MuiRadioGroup
+                    disabled={disabled}
                     i18nKey='CHILDBIRTH.YES_OR_NO'
                     values={[1, 2]}
                     defaultValue={getValues('newborn_condition.oxygen_intake')}
@@ -55,6 +58,7 @@ const BabyStatus = (props: Props) => {
             label: "첫 소변",
             element: 
                 <Form.MuiRadioGroup
+                    disabled={disabled}
                     i18nKey='CHILDBIRTH.YES_OR_NO'
                     values={[1, 2]}
                     defaultValue={getValues('newborn_condition.first_urine')}
@@ -66,6 +70,7 @@ const BabyStatus = (props: Props) => {
             label: "태변 배출",
             element: 
                 <Form.MuiRadioGroup
+                    disabled={disabled}
                     i18nKey='CHILDBIRTH.YES_OR_NO'
                     values={[1, 2]}
                     defaultValue={getValues('newborn_condition.placenta_discharge')}
@@ -77,6 +82,7 @@ const BabyStatus = (props: Props) => {
             label: "태변 착색",
             element: 
                 <Form.MuiRadioGroup
+                    disabled={disabled}
                     i18nKey='CHILDBIRTH.YES_OR_NO'
                     values={[1, 2]}
                     defaultValue={getValues('newborn_condition.fetal_staining')}
@@ -88,6 +94,7 @@ const BabyStatus = (props: Props) => {
             label: "Nuchal cord",
             element: 
                 <Form.MuiRadioGroup
+                    disabled={disabled}
                     i18nKey='CHILDBIRTH.YES_OR_NO'
                     values={[1, 2]}
                     defaultValue={getValues('newborn_condition.nuchal_cord')}
@@ -102,6 +109,7 @@ const BabyStatus = (props: Props) => {
             label: "소생술",
             element: 
                 <Form.MuiRadioGroup
+                    disabled={disabled}
                     i18nKey='CHILDBIRTH.YES_OR_NO'
                     values={[1, 2]}
                     defaultValue={getValues('newborn_condition.resuscitation')}
@@ -117,6 +125,7 @@ const BabyStatus = (props: Props) => {
             element: 
                 <Form.MuiTextField
                 required={false}
+                disabled={disabled}
                     {...register("newborn_condition.specifications")}
                 />,
         },

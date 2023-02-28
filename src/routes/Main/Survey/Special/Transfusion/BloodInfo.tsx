@@ -46,11 +46,13 @@ const BloodInfo = (props: Props) => {
                         value={watch(`${variable}`)}
                         onChange={(e) => setValue(variable, e.target.value)}
                         required={variable === "volume" || variable === "transfusion_start_time" || variable === "transfusion_end_time" ? true : false}
+                        disabled={disabled}
                     />
                     }
                     {type === "label"
                     &&
                     <Form.MuiTextField
+                        disabled={disabled}
                         value={blood}
                         InputProps={{ readOnly: true }}
                     />
@@ -58,6 +60,7 @@ const BloodInfo = (props: Props) => {
                     {type === "time"
                     &&
                     <MobileTimePicker
+                        disabled={disabled}
                         value={watch(`${variable}`)}
                         onChange={(value) => setValue(variable, value)}
                         renderInput={params => (

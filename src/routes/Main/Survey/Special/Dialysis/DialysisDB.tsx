@@ -48,6 +48,7 @@ const DialysisDB = (props: Props) => {
                             {Array(4).fill(0).map((_, idx) =>
                                 <TableCell key={idx}>
                                     <MobileTimePicker
+                                        disabled={disabled}
                                         value={dialysisRecord ? dialysisRecord[idx].time : null}
                                         onChange={(v) => {
                                             let newRecord = dialysisRecord ? [...dialysisRecord] : [];
@@ -86,6 +87,7 @@ const DialysisDB = (props: Props) => {
                                                 setValue("dialysis_db", newRecord);
                                             }}
                                             required={false}
+                                            disabled={disabled}
                                         />
                                     </TableCell>
                                 )}

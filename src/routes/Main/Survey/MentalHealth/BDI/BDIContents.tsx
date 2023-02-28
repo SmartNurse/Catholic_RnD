@@ -12,7 +12,7 @@ const BDIContents = (props: Props) => {
   const { palette } = useTheme();
 
   const { radioGroup, sumValues } = useTableForm(props);
-  const { watch, setValue, getValues } = props;
+  const { disabled, watch, setValue, getValues } = props;
 
   const titles = [
     "1. 슬픈 기분", "2. 비관적 사고", "3. 실패감", "4. 만족감 감소", "5. 죄책감", 
@@ -70,7 +70,7 @@ const BDIContents = (props: Props) => {
                       {idx === 19 ? "" : `${i}점`}
                     </TableCell>
                     <TableCell>
-                      <Radio name={title} value={i} sx={{ height: "44px" }} onChange={() => setValue(`content[${idx}]`, i)}/>
+                      <Radio disabled={disabled} name={title} value={i} sx={{ height: "44px" }} onChange={() => setValue(`content[${idx}]`, i)}/>
                     </TableCell>
                   </TableRow>                
                 ))}

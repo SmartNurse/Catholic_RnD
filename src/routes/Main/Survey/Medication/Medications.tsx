@@ -65,6 +65,7 @@ const Medications = (props: Props) => {
       prescription_time: formatStringToDate(item.prescription_time, 'hh:mm a'),
       medication_time: (
         <MobileTimePicker
+          disabled={disabled}
           value={medicationTime}
           onChange={onChangeMedicationTime}
           renderInput={params => (

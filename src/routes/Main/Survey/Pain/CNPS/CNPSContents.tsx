@@ -34,12 +34,14 @@ const scoreLabel = [
     {score: "7~10", label: "매우 불편하고 아픈상태"},
 ];
 
-interface Props extends IFormValues, IFormWatch {}
+interface Props extends IFormValues, IFormWatch {
+    disabled?: boolean;
+}
 
 const CNPSContents = (props: Props) => {
     const { palette } = useTheme();
 
-    const { setValue, getValues } = props;
+    const { disabled,setValue, getValues } = props;
 
     const [sumValue, setSumValue] = useState(0);
 
@@ -111,7 +113,7 @@ const CNPSContents = (props: Props) => {
                                                 borderBottom: i !== content.desc.length-1 ? "1px solid lightgray" : ""
                                             }}>
                                                 <Box sx={{ width: "100px" }}>
-                                                    <Radio name={radioId[content.id-1]} value={i} onChange={handleChange} />
+                                                    <Radio disabled={disabled} name={radioId[content.id-1]} value={i} onChange={handleChange} />
                                                 </Box>
                                             </TableRow>
                                         )}

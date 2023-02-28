@@ -20,7 +20,7 @@ interface Props extends IFormValues {
 }
 
 const VideoForm = (props: Props) => {
-  const { user_id, patient_id, patient_name, totalSize, setTotalSize, refresh, setValue } = props;
+  const { disabled, user_id, patient_id, patient_name, totalSize, setTotalSize, refresh, setValue } = props;
 
   const { onSuccess, onFail, onResultCode, onRequired } = useNotification();
 
@@ -126,11 +126,13 @@ const VideoForm = (props: Props) => {
               />
               }
             </TableCell>
+            {!disabled &&
             <TableCell sx={{ width: "10%" }}>
               <Button variant="contained" size="small" onClick={() => deleteFile(i)}>
                 삭제
               </Button>
             </TableCell>
+            }
           </TableRow>
         ))}
       </TableBody>

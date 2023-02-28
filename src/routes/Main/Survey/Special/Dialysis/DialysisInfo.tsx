@@ -49,6 +49,7 @@ const DialysisInfo = (props: Props) => {
             label: "투석시간*",
             element: 
                 <MobileTimePicker
+                    disabled={disabled}
                     value={watch("time") || null}
                     onChange={(v) => setValue("time", v)}
                     renderInput={params => (
@@ -67,6 +68,7 @@ const DialysisInfo = (props: Props) => {
                 <Form.MuiTextField
                     {...register("dialyzer")}
                     required={false}
+                    disabled={disabled}
                 />,
         },
         {
@@ -75,6 +77,7 @@ const DialysisInfo = (props: Props) => {
                 <Form.MuiTextField
                     {...register("dialysis_machine")}
                     required={false}
+                    disabled={disabled}
                 />,
         },
         {
@@ -82,6 +85,7 @@ const DialysisInfo = (props: Props) => {
             element:
                 <Box display="flex"> 
                     <Form.MuiRadioGroup
+                        disabled={disabled}
                         i18nKey='DIALYSIS.DIALYSIS_INFO.ROUTE'
                         values={[1, 2, 3, 0]}
                         defaultValue={getValues('visiting_route')}
@@ -96,6 +100,7 @@ const DialysisInfo = (props: Props) => {
                         placeholder="직접 입력"
                         fullWidth={false}
                         required={false}
+                        disabled={disabled}
                     />
                 </Box>
         },
@@ -105,6 +110,7 @@ const DialysisInfo = (props: Props) => {
                 <Form.MuiTextField
                     {...register("dialysate")}
                     required={false}
+                    disabled={disabled}
                 />,
         },
         {
@@ -112,6 +118,7 @@ const DialysisInfo = (props: Props) => {
             element: 
                 <>
                     <Form.MuiRadioGroup
+                        disabled={disabled}
                         i18nKey='DIALYSIS.DIALYSIS_INFO.BLOOD_VESSEL'
                         values={[1, 2, 3, 0]}
                         defaultValue={bloodVessel}
@@ -128,6 +135,7 @@ const DialysisInfo = (props: Props) => {
                         placeholder="직접 입력"
                         fullWidth={false}
                         required={false}
+                        disabled={disabled}
                     />
                 </>
             ,
@@ -138,6 +146,7 @@ const DialysisInfo = (props: Props) => {
                 <Form.MuiTextField
                     {...register("starting_nurse")}
                     required={false}
+                    disabled={disabled}
                 />,
         },
         {
@@ -145,6 +154,7 @@ const DialysisInfo = (props: Props) => {
             element: 
                 <Box display="flex">
                     <Form.MuiRadioGroup
+                        disabled={disabled}
                         i18nKey='DIALYSIS.DIALYSIS_INFO.BLOOD_VESSEL'
                         values={[4, 5, 6]}
                         defaultValue={bloodVessel}
@@ -164,6 +174,7 @@ const DialysisInfo = (props: Props) => {
                 <Form.MuiTextField
                     {...register("ending_nurse")}
                     required={false}
+                    disabled={disabled}
                 />,
         },
     ];

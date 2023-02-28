@@ -29,6 +29,7 @@ const PatientInfo = (props: Props) => {
     <RowContainer xs={12}>
       <RowContent title="사고 유형" titleRatio={1} childrenRatio={5}>
         <Form.MuiRadioGroup
+          disabled={disabled}
           i18nKey='EMERGENCY.ACCIDENT_TYPE'
           values={[1, 2, 3]}
           defaultValue={getValues('accident_type')}
@@ -41,13 +42,14 @@ const PatientInfo = (props: Props) => {
         <Form.MuiTextField value={name} InputProps={{ readOnly: true }} />
       </RowContent>
       <RowContent title="주민등록번호" titleRatio={1} childrenRatio={2}>
-        <Form.MuiTextField {...register("registration_number")} required={false} />
+        <Form.MuiTextField {...register("registration_number")} required={false} disabled={disabled} />
       </RowContent>
       <RowContent title="주소" titleRatio={1} childrenRatio={5}>
-        <Form.MuiTextField {...register("address")} required={false} />
+        <Form.MuiTextField {...register("address")} required={false} disabled={disabled} />
       </RowContent>
       <RowContent title="환자 발생 구분" titleRatio={1} childrenRatio={5}>
         <Form.MuiRadioGroup
+          disabled={disabled}
           i18nKey='EMERGENCY.DIVISION'
           values={[1, 2, 3, 4, 0]}
           defaultValue={getValues('classification')}
@@ -56,7 +58,7 @@ const PatientInfo = (props: Props) => {
         />
       </RowContent>
       <RowContent title="발생 장소" titleRatio={1} childrenRatio={2}>
-        <Form.MuiTextField {...register("accident_location")} required={false} />
+        <Form.MuiTextField {...register("accident_location")} required={false} disabled={disabled} />
       </RowContent>
       <RowContent title="" titleRatio={1} childrenRatio={2} />
       <RowContent title="환자 발생 시간" titleRatio={1} childrenRatio={5}>
@@ -69,6 +71,7 @@ const PatientInfo = (props: Props) => {
             sx={{ marginRight: "10px" }}
           />
           <MobileTimePicker
+            disabled={disabled}
             value={watch("accident_time") || null}
             onChange={(v) => setValue("accident_time", v)}
             renderInput={params => (
@@ -92,6 +95,7 @@ const PatientInfo = (props: Props) => {
             sx={{ marginRight: "10px" }}
           />
           <MobileTimePicker
+            disabled={disabled}
             value={watch("arrival_time") || null}
             onChange={(v) => setValue("arrival_time", v)}
             renderInput={params => (

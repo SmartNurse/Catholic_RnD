@@ -32,6 +32,7 @@ const OperationInfo = (props: Props) => {
                 <Form.MuiTextField
                     {...register("operation_information.operating_department")}
                     required={false}
+                    disabled={disabled}
                 />,
         },
         {
@@ -48,6 +49,7 @@ const OperationInfo = (props: Props) => {
             label: "수술시간",
             element:
                 <MobileTimePicker
+                    disabled={disabled}
                     value={watch("operation_information.operating_time") || null}
                     onChange={(v) => setValue("operation_information.operating_time", v)}
                     renderInput={params => (
@@ -66,6 +68,7 @@ const OperationInfo = (props: Props) => {
                 <Form.MuiTextField
                     {...register("operation_information.operation_name")}
                     required={false}
+                    disabled={disabled}
                 />,
         },
         {
@@ -74,6 +77,7 @@ const OperationInfo = (props: Props) => {
                 <Form.MuiTextField
                     select
                     required={false}
+                    disabled={disabled}
                     defaultValue={getValues("operation_information.npo_status")}
                     {...register("operation_information.npo_status")}
                 >
@@ -88,6 +92,7 @@ const OperationInfo = (props: Props) => {
                     <Form.MuiTextField
                         select
                         required={false}
+                        disabled={disabled}
                         defaultValue={
                             [...position_labels, undefined].includes(getValues("operation_information.position"))
                             ? getValues("operation_information.position")
@@ -109,6 +114,7 @@ const OperationInfo = (props: Props) => {
                     <Form.MuiTextField
                         {...register("operation_information.position_etc")}
                         required={false}
+                        disabled={disabled}
                         placeholder="직접 입력"
                         sx={{ marginLeft: "5px" }}
                     />
@@ -124,14 +130,17 @@ const OperationInfo = (props: Props) => {
                 <Form.MuiTextField
                     sx={{ width: "37%" }}
                     required={false}
+                    disabled={disabled}
                     {...register("operation_information.past_history_and_allergy")}
                 />
                 <FormControlLabel
+                    disabled={disabled}
                     control={<Checkbox defaultChecked={getValues("operation_information.preoperative_xray")} {...register("operation_information.preoperative_xray")} />}
                     label="수술 전 흉부 X-ray"
                     sx={{ marginLeft: "20px" }}
                 />
                 <FormControlLabel
+                    disabled={disabled}
                     control={<Checkbox defaultChecked={getValues("operation_information.preoperative_ekg")} {...register("operation_information.preoperative_ekg")} />}
                     label="수술 전 심전도"
                     sx={{ marginLeft: "20px" }}
@@ -144,6 +153,7 @@ const OperationInfo = (props: Props) => {
                 <Form.MuiTextField
                     select
                     required={false}
+                    disabled={disabled}
                     defaultValue={getValues("operation_information.emergency_status")}
                     {...register("operation_information.emergency_status")}
                 >
@@ -157,6 +167,7 @@ const OperationInfo = (props: Props) => {
                 <Form.MuiTextField
                     select
                     required={false}
+                    disabled={disabled}
                     defaultValue={getValues("operation_information.asa_class")}
                     {...register("operation_information.asa_class")}
                 >
@@ -169,6 +180,7 @@ const OperationInfo = (props: Props) => {
                 <Form.MuiTextField
                     select
                     required={false}
+                    disabled={disabled}
                     defaultValue={getValues("operation_information.prophylactic_antibiotics")}
                     {...register("operation_information.prophylactic_antibiotics")}
                 >
@@ -183,6 +195,7 @@ const OperationInfo = (props: Props) => {
                 <Form.MuiTextField
                     select
                     required={false}
+                    disabled={disabled}
                     defaultValue={
                         [...method_labels, undefined].includes(getValues("operation_information.prophylactic_method"))
                         ? getValues("operation_information.prophylactic_method")

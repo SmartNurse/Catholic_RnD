@@ -30,6 +30,7 @@ const NewOpInfo = (props: Props) => {
                 <Form.MuiTextField
                     {...register("operation_information.operating_department")}
                     required={false}
+                    disabled={disabled}
                 />,
         },
         {
@@ -48,6 +49,7 @@ const NewOpInfo = (props: Props) => {
                 <MobileTimePicker
                     value={watch("operation_information.operating_time") || null}
                     onChange={(v) => setValue("operation_information.operating_time", v)}
+                    disabled={disabled}
                     renderInput={params => (
                     <Form.MuiTextField
                         {...params}
@@ -65,6 +67,7 @@ const NewOpInfo = (props: Props) => {
                     select
                     required={false}
                     defaultValue={getValues("operation_information.asa_class")}
+                    disabled={disabled}
                     {...register("operation_information.asa_class")}
                 >
                     {asa_class_labels.map((option) => <MenuItem value={option}>{option}</MenuItem>)}
@@ -76,6 +79,7 @@ const NewOpInfo = (props: Props) => {
                 <Form.MuiTextField
                     {...register("operation_information.main_operation_name")}
                     required={false}
+                    disabled={disabled}
                 />,
         },
         {
@@ -84,6 +88,7 @@ const NewOpInfo = (props: Props) => {
                 <Form.MuiTextField
                     {...register("operation_information.minor_operation_name")}
                     required={false}
+                    disabled={disabled}
                 />,
         },
         {
@@ -92,6 +97,7 @@ const NewOpInfo = (props: Props) => {
                 <Form.MuiTextField
                     {...register("operation_information.past_history")}
                     required={false}
+                    disabled={disabled}
                 />,
         },
         {
@@ -100,6 +106,7 @@ const NewOpInfo = (props: Props) => {
                 <Form.MuiTextField
                     {...register("operation_information.allergy")}
                     required={false}
+                    disabled={disabled}
                 />,
         },
         {
@@ -108,6 +115,7 @@ const NewOpInfo = (props: Props) => {
                 <Form.MuiTextField
                     select
                     required={false}
+                    disabled={disabled}
                     defaultValue={getValues("operation_information.npo_status")}
                     {...register("operation_information.npo_status")}
                 >
@@ -121,6 +129,7 @@ const NewOpInfo = (props: Props) => {
                 <Form.MuiTextField
                     select
                     required={false}
+                    disabled={disabled}
                     defaultValue={getValues("operation_information.prophylactic_antibiotics")}
                     {...register("operation_information.prophylactic_antibiotics")}
                 >
@@ -136,6 +145,7 @@ const NewOpInfo = (props: Props) => {
                     <Form.MuiTextField
                         select
                         required={false}
+                        disabled={disabled}
                         sx={{ width: `${postureEtc ? "18%" : "37%"}` }}
                         defaultValue={
                             [...position_labels, undefined].includes(getValues("operation_information.position"))
@@ -164,11 +174,13 @@ const NewOpInfo = (props: Props) => {
                     null
                     }
                     <FormControlLabel
+                        disabled={disabled}
                         control={<Checkbox defaultChecked={getValues("operation_information.preoperative_xray")} {...register("operation_information.preoperative_xray")} />}
                         label="수술 전 흉부 X-ray"
                         sx={{ marginLeft: "20px" }}
                     />
                     <FormControlLabel
+                        disabled={disabled}
                         control={<Checkbox defaultChecked={getValues("operation_information.preoperative_ekg")} {...register("operation_information.preoperative_ekg")} />}
                         defaultValue={getValues("operation_information.preoperative_ekg")}
                         label="수술 전 심전도"

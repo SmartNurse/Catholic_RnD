@@ -34,6 +34,7 @@ const ChildbirthInfo = (props: Props) => {
       {...register("child_birth_information.date")}
     />,
     <MobileTimePicker
+      disabled={disabled}
       value={watch("child_birth_information.time") || null}
       onChange={(v) => setValue("child_birth_information.time", v)}
       renderInput={params => (
@@ -48,6 +49,7 @@ const ChildbirthInfo = (props: Props) => {
     <MuiTextField
       {...register("child_birth_information.type")}
       required={false}
+      disabled={disabled}
     />
   ];
 

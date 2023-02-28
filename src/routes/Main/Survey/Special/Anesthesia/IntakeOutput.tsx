@@ -38,6 +38,7 @@ const IntakeOutput = (props: Props) => {
                                     {...register(variable)}
                                     sx={{ width: "15%", margin: "0px 15px" }}
                                     required={false}
+                                    disabled={disabled}
                                 />
                             </>
                         ))}
@@ -52,6 +53,7 @@ const IntakeOutput = (props: Props) => {
                                     {...register(variable)}
                                     sx={{ width: "15%", margin: "0px 15px" }}
                                     required={false}
+                                    disabled={disabled}
                                 />
                             </>
                         ))}

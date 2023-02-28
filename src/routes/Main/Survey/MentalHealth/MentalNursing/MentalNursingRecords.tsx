@@ -227,7 +227,7 @@ const GlucoseRecords = (props: Props) => {
       <Grid item xs={12}>
         <Table sx={{ minWidth: 650 }} aria-label="simple table">
           <TableBody>
-            {inputRows.map((row) => (
+            {!disabled && inputRows.map((row) => (
               <TableRow
                 key={row.label}
                 sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
