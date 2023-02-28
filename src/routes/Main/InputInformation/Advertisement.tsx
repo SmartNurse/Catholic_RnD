@@ -1,14 +1,10 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import useInterval from "../../../hooks/useInterval";
 
-import Ad1 from "../../../assets/Ad1.png";
-import Ad2 from "../../../assets/Ad2.png";
+const Ads = ["1", "2", "3", "4"].map((v) => (
+    {src: process.env.PUBLIC_URL + "/Ad" + v + ".png", href: "https://smartnurse.notion.site/smartnurse/ENR-e58617d80cda481f90d976fa97d9916d" }
+));
 
-
-const Ads = [
-    {src: Ad1, href: "https://smartnurse.notion.site/smartnurse/ENR-e58617d80cda481f90d976fa97d9916d"},
-    {src: Ad2, href: "https://smartnurse.notion.site/smartnurse/ENR-e58617d80cda481f90d976fa97d9916d"},
-];
 const DELAY_VALUE = 30000;
 
 const Advertisement = () => {
