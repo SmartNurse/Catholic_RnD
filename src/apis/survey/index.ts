@@ -28,6 +28,7 @@ import {
   IUpdateDialysis,
   IUpdateEmergency,
   IUpdateChildbirth,
+  IUpdateHomeCare,
   IUpdateDietNutrition,
   IUpdateHospitalConfirm,
   IUpdateFallConfirm,
@@ -306,6 +307,17 @@ export const getChildbirth = (request: IGetSurvey) => {
 
 export const updateChildbirth = (request: IUpdateChildbirth) => {
   const url = `/survey/delivery`;
+  return apiGateway.post(url, camelcaseKeys(request));
+};
+
+// 가정간호 기록지
+export const getHomeCare = (request: IGetSurvey) => {
+  const url = `/survey/homecare?${formatToRequestParameter(request)}`;
+  return apiGateway.get(url);
+};
+
+export const updateHomeCare = (request: IUpdateHomeCare) => {
+  const url = `/survey/homecare`;
   return apiGateway.post(url, camelcaseKeys(request));
 };
 

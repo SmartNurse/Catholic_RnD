@@ -570,6 +570,32 @@ export interface IUpdateChildbirth extends IGetSurvey {
   }
 }
 
+// 가정간호 기록지
+export interface IHomeCareRecord {
+  date: string;
+  content: string;
+}
+
+export interface IUpdateHomeCare extends IGetSurvey {
+  homecare_survey: {
+    basic_information: {
+      occupation: string;
+      insurance_type: string;
+      residence: string;
+      religion: string;
+      nursing_provider: string;
+      sanitary: string;
+      marital_status: string;
+      past_history: string;
+      safety: string;
+    },
+    request_status: IHomeCareRecord[],
+    inspection_findings: IHomeCareRecord[],
+    medication_records: IHomeCareRecord[],
+    need_service: string;
+  }
+}
+
 // 식이/영양 기록지
 export interface IUpdateDietNutrition extends IGetSurvey {
   dietary_survey : {

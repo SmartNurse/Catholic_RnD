@@ -542,6 +542,28 @@ export const initialChildbirth = {
   nursing_records: [],
 };
 
+export const initialHomeCare = {
+  update_at: '',
+  basic_information: {
+    occupation: "",
+    insurance_type: "",
+    residence: "",
+    residence_etc: "",
+    religion: "",
+    nursing_provider: "",
+    sanitary: "",
+    sanitary_notes: "",
+    marital_status: "",
+    past_history: "",
+    safety: "",
+    safety_notes: "",
+  },
+  request_status: [],
+  inspection_findings: [],
+  medication_records: [],
+  need_service: "",
+};
+
 export const initialDietNutrition = {
   update_at: '',
   birth: '',

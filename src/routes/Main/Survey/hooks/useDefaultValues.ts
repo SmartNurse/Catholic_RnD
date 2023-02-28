@@ -24,6 +24,7 @@ import {
   getDialysis,
   getEmergency,
   getChildbirth,
+  getHomeCare,
   getDietNutrition,
   getFallConfirm,
   getHospitalConfirm,
@@ -59,6 +60,7 @@ import {
   initialDialysis,
   initialEmergency,
   initialChildbirth,
+  initialHomeCare,
   initialDietNutrition,
   initialHospitalConfirm,
   initialFallConfirm,
@@ -353,6 +355,17 @@ const useDefaultValues = ({ setDefaultValues, user_id }: Props) => {
           convertDataToStates({ update_at, ...delivery_survey }, initialChildbirth);
         })
         .catch(e => onFail('알 수 없는 오류가 발생했습니다.', e));
+        break;
+      case MENU.HOME_CARE:
+        /*
+        getHomeCare({ user_id, patient_id })
+        .then(({ data }) => {
+          const { update_at, homecare_survey } = data;
+          convertDataToStates({ update_at, ...homecare_survey }, initialHomeCare);
+        })
+        .catch(e => onFail('알 수 없는 오류가 발생했습니다.', e));
+        */
+        convertDataToStates(initialHomeCare, initialHomeCare);
         break;
       case MENU.DIET_NUTRITION:
         getDietNutrition({ user_id, patient_id })

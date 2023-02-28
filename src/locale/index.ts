@@ -382,6 +382,21 @@ const locale = {
     'CHILDBIRTH.PLACENTA_REMOVAL.METHOD.1' : '자연박리',
     'CHILDBIRTH.PLACENTA_REMOVAL.METHOD.2' : '용수박리',
 
+    // home_care
+    'HOME_CARE.INSURANCE_TYPE.1': '건강보험',
+    'HOME_CARE.INSURANCE_TYPE.2': '의료급여',
+    'HOME_CARE.INSURANCE_TYPE.3': '보훈',
+
+    'HOME_CARE.RESIDENCE.1': '아파트',
+    'HOME_CARE.RESIDENCE.2': '연립',
+    'HOME_CARE.RESIDENCE.3': '단독주택',
+
+    'HOME_CARE.SANITARY.1': '양호',
+    'HOME_CARE.SANITARY.2': '불량',
+
+    'HOME_CARE.SAFETY.1': '양호',
+    'HOME_CARE.SAFETY.2': '불량',
+
     // diet_nutrition
     'DIET_NUTRITION.CLASSIFICATION.1': '환자',
     'DIET_NUTRITION.CLASSIFICATION.2': '보호자',

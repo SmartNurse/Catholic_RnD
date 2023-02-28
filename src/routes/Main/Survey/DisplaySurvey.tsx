@@ -28,6 +28,7 @@ import Transfusion from './Special/Transfusion';
 import Dialysis from './Special/Dialysis';
 import Emergency from  './Special/Emergency';
 import Childbirth from './Special/Childbirth';
+import HomeCare from './Special/HomeCare';
 import DietNutrition from './DietNutrition';
 import HospitalizationInfo from './Agreement/HospitalizationInfo';
 import FallPrevention from './Agreement/FallPrevention';
@@ -155,6 +156,10 @@ const DisplaySurvey = (props: Props) => {
     case MENU.CHILDBIRTH: {
       if (!defaultValues) return null;
       return <Childbirth {...dialogProps} onClose={onCloseSave} />;
+    }
+    case MENU.HOME_CARE: {
+      if (!defaultValues) return null;
+      return <HomeCare {...dialogProps} onClose={onCloseSave} />;
     }
     case MENU.DIET_NUTRITION: {
       if (!defaultValues) return null;
