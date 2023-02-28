@@ -22,7 +22,7 @@ const PatientInfoItem = ({ title, content }: Props) => {
         color={palette.text.primary}
         sx={{ minWidth: 50 }}
       >
-        {content ? content : '-'}
+        {!content && content !== 0 ? '-' : content}
       </Typography>
     );
   };
