@@ -228,20 +228,24 @@ const MenuRecords = (props: Props) => {
       toggle: toggle.special,
     },
     {
+      isPro: true,
       icon: <RestaurantMenu />,
       label: '식이/영양 기록지',
     },
     {
+      isPro: true,
       disabled: true,
       icon: <VerifiedUserOutlined />,
       label: '동의서',
       id: 'agreement'
     },
     {
+      isPro: true,
       label: '입원 안내 확인서',
       toggle: toggle.agreement,
     },
     {
+      isPro: true,
       label: '낙상 예방교육 확인서',
       toggle: toggle.agreement,
     },

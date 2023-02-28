@@ -85,6 +85,7 @@ const MenuSettings = (props: Props) => {
       }
     },
     {
+      isPro: true,
       icon: <DateRangeOutlined />,
       label: '간호사 근무 스케줄표',
       buttonClick: {
