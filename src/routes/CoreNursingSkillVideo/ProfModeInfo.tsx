@@ -2,7 +2,7 @@ import Form from 'components/Form';
 import RowContainer from '../Main/Survey/components/RowContainer';
 import RowContent from '../Main/Survey/components/RowContent';
 
-import { Typography, Box, useTheme } from "@mui/material";
+import { Typography, Stack, useTheme } from "@mui/material";
 
 import useStudent from 'store/student/useStudent';
 
@@ -25,19 +25,21 @@ const ProfModeInfo = (props: Props) => {
 
   return (
     <RowContainer xs={12}>
-      {infos.map(({ title, value }) => 
-        <RowContent title={title} titleRatio={1} childrenRatio={3}>
-          {title === "용량" 
-          ?
-          <Box sx={{ width: "100%", textAlign: "right" }}>
-            <Typography sx={{ color: `${palette.primary.main}` }} fontSize="14px" lineHeight="37.125px" display="inline">{value}</Typography>
-            <Typography fontSize="14px" display="inline"> / 10GB</Typography>
-          </Box>
-          :
-          <Form.MuiTextField value={value} InputProps={{ readOnly: true }} />
-          }
-        </RowContent>
-      )}
+      <RowContent title="간호사" titleRatio={1} childrenRatio={2.5}>
+        <Form.MuiTextField value={student_name} InputProps={{ readOnly: true }} />
+      </RowContent>
+      <RowContent title="학번" titleRatio={1} childrenRatio={2.5}>
+        <Form.MuiTextField value={student_no} InputProps={{ readOnly: true }} />
+      </RowContent>
+      <RowContent title="용량" titleRatio={1} childrenRatio={4}>
+        <Stack direction="row" spacing={2}>
+          <Typography sx={{ color: `${palette.primary.main}` }} fontSize="14px" lineHeight="37.125px" display="inline">{totalSize + "GB"}</Typography>
+          <Typography fontSize="14px" lineHeight="37.125px" display="inline"> / 10GB</Typography>
+          <Typography sx={{ color: `${palette.primary.main}` }} fontSize="14px" lineHeight="37.125px" display="inline">
+            파일 당 최대 500MB
+          </Typography>
+        </Stack>
+      </RowContent>
     </RowContainer>
   );
 
