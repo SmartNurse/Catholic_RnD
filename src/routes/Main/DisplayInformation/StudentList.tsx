@@ -35,7 +35,7 @@ const StudentList = ({ user_id }: Pick<IOption, 'user_id'>) => {
       getOptionLabel={optionLabel}
       renderOption={(props, option) => <Option {...props} {...option} />}
       onChange={onSelectedStudent}
-      getApi={request => getStudentList({ user_id, ...request })}
+      getApi={request => isNaN(Number(request.keyword)) ? getStudentList({ user_id, searchType: 1, ...request }) : getStudentList({ user_id, searchType: 2, ...request }) }
     />
   );
 };

@@ -54,6 +54,9 @@ export interface IPatientMemo {
 
 export interface IGetStudentList extends IGetSearch {
   user_id: number;
+  searchType: number;
 }
 
-export interface IGetPatientList extends IGetStudentList {}
+export interface IGetPatientList extends IGetSearch {
+  user_id: number;
+}
