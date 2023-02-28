@@ -33,29 +33,21 @@ const HomeCare = (props: SurveyDialogProps<THomeCareDefaultValues>) => {
         onClose,
     } = props;
 
-    const [opDate, setOpDate] = useState("");
-
     const { onUpdateIsSave } = useSurvey();
     const { onSuccess, onFail, onResultCode, onRequired } = useNotification();
 
     const { handleSubmit, register, getValues, setValue, watch } = useForm({
-    defaultValues,
+      defaultValues,
     });
 
     const onSubmit = (data: THomeCareDefaultValues) => {
-      /*
       const { basic_information, request_status, inspection_findings, medication_records, need_service } = data;
 
       const request = {
         user_id,
         patient_id: patientInfo.patient_id,
         homecare_survey: {
-          basic_information: {
-            ...basic_information,
-            residence: basic_information.residence + "&" + basic_information.residence_etc,
-            sanitary: basic_information.sanitary + "&" + basic_information.sanitary_notes,
-            safety: basic_information.safety + "&" + basic_information.safety_notes,
-          },
+          basic_information,
           request_status,
           inspection_findings,
           medication_records,
@@ -71,7 +63,6 @@ const HomeCare = (props: SurveyDialogProps<THomeCareDefaultValues>) => {
         onSuccess('가정간호 기록지 저장에 성공하였습니다.');
       })
       .catch(e => onFail('가정간호 기록지 저장에 실패하였습니다.', e));
-      */
     };
 
     const formProps = { disabled, watch, register, getValues, setValue, onSuccess, onRequired };
