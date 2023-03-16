@@ -50,7 +50,7 @@
     "start:dev": "dotenv -e .env.development react-scripts start",
     "build:dev": "rm -rf build && dotenv -e .env.development react-scripts build",
     "prepublish:dev": "yarn build:dev",
-    "publish:dev": "aws s3 sync ./build s3://smartnurse-standard --profile=Diane"
+    "publish:dev": "aws s3 sync ./build s3://smartnurse-standard --profile=standardJS"
   },
   "eslintConfig": {
     "extends": [

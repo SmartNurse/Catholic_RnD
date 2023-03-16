@@ -103,7 +103,26 @@ const MenuRecords = (props: Props) => {
       id: 'patient_evaluation'
     },
     {
-      label: '욕창위험도 평가도구',
+      label: '낙상위험 평가도구 I',
+      toggle: toggle.patient_evaluation,
+    },
+    {
+      isPro: true,
+      label: '낙상위험 평가도구 II',
+      toggle: toggle.patient_evaluation,
+    },
+    {
+      isPro: true,
+      label: '소아 낙상위험도 평가',
+      toggle: toggle.patient_evaluation,
+    },
+    {
+      label: '욕창위험 평가도구 I',
+      toggle: toggle.patient_evaluation,
+    },
+    { 
+      isPro: true,
+      label: '욕창위험 평가도구 II',
       toggle: toggle.patient_evaluation,
     },
     {
@@ -111,10 +130,7 @@ const MenuRecords = (props: Props) => {
       toggle: toggle.patient_evaluation,
     },
     {
-      label: '낙상위험도 평가도구',
-      toggle: toggle.patient_evaluation,
-    },
-    {
+      isPro: true,
       label: '환자안전사고보고서',
       toggle: toggle.patient_evaluation,
     },

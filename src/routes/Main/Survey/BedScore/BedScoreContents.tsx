@@ -85,7 +85,7 @@ const BedScoreContents = (props: Props) => {
 
   return (
     <Fragment>
-      <SectionTitle title="욕창위험도평가" />
+      <SectionTitle title="욕창위험 평가도구 I" />
       <Grid item xs={12}>
         <MuiTable columns={columns} rows={rows} />
       </Grid>

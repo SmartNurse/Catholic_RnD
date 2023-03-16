@@ -92,7 +92,7 @@ const FallContents = (props: Props) => {
 
   return (
     <Fragment>
-      <SectionTitle title="낙상위험도평가" />
+      <SectionTitle title="낙상위험 평가도구 I" />
       <Grid item xs={12}>
         <MuiTable columns={columns} rows={rows} />
       </Grid>
