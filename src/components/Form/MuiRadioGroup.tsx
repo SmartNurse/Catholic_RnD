@@ -16,6 +16,7 @@ interface Props extends RadioGroupProps {
   disabled?: boolean;
   width?: string;
   direction?: string;
+  whiteSpace?: string;
   onChange?: (value: any) => void;
 }
 
@@ -26,6 +27,7 @@ const MuiRadioGroup = ({
   defaultValue,
   disabled,
   width,
+  whiteSpace,
   direction,
   onChange,
   ...props
@@ -41,7 +43,7 @@ const MuiRadioGroup = ({
     <RadioGroup
       row
       defaultValue={defaultValue}
-      sx={{ flexWrap: 'nowrap', whiteSpace: 'nowrap', display: 'inline-flex' }}
+      sx={{ flexWrap: 'nowrap', whiteSpace: 'pre', display: 'inline-flex' }}
       onChange={(_, value) => onChange && onChange(value)}
       {...props}
     >

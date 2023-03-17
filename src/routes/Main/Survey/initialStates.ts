@@ -286,6 +286,19 @@ export const initialFall = {
   },
 };
 
+export const initialFallTwo = {
+  date: '',
+  update_at: '',
+  contents: {
+    experience: '',
+    diagnosis: '',
+    walkingAids: '',
+    intravenousLine: '',
+    gait: '',
+    consciousness: '',
+  },
+};
+
 export const initialSafety = {
   update_at: "",
   accident_consequences_details: {

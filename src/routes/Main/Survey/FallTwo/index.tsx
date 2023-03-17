@@ -5,12 +5,12 @@ import { updateFall } from 'apis/survey';
 import useSurvey from 'store/survey/useSurvey';
 import useNotification from 'hooks/useNotification';
 import MuiDialog from 'components/MuiDialog';
-import { TFallDefaultValues, SurveyDialogProps } from 'routes/Main/Survey/type';
+import { TFallTwoDefaultValues, SurveyDialogProps } from 'routes/Main/Survey/type';
 
 import CommonPatientInfo from '../components/CommonPatientInfo';
-import FallContents from './FallContents';
+import FallTwoContents from './FallTwoContents';
 
-const Fall = (props: SurveyDialogProps<TFallDefaultValues>) => {
+const FallTwo = (props: SurveyDialogProps<TFallTwoDefaultValues>) => {
   const {
     title,
     isOpen,
@@ -29,7 +29,7 @@ const Fall = (props: SurveyDialogProps<TFallDefaultValues>) => {
     defaultValues,
   });
 
-  const onSubmit = (data: TFallDefaultValues) => {
+  const onSubmit = (data: TFallTwoDefaultValues) => {
     const { patient_id } = patientInfo;
     const { contents, date } = data;
 
@@ -47,9 +47,9 @@ const Fall = (props: SurveyDialogProps<TFallDefaultValues>) => {
       .then(({ data: { rc } }) => {
         if (rc !== 1) return onResultCode(rc);
         onUpdateIsSave(true);
-        onSuccess('낙상위험 평가도구 I 저장에 성공하였습니다.');
+        onSuccess('낙상위험 평가도구 II 저장에 성공하였습니다.');
       })
-      .catch(e => onFail('낙상위험 평가도구 I 저장에 실패하였습니다.', e));
+      .catch(e => onFail('낙상위험 평가도구 II 저장에 실패하였습니다.', e));
   };
 
   const formProps = {
@@ -76,10 +76,10 @@ const Fall = (props: SurveyDialogProps<TFallDefaultValues>) => {
         sx={{ py: 5, px: 1 }}
       >
         <CommonPatientInfo patientInfo={patientInfo} nurseName={nurseName} />
-        <FallContents {...formProps} />
+        <FallTwoContents {...formProps} />
       </Grid>
     </MuiDialog.SurveyForm>
   );
 };
 
-export default Fall;
+export default FallTwo;

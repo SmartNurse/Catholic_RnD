@@ -12,6 +12,7 @@ export interface IUseTableRadioGroup {
   i18nKey?: string;
   i18nNullKey?: string;
   width?: string;
+  whiteSpace?: string;
 }
 export interface IUseTableCheckbox {
   key: string;

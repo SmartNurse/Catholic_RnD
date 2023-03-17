@@ -13,6 +13,7 @@ import ClinicalObservation from './ClinicalObservation';
 import Glucose from "./Glucose";
 import BedScore from './BedScore';
 import Fall from './Fall';
+import FallTwo from './FallTwo';
 import Needs from './Needs';
 import Safety from './Safety';
 import NRS from './Pain/NRS';
@@ -100,6 +101,10 @@ const DisplaySurvey = (props: Props) => {
     case MENU.FALL: {
       if (!defaultValues) return null;
       return <Fall {...dialogProps} onClose={onCloseSave} />;
+    }
+    case MENU.FALLTWO: {
+      if (!defaultValues) return null;
+      return <FallTwo {...dialogProps} onClose={onCloseSave} />;
     }
     case MENU.SAFETY: {
       if (!defaultValues) return null;

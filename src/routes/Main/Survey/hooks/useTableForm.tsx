@@ -15,6 +15,7 @@ const useTableForm = (props: IUseTableFormProps) => {
     i18nKey,
     i18nNullKey,
     width,
+    whiteSpace
   }: IUseTableRadioGroup) => {
     let radio = {} as any;
     if (!watch) return null;
@@ -32,6 +33,7 @@ const useTableForm = (props: IUseTableFormProps) => {
           value={value}
           onChange={(v: any) => setValue(key, v)}
           width={width}
+          whiteSpace={whiteSpace}
         />
       );
       return null;

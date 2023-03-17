@@ -223,11 +223,19 @@ export interface IUpdateNeeds extends IGetSurvey {
   reason2: string;
 }
 
-// 낙상위험도평가도구
+// 낙상위험도평가도구 I
 export interface IUpdateFall extends IGetSurvey {
   date: string;
   contents: string;
 }
+
+// 낙상위험 평가도구 II
+export interface IUpdateFallTwo extends IGetSurvey {
+  date: string;
+  contents: string;
+}
+
+
 
 // 환자안전사고보고서
 export interface IUpdateSafety extends IGetSurvey {

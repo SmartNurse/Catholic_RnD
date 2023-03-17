@@ -17,8 +17,8 @@ const PatientInfo = (props: Props) => {
   } = props;
 
   const infos = [
-    {title: "환자등록번호", value: patient_id},
     {title: "환자명", value: name},
+    {title: "환자등록번호", value: patient_id},
     {title: "나이", value: age},
     {title: "성별", value: gender},
     {title: "병동", value: ward},

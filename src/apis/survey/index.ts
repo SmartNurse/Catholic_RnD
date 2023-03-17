@@ -8,6 +8,7 @@ import {
   ICreateOutHospital,
   IUpdateMedication,
   IUpdateFall,
+  IUpdateFallTwo,
   IUpdateBedScore,
   IUpdateNeeds,
   IUpdateClinicObservation,
@@ -145,7 +146,7 @@ export const updateNeeds = (request: IUpdateNeeds) => {
   return apiGateway.post(url, camelcaseKeys(request));
 };
 
-// 낙상위험도평가도구
+// 낙상위험도평가도구 I
 export const getFall = (request: IGetSurvey) => {
   const url = `/survey/fall?${formatToRequestParameter(request)}`;
   return apiGateway.get(url);
@@ -155,6 +156,18 @@ export const updateFall = (request: IUpdateFall) => {
   const url = `/survey/fall`;
   return apiGateway.post(url, camelcaseKeys(request));
 };
+
+// 낙상위험 평가도구 II
+export const getFallTwo = (request: IGetSurvey) => {
+  const url = `/survey/fall?${formatToRequestParameter(request)}`;
+  return apiGateway.get(url);
+};
+
+export const updateFallTwo = (request: IUpdateFallTwo) => {
+  const url = `/survey/fall`;
+  return apiGateway.post(url, camelcaseKeys(request));
+};
+
 
 // 환자안전사고보고서
 export const getSafety = (request: IGetSurvey) => {
