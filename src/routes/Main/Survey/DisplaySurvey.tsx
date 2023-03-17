@@ -12,6 +12,7 @@ import Pathology from './Pathology';
 import ClinicalObservation from './ClinicalObservation';
 import Glucose from "./Glucose";
 import BedScore from './BedScore';
+import BedScoreTwo from './BedScoreTwo';
 import Fall from './Fall';
 import FallTwo from './FallTwo';
 import Needs from './Needs';
@@ -93,6 +94,10 @@ const DisplaySurvey = (props: Props) => {
     case MENU.BEDSORES: {
       if (!defaultValues) return null;
       return <BedScore {...dialogProps} onClose={onCloseSave} />;
+    }
+    case MENU.BEDSORESTWO: {
+      if (!defaultValues) return null;
+      return <BedScoreTwo {...dialogProps} onClose={onCloseSave} />;
     }
     case MENU.NEEDS: {
       if (!defaultValues) return null;

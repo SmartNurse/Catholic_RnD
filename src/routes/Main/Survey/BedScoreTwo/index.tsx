@@ -6,14 +6,14 @@ import useSurvey from 'store/survey/useSurvey';
 import useNotification from 'hooks/useNotification';
 import MuiDialog from 'components/MuiDialog';
 import {
-  TBedScoreDefaultValues,
+  TBedScoreTwoDefaultValues,
   SurveyDialogProps,
 } from 'routes/Main/Survey/type';
 
 import CommonPatientInfo from '../components/CommonPatientInfo';
-import BedScoreContents from './BedScoreContents';
+import BedScoreTwoContents from './BedScoreTwoContents';
 
-const BedScore = (props: SurveyDialogProps<TBedScoreDefaultValues>) => {
+const BedScore = (props: SurveyDialogProps<TBedScoreTwoDefaultValues>) => {
   const {
     title,
     isOpen,
@@ -32,7 +32,7 @@ const BedScore = (props: SurveyDialogProps<TBedScoreDefaultValues>) => {
     defaultValues,
   });
 
-  const onSubmit = (data: TBedScoreDefaultValues) => {
+  const onSubmit = (data: TBedScoreTwoDefaultValues) => {
     const { patient_id } = patientInfo;
     const { contents, date } = data;
 
@@ -50,9 +50,9 @@ const BedScore = (props: SurveyDialogProps<TBedScoreDefaultValues>) => {
       .then(({ data: { rc } }) => {
         if (rc !== 1) return onResultCode(rc);
         onUpdateIsSave(true);
-        onSuccess('욕창위험 평가도구 I 저장에 성공하였습니다.');
+        onSuccess('욕창위험 평가도구 II 저장에 성공하였습니다.');
       })
-      .catch(e => onFail('욕창위험 평가도구 I 저장에 실패하였습니다.', e));
+      .catch(e => onFail('욕창위험 평가도구 II 저장에 실패하였습니다.', e));
   };
 
   const formProps = { disabled, watch, register, getValues, setValue };
@@ -73,7 +73,7 @@ const BedScore = (props: SurveyDialogProps<TBedScoreDefaultValues>) => {
         sx={{ py: 5, px: 1 }}
       >
         <CommonPatientInfo patientInfo={patientInfo} nurseName={nurseName} />
-        <BedScoreContents {...formProps} />
+        <BedScoreTwoContents {...formProps} />
       </Grid>
     </MuiDialog.SurveyForm>
   );

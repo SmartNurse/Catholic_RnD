@@ -183,7 +183,7 @@ const locale = {
     // clinical observation
     'CLINICAL.OBSERVATION.ADD.ROW': '입력하지 않은 값이 있습니다.',
 
-    // bedScore
+    // bedScore I
     'BED.SCORE.SENSORY.PERCEPTION.1': '완전 제한',
     'BED.SCORE.SENSORY.PERCEPTION.2': '매우 제한',
     'BED.SCORE.SENSORY.PERCEPTION.3': '약간 제한',
@@ -208,6 +208,32 @@ const locale = {
     'BED.SCORE.FRICTION.2': '잠재적 문제',
     'BED.SCORE.FRICTION.3': '문제 없음',
     'REQUIRED.BED.SCORE': '평가항목을 모두 선택해주세요',
+
+    // bedScore II
+    'BED.SCORETWO.SENSORY.PERCEPTION.1': '완전 제한',
+    'BED.SCORETWO.SENSORY.PERCEPTION.2': '매우 제한',
+    'BED.SCORETWO.SENSORY.PERCEPTION.3': '약간 제한',
+    'BED.SCORETWO.SENSORY.PERCEPTION.4': '장애 없음',
+    'BED.SCORETWO.HUMIDITY.1': '지속적으로 습함',
+    'BED.SCORETWO.HUMIDITY.2': '습함',
+    'BED.SCORETWO.HUMIDITY.3': '때때로 습함',
+    'BED.SCORETWO.HUMIDITY.4': '거의 습하지 않음',
+    'BED.SCORETWO.ACTIVITY.1': '침상 안정',
+    'BED.SCORETWO.ACTIVITY.2': '의자에 앉을 수 있음',
+    'BED.SCORETWO.ACTIVITY.3': '때때로 보행',
+    'BED.SCORETWO.ACTIVITY.4': '정상',
+    'BED.SCORETWO.MOBILITY.1': '전혀 없음',
+    'BED.SCORETWO.MOBILITY.2': '매우 제한',
+    'BED.SCORETWO.MOBILITY.3': '약간 제한',
+    'BED.SCORETWO.MOBILITY.4': '정상',
+    'BED.SCORETWO.NUTRITION.1': '불량',
+    'BED.SCORETWO.NUTRITION.2': '부적절함',
+    'BED.SCORETWO.NUTRITION.3': '적절함',
+    'BED.SCORETWO.NUTRITION.4': '정상',
+    'BED.SCORETWO.FRICTION.1': '문제 있음',
+    'BED.SCORETWO.FRICTION.2': '잠제적 문제 있음',
+    'BED.SCORETWO.FRICTION.3': '문제 없음',
+    'REQUIRED.BED.SCORETWO': '평가항목을 모두 선택해주세요',
 
     // needs
     'REQUIRED.NEEDS.BODY.STATUS': '신체상태 항목을 모두 선택해주세요',

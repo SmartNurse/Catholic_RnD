@@ -43,6 +43,7 @@ import {
   initialRadiology,
   initialPathology,
   initialBedScore,
+  initialBedScoreTwo,
   initialFall,
   initialFallTwo,
   initialNeeds,
@@ -199,6 +200,15 @@ const useDefaultValues = ({ setDefaultValues, user_id }: Props) => {
             const { contents } = data;
             const m_data = { ...data, contents: JSON.parse(contents) };
             convertDataToStates(m_data, initialBedScore);
+          })
+          .catch(e => onFail('알 수 없는 오류가 발생했습니다.', e));
+        break;
+        case MENU.BEDSORESTWO:
+        getBedScore({ user_id, patient_id })
+          .then(({ data }) => {
+            const { contents } = data;
+            const m_data = { ...data, contents: JSON.parse(contents) };
+            convertDataToStates(m_data, initialBedScoreTwo);
           })
           .catch(e => onFail('알 수 없는 오류가 발생했습니다.', e));
         break;

@@ -197,6 +197,19 @@ export const initialBedScore = {
   },
 };
 
+export const initialBedScoreTwo = {
+  date: '',
+  update_at: '',
+  contents: {
+    sensoryPerception: '',
+    humidity: '',
+    activity: '',
+    mobility: '',
+    nutrition: '',
+    frictionAndDissolutionForce: '',
+  },
+};
+
 export const initialNeeds = {
   date: '',
   update_at: '',
