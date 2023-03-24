@@ -24,7 +24,7 @@ const Medications = (props: Props) => {
   const columns = [
     { fieldId: 'pt_medication_no', label: '약물처방번호' },
     { fieldId: 'prescription_time', label: '처방시간' },
-    { fieldId: 'medication_time', label: '투여시간' },
+    { fieldId: 'medication_time', label: '액팅시간' },
     { fieldId: 'medication_name', label: '약물명', width: 150 },
     { fieldId: 'medication_content', label: '함량' },
     { fieldId: 'medication_measure', label: '단위' },
