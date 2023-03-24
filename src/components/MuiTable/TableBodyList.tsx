@@ -6,6 +6,7 @@ import {
   Typography,
 } from '@mui/material';
 import { Props as TableHeadListProps } from './TableHeadList';
+import { ReactComponent as Question} from './../../assets/question.svg'; 
 
 export interface Props extends TableHeadListProps {
   rows: { id: string | number; [key: string]: any }[];
@@ -27,7 +28,7 @@ const TableBodyList = ({ columns, rows }: Props) => {
   }
 
   const TooltipTitle = ({ title }: { title: string }) => (
-    <Typography variant="caption" sx={{ whiteSpace: 'pre-line' }}>
+    <Typography variant="caption" sx={{ whiteSpace: 'pre-line'}}>
       {title}
     </Typography>
   );
@@ -44,19 +45,25 @@ const TableBodyList = ({ columns, rows }: Props) => {
                 {isObjectRowData ? (
                   rowData
                 ) : (
-                  <Tooltip title={<TooltipTitle title={rowData} />}>
-                    <Typography
-                      maxWidth={width ?? 'auto'}
-                      maxHeight={20}
-                      display="block"
-                      variant="caption"
-                      overflow="hidden"
-                      textOverflow="ellipsis"
-                      whiteSpace={width ? 'nowrap' : 'pre-line'}
-                    >
-                      {rowData}
-                    </Typography>
+                  <div style={{display:"flex"}}>
+                    <Question 
+                      style={{marginRight:'20px'}}
+                    />
+                    <Tooltip title={<TooltipTitle title={rowData} />}>
+                      <Typography
+                        sx={{fontSize:"0.85rem", fontWeight:"450"}}
+                        maxWidth={width ?? 'auto'}
+                        maxHeight={20}
+                        display="block"
+                        variant="caption"
+                        overflow="hidden"
+                        textOverflow="ellipsis"
+                        whiteSpace={width ? 'nowrap' : 'pre-line'}
+                      >
+                        {rowData}
+                      </Typography>
                   </Tooltip>
+                  </div>
                 )}
               </TableCell>
             );
