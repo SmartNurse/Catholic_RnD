@@ -45,10 +45,6 @@ const TableBodyList = ({ columns, rows }: Props) => {
                 {isObjectRowData ? (
                   rowData
                 ) : (
-                  <div style={{display:"flex"}}>
-                    <Question 
-                      style={{marginRight:'20px'}}
-                    />
                     <Tooltip title={<TooltipTitle title={rowData} />}>
                       <Typography
                         sx={{fontSize:"0.85rem", fontWeight:"450"}}
@@ -63,7 +59,6 @@ const TableBodyList = ({ columns, rows }: Props) => {
                         {rowData}
                       </Typography>
                   </Tooltip>
-                  </div>
                 )}
               </TableCell>
             );
