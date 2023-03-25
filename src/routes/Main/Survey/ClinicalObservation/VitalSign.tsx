@@ -62,6 +62,7 @@ const VitalSign = (props: Props) => {
 
     onSuccess('Vital Sign 추가되었습니다.');
     setValue('vital_sign', [...vitalSignList, {...request, etc }]);
+    console.log('시간',checkTime);
     onUpdateSign({
       isUpdated: !vitalsign.isUpdated,
       data: [...vitalsign.data, {
@@ -71,8 +72,15 @@ const VitalSign = (props: Props) => {
         pr: Number(pr),
         rr: Number(rr),
         bt: Number(bt)
-      }].sort((a, b) => formatTimeStrToNum(a.checkTime) - formatTimeStrToNum(b.checkTime))
+      }].sort((a, b)=>{
+        const aTime = new Date('1970/01/01 ' + a.checkTime);
+        const bTime = new Date('1970/01/01 ' + b.checkTime);
+        
+        return Number(aTime)-Number(bTime);
+      })    
     });
+
+    
     setCheckTime(null);
     setSbp('');
     setDbp('');
