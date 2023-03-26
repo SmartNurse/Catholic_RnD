@@ -231,7 +231,7 @@ const locale = {
     'BED.SCORETWO.NUTRITION.3': '적절함',
     'BED.SCORETWO.NUTRITION.4': '정상',
     'BED.SCORETWO.FRICTION.1': '문제 있음',
-    'BED.SCORETWO.FRICTION.2': '잠제적 문제 있음',
+    'BED.SCORETWO.FRICTION.2': '잠재적 문제 있음',
     'BED.SCORETWO.FRICTION.3': '문제 없음',
     'REQUIRED.BED.SCORETWO': '평가항목을 모두 선택해주세요',
 
