@@ -35,6 +35,7 @@ import DietNutrition from './DietNutrition';
 import HospitalizationInfo from './Agreement/HospitalizationInfo';
 import FallPrevention from './Agreement/FallPrevention';
 import CoreNursingSkillVideo from 'routes/CoreNursingSkillVideo';
+import CoreNursingSkillVideoExemple from 'routes/CoreNursingSkillVideoExemple';
 
 interface Props {
   surveyType: string;
@@ -186,6 +187,10 @@ const DisplaySurvey = (props: Props) => {
     case MENU.CORE_NURSING_SKILL_VIDEO: {
       if (!defaultValues) return null;
       return <CoreNursingSkillVideo {...dialogProps} onClose={onCloseSave} />;
+    }
+    case MENU.CORE_NURSING_SKILL_VIDEO_EXEMPLE: {
+      if (!defaultValues) return null;
+      return <CoreNursingSkillVideoExemple {...dialogProps} onClose={onCloseReadOnly} />;
     }
     default:
       return null;

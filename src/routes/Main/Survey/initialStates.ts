@@ -773,3 +773,8 @@ export const initialCoreNursingSkillVideo = {
   update_at: "",
   files: [],
 }
+
+export const initialCoreNursingSkillVideoExemple ={
+  update_at: "",
+  files: [],
+}

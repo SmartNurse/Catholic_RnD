@@ -34,6 +34,7 @@ import {
   initialHospitalConfirm,
   initialFallConfirm,
   initialCoreNursingSkillVideo,
+  initialCoreNursingSkillVideoExemple
 } from './initialStates';
 
 export enum MENU {
@@ -75,6 +76,7 @@ export enum MENU {
   HOSPITAL_CONFIRM = '입원 안내 확인서',
   FALL_CONFIRM = '낙상 예방교육 확인서',
   CORE_NURSING_SKILL_VIDEO = '핵심간호술기영상 저장',
+  CORE_NURSING_SKILL_VIDEO_EXEMPLE = '핵심간호술기영상 예시',
 }
 
 export enum RECORD_TYPE {
@@ -128,3 +130,4 @@ export type TDietNutritionDefaultValues = typeof initialDietNutrition;
 export type THospitalConfirmDefaultValues = typeof initialHospitalConfirm;
 export type TFallConfirmDefaultValues = typeof initialFallConfirm;
 export type TCoreNursingSkillVideoDefaultValues = typeof initialCoreNursingSkillVideo;
+export type TCoreNursingSkillVideoDeExemplefaultValues = typeof initialCoreNursingSkillVideoExemple;

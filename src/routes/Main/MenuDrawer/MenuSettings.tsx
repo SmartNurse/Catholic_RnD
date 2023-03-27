@@ -16,7 +16,7 @@ import {
   ExpandMore,
 } from '@mui/icons-material';
 import { ReactComponent as ProPlus } from "../../../assets/proPlus.svg";
-
+import { ReactComponent as ExempleVideo } from '../../../assets/exempleVideo.svg';
 import useUser from 'store/user/useUser';
 import { useNavigate } from 'react-router-dom';
 import useStudent from 'store/student/useStudent';
@@ -110,6 +110,17 @@ const MenuSettings = (props: Props) => {
           if (!student_uuid) return onRequired('REQUIRED.STUDENT');
           if (!patientInfo) return onRequired('REQUIRED.PATIENT');
           onUpdateSurveyType("핵심간호술기영상 저장");
+        },
+      }
+    },
+    {
+      isPro: true,
+      icon: <ExempleVideo />,
+      label: '핵심간호술기영상 예시',
+      buttonClick: {
+        onClick: () => {
+          onUpdateSurveyType("핵심간호술기영상 예시");
+          console.log('열려라');
         },
       }
     },
