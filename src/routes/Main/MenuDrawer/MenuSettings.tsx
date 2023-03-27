@@ -119,7 +119,7 @@ const MenuSettings = (props: Props) => {
       label: '핵심간호술기영상 예시',
       buttonClick: {
         onClick: () => {
-          onUpdateSurveyType("핵심간호술기영상 예시");
+          onUpdateSurveyType("핵심간호술기예시 영상");
           console.log('열려라');
         },
       }

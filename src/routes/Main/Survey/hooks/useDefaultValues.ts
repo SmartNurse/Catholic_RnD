@@ -68,6 +68,7 @@ import {
   initialHospitalConfirm,
   initialFallConfirm,
   initialCoreNursingSkillVideo,
+  initialCoreNursingSkillVideoExemple
 } from '../initialStates';
 import { MENU } from '../type';
 
@@ -444,6 +445,12 @@ const useDefaultValues = ({ setDefaultValues, user_id }: Props) => {
           initialCoreNursingSkillVideo
         );
         break;
+      case MENU.CORE_NURSING_SKILL_VIDEO_EXEMPLE:
+          convertDataToStates(
+            initialCoreNursingSkillVideoExemple,
+            initialCoreNursingSkillVideoExemple
+          );
+          break;
       default:
         setDefaultValues(null);
         break;
