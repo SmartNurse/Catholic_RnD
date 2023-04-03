@@ -182,7 +182,7 @@ const NursingRecords = ({ coachRef }: Props) => {
           <Tab label="SOAPIE" value={RECORD_TYPE.SOAPIE} />
           <Tab label="Focus DAR" value={RECORD_TYPE.FOCUS_DAR} />
           <Tab label="서술기록" value={RECORD_TYPE.NARRATIVE_RECORD} />
-          <Tab label="특기사항" value={RECORD_TYPE.REMARKS} />
+          <Tab label="간호과정" value={RECORD_TYPE.REMARKS} />
         </TabList>
         <StyledTabPanel value={RECORD_TYPE.NANDA}>
           <Nanda

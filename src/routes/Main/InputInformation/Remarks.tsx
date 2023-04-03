@@ -11,31 +11,31 @@ interface Props extends IFormRegister {
 function Remarks({ register, disabled }: Props) {
   return (
     <Stack spacing={2}>
-      <label style={{marginTop:"17px", fontWeight:"bold", fontSize:14}}>
-        간호사정 (Assessment)
+      <Form.Item label="간호사정 (Assessment)">
         <TextField
-          sx={{marginTop:"8px"}}
           required
           fullWidth
           multiline
-          rows={2}
+          rows={5}
+          size="small"
           variant="outlined"
           disabled={disabled}
-          {...register('subjective')}
+          {...register('assessment')}
         />
-      </label>
-      <label style={{marginTop:"17px", fontWeight:"bold", fontSize:14}}>
-        간호진단 (Diagnosis)
-        <div style={{display:"flex", height:"70px"}}>
+      </Form.Item>
+      <Form.Item label="간호진단 (Diagnosis)">
+        <div style={{height:'80px', display:"flex"}}>
           <TextField
-            sx={{width:"350px", height: "100px"}}
+            sx={{height:'60px'}}
             required
             multiline
+            rows={2} 
+            size="small"
             variant="outlined"
             disabled={disabled}
-            {...register('subjective')}
+            {...register('diagnosisRelate')}
           />
-          <div style={{paddingTop:"13px", paddingLeft:"12px", fontSize:18, fontWeight:400}}>
+          <div style={{height:'30px', marginTop:'20px', marginLeft: 15}}>
             <label>와/과 관련된</label>
           </div>
         </div>
@@ -44,59 +44,60 @@ function Remarks({ register, disabled }: Props) {
           fullWidth
           multiline
           rows={2}
+          size="small"
           variant="outlined"
           disabled={disabled}
-          {...register('subjective')}
-          />
-      </label>
-      <label style={{marginTop:"17px", fontWeight:"bold", fontSize:14}}>
-        간호목표 (Goal)
-        <TextField
-          required
-          fullWidth
-          multiline
-          rows={2}
-          variant="outlined"
-          disabled={disabled}
-          {...register('subjective')}
+          {...register('diagnosis')}
         />
-      </label>
-      <label style={{marginTop:"17px", fontWeight:"bold", fontSize:14}}>
-        간호계획 (Plan)
+      </Form.Item>
+      <Form.Item label="간호목표 (Goal)">
         <TextField
           required
           fullWidth
           multiline
-          rows={2}
+          rows={5}
+          size="small"
           variant="outlined"
           disabled={disabled}
-          {...register('subjective')}
-      />
-      </label>
-      <label style={{marginTop:"17px", fontWeight:"bold", fontSize:14}}>
-        간호수행/중재/이론적 근거 (Interventions)
-        <TextField
-          required
-          fullWidth
-          multiline
-          rows={2}
-          variant="outlined"
-          disabled={disabled}
-          {...register('subjective')}
+          {...register('goal')}
         />
-      </label>
-      <label style={{marginTop:"17px", fontWeight:"bold", fontSize:14}}>
-        간호평가 (Evaluation)
+      </Form.Item>
+      <Form.Item label="간호계획 (Plan)">
         <TextField
           required
           fullWidth
           multiline
-          rows={2}
+          rows={5}
+          size="small"
           variant="outlined"
           disabled={disabled}
-          {...register('subjective')}
+          {...register('plan')}
         />
-      </label>
+      </Form.Item>
+      <Form.Item label="간호수행/중재/이론적 근거 (Interventions)">
+        <TextField
+          required
+          fullWidth
+          multiline
+          rows={5}
+          size="small"
+          variant="outlined"
+          disabled={disabled}
+          {...register('interventions')}
+        />
+      </Form.Item>
+      <Form.Item label="간호평가 (Evaluation)">
+        <TextField
+          required
+          fullWidth
+          multiline
+          rows={5}
+          size="small"
+          variant="outlined"
+          disabled={disabled}
+          {...register('evaluation')}
+        />
+      </Form.Item>
     </Stack>
   );
 }

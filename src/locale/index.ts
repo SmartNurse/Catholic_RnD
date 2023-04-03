@@ -51,7 +51,7 @@ const locale = {
     'RECORD.1': 'SOAPIE',
     'RECORD.2': 'Focus DAR',
     'RECORD.3': '서술기록',
-    'RECORD.4': '특기사항',
+    'RECORD.4': '간호과정',
     'RECORD.TYPE.0': 'NANDA',
     'RECORD.TYPE.1': 'SOAPIE',
     'RECORD.TYPE.2': 'FOCUSDAR',
