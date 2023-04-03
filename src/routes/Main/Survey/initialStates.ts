@@ -19,7 +19,7 @@ export const initialNursingRecord = {
   },
   focusDar: { focus: '', data: '', action: '', response: '' },
   narrativeRecord: { narrativeNote: '' },
-  remarks: { cbe: '' },
+  remarks: { assessment: '',  diagnosisRelate: '', diagnosis: '',  goal: '', plan: '', interventions: '', evaluation: ''   },
 };
 
 export const initialECardex = {

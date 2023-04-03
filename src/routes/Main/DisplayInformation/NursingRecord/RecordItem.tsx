@@ -71,21 +71,50 @@ const RecordItem = (props: Props) => {
       },
     }} className={className} component="ul">
       <RecordTitle {...titleProps} />
-      {contentKeys.map(contentKey => (
-        <Fragment key={contentKey}>
-          <Typography component="li" variant="caption" fontWeight="bold">
-            • {i18n(`${type}.${contentKey}` as any)}
-          </Typography>
-          <Typography
-            component="li"
-            variant="caption"
-            sx={{ pl: 1, whiteSpace: 'pre-wrap' }}
-          >
-            {contents[contentKey]}
-          </Typography>
-          <br />
-        </Fragment>
-      ))}
+      {contentKeys.map(contentKey => {
+          if(contentKey === 'diagnosisRelate'){
+            return <Fragment key={contentKey}>
+            <Typography component="li" variant="caption" fontWeight="bold" >
+              • 간호진단 (Diagnisis)
+            </Typography>  
+            <Typography
+              component="li"
+              variant="caption"
+              sx={{ pl: 1, whiteSpace: 'pre-wrap' }}
+            >
+              {contents[contentKey]}
+            </Typography>
+            <Typography component="li" variant="caption" marginLeft={'8px'} >
+              {i18n(`${type}.${contentKey}` as any)}
+            </Typography>
+          </Fragment>
+          }else if(contentKey === 'diagnosis'){
+            return <Fragment key={contentKey}>
+            
+            <Typography
+              component="li"
+              variant="caption"
+              sx={{ pl: 1, whiteSpace: 'pre-wrap' }}
+            >
+              {contents[contentKey]}
+            </Typography>
+            <br/>
+          </Fragment>
+          } else {
+          return <Fragment key={contentKey}>
+            <Typography component="li" variant="caption" fontWeight="bold">
+              • {i18n(`${type}.${contentKey}` as any)}
+            </Typography>
+            <Typography
+              component="li"
+              variant="caption"
+              sx={{ pl: 1, whiteSpace: 'pre-wrap' }}
+            >
+              {contents[contentKey]}
+            </Typography>
+            <br />
+          </Fragment>
+        }})}
     </List>
   );
 };
