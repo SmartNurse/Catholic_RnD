@@ -101,7 +101,9 @@ function SignInForm({ errors, register, onSignUp }: Props) {
 
               <MuiDialog.ConfirmButton
                 title="아이디/비밀번호를 잊으셨나요?"
-                message={`아이디는 본인 학교 이메일입니다.\n비밀번호를 잊으셨다면 스마트널스 관리자 이메일(nurse@smartnurse.co.kr)로 문의해주세요. `}
+                message={`아이디는 본인 이메일입니다.\n스마트널스 네이버톡톡 또는 카카오톡채널\n또는
+                이메일 (nurse@smartnurse.co.kr)로\n학교, 학번, 가입 시 이메일(아이디)를
+                기재하고 문의 주세요.`}
                 color={palette.mode === "dark" ? "lightgrey" : ""}
               />
 
