@@ -280,7 +280,7 @@ const MenuRecords = (props: Props) => {
       return;
     }
     else if (label === 'NEDIS') {
-      window.open("http://edis.nemc.or.kr/edisweb/homeweb/board/board_01.jsp");
+      window.open("https://portal.nemc.or.kr:444/member/login_page.do");
       return;
     }
     else if (label === '환자안전보고학습시스템') {
