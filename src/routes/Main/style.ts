@@ -193,3 +193,25 @@ export const StyledTableCellWithoutLeftRight = styled(TableCell)({
   borderRight: "none",
   padding: "0px",
 });
+
+
+// GCS
+export const StyledTableCellTwo = styled(TableCell)({
+  padding: "0px",
+});
+
+export const StyledTableCellWithoutLeftTwo = styled(TableCell)({
+  borderLeft: "none",
+  padding: "0px",
+});
+
+export const StyledTableCellWithoutRightTwo = styled(TableCell)({
+  borderRight: "none",
+  padding: "0px",
+});
+
+export const StyledTableCellWithoutLeftRightTwo = styled(TableCell)({
+  borderLeft: "none",
+  borderRight: "none",
+  padding: "0px",
+});

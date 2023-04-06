@@ -312,6 +312,36 @@ export const initialFallTwo = {
   },
 };
 
+export const initialGCS = {
+  date: '',
+  update_at: '',
+  contents: {
+    eyeOpening: '',
+    VerbalResponse: '',
+    MotorResponse: '',
+  },
+}
+
+export const initialPediatric_GCS = {
+  date: '',
+  update_at: '',
+  contents: {
+    eyeOpening: '',
+    VerbalResponse: '',
+    MotorResponse: '',
+  },
+}
+
+export const initialFourScore = {
+  date: '',
+  update_at: '',
+  contents: {
+    eyeOpening: '',
+    VerbalResponse: '',
+    MotorResponse: '',
+  },
+}
+
 export const initialSafety = {
   update_at: "",
   accident_consequences_details: {
@@ -511,8 +541,8 @@ export const initialEmergency = {
   accident_location: "",
   accident_date: "",
   accident_time: "",
-  arrival_date: "",
   arrival_time: "",
+  visitReason: "",
   reasons: "",
   primary_first_aid: "",
   instructions: "",
@@ -520,8 +550,23 @@ export const initialEmergency = {
   affiliated_organization: "",
   qualification_license: "",
   name: "",
-  phone_number: "",
   medical_history: "",
+  visitMethod: "",
+  
+  symptom: "",
+  etc_symptom: "",
+  damage: "",
+  intentional: "",
+  disease: "",
+  history:"",
+  antibiotics: "",
+  GCS: "",
+  MOTOR: "",
+  PUPIL: "",
+  NRS: "",
+  PQRST: "",
+  KTAS:"",
+  Diagnostic: ""
 };
 
 export const initialChildbirth = {

@@ -235,7 +235,23 @@ export interface IUpdateFallTwo extends IGetSurvey {
   contents: string;
 }
 
+// GCS
+export interface IUpdateGCS extends IGetSurvey {
+  date: string;
+  contents: string;
+}
 
+// Pediatric_GCS
+export interface IUpdatePediatric_GCS extends IGetSurvey {
+  date: string;
+  contents: string;
+}
+
+// Four Score
+export interface IUpdateFourScore extends IGetSurvey {
+  date: string;
+  contents: string;
+}
 
 // 환자안전사고보고서
 export interface IUpdateSafety extends IGetSurvey {
@@ -502,15 +518,27 @@ export interface IUpdateDialysis extends IGetSurvey {
 export interface IUpdateEmergency extends IGetSurvey {
   emergency_survey: {
     emergency_information: {
-      accident_type: string;
-      registration_number: string;
-      address: string;
-      classification: string;
-      accident_location: string;
       accident_date: string;
       accident_time: string;
-      arrival_date: string;
       arrival_time: string;
+      visitMethod: string;
+      visitReason: string;
+    },
+    emergency_paicientInfo: {
+      symptom: string,
+      etc_symptom: string,
+      damage: string,
+      intentional: string,
+      disease: string,
+      history:string,
+      antibiotics: string,
+      GCS: string,
+      MOTOR: string,
+      PUPIL: string,
+      NRS: string,
+      PQRST: string,
+      KTAS: string,
+      Diagnostic: string
     },
     emergency_contents: {
       reasons: string;
@@ -520,7 +548,6 @@ export interface IUpdateEmergency extends IGetSurvey {
       affiliated_organization: string;
       qualification_license: string;
       name: string;
-      phone_number: string;
       medical_history: string;
     }
   }

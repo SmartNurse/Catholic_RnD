@@ -131,6 +131,21 @@ const MenuRecords = (props: Props) => {
     },
     {
       isPro: true,
+      label: 'GCS',
+      toggle: toggle.patient_evaluation,
+    },
+    {
+      isPro: true,
+      label: 'Pediatric GCS',
+      toggle: toggle.patient_evaluation,
+    },
+    {
+      isPro: true,
+      label: 'FOUR Score',
+      toggle: toggle.patient_evaluation,
+    },
+    {
+      isPro: true,
       label: '환자안전사고보고서',
       toggle: toggle.patient_evaluation,
     },

@@ -12,6 +12,8 @@ import {
   initialBedScoreTwo,
   initialFall,
   initialFallTwo,
+  initialGCS,
+  initialPediatric_GCS,
   initialNeeds,
   initialClinicalObservation,
   initialGlucose,
@@ -54,6 +56,9 @@ export enum MENU {
   NEEDS = '욕구평가 기록지',
   FALL = '낙상위험 평가도구 I',
   FALLTWO = '낙상위험 평가도구 II',
+  GCS = 'GCS',
+  Pediatric_GCS = 'Pediatric GCS',
+  FourScore ='FOUR Score',
   PAIN = '통증평가도구',
   SAFETY = '환자안전사고보고서',
   NRS = 'NRS',
@@ -110,6 +115,8 @@ export type TBedScoreDefaultValues = typeof initialBedScore;
 export type TBedScoreTwoDefaultValues = typeof initialBedScoreTwo;
 export type TNeedsDefaultValues = typeof initialNeeds;
 export type TFallDefaultValues = typeof initialFall;
+export type TGCSDefaultValues = typeof initialGCS;
+export type TPediaTric_GCSDefaultValues = typeof initialPediatric_GCS;
 export type TFallTwoDefaultValues = typeof initialFallTwo;
 export type TSafetyDefaultValues = typeof initialSafety;
 export type TNRSDefaultValues = typeof initialNRS;

@@ -9,6 +9,9 @@ import {
   IUpdateMedication,
   IUpdateFall,
   IUpdateFallTwo,
+  IUpdateGCS,
+  IUpdatePediatric_GCS,
+  IUpdateFourScore,
   IUpdateBedScore,
   IUpdateNeeds,
   IUpdateClinicObservation,
@@ -165,6 +168,39 @@ export const getFallTwo = (request: IGetSurvey) => {
 
 export const updateFallTwo = (request: IUpdateFallTwo) => {
   const url = `/survey/fall`;
+  return apiGateway.post(url, camelcaseKeys(request));
+};
+
+// GCS
+export const getGCS = (request: IGetSurvey) => {
+  const url = `/survey/fall?${formatToRequestParameter(request)}`;
+  return apiGateway.get(url);
+};
+
+export const updateGCS = (request: IUpdateGCS) => {
+  const url = `/survey/GCS`;
+  return apiGateway.post(url, camelcaseKeys(request));
+};
+
+// Pediatric_GCS
+export const getPediatric_GCS = (request: IGetSurvey) => {
+  const url = `/survey/fall?${formatToRequestParameter(request)}`;
+  return apiGateway.get(url);
+};
+
+export const updatePediatric_GCS = (request: IUpdatePediatric_GCS) => {
+  const url = `/survey/GCS`;
+  return apiGateway.post(url, camelcaseKeys(request));
+};
+
+// Four Score
+export const getFourScore = (request: IGetSurvey) => {
+  const url = `/survey/fall?${formatToRequestParameter(request)}`;
+  return apiGateway.get(url);
+};
+
+export const updateFourScore = (request: IUpdateFourScore) => {
+  const url = `/survey/GCS`;
   return apiGateway.post(url, camelcaseKeys(request));
 };
 

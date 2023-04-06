@@ -15,6 +15,9 @@ import BedScore from './BedScore';
 import BedScoreTwo from './BedScoreTwo';
 import Fall from './Fall';
 import FallTwo from './FallTwo';
+import GCS from './GCS';
+import Pediatric_GCS from './Pediatric_GCS'
+import FourScore from './Four Score'
 import Needs from './Needs';
 import Safety from './Safety';
 import NRS from './Pain/NRS';
@@ -111,6 +114,18 @@ const DisplaySurvey = (props: Props) => {
     case MENU.FALLTWO: {
       if (!defaultValues) return null;
       return <FallTwo {...dialogProps} onClose={onCloseSave} />;
+    }
+    case MENU.GCS: {
+      if (!defaultValues) return null;
+      return <GCS {...dialogProps} onClose={onCloseSave} />;
+    }
+    case MENU.Pediatric_GCS: {
+      if (!defaultValues) return null;
+      return <Pediatric_GCS {...dialogProps} onClose={onCloseSave} />;
+    }
+    case MENU.FourScore: {
+      if (!defaultValues) return null;
+      return <FourScore {...dialogProps} onClose={onCloseSave} />;
     }
     case MENU.SAFETY: {
       if (!defaultValues) return null;
