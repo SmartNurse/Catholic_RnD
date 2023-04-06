@@ -1,5 +1,5 @@
 
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 import { Grid, Typography } from '@mui/material';
 import { useForm } from 'react-hook-form';
@@ -8,17 +8,18 @@ import MuiDialog from 'components/MuiDialog';
 import {
     SurveyDialogProps,
     TEmergencyDefaultValues,
-  } from 'routes/Main/Survey/type';
+    } from 'routes/Main/Survey/type';
 import useSurvey from 'store/survey/useSurvey';
 import useNotification from 'hooks/useNotification';
 
 import { updateEmergency } from "apis/survey";
 
-import PatientInfo from "./PatientInfo";
-import TextAreaSection from "../../components/TextAreaSection";
-import RowContainer from '../../components/RowContainer';
-import RowContent from '../../components/RowContent';
-import Form from 'components/Form';
+import CommonPatientInfo from '../../components/CommonPatientInfo';
+import EmergencyRecord from "./EmergencyRecord";
+import NewInfo from "./NewInfo";
+import PatientStatus from "./PatientStatus";
+import EmergencyResult from "./EmergencyResult";
+import CheckDisease from "./CheckDisease";
 
 const Emergency = (props: SurveyDialogProps<TEmergencyDefaultValues>) => {
     const {
@@ -27,11 +28,13 @@ const Emergency = (props: SurveyDialogProps<TEmergencyDefaultValues>) => {
         disabled,
         defaultValues,
         user_id,
+        nurseName,
         patientInfo,
         onClose,
     } = props;
 
     const { onUpdateIsSave } = useSurvey();
+    const [operationTime, setOperationTime] = useState<string | null>(null);
     const { onSuccess, onFail, onResultCode, onRequired } = useNotification();
 
     const { handleSubmit, register, getValues, setValue, watch } = useForm({
@@ -40,16 +43,20 @@ const Emergency = (props: SurveyDialogProps<TEmergencyDefaultValues>) => {
 
     const onSubmit = (data: TEmergencyDefaultValues) => {
         const {
-            accident_type, registration_number, address, classification, accident_location, accident_date, accident_time, arrival_date, arrival_time,
-            reasons, primary_first_aid, instructions, observations, affiliated_organization, qualification_license, name, phone_number, medical_history
+            name, accident_date, accident_time, arrival_time, visitMethod, visitReason,
+            symptom, etc_symptom, damage,
+            intentional, disease, antibiotics, GCS, MOTOR, PUPIL, NRS, PQRST, KTAS, Diagnostic,history,
+            reasons, primary_first_aid, instructions, observations, affiliated_organization, qualification_license,  medical_history
         } = data;
 
         const request = {
             user_id,
             patient_id: patientInfo.patient_id,
             emergency_survey: {
-                emergency_information: { accident_type, registration_number, address, classification, accident_location, accident_date, accident_time, arrival_date, arrival_time },
-                emergency_contents: { reasons, primary_first_aid, instructions, observations, affiliated_organization, qualification_license, name, phone_number, medical_history },
+                emergency_information: { visitReason, accident_date, accident_time, arrival_time, visitMethod },
+                emergency_paicientInfo: { symptom, etc_symptom, damage, intentional, disease,  history,  antibiotics, GCS,
+                    MOTOR, PUPIL, NRS, PQRST,KTAS, Diagnostic},
+                emergency_contents: { reasons, primary_first_aid, instructions, observations, affiliated_organization, qualification_license, name, medical_history },
             }
         }
 
@@ -64,47 +71,33 @@ const Emergency = (props: SurveyDialogProps<TEmergencyDefaultValues>) => {
     };
 
     const formProps = { disabled, watch, register, getValues, setValue, onSuccess, onRequired };
-    
+
     return (
         <MuiDialog.SurveyForm
-        title={title}
-        isOpen={isOpen}
-        onClose={onClose}
-        onSubmit={disabled ? undefined : handleSubmit(onSubmit)}
-        update_at={defaultValues?.update_at}
-      >
-        <Grid
-          container
-          wrap="wrap"
-          rowSpacing={5}
-          columnSpacing={3}
-          sx={{ py: 5, px: 1 }}
+            title={title}
+            isOpen={isOpen}
+            onClose={onClose}
+            onSubmit={disabled ? undefined : handleSubmit(onSubmit)}
+            update_at={defaultValues?.update_at}
         >
-            <Typography sx={{ margin: "40px auto 0px auto", fontWeight: "700", fontSize: "16px", textAlign: "center" }}>
-                응급 기록지
-            </Typography>
-            <PatientInfo {...formProps} patientInfo={patientInfo} />
-            <TextAreaSection {...formProps} title="환자 발생 사유" registerId="reasons" required={false} />
-            <TextAreaSection {...formProps} title="주요 응급 처치" registerId="primary_first_aid" required={false} />
-            <TextAreaSection {...formProps} title="의사 지시 내용" registerId="insturctions" required={false} />
-            <TextAreaSection {...formProps} title="응급처치 의료종사자 소견" registerId="observations" required={false} />
-            <RowContainer xs={12}>
-                <RowContent title="소속기관명" titleRatio={1} childrenRatio={2}>
-                    <Form.MuiTextField {...register("affiliated_organization")} required={false} disabled={disabled}/>
-                </RowContent>
-                <RowContent title="자격면허종류" titleRatio={1} childrenRatio={2}>
-                    <Form.MuiTextField {...register("qualification_license")} required={false} disabled={disabled} />
-                </RowContent>
-                <RowContent title="성명" titleRatio={1} childrenRatio={2}>
-                    <Form.MuiTextField {...register("name")} required={false} disabled={disabled} />
-                </RowContent>
-                <RowContent title="전화번호" titleRatio={1} childrenRatio={2}>
-                    <Form.MuiTextField {...register("phone_number")} required={false} disabled={disabled} />
-                </RowContent>
-            </RowContainer>
-            <TextAreaSection {...formProps} title="환자 인수 병원 기록" registerId="medical_history" required={false}/>
-        </Grid>
-      </MuiDialog.SurveyForm>  
+            <Grid
+                container
+                wrap="wrap"
+                rowSpacing={5}
+                columnSpacing={3}
+                sx={{ py: 5, px: 1 }}
+            >
+                <Typography sx={{ margin: "40px auto 0px auto", fontWeight: "700", fontSize: "16px", textAlign: "center" }}>
+                    응급 기록지 <br/> - 현재 테스트 중입니다. -
+                </Typography>
+                <CommonPatientInfo patientInfo={patientInfo} nurseName={nurseName}  />
+                <EmergencyRecord {...formProps} />
+                <NewInfo {...formProps} time={operationTime} setTime={setOperationTime} />
+                <PatientStatus {...formProps} />
+                <EmergencyResult {...formProps}/>
+                <CheckDisease {...formProps} />
+            </Grid>
+        </MuiDialog.SurveyForm>  
     );
 }
 

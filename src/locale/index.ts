@@ -188,6 +188,7 @@ const locale = {
 
     // clinical observation
     'CLINICAL.OBSERVATION.ADD.ROW': '입력하지 않은 값이 있습니다.',
+    'CLINICAL.OBSERVATION.STOP':'가상 환자 1명 당 4개까지 입력 가능합니다',
 
     // bedScore I
     'BED.SCORE.SENSORY.PERCEPTION.1': '완전 제한',
@@ -418,6 +419,20 @@ const locale = {
     'EMERGENCY.DIVISION.3': '급성질환',
     'EMERGENCY.DIVISION.4': '만성질환 급속악화',
     'EMERGENCY.DIVISION.0': '기타',
+
+    'EMERGENGY.RESULT.0': '입원',
+    'EMERGENGY.RESULT.1': '전원',
+    'EMERGENGY.RESULT.2': '귀가',
+    'EMERGENGY.RESULT.3': '사망',
+    'EMERGENGY.RESULT.4': '기타',
+
+
+    'EMERGENGY.CHECKDISEASE.1': '보호자 1인 상주',
+    'EMERGENGY.CHECKDISEASE.2': '도난 방지',
+    'EMERGENGY.CHECKDISEASE.3': '낙상 방지',
+    'EMERGENGY.CHECKDISEASE.4': '기타',
+
+
 
     // childbirth
     'CHILDBIRTH.BABY_STATUS.GENDER.1': '남아',
