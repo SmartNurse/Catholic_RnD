@@ -101,7 +101,7 @@ const GCSContents = (props: Props) => {
                       )}
                     </StyledTableCellWithoutLeftRightTwo>
                     <StyledTableCellWithoutLeftTwo>
-                      <RadioGroup name={radioId[content.id-1]} defaultValue={Number(getValues(radioId[content.id-1]))}>
+                      <RadioGroup name={radioId[content.id]} defaultValue={Number(getValues(radioId[content.id]))}>
                         {content.desc.map((_, i) =>
                           <TableRow sx={{
                             height: "44px",
@@ -109,7 +109,7 @@ const GCSContents = (props: Props) => {
                             textAlign: "center",
                           }}>
                             <Box sx={{ width: "100px" }}>
-                              <Radio disabled={disabled} name={radioId[content.id-1]} value={i} onChange={handleChange} />
+                              <Radio disabled={disabled} name={radioId[content.id]} value={i+1} onChange={handleChange} />
                             </Box>
                           </TableRow>
                           )}
