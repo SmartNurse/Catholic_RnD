@@ -16,7 +16,7 @@ function Remarks({ register, disabled }: Props) {
           required
           fullWidth
           multiline
-          rows={5}
+          minRows={2}
           size="small"
           variant="outlined"
           disabled={disabled}
@@ -24,18 +24,19 @@ function Remarks({ register, disabled }: Props) {
         />
       </Form.Item>
       <Form.Item label="간호진단 (Diagnosis)">
-        <div style={{height:'80px', display:"flex"}}>
+        <div style={{height:'auto', display:"flex"}}>
           <TextField
-            sx={{height:'60px'}}
+            sx={{height:'60px', width:"360px"}}
             required
             multiline
-            rows={2} 
+            minRows={1}
+            maxRows={2}
             size="small"
             variant="outlined"
             disabled={disabled}
             {...register('diagnosisRelate')}
           />
-          <div style={{height:'30px', marginTop:'20px', marginLeft: 15}}>
+          <div style={{height:'30px', marginTop:'5px', marginLeft: 45}}>
             <label>와/과 관련된</label>
           </div>
         </div>
@@ -43,7 +44,7 @@ function Remarks({ register, disabled }: Props) {
           required
           fullWidth
           multiline
-          rows={2}
+          minRows={1}
           size="small"
           variant="outlined"
           disabled={disabled}
@@ -55,7 +56,7 @@ function Remarks({ register, disabled }: Props) {
           required
           fullWidth
           multiline
-          rows={5}
+          minRows={2}
           size="small"
           variant="outlined"
           disabled={disabled}
@@ -67,7 +68,7 @@ function Remarks({ register, disabled }: Props) {
           required
           fullWidth
           multiline
-          rows={5}
+          minRows={2}
           size="small"
           variant="outlined"
           disabled={disabled}
@@ -79,7 +80,7 @@ function Remarks({ register, disabled }: Props) {
           required
           fullWidth
           multiline
-          rows={5}
+          minRows={2}
           size="small"
           variant="outlined"
           disabled={disabled}
@@ -91,7 +92,7 @@ function Remarks({ register, disabled }: Props) {
           required
           fullWidth
           multiline
-          rows={5}
+          minRows={2}
           size="small"
           variant="outlined"
           disabled={disabled}
