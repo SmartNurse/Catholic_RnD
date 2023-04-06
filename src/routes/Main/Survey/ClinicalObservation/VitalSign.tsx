@@ -58,6 +58,8 @@ const VitalSign = (props: Props) => {
     const request = { checkTime, sbp, dbp, pr, rr, bt, sp02 };
     if (Object.values(request).filter(v => !v).length > 0) {
       return onRequired('CLINICAL.OBSERVATION.ADD.ROW');
+    } else if(vitalsign.data.length>3){
+      return onRequired('CLINICAL.OBSERVATION.STOP');
     }
 
     onSuccess('Vital Sign 추가되었습니다.');
