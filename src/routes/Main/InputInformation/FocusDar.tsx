@@ -16,7 +16,7 @@ function FocusDar({ register, disabled }: Props) {
           required
           fullWidth
           multiline
-          rows={2}
+          minRows={2}
           size="small"
           variant="outlined"
           disabled={disabled}
@@ -29,7 +29,7 @@ function FocusDar({ register, disabled }: Props) {
           required
           fullWidth
           multiline
-          rows={4}
+          minRows={4}
           size="small"
           variant="outlined"
           disabled={disabled}
@@ -42,7 +42,7 @@ function FocusDar({ register, disabled }: Props) {
           required
           fullWidth
           multiline
-          rows={3}
+          minRows={3}
           size="small"
           variant="outlined"
           disabled={disabled}
@@ -55,7 +55,7 @@ function FocusDar({ register, disabled }: Props) {
           required
           fullWidth
           multiline
-          rows={5}
+          minRows={5}
           size="small"
           variant="outlined"
           disabled={disabled}

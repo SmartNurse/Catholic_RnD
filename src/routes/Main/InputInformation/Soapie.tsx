@@ -16,7 +16,7 @@ function Soapie({ register, disabled }: Props) {
           required
           fullWidth
           multiline
-          rows={2}
+          minRows={2}
           size="small"
           variant="outlined"
           disabled={disabled}
@@ -29,7 +29,7 @@ function Soapie({ register, disabled }: Props) {
           required
           fullWidth
           multiline
-          rows={2}
+          minRows={2}
           size="small"
           variant="outlined"
           disabled={disabled}
@@ -42,7 +42,7 @@ function Soapie({ register, disabled }: Props) {
           required
           fullWidth
           multiline
-          rows={2}
+          minRows={2}
           size="small"
           variant="outlined"
           disabled={disabled}
@@ -55,7 +55,7 @@ function Soapie({ register, disabled }: Props) {
           required
           fullWidth
           multiline
-          rows={2}
+          minRows={2}
           size="small"
           variant="outlined"
           disabled={disabled}
@@ -68,7 +68,7 @@ function Soapie({ register, disabled }: Props) {
           required
           fullWidth
           multiline
-          rows={2}
+          minRows={2}
           size="small"
           variant="outlined"
           disabled={disabled}
@@ -81,7 +81,7 @@ function Soapie({ register, disabled }: Props) {
           required
           fullWidth
           multiline
-          rows={2}
+          minRows={2}
           size="small"
           variant="outlined"
           disabled={disabled}
