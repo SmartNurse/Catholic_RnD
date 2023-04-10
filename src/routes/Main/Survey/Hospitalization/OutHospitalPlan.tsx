@@ -3,6 +3,7 @@ import { Stack } from '@mui/material';
 
 import Form from 'components/Form';
 import { IFormRegister, IFormValues } from 'routes/Main/type';
+import MuiRadioGroupSub from './MuiRadioGroupSub';
 
 import RowContainer from '../components/RowContainer';
 import RowContent from '../components/RowContent';
@@ -19,20 +20,23 @@ const OutHospitalPlan = (props: Props) => {
     <Fragment>
       <SectionTitle title="퇴원계획" />
 
-      <RowContainer>
+      <RowContainer xs={12}>
         <RowContent title="일상생활유지정도">
-          <Form.MuiRadioGroup
+          <Stack direction="row" spacing={1}>
+          <MuiRadioGroupSub
             i18nKey="HOSPITALIZATION.LIFE"
             values={[1, 2, 3]}
             disabled={disabled}
             defaultValue={getValues('out_hospital_plan.life')}
             onChange={v => setValue('out_hospital_plan.life', v)}
             width="125px"
-          />
+            />
+          </Stack>
         </RowContent>
+
         <RowContent title="퇴원예정지">
-          <Stack direction="row">
-            <Form.MuiRadioGroup
+          <Stack direction="row" spacing={1}>
+            <MuiRadioGroupSub
               i18nNullKey="ETC"
               i18nKey="HOSPITALIZATION.DESTINATION"
               values={[1, 2, 3, 0]}
@@ -45,17 +49,14 @@ const OutHospitalPlan = (props: Props) => {
               required={false}
               disabled={disabled}
               placeholder="직접 입력"
-              sx={{ marginLeft: "-35px" }}
+              sx={{ maxWidth:"150px" }}
               {...register('out_hospital_plan.destination.input')}
             />
           </Stack>
         </RowContent>
-      </RowContainer>
-
-      <RowContainer sx={{ mb: 'auto' }}>
         <RowContent title="주요 보호자">
-          <Stack direction="row">
-            <Form.MuiRadioGroup
+          <Stack direction="row" spacing={1}>
+            <MuiRadioGroupSub
               i18nNullKey="ETC"
               disabled={disabled}
               i18nKey="HOSPITALIZATION.GUARDIAN"
@@ -68,7 +69,7 @@ const OutHospitalPlan = (props: Props) => {
               required={false}
               disabled={disabled}
               placeholder="직접 입력"
-              sx={{ marginLeft: "25px" }}
+              sx={{ maxWidth:"150px" }}
               {...register('out_hospital_plan.guardian.input')}
             />
           </Stack>

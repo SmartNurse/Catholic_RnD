@@ -85,6 +85,14 @@ export interface ICreateHospitalization extends IGetSurvey {
   };
 }
 
+export interface IInpomation {
+  contact: number;
+  name: string;
+  relation: string;
+}
+
+
+
 // 퇴원간호기록지
 export interface ICreateOutHospital extends IGetSurvey {
   out_hospital_survey: {

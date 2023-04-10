@@ -38,6 +38,7 @@ const DiseaseHistory = (props: Props) => {
               {...register('disease_history.history.date')}
             />
           </Stack>
+          <Stack direction="row" spacing={1}>
           <Form.MuiCheckboxGroup
             i18nNullKey="ETC"
             disabled={disabled}
@@ -50,8 +51,10 @@ const DiseaseHistory = (props: Props) => {
             required={false}
             disabled={disabled}
             placeholder="직접 입력"
+            sx={{width:'150px'}}
             {...register('disease_history.history.input')}
-          />
+            />
+            </Stack>
         </RowContent>
         <RowContent title="입원/수술력">
           <Stack direction="row" spacing={1}>
@@ -69,6 +72,7 @@ const DiseaseHistory = (props: Props) => {
             <Form.MuiTextField
               required={false}
               disabled={disabled}
+              sx={{width:'365px'}}
               placeholder="ex. 2022.01-ㅇㅇ대학교병원 충수절제술"
               {...register('disease_history.operation_history.input')}
             />
@@ -88,6 +92,7 @@ const DiseaseHistory = (props: Props) => {
             <Form.MuiTextField
               required={false}
               disabled={disabled}
+              sx={{width:'365px'}}
               placeholder="직접 입력"
               {...register('disease_history.latest_medicine.input')}
             />

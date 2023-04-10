@@ -37,9 +37,9 @@ const Hospitalization = (
   } = props;
 
   const { onUpdateIsSave } = useSurvey();
-  const { onSuccess, onFail, onResultCode } = useNotification();
+  const { onSuccess, onFail, onResultCode, onRequired } = useNotification();
 
-  const { handleSubmit, register, getValues, setValue } = useForm({
+  const { handleSubmit, register, getValues, setValue, watch } = useForm({
     defaultValues,
   });
 
@@ -90,7 +90,15 @@ const Hospitalization = (
       .catch(e => onFail('입원기록지 저장에 실패하였습니다.', e));
   };
 
-  const formProps = { disabled, register, getValues, setValue };
+  const formProps = {
+    disabled,
+    watch,
+    register,
+    getValues,
+    setValue,
+    onSuccess,
+    onRequired,
+  };
 
   return (
     <MuiDialog.SurveyForm
