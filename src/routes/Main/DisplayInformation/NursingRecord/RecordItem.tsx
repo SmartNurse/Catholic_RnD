@@ -7,6 +7,7 @@ import { INursingRecord } from 'apis/main/type';
 
 import RecordTitle from './RecordTitle';
 import ActionButtons from './ActionButtons';
+import Remarks from 'routes/Main/InputInformation/Remarks';
 
 interface Props extends INursingRecord {
   activeId?: number;
@@ -75,7 +76,7 @@ const RecordItem = (props: Props) => {
           if(contentKey === 'diagnosisRelate'){
             return <Fragment key={contentKey}>
             <Typography component="li" variant="caption" fontWeight="bold" >
-              • 간호진단 (Diagnisis)
+              • 간호진단 (Diagnosis)
             </Typography>  
             <Typography
               component="li"
@@ -88,9 +89,8 @@ const RecordItem = (props: Props) => {
               {i18n(`${type}.${contentKey}` as any)}
             </Typography>
           </Fragment>
-          }else if(contentKey === 'diagnosis'){
+          }else if(type === 'REMARKS' && contentKey === 'diagnosis'  ){
             return <Fragment key={contentKey}>
-            
             <Typography
               component="li"
               variant="caption"
