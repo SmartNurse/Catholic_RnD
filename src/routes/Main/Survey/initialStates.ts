@@ -312,6 +312,20 @@ export const initialFallTwo = {
   },
 };
 
+export const initialFallScale = {
+  date: '',
+  update_at: '',
+  contents: {
+    age: '',
+    diagnosis: '',
+    gender: '',
+    cognitive: '',
+    environmental: '',
+    history: '',
+    drug: '',
+  },
+};
+
 export const initialGCS = {
   date: '',
   update_at: '',

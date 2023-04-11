@@ -280,6 +280,40 @@ const locale = {
     'FALLTWO.CONSCIOUSNESS.15': '의식 명료하지 않거나 자신의 기능 수준을 \n 과대평가하거나 잊어버림 (15점)',
     'REQUIRED.FALLTWO': '평가항목을 모두 선택해주세요',
 
+
+    // FallScale
+    'FALLSCALE.SCORE.AGE.1': '3개월 미만, 13세 이상',
+    'FALLSCALE.SCORE.AGE.2': '7세 이상~13세 미만',
+    'FALLSCALE.SCORE.AGE.3': '3세 이상~7세 미만',
+    'FALLSCALE.SCORE.AGE.4': '3개월 이상~3세 미만',
+
+    'FALLSCALE.SCORE.GENDER.1': '여아',
+    'FALLSCALE.SCORE.GENDER.2': '남아',
+
+    'FALLSCALE.SCORE.DIANOSIS.1': '그 밖의 다른 진단',
+    'FALLSCALE.SCORE.DIANOSIS.2': '정신/행동 장애 관련 진단',
+    'FALLSCALE.SCORE.DIANOSIS.3': '산소량 변화 진단\n(호흡기적 진단, 탈수, 빈혈,\n식욕감퇴, 실신, 어지러움 등)',
+    'FALLSCALE.SCORE.DIANOSIS.4': '신경학적 진단',
+
+    'FALLSCALE.SCORE.COGNITIVE.1': '자기 능력을 알고 있음',
+    'FALLSCALE.SCORE.COGNITIVE.2': '능력의 한계를 알고 있지만\n시행하지 않음',
+    'FALLSCALE.SCORE.COGNITIVE.3': '4세 이상이나 능력의 한계를 알지못함\n또는 4세 미만 환자',
+
+    'FALLSCALE.SCORE.ENVIRONMENTAL.1': '해당없음',
+    'FALLSCALE.SCORE.ENVIRONMENTAL.2': '보조기(휠체어, 워커, 목발) 사용함',
+    'FALLSCALE.SCORE.ENVIRONMENTAL.3': '낙상 경험 있음',
+
+    'FALLSCALE.SCORE.HISTORY.1': '시행 후 48시간 이상 / 해당없음',
+    'FALLSCALE.SCORE.HISTORY.2': '시행 후 48시간 이내',
+    'FALLSCALE.SCORE.HISTORY.3': '시행 후 24시간 이내',
+
+    'FALLSCALE.SCORE.DRUG.1': '다른 약물/ 해당 없음',
+    'FALLSCALE.SCORE.DRUG.2': '2가지 이상\n(진정제, 수면제, 최면제, 정신안정제,\n항불안제, 완화제, 진통제)',
+    'FALLSCALE.SCORE.DRUG.3': '위 약물중 하나',
+
+    'REQUIRED.FALLSCALE.SCORE':'평가항목을 모두 선택해주세요',
+
+
     // safety
     'SAFETY.DISCOVERY.PLACE.1': '병동',
     'SAFETY.DISCOVERY.PLACE.2': '외래',

@@ -113,7 +113,7 @@ const MenuRecords = (props: Props) => {
     },
     {
       isPro: true,
-      label: '소아 낙상위험도 평가',
+      label: '소아 낙상위험 평가',
       toggle: toggle.patient_evaluation,
     },
     {
@@ -358,7 +358,7 @@ const MenuRecords = (props: Props) => {
             :
               (icon ?
                 <ListItem key={label} disablePadding ref={label === "특수파트 기록지" ? coachRef : null}>
-                  <ListItemButton onClick={onClick}>
+                  <ListItemButton onClick={onClick} >
                     <ListItemIcon>{icon}</ListItemIcon>
                     <ListItemText primary={label} />
                     <ProIcon />

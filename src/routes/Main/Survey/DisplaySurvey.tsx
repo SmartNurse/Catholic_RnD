@@ -15,6 +15,7 @@ import BedScore from './BedScore';
 import BedScoreTwo from './BedScoreTwo';
 import Fall from './Fall';
 import FallTwo from './FallTwo';
+import FallScale from './Humty Dumpty Fall Scale';
 import GCS from './GCS';
 import Pediatric_GCS from './Pediatric_GCS'
 import FourScore from './Four Score'
@@ -114,6 +115,10 @@ const DisplaySurvey = (props: Props) => {
     case MENU.FALLTWO: {
       if (!defaultValues) return null;
       return <FallTwo {...dialogProps} onClose={onCloseSave} />;
+    }
+    case MENU.FALLSCALE: {
+      if (!defaultValues) return null;
+      return <FallScale {...dialogProps} onClose={onCloseSave} />;
     }
     case MENU.GCS: {
       if (!defaultValues) return null;

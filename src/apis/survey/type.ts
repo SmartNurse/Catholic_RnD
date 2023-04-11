@@ -243,6 +243,12 @@ export interface IUpdateFallTwo extends IGetSurvey {
   contents: string;
 }
 
+// 소아 낙상위험 평가 
+export interface IUpdateFallScale extends IGetSurvey {
+  date: string;
+  contents: string;
+}
+
 // GCS
 export interface IUpdateGCS extends IGetSurvey {
   date: string;

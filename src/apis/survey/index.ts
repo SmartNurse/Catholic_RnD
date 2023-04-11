@@ -9,6 +9,7 @@ import {
   IUpdateMedication,
   IUpdateFall,
   IUpdateFallTwo,
+  IUpdateFallScale,
   IUpdateGCS,
   IUpdatePediatric_GCS,
   IUpdateFourScore,
@@ -167,6 +168,17 @@ export const getFallTwo = (request: IGetSurvey) => {
 };
 
 export const updateFallTwo = (request: IUpdateFallTwo) => {
+  const url = `/survey/fall`;
+  return apiGateway.post(url, camelcaseKeys(request));
+};
+
+// 소아 낙상위험 평가 
+export const getFallScale = (request: IGetSurvey) => {
+  const url = `/survey/fall?${formatToRequestParameter(request)}`;
+  return apiGateway.get(url);
+};
+
+export const updateFallScale = (request: IUpdateFallScale) => {
   const url = `/survey/fall`;
   return apiGateway.post(url, camelcaseKeys(request));
 };
