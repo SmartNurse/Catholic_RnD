@@ -88,7 +88,7 @@ const Anesthesia = (props: SurveyDialogProps<TAnesthesiaDefaultValues>) => {
             columnSpacing={3}
             sx={{ py: 5, px: 1 }}
             >
-                <Typography sx={{ margin: "40px auto 0px auto", fontWeight: "700", fontSize: "20px", textAlign: "center" }}>
+                <Typography sx={{ margin: "40px auto 0px auto", fontWeight: "700", fontSize: "16px", textAlign: "center" }}>
                     마취 기록지
                 </Typography>
                 <CommonPatientInfo patientInfo={patientInfo} nurseName={nurseName} />

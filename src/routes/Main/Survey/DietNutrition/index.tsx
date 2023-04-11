@@ -83,7 +83,7 @@ const DietNutrition = (props: SurveyDialogProps<TDietNutritionDefaultValues>) =>
                 columnSpacing={3}
                 sx={{ py: 5, px: 10 }}
             >
-                <Typography sx={{ margin: "12px auto", fontWeight: "700", fontSize: "16px", textAlign: "center" }}>
+                <Typography sx={{ margin: "40px auto 0px auto", fontWeight: "700", fontSize: "16px", textAlign: "center" }}>
                     식이/영양 기록지
                 </Typography>
                 <PatientInfo {...formProps} {...patientInfo} />

@@ -1,4 +1,4 @@
-import { Grid } from '@mui/material';
+import { Grid,Typography } from '@mui/material';
 import { useForm } from 'react-hook-form';
 
 import { updateBedScore } from 'apis/survey';
@@ -72,6 +72,9 @@ const BedScore = (props: SurveyDialogProps<TBedScoreTwoDefaultValues>) => {
         columnSpacing={3}
         sx={{ py: 5, px: 1 }}
       >
+        <Typography sx={{ margin: "40px auto 0px auto", fontWeight: "700", fontSize: "16px", textAlign: "center" }}>
+          욕창위험 평가도구 II
+        </Typography>
         <CommonPatientInfo patientInfo={patientInfo} nurseName={nurseName} />
         <BedScoreTwoContents {...formProps} />
       </Grid>

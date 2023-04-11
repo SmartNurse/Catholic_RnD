@@ -69,8 +69,8 @@ const MMSE = (props: SurveyDialogProps<TMMSEDefaultValues>) => {
             onSubmit={disabled ? undefined : handleSubmit(onSubmit)}
             update_at={defaultValues?.update_at}
         >
-            <Typography fontSize={16} fontWeight="bold" align="center" sx={{ marginTop: "12px", marginBottom: "40px" }}>
-                인지기능검사 (Mini-Mental State Examination; MMSE-K)
+            <Typography sx={{ margin: "40px auto 40px auto", fontWeight: "700", fontSize: "16px", textAlign: "center" }}>
+                    인지기능검사 (Mini-Mental State Examination; MMSE-K)
             </Typography>
             <CommonPatientInfo patientInfo={patientInfo} nurseName={nurseName} />
             <MMSEContents {...formProps} />

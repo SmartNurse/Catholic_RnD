@@ -79,7 +79,7 @@ const FallPrevention = (props: SurveyDialogProps<TFallConfirmDefaultValues>) => 
             onSubmit={disabled ? undefined : handleSubmit(onSubmit)}
             update_at={defaultValues?.update_at}
         >
-            <Typography fontSize={16} fontWeight="bold" align="center" sx={{ marginTop: "12px", marginBottom: "40px" }}>
+            <Typography sx={{ margin: "40px auto 40px auto", fontWeight: "700", fontSize: "16px", textAlign: "center" }}>
                 낙상 예방교육 확인서
             </Typography>
             <CommonPatientInfo patientInfo={patientInfo} nurseName={nurseName} />

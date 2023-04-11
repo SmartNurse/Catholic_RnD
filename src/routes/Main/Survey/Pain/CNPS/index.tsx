@@ -67,7 +67,7 @@ const CNPS = (props: SurveyDialogProps<TCNPSDefaultValues>) => {
             onSubmit={disabled ? undefined : handleSubmit(onSubmit)}
             update_at={defaultValues?.update_at}
         >
-            <Typography fontSize={16} fontWeight="bold" align="center" sx={{ marginTop: "12px", marginBottom: "40px" }}>
+            <Typography sx={{ margin: "40px auto 40px auto", fontWeight: "700", fontSize: "16px", textAlign: "center" }}>
                 CNPS
                 <br/>
                 (Critical care Nonverbal Pain Scale)

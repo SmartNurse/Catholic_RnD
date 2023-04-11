@@ -77,9 +77,9 @@ const BAI = (props: SurveyDialogProps<TBAIDefaultValues>) => {
             columnSpacing={3}
             sx={{ py: 5, px: 1 }}
             >
-                <Typography sx={{ margin: "40px auto 0px auto", fontWeight: "700", fontSize: "20px", textAlign: "center" }}>
+                <Typography sx={{ margin: "40px auto 0px auto", fontWeight: "700", fontSize: "16px", textAlign: "center" }}>
                     벡 불안척도 (Beck Anxiety Inventory; BAI)
-                    <Typography sx={{ marginTop: "15px", fontWeight: "400", fontSize: "16px" }}>
+                    <Typography sx={{ marginTop: "15px", fontWeight: "400", fontSize: "14px" }}>
                         다음의 21문항을 읽으시고 당신의 현재 상태에 해당하는 것을 0~3점
                         <br/>
                         으로 표시해 주십시오. (오늘을 포함하여 지난 한 주간의 경험).

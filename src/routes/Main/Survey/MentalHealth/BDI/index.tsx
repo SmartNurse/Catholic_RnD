@@ -77,9 +77,9 @@ const BDI = (props: SurveyDialogProps<TBDIDefaultValues>) => {
             columnSpacing={3}
             sx={{ py: 5, px: 1 }}
             >
-                <Typography sx={{ margin: "40px auto 0px auto", fontWeight: "700", fontSize: "20px", textAlign: "center" }}>
+                <Typography sx={{ margin: "40px auto 0px auto", fontWeight: "700", fontSize: "16px", textAlign: "center" }}>
                     벡 우울척도 (Beck Depression Inventory; BDI)
-                    <Typography sx={{ marginTop: "15px", fontWeight: "400", fontSize: "16px" }}>
+                    <Typography sx={{ marginTop: "15px", fontWeight: "400", fontSize: "14px" }}>
                         지난 2주 동안의 당신의 기분과 상태를 생각해 보시고, 이를 가장 잘
                         <br/>
                         설명하는 문장의 번호에 표시해 주십시오.

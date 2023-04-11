@@ -78,7 +78,7 @@ const MentalNursing = (props: SurveyDialogProps<TMentalNursingDefaultValues>) =>
             columnSpacing={3}
             sx={{ py: 5, px: 1 }}
             >
-                <Typography sx={{ margin: "40px auto 0px auto", fontWeight: "700", fontSize: "20px", textAlign: "center" }}>
+                <Typography sx={{ margin: "40px auto 0px auto", fontWeight: "700", fontSize: "16px", textAlign: "center" }}>
                     정신간호 기록지
                 </Typography>
                 <CommonPatientInfo patientInfo={patientInfo} nurseName={nurseName} />

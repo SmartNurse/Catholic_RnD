@@ -69,7 +69,7 @@ const FLACC = (props: SurveyDialogProps<TFLACCDefaultValues>) => {
             onSubmit={disabled ? undefined : handleSubmit(onSubmit)}
             update_at={defaultValues?.update_at}
         >
-            <Typography fontSize={16} fontWeight="bold" align="center" sx={{ marginTop: "12px", marginBottom: "40px" }}>
+            <Typography sx={{ margin: "40px auto 40px auto", fontWeight: "700", fontSize: "16px", textAlign: "center" }}>
                 FLACC Scale
             </Typography>
             <CommonPatientInfo patientInfo={patientInfo} nurseName={nurseName} />
