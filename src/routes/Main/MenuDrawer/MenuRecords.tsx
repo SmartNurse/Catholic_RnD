@@ -208,7 +208,7 @@ const MenuRecords = (props: Props) => {
     },
     {
       isPro: true,
-      label: 'K-CIST',
+      label: 'CIST',
       toggle: toggle.mental_health,
     },
     {
