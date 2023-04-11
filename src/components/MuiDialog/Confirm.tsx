@@ -7,6 +7,11 @@ import {
   DialogTitle,
 } from '@mui/material';
 
+import { ReactComponent as NaverBanner } from '../../assets/naverBanner.svg';
+import { ReactComponent as KakaoBanner } from '../../assets/kakaoBanner.svg';
+
+
+
 interface Props {
   title: string;
   message: string;
@@ -29,9 +34,24 @@ function Confirm(props: Props) {
         }}
       >
         {message}
+
+        <div style={{ marginTop:'1.5rem'}}>
+          <NaverBanner
+            style={{ cursor: "pointer" }}
+            onClick={()=>window.open("https://talk.naver.com/ct/w4qrco")}
+          />
+        </div>
+
+        <div style={{ marginTop:'1rem'}}>
+          <KakaoBanner
+            style={{ cursor: "pointer" }}
+            onClick={()=>window.open("http://pf.kakao.com/_WxkzXb")}
+          />
+        </div>
+        
       </DialogContent>
       <DialogActions>
-        <Button variant="text" onClick={onClose}>
+        <Button variant="text" onClick={onClose} sx={{marginTop:"-20px"}}>
           확인
         </Button>
       </DialogActions>

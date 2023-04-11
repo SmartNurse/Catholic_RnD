@@ -20,6 +20,7 @@ import Form from 'components/Form';
 import MuiDialog from 'components/MuiDialog';
 
 
+
 interface Props {
   errors: { [x: string]: any };
   register: UseFormRegister<FieldValues>;
@@ -101,9 +102,12 @@ function SignInForm({ errors, register, onSignUp }: Props) {
 
               <MuiDialog.ConfirmButton
                 title="아이디/비밀번호를 잊으셨나요?"
-                message={`아이디는 본인 이메일입니다.\n스마트널스 네이버톡톡 또는 카카오톡채널\n또는
-                이메일 (nurse@smartnurse.co.kr)로\n학교, 학번, 가입 시 이메일(아이디)를
-                기재하고 문의 주세요.`}
+                message={`아이디/ 비밀번호를 잊으셨다면
+                          네이버 톡톡 문의하기 혹은 카카오채널 문의하기
+                          버튼을 클릭하고 다음 사항을 작성하여 문의주세요.
+                          
+                          - 아이디를 잊으셨다면 : 학교, 학번, 이름
+                          - 비밀번호를 잊으셨다면 : 학교, 학번, 이름, 이메일(아이디)`}
                 color={palette.mode === "dark" ? "lightgrey" : ""}
               />
 
@@ -116,7 +120,6 @@ function SignInForm({ errors, register, onSignUp }: Props) {
               >
                 스마트널스 홈페이지 바로가기
               </Button>
-
               <Typography sx={{ fontSize: "0.8125rem" }}>문의: nurse@smartnurse.co.kr</Typography>
 
             </Box>
