@@ -5,7 +5,7 @@ export interface Props {
 }
 
 const BedScoreTwoTableHeadList = ({ columns }: Props) => (
-  <TableRow>
+  <TableRow >
     {columns.map(({ fieldId, label, sx }) => (
       <TableCell
         key={fieldId}
@@ -13,7 +13,7 @@ const BedScoreTwoTableHeadList = ({ columns }: Props) => (
           fontSize: 12,
           fontWeight: 700,
           whiteSpace: 'nowrap',
-          paddingLeft:'55px',
+          paddingLeft: '15px',
           ...sx,
         }}
       >
