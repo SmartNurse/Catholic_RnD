@@ -3,6 +3,7 @@ import { Grid, Box, Typography, Table, TableBody, TableRow, TableCell, RadioGrou
 import SectionTitle from '../../components/SectionTitle';
 import { IFormValues, IFormWatch } from 'routes/Main/type';
 import useTableForm from '../../hooks/useTableForm';
+import MuiRadioGroupSub from './MuiRadioGroupSub';
 
 interface Props extends IFormValues, IFormWatch {
   disabled?: boolean;
@@ -41,7 +42,7 @@ const BDIContents = (props: Props) => {
     ["나는 평소보다 더 피곤하지는 않다.", "나는 전보다 더 쉽게 피곤해진다.", "나는 무엇을 해도 언제나 피곤해진다.", "나는 너무나 피곤해서 아무일도 할 수 없다."],
     ["내 식욕은 평소와 다름없다.", "나는 요즈음 전보다 식욕이 좋지 않다.", "나는 요즈음 식욕이 많이 떨어졌다.", "요즈음에는 전혀 식욕이 없다."],
     ["요즈음 체중이 별로 줄지 않았다.", "전보다 몸무게가 2kg 가량 줄었다.", "전보다 몸무게가 5kg 가량 줄었다.", "전보다 몸무게가 7kg 가량 줄었다."],
-    ["나는 현재 음식 조절로 체중을 줄이고 있는 중이다.", "나는 현재 음식 조절로 체중을 줄이고 있는 중이 아니다."],
+    ["나는 현재 음식 조절로 체중을 줄이고 있는 중이다."],
     ["나는 건강에 대해 전보다 더 염려하고 있지는 않다.", "나는 여러 가지 통증, 소화불량, 변비 등과 같은 신체적인 문제로 걱정하고 있다.", "나는 건강이 매우 염려되어 다른 일은 생각하기 힘들다.", "나는 건강이 너무 염려되어 다른 일은 아무 것도 생각할 수 없다."],
     ["나는 요즈음 성(sex)에 대한 관심에 별다른 변화가 있는 것 같지는 않다.", "나는 전보다 성(sex)에 대한 관심이 줄었다.", "나는 전보다 성(sex)에 대한 관심이 상당히 줄었다.", "나는 성(sex)에 대한 관심을 완전히 잃었다."],
   ];
@@ -63,23 +64,42 @@ const BDIContents = (props: Props) => {
           <RadioGroup name={title} defaultValue={Number(getValues(`content[${idx}]`))} >
             <Table aria-label="simple table">
               <TableBody>
-                {answers[idx].map((answer, i) => (
-                  <TableRow key={answer}>
-                    <TableCell sx={{ width: "80%"}}>{answer}</TableCell>
-                    <TableCell sx={{ width: "10%"}}>
-                      {idx === 19 ? "" : `${i}점`}
-                    </TableCell>
-                    <TableCell>
-                      <Radio disabled={disabled} name={title} value={i} sx={{ height: "44px" }} onChange={() => setValue(`content[${idx}]`, i)}/>
-                    </TableCell>
-                  </TableRow>                
-                ))}
+                  {answers[idx].map((answer, i) => {
+                    console.log('답이모까',)
+                    if (idx === 19) {
+                      return <TableRow key={answer}>
+                      <TableCell sx={{ width: "80%" }}>{answer}</TableCell>
+                        <TableCell>
+                          <MuiRadioGroupSub
+                            i18nKey="YESORNO"
+                            values={[1, 2]}
+                            name={title}
+                            disabled={disabled}
+                            defaultValue={Number(getValues('content[19]'))}
+                            onChange={(i) => setValue(`content[19]`, i)}
+                          />
+                        </TableCell>
+                      </TableRow>
+                    }
+
+                    return <TableRow key={answer}>
+                      <TableCell sx={{ width: "80%" }}>{answer}</TableCell>
+                      <TableCell sx={{ width: "10%" }}>
+                        {`${i}점`}
+                      </TableCell>
+                      <TableCell>
+                        <Radio disabled={disabled} name={title} value={i} sx={{ height: "44px" }} onChange={() => setValue(`content[${idx}]`, i)} />
+                      </TableCell>
+                    </TableRow>
+                  })}
               </TableBody>
             </Table>
           </RadioGroup>
         </Grid>
         </>
       ))}
+
+
       <Grid item xs={12}>
         <Box display={'flex'} flexDirection={'column'} alignItems={'flex-end'}>
           <Typography

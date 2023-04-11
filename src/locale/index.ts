@@ -12,6 +12,9 @@ const locale = {
     'EXIST.SHORT.2': '유',
     'NEED.1': '필요',
     'NEED.2': '불필요',
+    'YESORNO.1': '예',
+    'YESORNO.2': '아니오',
+
 
     // error message
     'ERROR.CODE.0': '알 수 없는 오류가 발생했습니다. ErrorCode: {rc}',
