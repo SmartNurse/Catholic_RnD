@@ -73,10 +73,11 @@ const OperationInfo = (props: Props) => {
         },
         {
             label: "금식여부",
-            element: 
+            element:<Box display="flex"> 
                 <Form.MuiTextField
                     select
                     required={false}
+                    sx={{ width: "37%" }}
                     disabled={disabled}
                     defaultValue={getValues("operation_information.npo_status")}
                     {...register("operation_information.npo_status")}
@@ -84,6 +85,19 @@ const OperationInfo = (props: Props) => {
                     <MenuItem value="금식">금식</MenuItem>
                     <MenuItem value="금식안함">금식안함</MenuItem>
                 </Form.MuiTextField>
+                <FormControlLabel
+                    disabled={disabled}
+                    control={<Checkbox defaultChecked={getValues("operation_information.preoperative_xray")} {...register("operation_information.preoperative_xray")} />}
+                    label="수술 전 흉부 X-ray"
+                    sx={{ marginLeft: "20px" }}
+                />
+                <FormControlLabel
+                    disabled={disabled}
+                    control={<Checkbox defaultChecked={getValues("operation_information.preoperative_ekg")} {...register("operation_information.preoperative_ekg")} />}
+                    label="수술 전 심전도"
+                    sx={{ marginLeft: "20px" }}
+                />
+                </Box>
         }, 
         {
             label: "수술자세",
@@ -121,30 +135,13 @@ const OperationInfo = (props: Props) => {
                     :
                     null
                     }
+                    
                 </Box>
         },
         {
-            label: "과거력/알레르기",
+            label: "",
             element: 
             <Box display="flex">
-                <Form.MuiTextField
-                    sx={{ width: "37%" }}
-                    required={false}
-                    disabled={disabled}
-                    {...register("operation_information.past_history_and_allergy")}
-                />
-                <FormControlLabel
-                    disabled={disabled}
-                    control={<Checkbox defaultChecked={getValues("operation_information.preoperative_xray")} {...register("operation_information.preoperative_xray")} />}
-                    label="수술 전 흉부 X-ray"
-                    sx={{ marginLeft: "20px" }}
-                />
-                <FormControlLabel
-                    disabled={disabled}
-                    control={<Checkbox defaultChecked={getValues("operation_information.preoperative_ekg")} {...register("operation_information.preoperative_ekg")} />}
-                    label="수술 전 심전도"
-                    sx={{ marginLeft: "20px" }}
-                />
             </Box>,
         },
         {
@@ -248,7 +245,7 @@ const OperationInfo = (props: Props) => {
                         <RowContent
                             title={label}
                             titleRatio={1}
-                            childrenRatio={label === "과거력/알레르기" ? 5 : 2}
+                            childrenRatio={label === "금식여부" ? 5 : 2}
                         >
                             {element}
                         </RowContent>

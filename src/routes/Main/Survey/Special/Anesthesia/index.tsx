@@ -10,7 +10,7 @@ import MuiDialog from "components/MuiDialog";
 import { SurveyDialogProps, TAnesthesiaDefaultValues } from "../../type";
 import { updateAnestheia } from "apis/survey";
 
-import CommonPatientInfo from "../../components/CommonPatientInfo";
+import PatientStaffInfo from "./PatientStaffInfo";
 import OperationInfo from "./OperationInfo";
 import PrescriptionRecords from "./PrescriptionRecords";
 import PatientStatus from "./PatientStatus";
@@ -91,7 +91,7 @@ const Anesthesia = (props: SurveyDialogProps<TAnesthesiaDefaultValues>) => {
                 <Typography sx={{ margin: "40px auto 0px auto", fontWeight: "700", fontSize: "16px", textAlign: "center" }}>
                     마취 기록지
                 </Typography>
-                <CommonPatientInfo patientInfo={patientInfo} nurseName={nurseName} />
+                <PatientStaffInfo {...formProps} patientInfo={patientInfo} nurseName={nurseName} />
                 <OperationInfo {...formProps} />
                 <PrescriptionRecords {...formProps} />
                 <PatientStatus {...formProps} />
