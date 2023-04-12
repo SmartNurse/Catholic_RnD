@@ -74,6 +74,8 @@ const FallScale = (props: SurveyDialogProps<TFallScaleDefaultValues>) => {
       >
         <Typography sx={{ margin: "40px auto 0px auto", fontWeight: "700", fontSize: "16px", textAlign: "center" }}>
           소아 낙상위험 평가 (humty dumpty fall scale)
+          <br />
+          - 테스트 중입니다 -
         </Typography>
         <CommonPatientInfo patientInfo={patientInfo} nurseName={nurseName} />
         <FallScaleContents {...formProps} />
