@@ -85,12 +85,13 @@ const Medications = (props: Props) => {
           disabled={disabled}
           checked={medicationDo}
           onChange={onChangeMedicationDo}
+          sx={{ marginLeft:"4px"}}
         />
       ),
       medication_info: (
         <Box sx={{ display: "flex", alignItems: "center", justifyContent: "center" }}>
           <DrugInfo
-            style={{ cursor: "pointer" }}
+            style={{ cursor: "pointer", marginRight:"20px" }}
             onClick={() => window.open("https://terms.naver.com/search.naver?query=" + item.medication_name)}
           />
         </Box>
