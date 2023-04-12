@@ -14,6 +14,9 @@ const locale = {
     'NEED.2': '불필요',
     'YESORNO.1': '예',
     'YESORNO.2': '아니오',
+    'CIST.SCORE.1': '0',
+    'CIST.SCORE.2':'1',
+    
 
 
     // error message

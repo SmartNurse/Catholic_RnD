@@ -23,6 +23,7 @@ import {
   getBDI,
   getBAI,
   getMMSE,
+  getCIST,
   getOperation,
   getAnesthesia,
   getTransfusion,
@@ -61,6 +62,7 @@ import {
   initialBDI,
   initialBAI,
   initialMMSE,
+  initialCIST,
   initialOperation,
   initialAnesthesia,
   initialTransfusion,
@@ -355,6 +357,13 @@ const useDefaultValues = ({ setDefaultValues, user_id }: Props) => {
         getMMSE({ user_id, patient_id })
           .then(({ data }) => {
             convertDataToStates(data, initialMMSE);
+          })
+          .catch(e => onFail('알 수 없는 오류가 발생했습니다.', e));
+        break;
+      case MENU.CIST: 
+        getCIST({ user_id, patient_id })
+          .then(({ data }) => {
+            convertDataToStates(data, initialCIST);
           })
           .catch(e => onFail('알 수 없는 오류가 발생했습니다.', e));
         break;

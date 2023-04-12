@@ -27,6 +27,7 @@ import {
   IUpdateBDI,
   IUpdateBAI,
   IUpdateMMSE,
+  IUpdateCIST,
   IUpdateOperation,
   IUpdateAnesthesia,
   IUpdateTransfusion,
@@ -301,6 +302,17 @@ export const getMMSE = (request: IGetSurvey) => {
 };
 
 export const updateMMSE = (request: IUpdateMMSE) => {
+  const url = `/survey/mmse`;
+  return apiGateway.post(url, camelcaseKeys(request));
+};
+
+// CIST IUpdate
+export const getCIST = (request: IGetSurvey) => {
+  const url = `/survey/mmse?${formatToRequestParameter(request)}`;
+  return apiGateway.get(url);
+};
+
+export const updateCIST = (request: IUpdateCIST) => {
   const url = `/survey/mmse`;
   return apiGateway.post(url, camelcaseKeys(request));
 };

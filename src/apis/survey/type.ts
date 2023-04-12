@@ -368,6 +368,14 @@ export interface IUpdateMMSE extends IGetSurvey {
   sum: number;  
 }
 
+// CIST
+export interface IUpdateCIST extends IGetSurvey {
+  bdi_survey: {
+    content: number[];
+    sum: number;
+  }
+}
+
 // 수술기록지
 export interface IUpdateOperation extends IGetSurvey {
   surgical_survey: {

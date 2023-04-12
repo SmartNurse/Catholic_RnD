@@ -28,6 +28,7 @@ import MentalNursing from './MentalHealth/MentalNursing';
 import BDI from './MentalHealth/BDI';
 import BAI from './MentalHealth/BAI';
 import MMSE from './MentalHealth/MMSE';
+import CIST from './MentalHealth/CIST';
 import Operation from './Special/Operation';
 import Anesthesia from './Special/Anesthesia';
 import Transfusion from './Special/Transfusion';
@@ -164,6 +165,10 @@ const DisplaySurvey = (props: Props) => {
       if (!defaultValues) return null;
       return <MMSE {...dialogProps} onClose={onCloseSave} />;
     }
+    case MENU.CIST: {
+      if (!defaultValues) return null;
+      return <CIST {...dialogProps} onClose={onCloseSave} />;
+    }  
     case MENU.OPERATION: {
       if (!defaultValues) return null;
       return <Operation {...dialogProps} onClose={onCloseSave} />;
