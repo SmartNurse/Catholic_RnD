@@ -15,9 +15,7 @@ const locale = {
     'YESORNO.1': '예',
     'YESORNO.2': '아니오',
     'CIST.SCORE.1': '0',
-    'CIST.SCORE.2':'1',
-    
-
+    'CIST.SCORE.2': '1',
 
     // error message
     'ERROR.CODE.0': '알 수 없는 오류가 발생했습니다. ErrorCode: {rc}',
@@ -83,12 +81,12 @@ const locale = {
     'FOCUSDAR.RESPONSE': '반응 Response',
     'NARRATIVE.NARRATIVENOTE': '서술 기록 Narrative Notes',
     'REMARKS.ASSESSMENT': '간호사정 (Assessment)',
-    'REMARKS.DIAGNOSIS':'간호진단 (Diagnosis)',
-    'REMARKS.DIAGNOSISRELATE':'와/과 관련된',
-    'REMARKS.GOAL':'간호목표 (Goal)',
-    'REMARKS.PLAN':'간호계획 (Plan)',
-    'REMARKS.INTERVENTIONS':'간호수행/중재/이론적 근거 (Interventions)',
-    'REMARKS.EVALUATION':'간호평가 (Evaluation)',
+    'REMARKS.DIAGNOSIS': '간호진단 (Diagnosis)',
+    'REMARKS.DIAGNOSISRELATE': '와/과 관련된',
+    'REMARKS.GOAL': '간호목표 (Goal)',
+    'REMARKS.PLAN': '간호계획 (Plan)',
+    'REMARKS.INTERVENTIONS': '간호수행/중재/이론적 근거 (Interventions)',
+    'REMARKS.EVALUATION': '간호평가 (Evaluation)',
     'REQUIRED.DOMAIN': '영역을 선택해주세요',
     'REQUIRED.CLASS': '분류를 선택해주세요',
     'REQUIRED.DIAGNOSIS': '진단명을 선택해주세요',
@@ -134,7 +132,6 @@ const locale = {
     'HOSPITALIZATION.BODY.SKIN.2': '소양감',
     'HOSPITALIZATION.BODY.SKIN.3': '부종',
     'HOSPITALIZATION.BODY.SKIN.4': '궤양',
-
 
     'HOSPITALIZATION.HABIT.FECES.1': '정상',
     'HOSPITALIZATION.HABIT.FECES.2': '설사',
@@ -196,7 +193,8 @@ const locale = {
 
     // clinical observation
     'CLINICAL.OBSERVATION.ADD.ROW': '입력하지 않은 값이 있습니다.',
-    'CLINICAL.OBSERVATION.STOP':'가상 환자 1명 당 4개까지 입력 가능합니다',
+    'CLINICAL.OBSERVATION.STOP': '가상 환자 1명 당 4개까지 입력 가능합니다',
+    'CLINICAL.OBSERVATION.ADD.NAN': '연락처는 숫자만 입력해주세요.',
 
     // bedScore I
     'BED.SCORE.SENSORY.PERCEPTION.1': '완전 제한',
@@ -273,16 +271,20 @@ const locale = {
     'FALLTWO.15': '있음 (15점)',
     'FALLTWO.25': '있음 (25점)',
     'FALLTWO.20': '있음 (20점)',
-    'FALLTWO.WALKING.AIDS.0': '보조기 사용하지 않음/침상안정/ \n휠체어/사람이 도와줌 (0점)',
+    'FALLTWO.WALKING.AIDS.0':
+      '보조기 사용하지 않음/침상안정/ \n휠체어/사람이 도와줌 (0점)',
     'FALLTWO.WALKING.AIDS.15': '목발/지팡이/보행기 (15점)',
-    'FALLTWO.WALKING.AIDS.30': '보조기 이외에 주변 기물/기구를 잡고 보행 (30점)',
+    'FALLTWO.WALKING.AIDS.30':
+      '보조기 이외에 주변 기물/기구를 잡고 보행 (30점)',
     'FALLTWO.GAIT.0': '정상보행(0점) \n (시선, 균형, 보폭 유지/침상안정/부동)',
     'FALLTWO.GAIT.10': '균형 및 시선 유지되지만, 기력이 저하됨 (10점)',
-    'FALLTWO.GAIT.20': '장애가 있음 (20점) \n (사람이나 기구의 도움 없이는 걸을 수 없는 사람/\n시선 및 균형 유지불가능/의족 착용/파킨슨 보행',
-    'FALLTWO.CONSCIOUSNESS.0': '의식 명료하며 자신의 기능 수준에 대해 \n 잘 알고 있음 (0점)',
-    'FALLTWO.CONSCIOUSNESS.15': '의식 명료하지 않거나 자신의 기능 수준을 \n 과대평가하거나 잊어버림 (15점)',
+    'FALLTWO.GAIT.20':
+      '장애가 있음 (20점) \n (사람이나 기구의 도움 없이는 걸을 수 없는 사람/\n시선 및 균형 유지불가능/의족 착용/파킨슨 보행',
+    'FALLTWO.CONSCIOUSNESS.0':
+      '의식 명료하며 자신의 기능 수준에 대해 \n 잘 알고 있음 (0점)',
+    'FALLTWO.CONSCIOUSNESS.15':
+      '의식 명료하지 않거나 자신의 기능 수준을 \n 과대평가하거나 잊어버림 (15점)',
     'REQUIRED.FALLTWO': '평가항목을 모두 선택해주세요',
-
 
     // FallScale
     'FALLSCALE.SCORE.AGE.1': '3개월 미만, 13세 이상',
@@ -295,12 +297,14 @@ const locale = {
 
     'FALLSCALE.SCORE.DIANOSIS.1': '그 밖의 다른 진단',
     'FALLSCALE.SCORE.DIANOSIS.2': '정신/행동 장애 관련 진단',
-    'FALLSCALE.SCORE.DIANOSIS.3': '산소량 변화 진단\n(호흡기적 진단, 탈수, 빈혈,\n식욕감퇴, 실신, 어지러움 등)',
+    'FALLSCALE.SCORE.DIANOSIS.3':
+      '산소량 변화 진단\n(호흡기적 진단, 탈수, 빈혈,\n식욕감퇴, 실신, 어지러움 등)',
     'FALLSCALE.SCORE.DIANOSIS.4': '신경학적 진단',
 
     'FALLSCALE.SCORE.COGNITIVE.1': '자기 능력을 알고 있음',
     'FALLSCALE.SCORE.COGNITIVE.2': '능력의 한계를 알고 있지만\n시행하지 않음',
-    'FALLSCALE.SCORE.COGNITIVE.3': '4세 이상이나 능력의 한계를 알지못함\n또는 4세 미만 환자',
+    'FALLSCALE.SCORE.COGNITIVE.3':
+      '4세 이상이나 능력의 한계를 알지못함\n또는 4세 미만 환자',
 
     'FALLSCALE.SCORE.ENVIRONMENTAL.1': '해당없음',
     'FALLSCALE.SCORE.ENVIRONMENTAL.2': '보조기(휠체어, 워커, 목발) 사용함',
@@ -311,11 +315,11 @@ const locale = {
     'FALLSCALE.SCORE.HISTORY.3': '시행 후 24시간 이내',
 
     'FALLSCALE.SCORE.DRUG.1': '다른 약물/ 해당 없음',
-    'FALLSCALE.SCORE.DRUG.2': '2가지 이상\n(진정제, 수면제, 최면제, 정신안정제,\n항불안제, 완화제, 진통제)',
+    'FALLSCALE.SCORE.DRUG.2':
+      '2가지 이상\n(진정제, 수면제, 최면제, 정신안정제,\n항불안제, 완화제, 진통제)',
     'FALLSCALE.SCORE.DRUG.3': '위 약물중 하나',
 
-    'REQUIRED.FALLSCALE.SCORE':'평가항목을 모두 선택해주세요',
-
+    'REQUIRED.FALLSCALE.SCORE': '평가항목을 모두 선택해주세요',
 
     // safety
     'SAFETY.DISCOVERY.PLACE.1': '병동',
@@ -328,7 +332,7 @@ const locale = {
     'SAFETY.ACCIDENT.TYPE.1': '적신호사건',
     'SAFETY.ACCIDENT.TYPE.2': '위해사건',
     'SAFETY.ACCIDENT.TYPE.3': '근접오류',
-    
+
     'SAFETY.ACCIDENT.CLASSIFICATION.1': '낙상',
     'SAFETY.ACCIDENT.CLASSIFICATION.2': '투약',
     'SAFETY.ACCIDENT.CLASSIFICATION.3': '검사 관련',
@@ -340,14 +344,22 @@ const locale = {
     'SAFETY.ACCIDENT.CLASSIFICATION.0': '기타',
 
     'SAFETY.EVENT.CLASSIFICATION.8': '[적신호사건] 8등급: 환자 사망',
-    'SAFETY.EVENT.CLASSIFICATION.7': '[적신호사건] 7등급: 환자에게 사망에 가까운 위험한 상황 초래',
-    'SAFETY.EVENT.CLASSIFICATION.6': '[적신호사건] 6등급: 영구적인 손상, 잘못된 부위 시술 및 수술',
-    'SAFETY.EVENT.CLASSIFICATION.5': '[위해사건] 5등급: 일시적 손상으로 입원을 하였거나 입원기간이 연장됨',
-    'SAFETY.EVENT.CLASSIFICATION.4': '[위해사건] 4등급: 일시적 손상으로 중재가 필요함 (검사, 내/외과적 치료 등)',
-    'SAFETY.EVENT.CLASSIFICATION.3': '[위해사건] 3등급: 환자에게 투여/적용되었으며 추가적인 관찰이 필요함',
-    'SAFETY.EVENT.CLASSIFICATION.2': '[위해사건] 2등급: 환자에게 투여/적용되었으나 해가 없음',
-    'SAFETY.EVENT.CLASSIFICATION.1': '[근접오류] 1등급: 오류가 발생하였으나 환자에게 도달하지 않음',
-    'SAFETY.EVENT.CLASSIFICATION.0': '[근접오류] 0등급: 오류가 발생할 위험이 있는 상황',
+    'SAFETY.EVENT.CLASSIFICATION.7':
+      '[적신호사건] 7등급: 환자에게 사망에 가까운 위험한 상황 초래',
+    'SAFETY.EVENT.CLASSIFICATION.6':
+      '[적신호사건] 6등급: 영구적인 손상, 잘못된 부위 시술 및 수술',
+    'SAFETY.EVENT.CLASSIFICATION.5':
+      '[위해사건] 5등급: 일시적 손상으로 입원을 하였거나 입원기간이 연장됨',
+    'SAFETY.EVENT.CLASSIFICATION.4':
+      '[위해사건] 4등급: 일시적 손상으로 중재가 필요함 (검사, 내/외과적 치료 등)',
+    'SAFETY.EVENT.CLASSIFICATION.3':
+      '[위해사건] 3등급: 환자에게 투여/적용되었으며 추가적인 관찰이 필요함',
+    'SAFETY.EVENT.CLASSIFICATION.2':
+      '[위해사건] 2등급: 환자에게 투여/적용되었으나 해가 없음',
+    'SAFETY.EVENT.CLASSIFICATION.1':
+      '[근접오류] 1등급: 오류가 발생하였으나 환자에게 도달하지 않음',
+    'SAFETY.EVENT.CLASSIFICATION.0':
+      '[근접오류] 0등급: 오류가 발생할 위험이 있는 상황',
 
     'SAFETY.TYPE.CONSCIOUSNESS.LEVEL.1': '명료',
     'SAFETY.TYPE.CONSCIOUSNESS.LEVEL.2': '졸음',
@@ -382,7 +394,7 @@ const locale = {
     'SAFETY.PATIENT.RISK.FACTORS.8': '보행장애',
     'SAFETY.PATIENT.RISK.FACTORS.9': '수면장애',
     'SAFETY.PATIENT.RISK.FACTORS.10': '해당 없음',
-    
+
     'SAFETY.TYPE.FALL.TYPE.1': '침대 사용 시',
     'SAFETY.TYPE.FALL.TYPE.2': '의료장비 사용 시',
     'SAFETY.TYPE.FALL.TYPE.3': '기립 보행 시',
@@ -432,7 +444,7 @@ const locale = {
 
     // bai
     'REQUIRED.BAI': '평가항목을 모두 선택해주세요',
-    
+
     // transfusion
     'BLOOD.RECORD.SIDE.EFFECT.1': '유',
     'BLOOD.RECORD.SIDE.EFFECT.2': '무',
@@ -468,13 +480,10 @@ const locale = {
     'EMERGENGY.RESULT.3': '사망',
     'EMERGENGY.RESULT.4': '기타',
 
-
     'EMERGENGY.CHECKDISEASE.1': '보호자 1인 상주',
     'EMERGENGY.CHECKDISEASE.2': '도난 방지',
     'EMERGENGY.CHECKDISEASE.3': '낙상 방지',
     'EMERGENGY.CHECKDISEASE.4': '기타',
-
-
 
     // childbirth
     'CHILDBIRTH.BABY_STATUS.GENDER.1': '남아',
@@ -483,8 +492,8 @@ const locale = {
     'CHILDBIRTH.YES_OR_NO.1': '무',
     'CHILDBIRTH.YES_OR_NO.2': '유',
 
-    'CHILDBIRTH.PLACENTA_REMOVAL.METHOD.1' : '자연박리',
-    'CHILDBIRTH.PLACENTA_REMOVAL.METHOD.2' : '용수박리',
+    'CHILDBIRTH.PLACENTA_REMOVAL.METHOD.1': '자연박리',
+    'CHILDBIRTH.PLACENTA_REMOVAL.METHOD.2': '용수박리',
 
     // home_care
     'HOME_CARE.INSURANCE_TYPE.1': '건강보험',
