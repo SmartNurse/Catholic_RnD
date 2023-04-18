@@ -193,7 +193,7 @@ const locale = {
 
     // clinical observation
     'CLINICAL.OBSERVATION.ADD.ROW': '입력하지 않은 값이 있습니다.',
-    'CLINICAL.OBSERVATION.STOP': '가상 환자 1명 당 4개까지 입력 가능합니다',
+    'CLINICAL.OBSERVATION.STOP': '가상 환자 1명 당 5개까지 입력 가능합니다',
     'CLINICAL.OBSERVATION.ADD.NAN': '연락처는 숫자만 입력해주세요.',
 
     // bedScore I
