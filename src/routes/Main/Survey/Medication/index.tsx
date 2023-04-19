@@ -1,4 +1,4 @@
-import { Grid } from '@mui/material';
+import { Grid, Typography } from '@mui/material';
 import { useForm } from 'react-hook-form';
 
 import { IMedication } from 'apis/survey/type';
@@ -79,6 +79,16 @@ const Medication = (props: SurveyDialogProps<TMedicationDefaultValues>) => {
         columnSpacing={3}
         sx={{ py: 5, px: 1 }}
       >
+        <Typography
+          sx={{
+            margin: '40px auto 0px auto',
+            fontWeight: '700',
+            fontSize: '16px',
+            textAlign: 'center',
+          }}
+        >
+          투약 기록지
+        </Typography>
         <CommonPatientInfo patientInfo={patientInfo} nurseName={nurseName} />
         <Medications
           watch={watch}

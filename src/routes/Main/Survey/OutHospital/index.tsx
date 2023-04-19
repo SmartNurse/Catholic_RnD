@@ -1,4 +1,4 @@
-import { Grid } from '@mui/material';
+import { Grid, Typography } from '@mui/material';
 import { useForm } from 'react-hook-form';
 
 import { findKeyValueToStr } from 'utils/convert';
@@ -81,7 +81,21 @@ const OutHospital = (props: SurveyDialogProps<TOutHospitalDefaultValues>) => {
         columnSpacing={3}
         sx={{ py: 5, px: 1 }}
       >
-        <PatientInfo {...formProps} patientInfo={patientInfo} nurseName={nurseName} />
+        <Typography
+          sx={{
+            margin: '40px auto 0px auto',
+            fontWeight: '700',
+            fontSize: '16px',
+            textAlign: 'center',
+          }}
+        >
+          퇴원간호 기록지
+        </Typography>
+        <PatientInfo
+          {...formProps}
+          patientInfo={patientInfo}
+          nurseName={nurseName}
+        />
         <DefaultInfo {...formProps} />
         <Medicines {...formProps} />
         <OutPatients {...formProps} />

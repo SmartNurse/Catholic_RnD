@@ -1,4 +1,4 @@
-import { Grid } from '@mui/material';
+import { Grid, Typography } from '@mui/material';
 import { useForm } from 'react-hook-form';
 
 import useSurvey from 'store/survey/useSurvey';
@@ -79,6 +79,16 @@ const Needs = (props: SurveyDialogProps<TNeedsDefaultValues>) => {
         columnSpacing={3}
         sx={{ py: 5, px: 1 }}
       >
+        <Typography
+          sx={{
+            margin: '40px auto 0px auto',
+            fontWeight: '700',
+            fontSize: '16px',
+            textAlign: 'center',
+          }}
+        >
+          욕구평가 기록지
+        </Typography>
         <CommonPatientInfo patientInfo={patientInfo} nurseName={nurseName} />
         <BodyStatus {...formProps} />
         <Reason {...formProps} registerKey="reason1" />

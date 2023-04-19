@@ -1,4 +1,4 @@
-import { Grid } from '@mui/material';
+import { Grid, Typography } from '@mui/material';
 import { useForm } from 'react-hook-form';
 
 import {
@@ -115,6 +115,16 @@ const Hospitalization = (
         columnSpacing={2}
         sx={{ py: 5, px: 1 }}
       >
+        <Typography
+          sx={{
+            margin: '40px auto 0px auto',
+            fontWeight: '700',
+            fontSize: '16px',
+            textAlign: 'center',
+          }}
+        >
+          입원간호 기록지
+        </Typography>
         <PatientInfo
           {...formProps}
           nurseName={nurseName}
