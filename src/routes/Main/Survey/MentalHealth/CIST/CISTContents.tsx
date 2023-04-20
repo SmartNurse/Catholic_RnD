@@ -362,6 +362,11 @@ const CISTContents = (props: Props) => {
       ko: '이해력',
       desc: [''],
     },
+    {
+      id: 7,
+      ko: '말하는대로',
+      desc: [''],
+    },
   ];
 
   const talkSumValue = () => {
@@ -2002,6 +2007,127 @@ const CISTContents = (props: Props) => {
                                 <Box
                                   sx={{ width: '200px', paddingTop: '60px' }}
                                 >
+                                  <FormControlLabel
+                                    sx={{ paddingRight: '50px' }}
+                                    label="0"
+                                    control={
+                                      <Radio
+                                        disabled={disabled}
+                                        name={radioId4[content.id]}
+                                        value={i}
+                                        onChange={talkHandleChange}
+                                      />
+                                    }
+                                  />
+                                  <FormControlLabel
+                                    label="1"
+                                    control={
+                                      <Radio
+                                        disabled={disabled}
+                                        name={radioId4[content.id]}
+                                        value={i + 1}
+                                        onChange={talkHandleChange}
+                                      />
+                                    }
+                                  />
+                                </Box>
+                              </TableRow>
+                            ))}
+                          </RadioGroup>
+                        </StyledTableCellWithoutLeftTwo>
+                      </div>
+                    </TableRow>
+                  </>
+                );
+              } else if (content.ko === '이해력') {
+                return (
+                  <TableRow sx={{ display: 'block' }}>
+                    <div style={{ display: 'flex' }}>
+                      <div
+                        style={{
+                          display: 'flex',
+                          paddingTop: '16px',
+                          paddingBottom: '16px',
+                          width: '130px',
+                          whiteSpace: 'pre-wrap',
+                        }}
+                      >
+                        <Typography sx={{ fontSize: '14px' }}>
+                          {content.ko}
+                        </Typography>
+                      </div>
+                      <div
+                        style={{
+                          paddingTop: '16px',
+                          marginLeft: '20px',
+                          width: '700px',
+                        }}
+                      >
+                        <Typography sx={{ fontSize: '14px' }}>
+                          제가 말씀드리는 대로 행동으로 그래도 보여주십시오.
+                        </Typography>
+                      </div>
+                    </div>
+                  </TableRow>
+                );
+              } else if (content.ko === '말하는대로') {
+                return (
+                  <>
+                    <TableRow sx={{ display: 'block' }}>
+                      <div style={{ display: 'flex' }}>
+                        <StyledTableCellTwo
+                          align="left"
+                          sx={{
+                            paddingTop: '16px',
+                            paddingBottom: '16px',
+                            width: '130px',
+                            whiteSpace: 'pre-wrap',
+                          }}
+                        ></StyledTableCellTwo>
+                        <StyledTableCellWithoutLeftRightTwo>
+                          {content.desc.map((v, i) => {
+                            return (
+                              <TableRow
+                                sx={{
+                                  height: '44px',
+                                  lineHeight: '44px',
+                                }}
+                              >
+                                <TableRow
+                                  sx={{
+                                    height: '44px',
+                                    lineHeight: '44px',
+                                  }}
+                                >
+                                  <Box
+                                    sx={{
+                                      paddingLeft: '20px',
+                                      width: '1145px',
+                                    }}
+                                  >
+                                    박수를 두 번 치고, 주먹을 쥐세요.
+                                  </Box>
+                                </TableRow>
+                              </TableRow>
+                            );
+                          })}
+                        </StyledTableCellWithoutLeftRightTwo>
+                        <StyledTableCellWithoutLeftTwo>
+                          <RadioGroup
+                            name={radioId4[content.id]}
+                            defaultValue={Number(
+                              getValues(radioId4[content.id])
+                            )}
+                          >
+                            {content.desc.map((_, i) => (
+                              <TableRow
+                                sx={{
+                                  height: '44px',
+                                  lineHeight: '44px',
+                                  textAlign: 'center',
+                                }}
+                              >
+                                <Box sx={{ width: '200px' }}>
                                   <FormControlLabel
                                     sx={{ paddingRight: '50px' }}
                                     label="0"
