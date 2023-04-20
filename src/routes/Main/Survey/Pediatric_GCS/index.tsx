@@ -85,7 +85,7 @@ const Pediatric_GCS = (
             textAlign: 'center',
           }}
         >
-          Pediatric GCS (Glasgow Coma Scale) <br /> - 현재 테스트 중입니다. -
+          Pediatric GCS (Glasgow Coma Scale)
         </Typography>
         <CommonPatientInfo patientInfo={patientInfo} nurseName={nurseName} />
         <Pediatric_GCSContents {...formProps} />

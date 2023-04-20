@@ -80,7 +80,7 @@ const GCS = (props: SurveyDialogProps<TGCSDefaultValues>) => {
             textAlign: 'center',
           }}
         >
-          GCS (Glasgow Coma Scale) <br /> - 현재 테스트 중입니다. -
+          GCS (Glasgow Coma Scale)
         </Typography>
         <CommonPatientInfo patientInfo={patientInfo} nurseName={nurseName} />
         <GCSContents {...formProps} />

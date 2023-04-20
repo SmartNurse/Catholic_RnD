@@ -84,7 +84,7 @@ const GCS = (props: SurveyDialogProps<TFourScoreDefaultValues>) => {
             textAlign: 'center',
           }}
         >
-          FOUR Score <br /> - 현재 테스트 중입니다. -
+          FOUR Score
         </Typography>
         <CommonPatientInfo patientInfo={patientInfo} nurseName={nurseName} />
         <FourScoreContents {...formProps} />
