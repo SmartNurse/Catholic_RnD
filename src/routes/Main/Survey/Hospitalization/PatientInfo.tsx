@@ -13,7 +13,6 @@ import RowContainer from '../components/RowContainer';
 import RowContent from '../components/RowContent';
 import MuiTable from './MuiTable';
 import MuiTextField from 'components/Form/MuiTextField';
-import { validateHeaderValue } from 'http';
 
 interface Props extends IFormRegister, IFormValues, IFormWatch {
   disabled?: boolean;
