@@ -46,7 +46,7 @@ export interface IUpdateECardex extends IGetSurvey {
     concerns: string;
     plans: string;
     evaluation: string;
-  }
+  };
 }
 
 // 간호인수인계
@@ -59,7 +59,7 @@ export interface IUpdateTakingOver extends IGetSurvey {
     reasons: string;
     intervention: string;
     other: string;
-  }
+  };
 }
 
 // 입원간호기록지
@@ -90,8 +90,6 @@ export interface IInpomation {
   name: string;
   relation: string;
 }
-
-
 
 // 퇴원간호기록지
 export interface ICreateOutHospital extends IGetSurvey {
@@ -208,7 +206,7 @@ export interface IUpdateGlucose extends IGetSurvey {
   blood_sugar_survey: {
     blood_sugar_log: IGlucoseRecord[];
     prescription: IGlucosePrescriptionRecord[];
-  }
+  };
 }
 
 // 욕창위험도평가도구
@@ -243,7 +241,7 @@ export interface IUpdateFallTwo extends IGetSurvey {
   contents: string;
 }
 
-// 소아 낙상위험 평가 
+// 소아 낙상위험 평가
 export interface IUpdateFallScale extends IGetSurvey {
   date: string;
   contents: string;
@@ -276,7 +274,7 @@ export interface IUpdateSafety extends IGetSurvey {
       discovery_place: string;
       accident_type: string;
       accident_classification: string;
-    },
+    };
     event_classification: string;
     falling_type: {
       consciousness_level: string;
@@ -288,18 +286,18 @@ export interface IUpdateSafety extends IGetSurvey {
       date: string;
       fall_type: string;
       risk_factor: string;
-    },
+    };
     medication_type: {
       prescription_error: string;
       drug_preparation_error: string;
       confirm_error: string;
       interpretation_error: string;
-    },
+    };
     other_type: string;
     accident_detail: string;
     accident_handling: string;
     accident_result: string;
-  },
+  };
 }
 
 // NRS
@@ -329,7 +327,7 @@ export interface IUpdateCNPS extends IGetSurvey {
     activity: string;
     respiratory: string;
     vocalization: string;
-  }
+  };
 }
 
 // 정신간호기록지
@@ -344,7 +342,7 @@ export interface IMentalNursingRecord {
 }
 
 export interface IUpdateMentalNursing extends IGetSurvey {
-  mental_survey: IMentalNursingRecord[],
+  mental_survey: IMentalNursingRecord[];
 }
 
 // BDI
@@ -352,7 +350,7 @@ export interface IUpdateBDI extends IGetSurvey {
   bdi_survey: {
     content: number[];
     sum: number;
-  }
+  };
 }
 
 // BAI
@@ -360,12 +358,12 @@ export interface IUpdateBAI extends IGetSurvey {
   bai_survey: {
     content: number[];
     sum: number;
-  }
+  };
 }
 
 export interface IUpdateMMSE extends IGetSurvey {
   score: (number | undefined)[];
-  sum: number;  
+  sum: number;
 }
 
 // CIST
@@ -373,7 +371,7 @@ export interface IUpdateCIST extends IGetSurvey {
   bdi_survey: {
     content: number[];
     sum: number;
-  }
+  };
 }
 
 // 수술기록지
@@ -384,7 +382,7 @@ export interface IUpdateOperation extends IGetSurvey {
       assistant: string;
       scrubbing_nurse: string;
       circulating_nurse: string;
-    },
+    };
     operation_information: {
       operating_department: string;
       operating_date: string;
@@ -399,7 +397,7 @@ export interface IUpdateOperation extends IGetSurvey {
       position: string;
       preoperative_xray: boolean;
       preoperative_ekg: boolean;
-    },
+    };
     surgery_details: {
       content: string;
       arrival_time: string;
@@ -410,8 +408,8 @@ export interface IUpdateOperation extends IGetSurvey {
       discharge_time: string;
       anesthetic_method: string;
       anesthesiologist: string;
-    }
-  }
+    };
+  };
 }
 
 // 마취기록지
@@ -446,8 +444,8 @@ export interface IUpdateAnesthesia extends IGetSurvey {
       asa_class: string;
       prophylactic_antibiotics: string;
       prophylactic_method: string;
-    },
-    prescription_record: IAnesthesiaPrescriptionRecord[],
+    };
+    prescription_record: IAnesthesiaPrescriptionRecord[];
     patient_status_record: {
       infusion_amount: string;
       transfusion_amount: string;
@@ -455,9 +453,9 @@ export interface IUpdateAnesthesia extends IGetSurvey {
       urine_amount: string;
       blood_clot_amount: string;
       output_etc: string;
-    },
-    patient_status_list_record: IAnesthesiaVitalsignRecord[],
-  }
+    };
+    patient_status_list_record: IAnesthesiaVitalsignRecord[];
+  };
 }
 
 // 수혈기록지
@@ -487,9 +485,9 @@ export interface IUpdateTransfusion extends IGetSurvey {
       practitioner_start: string;
       transfusion_end_time: string;
       practitioner_end: string;
-    },
-    transfusion_record: IBloodRecord[];  
-  }
+    };
+    transfusion_record: IBloodRecord[];
+  };
 }
 
 // 투석기록지
@@ -521,8 +519,8 @@ export interface IUpdateDialysis extends IGetSurvey {
       dialysate: string;
       vascular_access: string;
       starting_nurse: string;
-      ending_nurse:string;
-    },
+      ending_nurse: string;
+    };
     weight_information: {
       pre_previous_weight: string;
       pre_today_weight: string;
@@ -530,13 +528,24 @@ export interface IUpdateDialysis extends IGetSurvey {
       post_previous_weight: string;
       post_today_weight: string;
       post_weight_change: string;
-    },
+    };
     dialysis_db: IDialysisRecord[];
     additional_information: string;
-  }
+  };
 }
 
 // 응급기록지
+
+export interface IEmergencyVitalsignRecord {
+  time: string;
+  sbp: string;
+  dbp: string;
+  pr: string;
+  rr: string;
+  bt: string;
+  note: string;
+}
+
 export interface IUpdateEmergency extends IGetSurvey {
   emergency_survey: {
     emergency_information: {
@@ -545,34 +554,39 @@ export interface IUpdateEmergency extends IGetSurvey {
       arrival_time: string;
       visitMethod: string;
       visitReason: string;
-    },
-    emergency_paicientInfo: {
-      symptom: string,
-      etc_symptom: string,
-      damage: string,
-      intentional: string,
-      disease: string,
-      history:string,
-      antibiotics: string,
-      GCS: string,
-      MOTOR: string,
-      PUPIL: string,
-      NRS: string,
-      PQRST: string,
-      KTAS: string,
-      Diagnostic: string
-    },
-    emergency_contents: {
-      reasons: string;
-      primary_first_aid: string;
-      instructions: string;
-      observations: string;
-      affiliated_organization: string;
-      qualification_license: string;
-      name: string;
-      medical_history: string;
-    }
-  }
+    };
+    emergency_patient_information: {
+      symptom: string;
+      etc_symptom: string;
+      damage: string;
+      intentional: string;
+      medical_conditions: string;
+      history: string;
+      allergy: string;
+      medication: string;
+      consciousness: string;
+      gcs: string;
+      motor: string;
+      pupil: string;
+      nrs: string;
+      pqrst: string;
+      ktas: string;
+      expected_diagnosis: string;
+    };
+    patient_status_record: {
+      infusion_amount: string;
+      transfusion_amount: string;
+      intake_etc: string;
+      urine_amount: string;
+      blood_clot_amount: string;
+      output_etc: string;
+    };
+    patient_status_list_record: IEmergencyVitalsignRecord[];
+    emergency_care_result: {
+      result: object;
+      status: object;
+    };
+  };
 }
 
 // 분만기록지
@@ -588,7 +602,7 @@ export interface IUpdateChildbirth extends IGetSurvey {
       date: string;
       time: string;
       type: string;
-    },
+    };
     newborn_condition: {
       gender: number;
       weight: string;
@@ -603,28 +617,28 @@ export interface IUpdateChildbirth extends IGetSurvey {
       resuscitation: number;
       resuscitation_content: string;
       specifications: string;
-    },
+    };
     apgar: {
       appearance: number;
       pulse: number;
       grimace: number;
       activity: number;
       respiration: number;
-    },
+    };
     placenta_removal: {
       time: string;
       methods: number;
       curettage: number;
-    },
+    };
     maternal_condition: {
       episiotomy: number;
       episiotomy_content: string;
       perineal_laceration: number;
       perineal_laceration_content: string;
       uterus_contraction: string;
-    },
+    };
     nursing_records: INursingRecord[];
-  }
+  };
 }
 
 // 가정간호 기록지
@@ -645,17 +659,17 @@ export interface IUpdateHomeCare extends IGetSurvey {
       marital_status: string;
       past_history: string;
       safety: string;
-    },
-    request_status: IHomeCareRecord[],
-    inspection_findings: IHomeCareRecord[],
-    medication_records: IHomeCareRecord[],
+    };
+    request_status: IHomeCareRecord[];
+    inspection_findings: IHomeCareRecord[];
+    medication_records: IHomeCareRecord[];
     need_service: string;
-  }
+  };
 }
 
 // 식이/영양 기록지
 export interface IUpdateDietNutrition extends IGetSurvey {
-  dietary_survey : {
+  dietary_survey: {
     birth: string;
     classification: number;
     select_meal: string;
@@ -664,10 +678,10 @@ export interface IUpdateDietNutrition extends IGetSurvey {
       intestinal: string;
       kidney: string;
       liver: string;
-    },
+    };
     controlled_diet: string;
     specifics: string;
-  }
+  };
 }
 
 // 입원안내확인서
@@ -680,7 +694,7 @@ export interface IUpdateHospitalConfirm extends IGetSurvey {
     signature: string;
     date: string;
     personnel_signature: string;
-  }
+  };
 }
 
 // 낙상예방교육확인서
@@ -690,5 +704,5 @@ export interface IUpdateFallConfirm extends IGetSurvey {
     signature: string;
     date: string;
     personnel_signature: string;
-  }
+  };
 }

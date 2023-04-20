@@ -19,12 +19,20 @@ export const initialNursingRecord = {
   },
   focusDar: { focus: '', data: '', action: '', response: '' },
   narrativeRecord: { narrativeNote: '' },
-  remarks: { assessment: '',  diagnosisRelate: '', diagnosis: '',  goal: '', plan: '', interventions: '', evaluation: ''   },
+  remarks: {
+    assessment: '',
+    diagnosisRelate: '',
+    diagnosis: '',
+    goal: '',
+    plan: '',
+    interventions: '',
+    evaluation: '',
+  },
 };
 
 export const initialECardex = {
   update_at: '',
-  other_remarks:  '',
+  other_remarks: '',
   remark_data: [],
   medication_data: [],
   lab_data: [],
@@ -179,7 +187,7 @@ export const initialClinicalObservation = {
 };
 
 export const initialGlucose = {
-  update_at: "",
+  update_at: '',
   blood_sugar_log: [],
   prescription: [],
 };
@@ -334,7 +342,7 @@ export const initialGCS = {
     VerbalResponse: '',
     MotorResponse: '',
   },
-}
+};
 
 export const initialPediatric_GCS = {
   date: '',
@@ -344,7 +352,7 @@ export const initialPediatric_GCS = {
     VerbalResponse: '',
     MotorResponse: '',
   },
-}
+};
 
 export const initialFourScore = {
   date: '',
@@ -354,46 +362,46 @@ export const initialFourScore = {
     VerbalResponse: '',
     MotorResponse: '',
   },
-}
+};
 
 export const initialSafety = {
-  update_at: "",
+  update_at: '',
   accident_consequences_details: {
-    accidence_date: "",
-    discovery_date: "",
-    discovery_place: "",
-    discovery_place_etc: "",
-    accident_type: "",
-    accident_classification: "",
-    accident_classification_etc: "",
+    accidence_date: '',
+    discovery_date: '',
+    discovery_place: '',
+    discovery_place_etc: '',
+    accident_type: '',
+    accident_classification: '',
+    accident_classification_etc: '',
   },
-  event_classification: "",
+  event_classification: '',
   falling_type: {
-    consciousness_level: "",
-    activity_status: "",
-    assisting_devices: "",
-    place_falling_accident: "",
-    place_falling_accident_etc: "",
-    patient_risk_factors: "",
+    consciousness_level: '',
+    activity_status: '',
+    assisting_devices: '',
+    place_falling_accident: '',
+    place_falling_accident_etc: '',
+    patient_risk_factors: '',
     score: 0,
-    date: "",
-    fall_type: "",
-    risk_factor: "",
-    risk_factor_etc: "",
+    date: '',
+    fall_type: '',
+    risk_factor: '',
+    risk_factor_etc: '',
   },
   medication_type: {
-    prescription_error: "",
-    prescription_error_etc: "",
-    drug_preparation_error: "",
-    drug_preparation_error_etc: "",
-    confirm_error: "",
-    interpretation_error: "",
+    prescription_error: '',
+    prescription_error_etc: '',
+    drug_preparation_error: '',
+    drug_preparation_error_etc: '',
+    confirm_error: '',
+    interpretation_error: '',
   },
-  other_type: "",
-  other_type_etc: "",
-  accident_detail: "",
-  accident_handling: "",
-  accident_result: "",
+  other_type: '',
+  other_type_etc: '',
+  accident_detail: '',
+  accident_handling: '',
+  accident_result: '',
 };
 
 export const initialNRS = {
@@ -418,97 +426,110 @@ export const initialCNPS = {
 export const initialMentalNursing = {
   update_at: '',
   mental_survey: [],
-}
+};
 
 export const initialBDI = {
   update_at: '',
   content: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
   sum: 0,
-}
+};
 
 export const initialBAI = {
   update_at: '',
   content: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
   sum: 0,
-}
+};
 
 export const initialMMSE = {
   update_at: '',
-  score: [undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined],
+  score: [
+    undefined,
+    undefined,
+    undefined,
+    undefined,
+    undefined,
+    undefined,
+    undefined,
+    undefined,
+    undefined,
+    undefined,
+    undefined,
+    undefined,
+  ],
   sum: 0,
-}
+};
 
 export const initialCIST = {
   update_at: '',
   content: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
   sum: 0,
-}
+};
 
 export const initialOperation = {
   update_at: '',
   surgery_information: {
-    operating_surgeon: "",
-    assistant: "",
-    scrubbing_nurse: "",
-    circulating_nurse: "",
+    operating_surgeon: '',
+    assistant: '',
+    scrubbing_nurse: '',
+    circulating_nurse: '',
   },
   operation_information: {
-    operating_department: "",
-    operating_date: "",
-    operating_time: "",
-    asa_class: "",
-    main_operation_name: "",
-    minor_operation_name: "",
-    past_history: "",
-    allergy: "",
-    npo_status: "",
-    prophylactic_antibiotics: "",
-    position: "",
-    position_etc: "",
+    operating_department: '',
+    operating_date: '',
+    operating_time: '',
+    asa_class: '',
+    main_operation_name: '',
+    minor_operation_name: '',
+    past_history: '',
+    allergy: '',
+    npo_status: '',
+    prophylactic_antibiotics: '',
+    position: '',
+    position_etc: '',
     preoperative_xray: true,
     preoperative_ekg: true,
   },
   surgery_details: {
-    content: "",
-    arrival_time: "",
-    anesthesia_start_time: "",
-    surgery_start_time: "",
-    surgery_end_time: "",
-    anesthesia_end_time: "",
-    discharge_time: "",
-    anesthetic_method: "",
-    anesthetic_method_etc: "",
-    anesthesiologist: "",
+    content: '',
+    arrival_time: '',
+    anesthesia_start_time: '',
+    surgery_start_time: '',
+    surgery_end_time: '',
+    anesthesia_end_time: '',
+    discharge_time: '',
+    anesthetic_method: '',
+    anesthetic_method_etc: '',
+    anesthesiologist: '',
   },
 };
 
 export const initialAnesthesia = {
   update_at: '',
   operation_information: {
-    operating_department: "",
-    operating_date: "",
-    operating_time: "",
-    operation_name: "",
-    npo_status: "",
-    position: "",
-    position_etc: "",
-    past_history_and_allergy: "",
+    operating_department: '',
+    operating_date: '',
+    operating_time: '',
+    operation_name: '',
+    npo_status: '',
+    position: '',
+    position_etc: '',
+    past_history_and_allergy: '',
     preoperative_xray: false,
     preoperative_ekg: false,
-    emergency_status: "",
-    asa_class: "",
-    prophylactic_antibiotics: "",
-    prophylactic_method: "",
-    prophylactic_method_etc: "",
+    emergency_status: '',
+    asa_class: '',
+    prophylactic_antibiotics: '',
+    prophylactic_method: '',
+    prophylactic_method_etc: '',
   },
   prescription_record: [],
   patient_status_record: {
-    infusion_amount: "",
-    transfusion_amount: "",
-    intake_etc: "",
-    urine_amount: "",
-    blood_clot_amount: "",
-    output_etc: "",
+    infusion_amount: '',
+    transfusion_amount: '',
+    intake_etc: '',
+    urine_amount: '',
+    blood_clot_amount: '',
+    output_etc: '',
   },
   patient_status_list_record: [],
 };
@@ -530,86 +551,97 @@ export const initialTransfusion = {
 };
 
 export const initialDialysis = {
-  update_at: "",
-  date: "",
-  time: "",
-  visiting_route: "",
-  visiting_route_etc: "",
-  dialysis_machine: "",
-  dialyzer: "",
-  dialysate: "",
-  vascular_access: "",
-  vascular_access_etc: "",
-  starting_nurse: "",
-  ending_nurse:"",
-  pre_previous_weight: "",
-  pre_today_weight: "",
-  pre_weight_change: "",
-  post_previous_weight: "",
-  post_today_weight: "",
-  post_weight_change: "",
+  update_at: '',
+  date: '',
+  time: '',
+  visiting_route: '',
+  visiting_route_etc: '',
+  dialysis_machine: '',
+  dialyzer: '',
+  dialysate: '',
+  vascular_access: '',
+  vascular_access_etc: '',
+  starting_nurse: '',
+  ending_nurse: '',
+  pre_previous_weight: '',
+  pre_today_weight: '',
+  pre_weight_change: '',
+  post_previous_weight: '',
+  post_today_weight: '',
+  post_weight_change: '',
   dialysis_db: [],
-  additional_information: "",
+  additional_information: '',
 };
 
 export const initialEmergency = {
   update_at: '',
-  accident_type: "",
-  registration_number: "",
-  address: "",
-  classification: "",
-  accident_location: "",
-  accident_date: "",
-  accident_time: "",
-  arrival_time: "",
-  visitReason: "",
-  reasons: "",
-  primary_first_aid: "",
-  instructions: "",
-  observations: "",
-  affiliated_organization: "",
-  qualification_license: "",
-  name: "",
-  medical_history: "",
-  visitMethod: "",
-  
-  symptom: "",
-  etc_symptom: "",
-  damage: "",
-  intentional: "",
-  disease: "",
-  history:"",
-  antibiotics: "",
-  GCS: "",
-  MOTOR: "",
-  PUPIL: "",
-  NRS: "",
-  PQRST: "",
-  KTAS:"",
-  Diagnostic: ""
+  emergency_information: {
+    accident_date: '',
+    accident_time: '',
+    visitMethod: '',
+    visitReason: '',
+    arrival_time: '',
+  },
+  emergency_patient_information: {
+    symptom: '',
+    etc_symptom: '',
+    damage: '',
+    intentional: '',
+    medical_conditions: '',
+    history: '',
+    allergy: '',
+    medication: '',
+    consciousness: '',
+    gcs: '',
+    motor: '',
+    pupil: '',
+    nrs: '',
+    pqrst: '',
+    ktas: '',
+    expected_diagnosis: '',
+  },
+  patient_status_record: {
+    infusion_amount: '',
+    transfusion_amount: '',
+    intake_etc: '',
+    urine_amount: '',
+    blood_clot_amount: '',
+    output_etc: '',
+  },
+  patient_status_list_record: [],
+  emergency_care_result: {
+    result: { value: 1, input: '' },
+    status: {
+      checked1: false,
+      checked2: false,
+      checked3: false,
+      checked4: false,
+      placeholder: '',
+    },
+  },
 };
 
 export const initialChildbirth = {
   update_at: '',
   child_birth_information: {
-    date: "",
-    time: "",
-    type: "",
+    date: '',
+    time: '',
+    type: '',
   },
   newborn_condition: {
     gender: -1,
-    weight: "",
-    apgar_score1m: "",
-    apgar_score5m: "",
+    weight: '',
+    apgar_score1m: '',
+    apgar_score5m: '',
     oxygen_intake: -1,
     first_urine: -1,
     placenta_discharge: -1,
     fetal_staining: -1,
     nuchal_cord: -1,
-    nuchal_cord_content: "",
+    nuchal_cord_content: '',
     resuscitation: -1,
-    resuscitation_content: "",
-    specifications: "",
+    resuscitation_content: '',
+    specifications: '',
   },
   apgar: {
     appearance: -1,
@@ -619,16 +651,16 @@ export const initialChildbirth = {
     respiration: -1,
   },
   placenta_removal: {
-    time: "",
+    time: '',
     methods: -1,
     curettage: -1,
   },
   maternal_condition: {
     episiotomy: -1,
-    episiotomy_content: "",
+    episiotomy_content: '',
     perineal_laceration: -1,
-    perineal_laceration_content: "",
-    uterus_contraction: "",
+    perineal_laceration_content: '',
+    uterus_contraction: '',
   },
   nursing_records: [],
 };
@@ -636,23 +668,23 @@ export const initialChildbirth = {
 export const initialHomeCare = {
   update_at: '',
   basic_information: {
-    occupation: "",
-    insurance_type: "",
-    residence: "",
-    residence_etc: "",
-    religion: "",
-    nursing_provider: "",
-    sanitary: "",
-    sanitary_notes: "",
-    marital_status: "",
-    past_history: "",
-    safety: "",
-    safety_notes: "",
+    occupation: '',
+    insurance_type: '',
+    residence: '',
+    residence_etc: '',
+    religion: '',
+    nursing_provider: '',
+    sanitary: '',
+    sanitary_notes: '',
+    marital_status: '',
+    past_history: '',
+    safety: '',
+    safety_notes: '',
   },
   request_status: [],
   inspection_findings: [],
   medication_records: [],
-  need_service: "",
+  need_service: '',
 };
 
 export const initialDietNutrition = {
@@ -717,7 +749,7 @@ export const initialDietNutrition = {
       checked9: false,
       checked10: false,
       checked11: false,
-      checked12: false,      
+      checked12: false,
     },
   },
   controlled_diet: {
@@ -779,7 +811,7 @@ export const initialDietNutrition = {
 
 export const initialHospitalConfirm = {
   update_at: '',
-  nursing_care: { 
+  nursing_care: {
     checked1: false,
   },
   facilities_in: {
@@ -810,11 +842,11 @@ export const initialHospitalConfirm = {
     checked15: false,
     checked16: false,
   },
-  name: "",
-  relationship: "",
-  signature: "",
-  date: "",
-  personnel_signature: "",
+  name: '',
+  relationship: '',
+  signature: '',
+  date: '',
+  personnel_signature: '',
 };
 
 export const initialFallConfirm = {
@@ -829,17 +861,17 @@ export const initialFallConfirm = {
     checked7: false,
     checked8: false,
   },
-  signature: "",
-  date: "",
-  personnel_signature: "",
-}
+  signature: '',
+  date: '',
+  personnel_signature: '',
+};
 
 export const initialCoreNursingSkillVideo = {
-  update_at: "",
+  update_at: '',
   files: [],
-}
+};
 
-export const initialCoreNursingSkillVideoExemple ={
-  update_at: "",
+export const initialCoreNursingSkillVideoExemple = {
+  update_at: '',
   files: [],
-}
+};
