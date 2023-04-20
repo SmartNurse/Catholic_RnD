@@ -21,7 +21,12 @@ import SectionTitle from '../components/SectionTitle';
 
 import { IFormValues, IFormWatch } from 'routes/Main/type';
 
-const radioId = ['face', 'activity', 'respiratory', 'vocalization'];
+const radioId = [
+  'eye_opening',
+  'brainstem_reflexes',
+  'motor_response',
+  'respiration',
+];
 const contentLabel = [
   {
     id: 1,

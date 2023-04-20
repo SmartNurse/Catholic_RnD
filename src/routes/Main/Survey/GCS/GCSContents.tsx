@@ -21,7 +21,7 @@ import SectionTitle from '../components/SectionTitle';
 
 import { IFormValues, IFormWatch } from 'routes/Main/type';
 
-const radioId = ['face', 'activity', 'respiratory', 'vocalization'];
+const radioId = ['eye_opening', 'verbal_response', 'motor_response'];
 const contentLabel = [
   {
     id: 1,
@@ -158,8 +158,8 @@ const GCSContents = (props: Props) => {
                   </StyledTableCellWithoutLeftRightTwo>
                   <StyledTableCellWithoutLeftTwo>
                     <RadioGroup
-                      name={radioId[content.id]}
-                      defaultValue={Number(getValues(radioId[content.id]))}
+                      name={radioId[content.id - 1]}
+                      defaultValue={Number(getValues(radioId[content.id - 1]))}
                     >
                       {content.desc.map((_, i) => (
                         <TableRow
@@ -178,7 +178,7 @@ const GCSContents = (props: Props) => {
                           >
                             <Radio
                               disabled={disabled}
-                              name={radioId[content.id]}
+                              name={radioId[content.id - 1]}
                               value={i + 1}
                               onChange={handleChange}
                             />

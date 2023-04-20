@@ -48,7 +48,7 @@ export const getECardex = (request: IGetSurvey) => {
 
 export const updateECardex = (request: IUpdateECardex) => {
   const url = `/survey/ecardex`;
-  return apiGateway.post(url, camelcaseKeys(request)); 
+  return apiGateway.post(url, camelcaseKeys(request));
 };
 
 // 간호인수인계
@@ -59,7 +59,7 @@ export const getTakingOver = (request: IGetSurvey) => {
 
 export const updateTakingOver = (request: IUpdateTakingOver) => {
   const url = `/survey/takeover`;
-  return apiGateway.post(url, camelcaseKeys(request)); 
+  return apiGateway.post(url, camelcaseKeys(request));
 };
 
 // 입원간호기록지
@@ -173,7 +173,7 @@ export const updateFallTwo = (request: IUpdateFallTwo) => {
   return apiGateway.post(url, camelcaseKeys(request));
 };
 
-// 소아 낙상위험 평가 
+// 소아 낙상위험 평가
 export const getFallScale = (request: IGetSurvey) => {
   const url = `/survey/fall?${formatToRequestParameter(request)}`;
   return apiGateway.get(url);
@@ -186,37 +186,36 @@ export const updateFallScale = (request: IUpdateFallScale) => {
 
 // GCS
 export const getGCS = (request: IGetSurvey) => {
-  const url = `/survey/fall?${formatToRequestParameter(request)}`;
+  const url = `/survey/gcs?${formatToRequestParameter(request)}`;
   return apiGateway.get(url);
 };
 
 export const updateGCS = (request: IUpdateGCS) => {
-  const url = `/survey/GCS`;
+  const url = `/survey/gcs`;
   return apiGateway.post(url, camelcaseKeys(request));
 };
 
 // Pediatric_GCS
 export const getPediatric_GCS = (request: IGetSurvey) => {
-  const url = `/survey/fall?${formatToRequestParameter(request)}`;
+  const url = `/survey/pediatric_gcs?${formatToRequestParameter(request)}`;
   return apiGateway.get(url);
 };
 
 export const updatePediatric_GCS = (request: IUpdatePediatric_GCS) => {
-  const url = `/survey/GCS`;
+  const url = `/survey/pediatric_gcs`;
   return apiGateway.post(url, camelcaseKeys(request));
 };
 
 // Four Score
 export const getFourScore = (request: IGetSurvey) => {
-  const url = `/survey/fall?${formatToRequestParameter(request)}`;
+  const url = `/survey/FOUR_Score?${formatToRequestParameter(request)}`;
   return apiGateway.get(url);
 };
 
 export const updateFourScore = (request: IUpdateFourScore) => {
-  const url = `/survey/GCS`;
+  const url = `/survey/FOUR_Score`;
   return apiGateway.post(url, camelcaseKeys(request));
 };
-
 
 // 환자안전사고보고서
 export const getSafety = (request: IGetSurvey) => {
@@ -356,7 +355,7 @@ export const getDialysis = (request: IGetSurvey) => {
   return apiGateway.get(url);
 };
 
-export const updateDialysis= (request: IUpdateDialysis) => {
+export const updateDialysis = (request: IUpdateDialysis) => {
   const url = `/survey/hemodialysis`;
   return apiGateway.post(url, camelcaseKeys(request));
 };

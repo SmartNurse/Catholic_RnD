@@ -337,31 +337,26 @@ export const initialFallScale = {
 export const initialGCS = {
   date: '',
   update_at: '',
-  contents: {
-    eyeOpening: '',
-    VerbalResponse: '',
-    MotorResponse: '',
-  },
+  eye_opening: '',
+  verbal_response: '',
+  motor_response: '',
 };
 
 export const initialPediatric_GCS = {
   date: '',
   update_at: '',
-  contents: {
-    eyeOpening: '',
-    VerbalResponse: '',
-    MotorResponse: '',
-  },
+  eye_opening: '',
+  verbal_response: '',
+  motor_response: '',
 };
 
 export const initialFourScore = {
   date: '',
   update_at: '',
-  contents: {
-    eyeOpening: '',
-    VerbalResponse: '',
-    MotorResponse: '',
-  },
+  eye_opening: '',
+  brainstem_reflexes: '',
+  motor_response: '',
+  respiration: '',
 };
 
 export const initialSafety = {

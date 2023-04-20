@@ -38,7 +38,8 @@ import {
   initialHospitalConfirm,
   initialFallConfirm,
   initialCoreNursingSkillVideo,
-  initialCoreNursingSkillVideoExemple
+  initialCoreNursingSkillVideoExemple,
+  initialFourScore,
 } from './initialStates';
 
 export enum MENU {
@@ -58,10 +59,10 @@ export enum MENU {
   NEEDS = '욕구평가 기록지',
   FALL = '낙상위험 평가도구 I',
   FALLTWO = '낙상위험 평가도구 II',
-  FALLSCALE='소아 낙상위험 평가',
+  FALLSCALE = '소아 낙상위험 평가',
   GCS = 'GCS',
   Pediatric_GCS = 'Pediatric GCS',
-  FourScore ='FOUR Score',
+  FourScore = 'FOUR Score',
   PAIN = '통증평가도구',
   SAFETY = '환자안전사고보고서',
   NRS = 'NRS',
@@ -121,6 +122,7 @@ export type TNeedsDefaultValues = typeof initialNeeds;
 export type TFallDefaultValues = typeof initialFall;
 export type TGCSDefaultValues = typeof initialGCS;
 export type TPediaTric_GCSDefaultValues = typeof initialPediatric_GCS;
+export type TFourScoreDefaultValues = typeof initialFourScore;
 export type TFallTwoDefaultValues = typeof initialFallTwo;
 export type TFallScaleDefaultValues = typeof initialFallScale;
 export type TSafetyDefaultValues = typeof initialSafety;
@@ -142,5 +144,7 @@ export type THomeCareDefaultValues = typeof initialHomeCare;
 export type TDietNutritionDefaultValues = typeof initialDietNutrition;
 export type THospitalConfirmDefaultValues = typeof initialHospitalConfirm;
 export type TFallConfirmDefaultValues = typeof initialFallConfirm;
-export type TCoreNursingSkillVideoDefaultValues = typeof initialCoreNursingSkillVideo;
-export type TCoreNursingSkillVideoDeExemplefaultValues = typeof initialCoreNursingSkillVideoExemple;
+export type TCoreNursingSkillVideoDefaultValues =
+  typeof initialCoreNursingSkillVideo;
+export type TCoreNursingSkillVideoDeExemplefaultValues =
+  typeof initialCoreNursingSkillVideoExemple;

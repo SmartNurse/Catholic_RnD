@@ -1,16 +1,21 @@
 import { Grid, Typography } from '@mui/material';
 import { useForm } from 'react-hook-form';
 
-import { updateFall } from 'apis/survey';
+import { updatePediatric_GCS } from 'apis/survey';
 import useSurvey from 'store/survey/useSurvey';
 import useNotification from 'hooks/useNotification';
 import MuiDialog from 'components/MuiDialog';
-import { TPediaTric_GCSDefaultValues, SurveyDialogProps } from 'routes/Main/Survey/type';
+import {
+  TPediaTric_GCSDefaultValues,
+  SurveyDialogProps,
+} from 'routes/Main/Survey/type';
 
 import CommonPatientInfo from '../components/CommonPatientInfo';
 import Pediatric_GCSContents from './Pediatric_GCSContents';
 
-const Pediatric_GCS = (props: SurveyDialogProps<TPediaTric_GCSDefaultValues>) => {
+const Pediatric_GCS = (
+  props: SurveyDialogProps<TPediaTric_GCSDefaultValues>
+) => {
   const {
     title,
     isOpen,
@@ -31,25 +36,21 @@ const Pediatric_GCS = (props: SurveyDialogProps<TPediaTric_GCSDefaultValues>) =>
 
   const onSubmit = (data: TPediaTric_GCSDefaultValues) => {
     const { patient_id } = patientInfo;
-    const { contents, date } = data;
-
-    const contentsValues = Object.values(contents);
-    if (contentsValues.includes('')) return onRequired('REQUIRED.FALL');
+    const { eye_opening, verbal_response, motor_response } = data;
 
     const request = {
       user_id,
-      patient_id,
-      date,
-      contents: JSON.stringify(contents),
+      patient_id: patientInfo.patient_id,
+      pediatric_gcs_survey: { ...data },
     };
 
-    updateFall(request)
+    updatePediatric_GCS(request)
       .then(({ data: { rc } }) => {
         if (rc !== 1) return onResultCode(rc);
         onUpdateIsSave(true);
-        onSuccess('낙상위험 평가도구 I 저장에 성공하였습니다.');
+        onSuccess('Pediatric GCS 저장에 성공하였습니다.');
       })
-      .catch(e => onFail('낙상위험 평가도구 I 저장에 실패하였습니다.', e));
+      .catch(e => onFail('Pediatric GCS 저장에 실패하였습니다.', e));
   };
 
   const formProps = {
@@ -58,6 +59,7 @@ const Pediatric_GCS = (props: SurveyDialogProps<TPediaTric_GCSDefaultValues>) =>
     register,
     getValues,
     setValue,
+    onRequired,
   };
 
   return (
@@ -75,8 +77,15 @@ const Pediatric_GCS = (props: SurveyDialogProps<TPediaTric_GCSDefaultValues>) =>
         columnSpacing={3}
         sx={{ py: 5, px: 1 }}
       >
-        <Typography sx={{ margin: "40px auto 0px auto", fontWeight: "700", fontSize: "16px", textAlign: "center" }}>
-          Pediatric GCS (Glasgow Coma Scale) <br/> - 현재 테스트 중입니다. -
+        <Typography
+          sx={{
+            margin: '40px auto 0px auto',
+            fontWeight: '700',
+            fontSize: '16px',
+            textAlign: 'center',
+          }}
+        >
+          Pediatric GCS (Glasgow Coma Scale) <br /> - 현재 테스트 중입니다. -
         </Typography>
         <CommonPatientInfo patientInfo={patientInfo} nurseName={nurseName} />
         <Pediatric_GCSContents {...formProps} />

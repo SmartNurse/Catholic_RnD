@@ -249,20 +249,30 @@ export interface IUpdateFallScale extends IGetSurvey {
 
 // GCS
 export interface IUpdateGCS extends IGetSurvey {
-  date: string;
-  contents: string;
+  gcs_survey: {
+    eye_opening: string;
+    verbal_response: string;
+    motor_response: string;
+  };
 }
 
 // Pediatric_GCS
 export interface IUpdatePediatric_GCS extends IGetSurvey {
-  date: string;
-  contents: string;
+  pediatric_gcs_survey: {
+    eye_opening: string;
+    verbal_response: string;
+    motor_response: string;
+  };
 }
 
 // Four Score
 export interface IUpdateFourScore extends IGetSurvey {
-  date: string;
-  contents: string;
+  four_score_survey: {
+    eye_opening: string;
+    brainstem_reflexes: string;
+    motor_response: string;
+    respiration: string;
+  };
 }
 
 // 환자안전사고보고서

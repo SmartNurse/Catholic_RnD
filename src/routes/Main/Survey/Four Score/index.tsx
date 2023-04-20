@@ -1,16 +1,19 @@
 import { Grid, Typography } from '@mui/material';
 import { useForm } from 'react-hook-form';
 
-import { updateFall } from 'apis/survey';
+import { updateFourScore } from 'apis/survey';
 import useSurvey from 'store/survey/useSurvey';
 import useNotification from 'hooks/useNotification';
 import MuiDialog from 'components/MuiDialog';
-import { TGCSDefaultValues, SurveyDialogProps } from 'routes/Main/Survey/type';
+import {
+  TFourScoreDefaultValues,
+  SurveyDialogProps,
+} from 'routes/Main/Survey/type';
 
 import CommonPatientInfo from '../components/CommonPatientInfo';
 import FourScoreContents from './FourScoreContents';
 
-const GCS = (props: SurveyDialogProps<TGCSDefaultValues>) => {
+const GCS = (props: SurveyDialogProps<TFourScoreDefaultValues>) => {
   const {
     title,
     isOpen,
@@ -29,27 +32,24 @@ const GCS = (props: SurveyDialogProps<TGCSDefaultValues>) => {
     defaultValues,
   });
 
-  const onSubmit = (data: TGCSDefaultValues) => {
+  const onSubmit = (data: TFourScoreDefaultValues) => {
     const { patient_id } = patientInfo;
-    const { contents, date } = data;
-
-    const contentsValues = Object.values(contents);
-    if (contentsValues.includes('')) return onRequired('REQUIRED.FALL');
+    const { eye_opening, brainstem_reflexes, motor_response, respiration } =
+      data;
 
     const request = {
       user_id,
-      patient_id,
-      date,
-      contents: JSON.stringify(contents),
+      patient_id: patientInfo.patient_id,
+      four_score_survey: { ...data },
     };
 
-    updateFall(request)
+    updateFourScore(request)
       .then(({ data: { rc } }) => {
         if (rc !== 1) return onResultCode(rc);
         onUpdateIsSave(true);
-        onSuccess('낙상위험 평가도구 I 저장에 성공하였습니다.');
+        onSuccess('FOUR Score 저장에 성공하였습니다.');
       })
-      .catch(e => onFail('낙상위험 평가도구 I 저장에 실패하였습니다.', e));
+      .catch(e => onFail('FOUR Score 저장에 실패하였습니다.', e));
   };
 
   const formProps = {
@@ -58,6 +58,7 @@ const GCS = (props: SurveyDialogProps<TGCSDefaultValues>) => {
     register,
     getValues,
     setValue,
+    onRequired,
   };
 
   return (
@@ -75,8 +76,15 @@ const GCS = (props: SurveyDialogProps<TGCSDefaultValues>) => {
         columnSpacing={3}
         sx={{ py: 5, px: 1 }}
       >
-        <Typography sx={{ margin: "40px auto 0px auto", fontWeight: "700", fontSize: "16px", textAlign: "center" }}>
-          FOUR Score <br/> - 현재 테스트 중입니다. -
+        <Typography
+          sx={{
+            margin: '40px auto 0px auto',
+            fontWeight: '700',
+            fontSize: '16px',
+            textAlign: 'center',
+          }}
+        >
+          FOUR Score <br /> - 현재 테스트 중입니다. -
         </Typography>
         <CommonPatientInfo patientInfo={patientInfo} nurseName={nurseName} />
         <FourScoreContents {...formProps} />
