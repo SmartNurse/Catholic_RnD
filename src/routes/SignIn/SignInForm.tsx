@@ -19,8 +19,6 @@ import smartnurseLogoStandard from 'assets/smartnurse-logo-standard.svg';
 import Form from 'components/Form';
 import MuiDialog from 'components/MuiDialog';
 
-
-
 interface Props {
   errors: { [x: string]: any };
   register: UseFormRegister<FieldValues>;
@@ -34,7 +32,7 @@ function SignInForm({ errors, register, onSignUp }: Props) {
     <Box>
       <Container maxWidth="sm" sx={{ mt: 10 }}>
         <Card
-          elevation={palette.mode === "dark" ? 0 : 1}
+          elevation={palette.mode === 'dark' ? 0 : 1}
           sx={{ borderTop: `solid 8px ${palette.primary.main}` }}
         >
           <CardMedia
@@ -43,11 +41,17 @@ function SignInForm({ errors, register, onSignUp }: Props) {
             image={smartnurseLogoStandard}
             sx={{ objectFit: 'contain', mt: 5, mb: 5 }}
           />
-          <CardContent sx={{ width: "100%", textAlign: "center", padding: "0 0 40px 0" }}>
-            <Typography>
-              현실감 있는 환자데이터 제공으로
-            </Typography>
-            <Typography sx={{ color: `${palette.mode === "dark" ? "grey" : palette.primary.main}`}}>
+          <CardContent
+            sx={{ width: '100%', textAlign: 'center', padding: '0 0 40px 0' }}
+          >
+            <Typography>현실감 있는 환자데이터 제공으로</Typography>
+            <Typography
+              sx={{
+                color: `${
+                  palette.mode === 'dark' ? 'grey' : palette.primary.main
+                }`,
+              }}
+            >
               실제 병원 현장을 경험하게 됩니다!
             </Typography>
           </CardContent>
@@ -95,33 +99,42 @@ function SignInForm({ errors, register, onSignUp }: Props) {
                 size="large"
                 variant="outlined"
                 onClick={onSignUp}
-                sx={{ mb: 2.5, color: `${palette.mode === "dark" ? "lightgrey" : ""}`, borderColor: `${palette.mode === "dark" ? "lightgrey" : ""}` }}
+                sx={{
+                  mb: 2.5,
+                  color: `${palette.mode === 'dark' ? 'lightgrey' : ''}`,
+                  borderColor: `${palette.mode === 'dark' ? 'lightgrey' : ''}`,
+                }}
               >
                 회원가입
               </Button>
 
               <MuiDialog.ConfirmButton
                 title="아이디/비밀번호를 잊으셨나요?"
-                message={`아이디/ 비밀번호를 잊으셨다면
-                          네이버 톡톡 문의하기 혹은 카카오채널 문의하기
-                          버튼을 클릭하고 다음 사항을 작성하여 문의주세요.
+                message={`아이디/ 비밀번호를 잊으셨다면 채널톡 문의하기 버튼을
+                          클릭하고 다음 사항을 작성하여 문의주세요.
                           
                           - 아이디를 잊으셨다면 : 학교, 학번, 이름
                           - 비밀번호를 잊으셨다면 : 학교, 학번, 이름, 이메일(아이디)`}
-                color={palette.mode === "dark" ? "lightgrey" : ""}
+                color={palette.mode === 'dark' ? 'lightgrey' : ''}
               />
 
               <Button
                 fullWidth
                 size="large"
                 variant="outlined"
-                sx={{ mt: 2.5, mb: 2.5, color: `${palette.mode === "dark" ? "lightgrey" : ""}`, borderColor: `${palette.mode === "dark" ? "lightgrey" : ""}` }}
-                onClick={() => window.open("https://www.smartnurse.co.kr/")}
+                sx={{
+                  mt: 2.5,
+                  mb: 2.5,
+                  color: `${palette.mode === 'dark' ? 'lightgrey' : ''}`,
+                  borderColor: `${palette.mode === 'dark' ? 'lightgrey' : ''}`,
+                }}
+                onClick={() => window.open('https://www.smartnurse.co.kr/')}
               >
                 스마트널스 홈페이지 바로가기
               </Button>
-              <Typography sx={{ fontSize: "0.8125rem" }}>문의: nurse@smartnurse.co.kr</Typography>
-
+              <Typography sx={{ fontSize: '0.8125rem' }}>
+                문의: nurse@smartnurse.co.kr
+              </Typography>
             </Box>
           </CardActions>
 
