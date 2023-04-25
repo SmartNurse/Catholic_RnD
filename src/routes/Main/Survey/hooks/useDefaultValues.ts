@@ -445,19 +445,13 @@ const useDefaultValues = ({ setDefaultValues, user_id }: Props) => {
           .catch(e => onFail('알 수 없는 오류가 발생했습니다.', e));
         break;
       case MENU.EMERGENCY:
-        getEmergency({ user_id, patient_id })
-          .then(({ data }) => {
-            const { update_at, emergency_survey } = data;
-            convertDataToStates(
-              {
-                update_at,
-                ...emergency_survey?.emergency_information,
-                ...emergency_survey?.emergency_contents,
-              },
-              initialEmergency
-            );
-          })
-          .catch(e => onFail('알 수 없는 오류가 발생했습니다.', e));
+        getEmergency({ user_id, patient_id }).then(({ data }) => {
+          const { update_at, emergency_register_survey } = data;
+          convertDataToStates(
+            { update_at, ...emergency_register_survey },
+            initialEmergency
+          );
+        });
         break;
       case MENU.CHILDBIRTH:
         getChildbirth({ user_id, patient_id })

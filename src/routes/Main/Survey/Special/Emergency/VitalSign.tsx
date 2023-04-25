@@ -1,8 +1,24 @@
 import { Fragment, useState, useEffect } from 'react';
 import { AccessTime, Delete } from '@mui/icons-material';
 import { MobileTimePicker } from '@mui/x-date-pickers';
-import { Button, FormHelperText, Grid, IconButton, MenuItem, Box } from '@mui/material';
-import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
+import {
+  Button,
+  FormHelperText,
+  Grid,
+  IconButton,
+  MenuItem,
+  Box,
+} from '@mui/material';
+import {
+  LineChart,
+  Line,
+  XAxis,
+  YAxis,
+  CartesianGrid,
+  Tooltip,
+  Legend,
+  ResponsiveContainer,
+} from 'recharts';
 
 import { Ti18nId } from 'hooks/useI18n';
 import { IVitalSign } from 'apis/survey/type';
@@ -20,7 +36,7 @@ interface Props extends IFormValues, IFormWatch {
 }
 
 const VitalSign = (props: Props) => {
-  const colors = ["#FE2503", "#FF9200", "#02F900", "#0333FF", "#942092"];
+  const colors = ['#FE2503', '#FF9200', '#02F900', '#0333FF', '#942092'];
 
   const columns = [
     { fieldId: 'checkTime', label: '체크시간', sx: { width: 200 } },
@@ -34,17 +50,22 @@ const VitalSign = (props: Props) => {
     { fieldId: 'action', label: '', sx: { width: 100 } },
   ];
 
-  const etc_labels = ["환자 도착", "마취 시작", "마취 중", "마취 종료", "수술 시작", "수술 중", "수술 종료", "환자 퇴실", "기타"];
+  const etc_labels = ['환자 도착', '환자 퇴실', '기타'];
 
   const { disabled, watch, setValue, onRequired, onSuccess } = props;
 
-  const vitalSignList: IVitalSign[] = watch('anesthesia.patient_status.records');
-  const [vitalsignData, setVitalsignData] = useState<{name: string, data: {timestamp: string, value?: number, temp?: number}[]}[]>([
-    { name: "BT (℃)", data: [] }, 
-    { name: "PR (회)", data: [] }, 
-    { name: "RR (회)", data: [] }, 
-    { name: "SBP (mmHg)", data: [] }, 
-    { name: "DBP (mmHg)", data: [] }, 
+  const vitalSignList: IVitalSign[] = watch('patient_status_list_record');
+  const [vitalsignData, setVitalsignData] = useState<
+    {
+      name: string;
+      data: { timestamp: string; value?: number; temp?: number }[];
+    }[]
+  >([
+    { name: 'BT (℃)', data: [] },
+    { name: 'PR (회)', data: [] },
+    { name: 'RR (회)', data: [] },
+    { name: 'SBP (mmHg)', data: [] },
+    { name: 'DBP (mmHg)', data: [] },
   ]);
 
   const [checkTime, setCheckTime] = useState(null);
@@ -60,8 +81,8 @@ const VitalSign = (props: Props) => {
     dbp: 0,
     pr: 0,
     rr: 0,
-    bt: 0
-  }); 
+    bt: 0,
+  });
 
   const onAddRow = () => {
     const request = { checkTime, sbp, dbp, pr, rr, bt, sp02, etc };
@@ -70,7 +91,10 @@ const VitalSign = (props: Props) => {
     }
 
     onSuccess('Vital Sign 추가되었습니다.');
-    setValue('anesthesia.patient_status.records', vitalSignList ? [...vitalSignList, {...request, etc }] : [request]);
+    setValue(
+      'patient_status_list_record',
+      vitalSignList ? [...vitalSignList, { ...request, etc }] : [request]
+    );
     setCheckTime(null);
     setSbp('');
     setDbp('');
@@ -105,12 +129,14 @@ const VitalSign = (props: Props) => {
           onChange={({ target: { value } }) => {
             setSbp(value);
 
-            if (Number(value) >= 250) setErrors({...errors, sbp: 1});
-            else setErrors({...errors, sbp: 0});
+            if (Number(value) >= 250) setErrors({ ...errors, sbp: 1 });
+            else setErrors({ ...errors, sbp: 0 });
           }}
           error={Number(sbp) >= 250 ? true : false}
         />
-        {errors.sbp ? <FormHelperText error={true}>SBP 값은 250 미만입니다</FormHelperText> : null}
+        {errors.sbp ? (
+          <FormHelperText error={true}>SBP 값은 250 미만입니다</FormHelperText>
+        ) : null}
       </>
     ),
     dbp: (
@@ -121,12 +147,14 @@ const VitalSign = (props: Props) => {
           onChange={({ target: { value } }) => {
             setDbp(value);
 
-            if (Number(value) >= 250) setErrors({...errors, dbp: 1});
-            else setErrors({...errors, dbp: 0});
+            if (Number(value) >= 250) setErrors({ ...errors, dbp: 1 });
+            else setErrors({ ...errors, dbp: 0 });
           }}
           error={Number(dbp) >= 250 ? true : false}
         />
-        {errors.dbp ? <FormHelperText error={true}>DBP 값은 250 미만입니다</FormHelperText> : null}
+        {errors.dbp ? (
+          <FormHelperText error={true}>DBP 값은 250 미만입니다</FormHelperText>
+        ) : null}
       </>
     ),
     pr: (
@@ -137,12 +165,14 @@ const VitalSign = (props: Props) => {
           onChange={({ target: { value } }) => {
             setPr(value);
 
-            if (Number(value) >= 200) setErrors({...errors, pr: 1});
-            else setErrors({...errors, pr: 0});
+            if (Number(value) >= 200) setErrors({ ...errors, pr: 1 });
+            else setErrors({ ...errors, pr: 0 });
           }}
           error={Number(pr) >= 200 ? true : false}
         />
-        {errors.pr ? <FormHelperText error={true}>PR 값은 200 미만입니다</FormHelperText> : null}
+        {errors.pr ? (
+          <FormHelperText error={true}>PR 값은 200 미만입니다</FormHelperText>
+        ) : null}
       </>
     ),
     rr: (
@@ -153,12 +183,14 @@ const VitalSign = (props: Props) => {
           onChange={({ target: { value } }) => {
             setRr(value);
 
-            if (Number(value) >= 200) setErrors({...errors, rr: 1});
-            else setErrors({...errors, rr: 0});
+            if (Number(value) >= 200) setErrors({ ...errors, rr: 1 });
+            else setErrors({ ...errors, rr: 0 });
           }}
           error={Number(rr) >= 200 ? true : false}
         />
-        {errors.rr ? <FormHelperText error={true}>RR 값은 200 미만입니다</FormHelperText> : null}
+        {errors.rr ? (
+          <FormHelperText error={true}>RR 값은 200 미만입니다</FormHelperText>
+        ) : null}
       </>
     ),
     bt: (
@@ -169,12 +201,19 @@ const VitalSign = (props: Props) => {
           onChange={({ target: { value } }) => {
             setBt(value);
 
-            if (value === "" || Number(value) > 30 && Number(value) < 43) setErrors({...errors, bt: 0});
-            else setErrors({...errors, bt: 1});
+            if (value === '' || (Number(value) > 30 && Number(value) < 43))
+              setErrors({ ...errors, bt: 0 });
+            else setErrors({ ...errors, bt: 1 });
           }}
-          error={bt === "" || Number(bt) > 30 && Number(bt) < 43 ? false : true}
+          error={
+            bt === '' || (Number(bt) > 30 && Number(bt) < 43) ? false : true
+          }
         />
-        {errors.bt ? <FormHelperText error={true}>BT 값은 30 초과 43 미만입니다</FormHelperText> : null}
+        {errors.bt ? (
+          <FormHelperText error={true}>
+            BT 값은 30 초과 43 미만입니다
+          </FormHelperText>
+        ) : null}
       </>
     ),
     sp02: (
@@ -189,9 +228,11 @@ const VitalSign = (props: Props) => {
         select
         value={etc}
         required={false}
-        onChange={({ target: { value }}) => setEtc(value)}
+        onChange={({ target: { value } }) => setEtc(value)}
       >
-        {etc_labels.map((option) => <MenuItem value={option}>{option}</MenuItem>)}
+        {etc_labels.map(option => (
+          <MenuItem value={option}>{option}</MenuItem>
+        ))}
       </MuiTextField>
     ),
     action: (
@@ -203,103 +244,146 @@ const VitalSign = (props: Props) => {
 
   const onDeleteRow = (index: number) => {
     setValue(
-      'anesthesia.patient_status.records',
+      'patient_status_list_record',
       vitalSignList.filter((_, i) => i !== index)
     );
   };
 
-  const displayRows = vitalSignList ?
-    vitalSignList.slice().sort((a, b) => Number(new Date(a.checkTime)) - Number(new Date(b.checkTime))).map((item, i) => ({
-    ...item,
-    id: i,
-    checkTime: formatStringToDate(item.checkTime, 'hh:mm a'),
-    action: (
-      <IconButton
-        size="small"
-        onClick={() => onDeleteRow(i)}
-        sx={{ display: disabled ? 'none' : 'block' }}
-      >
-        <Delete />
-      </IconButton>
-    ),
-  }))
-  :
-  [];
+  const displayRows = vitalSignList
+    ? vitalSignList
+        .slice()
+        .sort(
+          (a, b) =>
+            Number(new Date(a.checkTime)) - Number(new Date(b.checkTime))
+        )
+        .map((item, i) => ({
+          ...item,
+          id: i,
+          checkTime: formatStringToDate(item.checkTime, 'hh:mm a'),
+          action: (
+            <IconButton
+              size="small"
+              onClick={() => onDeleteRow(i)}
+              sx={{ display: disabled ? 'none' : 'block' }}
+            >
+              <Delete />
+            </IconButton>
+          ),
+        }))
+    : [];
 
   const tableRow = disabled ? displayRows : [inputRow, ...displayRows];
 
   useEffect(() => {
-    const sortedVitalSignList = vitalSignList ? vitalSignList.slice().sort((a, b) => Number(new Date(a.checkTime)) - Number(new Date(b.checkTime))) : [];
-    
+    const sortedVitalSignList = vitalSignList
+      ? vitalSignList
+          .slice()
+          .sort(
+            (a, b) =>
+              Number(new Date(a.checkTime)) - Number(new Date(b.checkTime))
+          )
+      : [];
+
     if (sortedVitalSignList.length) {
-      const btData = sortedVitalSignList.map((v) => { return {timestamp: formatStringToDate(v.checkTime, 'hh:mm:a'), temp: v.bt} });
-      const prData = sortedVitalSignList.map((v) => { return {timestamp: formatStringToDate(v.checkTime, 'hh:mm:a'), value: v.pr }});
-      const rrData = sortedVitalSignList.map((v) => { return {timestamp: formatStringToDate(v.checkTime, 'hh:mm:a'), value: v.rr }});
-      const sbpData = sortedVitalSignList.map((v) => { return {timestamp: formatStringToDate(v.checkTime, 'hh:mm:a'), value: v.sbp }});
-      const dbpData = sortedVitalSignList.map((v) => { return {timestamp: formatStringToDate(v.checkTime, 'hh:mm:a'), value: v.dbp }});  
+      const btData = sortedVitalSignList.map(v => {
+        return {
+          timestamp: formatStringToDate(v.checkTime, 'hh:mm:a'),
+          temp: v.bt,
+        };
+      });
+      const prData = sortedVitalSignList.map(v => {
+        return {
+          timestamp: formatStringToDate(v.checkTime, 'hh:mm:a'),
+          value: v.pr,
+        };
+      });
+      const rrData = sortedVitalSignList.map(v => {
+        return {
+          timestamp: formatStringToDate(v.checkTime, 'hh:mm:a'),
+          value: v.rr,
+        };
+      });
+      const sbpData = sortedVitalSignList.map(v => {
+        return {
+          timestamp: formatStringToDate(v.checkTime, 'hh:mm:a'),
+          value: v.sbp,
+        };
+      });
+      const dbpData = sortedVitalSignList.map(v => {
+        return {
+          timestamp: formatStringToDate(v.checkTime, 'hh:mm:a'),
+          value: v.dbp,
+        };
+      });
 
       setVitalsignData([
-        { name: "BT (℃)", data: [...btData] }, 
-        { name: "PR (회)", data: [...prData] }, 
-        { name: "RR (회)", data: [...rrData] }, 
-        { name: "SBP (mmHg)", data: [...sbpData] }, 
-        { name: "DBP (mmHg)", data: [...dbpData] }, 
+        { name: 'BT (℃)', data: [...btData] },
+        { name: 'PR (회)', data: [...prData] },
+        { name: 'RR (회)', data: [...rrData] },
+        { name: 'SBP (mmHg)', data: [...sbpData] },
+        { name: 'DBP (mmHg)', data: [...dbpData] },
       ]);
     }
   }, [vitalSignList]);
 
   return (
     <Fragment>
-      <Box sx={{ width: "80%", height: "500px", margin: "50px auto 0px auto"}}>
+      <Box sx={{ width: '80%', height: '500px', margin: '50px auto 0px auto' }}>
         <ResponsiveContainer width="100%" height="100%">
-            <LineChart margin={{ top:5, right: 5, bottom: 5, left: 5 }}>
-                <CartesianGrid horizontal={false} />
-                <XAxis
-                  dataKey="timestamp"
-                  type="category"
-                  allowDuplicatedCategory={false}
-                  padding={{ left: 50, right: 50 }}
-                  tickMargin={10}
-                />
-                <YAxis
-                  yAxisId={0}
-                  orientation="left"
-                  dataKey="value"
-                  type="number"
-                  tickCount={11}
-                  domain={[0, 200]}
-                  tickMargin={10}
-                />
-                <YAxis
-                  yAxisId={1}
-                  orientation="right"
-                  dataKey="temp"
-                  type="number"
-                  domain={[30, 42]}
-                  tickMargin={10}
-                />
-                <Tooltip />
-                <Legend
-                    layout="vertical"
-                    align="right"
-                    verticalAlign="middle"
-                    formatter={(value) => <span style={{ color: "black" }}>{value}</span>}
-                    wrapperStyle={{ backgroundColor: "#EBEBEB", padding: "15px 10px", marginLeft: "10px" }}
-                />
-                {vitalsignData.map((v, idx) => (
-                    <Line
-                      dataKey={v.name === "BT (℃)" ? "temp" : "value"}
-                      data={v.data}
-                      name={v.name}
-                      key={v.name}
-                      stroke={colors[idx]}
-                      dot={{ stroke: colors[idx], strokeWidth: 4 }}
-                      yAxisId={v.name === "BT (℃)" ? 1 : 0}
-                    />
-                ))}
-            </LineChart>
+          <LineChart margin={{ top: 5, right: 5, bottom: 5, left: 5 }}>
+            <CartesianGrid horizontal={false} />
+            <XAxis
+              dataKey="timestamp"
+              type="category"
+              allowDuplicatedCategory={false}
+              padding={{ left: 50, right: 50 }}
+              tickMargin={10}
+            />
+            <YAxis
+              yAxisId={0}
+              orientation="left"
+              dataKey="value"
+              type="number"
+              tickCount={11}
+              domain={[0, 200]}
+              tickMargin={10}
+            />
+            <YAxis
+              yAxisId={1}
+              orientation="right"
+              dataKey="temp"
+              type="number"
+              domain={[30, 42]}
+              tickMargin={10}
+            />
+            <Tooltip />
+            <Legend
+              layout="vertical"
+              align="right"
+              verticalAlign="middle"
+              formatter={value => (
+                <span style={{ color: 'black' }}>{value}</span>
+              )}
+              wrapperStyle={{
+                backgroundColor: '#EBEBEB',
+                padding: '15px 10px',
+                marginLeft: '10px',
+              }}
+            />
+            {vitalsignData.map((v, idx) => (
+              <Line
+                dataKey={v.name === 'BT (℃)' ? 'temp' : 'value'}
+                data={v.data}
+                name={v.name}
+                key={v.name}
+                stroke={colors[idx]}
+                dot={{ stroke: colors[idx], strokeWidth: 4 }}
+                yAxisId={v.name === 'BT (℃)' ? 1 : 0}
+              />
+            ))}
+          </LineChart>
         </ResponsiveContainer>
-    </Box>
+      </Box>
       <Grid item xs={12}>
         <MuiTable columns={columns} rows={tableRow} />
       </Grid>

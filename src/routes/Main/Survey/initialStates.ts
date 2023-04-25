@@ -326,11 +326,11 @@ export const initialFallScale = {
   contents: {
     age: '',
     diagnosis: '',
-    gender: '',
-    cognitive: '',
-    environmental: '',
+    sex: '',
+    cognitive_disorder: '',
+    environmental_factors: '',
     history: '',
-    drug: '',
+    medication_use: '',
   },
 };
 
@@ -573,8 +573,8 @@ export const initialEmergency = {
   emergency_information: {
     accident_date: '',
     accident_time: '',
-    visitMethod: '',
-    visitReason: '',
+    visit_method: '',
+    memo: '',
     arrival_time: '',
   },
   emergency_patient_information: {
@@ -603,7 +603,15 @@ export const initialEmergency = {
     blood_clot_amount: '',
     output_etc: '',
   },
-  patient_status_list_record: [],
+  patient_status_list_record: {
+    checkTime: '',
+    sbp: '',
+    dbp: '',
+    pr: '',
+    rr: '',
+    bt: '',
+    note: '',
+  },
   emergency_care_result: {
     result: { value: 1, input: '' },
     status: {

@@ -11,12 +11,10 @@ import { Box, MenuItem } from '@mui/material';
 
 interface Props extends IFormRegister, IFormValues, IFormWatch {
   disabled?: boolean;
-  time: null | string;
-  setTime: (time: null | string) => void;
 }
 
 const NewInfo = (props: Props) => {
-  const { disabled, register, watch, time, setTime } = props;
+  const { disabled, register, getValues } = props;
 
   const [damageEtc, setDamageEtc] = useState(0);
   const [intentionalEtc, setIntentionalEtc] = useState(0);
@@ -25,11 +23,19 @@ const NewInfo = (props: Props) => {
   const contents = [
     {
       label: '주증상',
-      element: <Form.MuiTextField {...register('symptom')} />,
+      element: (
+        <Form.MuiTextField
+          {...register('emergency_patient_information.symptom')}
+        />
+      ),
     },
     {
       label: '기타 증상',
-      element: <Form.MuiTextField {...register('etc_symptom')} />,
+      element: (
+        <Form.MuiTextField
+          {...register('emergency_patient_information.etc_symptom')}
+        />
+      ),
     },
     {
       label: '손상기전',
@@ -38,7 +44,9 @@ const NewInfo = (props: Props) => {
           <Form.MuiTextField
             select
             required={false}
-            {...register('damage')}
+            disabled={disabled}
+            defaultValue={getValues('emergency_patient_information.damage')}
+            {...register('emergency_patient_information.damage')}
             onChange={e => {
               if (e.target.value === 'etc') setDamageEtc(1);
               else setDamageEtc(0);
@@ -72,7 +80,11 @@ const NewInfo = (props: Props) => {
           <Form.MuiTextField
             select
             required={false}
-            {...register('intentional')}
+            disabled={disabled}
+            defaultValue={getValues(
+              'emergency_patient_information.intentional'
+            )}
+            {...register('emergency_patient_information.intentional')}
             onChange={e => {
               if (e.target.value === 'etc') setIntentionalEtc(1);
               else setIntentionalEtc(0);
@@ -102,7 +114,11 @@ const NewInfo = (props: Props) => {
           <Form.MuiTextField
             select
             required={false}
-            {...register('medical_conditions')}
+            disabled={disabled}
+            defaultValue={getValues(
+              'emergency_patient_information.medical_conditions'
+            )}
+            {...register('emergency_patient_information.medical_conditions')}
             onChange={e => {
               if (e.target.value === 'etc') setDiseaseEtc(1);
               else setDiseaseEtc(0);
@@ -126,15 +142,27 @@ const NewInfo = (props: Props) => {
     },
     {
       label: '과거력',
-      element: <Form.MuiTextField {...register('history')} />,
+      element: (
+        <Form.MuiTextField
+          {...register('emergency_patient_information.history')}
+        />
+      ),
     },
     {
       label: '알레르기',
-      element: <Form.MuiTextField {...register('allergy')} />,
+      element: (
+        <Form.MuiTextField
+          {...register('emergency_patient_information.allergy')}
+        />
+      ),
     },
     {
       label: '투약상태',
-      element: <Form.MuiTextField {...register('medication')} />,
+      element: (
+        <Form.MuiTextField
+          {...register('emergency_patient_information.medication')}
+        />
+      ),
     },
     {
       label: '의식수준',
@@ -142,7 +170,11 @@ const NewInfo = (props: Props) => {
         <Form.MuiTextField
           select
           required={false}
-          {...register('consciousness')}
+          disabled={disabled}
+          defaultValue={getValues(
+            'emergency_patient_information.consciousness'
+          )}
+          {...register('emergency_patient_information.consciousness')}
         >
           <MenuItem value="Alert">Alert</MenuItem>
           <MenuItem value="Drowsy">Drowsy</MenuItem>
@@ -155,33 +187,55 @@ const NewInfo = (props: Props) => {
 
     {
       label: 'GCS',
-      element: <Form.MuiTextField {...register('gcs')} />,
+      element: (
+        <Form.MuiTextField {...register('emergency_patient_information.gcs')} />
+      ),
     },
 
     {
       label: 'MOTOR',
-      element: <Form.MuiTextField {...register('motor')} />,
+      element: (
+        <Form.MuiTextField
+          {...register('emergency_patient_information.motor')}
+        />
+      ),
     },
 
     {
       label: 'PUPIL',
-      element: <Form.MuiTextField {...register('pupil')} />,
+      element: (
+        <Form.MuiTextField
+          {...register('emergency_patient_information.pupil')}
+        />
+      ),
     },
 
     {
       label: 'NRS',
-      element: <Form.MuiTextField {...register('nrs')} />,
+      element: (
+        <Form.MuiTextField {...register('emergency_patient_information.nrs')} />
+      ),
     },
 
     {
       label: 'PQRST',
-      element: <Form.MuiTextField {...register('pqrst')} />,
+      element: (
+        <Form.MuiTextField
+          {...register('emergency_patient_information.pqrst')}
+        />
+      ),
     },
 
     {
       label: 'KTAS',
       element: (
-        <Form.MuiTextField select required={false} {...register('ktas')}>
+        <Form.MuiTextField
+          select
+          required={false}
+          disabled={disabled}
+          defaultValue={getValues('emergency_patient_information.ktas')}
+          {...register('emergency_patient_information.ktas')}
+        >
           <MenuItem value="one">1단계</MenuItem>
           <MenuItem value="two">2단계</MenuItem>
           <MenuItem value="three">3단계</MenuItem>
@@ -193,7 +247,11 @@ const NewInfo = (props: Props) => {
 
     {
       label: '예상되는 진단명',
-      element: <Form.MuiTextField {...register('expected_diagnosis')} />,
+      element: (
+        <Form.MuiTextField
+          {...register('emergency_patient_information.expected_diagnosis')}
+        />
+      ),
     },
   ];
 

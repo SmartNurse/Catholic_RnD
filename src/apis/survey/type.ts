@@ -545,25 +545,14 @@ export interface IUpdateDialysis extends IGetSurvey {
 }
 
 // 응급기록지
-
-export interface IEmergencyVitalsignRecord {
-  time: string;
-  sbp: string;
-  dbp: string;
-  pr: string;
-  rr: string;
-  bt: string;
-  note: string;
-}
-
 export interface IUpdateEmergency extends IGetSurvey {
-  emergency_survey: {
+  emergency_register_survey: {
     emergency_information: {
       accident_date: string;
       accident_time: string;
       arrival_time: string;
-      visitMethod: string;
-      visitReason: string;
+      visit_method: string;
+      memo: string;
     };
     emergency_patient_information: {
       symptom: string;
@@ -591,7 +580,15 @@ export interface IUpdateEmergency extends IGetSurvey {
       blood_clot_amount: string;
       output_etc: string;
     };
-    patient_status_list_record: IEmergencyVitalsignRecord[];
+    patient_status_list_record: {
+      checkTime: string;
+      sbp: string;
+      dbp: string;
+      pr: string;
+      rr: string;
+      bt: string;
+      note: string;
+    };
     emergency_care_result: {
       result: object;
       status: object;

@@ -33,7 +33,6 @@ const Emergency = (props: SurveyDialogProps<TEmergencyDefaultValues>) => {
   } = props;
 
   const { onUpdateIsSave } = useSurvey();
-  const [operationTime, setOperationTime] = useState<string | null>(null);
   const { onSuccess, onFail, onResultCode, onRequired } = useNotification();
 
   const { handleSubmit, register, getValues, setValue, watch } = useForm({
@@ -52,7 +51,7 @@ const Emergency = (props: SurveyDialogProps<TEmergencyDefaultValues>) => {
     const request = {
       user_id,
       patient_id: patientInfo.patient_id,
-      emergency_survey: {
+      emergency_register_survey: {
         emergency_information,
         emergency_patient_information,
         patient_status_record,
@@ -108,11 +107,7 @@ const Emergency = (props: SurveyDialogProps<TEmergencyDefaultValues>) => {
         </Typography>
         <CommonPatientInfo patientInfo={patientInfo} nurseName={nurseName} />
         <EmergencyRecord {...formProps} />
-        <NewInfo
-          {...formProps}
-          time={operationTime}
-          setTime={setOperationTime}
-        />
+        <NewInfo {...formProps} />
         <PatientStatus {...formProps} />
         <EmergencyResult {...formProps} />
         <CheckDisease {...formProps} />
