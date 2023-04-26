@@ -24,61 +24,61 @@ const Habit = (props: Props) => {
   return (
     <Fragment>
       <SectionTitle title="습관" />
-        <RowContainer xs={12}>
-          <RowContent title="대변">
-            <Stack direction="row" spacing={1}>
-              <Form.MuiTextField
-                type="number"
-                textAlign="right"
-                disabled={disabled}
-                sx={{maxWidth:"150px"}}
-                InputProps={{ ...Form.adornment('횟수', '회/day') }}
-                {...register('habit.feces.value')}
-              />
-              <CheckboxGroup
-                  i18nNullKey="ETC"
-                  i18nKey="HOSPITALIZATION.HABIT.FECES"
-                  values={[1, 2, 3, 4, 5, 0]}
-                  disabled={disabled}
-                  defaultValue={getValues('habit.feces_info.checked')}
-                  onChange={v => setValue('habit.feces_info.checked', v)}
-              />
-              <Form.MuiTextField
-                required={false}
-                disabled={disabled}
-                placeholder="기타"
-                sx={{maxWidth:"140px"}}
-                {...register('habit.feces.input')}
-              />
-            </Stack>
-          </RowContent>
-          <RowContent title="소변">
-            <Stack direction="row" spacing={1}>
-              <Form.MuiTextField
+      <RowContainer xs={12}>
+        <RowContent title="대변">
+          <Stack direction="row" spacing={1}>
+            <Form.MuiTextField
               type="number"
               textAlign="right"
               disabled={disabled}
-              sx={{maxWidth:"150px"}}
+              sx={{ maxWidth: '150px' }}
+              InputProps={{ ...Form.adornment('횟수', '회/day') }}
+              {...register('habit.feces.value')}
+            />
+            <CheckboxGroup
+              i18nNullKey="ETC"
+              i18nKey="HOSPITALIZATION.HABIT.FECES"
+              values={[1, 2, 3, 4, 5, 0]}
+              disabled={disabled}
+              defaultValue={getValues('habit.feces_info.checked')}
+              onChange={v => setValue('habit.feces_info.checked', v)}
+            />
+            <Form.MuiTextField
+              required={false}
+              disabled={disabled}
+              placeholder="기타"
+              sx={{ maxWidth: '140px' }}
+              {...register('habit.feces.input')}
+            />
+          </Stack>
+        </RowContent>
+        <RowContent title="소변">
+          <Stack direction="row" spacing={1}>
+            <Form.MuiTextField
+              type="number"
+              textAlign="right"
+              disabled={disabled}
+              sx={{ maxWidth: '150px' }}
               InputProps={{ ...Form.adornment('횟수', '회/day') }}
               {...register('habit.urine.value')}
-              />
-              <CheckboxGroup
-                i18nNullKey="ETC"
-                i18nKey="HOSPITALIZATION.HABIT.URINE"
-                values={[1, 2, 3, 4, 5, 0]}
-                disabled={disabled}
-                defaultValue={getValues('habit.urine_info.checked')}
-                onChange={v => setValue('habit.urine_info.checked', v)}
-              />
-              <Form.MuiTextField
-                required={false}
-                disabled={disabled}
-                placeholder="기타"
-                sx={{maxWidth:"140px"}}
-                {...register('habit.urine.input')}
-              />
-            </Stack>
-          </RowContent>
+            />
+            <CheckboxGroup
+              i18nNullKey="ETC"
+              i18nKey="HOSPITALIZATION.HABIT.URINE"
+              values={[1, 2, 3, 4, 5, 0]}
+              disabled={disabled}
+              defaultValue={getValues('habit.urine_info.checked')}
+              onChange={v => setValue('habit.urine_info.checked', v)}
+            />
+            <Form.MuiTextField
+              required={false}
+              disabled={disabled}
+              placeholder="기타"
+              sx={{ maxWidth: '140px' }}
+              {...register('habit.urine.input')}
+            />
+          </Stack>
+        </RowContent>
 
         <RowContent title="음주">
           <Stack direction="row" spacing={1}>
@@ -93,7 +93,6 @@ const Habit = (props: Props) => {
               required={false}
               disabled={disabled}
               placeholder="기간"
-              sx={{maxwidth:"120px"}}
               {...register('habit.drink.input')}
             />
             <Form.MuiCheckbox
@@ -106,13 +105,12 @@ const Habit = (props: Props) => {
               required={false}
               disabled={disabled}
               placeholder="기간"
-              sx={{maxwidth:"50px"}}
               {...register('habit.drink.input2')}
             />
           </Stack>
         </RowContent>
         <RowContent title="흡연">
-          <Stack direction="row" spacing={2}>
+          <Stack direction="row" spacing={1}>
             <Form.MuiRadioGroup
               i18nKey="EXIST.SHORT"
               values={[1, 2]}
@@ -141,20 +139,19 @@ const Habit = (props: Props) => {
           </Stack>
         </RowContent>
 
-        
         <RowContent title="수면장애">
           <Stack direction="row" spacing={1}>
-          <Form.MuiRadioGroup
-            i18nKey="EXIST"
-            values={[1, 2]}
-            disabled={disabled}
-            defaultValue={getValues('habit.sleep')}
-            onChange={v => setValue('habit.sleep', v)}
-          />
-        </Stack>
+            <Form.MuiRadioGroup
+              i18nKey="EXIST"
+              values={[1, 2]}
+              disabled={disabled}
+              defaultValue={getValues('habit.sleep')}
+              onChange={v => setValue('habit.sleep', v)}
+            />
+          </Stack>
         </RowContent>
 
-          <RowContent title="영양장애">
+        <RowContent title="영양장애">
           <Stack direction="row" spacing={1}>
             <Typography variant="caption" fontWeight="bold" lineHeight="38px">
               최근 한 달간 체중변화
