@@ -61,7 +61,7 @@ const NewInfo = (props: Props) => {
             <MenuItem value="burn">화상</MenuItem>
             <MenuItem value="fallIntoWater">물에 빠짐</MenuItem>
             <MenuItem value="poisoning">중독</MenuItem>
-            <MenuItem value="etc_damage">직접 입력</MenuItem>
+            <MenuItem value="etc">직접 입력</MenuItem>
           </Form.MuiTextField>
           {damageEtc ? (
             <Form.MuiTextField
@@ -95,7 +95,7 @@ const NewInfo = (props: Props) => {
             <MenuItem value="violence">폭력</MenuItem>
             <MenuItem value="murder">타살</MenuItem>
             <MenuItem value="unknown">미상</MenuItem>
-            <MenuItem value="intentionalEtc">직접 입력</MenuItem>
+            <MenuItem value="etc">직접 입력</MenuItem>
           </Form.MuiTextField>
           {intentionalEtc ? (
             <Form.MuiTextField
