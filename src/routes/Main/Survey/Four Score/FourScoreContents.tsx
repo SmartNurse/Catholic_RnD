@@ -160,7 +160,7 @@ const FourScoreContents = (props: Props) => {
                           lineHeight: '44px',
                         }}
                       >
-                        <Box sx={{ paddingLeft: '100px', minWidth: '500px' }}>
+                        <Box sx={{ paddingLeft: '100px', minWidth: '600px' }}>
                           {v}
                         </Box>
                       </TableRow>
@@ -182,7 +182,7 @@ const FourScoreContents = (props: Props) => {
                           <Box
                             sx={{
                               width: '300px',
-                              paddingLeft: '550px',
+                              paddingLeft: '400px',
                               paddingRight: '70px',
                             }}
                           >

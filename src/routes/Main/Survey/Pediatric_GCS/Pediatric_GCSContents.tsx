@@ -150,7 +150,7 @@ const Pediatric_GCSContents = (props: Props) => {
                           lineHeight: '44px',
                         }}
                       >
-                        <Box sx={{ paddingLeft: '100px', minWidth: '500px' }}>
+                        <Box sx={{ paddingLeft: '100px', minWidth: '600px' }}>
                           {v}
                         </Box>
                       </TableRow>
@@ -172,7 +172,7 @@ const Pediatric_GCSContents = (props: Props) => {
                           <Box
                             sx={{
                               width: '100px',
-                              paddingLeft: '550px',
+                              paddingLeft: '400px',
                               paddingRight: '70px',
                             }}
                           >
