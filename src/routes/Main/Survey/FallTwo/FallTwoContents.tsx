@@ -30,7 +30,7 @@ const FallTwoContents = (props: Props) => {
         key: 'contents.experience',
         options: [0, 25],
         i18nKey: 'FALLTWO',
-        width: "200px",
+        width: '200px',
       }),
     },
     {
@@ -40,7 +40,7 @@ const FallTwoContents = (props: Props) => {
         key: 'contents.diagnosis',
         options: [0, 15],
         i18nKey: 'FALLTWO',
-        width: "200px",
+        width: '200px',
       }),
     },
     {
@@ -50,17 +50,17 @@ const FallTwoContents = (props: Props) => {
         key: 'contents.walkingAids',
         options: [0, 15, 30],
         i18nKey: 'FALLTWO.WALKING.AIDS',
-        width: "200px",
+        width: '200px',
       }),
     },
     {
       id: 'intravenousLine',
-      title: '정맥주사요법 / 헤파린욕',
+      title: '정맥주사요법 / 헤파린록',
       ...radioGroup({
         key: 'contents.intravenousLine',
         options: [0, 20],
         i18nKey: 'FALLTWO',
-        width: "200px",
+        width: '200px',
       }),
     },
     {
@@ -70,7 +70,7 @@ const FallTwoContents = (props: Props) => {
         key: 'contents.gait',
         options: [0, 10, 20],
         i18nKey: 'FALLTWO.GAIT',
-        width: "200px",
+        width: '200px',
       }),
     },
     {
@@ -80,7 +80,7 @@ const FallTwoContents = (props: Props) => {
         key: 'contents.consciousness',
         options: [0, 15],
         i18nKey: 'FALLTWO.CONSCIOUSNESS',
-        width: "200px",
+        width: '200px',
       }),
     },
   ];
@@ -106,8 +106,12 @@ const FallTwoContents = (props: Props) => {
           >
             합계 : {watchSumValues()}점
           </Typography>
-          <Typography minWidth={115} variant="caption" sx={{ color: "#2264A8"}}>
-          <Typography variant="inherit">
+          <Typography
+            minWidth={115}
+            variant="caption"
+            sx={{ color: '#2264A8' }}
+          >
+            <Typography variant="inherit">
               <Box component={'strong'} mr={0.5}>
                 0-24점:
               </Box>
@@ -126,20 +130,17 @@ const FallTwoContents = (props: Props) => {
               고위험군, 낙상 위험이 높음(HIGH RISK)
             </Typography>
             <Typography variant="inherit">
-              <Box component={'strong'} mr={0.5}>
-              </Box>
+              <Box component={'strong'} mr={0.5}></Box>
               (단, 기준점은 의료기관, 시설의 종류에 따라 다르게 적용할 수 있음)
             </Typography>
             <Typography variant="inherit">
-              <Box component={'strong'} mr={0.5}>
-              </Box>
+              <Box component={'strong'} mr={0.5}></Box>
             </Typography>
             <Typography variant="inherit">
-              <Box component={'strong'} mr={0.5}>
-              </Box>
-              *해당 기록지는 우석대학교 간호학과 협조를 통해 제작한 기록지입니다.
+              <Box component={'strong'} mr={0.5}></Box>
+              *해당 기록지는 우석대학교 간호학과 협조를 통해 제작한
+              기록지입니다.
             </Typography>
-
           </Typography>
         </Box>
       </Grid>
