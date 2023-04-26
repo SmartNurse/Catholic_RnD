@@ -2,8 +2,6 @@ import Form from 'components/Form';
 import { IFormRegister, IFormValues } from 'routes/Main/type';
 import { Grid, Box, Stack } from '@mui/material';
 
-import RowContainer from '../../components/RowContainer';
-import RowContent from '../../components/RowContent';
 import SectionTitle from '../../components/SectionTitle';
 
 interface Props extends IFormRegister, IFormValues {
@@ -34,11 +32,11 @@ const CheckDisease = (props: Props) => {
 
   return (
     <>
-      <SectionTitle title="질병상태" />
+      <SectionTitle title="내원시 교육" />
       <Box
-        sx={{ width: '98%', margin: '48px auto 24px 40px', display: 'flex' }}
+        sx={{ width: '70%', margin: '48px auto 24px 40px', display: 'flex' }}
       >
-        <Grid container xs={12}>
+        <Grid container xs={11}>
           {checks.map((v, i) => {
             if (v.label === '기타') {
               return (

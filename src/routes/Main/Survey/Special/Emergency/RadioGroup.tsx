@@ -45,25 +45,29 @@ const MuiRadioGroup = ({
     >
       <Stack direction={'row'} spacing={1}>
         {values.map(value => {
-          if (value===4) {
-            return <FormControlLabel
-            key={value}
-            value={value}
-            disabled={disabled}
-            control={<Radio size="small" />}
-            label={label(value)}
-            sx={{ width: `${width ? width : "100px"}` }}
-          />
+          if (value === 4) {
+            return (
+              <FormControlLabel
+                key={value}
+                value={value}
+                disabled={disabled}
+                control={<Radio size="small" />}
+                label={label(value)}
+                sx={{ width: `${width ? width : '100px'}` }}
+              />
+            );
           } else {
-            return <FormControlLabel
-            key={value}
-            value={value}
-            disabled={disabled}
-            control={<Radio size="small" />}
-            label={label(value)}
-            sx={{ width: `${width ? width : "230px"}` }}
-          />}
-          
+            return (
+              <FormControlLabel
+                key={value}
+                value={value}
+                disabled={disabled}
+                control={<Radio size="small" />}
+                label={label(value)}
+                sx={{ width: `${width ? width : '233px'}` }}
+              />
+            );
+          }
         })}
       </Stack>
     </RadioGroup>
