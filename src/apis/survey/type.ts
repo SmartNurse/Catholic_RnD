@@ -378,9 +378,28 @@ export interface IUpdateMMSE extends IGetSurvey {
 
 // CIST
 export interface IUpdateCIST extends IGetSurvey {
-  bdi_survey: {
-    content: number[];
-    sum: number;
+  cist_survey: {
+    orientation1: string;
+    orientation2: string;
+    orientation3: string;
+    orientation4: string;
+    orientation5: string;
+    memory1: string;
+    memory2: string;
+    attention1: string;
+    attention2: string;
+    attention3: string;
+    visual_spatial_ability: string;
+    executive_function1_1: string;
+    executive_function1_2: string;
+    executive_function1_3: string;
+    memory3: string;
+    memory4: string;
+    language_function1: string;
+    language_function2: string;
+    language_function3: string;
+    language_function4: string;
+    executive_function2: string;
   };
 }
 

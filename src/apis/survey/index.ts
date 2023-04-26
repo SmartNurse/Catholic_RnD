@@ -175,12 +175,12 @@ export const updateFallTwo = (request: IUpdateFallTwo) => {
 
 // 소아 낙상위험 평가
 export const getFallScale = (request: IGetSurvey) => {
-  const url = `/survey/fall?${formatToRequestParameter(request)}`;
+  const url = `/survey/pediatric_fall?${formatToRequestParameter(request)}`;
   return apiGateway.get(url);
 };
 
 export const updateFallScale = (request: IUpdateFallScale) => {
-  const url = `/survey/fall`;
+  const url = `/survey/pediatric_fall`;
   return apiGateway.post(url, camelcaseKeys(request));
 };
 
@@ -307,12 +307,12 @@ export const updateMMSE = (request: IUpdateMMSE) => {
 
 // CIST IUpdate
 export const getCIST = (request: IGetSurvey) => {
-  const url = `/survey/mmse?${formatToRequestParameter(request)}`;
+  const url = `/survey/cist?${formatToRequestParameter(request)}`;
   return apiGateway.get(url);
 };
 
 export const updateCIST = (request: IUpdateCIST) => {
-  const url = `/survey/mmse`;
+  const url = `/survey/cist`;
   return apiGateway.post(url, camelcaseKeys(request));
 };
 

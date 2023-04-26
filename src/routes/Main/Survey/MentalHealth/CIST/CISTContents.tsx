@@ -34,13 +34,19 @@ interface Props extends IFormValues, IFormWatch {
 }
 
 const CISTContents = (props: Props) => {
-  const { palette } = useTheme();
-
   const { setValue, getValues, disabled } = props;
 
   // 지남력
   const [sumValue, setSumValue] = useState(0);
-  const radioId = ['지남력', '월', '일', '요일', '장소', '위치'];
+  const radioId = [
+    '지남력',
+    'orientation1',
+    'orientation2',
+    'orientation3',
+    'orientation4',
+    'orientation5',
+    '장소',
+  ];
 
   const contentLabel = [
     {
@@ -51,20 +57,25 @@ const CISTContents = (props: Props) => {
     {
       id: 2,
       ko: '',
-      desc: ['ㆍ 지금은 몇 월 입니까?'],
+      desc: ['ㆍ 올해는 몇 년도 입니까?'],
     },
     {
       id: 3,
       ko: '',
-      desc: ['ㆍ 오늘은 며칠입니까?'],
+      desc: ['ㆍ 지금은 몇 월 입니까?'],
     },
     {
       id: 4,
       ko: '',
-      desc: ['ㆍ 오늘은 무슨 요일입니까?'],
+      desc: ['ㆍ 오늘은 며칠입니까?'],
     },
     {
       id: 5,
+      ko: '',
+      desc: ['ㆍ 오늘은 무슨 요일입니까?'],
+    },
+    {
+      id: 6,
       ko: '장소',
       desc: [
         '지금 환자분이 계신 여기는 어디인가요? 이 장소가 어디인지 말씀해주세요',
@@ -94,30 +105,30 @@ const CISTContents = (props: Props) => {
 
   // 기억력 1
   const 기억력1차 = [
-    { label: '민수는', key: 'therapuetic_diet.intestinal.checked1' },
-    { label: '/ 자전거를 타고', key: 'therapuetic_diet.intestinal.checked2' },
-    { label: '/ 공원에 가서', key: 'therapuetic_diet.intestinal.checked3' },
-    { label: '/ 11시 부터', key: 'therapuetic_diet.intestinal.checked4' },
-    { label: '/ 야구를 했다', key: 'therapuetic_diet.intestinal.checked5' },
+    { label: '민수는', key: 'memory1.checked1' },
+    { label: '/ 자전거를 타고', key: 'memory1.checked2' },
+    { label: '/ 공원에 가서', key: 'memory1.checked3' },
+    { label: '/ 11시 부터', key: 'memory1.checked4' },
+    { label: '/ 야구를 했다', key: 'memory1.checked5' },
   ];
 
   const 기억력2차 = [
-    { label: '/ 민수는', key: 'therapuetic_diet.intestinal.checked1' },
-    { label: '/ 자전거를 타고', key: 'therapuetic_diet.intestinal.checked2' },
-    { label: '/ 공원에 가서', key: 'therapuetic_diet.intestinal.checked3' },
-    { label: '/ 11시 부터', key: 'therapuetic_diet.intestinal.checked4' },
-    { label: '/ 야구를 했다', key: 'therapuetic_diet.intestinal.checked5' },
+    { label: '/ 민수는', key: 'memory2.checked1' },
+    { label: '/ 자전거를 타고', key: 'memory2.checked2' },
+    { label: '/ 공원에 가서', key: 'memory2.checked3' },
+    { label: '/ 11시 부터', key: 'memory2.checked4' },
+    { label: '/ 야구를 했다', key: 'memory2.checked5' },
   ];
 
   // 주의력
   const [sumAtention, setSumAtention] = useState(0);
   const radioId1 = [
     '숫자',
-    '숫자1',
-    '숫자2',
+    'attention1',
+    'attention2',
     '거꾸로 말하기',
+    'attention3',
     '거꾸로문제',
-    '풀기',
   ];
 
   const atentionLabel = [
@@ -172,18 +183,16 @@ const CISTContents = (props: Props) => {
   // 시공간 기능
   const [sumFigure, setSumFigure] = useState(0);
 
-  const radioId2 = [
-    '숫자',
-    '숫자1',
-    '숫자2',
-    '거꾸로 말하기',
-    '거꾸로문제',
-    '풀기',
-  ];
+  const radioId2 = ['도형모사', 'visual_spatial_ability', 'zz'];
   const figureLabel = [
     {
       id: 1,
-      ko: '숫자 바로 따라 말하기',
+      ko: '도형모사',
+      desc: [''],
+    },
+    {
+      id: 2,
+      ko: '제목',
       desc: [''],
     },
   ];
@@ -211,7 +220,15 @@ const CISTContents = (props: Props) => {
 
   // 집행 기능
   const [sumPerform, setSumPerform] = useState(0);
-  const radioId3 = ['1', '2', '3', '4', '5', '6', '7'];
+  const radioId3 = [
+    '1',
+    'executive_function1_1',
+    '3',
+    'executive_function1_2',
+    '5',
+    'executive_function1_3',
+    '7',
+  ];
 
   const performLabel = [
     {
@@ -269,35 +286,35 @@ const CISTContents = (props: Props) => {
 
   // 기억력 2
   const 기억력3차 = [
-    { id: 1, label: '/ 민수는', key: 'therapuetic_diet.intestinal.checked1' },
-    { id: 2, label: '/ 자전거', key: 'therapuetic_diet.intestinal.checked2' },
-    { id: 3, label: '/ 공원', key: 'therapuetic_diet.intestinal.checked3' },
-    { id: 4, label: '/ 11시', key: 'therapuetic_diet.intestinal.checked4' },
-    { id: 5, label: '/ 야구', key: 'therapuetic_diet.intestinal.checked5' },
+    { id: 1, label: '/ 민수는', key: 'memory3.checked1' },
+    { id: 2, label: '/ 자전거', key: 'memory3.checked2' },
+    { id: 3, label: '/ 공원', key: 'memory3.checked3' },
+    { id: 4, label: '/ 11시', key: 'memory3.checked4' },
+    { id: 5, label: '/ 야구', key: 'memory3.checked5' },
   ];
 
   const 기억력4차 = [
-    { label: '영수', key: 'therapuetic_diet.intestinal.checked1' },
-    { label: '버스', key: 'therapuetic_diet.intestinal.checked2' },
-    { label: '공원', key: 'therapuetic_diet.intestinal.checked3' },
-    { label: '10시', key: 'therapuetic_diet.intestinal.checked4' },
-    { label: '농구', key: 'therapuetic_diet.intestinal.checked5' },
+    { label: '영수', key: 'memory4.checked1' },
+    { label: '버스', key: 'memory4.checked2' },
+    { label: '공원', key: 'memory4.checked3' },
+    { label: '10시', key: 'memory4.checked4' },
+    { label: '농구', key: 'memory4.checked5' },
   ];
 
   const 기억력5차 = [
-    { label: '민수', key: 'therapuetic_diet.intestinal.checked1' },
-    { label: '오토바이', key: 'therapuetic_diet.intestinal.checked2' },
-    { label: '놀이터', key: 'therapuetic_diet.intestinal.checked3' },
-    { label: '11시', key: 'therapuetic_diet.intestinal.checked4' },
-    { label: '축구', key: 'therapuetic_diet.intestinal.checked5' },
+    { label: '민수', key: 'memory4.checked6' },
+    { label: '오토바이', key: 'memory4.checked7' },
+    { label: '놀이터', key: 'memory4.checked8' },
+    { label: '11시', key: 'memory4.checked9' },
+    { label: '축구', key: 'memory4.checked10' },
   ];
 
   const 기억력6차 = [
-    { label: '진수', key: 'therapuetic_diet.intestinal.checked1' },
-    { label: '자전거', key: 'therapuetic_diet.intestinal.checked2' },
-    { label: '운동장', key: 'therapuetic_diet.intestinal.checked3' },
-    { label: '12시', key: 'therapuetic_diet.intestinal.checked4' },
-    { label: '야구', key: 'therapuetic_diet.intestinal.checked5' },
+    { label: '진수', key: 'memory4.checked11' },
+    { label: '자전거', key: 'memory4.checked12' },
+    { label: '운동장', key: 'memory4.checked13' },
+    { label: '12시', key: 'memory4.checked14' },
+    { label: '야구', key: 'memory4.checked15' },
   ];
   const [checkedList, setCheckedList] = useState<Array<string>>([]);
 
@@ -324,7 +341,16 @@ const CISTContents = (props: Props) => {
 
   // 언어 기능
   const [sumTalk, setSumTalk] = useState(0);
-  const radioId4 = ['1', '2', '3', '4', '5', '6', '7', '8'];
+  const radioId4 = [
+    '1',
+    'language_function1',
+    '3',
+    'language_function2',
+    '5',
+    'language_function3',
+    '7',
+    'language_function4',
+  ];
 
   const talkLabel = [
     {
@@ -363,7 +389,7 @@ const CISTContents = (props: Props) => {
       desc: [''],
     },
     {
-      id: 7,
+      id: 8,
       ko: '말하는대로',
       desc: [''],
     },
@@ -392,14 +418,7 @@ const CISTContents = (props: Props) => {
 
   // 집행 기능
   const [sumLast, setSumLast] = useState(0);
-  const radioId5 = [
-    '숫자',
-    '숫자1',
-    '숫자2',
-    '거꾸로 말하기',
-    '거꾸로문제',
-    '풀기',
-  ];
+  const radioId5 = ['거꾸로 말하기', 'executive_function2', '풀기'];
 
   const lastLabel = [
     {
@@ -539,7 +558,6 @@ const CISTContents = (props: Props) => {
           {sumLast +
             sumTalk +
             sumPerform +
-            sumLast +
             sumValue +
             sumAtention +
             sumChecked +
@@ -628,8 +646,10 @@ const CISTContents = (props: Props) => {
                     </StyledTableCellWithoutLeftRightTwo>
                     <StyledTableCellWithoutLeftTwo>
                       <RadioGroup
-                        name={radioId[content.id]}
-                        defaultValue={Number(getValues(radioId[content.id]))}
+                        name={radioId[content.id - 1]}
+                        defaultValue={Number(
+                          getValues(radioId[content.id - 1])
+                        )}
                       >
                         {content.desc.map((_, i) => (
                           <TableRow
@@ -646,7 +666,7 @@ const CISTContents = (props: Props) => {
                                 control={
                                   <Radio
                                     disabled={disabled}
-                                    name={radioId[content.id]}
+                                    name={radioId[content.id - 1]}
                                     value={i}
                                     onChange={handleChange}
                                   />
@@ -657,7 +677,7 @@ const CISTContents = (props: Props) => {
                                 control={
                                   <Radio
                                     disabled={disabled}
-                                    name={radioId[content.id]}
+                                    name={radioId[content.id - 1]}
                                     value={i + 1}
                                     onChange={handleChange}
                                   />
@@ -908,8 +928,10 @@ const CISTContents = (props: Props) => {
                     </StyledTableCellWithoutLeftRightTwo>
                     <StyledTableCellWithoutLeftTwo>
                       <RadioGroup
-                        name={radioId1[content.id]}
-                        defaultValue={Number(getValues(radioId1[content.id]))}
+                        name={radioId1[content.id - 1]}
+                        defaultValue={Number(
+                          getValues(radioId1[content.id - 1])
+                        )}
                       >
                         {content.desc.map((_, i) => (
                           <TableRow
@@ -926,7 +948,7 @@ const CISTContents = (props: Props) => {
                                 control={
                                   <Radio
                                     disabled={disabled}
-                                    name={radioId1[content.id]}
+                                    name={radioId1[content.id - 1]}
                                     value={i}
                                     onChange={atentionHandleChange}
                                   />
@@ -937,7 +959,7 @@ const CISTContents = (props: Props) => {
                                 control={
                                   <Radio
                                     disabled={disabled}
-                                    name={radioId1[content.id]}
+                                    name={radioId1[content.id - 1]}
                                     value={i + 1}
                                     onChange={atentionHandleChange}
                                   />
@@ -959,124 +981,159 @@ const CISTContents = (props: Props) => {
       <SectionTitle title="시공간 기능" />
       <Grid item xs={12}>
         <div style={{ display: 'table-row' }}>
-          <TableRow sx={{ display: 'block' }}>
-            <div style={{ display: 'flex' }}>
-              <div
-                style={{
-                  display: 'flex',
-                  paddingTop: '16px',
-                  paddingBottom: '16px',
-                  width: '130px',
-                  whiteSpace: 'pre-wrap',
-                }}
-              >
-                <Typography sx={{ fontSize: '14px' }}>도형모사</Typography>
-              </div>
-              <div
-                style={{
-                  paddingTop: '16px',
-                  marginLeft: '20px',
-                  width: '700px',
-                }}
-              >
-                <Typography sx={{ fontSize: '14px' }}>
-                  (그림을 가리키며) 여기 점을 연결하여 그린 그림이 있습니다.
-                  <br />
-                  이 그림과 똑같이 되도록 (아래 반응 공간을 가리키며) 같은
-                  위치에 그려보세요.
-                  <br />
-                  점을 연결해서 그리면 됩니다.
-                </Typography>
-              </div>
-            </div>
-          </TableRow>
-          <TableRow>
-            <StyledTableCellTwo
-              align="left"
-              sx={{
-                paddingTop: '16spx',
-                paddingBottom: '16px',
-                width: '130px',
-                whiteSpace: 'pre-wrap',
-              }}
-            ></StyledTableCellTwo>
-            <StyledTableCellWithoutLeftRightTwo>
-              <TableRow
-                sx={{
-                  height: '44px',
-                  lineHeight: '44px',
-                }}
-              >
-                <Box
-                  sx={{
-                    paddingLeft: '16px',
-                    marginTop: '20px',
-                    width: '1000px',
-                  }}
-                >
-                  <Spacetime />
-                </Box>
-              </TableRow>
-            </StyledTableCellWithoutLeftRightTwo>
-            <StyledTableCellWithoutLeftTwo>
-              <RadioGroup
-                name={'figure'}
-                defaultValue={Number(getValues('figure'))}
-              >
-                {figureLabel.map(
-                  (content: { id: number; ko: string; desc: string[] }, i) => {
-                    return (
-                      <TableRow
-                        sx={{
-                          height: '44px',
-                          lineHeight: '44px',
-                          textAlign: 'center',
+          {figureLabel.map(
+            (content: { id: number; ko: string; desc: string[] }, i) => {
+              if (content.ko === '도형모사') {
+                return (
+                  <TableRow sx={{ display: 'block' }}>
+                    <div style={{ display: 'flex' }}>
+                      <div
+                        style={{
+                          display: 'flex',
+                          paddingTop: '16px',
+                          paddingBottom: '16px',
+                          width: '130px',
+                          whiteSpace: 'pre-wrap',
                         }}
                       >
-                        <Box sx={{ width: '310px', textAlign: 'right' }}>
-                          <FormControlLabel
-                            sx={{ paddingRight: '50px' }}
-                            label="0"
-                            control={
-                              <Radio
-                                disabled={disabled}
-                                name={radioId2[content.id]}
-                                value={i}
-                                onChange={figureHandleChange}
-                              />
-                            }
-                          />
-                          <FormControlLabel
-                            sx={{ paddingRight: '50px' }}
-                            label="1"
-                            control={
-                              <Radio
-                                disabled={disabled}
-                                name={radioId2[content.id]}
-                                value={i + 1}
-                                onChange={figureHandleChange}
-                              />
-                            }
-                          />
-                          <FormControlLabel
-                            label="2"
-                            control={
-                              <Radio
-                                disabled={disabled}
-                                name={radioId2[content.id]}
-                                value={i + 2}
-                                onChange={figureHandleChange}
-                              />
-                            }
-                          />
-                        </Box>
-                      </TableRow>
-                    );
-                  }
-                )}
-              </RadioGroup>
-            </StyledTableCellWithoutLeftTwo>
-          </TableRow>
+                        <Typography sx={{ fontSize: '14px' }}>
+                          {content.ko}
+                        </Typography>
+                      </div>
+                      <div
+                        style={{
+                          paddingTop: '16px',
+                          marginLeft: '20px',
+                          width: '700px',
+                        }}
+                      >
+                        <Typography sx={{ fontSize: '14px' }}>
+                          (그림을 가리키며) 여기 점을 연결하여 그린 그림이
+                          있습니다.
+                          <br />
+                          이 그림과 똑같이 되도록 (아래 반응 공간을 가리키며)
+                          같은 위치에 그려보세요.
+                          <br />
+                          점을 연결해서 그리면 됩니다.
+                        </Typography>
+                      </div>
+                    </div>
+                  </TableRow>
+                );
+              } else if (content.ko === '제목') {
+                return (
+                  <>
+                    <TableRow sx={{ display: 'block' }}>
+                      <div style={{ display: 'flex' }}>
+                        <StyledTableCellTwo
+                          align="left"
+                          sx={{
+                            paddingTop: '16px',
+                            paddingBottom: '16px',
+                            width: '130px',
+                            whiteSpace: 'pre-wrap',
+                          }}
+                        ></StyledTableCellTwo>
+                        <StyledTableCellWithoutLeftRightTwo>
+                          {content.desc.map((v, i) => {
+                            return (
+                              <TableRow
+                                sx={{
+                                  height: '44px',
+                                  lineHeight: '44px',
+                                }}
+                              >
+                                <TableRow
+                                  sx={{
+                                    height: '44px',
+                                    lineHeight: '44px',
+                                  }}
+                                >
+                                  <Box
+                                    sx={{
+                                      paddingLeft: '16px',
+                                      marginTop: '20px',
+                                      width: '1010px',
+                                    }}
+                                  >
+                                    <Spacetime />
+                                  </Box>
+                                </TableRow>
+                              </TableRow>
+                            );
+                          })}
+                        </StyledTableCellWithoutLeftRightTwo>
+                        <StyledTableCellWithoutLeftTwo>
+                          <RadioGroup
+                            name={radioId2[content.id - 1]}
+                            defaultValue={Number(
+                              getValues(radioId2[content.id - 1])
+                            )}
+                          >
+                            {content.desc.map((_, i) => (
+                              <TableRow
+                                sx={{
+                                  height: '44px',
+                                  lineHeight: '44px',
+                                  textAlign: 'center',
+                                }}
+                              >
+                                <Box
+                                  sx={{
+                                    width: '310px',
+                                    textAlign: 'right',
+                                    paddingTop: '50px',
+                                  }}
+                                >
+                                  <FormControlLabel
+                                    sx={{
+                                      paddingRight: '50px',
+                                    }}
+                                    label="0"
+                                    control={
+                                      <Radio
+                                        disabled={disabled}
+                                        name={radioId2[content.id - 1]}
+                                        value={i}
+                                        onChange={performHandleChange}
+                                      />
+                                    }
+                                  />
+                                  <FormControlLabel
+                                    sx={{ paddingRight: '50px' }}
+                                    label="1"
+                                    control={
+                                      <Radio
+                                        disabled={disabled}
+                                        name={radioId2[content.id - 1]}
+                                        value={1}
+                                        onChange={performHandleChange}
+                                      />
+                                    }
+                                  />
+                                  <FormControlLabel
+                                    label="2"
+                                    control={
+                                      <Radio
+                                        disabled={disabled}
+                                        name={radioId2[content.id - 1]}
+                                        value={2}
+                                        onChange={performHandleChange}
+                                      />
+                                    }
+                                  />
+                                </Box>
+                              </TableRow>
+                            ))}
+                          </RadioGroup>
+                        </StyledTableCellWithoutLeftTwo>
+                      </div>
+                    </TableRow>
+                  </>
+                );
+              }
+            }
+          )}
         </div>
       </Grid>
 
@@ -1166,9 +1223,9 @@ const CISTContents = (props: Props) => {
                         </StyledTableCellWithoutLeftRightTwo>
                         <StyledTableCellWithoutLeftTwo>
                           <RadioGroup
-                            name={radioId3[content.id]}
+                            name={radioId3[content.id - 1]}
                             defaultValue={Number(
-                              getValues(radioId3[content.id])
+                              getValues(radioId3[content.id - 1])
                             )}
                           >
                             {content.desc.map((_, i) => (
@@ -1186,7 +1243,7 @@ const CISTContents = (props: Props) => {
                                     control={
                                       <Radio
                                         disabled={disabled}
-                                        name={radioId3[content.id]}
+                                        name={radioId3[content.id - 1]}
                                         value={i}
                                         onChange={performHandleChange}
                                       />
@@ -1197,7 +1254,7 @@ const CISTContents = (props: Props) => {
                                     control={
                                       <Radio
                                         disabled={disabled}
-                                        name={radioId3[content.id]}
+                                        name={radioId3[content.id - 1]}
                                         value={i + 1}
                                         onChange={performHandleChange}
                                       />
@@ -1295,9 +1352,9 @@ const CISTContents = (props: Props) => {
                         </StyledTableCellWithoutLeftRightTwo>
                         <StyledTableCellWithoutLeftTwo>
                           <RadioGroup
-                            name={radioId3[content.id]}
+                            name={radioId3[content.id - 1]}
                             defaultValue={Number(
-                              getValues(radioId3[content.id])
+                              getValues(radioId3[content.id - 1])
                             )}
                           >
                             {content.desc.map((_, i) => (
@@ -1315,7 +1372,7 @@ const CISTContents = (props: Props) => {
                                     control={
                                       <Radio
                                         disabled={disabled}
-                                        name={radioId3[content.id]}
+                                        name={radioId3[content.id - 1]}
                                         value={i}
                                         onChange={performHandleChange}
                                       />
@@ -1326,7 +1383,7 @@ const CISTContents = (props: Props) => {
                                     control={
                                       <Radio
                                         disabled={disabled}
-                                        name={radioId3[content.id]}
+                                        name={radioId3[content.id - 1]}
                                         value={i + 1}
                                         onChange={performHandleChange}
                                       />
@@ -1420,9 +1477,9 @@ const CISTContents = (props: Props) => {
                         </StyledTableCellWithoutLeftRightTwo>
                         <StyledTableCellWithoutLeftTwo>
                           <RadioGroup
-                            name={radioId3[content.id]}
+                            name={radioId3[content.id - 1]}
                             defaultValue={Number(
-                              getValues(radioId3[content.id])
+                              getValues(radioId3[content.id - 1])
                             )}
                           >
                             {content.desc.map((_, i) => (
@@ -1442,7 +1499,7 @@ const CISTContents = (props: Props) => {
                                     control={
                                       <Radio
                                         disabled={disabled}
-                                        name={radioId3[content.id]}
+                                        name={radioId3[content.id - 1]}
                                         value={i}
                                         onChange={performHandleChange}
                                       />
@@ -1454,7 +1511,7 @@ const CISTContents = (props: Props) => {
                                     control={
                                       <Radio
                                         disabled={disabled}
-                                        name={radioId3[content.id]}
+                                        name={radioId3[content.id - 1]}
                                         value={i + 1}
                                         onChange={performHandleChange}
                                       />
@@ -1465,7 +1522,7 @@ const CISTContents = (props: Props) => {
                                     control={
                                       <Radio
                                         disabled={disabled}
-                                        name={radioId3[content.id]}
+                                        name={radioId3[content.id - 1]}
                                         value={i + 2}
                                         onChange={performHandleChange}
                                       />
@@ -1527,13 +1584,10 @@ const CISTContents = (props: Props) => {
                   <Form.MuiCheckbox
                     label={v.label}
                     disabled={disabled}
-                    value={v.id}
                     defaultValue={Boolean(getValues(v.key)) ? [v.label] : []}
-                    onChange={e => {
+                    onChange={(e, checked) => {
+                      setValue(v.key, checked);
                       onCheckedItem(e.target.checked, e.target.value);
-                      // console.log('체크리스트 결과', checkedList);
-                      // console.log('value ?', e.target.value);
-                      console.log('checked ? ', e.target.checked);
                     }}
                   />
                 </div>
@@ -1741,9 +1795,9 @@ const CISTContents = (props: Props) => {
                         </StyledTableCellWithoutLeftRightTwo>
                         <StyledTableCellWithoutLeftTwo>
                           <RadioGroup
-                            name={radioId4[content.id]}
+                            name={radioId4[content.id - 1]}
                             defaultValue={Number(
-                              getValues(radioId4[content.id])
+                              getValues(radioId4[content.id - 1])
                             )}
                           >
                             {content.desc.map((_, i) => (
@@ -1763,7 +1817,7 @@ const CISTContents = (props: Props) => {
                                     control={
                                       <Radio
                                         disabled={disabled}
-                                        name={radioId4[content.id]}
+                                        name={radioId4[content.id - 1]}
                                         value={i}
                                         onChange={talkHandleChange}
                                       />
@@ -1774,7 +1828,7 @@ const CISTContents = (props: Props) => {
                                     control={
                                       <Radio
                                         disabled={disabled}
-                                        name={radioId4[content.id]}
+                                        name={radioId4[content.id - 1]}
                                         value={i + 1}
                                         onChange={talkHandleChange}
                                       />
@@ -1866,9 +1920,9 @@ const CISTContents = (props: Props) => {
                         </StyledTableCellWithoutLeftRightTwo>
                         <StyledTableCellWithoutLeftTwo>
                           <RadioGroup
-                            name={radioId4[content.id]}
+                            name={radioId4[content.id - 1]}
                             defaultValue={Number(
-                              getValues(radioId4[content.id])
+                              getValues(radioId4[content.id - 1])
                             )}
                           >
                             {content.desc.map((_, i) => (
@@ -1888,7 +1942,7 @@ const CISTContents = (props: Props) => {
                                     control={
                                       <Radio
                                         disabled={disabled}
-                                        name={radioId4[content.id]}
+                                        name={radioId4[content.id - 1]}
                                         value={i}
                                         onChange={talkHandleChange}
                                       />
@@ -1899,7 +1953,7 @@ const CISTContents = (props: Props) => {
                                     control={
                                       <Radio
                                         disabled={disabled}
-                                        name={radioId4[content.id]}
+                                        name={radioId4[content.id - 1]}
                                         value={i + 1}
                                         onChange={talkHandleChange}
                                       />
@@ -1991,9 +2045,9 @@ const CISTContents = (props: Props) => {
                         </StyledTableCellWithoutLeftRightTwo>
                         <StyledTableCellWithoutLeftTwo>
                           <RadioGroup
-                            name={radioId4[content.id]}
+                            name={radioId4[content.id - 1]}
                             defaultValue={Number(
-                              getValues(radioId4[content.id])
+                              getValues(radioId4[content.id - 1])
                             )}
                           >
                             {content.desc.map((_, i) => (
@@ -2013,7 +2067,7 @@ const CISTContents = (props: Props) => {
                                     control={
                                       <Radio
                                         disabled={disabled}
-                                        name={radioId4[content.id]}
+                                        name={radioId4[content.id - 1]}
                                         value={i}
                                         onChange={talkHandleChange}
                                       />
@@ -2024,7 +2078,7 @@ const CISTContents = (props: Props) => {
                                     control={
                                       <Radio
                                         disabled={disabled}
-                                        name={radioId4[content.id]}
+                                        name={radioId4[content.id - 1]}
                                         value={i + 1}
                                         onChange={talkHandleChange}
                                       />
@@ -2114,9 +2168,9 @@ const CISTContents = (props: Props) => {
                         </StyledTableCellWithoutLeftRightTwo>
                         <StyledTableCellWithoutLeftTwo>
                           <RadioGroup
-                            name={radioId4[content.id]}
+                            name={radioId4[content.id - 1]}
                             defaultValue={Number(
-                              getValues(radioId4[content.id])
+                              getValues(radioId4[content.id - 1])
                             )}
                           >
                             {content.desc.map((_, i) => (
@@ -2134,7 +2188,7 @@ const CISTContents = (props: Props) => {
                                     control={
                                       <Radio
                                         disabled={disabled}
-                                        name={radioId4[content.id]}
+                                        name={radioId4[content.id - 1]}
                                         value={i}
                                         onChange={talkHandleChange}
                                       />
@@ -2145,7 +2199,7 @@ const CISTContents = (props: Props) => {
                                     control={
                                       <Radio
                                         disabled={disabled}
-                                        name={radioId4[content.id]}
+                                        name={radioId4[content.id - 1]}
                                         value={i + 1}
                                         onChange={talkHandleChange}
                                       />
@@ -2247,8 +2301,10 @@ const CISTContents = (props: Props) => {
                     </StyledTableCellWithoutLeftRightTwo>
                     <StyledTableCellWithoutLeftTwo>
                       <RadioGroup
-                        name={radioId5[content.id]}
-                        defaultValue={Number(getValues(radioId5[content.id]))}
+                        name={radioId5[content.id - 1]}
+                        defaultValue={Number(
+                          getValues(radioId5[content.id - 1])
+                        )}
                       >
                         {content.desc.map((_, i) => (
                           <TableRow
@@ -2265,7 +2321,7 @@ const CISTContents = (props: Props) => {
                                 control={
                                   <Radio
                                     disabled={disabled}
-                                    name={radioId5[content.id]}
+                                    name={radioId5[content.id - 1]}
                                     value={i}
                                     onChange={lastHandleChange}
                                   />
@@ -2277,8 +2333,8 @@ const CISTContents = (props: Props) => {
                                 control={
                                   <Radio
                                     disabled={disabled}
-                                    name={radioId5[content.id]}
-                                    value={i + 1}
+                                    name={radioId5[content.id - 1]}
+                                    value={1}
                                     onChange={lastHandleChange}
                                   />
                                 }
@@ -2288,8 +2344,8 @@ const CISTContents = (props: Props) => {
                                 control={
                                   <Radio
                                     disabled={disabled}
-                                    name={radioId5[content.id]}
-                                    value={i + 2}
+                                    name={radioId5[content.id - 1]}
+                                    value={2}
                                     onChange={lastHandleChange}
                                   />
                                 }

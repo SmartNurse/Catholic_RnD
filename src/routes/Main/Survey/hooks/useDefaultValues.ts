@@ -267,7 +267,7 @@ const useDefaultValues = ({ setDefaultValues, user_id }: Props) => {
           .catch(e => onFail('알 수 없는 오류가 발생했습니다.', e));
         break;
       case MENU.FALLSCALE:
-        getFallTwo({ user_id, patient_id })
+        getFallScale({ user_id, patient_id })
           .then(({ data }) => {
             const { contents } = data;
             const m_data = { ...data, contents: JSON.parse(contents) };
@@ -389,7 +389,34 @@ const useDefaultValues = ({ setDefaultValues, user_id }: Props) => {
       case MENU.CIST:
         getCIST({ user_id, patient_id })
           .then(({ data }) => {
-            convertDataToStates(data, initialCIST);
+            const { update_at, cist_survey } = data;
+            convertDataToStates(
+              {
+                update_at,
+                orientation1: cist_survey?.orientation1,
+                orientation2: cist_survey?.orientation2,
+                orientation3: cist_survey?.orientation3,
+                orientation4: cist_survey?.orientation4,
+                orientation5: cist_survey?.orientation5,
+                memory1: cist_survey ? JSON.parse(cist_survey.memory1) : {},
+                memory2: cist_survey ? JSON.parse(cist_survey.memory2) : {},
+                attention1: cist_survey?.attention1,
+                attention2: cist_survey?.attention2,
+                attention3: cist_survey?.attention3,
+                visual_spatial_ability: cist_survey?.visual_spatial_ability,
+                executive_function1_1: cist_survey?.executive_function1_1,
+                executive_function1_2: cist_survey?.executive_function1_2,
+                executive_function1_3: cist_survey?.executive_function1_3,
+                memory3: cist_survey ? JSON.parse(cist_survey.memory3) : {},
+                memory4: cist_survey ? JSON.parse(cist_survey.memory4) : {},
+                language_function1: cist_survey?.language_function1,
+                language_function2: cist_survey?.language_function2,
+                language_function3: cist_survey?.language_function3,
+                language_function4: cist_survey?.language_function4,
+                executive_function2: cist_survey?.executive_function2,
+              },
+              initialCIST
+            );
           })
           .catch(e => onFail('알 수 없는 오류가 발생했습니다.', e));
         break;
