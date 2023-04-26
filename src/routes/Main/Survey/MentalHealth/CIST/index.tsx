@@ -130,7 +130,6 @@ const CIST = (props: SurveyDialogProps<TCISTDefaultValues>) => {
           }}
         >
           인지선별겸사(CIST, Cognitive Impairment Screening Test)
-          <br />- 테스트 중입니다 -
         </Typography>
         <CommonPatientInfo patientInfo={patientInfo} nurseName={nurseName} />
         <CISTContents {...formProps} />
