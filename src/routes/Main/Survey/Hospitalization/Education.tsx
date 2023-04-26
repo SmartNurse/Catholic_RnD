@@ -1,5 +1,6 @@
 import Form from 'components/Form';
 import { IFormRegister, IFormValues } from 'routes/Main/type';
+import { Stack } from '@mui/material';
 
 import RowContent from '../components/RowContent';
 import RowContainer from '../components/RowContainer';
@@ -27,20 +28,25 @@ const Education = (props: Props) => {
           />
         </RowContent>
         <RowContent title="교육내용">
-          <Form.MuiCheckboxGroup
-            i18nNullKey="ETC"
-            i18nKey="HOSPITALIZATION.EDUCATION.CONTENTS"
-            values={[1, 2, 3, 0]}
-            disabled={disabled}
-            defaultValue={getValues('education.education_contents.checked')}
-            onChange={v => setValue('education.education_contents.checked', v)}
-          />
-          <Form.MuiTextField
-            required={false}
-            disabled={disabled}
-            placeholder="직접 입력"
-            {...register('education.education_contents.input')}
-          />
+          <Stack direction="row" spacing={1}>
+            <Form.MuiCheckboxGroup
+              i18nNullKey="ETC"
+              i18nKey="HOSPITALIZATION.EDUCATION.CONTENTS"
+              values={[1, 2, 3, 0]}
+              disabled={disabled}
+              defaultValue={getValues('education.education_contents.checked')}
+              onChange={v =>
+                setValue('education.education_contents.checked', v)
+              }
+            />
+            <Form.MuiTextField
+              required={false}
+              disabled={disabled}
+              placeholder="직접 입력"
+              sx={{ maxWidth: '150px' }}
+              {...register('education.education_contents.input')}
+            />
+          </Stack>
         </RowContent>
       </RowContainer>
     </RowContainer>
