@@ -103,7 +103,7 @@ const Emergency = (props: SurveyDialogProps<TEmergencyDefaultValues>) => {
             textAlign: 'center',
           }}
         >
-          응급 기록지 <br /> - 현재 테스트 중입니다. -
+          응급 기록지
         </Typography>
         <CommonPatientInfo patientInfo={patientInfo} nurseName={nurseName} />
         <EmergencyRecord {...formProps} />
