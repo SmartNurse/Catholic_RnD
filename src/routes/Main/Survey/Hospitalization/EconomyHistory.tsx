@@ -14,9 +14,9 @@ const EconomyHistory = (props: Props) => {
 
   return (
     <RowContainer>
-      <SectionTitle title="경제력" mb={-5.75} />
+      <SectionTitle title="경제력" />
 
-      <RowContainer ratio={12} sx={{ mb: 'auto' }}>
+      <RowContainer ratio={12} sx={{ mb: 'auto', marginTop: '10px' }}>
         <RowContent title="사회사업팀 상담">
           <Form.MuiRadioGroup
             i18nKey="NEED"
