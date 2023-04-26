@@ -315,9 +315,9 @@ const locale = {
     'FALLSCALE.SCORE.HISTORY.3': '시행 후 24시간 이내',
 
     'FALLSCALE.SCORE.DRUG.1': '다른 약물/ 해당 없음',
-    'FALLSCALE.SCORE.DRUG.2':
+    'FALLSCALE.SCORE.DRUG.2': '위 약물중 하나',
+    'FALLSCALE.SCORE.DRUG.3':
       '2가지 이상\n(진정제, 수면제, 최면제, 정신안정제,\n항불안제, 완화제, 진통제)',
-    'FALLSCALE.SCORE.DRUG.3': '위 약물중 하나',
 
     'REQUIRED.FALLSCALE.SCORE': '평가항목을 모두 선택해주세요',
 
