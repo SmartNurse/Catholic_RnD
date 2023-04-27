@@ -82,7 +82,6 @@ const FallScale = (props: SurveyDialogProps<TPediatric_fallDefaultValues>) => {
           }}
         >
           소아 낙상위험 평가 (humty dumpty fall scale)
-          <br />- 테스트 중입니다 -
         </Typography>
         <CommonPatientInfo patientInfo={patientInfo} nurseName={nurseName} />
         <FallScaleContents {...formProps} />
