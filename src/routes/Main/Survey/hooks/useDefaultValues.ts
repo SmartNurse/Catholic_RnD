@@ -6,7 +6,7 @@ import {
   getGlucose,
   getFall,
   getFallTwo,
-  getFallScale,
+  getPediatric_fall,
   getGCS,
   getPediatric_GCS,
   getFourScore,
@@ -75,7 +75,7 @@ import {
   initialFallConfirm,
   initialCoreNursingSkillVideo,
   initialCoreNursingSkillVideoExemple,
-  initialFallScale,
+  initialPediatric_fall,
   initialGCS,
   initialPediatric_GCS,
 } from '../initialStates';
@@ -267,11 +267,11 @@ const useDefaultValues = ({ setDefaultValues, user_id }: Props) => {
           .catch(e => onFail('알 수 없는 오류가 발생했습니다.', e));
         break;
       case MENU.FALLSCALE:
-        getFallScale({ user_id, patient_id })
+        getPediatric_fall({ user_id, patient_id })
           .then(({ data }) => {
             const { contents } = data;
             const m_data = { ...data, contents: JSON.parse(contents) };
-            convertDataToStates(m_data, initialFallScale);
+            convertDataToStates(m_data, initialPediatric_fall);
           })
           .catch(e => onFail('알 수 없는 오류가 발생했습니다.', e));
         break;

@@ -320,7 +320,7 @@ export const initialFallTwo = {
   },
 };
 
-export const initialFallScale = {
+export const initialPediatric_fall = {
   date: '',
   update_at: '',
   contents: {

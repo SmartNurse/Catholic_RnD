@@ -32,10 +32,10 @@ const FallScaleContents = (props: Props) => {
       }),
     },
     {
-      id: 'gender',
+      id: 'sex',
       title: '성별',
       ...radioGroup({
-        key: 'contents.gender',
+        key: 'contents.sex',
         options: [1, 2],
         i18nKey: 'FALLSCALE.SCORE.GENDER',
       }),
@@ -50,37 +50,37 @@ const FallScaleContents = (props: Props) => {
       }),
     },
     {
-      id: 'cognitive',
+      id: 'cognitive_disorder',
       title: '인지장애',
       ...radioGroup({
-        key: 'contents.cognitive',
+        key: 'contents.cognitive_disorder',
         options: [1, 2, 3],
         i18nKey: 'FALLSCALE.SCORE.COGNITIVE',
       }),
     },
     {
-      id: 'environmental',
+      id: 'environmental_factors',
       title: '환경요인',
       ...radioGroup({
-        key: 'contents.environmental',
+        key: 'contents.environmental_factors',
         options: [1, 2, 3],
         i18nKey: 'FALLSCALE.SCORE.ENVIRONMENTAL',
       }),
     },
     {
-      id: 'history',
+      id: 'surgical_sedative_anesthetic_factors',
       title: '수술 / 진정 / 마취요인',
       ...radioGroup({
-        key: 'contents.history',
+        key: 'contents.surgical_sedative_anesthetic_factors',
         options: [1, 2, 3],
         i18nKey: 'FALLSCALE.SCORE.HISTORY',
       }),
     },
     {
-      id: 'drug',
+      id: 'medication_use',
       title: '약물 사용',
       ...radioGroup({
-        key: 'contents.drug',
+        key: 'contents.medication_use',
         options: [1, 2, 3],
         i18nKey: 'FALLSCALE.SCORE.DRUG',
       }),
@@ -108,7 +108,11 @@ const FallScaleContents = (props: Props) => {
           >
             합계 : {watchSumValues()}점
           </Typography>
-          <Typography minWidth={115} variant="caption" sx={{ color: `${palette.primary.main}`}}>
+          <Typography
+            minWidth={115}
+            variant="caption"
+            sx={{ color: `${palette.primary.main}` }}
+          >
             <Typography variant="inherit">
               <Box component={'strong'} mr={0.5}>
                 7-11점 :

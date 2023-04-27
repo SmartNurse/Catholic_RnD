@@ -12,7 +12,7 @@ import {
   initialBedScoreTwo,
   initialFall,
   initialFallTwo,
-  initialFallScale,
+  initialPediatric_fall,
   initialGCS,
   initialPediatric_GCS,
   initialNeeds,
@@ -124,7 +124,7 @@ export type TGCSDefaultValues = typeof initialGCS;
 export type TPediaTric_GCSDefaultValues = typeof initialPediatric_GCS;
 export type TFourScoreDefaultValues = typeof initialFourScore;
 export type TFallTwoDefaultValues = typeof initialFallTwo;
-export type TFallScaleDefaultValues = typeof initialFallScale;
+export type TPediatric_fallDefaultValues = typeof initialPediatric_fall;
 export type TSafetyDefaultValues = typeof initialSafety;
 export type TNRSDefaultValues = typeof initialNRS;
 export type TFLACCDefaultValues = typeof initialFLACC;

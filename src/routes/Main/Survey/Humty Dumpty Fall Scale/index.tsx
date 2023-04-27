@@ -1,19 +1,19 @@
 import { Grid, Typography } from '@mui/material';
 import { useForm } from 'react-hook-form';
 
-import { updateBedScore } from 'apis/survey';
+import { updatePediatric_fall } from 'apis/survey';
 import useSurvey from 'store/survey/useSurvey';
 import useNotification from 'hooks/useNotification';
 import MuiDialog from 'components/MuiDialog';
 import {
-  TFallScaleDefaultValues,
+  TPediatric_fallDefaultValues,
   SurveyDialogProps,
 } from 'routes/Main/Survey/type';
 
 import CommonPatientInfo from '../components/CommonPatientInfo';
 import FallScaleContents from './FallScale';
 
-const FallScale = (props: SurveyDialogProps<TFallScaleDefaultValues>) => {
+const FallScale = (props: SurveyDialogProps<TPediatric_fallDefaultValues>) => {
   const {
     title,
     isOpen,
@@ -32,12 +32,13 @@ const FallScale = (props: SurveyDialogProps<TFallScaleDefaultValues>) => {
     defaultValues,
   });
 
-  const onSubmit = (data: TFallScaleDefaultValues) => {
+  const onSubmit = (data: TPediatric_fallDefaultValues) => {
     const { patient_id } = patientInfo;
     const { contents, date } = data;
 
     const contentsValues = Object.values(contents);
-    if (contentsValues.includes('')) return onRequired('REQUIRED.FALLSCALE.SCORE');
+    if (contentsValues.includes(''))
+      return onRequired('REQUIRED.FALLSCALE.SCORE');
 
     const request = {
       user_id,
@@ -46,13 +47,13 @@ const FallScale = (props: SurveyDialogProps<TFallScaleDefaultValues>) => {
       contents: JSON.stringify(contents),
     };
 
-    updateBedScore(request)
+    updatePediatric_fall(request)
       .then(({ data: { rc } }) => {
         if (rc !== 1) return onResultCode(rc);
         onUpdateIsSave(true);
-        onSuccess('욕창위험 평가도구 I 저장에 성공하였습니다.');
+        onSuccess('소아 낙상위험 평가 저장에 성공하였습니다.');
       })
-      .catch(e => onFail('욕창위험 평가도구 I 저장에 실패하였습니다.', e));
+      .catch(e => onFail('소아 낙상위험 평가 저장에 실패하였습니다.', e));
   };
 
   const formProps = { disabled, watch, register, getValues, setValue };
@@ -72,10 +73,16 @@ const FallScale = (props: SurveyDialogProps<TFallScaleDefaultValues>) => {
         columnSpacing={3}
         sx={{ py: 5, px: 1 }}
       >
-        <Typography sx={{ margin: "40px auto 0px auto", fontWeight: "700", fontSize: "16px", textAlign: "center" }}>
+        <Typography
+          sx={{
+            margin: '40px auto 0px auto',
+            fontWeight: '700',
+            fontSize: '16px',
+            textAlign: 'center',
+          }}
+        >
           소아 낙상위험 평가 (humty dumpty fall scale)
-          <br />
-          - 테스트 중입니다 -
+          <br />- 테스트 중입니다 -
         </Typography>
         <CommonPatientInfo patientInfo={patientInfo} nurseName={nurseName} />
         <FallScaleContents {...formProps} />
