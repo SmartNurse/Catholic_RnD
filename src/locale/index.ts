@@ -195,6 +195,8 @@ const locale = {
     'CLINICAL.OBSERVATION.ADD.ROW': '입력하지 않은 값이 있습니다.',
     'CLINICAL.OBSERVATION.STOP': '가상 환자 1명 당 5개까지 입력 가능합니다',
     'CLINICAL.OBSERVATION.ADD.NAN': '연락처는 숫자만 입력해주세요.',
+    'REQUIRED.CONTACK.FORMAT':
+      '비상연락처는 숫자로만 10자리 이상 입력해주세요.',
 
     // bedScore I
     'BED.SCORE.SENSORY.PERCEPTION.1': '완전 제한',

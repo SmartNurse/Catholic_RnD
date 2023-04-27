@@ -4,6 +4,7 @@ import { IPatientInfo } from 'apis/admin/type';
 import { IFormRegister, IFormValues, IFormWatch } from 'routes/Main/type';
 import { Button, IconButton, Stack, FormHelperText } from '@mui/material';
 import { Delete } from '@mui/icons-material';
+import regex from 'utils/regex';
 
 import { Ti18nId } from 'hooks/useI18n';
 import { IInpomation } from 'apis/survey/type';
@@ -39,11 +40,6 @@ const PatientInfo = (props: Props) => {
   const [contact, setContact] = useState('');
   const [name, setName] = useState('');
   const [relation, setRelation] = useState('');
-  const [errors, setErrors] = useState({
-    name: 0,
-    relation: 0,
-    contact: 0,
-  });
 
   const columns = [
     { fieldId: 'name', label: '보호자 이름' },
@@ -56,8 +52,8 @@ const PatientInfo = (props: Props) => {
     const request = { contact, name, relation };
     if (Object.values(request).filter(v => !v).length > 0) {
       return onRequired('CLINICAL.OBSERVATION.ADD.ROW');
-    } else if (isNaN(Number(contact))) {
-      return onRequired('CLINICAL.OBSERVATION.ADD.NAN');
+    } else if (!regex.contact.test(contact)) {
+      return onRequired('REQUIRED.CONTACK.FORMAT');
     }
 
     onSuccess('추가되었습니다.');
@@ -71,7 +67,7 @@ const PatientInfo = (props: Props) => {
       data: [
         ...infoEtc.data,
         {
-          contact: Number(contact),
+          contact: String(contact),
           name: String(name),
           relation: String(relation),
         },
@@ -130,15 +126,8 @@ const PatientInfo = (props: Props) => {
             placeholder="숫자만 입력해주세요."
             onChange={({ target: { value } }) => {
               setContact(value);
-
-              if (isNaN(Number(value))) setErrors({ ...errors, contact: 1 });
-              else setErrors({ ...errors, contact: 0 });
             }}
-            error={isNaN(Number(contact)) ? true : false}
           />
-          {errors.contact ? (
-            <FormHelperText error={true}>숫자만 입력해주세요.</FormHelperText>
-          ) : null}
         </RowContent>
       </div>
     ),
