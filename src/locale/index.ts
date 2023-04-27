@@ -515,6 +515,9 @@ const locale = {
     // diet_nutrition
     'DIET_NUTRITION.CLASSIFICATION.1': '환자',
     'DIET_NUTRITION.CLASSIFICATION.2': '보호자',
+
+    //CoreNursingSkillVideo
+    'REQUIRED.VIDIEO.FORMAT': '500MB가 넘는 파일은 업로드할 수 없습니다.',
   },
 };
 
