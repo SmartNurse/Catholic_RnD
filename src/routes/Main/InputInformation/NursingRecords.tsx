@@ -219,7 +219,6 @@ const NursingRecords = ({ coachRef }: Props) => {
           sx={{
             display: 'flex',
             justifyContent: 'flex-end',
-            marginBottom: '120px',
           }}
         >
           <Button
