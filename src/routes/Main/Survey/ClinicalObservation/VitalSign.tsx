@@ -64,7 +64,7 @@ const VitalSign = (props: Props) => {
 
     onSuccess('Vital Sign 추가되었습니다.');
     setValue('vital_sign', [...vitalSignList, { ...request, etc }]);
-    console.log('시간', checkTime);
+    // console.log('시간', checkTime);
     onUpdateSign({
       isUpdated: !vitalsign.isUpdated,
       data: [
