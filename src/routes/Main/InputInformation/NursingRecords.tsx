@@ -4,7 +4,14 @@ import { TabContext, TabList } from '@mui/lab';
 import { format } from 'date-fns';
 import { MobileTimePicker } from '@mui/x-date-pickers';
 import { AccessTime } from '@mui/icons-material';
-import { Box, Button, ButtonGroup, Tab, Typography, useTheme } from '@mui/material';
+import {
+  Box,
+  Button,
+  ButtonGroup,
+  Tab,
+  Typography,
+  useTheme,
+} from '@mui/material';
 import { useLocation, useNavigate } from 'react-router-dom';
 
 import { INames } from 'apis/main/type';
@@ -209,10 +216,18 @@ const NursingRecords = ({ coachRef }: Props) => {
         <ButtonGroup
           size="small"
           color="info"
-          sx={{ display: 'flex', justifyContent: 'flex-end' }}
+          sx={{
+            display: 'flex',
+            justifyContent: 'flex-end',
+            marginBottom: '120px',
+          }}
         >
           <Button
-            sx={{ color: `${palette.mode === "dark" ? "lightgrey" : palette.text.primary}` }}
+            sx={{
+              color: `${
+                palette.mode === 'dark' ? 'lightgrey' : palette.text.primary
+              }`,
+            }}
             variant="text"
             color="inherit"
             disabled={!isStudent}
@@ -221,7 +236,11 @@ const NursingRecords = ({ coachRef }: Props) => {
             취소
           </Button>
           <Button
-            sx={{ color: `${palette.mode === "dark" ? "white" : palette.primary.main}` }}
+            sx={{
+              color: `${
+                palette.mode === 'dark' ? 'white' : palette.primary.main
+              }`,
+            }}
             variant="text"
             type="submit"
             disabled={!patientInfo || !isStudent}
