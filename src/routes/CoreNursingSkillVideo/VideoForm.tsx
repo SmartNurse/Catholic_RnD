@@ -143,7 +143,7 @@ const VideoForm = (props: Props) => {
                         file: target.files[0],
                       };
                       size = target.files[0].size;
-                      console.log('사이즈', size);
+                      // console.log('사이즈', size);
                       if (size > 512000000) {
                         return onRequired('REQUIRED.VIDIEO.FORMAT');
                       }
