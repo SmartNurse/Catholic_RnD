@@ -34,8 +34,9 @@ const PatientInfo = (props: Props) => {
     onSuccess,
     setValue,
   } = props;
-  const etcInpoList: IInpomation[] = watch('infoEtc');
+
   const { infoEtc, onUpdateInfo } = useInfoEtc();
+  const etcInpoList: IInpomation[] = watch('infoEtc');
 
   const [contact, setContact] = useState('');
   const [name, setName] = useState('');
@@ -57,10 +58,10 @@ const PatientInfo = (props: Props) => {
     }
 
     onSuccess('추가되었습니다.');
-    console.log('데이터', infoEtc.data);
+    console.log('데이터', etcInpoList);
     setValue(
-      'etcInpoList',
-      etcInpoList ? [...etcInpoList, request] : [request]
+      'infoEtc',
+      etcInpoList ? [...etcInpoList, { ...request }] : [request]
     );
     onUpdateInfo({
       isUpdated: !infoEtc.isUpdated,

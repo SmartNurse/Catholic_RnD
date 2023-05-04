@@ -54,6 +54,7 @@ const Hospitalization = (
       education,
       out_hospital_plan,
       default_info,
+      infoEtc,
     } = data;
 
     const request = {
@@ -68,6 +69,7 @@ const Hospitalization = (
         main_doctor: patientInfo.main_doctor,
         offer: data.offer,
         contacts: data.contacts,
+        infoEtc: infoEtc ? JSON.stringify(infoEtc) : '',
         disease_history: findKeyValueToStr(disease_history),
         body_status: findKeyValueToStr(body_status),
         habit: findKeyValueToStr(habit),
@@ -124,6 +126,7 @@ const Hospitalization = (
           }}
         >
           입원간호 기록지
+          <br /> - 추가 기능 테스트중입니다. -
         </Typography>
         <PatientInfo
           {...formProps}

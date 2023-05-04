@@ -63,6 +63,12 @@ export interface IUpdateTakingOver extends IGetSurvey {
 }
 
 // 입원간호기록지
+export interface IInpomation {
+  contact: string;
+  name: string;
+  relation: string;
+}
+
 export interface ICreateHospitalization extends IGetSurvey {
   hospitalization_survey: {
     patient_name: string;
@@ -73,6 +79,7 @@ export interface ICreateHospitalization extends IGetSurvey {
     main_doctor: string;
     offer: typeof initialHospitalizationSurvey.offer;
     contacts: typeof initialHospitalizationSurvey.contacts;
+    infoEtc: string;
     disease_history: object;
     body_status: object;
     habit: object;
@@ -83,12 +90,6 @@ export interface ICreateHospitalization extends IGetSurvey {
     default_info: object;
     social_history: object;
   };
-}
-
-export interface IInpomation {
-  contact: number;
-  name: string;
-  relation: string;
 }
 
 // 퇴원간호기록지

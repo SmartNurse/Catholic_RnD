@@ -61,6 +61,7 @@ export const initialHospitalizationSurvey = {
     { contact: '', name: '', relation: '' },
     { contact: '', name: '', relation: '' },
   ],
+  infoEtc: [],
   default_info: {
     BT: '',
     DBP: '',
