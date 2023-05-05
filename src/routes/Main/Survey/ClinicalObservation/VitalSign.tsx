@@ -22,9 +22,11 @@ interface Props extends IFormValues, IFormWatch {
 
 const VitalSign = (props: Props) => {
   const { vitalsign, onUpdateSign } = useVitalSign();
-
+  console.log("hihihi", vitalsign);
   const { disabled, watch, setValue, onRequired, onSuccess } = props;
   const vitalSignList: IVitalSign[] = watch('vital_sign');
+
+  console.log("vitalSignList", vitalSignList);
 
   const [checkTime, setCheckTime] = useState(null);
   const [sbp, setSbp] = useState('');

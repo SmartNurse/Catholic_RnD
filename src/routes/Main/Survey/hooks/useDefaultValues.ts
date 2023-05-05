@@ -141,12 +141,20 @@ const useDefaultValues = ({ setDefaultValues, user_id }: Props) => {
       case MENU.HOSPITALIZATION:
         getHospitalization({ user_id, patient_id })
           .then(({ data }) => {
-            const { hospitalization_survey } = data;
+            const { hospitalization_survey  } = data;
+
+            const m_data = {
+              ...hospitalization_survey,
+              info_etc : JSON.parse(hospitalization_survey.info_etc),
+            };
+
             convertDataToStates(
-              hospitalization_survey,
+              m_data,
               initialHospitalizationSurvey
             );
+
           })
+          
           .catch(e => onFail('알 수 없는 오류가 발생했습니다.', e));
         break;
       case MENU.OUT_HOSPITAL:
@@ -187,6 +195,11 @@ const useDefaultValues = ({ setDefaultValues, user_id }: Props) => {
               vital_sign: JSON.parse(vital_sign),
               io_check: JSON.parse(io_check),
             };
+            
+
+            console.log("hihihi testtt", vital_sign)
+            console.log("hihihi testtt", m_data);
+            
             convertDataToStates(m_data, initialClinicalObservation);
           })
           .catch(e => onFail('알 수 없는 오류가 발생했습니다.', e));

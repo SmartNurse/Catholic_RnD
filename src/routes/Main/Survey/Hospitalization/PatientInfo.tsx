@@ -36,7 +36,9 @@ const PatientInfo = (props: Props) => {
   } = props;
 
   const { infoEtc, onUpdateInfo } = useInfoEtc();
-  const etcInpoList: IInpomation[] = watch('infoEtc');
+
+  
+  const etcInpoList: IInpomation[] = watch("info_etc");
 
   const [contact, setContact] = useState('');
   const [name, setName] = useState('');
@@ -58,11 +60,11 @@ const PatientInfo = (props: Props) => {
     }
 
     onSuccess('추가되었습니다.');
-    console.log('데이터', etcInpoList);
     setValue(
-      'infoEtc',
+      'info_etc',
       etcInpoList ? [...etcInpoList, { ...request }] : [request]
     );
+ console.log('데이터', etcInpoList)
     onUpdateInfo({
       isUpdated: !infoEtc.isUpdated,
       data: [
@@ -146,16 +148,17 @@ const PatientInfo = (props: Props) => {
 
   const onDeleteRow = (index: number) => {
     setValue(
-      'infoEtc',
-      infoEtc.data.filter((_, i) => i !== index)
+      'info_etc',
+      etcInpoList.filter((_, i) => i !== index)
     );
     onUpdateInfo({
       isUpdated: !infoEtc.isUpdated,
       data: infoEtc.data.filter((_, i) => i !== index),
     });
   };
+  console.log('데이터2222', etcInpoList, typeof etcInpoList)
 
-  const displayRows = infoEtc.data.map((item, i) => ({
+  const displayRows = etcInpoList ? etcInpoList.map((item, i) => ({
     ...item,
     id: i,
     action: (
@@ -167,7 +170,7 @@ const PatientInfo = (props: Props) => {
         <Delete />
       </IconButton>
     ),
-  }));
+  })) : [];
 
   const tableRow = disabled ? displayRows : [inputRow, ...displayRows];
 

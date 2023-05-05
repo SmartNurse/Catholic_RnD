@@ -54,7 +54,7 @@ const Hospitalization = (
       education,
       out_hospital_plan,
       default_info,
-      infoEtc,
+      info_etc,
     } = data;
 
     const request = {
@@ -69,7 +69,7 @@ const Hospitalization = (
         main_doctor: patientInfo.main_doctor,
         offer: data.offer,
         contacts: data.contacts,
-        infoEtc: infoEtc ? JSON.stringify(infoEtc) : '',
+        info_etc: info_etc ? JSON.stringify(info_etc) : '',
         disease_history: findKeyValueToStr(disease_history),
         body_status: findKeyValueToStr(body_status),
         habit: findKeyValueToStr(habit),
