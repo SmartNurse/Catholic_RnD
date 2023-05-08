@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
-
+import Loading from './Loading';
 import { Container } from "@mui/material";
 
 import MuiDialog from 'components/MuiDialog';
@@ -24,6 +24,7 @@ const CoreNursingSkillVideo = (props: SurveyDialogProps<TCoreNursingSkillVideoDe
   const [totalSize, setTotalSize] = useState(0);
   const { isStudent } = useUser();
   const { student_uuid } = useStudent();
+  const [loading, setLoading]=useState(false);
 
   const {
       title,
@@ -48,6 +49,8 @@ const CoreNursingSkillVideo = (props: SurveyDialogProps<TCoreNursingSkillVideoDe
 
     let toSaveCount = 0;
     let lastSaveIdx = 0;
+    setLoading(true);
+    console.log('시작지점', loading)
     for (let i=0; i<3; i++) {
       if (!files[i]["saved"] && files[i]["file"] !== null) {
         toSaveCount++;
@@ -57,7 +60,9 @@ const CoreNursingSkillVideo = (props: SurveyDialogProps<TCoreNursingSkillVideoDe
 
     if (toSaveCount === 0) {
       onUpdateIsSave(true);
+      setLoading(false)
       onSuccess("핵심간호술기영상 저장에 성공하였습니다.");
+      console.log('로오딩', loading)
       return;
     }
 
@@ -86,7 +91,10 @@ const CoreNursingSkillVideo = (props: SurveyDialogProps<TCoreNursingSkillVideoDe
 
           if (i === lastSaveIdx) {
             onUpdateIsSave(true);
+            setLoading(false)
             onSuccess('핵심간호술기영상 저장에 성공하였습니다.');
+            console.log('로오딩', loading)
+
             setRefresh(!refresh);
             return;
           }
@@ -113,7 +121,8 @@ const CoreNursingSkillVideo = (props: SurveyDialogProps<TCoreNursingSkillVideoDe
         :
         <ProfModeInfo totalSize={totalSize} />
         }
-        <VideoForm {...formProps} user_id={isStudent ? user_id : student_uuid} patient_id={patientInfo.patient_id} patient_name={patientInfo.name} totalSize={totalSize} setTotalSize={setTotalSize} refresh={refresh} />
+        {loading ? <Loading /> : <VideoForm {...formProps} user_id={isStudent ? user_id : student_uuid} patient_id={patientInfo.patient_id} patient_name={patientInfo.name} totalSize={totalSize} setTotalSize={setTotalSize} refresh={refresh} />}
+        {/* <VideoForm {...formProps} user_id={isStudent ? user_id : student_uuid} patient_id={patientInfo.patient_id} patient_name={patientInfo.name} totalSize={totalSize} setTotalSize={setTotalSize} refresh={refresh} /> */}
       </Container>
     </MuiDialog.SurveyForm>
   );

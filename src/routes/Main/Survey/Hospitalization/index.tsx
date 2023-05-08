@@ -126,7 +126,6 @@ const Hospitalization = (
           }}
         >
           입원간호 기록지
-          <br /> - 추가 기능 테스트중입니다. -
         </Typography>
         <PatientInfo
           {...formProps}
