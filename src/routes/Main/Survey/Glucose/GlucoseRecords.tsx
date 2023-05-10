@@ -2,8 +2,8 @@ import Form from 'components/Form';
 
 import { Fragment, useState } from 'react';
 import { AccessTime, Delete } from '@mui/icons-material';
-import { Button, Grid, IconButton, MenuItem, Box } from '@mui/material';
-import { MobileTimePicker } from '@mui/x-date-pickers';
+import { Button, Grid, IconButton, MenuItem, Box, TextField } from '@mui/material';
+import { DatePicker, MobileTimePicker } from '@mui/x-date-pickers';
 
 import { Ti18nId } from 'hooks/useI18n';
 import { IGlucoseRecord } from 'apis/survey/type';
@@ -24,7 +24,7 @@ const GlucoseRecords = (props: Props) => {
   const { disabled, watch, setValue, onRequired, onSuccess, register } = props;
   const glucoseRecordList: IGlucoseRecord[] = watch('blood_sugar_log');
 
-  const [date, setDate] = useState("");
+  const [date, setDate] = useState(null);
   const [time, setTime] = useState(null);
   const [meal, setMeal] = useState("");
   const [mealEtc, setMealEtc] = useState("");
@@ -60,7 +60,7 @@ const GlucoseRecords = (props: Props) => {
     onSuccess('혈당 기록 추가되었습니다.');
     setValue('blood_sugar_log', glucoseRecordList ? [...glucoseRecordList, request] : [request]);
     setValue("glucose_date", "");
-    setDate("");
+    setDate(null);
     setTime(null);
     setMeal("");
     setMealEtc("");
@@ -69,12 +69,38 @@ const GlucoseRecords = (props: Props) => {
     setResult("");
   };
 
+  const dateNow = new Date(); // Creating a new date object with the current date and time
+  const year = dateNow.getFullYear(); // Getting current year from the created Date object
+  const monthWithOffset = dateNow.getUTCMonth() + 1; // January is 0 by default in JS. Offsetting +1 to fix date for calendar.
+  const month = // Setting current Month number from current Date object
+    monthWithOffset.toString().length < 2 // Checking if month is < 10 and pre-prending 0 if not to adjust for date input.
+      ? `0${monthWithOffset}`
+      : monthWithOffset;
+  const date1 =
+    dateNow.getUTCDate().toString().length < 2 // Checking if date is < 10 and pre-prending 0 if not to adjust for date input.
+      ? `0${dateNow.getUTCDate()}`
+      : dateNow.getUTCDate();
+  
+  const materialDateInput = `${year}-${month}-${date1}`; // combining to format for defaultValue or value attribute of material <TextField>
+  
+
   const inputRow = {
     id: 'add-glucose-record',
     date: (
+      // <DatePicker
+      //   value={date}
+      //           label="Basic example"
+      //           onChange={(newValue) => {
+      //               setDate(newValue);
+      //           }}
+      //           renderInput={(params) => <TextField {...params} />}
+      // />
         <Form.MuiTextField
             type="date"
+            label='Please enter a date'
+            InputLabelProps={{ shrink: true }}
             required={false}
+            defaultValue={materialDateInput} 
             disabled={disabled}
             {...register("glucose_date", {
                 onChange: (e) => setDate(e.target.value)
