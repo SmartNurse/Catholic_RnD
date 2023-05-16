@@ -2,7 +2,7 @@ import { Fragment, useRef } from 'react';
 import { Stack } from '@mui/material';
 import { DatePicker } from '@mui/x-date-pickers';
 
-import { Controller, useForm } from 'react-hook-form'
+import { Controller, useForm } from 'react-hook-form';
 
 import Form from 'components/Form';
 import { IFormRegister, IFormValues } from 'routes/Main/type';
@@ -74,32 +74,33 @@ const DefaultInfo = (props: Props) => {
           />
         </RowContent>
         <RowContent title="발병일자">
-        <Controller
-                name={"default_info.date"}
-                control={control}
-                render={({ 
-                  field: { onChange, onBlur, value, name, ref },
-                  fieldState: { invalid, isTouched, isDirty, error },
-                 }) => {
-                  console.log('filedState is ', invalid, isTouched, isDirty, error);
-                return (
-                    <DatePicker
-                      label ="날짜를 선택해주세요"
-                      renderInput={props => <Form.MuiTextField
-                        type="date"
-                        disabled={disabled}
-                        fullWidth={false}
-                        required={false}
-                        InputLabelProps={{ shrink: true }}
-                        {...props} 
-                        />}
-                      onChange={(date) => onChange(date)}
-                      value={value}
+          <Controller
+            name={'default_info.date'}
+            control={control}
+            render={({
+              field: { onChange, onBlur, value, name, ref },
+              fieldState: { invalid, isTouched, isDirty, error },
+            }) => {
+              console.log('filedState is ', invalid, isTouched, isDirty, error);
+              return (
+                <DatePicker
+                  label="날짜를 선택해주세요"
+                  renderInput={props => (
+                    <Form.MuiTextField
+                      type="date"
+                      disabled={disabled}
+                      fullWidth={false}
+                      required={false}
+                      InputLabelProps={{ shrink: true }}
+                      {...props}
                     />
-                )
-                      }
-              }
-            />
+                  )}
+                  onChange={date => onChange(date)}
+                  value={value}
+                />
+              );
+            }}
+          />
           {/* <Form.MuiTextField
             type="date"
             disabled={disabled}
