@@ -48,7 +48,7 @@ const PatientMemo = ({ coachRef }: Props) => {
       value={memo}
       onBlur={onBlur}
       onChange={onChange}
-      disabled={!patientInfo || !isStudent}
+      // disabled={!patientInfo || !isStudent}
       placeholder="진단명, 주의사항, 처방 등 인수인계를 입력해주세요."
       InputProps={{ sx: { height: 160 } }}
       inputProps={{ style: { height: '100%' } }}
