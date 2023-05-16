@@ -39,7 +39,7 @@ const Hospitalization = (
   const { onUpdateIsSave } = useSurvey();
   const { onSuccess, onFail, onResultCode, onRequired } = useNotification();
 
-  const { handleSubmit, register, getValues, setValue, watch } = useForm({
+  const { handleSubmit, register, getValues, setValue, watch, control } = useForm({
     defaultValues,
   });
 
@@ -100,6 +100,7 @@ const Hospitalization = (
     setValue,
     onSuccess,
     onRequired,
+    control,
   };
 
   return (

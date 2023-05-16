@@ -1,5 +1,8 @@
-import { Fragment } from 'react';
+import { Fragment, useRef } from 'react';
 import { Stack } from '@mui/material';
+import { DatePicker } from '@mui/x-date-pickers';
+
+import { Controller, useForm } from 'react-hook-form'
 
 import Form from 'components/Form';
 import { IFormRegister, IFormValues } from 'routes/Main/type';
@@ -13,7 +16,7 @@ interface Props extends IFormRegister, IFormValues {
 }
 
 const DefaultInfo = (props: Props) => {
-  const { disabled, register, getValues, setValue } = props;
+  const { disabled, register, getValues, setValue, control } = props;
 
   return (
     <Fragment>
@@ -71,12 +74,41 @@ const DefaultInfo = (props: Props) => {
           />
         </RowContent>
         <RowContent title="발병일자">
-          <Form.MuiTextField
+        <Controller
+                name={"default_info.date"}
+                control={control}
+                render={({ 
+                  field: { onChange, onBlur, value, name, ref },
+                  fieldState: { invalid, isTouched, isDirty, error },
+                 }) => {
+                  console.log('filedState is ', invalid, isTouched, isDirty, error);
+                return (
+                    <DatePicker
+                      label ="날짜를 선택해주세요"
+                      renderInput={props => <Form.MuiTextField
+                        type="date"
+                        disabled={disabled}
+                        fullWidth={false}
+                        required={false}
+                        InputLabelProps={{ shrink: true }}
+                        {...props} 
+                        />}
+                      onChange={(date) => onChange(date)}
+                      value={value}
+                    />
+                )
+                      }
+              }
+            />
+          {/* <Form.MuiTextField
             type="date"
             disabled={disabled}
             fullWidth={false}
+            required={false}
+            label='Please enter a date'
+            InputLabelProps={{ shrink: true }}
             {...register('default_info.date')}
-          />
+          /> */}
         </RowContent>
       </RowContainer>
 
