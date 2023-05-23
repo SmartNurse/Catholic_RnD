@@ -296,7 +296,7 @@ const MenuRecords = (props: Props) => {
     },
     {
       isPro: true,
-      label: '진료기록 열람, 사본발급 동의서',
+      label: '진료기록 열람, \n사본발급 동의서',
       toggle: toggle.agreement,
     },
     {
@@ -403,7 +403,10 @@ const MenuRecords = (props: Props) => {
                   onClick={onClick}
                 >
                   <ListItemIcon>{icon}</ListItemIcon>
-                  <ListItemText primary={label} />
+                  <ListItemText
+                    primary={label}
+                    sx={{ whiteSpace: 'pre-wrap' }}
+                  />
                   <ProIcon />
                   <MoreIcon />
                 </ListItemButton>

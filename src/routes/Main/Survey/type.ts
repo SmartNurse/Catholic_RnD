@@ -88,7 +88,7 @@ export enum MENU {
   COLONOSCOPY = '대장내시경',
   UPPER_ENDOSCOPY = '상부내시경',
   NONSALARY = '비급여진료비동의서',
-  MEDICALRECORDS = '진료기록 열람, 사본발급 동의서',
+  MEDICALRECORDS = '진료기록 열람, \n사본발급 동의서',
   DNR = '사전연명의료의향서',
   DNA = '유전자검사 동의서',
   CORE_NURSING_SKILL_VIDEO = '핵심간호술기영상 저장',
