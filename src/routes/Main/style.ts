@@ -149,69 +149,68 @@ export const StyledSlider = styled(Slider)`
   & .MuiSlider-mark {
     width: 12;
     height: 12;
-    marginLeft: -5px;
-    borderRadius: 8px;
+    marginleft: -5px;
+    borderradius: 8px;
     color: #00000033;
 
     &.MuiSlider-markActive {
-      backgroundColor: ${({ theme }) => theme.palette.secondary.main};
+      backgroundcolor: ${({ theme }) => theme.palette.secondary.main};
       opacity: 1;
     }
-  } 
+  }
 `;
 
 export const StyledFormControlLabel = styled(FormControlLabel)({
   '&.MuiFormControlLabel-root': {
-    width: "200px",
-    
+    width: '200px',
+
     '& .MuiFormControlLabel-label': {
-      wordBreak: "keep-all",
-    }      
-  }
+      wordBreak: 'keep-all',
+    },
+  },
 });
 
 export const StyledTableCell = styled(TableCell)({
-  border: "1px solid lightgray",
-  padding: "0px",
+  border: '1px solid lightgray',
+  padding: '0px',
 });
 
 export const StyledTableCellWithoutLeft = styled(TableCell)({
-  border: "1px solid lightgray",
-  borderLeft: "none",
-  padding: "0px",
+  border: '1px solid lightgray',
+  borderLeft: 'none',
+  padding: '0px',
 });
 
 export const StyledTableCellWithoutRight = styled(TableCell)({
-  border: "1px solid lightgray",
-  borderRight: "none",
-  padding: "0px",
+  border: '1px solid lightgray',
+  borderRight: 'none',
+  padding: '0px',
 });
 
 export const StyledTableCellWithoutLeftRight = styled(TableCell)({
-  border: "1px solid lightgray",
-  borderLeft: "none",
-  borderRight: "none",
-  padding: "0px",
+  border: '1px solid lightgray',
+  borderLeft: 'none',
+  borderRight: 'none',
+  padding: '0px',
 });
-
 
 // GCS
 export const StyledTableCellTwo = styled(TableCell)({
-  padding: "0px",
+  padding: '0px',
 });
 
 export const StyledTableCellWithoutLeftTwo = styled(TableCell)({
-  borderLeft: "none",
-  padding: "0px",
+  borderLeft: 'none',
+  padding: '0px',
 });
 
 export const StyledTableCellWithoutRightTwo = styled(TableCell)({
-  borderRight: "none",
-  padding: "0px",
+  borderRight: 'none',
+  padding: '0px',
 });
 
 export const StyledTableCellWithoutLeftRightTwo = styled(TableCell)({
-  borderLeft: "none",
-  borderRight: "none",
-  padding: "0px",
+  borderLeft: 'none',
+  borderRight: 'none',
+  padding: '0px',
 });

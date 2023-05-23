@@ -34,6 +34,12 @@ import {
   getDietNutrition,
   getFallConfirm,
   getHospitalConfirm,
+  getColonoscopy,
+  getUpperEndoscopy,
+  getNonSalary,
+  getMedicalRecords,
+  getDNR,
+  getDNA,
   getMentalNursing,
 } from 'apis/survey';
 import useNotification from 'hooks/useNotification';
@@ -52,6 +58,10 @@ import {
   initialFall,
   initialFallTwo,
   initialNeeds,
+  initialPediatric_fall,
+  initialGCS,
+  initialPediatric_GCS,
+  initialFourScore,
   initialClinicalObservation,
   initialGlucose,
   initialSafety,
@@ -73,14 +83,16 @@ import {
   initialDietNutrition,
   initialHospitalConfirm,
   initialFallConfirm,
+  initialColonoscopy,
+  initialUpperEndoscopy,
+  initialNonSalary,
+  initialMedicalRecords,
+  initialDNR,
+  initialDNA,
   initialCoreNursingSkillVideo,
   initialCoreNursingSkillVideoExemple,
-  initialPediatric_fall,
-  initialGCS,
-  initialPediatric_GCS,
 } from '../initialStates';
 import { MENU } from '../type';
-import { initialFourScore } from '../initialStates';
 
 interface Props {
   user_id: number;
@@ -141,20 +153,16 @@ const useDefaultValues = ({ setDefaultValues, user_id }: Props) => {
       case MENU.HOSPITALIZATION:
         getHospitalization({ user_id, patient_id })
           .then(({ data }) => {
-            const { hospitalization_survey  } = data;
+            const { hospitalization_survey } = data;
 
             const m_data = {
               ...hospitalization_survey,
-              info_etc : JSON.parse(hospitalization_survey.info_etc),
+              info_etc: JSON.parse(hospitalization_survey.info_etc),
             };
 
-            convertDataToStates(
-              m_data,
-              initialHospitalizationSurvey
-            );
-
+            convertDataToStates(m_data, initialHospitalizationSurvey);
           })
-          
+
           .catch(e => onFail('알 수 없는 오류가 발생했습니다.', e));
         break;
       case MENU.OUT_HOSPITAL:
@@ -195,11 +203,10 @@ const useDefaultValues = ({ setDefaultValues, user_id }: Props) => {
               vital_sign: JSON.parse(vital_sign),
               io_check: JSON.parse(io_check),
             };
-            
 
-            console.log("hihihi testtt", vital_sign)
-            console.log("hihihi testtt", m_data);
-            
+            console.log('hihihi testtt', vital_sign);
+            console.log('hihihi testtt', m_data);
+
             convertDataToStates(m_data, initialClinicalObservation);
           })
           .catch(e => onFail('알 수 없는 오류가 발생했습니다.', e));
@@ -601,6 +608,121 @@ const useDefaultValues = ({ setDefaultValues, user_id }: Props) => {
           })
           .catch(e => onFail('알 수 없는 오류가 발생했습니다.', e));
         break;
+      case MENU.COLONOSCOPY:
+        getColonoscopy({ user_id, patient_id })
+          .then(({ data }) => {
+            const { update_at, fall_confirm } = data;
+            convertDataToStates(
+              {
+                update_at,
+                fall_education: fall_confirm
+                  ? JSON.parse(fall_confirm.fall_education)
+                  : {},
+                signature: fall_confirm?.signature,
+                date: fall_confirm?.date,
+                personnel_signature: fall_confirm?.personnel_signature,
+              },
+              initialFallConfirm
+            );
+          })
+          .catch(e => onFail('알 수 없는 오류가 발생했습니다.', e));
+        break;
+      case MENU.UPPER_ENDOSCOPY:
+        getUpperEndoscopy({ user_id, patient_id })
+          .then(({ data }) => {
+            const { update_at, fall_confirm } = data;
+            convertDataToStates(
+              {
+                update_at,
+                fall_education: fall_confirm
+                  ? JSON.parse(fall_confirm.fall_education)
+                  : {},
+                signature: fall_confirm?.signature,
+                date: fall_confirm?.date,
+                personnel_signature: fall_confirm?.personnel_signature,
+              },
+              initialFallConfirm
+            );
+          })
+          .catch(e => onFail('알 수 없는 오류가 발생했습니다.', e));
+        break;
+      case MENU.NONSALARY:
+        getNonSalary({ user_id, patient_id })
+          .then(({ data }) => {
+            const { update_at, fall_confirm } = data;
+            convertDataToStates(
+              {
+                update_at,
+                fall_education: fall_confirm
+                  ? JSON.parse(fall_confirm.fall_education)
+                  : {},
+                signature: fall_confirm?.signature,
+                date: fall_confirm?.date,
+                personnel_signature: fall_confirm?.personnel_signature,
+              },
+              initialFallConfirm
+            );
+          })
+          .catch(e => onFail('알 수 없는 오류가 발생했습니다.', e));
+        break;
+      case MENU.MEDICALRECORDS:
+        getMedicalRecords({ user_id, patient_id })
+          .then(({ data }) => {
+            const { update_at, fall_confirm } = data;
+            convertDataToStates(
+              {
+                update_at,
+                fall_education: fall_confirm
+                  ? JSON.parse(fall_confirm.fall_education)
+                  : {},
+                signature: fall_confirm?.signature,
+                date: fall_confirm?.date,
+                personnel_signature: fall_confirm?.personnel_signature,
+              },
+              initialFallConfirm
+            );
+          })
+          .catch(e => onFail('알 수 없는 오류가 발생했습니다.', e));
+        break;
+      case MENU.DNR:
+        getDNR({ user_id, patient_id })
+          .then(({ data }) => {
+            const { update_at, fall_confirm } = data;
+            convertDataToStates(
+              {
+                update_at,
+                fall_education: fall_confirm
+                  ? JSON.parse(fall_confirm.fall_education)
+                  : {},
+                signature: fall_confirm?.signature,
+                date: fall_confirm?.date,
+                personnel_signature: fall_confirm?.personnel_signature,
+              },
+              initialFallConfirm
+            );
+          })
+          .catch(e => onFail('알 수 없는 오류가 발생했습니다.', e));
+        break;
+      case MENU.DNA:
+        getDNA({ user_id, patient_id })
+          .then(({ data }) => {
+            const { update_at, fall_confirm } = data;
+            convertDataToStates(
+              {
+                update_at,
+                fall_education: fall_confirm
+                  ? JSON.parse(fall_confirm.fall_education)
+                  : {},
+                signature: fall_confirm?.signature,
+                date: fall_confirm?.date,
+                personnel_signature: fall_confirm?.personnel_signature,
+              },
+              initialFallConfirm
+            );
+          })
+          .catch(e => onFail('알 수 없는 오류가 발생했습니다.', e));
+        break;
+
       case MENU.CORE_NURSING_SKILL_VIDEO:
         convertDataToStates(
           initialCoreNursingSkillVideo,

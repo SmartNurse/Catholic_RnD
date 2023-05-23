@@ -10,20 +10,20 @@ import Medication from './Medication';
 import Radiology from './Radiology';
 import Pathology from './Pathology';
 import ClinicalObservation from './ClinicalObservation';
-import Glucose from "./Glucose";
+import Glucose from './Glucose';
 import BedScore from './BedScore';
 import BedScoreTwo from './BedScoreTwo';
 import Fall from './Fall';
 import FallTwo from './FallTwo';
 import FallScale from './Humty Dumpty Fall Scale';
 import GCS from './GCS';
-import Pediatric_GCS from './Pediatric_GCS'
-import FourScore from './Four Score'
+import Pediatric_GCS from './Pediatric_GCS';
+import FourScore from './Four Score';
 import Needs from './Needs';
 import Safety from './Safety';
 import NRS from './Pain/NRS';
 import FLACC from './Pain/FLACC';
-import CNPS from "./Pain/CNPS";
+import CNPS from './Pain/CNPS';
 import MentalNursing from './MentalHealth/MentalNursing';
 import BDI from './MentalHealth/BDI';
 import BAI from './MentalHealth/BAI';
@@ -33,12 +33,18 @@ import Operation from './Special/Operation';
 import Anesthesia from './Special/Anesthesia';
 import Transfusion from './Special/Transfusion';
 import Dialysis from './Special/Dialysis';
-import Emergency from  './Special/Emergency';
+import Emergency from './Special/Emergency';
 import Childbirth from './Special/Childbirth';
 import HomeCare from './Special/HomeCare';
 import DietNutrition from './DietNutrition';
 import HospitalizationInfo from './Agreement/HospitalizationInfo';
 import FallPrevention from './Agreement/FallPrevention';
+import Colonoscopy from './Agreement/Colonoscopy';
+import UpperEndoscopy from './Agreement/UpperEndoscopy';
+import NonSalary from './Agreement/NonSalary';
+import MedicalRecords from './Agreement/MedicalRecords';
+import DNR from './Agreement/DNR';
+import DNA from './Agreement/DNA';
 import CoreNursingSkillVideo from 'routes/CoreNursingSkillVideo';
 import CoreNursingSkillVideoExemple from 'routes/CoreNursingSkillVideoExemple';
 
@@ -168,7 +174,7 @@ const DisplaySurvey = (props: Props) => {
     case MENU.CIST: {
       if (!defaultValues) return null;
       return <CIST {...dialogProps} onClose={onCloseSave} />;
-    }  
+    }
     case MENU.OPERATION: {
       if (!defaultValues) return null;
       return <Operation {...dialogProps} onClose={onCloseSave} />;
@@ -209,13 +215,42 @@ const DisplaySurvey = (props: Props) => {
       if (!defaultValues) return null;
       return <FallPrevention {...dialogProps} onClose={onCloseSave} />;
     }
+    case MENU.COLONOSCOPY: {
+      if (!defaultValues) return null;
+      return <Colonoscopy {...dialogProps} onClose={onCloseSave} />;
+    }
+    case MENU.UPPER_ENDOSCOPY: {
+      if (!defaultValues) return null;
+      return <UpperEndoscopy {...dialogProps} onClose={onCloseSave} />;
+    }
+    case MENU.NONSALARY: {
+      if (!defaultValues) return null;
+      return <NonSalary {...dialogProps} onClose={onCloseSave} />;
+    }
+    case MENU.MEDICALRECORDS: {
+      if (!defaultValues) return null;
+      return <MedicalRecords {...dialogProps} onClose={onCloseSave} />;
+    }
+    case MENU.DNR: {
+      if (!defaultValues) return null;
+      return <DNR {...dialogProps} onClose={onCloseSave} />;
+    }
+    case MENU.DNA: {
+      if (!defaultValues) return null;
+      return <DNA {...dialogProps} onClose={onCloseSave} />;
+    }
     case MENU.CORE_NURSING_SKILL_VIDEO: {
       if (!defaultValues) return null;
       return <CoreNursingSkillVideo {...dialogProps} onClose={onCloseSave} />;
     }
     case MENU.CORE_NURSING_SKILL_VIDEO_EXEMPLE: {
       if (!defaultValues) return null;
-      return <CoreNursingSkillVideoExemple {...dialogProps} onClose={onCloseReadOnly} />;
+      return (
+        <CoreNursingSkillVideoExemple
+          {...dialogProps}
+          onClose={onCloseReadOnly}
+        />
+      );
     }
     default:
       return null;

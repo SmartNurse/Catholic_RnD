@@ -38,6 +38,12 @@ import {
   IUpdateDietNutrition,
   IUpdateHospitalConfirm,
   IUpdateFallConfirm,
+  IUpdateColonoscopy,
+  IUpdateUpperEndoscopy,
+  IUpdateNonSalary,
+  IUpdateMedicalRecords,
+  IUpdateDNR,
+  IUpdateDNA,
 } from './type';
 
 // e-CARDEX
@@ -422,6 +428,72 @@ export const getFallConfirm = (request: IGetSurvey) => {
 };
 
 export const updateFallConfirm = (request: IUpdateFallConfirm) => {
+  const url = `/survey/fallConfirm`;
+  return apiGateway.post(url, camelcaseKeys(request));
+};
+
+// 대장 내시경
+export const getColonoscopy = (request: IGetSurvey) => {
+  const url = `/survey/fallConfirm?${formatToRequestParameter(request)}`;
+  return apiGateway.get(url);
+};
+
+export const updateColonoscopy = (request: IUpdateColonoscopy) => {
+  const url = `/survey/fallConfirm`;
+  return apiGateway.post(url, camelcaseKeys(request));
+};
+
+// 상부내시경
+export const getUpperEndoscopy = (request: IGetSurvey) => {
+  const url = `/survey/fallConfirm?${formatToRequestParameter(request)}`;
+  return apiGateway.get(url);
+};
+
+export const updateUpperEndoscopy = (request: IUpdateUpperEndoscopy) => {
+  const url = `/survey/fallConfirm`;
+  return apiGateway.post(url, camelcaseKeys(request));
+};
+
+// 비급여확인서
+export const getNonSalary = (request: IGetSurvey) => {
+  const url = `/survey/fallConfirm?${formatToRequestParameter(request)}`;
+  return apiGateway.get(url);
+};
+
+export const updateNonSalary = (request: IUpdateNonSalary) => {
+  const url = `/survey/fallConfirm`;
+  return apiGateway.post(url, camelcaseKeys(request));
+};
+
+// 진료 기록
+export const getMedicalRecords = (request: IGetSurvey) => {
+  const url = `/survey/fallConfirm?${formatToRequestParameter(request)}`;
+  return apiGateway.get(url);
+};
+
+export const updateMedicalRecords = (request: IUpdateMedicalRecords) => {
+  const url = `/survey/fallConfirm`;
+  return apiGateway.post(url, camelcaseKeys(request));
+};
+
+// DNR
+export const getDNR = (request: IGetSurvey) => {
+  const url = `/survey/fallConfirm?${formatToRequestParameter(request)}`;
+  return apiGateway.get(url);
+};
+
+export const updateDNR = (request: IUpdateDNR) => {
+  const url = `/survey/fallConfirm`;
+  return apiGateway.post(url, camelcaseKeys(request));
+};
+
+// 낙상예방교육확인서
+export const getDNA = (request: IGetSurvey) => {
+  const url = `/survey/fallConfirm?${formatToRequestParameter(request)}`;
+  return apiGateway.get(url);
+};
+
+export const updateDNA = (request: IUpdateDNA) => {
   const url = `/survey/fallConfirm`;
   return apiGateway.post(url, camelcaseKeys(request));
 };

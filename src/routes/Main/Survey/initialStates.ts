@@ -923,6 +923,108 @@ export const initialFallConfirm = {
   personnel_signature: '',
 };
 
+export const initialColonoscopy = {
+  update_at: '',
+  fall_education: {
+    checked1: false,
+    checked2: false,
+    checked3: false,
+    checked4: false,
+    checked5: false,
+    checked6: false,
+    checked7: false,
+    checked8: false,
+  },
+  signature: '',
+  date: '',
+  personnel_signature: '',
+};
+
+export const initialUpperEndoscopy = {
+  update_at: '',
+  fall_education: {
+    checked1: false,
+    checked2: false,
+    checked3: false,
+    checked4: false,
+    checked5: false,
+    checked6: false,
+    checked7: false,
+    checked8: false,
+  },
+  signature: '',
+  date: '',
+  personnel_signature: '',
+};
+
+export const initialNonSalary = {
+  update_at: '',
+  fall_education: {
+    checked1: false,
+    checked2: false,
+    checked3: false,
+    checked4: false,
+    checked5: false,
+    checked6: false,
+    checked7: false,
+    checked8: false,
+  },
+  signature: '',
+  date: '',
+  personnel_signature: '',
+};
+
+export const initialMedicalRecords = {
+  update_at: '',
+  fall_education: {
+    checked1: false,
+    checked2: false,
+    checked3: false,
+    checked4: false,
+    checked5: false,
+    checked6: false,
+    checked7: false,
+    checked8: false,
+  },
+  signature: '',
+  date: '',
+  personnel_signature: '',
+};
+
+export const initialDNR = {
+  update_at: '',
+  fall_education: {
+    checked1: false,
+    checked2: false,
+    checked3: false,
+    checked4: false,
+    checked5: false,
+    checked6: false,
+    checked7: false,
+    checked8: false,
+  },
+  signature: '',
+  date: '',
+  personnel_signature: '',
+};
+
+export const initialDNA = {
+  update_at: '',
+  fall_education: {
+    checked1: false,
+    checked2: false,
+    checked3: false,
+    checked4: false,
+    checked5: false,
+    checked6: false,
+    checked7: false,
+    checked8: false,
+  },
+  signature: '',
+  date: '',
+  personnel_signature: '',
+};
+
 export const initialCoreNursingSkillVideo = {
   update_at: '',
   files: [],

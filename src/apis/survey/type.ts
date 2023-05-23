@@ -733,3 +733,63 @@ export interface IUpdateFallConfirm extends IGetSurvey {
     personnel_signature: string;
   };
 }
+
+// 대장 내시경
+export interface IUpdateColonoscopy extends IGetSurvey {
+  fall_confirm: {
+    fall_education: string;
+    signature: string;
+    date: string;
+    personnel_signature: string;
+  };
+}
+
+// 상부내시경
+export interface IUpdateUpperEndoscopy extends IGetSurvey {
+  fall_confirm: {
+    fall_education: string;
+    signature: string;
+    date: string;
+    personnel_signature: string;
+  };
+}
+
+// 비급여 동의서
+export interface IUpdateNonSalary extends IGetSurvey {
+  fall_confirm: {
+    fall_education: string;
+    signature: string;
+    date: string;
+    personnel_signature: string;
+  };
+}
+
+// 진료기록 열람
+export interface IUpdateMedicalRecords extends IGetSurvey {
+  fall_confirm: {
+    fall_education: string;
+    signature: string;
+    date: string;
+    personnel_signature: string;
+  };
+}
+
+// DNR
+export interface IUpdateDNR extends IGetSurvey {
+  fall_confirm: {
+    fall_education: string;
+    signature: string;
+    date: string;
+    personnel_signature: string;
+  };
+}
+
+// DNA
+export interface IUpdateDNA extends IGetSurvey {
+  fall_confirm: {
+    fall_education: string;
+    signature: string;
+    date: string;
+    personnel_signature: string;
+  };
+}

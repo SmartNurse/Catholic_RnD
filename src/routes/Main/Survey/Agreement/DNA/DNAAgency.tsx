@@ -1,0 +1,60 @@
+import Form from 'components/Form';
+
+import { Fragment, useState } from 'react';
+import { Delete } from '@mui/icons-material';
+import {
+  Checkbox,
+  Grid,
+  IconButton,
+  Table,
+  TableBody,
+  TableCell,
+  TableRow,
+  Typography,
+} from '@mui/material';
+
+import RowContainer from '../../components/RowContainer';
+import RowContent from '../../components/RowContent';
+
+import { Ti18nId } from 'hooks/useI18n';
+import { IMentalNursingRecord } from 'apis/survey/type';
+import { IFormRegister, IFormValues, IFormWatch } from 'routes/Main/type';
+
+import MuiTextField from 'components/Form/MuiTextField';
+import SectionTitle from '../../components/SectionTitle';
+
+import { formatStringToDate } from 'utils/formatting';
+
+interface Props extends IFormValues, IFormWatch, IFormRegister {
+  disabled?: boolean;
+  onRequired: (id: Ti18nId) => void;
+  onSuccess: (message: string) => void;
+}
+
+const DNAAgency = (props: Props) => {
+  const { disabled, register } = props;
+
+  const infos = [
+    { title: '기관명', value: 'name' },
+    { title: '전화번호', value: 'patient_id' },
+  ];
+
+  return (
+    <Fragment>
+      <SectionTitle title="유전자 검사기관" />
+      <RowContainer xs={11.5} sx={{ margin: '20px 0px 30px 0px' }}>
+        {infos.map(({ title, value }) => (
+          <RowContent title={title} titleRatio={1.5} childrenRatio={10}>
+            <Form.MuiTextField
+              required={false}
+              disabled={disabled}
+              {...register(`${value}`)}
+            />
+          </RowContent>
+        ))}
+      </RowContainer>
+    </Fragment>
+  );
+};
+
+export default DNAAgency;

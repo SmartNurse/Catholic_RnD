@@ -26,7 +26,7 @@ import {
   WashOutlined,
   Diversity2Outlined,
 } from '@mui/icons-material';
-import { ReactComponent as ProPlus } from "../../../assets/proPlus.svg";
+import { ReactComponent as ProPlus } from '../../../assets/proPlus.svg';
 import Survey from '../Survey';
 import useSurvey from 'store/survey/useSurvey';
 import usePatient from 'store/patient/usePatient';
@@ -100,7 +100,7 @@ const MenuRecords = (props: Props) => {
       disabled: true,
       icon: <SentimentSatisfiedOutlined />,
       label: '환자평가/환자안전',
-      id: 'patient_evaluation'
+      id: 'patient_evaluation',
     },
     {
       label: '낙상위험 평가도구 I',
@@ -120,7 +120,7 @@ const MenuRecords = (props: Props) => {
       label: '욕창위험 평가도구 I',
       toggle: toggle.patient_evaluation,
     },
-    { 
+    {
       isPro: true,
       label: '욕창위험 평가도구 II',
       toggle: toggle.patient_evaluation,
@@ -162,7 +162,7 @@ const MenuRecords = (props: Props) => {
       disabled: true,
       isPro: true,
       label: '통증평가도구',
-      id: 'pain'
+      id: 'pain',
     },
     {
       isPro: true,
@@ -184,7 +184,7 @@ const MenuRecords = (props: Props) => {
       disabled: true,
       isPro: true,
       label: '정신건강 평가도구',
-      id: 'mental_health'
+      id: 'mental_health',
     },
     {
       isPro: true,
@@ -216,7 +216,7 @@ const MenuRecords = (props: Props) => {
       disabled: true,
       icon: <MasksOutlined />,
       label: '특수파트 기록지',
-      id: 'special'
+      id: 'special',
     },
     {
       isPro: true,
@@ -246,7 +246,6 @@ const MenuRecords = (props: Props) => {
     {
       label: 'NEDIS',
       toggle: toggle.special,
-
     },
     {
       isPro: true,
@@ -268,7 +267,7 @@ const MenuRecords = (props: Props) => {
       disabled: true,
       icon: <VerifiedUserOutlined />,
       label: '동의서',
-      id: 'agreement'
+      id: 'agreement',
     },
     {
       isPro: true,
@@ -282,8 +281,38 @@ const MenuRecords = (props: Props) => {
     },
     {
       isPro: true,
+      label: '대장내시경',
+      toggle: toggle.agreement,
+    },
+    {
+      isPro: true,
+      label: '상부내시경',
+      toggle: toggle.agreement,
+    },
+    {
+      isPro: true,
+      label: '비급여진료비동의서',
+      toggle: toggle.agreement,
+    },
+    {
+      isPro: true,
+      label: '진료기록 열람, 사본발급 동의서',
+      toggle: toggle.agreement,
+    },
+    {
+      isPro: true,
+      label: '사전연명의료의향서',
+      toggle: toggle.agreement,
+    },
+    {
+      isPro: true,
+      label: '유전자검사 동의서',
+      toggle: toggle.agreement,
+    },
+    {
+      isPro: true,
       icon: <BabyChangingStation />,
-      label: '영유아 건강검진 문진'
+      label: '영유아 건강검진 문진',
     },
   ];
 
@@ -291,19 +320,20 @@ const MenuRecords = (props: Props) => {
     if (!student_uuid) return onRequired('REQUIRED.STUDENT');
 
     if (label === '영유아 건강검진 문진') {
-      window.open("http://www.imomhospital.co.kr/page/wellbaby/interview?PHPSESSID=57edd94c10d035ad8b305d29981c98ed");
+      window.open(
+        'http://www.imomhospital.co.kr/page/wellbaby/interview?PHPSESSID=57edd94c10d035ad8b305d29981c98ed'
+      );
       return;
-    }
-    else if (label === 'NEDIS') {
-      window.open("https://portal.nemc.or.kr:444/member/login_page.do");
+    } else if (label === 'NEDIS') {
+      window.open('https://portal.nemc.or.kr:444/member/login_page.do');
       return;
-    }
-    else if (label === '환자안전보고학습시스템') {
-      window.open("https://statistics.kops.or.kr/biWorks/dashBoardMain.do");
+    } else if (label === '환자안전보고학습시스템') {
+      window.open('https://statistics.kops.or.kr/biWorks/dashBoardMain.do');
       return;
-    }
-    else if (label === '의약품이상사례보고시스템') {
-      window.open("https://www.drugsafe.or.kr/iwt/ds/ko/report/WhatIsKAERS.do;jsessionid=aOUQlS7Cufvit9aLo8fGQHfXD1KflOcDMmW19GIp0Tc3b5AdbDZ1TqaXK5W7lYAQ.webint_2_servlet_engine1");
+    } else if (label === '의약품이상사례보고시스템') {
+      window.open(
+        'https://www.drugsafe.or.kr/iwt/ds/ko/report/WhatIsKAERS.do;jsessionid=aOUQlS7Cufvit9aLo8fGQHfXD1KflOcDMmW19GIp0Tc3b5AdbDZ1TqaXK5W7lYAQ.webint_2_servlet_engine1'
+      );
       return;
     }
 
@@ -312,9 +342,9 @@ const MenuRecords = (props: Props) => {
   };
 
   const onClickDisabledItem = (sublabel: string | undefined) => {
-    let newToggle = {...toggle};
+    let newToggle = { ...toggle };
 
-    if (menuDrawerWidth !== 220) {  
+    if (menuDrawerWidth !== 220) {
       if (sublabel) newToggle[sublabel] = true;
       setToggle(newToggle);
       setMenuDrawerWidth(220);
@@ -323,7 +353,7 @@ const MenuRecords = (props: Props) => {
 
     if (sublabel) newToggle[sublabel] = !newToggle[sublabel];
     setToggle(newToggle);
-  }
+  };
 
   return (
     <Fragment>
@@ -331,7 +361,7 @@ const MenuRecords = (props: Props) => {
         const onClick = () => {
           if (disabled) onClickDisabledItem(id);
           else onClickListItem(label);
-        }
+        };
 
         const MoreIcon = () => {
           if (!disabled) return null;
@@ -345,41 +375,42 @@ const MenuRecords = (props: Props) => {
 
         return (
           <>
-            {menuDrawerWidth !== 220 ?
-              (icon ?
+            {menuDrawerWidth !== 220 ? (
+              icon ? (
                 <ListItem key={label} disablePadding>
                   <ListItemButton onClick={onClick}>
                     <ListItemIcon>{icon}</ListItemIcon>
                   </ListItemButton>
                 </ListItem>
-              :
-                null
-              )
-            :
-              (icon ?
-                <ListItem key={label} disablePadding ref={label === "특수파트 기록지" ? coachRef : null}>
-                  <ListItemButton onClick={onClick} >
-                    <ListItemIcon>{icon}</ListItemIcon>
-                    <ListItemText primary={label} />
-                    <ProIcon />
-                    <MoreIcon />
-                  </ListItemButton>
-                </ListItem>
-              :
-                (toggle ?
-                  <ListItem key={label} disablePadding>
-                    <ListItemButton className={isPro ? "isPro" : ""} onClick={onClick}>
-                      <ListItemIcon>{icon}</ListItemIcon>
-                      <ListItemText primary={label} />
-                      <ProIcon />
-                      <MoreIcon />
-                    </ListItemButton>
-                  </ListItem>
-                :
-                  <></>
-                )
-              )
-            }
+              ) : null
+            ) : icon ? (
+              <ListItem
+                key={label}
+                disablePadding
+                ref={label === '특수파트 기록지' ? coachRef : null}
+              >
+                <ListItemButton onClick={onClick}>
+                  <ListItemIcon>{icon}</ListItemIcon>
+                  <ListItemText primary={label} />
+                  <ProIcon />
+                  <MoreIcon />
+                </ListItemButton>
+              </ListItem>
+            ) : toggle ? (
+              <ListItem key={label} disablePadding>
+                <ListItemButton
+                  className={isPro ? 'isPro' : ''}
+                  onClick={onClick}
+                >
+                  <ListItemIcon>{icon}</ListItemIcon>
+                  <ListItemText primary={label} />
+                  <ProIcon />
+                  <MoreIcon />
+                </ListItemButton>
+              </ListItem>
+            ) : (
+              <></>
+            )}
           </>
         );
       })}

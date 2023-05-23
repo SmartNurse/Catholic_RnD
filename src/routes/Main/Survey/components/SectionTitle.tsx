@@ -11,14 +11,19 @@ const SectionTitle = ({ title, mb = -3 }: Props) => {
   return (
     <Grid item xs={12} sx={{ mb }}>
       <Typography
-        color={palette.mode === "dark" ? "black" : palette.text.primary}
+        color={palette.mode === 'dark' ? 'black' : palette.text.primary}
         fontSize={13}
         fontWeight="bold"
-        sx={{ p: 1, backgroundColor: palette.mode === "dark" ? "lightgrey" : '#F2F2F2', borderTop: 'solid 1px' }}
+        sx={{
+          p: 1,
+          backgroundColor: palette.mode === 'dark' ? 'lightgrey' : '#F2F2F2',
+          borderTop: 'solid 1px',
+        }}
       >
         {title}
       </Typography>
     </Grid>
-)};
+  );
+};
 
 export default SectionTitle;

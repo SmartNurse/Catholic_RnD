@@ -518,6 +518,15 @@ const locale = {
 
     //CoreNursingSkillVideo
     'REQUIRED.VIDIEO.FORMAT': '500MB가 넘는 파일은 업로드할 수 없습니다.',
+
+    // DNR
+    'DNR.DEATHRECORD.1': '열람 가능',
+    'DNR.DEATHRECORD.2': '열람 거부',
+    'DNR.DEATHRECORD.0': '기타',
+
+    'DNR.EXPLANATION.1': '서명 :       날짜',
+    'DNR.EXPLANATION.2': '녹화',
+    'DNR.EXPLANATION.3': '녹취',
   },
 };
 
