@@ -1,7 +1,7 @@
 import { Fragment } from 'react';
 import { Box, Grid, Typography, useTheme } from '@mui/material';
 
-import MuiTable from 'components/MuiTable';
+import MuiTable from './MuiTable';
 import { IFormValues, IFormWatch } from 'routes/Main/type';
 
 import SectionTitle from '../components/SectionTitle';
@@ -30,7 +30,6 @@ const FallTwoContents = (props: Props) => {
         key: 'contents.experience',
         options: [0, 25],
         i18nKey: 'FALLTWO',
-        width: '200px',
       }),
     },
     {
@@ -40,7 +39,6 @@ const FallTwoContents = (props: Props) => {
         key: 'contents.diagnosis',
         options: [0, 15],
         i18nKey: 'FALLTWO',
-        width: '200px',
       }),
     },
     {
@@ -50,7 +48,6 @@ const FallTwoContents = (props: Props) => {
         key: 'contents.walkingAids',
         options: [0, 15, 30],
         i18nKey: 'FALLTWO.WALKING.AIDS',
-        width: '200px',
       }),
     },
     {
@@ -60,7 +57,6 @@ const FallTwoContents = (props: Props) => {
         key: 'contents.intravenousLine',
         options: [0, 20],
         i18nKey: 'FALLTWO',
-        width: '200px',
       }),
     },
     {
@@ -70,7 +66,6 @@ const FallTwoContents = (props: Props) => {
         key: 'contents.gait',
         options: [0, 10, 20],
         i18nKey: 'FALLTWO.GAIT',
-        width: '200px',
       }),
     },
     {
@@ -80,7 +75,6 @@ const FallTwoContents = (props: Props) => {
         key: 'contents.consciousness',
         options: [0, 15],
         i18nKey: 'FALLTWO.CONSCIOUSNESS',
-        width: '200px',
       }),
     },
   ];
