@@ -103,12 +103,12 @@ const CNPSContents = (props: Props) => {
 
   return (
     <>
-      <Box sx={{ width: '1400px', margin: '60px auto' }}>
+      <Box sx={{ width: '1200px', margin: '60px auto' }}>
         <Table aria-label="simple table">
           <TableHead>
             <TableRow>
               <StyledTableCell
-                colSpan={2}
+                colSpan={2.5}
                 align="center"
                 sx={{ padding: '16px' }}
               >
@@ -134,13 +134,13 @@ const CNPSContents = (props: Props) => {
                 <TableRow>
                   <StyledTableCell
                     align="center"
-                    sx={{ padding: '16px', width: '62px' }}
+                    sx={{ padding: '16px', width: '60px' }}
                   >
                     {content.id}
                   </StyledTableCell>
                   <StyledTableCell
                     align="center"
-                    sx={{ padding: '16px', width: '200px' }}
+                    sx={{ padding: '16px', width: '180px' }}
                   >
                     {content.ko}
                   </StyledTableCell>
@@ -156,7 +156,7 @@ const CNPSContents = (props: Props) => {
                               : '',
                         }}
                       >
-                        <Box sx={{ minWidth: '200px', textAlign: 'center' }}>
+                        <Box sx={{ minWidth: '130px', textAlign: 'center' }}>
                           {i}점
                         </Box>
                       </TableRow>
@@ -174,7 +174,7 @@ const CNPSContents = (props: Props) => {
                               : '',
                         }}
                       >
-                        <Box sx={{ paddingLeft: '60px', minWidth: '850px' }}>
+                        <Box sx={{ paddingLeft: '60px', minWidth: '650px' }}>
                           {v}
                         </Box>
                       </TableRow>
@@ -197,7 +197,7 @@ const CNPSContents = (props: Props) => {
                                 : '',
                           }}
                         >
-                          <Box sx={{ width: '100px' }}>
+                          <Box sx={{ width: '180px' }}>
                             <Radio
                               disabled={disabled}
                               name={radioId[content.id - 1]}
