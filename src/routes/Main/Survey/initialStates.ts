@@ -556,6 +556,7 @@ export const initialAnesthesia = {
   update_at: '',
   operation_information: {
     operating_department: '',
+    operating_allergy: '',
     operating_date: '',
     operating_time: '',
     operation_name: '',
