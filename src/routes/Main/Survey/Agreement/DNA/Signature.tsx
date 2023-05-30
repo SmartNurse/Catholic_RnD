@@ -5,25 +5,6 @@ import RowContainer from '../../components/RowContainer';
 import RowContent from '../../components/RowContent';
 import SectionTitle from '../../components/SectionTitle';
 
-import {
-  Box,
-  Typography,
-  RadioGroup,
-  Radio,
-  Table,
-  TableBody,
-  TableHead,
-  TableRow,
-  useTheme,
-} from '@mui/material';
-
-import {
-  StyledTableCell,
-  StyledTableCellWithoutLeft,
-  StyledTableCellWithoutRight,
-  StyledTableCellWithoutLeftRight,
-} from 'routes/Main/style';
-
 interface Props extends IFormRegister {
   disabled?: boolean;
 }
@@ -31,194 +12,55 @@ interface Props extends IFormRegister {
 const Signature = (props: Props) => {
   const { disabled, register } = props;
 
+  const labels = [
+    { title: '날짜', variable: 'date' },
+    { title: '검사대상자 성명', variable: 'signature' },
+    { title: '검사대상자 서명', variable: 'personnel_signature' },
+    { title: '법정대리인 성명', variable: 'personnel_signature' },
+    { title: '법정대리인 서명', variable: 'personnel_signature' },
+    { title: '상담자 성명', variable: 'personnel_signature' },
+    { title: '상담자 성명', variable: 'personnel_signature' },
+  ];
+
   return (
     <>
-      <Box sx={{ width: '1400px', margin: '60px auto' }}>
-        <Table aria-label="simple table">
-          <TableRow>
-            <StyledTableCell
-              align="center"
-              sx={{ padding: '50px', width: '200px' }}
-            >
-              환자
-            </StyledTableCell>
-            <StyledTableCellWithoutLeftRight>
-              <div style={{ display: 'flex', margin: '20px 0 20px 0' }}>
-                <Box
-                  sx={{
-                    paddingTop: '10px',
-                    paddingLeft: '60px',
-                    minWidth: '200px',
-                  }}
-                >
-                  생년월일
-                </Box>
+      <RowContainer xs={12} sx={{ marginBottom: '50px' }}>
+        {labels.map(({ title, variable }, _) => (
+          <>
+            {Array(3)
+              .fill(0)
+              .map(() => (
+                <RowContent titleRatio={1} childrenRatio={2} />
+              ))}
+            {variable === 'date' ? (
+              <RowContent
+                key={variable}
+                title={title}
+                titleRatio={1}
+                childrenRatio={2}
+              >
                 <Form.MuiTextField
-                  required={false}
+                  type="date"
                   disabled={disabled}
-                  {...register('das')}
+                  {...register(`${variable}`)}
                 />
-                <Box
-                  sx={{
-                    paddingTop: '10px',
-                    paddingLeft: '60px',
-                    minWidth: '200px',
-                  }}
-                >
-                  전화번호
-                </Box>
+              </RowContent>
+            ) : (
+              <RowContent
+                key={variable}
+                title={title}
+                titleRatio={1}
+                childrenRatio={2}
+              >
                 <Form.MuiTextField
-                  required={false}
                   disabled={disabled}
-                  {...register('das')}
+                  {...register(`${variable}`)}
                 />
-              </div>
-              <div style={{ display: 'flex', marginBottom: '20px' }}>
-                <Box
-                  sx={{
-                    paddingTop: '10px',
-                    paddingLeft: '60px',
-                    minWidth: '200px',
-                  }}
-                >
-                  성명
-                </Box>
-                <Form.MuiTextField
-                  required={false}
-                  disabled={disabled}
-                  {...register('das')}
-                />
-                <Box
-                  sx={{
-                    paddingTop: '10px',
-                    paddingLeft: '60px',
-                    minWidth: '200px',
-                  }}
-                >
-                  서명
-                </Box>
-                <Form.MuiTextField
-                  required={false}
-                  disabled={disabled}
-                  {...register('das')}
-                />
-              </div>
-            </StyledTableCellWithoutLeftRight>
-          </TableRow>
-
-          <TableRow>
-            <StyledTableCell
-              align="center"
-              sx={{ padding: '50px', width: '200px' }}
-            >
-              보호자
-            </StyledTableCell>
-            <StyledTableCellWithoutLeftRight>
-              <div style={{ display: 'flex', margin: '20px 0 20px 0' }}>
-                <Box
-                  sx={{
-                    paddingTop: '10px',
-                    paddingLeft: '60px',
-                    minWidth: '200px',
-                  }}
-                >
-                  생년월일
-                </Box>
-                <Form.MuiTextField
-                  required={false}
-                  disabled={disabled}
-                  {...register('das')}
-                />
-                <Box
-                  sx={{
-                    paddingTop: '10px',
-                    paddingLeft: '60px',
-                    minWidth: '200px',
-                  }}
-                >
-                  전화번호
-                </Box>
-                <Form.MuiTextField
-                  required={false}
-                  disabled={disabled}
-                  {...register('das')}
-                />
-              </div>
-              <div style={{ display: 'flex', marginBottom: '20px' }}>
-                <Box
-                  sx={{
-                    paddingTop: '10px',
-                    paddingLeft: '60px',
-                    minWidth: '200px',
-                  }}
-                >
-                  성명
-                </Box>
-                <Form.MuiTextField
-                  required={false}
-                  disabled={disabled}
-                  {...register('das')}
-                />
-                <Box
-                  sx={{
-                    paddingTop: '10px',
-                    paddingLeft: '60px',
-                    minWidth: '200px',
-                  }}
-                >
-                  서명
-                </Box>
-                <Form.MuiTextField
-                  required={false}
-                  disabled={disabled}
-                  {...register('das')}
-                />
-              </div>
-            </StyledTableCellWithoutLeftRight>
-          </TableRow>
-
-          <TableRow>
-            <StyledTableCell
-              align="center"
-              sx={{ padding: '50px', width: '200px' }}
-            >
-              의사
-            </StyledTableCell>
-            <StyledTableCellWithoutLeftRight>
-              <div style={{ display: 'flex', margin: '20px 0 20px 0' }}>
-                <Box
-                  sx={{
-                    paddingTop: '10px',
-                    paddingLeft: '60px',
-                    minWidth: '200px',
-                  }}
-                >
-                  성명
-                </Box>
-                <Form.MuiTextField
-                  required={false}
-                  disabled={disabled}
-                  {...register('das')}
-                />
-                <Box
-                  sx={{
-                    paddingTop: '10px',
-                    paddingLeft: '60px',
-                    minWidth: '200px',
-                  }}
-                >
-                  서명
-                </Box>
-                <Form.MuiTextField
-                  required={false}
-                  disabled={disabled}
-                  {...register('das')}
-                />
-              </div>
-            </StyledTableCellWithoutLeftRight>
-          </TableRow>
-        </Table>
-      </Box>
+              </RowContent>
+            )}
+          </>
+        ))}
+      </RowContainer>
     </>
   );
 };
