@@ -35,7 +35,7 @@ const DeathRecord = (props: Props) => {
   return (
     <Fragment>
       <SectionTitle title="환자 사망전 알림허용 여부" />
-      <RowContainer xs={11.5} sx={{ margin: '40px 0px 30px 40px' }}>
+      <RowContainer xs={11.5} sx={{ margin: '40px 0px 30px 33px' }}>
         <Stack direction="row" spacing={1}>
           <Form.MuiRadioGroup
             i18nKey="DNR.DEATHRECORD"

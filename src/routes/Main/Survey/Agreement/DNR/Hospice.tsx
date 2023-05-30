@@ -17,7 +17,7 @@ const Hospice = (props: Props) => {
   return (
     <>
       <SectionTitle title="호스피스 이용" />
-      <Box sx={{ width: '98%', margin: '30px auto 24px auto' }}>
+      <Box sx={{ width: '98%', margin: '30px auto 24px 33px' }}>
         <RowContainer ratio={12} sx={{ mb: 'auto' }}>
           <RowContent
             title="호스피스 이용 의향"

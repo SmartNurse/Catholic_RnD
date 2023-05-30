@@ -42,7 +42,7 @@ const EducationList = (props: Props) => {
   return (
     <>
       <SectionTitle title="사전연명의료의향서 등록기관의 설명사항" />
-      <Box sx={{ width: '98%', margin: '48px auto 24px auto' }}>
+      <Box sx={{ width: '98%', margin: '48px auto 24px 33px' }}>
         <Grid container xs={12}>
           {checks.map((v, i) => (
             <Grid item xs={12}>
