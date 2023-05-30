@@ -42,7 +42,7 @@ const InspectionItems = (props: Props) => {
   return (
     <Fragment>
       <SectionTitle title="환자 본인" />
-      <RowContainer xs={11.5} sx={{ margin: '20px 0px 30px 0px' }}>
+      <RowContainer xs={12} sx={{ margin: '20px 0px 30px 0px' }}>
         {infos.map(({ title, value }) => (
           <RowContent title={title} titleRatio={1.5} childrenRatio={10}>
             <Form.MuiTextField
