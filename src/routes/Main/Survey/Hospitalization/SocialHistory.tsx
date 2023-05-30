@@ -19,7 +19,7 @@ const SocialHistory = (props: Props) => {
       <SectionTitle title="사회력" mb={0} />
 
       <RowContainer ratio={12}>
-        <RowContent title="결혼여부">
+        <RowContent title="결혼여부" titleRatio={2.65} childrenRatio={8.2}>
           <Form.MuiRadioGroup
             i18nKey="HOSPITALIZATION.MARRY"
             values={[1, 2]}
@@ -28,21 +28,25 @@ const SocialHistory = (props: Props) => {
             onChange={v => setValue('social_history.marry', v)}
           />
         </RowContent>
-        <RowContent title="언어">
+        <RowContent title="언어" titleRatio={2.65} childrenRatio={8.2}>
           <Form.MuiSelect
             disabled={disabled}
             options={['한국어', '영어', '일본어', '중국어', '기타 언어']}
             {...register('social_history.language')}
           />
         </RowContent>
-        <RowContent title="직업">
+        <RowContent title="직업" titleRatio={2.65} childrenRatio={8.2}>
           <Form.MuiTextField
             disabled={disabled}
             placeholder="직접 입력"
             {...register('social_history.job')}
           />
         </RowContent>
-        <RowContent title="종교적 요구사항">
+        <RowContent
+          title="종교적 요구사항"
+          titleRatio={2.65}
+          childrenRatio={8.2}
+        >
           <Stack direction="row" spacing={1}>
             <Form.MuiRadioGroup
               i18nKey="EXIST"

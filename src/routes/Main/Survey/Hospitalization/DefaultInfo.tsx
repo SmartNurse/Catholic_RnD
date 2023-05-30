@@ -8,7 +8,7 @@ import Form from 'components/Form';
 import { IFormRegister, IFormValues } from 'routes/Main/type';
 
 import RowContainer from '../components/RowContainer';
-import RowContent from '../components/RowContent';
+import RowContent from './RowContentDefaultInfo';
 import SectionTitle from '../components/SectionTitle';
 
 interface Props extends IFormRegister, IFormValues {

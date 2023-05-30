@@ -46,7 +46,7 @@ const Habit = (props: Props) => {
             <Form.MuiTextField
               required={false}
               disabled={disabled}
-              placeholder="기타"
+              placeholder="직접 입력"
               sx={{ maxWidth: '140px' }}
               {...register('habit.feces.input')}
             />
@@ -73,7 +73,7 @@ const Habit = (props: Props) => {
             <Form.MuiTextField
               required={false}
               disabled={disabled}
-              placeholder="기타"
+              placeholder="직접 입력"
               sx={{ maxWidth: '140px' }}
               {...register('habit.urine.input')}
             />

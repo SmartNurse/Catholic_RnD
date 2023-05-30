@@ -6,7 +6,7 @@ import { IFormRegister, IFormValues } from 'routes/Main/type';
 import MuiRadioGroupSub from './MuiRadioGroupSub';
 
 import RowContainer from '../components/RowContainer';
-import RowContent from '../components/RowContent';
+import RowContent from './RowContentSub';
 import SectionTitle from '../components/SectionTitle';
 
 interface Props extends IFormRegister, IFormValues {
@@ -23,13 +23,13 @@ const OutHospitalPlan = (props: Props) => {
       <RowContainer xs={12}>
         <RowContent title="일상생활유지정도">
           <Stack direction="row" spacing={1}>
-          <MuiRadioGroupSub
-            i18nKey="HOSPITALIZATION.LIFE"
-            values={[1, 2, 3]}
-            disabled={disabled}
-            defaultValue={getValues('out_hospital_plan.life')}
-            onChange={v => setValue('out_hospital_plan.life', v)}
-            width="125px"
+            <MuiRadioGroupSub
+              i18nKey="HOSPITALIZATION.LIFE"
+              values={[1, 2, 3]}
+              disabled={disabled}
+              defaultValue={getValues('out_hospital_plan.life')}
+              onChange={v => setValue('out_hospital_plan.life', v)}
+              width="125px"
             />
           </Stack>
         </RowContent>
@@ -49,7 +49,7 @@ const OutHospitalPlan = (props: Props) => {
               required={false}
               disabled={disabled}
               placeholder="직접 입력"
-              sx={{ maxWidth:"150px" }}
+              sx={{ maxWidth: '150px' }}
               {...register('out_hospital_plan.destination.input')}
             />
           </Stack>
@@ -69,7 +69,7 @@ const OutHospitalPlan = (props: Props) => {
               required={false}
               disabled={disabled}
               placeholder="직접 입력"
-              sx={{ maxWidth:"150px" }}
+              sx={{ maxWidth: '150px' }}
               {...register('out_hospital_plan.guardian.input')}
             />
           </Stack>

@@ -8,8 +8,8 @@ interface Props {
   childrenRatio?: GridSize;
 }
 
-const RowContentSub = (props: Props) => {
-  const { title, titleRatio = 1.35, children, childrenRatio = 10.65 } = props;
+const RowContent = (props: Props) => {
+  const { title, titleRatio = 2.65, children, childrenRatio = 9.35 } = props;
 
   return (
     <Fragment>
@@ -30,4 +30,4 @@ const RowContentSub = (props: Props) => {
   );
 };
 
-export default RowContentSub;
+export default RowContent;

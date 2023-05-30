@@ -2,7 +2,7 @@ import Form from 'components/Form';
 import { IFormValues } from 'routes/Main/type';
 
 import RowContainer from '../components/RowContainer';
-import RowContent from '../components/RowContent';
+import RowContent from './RowContentSub';
 import SectionTitle from '../components/SectionTitle';
 
 interface Props extends IFormValues {
@@ -17,7 +17,7 @@ const FunctionalEvaluation = (props: Props) => {
       <SectionTitle title="기능평가" mb={0} />
 
       <RowContainer ratio={12}>
-        <RowContent title="스스로 앉기" titleRatio={4} childrenRatio={8}>
+        <RowContent title="스스로 앉기" titleRatio={2.65} childrenRatio={8.2}>
           <Form.MuiRadioGroup
             i18nKey="HOSPITALIZATION.FUNCTIONAL.EVALUATION"
             values={[1, 2, 3]}
@@ -29,8 +29,8 @@ const FunctionalEvaluation = (props: Props) => {
         </RowContent>
         <RowContent
           title="앉은 상태에서 혼자 일어서기"
-          titleRatio={4}
-          childrenRatio={8}
+          titleRatio={2.65}
+          childrenRatio={8.2}
         >
           <Form.MuiRadioGroup
             i18nKey="HOSPITALIZATION.FUNCTIONAL.EVALUATION"
@@ -43,8 +43,8 @@ const FunctionalEvaluation = (props: Props) => {
         </RowContent>
         <RowContent
           title="침대에서 휠체어로 이동하기"
-          titleRatio={4}
-          childrenRatio={8}
+          titleRatio={2.65}
+          childrenRatio={8.2}
         >
           <Form.MuiRadioGroup
             i18nKey="HOSPITALIZATION.FUNCTIONAL.EVALUATION"
@@ -55,7 +55,7 @@ const FunctionalEvaluation = (props: Props) => {
             width="125px"
           />
         </RowContent>
-        <RowContent title="독립보행" titleRatio={4} childrenRatio={8}>
+        <RowContent title="독립보행" titleRatio={2.65} childrenRatio={8.2}>
           <Form.MuiRadioGroup
             i18nKey="HOSPITALIZATION.FUNCTIONAL.EVALUATION"
             values={[1, 2, 3]}

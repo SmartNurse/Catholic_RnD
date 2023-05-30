@@ -17,7 +17,11 @@ const EconomyHistory = (props: Props) => {
       <SectionTitle title="경제력" />
 
       <RowContainer ratio={12} sx={{ mb: 'auto', marginTop: '10px' }}>
-        <RowContent title="사회사업팀 상담">
+        <RowContent
+          title="사회사업팀 상담"
+          titleRatio={2.65}
+          childrenRatio={8.2}
+        >
           <Form.MuiRadioGroup
             i18nKey="NEED"
             values={[1, 2]}
@@ -26,7 +30,7 @@ const EconomyHistory = (props: Props) => {
             onChange={v => setValue('economy_history.counseling', v)}
           />
         </RowContent>
-        <RowContent title="정서상태">
+        <RowContent title="정서상태" titleRatio={2.65} childrenRatio={8.2}>
           <Form.MuiCheckboxGroup
             i18nNullKey="ETC"
             i18nKey="HOSPITALIZATION.ECONOMY.MIND"

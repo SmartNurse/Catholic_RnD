@@ -5,7 +5,7 @@ import Form from 'components/Form';
 import { IFormRegister, IFormValues } from 'routes/Main/type';
 
 import RowContainer from '../components/RowContainer';
-import RowContent from '../components/RowContent';
+import RowContent from './RowContentDefaultInfo';
 import SectionTitle from '../components/SectionTitle';
 
 interface Props extends IFormRegister, IFormValues {
@@ -39,22 +39,22 @@ const DiseaseHistory = (props: Props) => {
             />
           </Stack>
           <Stack direction="row" spacing={1}>
-          <Form.MuiCheckboxGroup
-            i18nNullKey="ETC"
-            disabled={disabled}
-            i18nKey="HOSPITALIZATION.DISEASE.HISTORY"
-            values={[1, 2, 3, 4, 5, 0]}
-            defaultValue={getValues('disease_history.history.checked')}
-            onChange={v => setValue('disease_history.history.checked', v)}
-          />
-          <Form.MuiTextField
-            required={false}
-            disabled={disabled}
-            placeholder="직접 입력"
-            sx={{width:'150px'}}
-            {...register('disease_history.history.input')}
+            <Form.MuiCheckboxGroup
+              i18nNullKey="ETC"
+              disabled={disabled}
+              i18nKey="HOSPITALIZATION.DISEASE.HISTORY"
+              values={[1, 2, 3, 4, 5, 0]}
+              defaultValue={getValues('disease_history.history.checked')}
+              onChange={v => setValue('disease_history.history.checked', v)}
             />
-            </Stack>
+            <Form.MuiTextField
+              required={false}
+              disabled={disabled}
+              placeholder="직접 입력"
+              sx={{ width: '150px' }}
+              {...register('disease_history.history.input')}
+            />
+          </Stack>
         </RowContent>
         <RowContent title="입원/수술력">
           <Stack direction="row" spacing={1}>
@@ -72,7 +72,7 @@ const DiseaseHistory = (props: Props) => {
             <Form.MuiTextField
               required={false}
               disabled={disabled}
-              sx={{width:'365px'}}
+              sx={{ width: '365px' }}
               placeholder="ex. 2022.01-ㅇㅇ대학교병원 충수절제술"
               {...register('disease_history.operation_history.input')}
             />
@@ -92,7 +92,7 @@ const DiseaseHistory = (props: Props) => {
             <Form.MuiTextField
               required={false}
               disabled={disabled}
-              sx={{width:'365px'}}
+              sx={{ width: '365px' }}
               placeholder="직접 입력"
               {...register('disease_history.latest_medicine.input')}
             />

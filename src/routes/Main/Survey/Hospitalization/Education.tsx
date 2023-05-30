@@ -18,7 +18,7 @@ const Education = (props: Props) => {
       <SectionTitle title="교육" />
 
       <RowContainer ratio={12} sx={{ mt: 'auto' }}>
-        <RowContent title="교육방식">
+        <RowContent title="교육방식" titleRatio={2.65} childrenRatio={8.2}>
           <Form.MuiRadioGroup
             i18nKey="HOSPITALIZATION.EDUCATION.WAY"
             values={[1, 2, 3, 4]}
@@ -27,7 +27,7 @@ const Education = (props: Props) => {
             onChange={v => setValue('education.education_way', v)}
           />
         </RowContent>
-        <RowContent title="교육내용">
+        <RowContent title="교육내용" titleRatio={2.65} childrenRatio={8.2}>
           <Stack direction="row" spacing={1}>
             <Form.MuiCheckboxGroup
               i18nNullKey="ETC"

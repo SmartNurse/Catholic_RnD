@@ -6,7 +6,7 @@ import CheckboxGroup from './CheckboxGroup';
 import { IFormRegister, IFormValues } from 'routes/Main/type';
 
 import RowContainer from '../components/RowContainer';
-import RowContent from '../components/RowContent';
+import RowContent from './RowContentSub';
 import SectionTitle from '../components/SectionTitle';
 
 interface Props extends IFormRegister, IFormValues {
@@ -20,7 +20,7 @@ const BodyStatus = (props: Props) => {
     <Fragment>
       <SectionTitle title="신체사정" />
 
-      <RowContainer  xs={12}>
+      <RowContainer xs={12}>
         <RowContent title="순환기계">
           <Stack direction="row" spacing={3}>
             <Form.MuiRadioGroup
@@ -42,35 +42,34 @@ const BodyStatus = (props: Props) => {
               required={false}
               disabled={disabled}
               placeholder="직접 입력"
-              sx={{width:"120px"}}
+              sx={{ width: '120px' }}
               {...register('body_status.cycle.input')}
-              />
-            </Stack>
+            />
+          </Stack>
         </RowContent>
         <RowContent title="호흡기계">
           <Stack direction="row" spacing={3}>
-          <Form.MuiRadioGroup
-            i18nKey="EXIST"
-            values={[1, 2]}
-            disabled={disabled}
-            defaultValue={getValues('body_status.breath.value')}
-            onChange={v => setValue('body_status.breath.value', v)}
-          />
-          <CheckboxGroup
-            i18nNullKey="ETC"
-            i18nKey="HOSPITALIZATION.BODY.BREATH"
-            values={[1, 2, 3, 4, 0]}
-            disabled={disabled}
-            defaultValue={getValues('body_status.breath.checked')}
-            onChange={v => setValue('body_status.breath.checked', v)}
-          />
-          <Form.MuiTextField
-            required={false}
-            disabled={disabled}
-            placeholder="직접 입력"
-            sx={{width:"120px"}}
-            
-            {...register('body_status.breath.input')}
+            <Form.MuiRadioGroup
+              i18nKey="EXIST"
+              values={[1, 2]}
+              disabled={disabled}
+              defaultValue={getValues('body_status.breath.value')}
+              onChange={v => setValue('body_status.breath.value', v)}
+            />
+            <CheckboxGroup
+              i18nNullKey="ETC"
+              i18nKey="HOSPITALIZATION.BODY.BREATH"
+              values={[1, 2, 3, 4, 0]}
+              disabled={disabled}
+              defaultValue={getValues('body_status.breath.checked')}
+              onChange={v => setValue('body_status.breath.checked', v)}
+            />
+            <Form.MuiTextField
+              required={false}
+              disabled={disabled}
+              placeholder="직접 입력"
+              sx={{ width: '120px' }}
+              {...register('body_status.breath.input')}
             />
           </Stack>
         </RowContent>
@@ -84,19 +83,19 @@ const BodyStatus = (props: Props) => {
               onChange={v => setValue('body_status.camouflage.value', v)}
             />
             <CheckboxGroup
-                i18nNullKey="ETC"
-                disabled={disabled}
-                i18nKey="HOSPITALIZATION.BODY.CAMOUFLAGE"
-                values={[1, 2, 3, 4, 0]}
-                defaultValue={getValues('body_status.camouflage.checked')}
-                onChange={v => setValue('body_status.camouflage.checked', v)}
-              />
-              <Form.MuiTextField
-                required={false}
-                disabled={disabled}
-                sx={{width:"120px"}}
-                placeholder="직접 입력"
-                {...register('body_status.camouflage.input')}
+              i18nNullKey="ETC"
+              disabled={disabled}
+              i18nKey="HOSPITALIZATION.BODY.CAMOUFLAGE"
+              values={[1, 2, 3, 4, 0]}
+              defaultValue={getValues('body_status.camouflage.checked')}
+              onChange={v => setValue('body_status.camouflage.checked', v)}
+            />
+            <Form.MuiTextField
+              required={false}
+              disabled={disabled}
+              sx={{ width: '120px' }}
+              placeholder="직접 입력"
+              {...register('body_status.camouflage.input')}
             />
           </Stack>
         </RowContent>
@@ -121,7 +120,7 @@ const BodyStatus = (props: Props) => {
               required={false}
               disabled={disabled}
               placeholder="직접 입력"
-              sx={{width:"120px"}}
+              sx={{ width: '120px' }}
               {...register('body_status.nerve.input')}
             />
           </Stack>
@@ -147,9 +146,9 @@ const BodyStatus = (props: Props) => {
               required={false}
               disabled={disabled}
               placeholder="직접 입력"
-              sx={{width:"120px"}}
+              sx={{ width: '120px' }}
               {...register('body_status.skin.input')}
-              />
+            />
           </Stack>
         </RowContent>
       </RowContainer>
