@@ -111,14 +111,14 @@ const PatientInfo = () => {
           <PatientInfoItem title="체중" content={weight.toLowerCase()} />
           <PatientInfoItem title="HOD" content={admin_hod} />
           <PatientInfoItem title="POD" content={admin_pod} />
-         </Stack>
+        </Stack>
         <Divider orientation="horizontal" />
         <Stack spacing={1.25}>
           <PatientInfoItem title="진료과" content={department} />
           <PatientInfoItem title="병동" content={ward} />
           <PatientInfoItem title="병실" content={room} />
           <PatientInfoItem title="담당간호사" content={userName} />
-          <PatientInfoItem title="담당의사" content={main_doctor} />
+          <PatientInfoItem title="담당교수" content={main_doctor} />
         </Stack>
         <Divider orientation="horizontal" />
         <Stack spacing={1.25}>
