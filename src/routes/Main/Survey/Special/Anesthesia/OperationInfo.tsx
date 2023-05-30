@@ -156,7 +156,7 @@ const OperationInfo = (props: Props) => {
             {...register('operation_information.operating_allergy')}
             required={false}
             disabled={disabled}
-            sx={{ width: '220px' }}
+            sx={{ width: '37%' }}
           />
           <FormControlLabel
             disabled={disabled}
