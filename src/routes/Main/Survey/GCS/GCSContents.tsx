@@ -104,14 +104,18 @@ const GCSContents = (props: Props) => {
           <TableHead>
             <TableRow>
               <StyledTableCellTwo
-                colSpan={2}
-                sx={{ padding: '16px', paddingLeft: '120px' }}
+                sx={{
+                  padding: '16px',
+                  textAlign: 'center',
+                }}
               >
                 반응범주
               </StyledTableCellTwo>
               <StyledTableCellWithoutLeftTwo
-                colSpan={2}
-                sx={{ padding: '16px', paddingLeft: '120px' }}
+                sx={{ width: '50px' }}
+              ></StyledTableCellWithoutLeftTwo>
+              <StyledTableCellWithoutLeftTwo
+                sx={{ padding: '16px', paddingLeft: '103px' }}
               >
                 반응
               </StyledTableCellWithoutLeftTwo>
