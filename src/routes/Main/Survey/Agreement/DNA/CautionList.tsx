@@ -20,7 +20,7 @@ const CautionList = (props: Props) => {
   return (
     <>
       <SectionTitle title="유의사항" />
-      <Box sx={{ width: '98%', margin: '48px auto 50px auto' }}>
+      <Box sx={{ width: '98%', margin: '48px auto 50px 33px' }}>
         {contents.map((v, i) => (
           <Typography
             sx={{
