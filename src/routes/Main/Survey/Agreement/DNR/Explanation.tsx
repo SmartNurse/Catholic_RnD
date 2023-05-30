@@ -78,48 +78,6 @@ const Explanation = (props: Props) => {
           </RowContent>
         </Stack>
       </RowContainer>
-      <Typography sx={{ margin: '40px 0 0 40px', fontSize: '14px' }}>
-        법정대리인 서명 (환자가 미성년자인 경우에만 해당됩니다.)
-      </Typography>
-      <RowContainer xs={12} sx={{ margin: '20px 0px 30px 40px' }}>
-        <Stack direction="row" spacing={1}>
-          <Form.MuiRadioGroup
-            i18nKey="DNR.EXPLANATION"
-            i18nNullKey="ETC"
-            values={[1]}
-            whiteSpace="pre"
-            disabled={disabled}
-            direction="column"
-            defaultValue={getValues('default_info.destination.value')}
-            onChange={v => setValue('default_info.destination.value', v)}
-            width={'150px'}
-          />
-
-          <Form.MuiTextField
-            type="date"
-            required={false}
-            disabled={disabled}
-            sx={{ width: '850px' }}
-            {...register('default_info.destination.input')}
-          />
-
-          <RowContent title={'성명'}>
-            <Form.MuiTextField
-              required={false}
-              disabled={disabled}
-              {...register('default_info.destination.input')}
-            />
-          </RowContent>
-
-          <RowContent title={'서명'}>
-            <Form.MuiTextField
-              required={false}
-              disabled={disabled}
-              {...register('default_info.destination.input')}
-            />
-          </RowContent>
-        </Stack>
-      </RowContainer>
     </Fragment>
   );
 };
