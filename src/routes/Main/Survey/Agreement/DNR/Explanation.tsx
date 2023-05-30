@@ -39,7 +39,7 @@ const Explanation = (props: Props) => {
         위의 사항을 설명받고 이해했음을 확인하여, 임종과정에 있다는 의학적
         판단을 받은 경우 연명의료를 시행하지 않거나 중단하는 것에 동의합니다.
       </Typography>
-      <RowContainer xs={12} sx={{ margin: '20px 0px 30px 32px' }}>
+      <RowContainer xs={10} sx={{ margin: '20px 0px 30px 32px' }}>
         <Stack direction="row" spacing={1}>
           <Form.MuiRadioGroup
             i18nKey="DNR.EXPLANATION"
@@ -61,7 +61,7 @@ const Explanation = (props: Props) => {
             {...register('default_info.destination.input')}
           />
 
-          <RowContent title={'성명'}>
+          <RowContent title={'성명'} titleRatio={1} childrenRatio={8}>
             <Form.MuiTextField
               required={false}
               disabled={disabled}
@@ -69,7 +69,7 @@ const Explanation = (props: Props) => {
             />
           </RowContent>
 
-          <RowContent title={'서명'}>
+          <RowContent title={'서명'} titleRatio={1} childrenRatio={8}>
             <Form.MuiTextField
               required={false}
               disabled={disabled}
