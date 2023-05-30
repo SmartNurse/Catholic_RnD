@@ -577,15 +577,15 @@ const CISTContents = (props: Props) => {
             (content: { id: number; ko: string; desc: string[] }, i) => {
               if (content.ko === '시간') {
                 return (
-                  <TableRow sx={{ display: 'block', marginLeft: '20px' }}>
+                  <TableRow sx={{ display: 'block', marginLeft: '1.3889vw' }}>
                     <div style={{ display: 'flex' }}>
                       <div
                         style={{
-                          marginLeft: '20px',
+                          marginLeft: '1.3889vw',
                           display: 'flex',
                           paddingTop: '16px',
                           paddingBottom: '10px',
-                          width: '170px',
+                          width: '6vw',
                           whiteSpace: 'pre-wrap',
                         }}
                       >
@@ -596,14 +596,14 @@ const CISTContents = (props: Props) => {
                       <div
                         style={{
                           paddingTop: '16px',
-                          marginLeft: '20px',
-                          width: '300px',
+                          marginLeft: '1.3889vw',
+                          width: '20vw',
                         }}
                       >
                         <Typography
                           sx={{
                             fontSize: '14px',
-                            marginLeft: '80px',
+                            marginLeft: '3.4vw',
                           }}
                         >
                           오늘 날짜를 말씀해주세요.
@@ -614,14 +614,14 @@ const CISTContents = (props: Props) => {
                 );
               } else {
                 return (
-                  <TableRow sx={{ display: 'block', marginLeft: '20px' }}>
+                  <TableRow sx={{ display: 'block', marginLeft: '1.3889vw' }}>
                     <StyledTableCellTwo
                       align="left"
                       sx={{
-                        paddingLeft: '20px',
+                        paddingLeft: '1.388vw',
                         paddingTop: '16px',
                         paddingBottom: '16px',
-                        width: '190px',
+                        width: '7vw',
                         whiteSpace: 'pre-wrap',
                       }}
                     >
@@ -631,7 +631,7 @@ const CISTContents = (props: Props) => {
                       align="center"
                       sx={{
                         padding: '16px',
-                        width: '80px',
+                        width: '4.15vw',
                         whiteSpace: 'pre-wrap',
                       }}
                     ></StyledTableCellTwo>
@@ -644,7 +644,7 @@ const CISTContents = (props: Props) => {
                               lineHeight: '44px',
                             }}
                           >
-                            <Box sx={{ paddingLeft: '16px', width: '940px' }}>
+                            <Box sx={{ paddingLeft: '1vw', width: '53.4vw' }}>
                               {v}
                             </Box>
                           </TableRow>
@@ -666,9 +666,9 @@ const CISTContents = (props: Props) => {
                               textAlign: 'center',
                             }}
                           >
-                            <Box sx={{ width: '200px' }}>
+                            <Box sx={{ width: '11vw' }}>
                               <FormControlLabel
-                                sx={{ paddingRight: '50px' }}
+                                sx={{ paddingRight: '2.7vw' }}
                                 label="0"
                                 control={
                                   <Radio
@@ -705,14 +705,14 @@ const CISTContents = (props: Props) => {
 
       <SectionTitle title="기억력" />
       <Grid item xs={12}>
-        <div style={{ marginLeft: '40px' }}>
+        <div style={{ marginLeft: '2.8vw' }}>
           <TableRow>
             <div style={{ display: 'flex' }}>
               <div
                 style={{
                   display: 'flex',
                   paddingTop: '16px',
-                  width: '170px',
+                  width: '10.3vw',
                   whiteSpace: 'pre-wrap',
                 }}
               >
@@ -729,14 +729,14 @@ const CISTContents = (props: Props) => {
             </div>
           </TableRow>
         </div>
-        <Box sx={{ width: '30%', marginLeft: '190px', marginTop: '20px' }}>
+        <Box sx={{ width: '30%', marginLeft: '10.8vw', marginTop: '20px' }}>
           <Typography
             sx={{
               fontWeight: '500',
               fontSize: '14px',
               lineHeight: '24px',
               marginBottom: '8px',
-              marginLeft: '24px',
+              marginLeft: '2.7vw',
             }}
           >
             &lt; 1차 시도 &gt;
@@ -746,12 +746,12 @@ const CISTContents = (props: Props) => {
               height: '230px',
               display: 'flex',
               flexDirection: 'column',
-              width: '800px',
+              width: '53vw',
             }}
           >
             {기억력1차.map((v, i) => (
               <Form.MuiCheckbox
-                sx={{ marginLeft: '30px' }}
+                sx={{ marginLeft: '3vw' }}
                 label={v.label}
                 disabled={disabled}
                 defaultValue={Boolean(getValues(v.key)) ? [v.label] : []}
@@ -765,7 +765,7 @@ const CISTContents = (props: Props) => {
                 fontSize: '14px',
                 marginTop: '20px',
                 marginBottom: '20px',
-                marginLeft: '30px',
+                marginLeft: '2.5vw',
               }}
             >
               잘 하셨습니다. 제가 다시 한 번 불러드리겠습니다. 다시 여쭈어
@@ -773,14 +773,14 @@ const CISTContents = (props: Props) => {
             </Typography>
           </Box>
         </Box>
-        <Box sx={{ width: '30%', marginLeft: '190px', marginTop: '20px' }}>
+        <Box sx={{ width: '30%', marginLeft: '10.8vw', marginTop: '20px' }}>
           <Typography
             sx={{
               fontWeight: '500',
               fontSize: '14px',
               lineHeight: '24px',
               marginBottom: '8px',
-              marginLeft: '24px',
+              marginLeft: '2.6vw',
             }}
           >
             &lt; 2차 시도 &gt;
@@ -790,12 +790,12 @@ const CISTContents = (props: Props) => {
               height: '230px',
               display: 'flex',
               flexDirection: 'column',
-              width: '800px',
+              width: '53vw',
             }}
           >
             {기억력2차.map((v, i) => (
               <Form.MuiCheckbox
-                sx={{ marginLeft: '30px' }}
+                sx={{ marginLeft: '3vw' }}
                 label={v.label}
                 disabled={disabled}
                 defaultValue={Boolean(getValues(v.key)) ? [v.label] : []}
@@ -808,7 +808,7 @@ const CISTContents = (props: Props) => {
               sx={{
                 fontSize: '14px',
                 marginBottom: '20px',
-                marginLeft: '30px',
+                marginLeft: '2.5vw',
               }}
             >
               제가 이 문장을 나중에 여쭈어보겠습니다. 잘 기억하세요.
@@ -835,14 +835,14 @@ const CISTContents = (props: Props) => {
             (content: { id: number; ko: string; desc: string[] }, i) => {
               if (content.ko === '숫자 바로 따라 말하기') {
                 return (
-                  <TableRow sx={{ display: 'block', marginLeft: '20px' }}>
+                  <TableRow sx={{ display: 'block', marginLeft: '2.8vw' }}>
                     <div style={{ display: 'flex' }}>
                       <div
                         style={{
                           display: 'flex',
                           paddingTop: '16px',
                           paddingBottom: '16px',
-                          width: '130px',
+                          width: '9vw',
                           whiteSpace: 'pre-wrap',
                         }}
                       >
@@ -853,8 +853,8 @@ const CISTContents = (props: Props) => {
                       <div
                         style={{
                           paddingTop: '16px',
-                          marginLeft: '20px',
-                          width: '700px',
+                          marginLeft: '1.3889vw',
+                          width: '20vw',
                         }}
                       >
                         <Typography sx={{ fontSize: '14px' }}>
@@ -869,14 +869,14 @@ const CISTContents = (props: Props) => {
                 );
               } else if (content.ko === '거꾸로 말하기') {
                 return (
-                  <TableRow sx={{ display: 'block', marginLeft: '20px' }}>
+                  <TableRow sx={{ display: 'block', marginLeft: '2.8vw' }}>
                     <div style={{ display: 'flex' }}>
                       <div
                         style={{
                           display: 'flex',
                           paddingTop: '16px',
                           paddingBottom: '16px',
-                          width: '130px',
+                          width: '9vw',
                           whiteSpace: 'pre-wrap',
                         }}
                       >
@@ -887,8 +887,8 @@ const CISTContents = (props: Props) => {
                       <div
                         style={{
                           paddingTop: '16px',
-                          marginLeft: '20px',
-                          width: '700px',
+                          marginLeft: '1.3889vw',
+                          width: '47vw',
                         }}
                       >
                         <Typography sx={{ fontSize: '14px' }}>
@@ -905,13 +905,13 @@ const CISTContents = (props: Props) => {
                 );
               } else {
                 return (
-                  <TableRow sx={{ display: 'block', marginLeft: '20px' }}>
+                  <TableRow sx={{ display: 'block', marginLeft: '4vw' }}>
                     <StyledTableCellTwo
                       align="left"
                       sx={{
                         paddingTop: '16px',
                         paddingBottom: '16px',
-                        width: '150px',
+                        width: '9vw',
                         whiteSpace: 'pre-wrap',
                       }}
                     >
@@ -928,7 +928,7 @@ const CISTContents = (props: Props) => {
                           >
                             <Box
                               sx={{
-                                width: '1064px',
+                                width: '53.2vw',
                               }}
                             >
                               {v}
@@ -952,9 +952,9 @@ const CISTContents = (props: Props) => {
                               textAlign: 'center',
                             }}
                           >
-                            <Box sx={{ width: '200px' }}>
+                            <Box sx={{ width: '11vw' }}>
                               <FormControlLabel
-                                sx={{ paddingRight: '50px' }}
+                                sx={{ paddingRight: '2.7vw' }}
                                 label="0"
                                 control={
                                   <Radio
@@ -996,14 +996,14 @@ const CISTContents = (props: Props) => {
             (content: { id: number; ko: string; desc: string[] }, i) => {
               if (content.ko === '도형모사') {
                 return (
-                  <TableRow sx={{ display: 'block', marginLeft: '20px' }}>
+                  <TableRow sx={{ display: 'block', marginLeft: '3vw' }}>
                     <div style={{ display: 'flex' }}>
                       <div
                         style={{
                           display: 'flex',
                           paddingTop: '16px',
                           paddingBottom: '16px',
-                          width: '130px',
+                          width: '9vw',
                           whiteSpace: 'pre-wrap',
                         }}
                       >
@@ -1014,8 +1014,8 @@ const CISTContents = (props: Props) => {
                       <div
                         style={{
                           paddingTop: '16px',
-                          marginLeft: '20px',
-                          width: '700px',
+                          marginLeft: '1.3889vw',
+                          width: '48vw',
                         }}
                       >
                         <Typography sx={{ fontSize: '14px' }}>
@@ -1034,14 +1034,14 @@ const CISTContents = (props: Props) => {
               } else if (content.ko === '제목') {
                 return (
                   <>
-                    <TableRow sx={{ display: 'block', marginLeft: '20px' }}>
+                    <TableRow sx={{ display: 'block', marginLeft: '1.3889vw' }}>
                       <div style={{ display: 'flex' }}>
                         <StyledTableCellTwo
                           align="left"
                           sx={{
                             paddingTop: '16px',
                             paddingBottom: '16px',
-                            width: '130px',
+                            width: '11vw',
                             whiteSpace: 'pre-wrap',
                           }}
                         ></StyledTableCellTwo>
@@ -1064,7 +1064,7 @@ const CISTContents = (props: Props) => {
                                     sx={{
                                       paddingLeft: '16px',
                                       marginTop: '20px',
-                                      width: '938px',
+                                      width: '49.2vw',
                                     }}
                                   >
                                     <Spacetime />
@@ -1091,14 +1091,14 @@ const CISTContents = (props: Props) => {
                               >
                                 <Box
                                   sx={{
-                                    width: '310px',
+                                    width: '13vw',
                                     textAlign: 'right',
                                     paddingTop: '50px',
                                   }}
                                 >
                                   <FormControlLabel
                                     sx={{
-                                      paddingRight: '50px',
+                                      paddingRight: '2.8vw',
                                     }}
                                     label="0"
                                     control={
@@ -1111,7 +1111,7 @@ const CISTContents = (props: Props) => {
                                     }
                                   />
                                   <FormControlLabel
-                                    sx={{ paddingRight: '50px' }}
+                                    sx={{ paddingRight: '2.7vw' }}
                                     label="1"
                                     control={
                                       <Radio
@@ -1155,14 +1155,14 @@ const CISTContents = (props: Props) => {
             (content: { id: number; ko: string; desc: string[] }, i) => {
               if (content.ko === '시각 추론 1') {
                 return (
-                  <TableRow sx={{ display: 'block', marginLeft: '20px' }}>
+                  <TableRow sx={{ display: 'block', marginLeft: '2.8vw' }}>
                     <div style={{ display: 'flex' }}>
                       <div
                         style={{
                           display: 'flex',
                           paddingTop: '16px',
                           paddingBottom: '16px',
-                          width: '130px',
+                          width: '9.5vw',
                           whiteSpace: 'pre-wrap',
                         }}
                       >
@@ -1173,8 +1173,8 @@ const CISTContents = (props: Props) => {
                       <div
                         style={{
                           paddingTop: '16px',
-                          marginLeft: '20px',
-                          width: '700px',
+                          marginLeft: '1.1vw',
+                          width: '48vw',
                         }}
                       >
                         <Typography sx={{ fontSize: '14px' }}>
@@ -1192,14 +1192,14 @@ const CISTContents = (props: Props) => {
               } else if (content.ko === '네모') {
                 return (
                   <>
-                    <TableRow sx={{ display: 'block', marginLeft: '20px' }}>
+                    <TableRow sx={{ display: 'block', marginLeft: '3vw' }}>
                       <div style={{ display: 'flex' }}>
                         <StyledTableCellTwo
                           align="left"
                           sx={{
                             paddingTop: '16px',
                             paddingBottom: '16px',
-                            width: '130px',
+                            width: '9vw',
                             whiteSpace: 'pre-wrap',
                           }}
                         ></StyledTableCellTwo>
@@ -1220,9 +1220,9 @@ const CISTContents = (props: Props) => {
                                 >
                                   <Box
                                     sx={{
-                                      paddingLeft: '16px',
-                                      marginTop: '20px',
-                                      width: '1080px',
+                                      paddingLeft: '1vw',
+                                      marginTop: '1.3889vw',
+                                      width: '53.75vw',
                                     }}
                                   >
                                     <Figure1 />
@@ -1247,9 +1247,9 @@ const CISTContents = (props: Props) => {
                                   textAlign: 'center',
                                 }}
                               >
-                                <Box sx={{ width: '200px' }}>
+                                <Box sx={{ width: '11vw' }}>
                                   <FormControlLabel
-                                    sx={{ paddingRight: '50px' }}
+                                    sx={{ paddingRight: '2.7vw' }}
                                     label="0"
                                     control={
                                       <Radio
@@ -1282,14 +1282,14 @@ const CISTContents = (props: Props) => {
                 );
               } else if (content.ko === '시각 추론 2') {
                 return (
-                  <TableRow sx={{ display: 'block', marginLeft: '20px' }}>
+                  <TableRow sx={{ display: 'block', marginLeft: '2.8vw' }}>
                     <div style={{ display: 'flex' }}>
                       <div
                         style={{
                           display: 'flex',
                           paddingTop: '16px',
                           paddingBottom: '16px',
-                          width: '130px',
+                          width: '9vw',
                           whiteSpace: 'pre-wrap',
                         }}
                       >
@@ -1300,8 +1300,8 @@ const CISTContents = (props: Props) => {
                       <div
                         style={{
                           paddingTop: '16px',
-                          marginLeft: '20px',
-                          width: '700px',
+                          marginLeft: '1.3889vw',
+                          width: '45vw',
                         }}
                       >
                         <Typography sx={{ fontSize: '14px' }}>
@@ -1321,14 +1321,14 @@ const CISTContents = (props: Props) => {
               } else if (content.ko === '네모네개') {
                 return (
                   <>
-                    <TableRow sx={{ display: 'block', marginLeft: '20px' }}>
+                    <TableRow sx={{ display: 'block', marginLeft: '2.8vw' }}>
                       <div style={{ display: 'flex' }}>
                         <StyledTableCellTwo
                           align="left"
                           sx={{
                             paddingTop: '16px',
                             paddingBottom: '16px',
-                            width: '130px',
+                            width: '9vw',
                             whiteSpace: 'pre-wrap',
                           }}
                         ></StyledTableCellTwo>
@@ -1349,9 +1349,9 @@ const CISTContents = (props: Props) => {
                                 >
                                   <Box
                                     sx={{
-                                      paddingLeft: '16px',
+                                      paddingLeft: '1.2vw',
                                       marginTop: '20px',
-                                      width: '1080px',
+                                      width: '53.9vw',
                                     }}
                                   >
                                     <Figure2 />
@@ -1376,9 +1376,9 @@ const CISTContents = (props: Props) => {
                                   textAlign: 'center',
                                 }}
                               >
-                                <Box sx={{ width: '200px' }}>
+                                <Box sx={{ width: '11vw' }}>
                                   <FormControlLabel
-                                    sx={{ paddingRight: '50px' }}
+                                    sx={{ paddingRight: '2.7vw' }}
                                     label="0"
                                     control={
                                       <Radio
@@ -1411,14 +1411,14 @@ const CISTContents = (props: Props) => {
                 );
               } else if (content.ko === '언어 추론') {
                 return (
-                  <TableRow sx={{ display: 'block', marginLeft: '20px' }}>
+                  <TableRow sx={{ display: 'block', marginLeft: '2.8vw' }}>
                     <div style={{ display: 'flex' }}>
                       <div
                         style={{
                           display: 'flex',
                           paddingTop: '16px',
                           paddingBottom: '16px',
-                          width: '130px',
+                          width: '9vw',
                           whiteSpace: 'pre-wrap',
                         }}
                       >
@@ -1429,8 +1429,8 @@ const CISTContents = (props: Props) => {
                       <div
                         style={{
                           paddingTop: '16px',
-                          marginLeft: '20px',
-                          width: '700px',
+                          marginLeft: '1.3889vw',
+                          width: '45vw',
                         }}
                       >
                         <Typography sx={{ fontSize: '14px' }}>
@@ -1446,14 +1446,14 @@ const CISTContents = (props: Props) => {
               } else if (content.ko === '네모안에 글씨') {
                 return (
                   <>
-                    <TableRow sx={{ display: 'block', marginLeft: '20px' }}>
+                    <TableRow sx={{ display: 'block', marginLeft: '2.8vw' }}>
                       <div style={{ display: 'flex' }}>
                         <StyledTableCellTwo
                           align="left"
                           sx={{
                             paddingTop: '16px',
                             paddingBottom: '16px',
-                            width: '130px',
+                            width: '9.2vw',
                             whiteSpace: 'pre-wrap',
                           }}
                         ></StyledTableCellTwo>
@@ -1474,9 +1474,9 @@ const CISTContents = (props: Props) => {
                                 >
                                   <Box
                                     sx={{
-                                      paddingLeft: '16px',
+                                      paddingLeft: '1.2vw',
                                       marginTop: '20px',
-                                      width: '945px',
+                                      width: '47vw',
                                     }}
                                   >
                                     <Figure3 />
@@ -1558,12 +1558,12 @@ const CISTContents = (props: Props) => {
       <Grid item xs={12}>
         <div>
           <TableRow>
-            <div style={{ display: 'flex', marginLeft: '20px' }}>
+            <div style={{ display: 'flex', marginLeft: '2.8vw' }}>
               <div
                 style={{
                   display: 'flex',
                   paddingTop: '16px',
-                  width: '170px',
+                  width: '9vw',
                   whiteSpace: 'pre-wrap',
                 }}
               >
@@ -1571,7 +1571,7 @@ const CISTContents = (props: Props) => {
                   기억등록
                 </Typography>
               </div>
-              <div style={{ paddingTop: '16px', marginLeft: '20px' }}>
+              <div style={{ paddingTop: '16px', marginLeft: '1.48vw' }}>
                 <Typography sx={{ fontSize: '14px' }}>
                   제가 조금전에 외우라고 불러드렸던 문장을 다시 한 번
                   말씀해주세요.
@@ -1580,19 +1580,19 @@ const CISTContents = (props: Props) => {
             </div>
           </TableRow>
         </div>
-        <Box sx={{ width: '30%', marginLeft: '190px', marginTop: '20px' }}>
+        <Box sx={{ width: '30%', marginLeft: '12.5vw', marginTop: '20px' }}>
           <Box
             sx={{
               height: '230px',
               display: 'flex',
               flexDirection: 'column',
-              width: '700px',
-              marginLeft: '20px',
+              width: '45vw',
+              marginLeft: '1.3889vw',
             }}
           >
             {기억력3차.map((v, i) => (
               <div style={{ display: 'flex' }}>
-                <div style={{ height: '50px', width: '200px' }}>
+                <div style={{ height: '50px', width: '8vw' }}>
                   <Form.MuiCheckbox
                     label={v.label}
                     disabled={disabled}
@@ -1605,7 +1605,7 @@ const CISTContents = (props: Props) => {
                 </div>
                 <div
                   style={{
-                    marginLeft: '20px',
+                    marginLeft: '1.3889vw',
                     fontSize: '14px',
                     paddingTop: '8px',
                   }}
@@ -1619,12 +1619,12 @@ const CISTContents = (props: Props) => {
 
         <div>
           <TableRow>
-            <div style={{ display: 'flex', marginLeft: '20px' }}>
+            <div style={{ display: 'flex', marginLeft: '2.8vw' }}>
               <div
                 style={{
                   display: 'flex',
                   paddingTop: '16px',
-                  width: '170px',
+                  width: '9vw',
                   whiteSpace: 'pre-wrap',
                 }}
               >
@@ -1632,7 +1632,7 @@ const CISTContents = (props: Props) => {
                   기억 재인
                 </Typography>
               </div>
-              <div style={{ paddingTop: '16px', marginLeft: '20px' }}>
+              <div style={{ paddingTop: '16px', marginLeft: '1.3889vw' }}>
                 <Typography sx={{ fontSize: '14px' }}>
                   기억회상 과제에서 회상하지 못한 항목만 시행(제시된 것이 기억된
                   정보와 일치하는가를 판단하는 과정)
@@ -1644,14 +1644,14 @@ const CISTContents = (props: Props) => {
         <Box
           sx={{ width: '7%', display: 'flex', justifyContent: 'space-between' }}
         >
-          <Box sx={{ width: '30%', marginLeft: '190px', marginTop: '20px' }}>
+          <Box sx={{ width: '30%', marginLeft: '12.5vw', marginTop: '20px' }}>
             <Box
               sx={{
                 height: '230px',
                 display: 'flex',
                 flexDirection: 'column',
-                width: '700px',
-                marginLeft: '20px',
+                width: '45vw',
+                marginLeft: '1.3889vw',
               }}
             >
               {기억력4차.map((v, i) => (
@@ -1733,14 +1733,14 @@ const CISTContents = (props: Props) => {
             (content: { id: number; ko: string; desc: string[] }, i) => {
               if (content.ko === '이름 대기 1') {
                 return (
-                  <TableRow sx={{ display: 'block', marginLeft: '20px' }}>
+                  <TableRow sx={{ display: 'block', marginLeft: '2.8vw' }}>
                     <div style={{ display: 'flex' }}>
                       <div
                         style={{
                           display: 'flex',
                           paddingTop: '16px',
                           paddingBottom: '16px',
-                          width: '130px',
+                          width: '9vw',
                           whiteSpace: 'pre-wrap',
                         }}
                       >
@@ -1751,8 +1751,8 @@ const CISTContents = (props: Props) => {
                       <div
                         style={{
                           paddingTop: '16px',
-                          marginLeft: '20px',
-                          width: '700px',
+                          marginLeft: '1.3889vw',
+                          width: '45vw',
                         }}
                       >
                         <Typography sx={{ fontSize: '14px' }}>
@@ -1766,14 +1766,14 @@ const CISTContents = (props: Props) => {
               } else if (content.ko === '그네') {
                 return (
                   <>
-                    <TableRow sx={{ display: 'block', marginLeft: '20px' }}>
+                    <TableRow sx={{ display: 'block', marginLeft: '2.8vw' }}>
                       <div style={{ display: 'flex' }}>
                         <StyledTableCellTwo
                           align="left"
                           sx={{
                             paddingTop: '16px',
                             paddingBottom: '16px',
-                            width: '130px',
+                            width: '9vw',
                             whiteSpace: 'pre-wrap',
                           }}
                         ></StyledTableCellTwo>
@@ -1794,9 +1794,9 @@ const CISTContents = (props: Props) => {
                                 >
                                   <Box
                                     sx={{
-                                      paddingLeft: '16px',
-                                      marginTop: '20px',
-                                      width: '1080px',
+                                      paddingLeft: '1.2vw',
+                                      marginTop: '1.3889vw',
+                                      width: '53.9vw',
                                     }}
                                   >
                                     <Talk1 />
@@ -1822,10 +1822,10 @@ const CISTContents = (props: Props) => {
                                 }}
                               >
                                 <Box
-                                  sx={{ width: '200px', paddingTop: '60px' }}
+                                  sx={{ width: '11vw', paddingTop: '60px' }}
                                 >
                                   <FormControlLabel
-                                    sx={{ paddingRight: '50px' }}
+                                    sx={{ paddingRight: '2.7vw' }}
                                     label="0"
                                     control={
                                       <Radio
@@ -1858,14 +1858,14 @@ const CISTContents = (props: Props) => {
                 );
               } else if (content.ko === '이름 대기 2') {
                 return (
-                  <TableRow sx={{ display: 'block', marginLeft: '20px' }}>
+                  <TableRow sx={{ display: 'block', marginLeft: '2.8vw' }}>
                     <div style={{ display: 'flex' }}>
                       <div
                         style={{
                           display: 'flex',
                           paddingTop: '16px',
                           paddingBottom: '16px',
-                          width: '130px',
+                          width: '9vw',
                           whiteSpace: 'pre-wrap',
                         }}
                       >
@@ -1876,8 +1876,8 @@ const CISTContents = (props: Props) => {
                       <div
                         style={{
                           paddingTop: '16px',
-                          marginLeft: '20px',
-                          width: '700px',
+                          marginLeft: '1.3889vw',
+                          width: '48vw',
                         }}
                       >
                         <Typography sx={{ fontSize: '14px' }}>
@@ -1891,14 +1891,14 @@ const CISTContents = (props: Props) => {
               } else if (content.ko === '칫솔') {
                 return (
                   <>
-                    <TableRow sx={{ display: 'block', marginLeft: '20px' }}>
+                    <TableRow sx={{ display: 'block', marginLeft: '2.8vw' }}>
                       <div style={{ display: 'flex' }}>
                         <StyledTableCellTwo
                           align="left"
                           sx={{
                             paddingTop: '16px',
                             paddingBottom: '16px',
-                            width: '130px',
+                            width: '9vw',
                             whiteSpace: 'pre-wrap',
                           }}
                         ></StyledTableCellTwo>
@@ -1919,9 +1919,9 @@ const CISTContents = (props: Props) => {
                                 >
                                   <Box
                                     sx={{
-                                      paddingLeft: '16px',
+                                      paddingLeft: '1.2vw',
                                       marginTop: '20px',
-                                      width: '1080px',
+                                      width: '53.9vw',
                                     }}
                                   >
                                     <Talk2 />
@@ -1947,10 +1947,10 @@ const CISTContents = (props: Props) => {
                                 }}
                               >
                                 <Box
-                                  sx={{ width: '200px', paddingTop: '20px' }}
+                                  sx={{ width: '11vw', paddingTop: '20px' }}
                                 >
                                   <FormControlLabel
-                                    sx={{ paddingRight: '50px' }}
+                                    sx={{ paddingRight: '2.7vw' }}
                                     label="0"
                                     control={
                                       <Radio
@@ -1983,14 +1983,14 @@ const CISTContents = (props: Props) => {
                 );
               } else if (content.ko === '이름 대기 3') {
                 return (
-                  <TableRow sx={{ display: 'block', marginLeft: '20px' }}>
+                  <TableRow sx={{ display: 'block', marginLeft: '2.8vw' }}>
                     <div style={{ display: 'flex' }}>
                       <div
                         style={{
                           display: 'flex',
                           paddingTop: '16px',
                           paddingBottom: '16px',
-                          width: '130px',
+                          width: '9vw',
                           whiteSpace: 'pre-wrap',
                         }}
                       >
@@ -2001,8 +2001,8 @@ const CISTContents = (props: Props) => {
                       <div
                         style={{
                           paddingTop: '16px',
-                          marginLeft: '20px',
-                          width: '700px',
+                          marginLeft: '1.3889vw',
+                          width: '45vw',
                         }}
                       >
                         <Typography sx={{ fontSize: '14px' }}>
@@ -2016,14 +2016,14 @@ const CISTContents = (props: Props) => {
               } else if (content.ko === '주사위') {
                 return (
                   <>
-                    <TableRow sx={{ display: 'block', marginLeft: '20px' }}>
+                    <TableRow sx={{ display: 'block', marginLeft: '2.8vw' }}>
                       <div style={{ display: 'flex' }}>
                         <StyledTableCellTwo
                           align="left"
                           sx={{
                             paddingTop: '16px',
                             paddingBottom: '16px',
-                            width: '130px',
+                            width: '9vw',
                             whiteSpace: 'pre-wrap',
                           }}
                         ></StyledTableCellTwo>
@@ -2044,9 +2044,9 @@ const CISTContents = (props: Props) => {
                                 >
                                   <Box
                                     sx={{
-                                      paddingLeft: '16px',
+                                      paddingLeft: '1.2vw',
                                       marginTop: '20px',
-                                      width: '1080px',
+                                      width: '53.9vw',
                                     }}
                                   >
                                     <Talk3 />
@@ -2072,10 +2072,10 @@ const CISTContents = (props: Props) => {
                                 }}
                               >
                                 <Box
-                                  sx={{ width: '200px', paddingTop: '60px' }}
+                                  sx={{ width: '11vw', paddingTop: '60px' }}
                                 >
                                   <FormControlLabel
-                                    sx={{ paddingRight: '50px' }}
+                                    sx={{ paddingRight: '2.7vw' }}
                                     label="0"
                                     control={
                                       <Radio
@@ -2108,14 +2108,14 @@ const CISTContents = (props: Props) => {
                 );
               } else if (content.ko === '이해력') {
                 return (
-                  <TableRow sx={{ display: 'block', marginLeft: '20px' }}>
+                  <TableRow sx={{ display: 'block', marginLeft: '2.8vw' }}>
                     <div style={{ display: 'flex' }}>
                       <div
                         style={{
                           display: 'flex',
                           paddingTop: '16px',
                           paddingBottom: '16px',
-                          width: '130px',
+                          width: '9vw',
                           whiteSpace: 'pre-wrap',
                         }}
                       >
@@ -2126,8 +2126,8 @@ const CISTContents = (props: Props) => {
                       <div
                         style={{
                           paddingTop: '16px',
-                          marginLeft: '20px',
-                          width: '700px',
+                          marginLeft: '1.3889vw',
+                          width: '45vw',
                         }}
                       >
                         <Typography sx={{ fontSize: '14px' }}>
@@ -2140,14 +2140,14 @@ const CISTContents = (props: Props) => {
               } else if (content.ko === '말하는대로') {
                 return (
                   <>
-                    <TableRow sx={{ display: 'block', marginLeft: '20px' }}>
+                    <TableRow sx={{ display: 'block', marginLeft: '2.8vw' }}>
                       <div style={{ display: 'flex' }}>
                         <StyledTableCellTwo
                           align="left"
                           sx={{
                             paddingTop: '16px',
                             paddingBottom: '16px',
-                            width: '130px',
+                            width: '9vw',
                             whiteSpace: 'pre-wrap',
                           }}
                         ></StyledTableCellTwo>
@@ -2168,8 +2168,8 @@ const CISTContents = (props: Props) => {
                                 >
                                   <Box
                                     sx={{
-                                      paddingLeft: '20px',
-                                      width: '1080px',
+                                      paddingLeft: '1.4vw',
+                                      width: '54.23vw',
                                     }}
                                   >
                                     박수를 두 번 치고, 주먹을 쥐세요.
@@ -2240,13 +2240,13 @@ const CISTContents = (props: Props) => {
             (content: { id: number; ko: string; desc: string[] }, i) => {
               if (content.ko === '유창성') {
                 return (
-                  <TableRow sx={{ display: 'block', marginLeft: '20px' }}>
+                  <TableRow sx={{ display: 'block', marginLeft: '2.8vw' }}>
                     <div style={{ display: 'flex' }}>
                       <div
                         style={{
                           display: 'flex',
                           paddingTop: '16px',
-                          width: '130px',
+                          width: '9vw',
                           whiteSpace: 'pre-wrap',
                         }}
                       >
@@ -2257,8 +2257,8 @@ const CISTContents = (props: Props) => {
                       <div
                         style={{
                           paddingTop: '16px',
-                          marginLeft: '20px',
-                          width: '700px',
+                          marginLeft: '1.3889vw',
+                          width: '44vw',
                         }}
                       >
                         <Typography sx={{ fontSize: '14px' }}>
@@ -2271,13 +2271,13 @@ const CISTContents = (props: Props) => {
                 );
               } else {
                 return (
-                  <TableRow sx={{ marginLeft: '50px' }}>
+                  <TableRow sx={{ marginLeft: '2.7vw' }}>
                     <StyledTableCellTwo
                       align="left"
                       sx={{
                         paddingTop: '16px',
                         paddingBottom: '16px',
-                        width: '150px',
+                        width: '10.5vw',
                         whiteSpace: 'pre-wrap',
                       }}
                     >
@@ -2290,10 +2290,10 @@ const CISTContents = (props: Props) => {
                             sx={{
                               height: '44px',
                               lineHeight: '44px',
-                              marginLeft: '20px',
+                              marginLeft: '1.3889vw',
                             }}
                           >
-                            <Box sx={{ width: '965px', marginLeft: '20px' }}>
+                            <Box sx={{ width: '48vw', marginLeft: '2.7vw' }}>
                               {v}
                               <Typography
                                 sx={{
