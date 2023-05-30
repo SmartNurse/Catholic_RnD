@@ -577,13 +577,14 @@ const CISTContents = (props: Props) => {
             (content: { id: number; ko: string; desc: string[] }, i) => {
               if (content.ko === '시간') {
                 return (
-                  <TableRow sx={{ display: 'block' }}>
+                  <TableRow sx={{ display: 'block', marginLeft: '20px' }}>
                     <div style={{ display: 'flex' }}>
                       <div
                         style={{
+                          marginLeft: '20px',
                           display: 'flex',
                           paddingTop: '16px',
-                          paddingBottom: '16px',
+                          paddingBottom: '10px',
                           width: '170px',
                           whiteSpace: 'pre-wrap',
                         }}
@@ -596,10 +597,15 @@ const CISTContents = (props: Props) => {
                         style={{
                           paddingTop: '16px',
                           marginLeft: '20px',
-                          width: '200px',
+                          width: '300px',
                         }}
                       >
-                        <Typography sx={{ fontSize: '14px' }}>
+                        <Typography
+                          sx={{
+                            fontSize: '14px',
+                            marginLeft: '80px',
+                          }}
+                        >
                           오늘 날짜를 말씀해주세요.
                         </Typography>
                       </div>
@@ -608,13 +614,14 @@ const CISTContents = (props: Props) => {
                 );
               } else {
                 return (
-                  <TableRow>
+                  <TableRow sx={{ display: 'block', marginLeft: '20px' }}>
                     <StyledTableCellTwo
                       align="left"
                       sx={{
+                        paddingLeft: '20px',
                         paddingTop: '16px',
                         paddingBottom: '16px',
-                        width: '340px',
+                        width: '190px',
                         whiteSpace: 'pre-wrap',
                       }}
                     >
@@ -637,7 +644,7 @@ const CISTContents = (props: Props) => {
                               lineHeight: '44px',
                             }}
                           >
-                            <Box sx={{ paddingLeft: '16px', width: '1100px' }}>
+                            <Box sx={{ paddingLeft: '16px', width: '940px' }}>
                               {v}
                             </Box>
                           </TableRow>
@@ -698,7 +705,7 @@ const CISTContents = (props: Props) => {
 
       <SectionTitle title="기억력" />
       <Grid item xs={12}>
-        <div>
+        <div style={{ marginLeft: '40px' }}>
           <TableRow>
             <div style={{ display: 'flex' }}>
               <div
@@ -713,7 +720,7 @@ const CISTContents = (props: Props) => {
                   기억등록
                 </Typography>
               </div>
-              <div style={{ paddingTop: '16px', marginLeft: '20px' }}>
+              <div style={{ paddingTop: '16px', marginLeft: '4px' }}>
                 <Typography sx={{ fontSize: '14px' }}>
                   지금부터 외우셔야 하는 문장 하나를 불러드리겠습니다. 끝까지
                   듣고 따라 해 보세요.
@@ -828,7 +835,7 @@ const CISTContents = (props: Props) => {
             (content: { id: number; ko: string; desc: string[] }, i) => {
               if (content.ko === '숫자 바로 따라 말하기') {
                 return (
-                  <TableRow sx={{ display: 'block' }}>
+                  <TableRow sx={{ display: 'block', marginLeft: '20px' }}>
                     <div style={{ display: 'flex' }}>
                       <div
                         style={{
@@ -862,7 +869,7 @@ const CISTContents = (props: Props) => {
                 );
               } else if (content.ko === '거꾸로 말하기') {
                 return (
-                  <TableRow sx={{ display: 'block' }}>
+                  <TableRow sx={{ display: 'block', marginLeft: '20px' }}>
                     <div style={{ display: 'flex' }}>
                       <div
                         style={{
@@ -898,13 +905,13 @@ const CISTContents = (props: Props) => {
                 );
               } else {
                 return (
-                  <TableRow>
+                  <TableRow sx={{ display: 'block', marginLeft: '20px' }}>
                     <StyledTableCellTwo
                       align="left"
                       sx={{
                         paddingTop: '16px',
                         paddingBottom: '16px',
-                        width: '130px',
+                        width: '150px',
                         whiteSpace: 'pre-wrap',
                       }}
                     >
@@ -919,7 +926,11 @@ const CISTContents = (props: Props) => {
                               lineHeight: '44px',
                             }}
                           >
-                            <Box sx={{ paddingLeft: '16px', width: '1145px' }}>
+                            <Box
+                              sx={{
+                                width: '1064px',
+                              }}
+                            >
                               {v}
                             </Box>
                           </TableRow>
@@ -985,7 +996,7 @@ const CISTContents = (props: Props) => {
             (content: { id: number; ko: string; desc: string[] }, i) => {
               if (content.ko === '도형모사') {
                 return (
-                  <TableRow sx={{ display: 'block' }}>
+                  <TableRow sx={{ display: 'block', marginLeft: '20px' }}>
                     <div style={{ display: 'flex' }}>
                       <div
                         style={{
@@ -1023,7 +1034,7 @@ const CISTContents = (props: Props) => {
               } else if (content.ko === '제목') {
                 return (
                   <>
-                    <TableRow sx={{ display: 'block' }}>
+                    <TableRow sx={{ display: 'block', marginLeft: '20px' }}>
                       <div style={{ display: 'flex' }}>
                         <StyledTableCellTwo
                           align="left"
@@ -1053,7 +1064,7 @@ const CISTContents = (props: Props) => {
                                     sx={{
                                       paddingLeft: '16px',
                                       marginTop: '20px',
-                                      width: '1010px',
+                                      width: '938px',
                                     }}
                                   >
                                     <Spacetime />
@@ -1144,7 +1155,7 @@ const CISTContents = (props: Props) => {
             (content: { id: number; ko: string; desc: string[] }, i) => {
               if (content.ko === '시각 추론 1') {
                 return (
-                  <TableRow sx={{ display: 'block' }}>
+                  <TableRow sx={{ display: 'block', marginLeft: '20px' }}>
                     <div style={{ display: 'flex' }}>
                       <div
                         style={{
@@ -1181,7 +1192,7 @@ const CISTContents = (props: Props) => {
               } else if (content.ko === '네모') {
                 return (
                   <>
-                    <TableRow sx={{ display: 'block' }}>
+                    <TableRow sx={{ display: 'block', marginLeft: '20px' }}>
                       <div style={{ display: 'flex' }}>
                         <StyledTableCellTwo
                           align="left"
@@ -1211,7 +1222,7 @@ const CISTContents = (props: Props) => {
                                     sx={{
                                       paddingLeft: '16px',
                                       marginTop: '20px',
-                                      width: '1145px',
+                                      width: '1080px',
                                     }}
                                   >
                                     <Figure1 />
@@ -1271,7 +1282,7 @@ const CISTContents = (props: Props) => {
                 );
               } else if (content.ko === '시각 추론 2') {
                 return (
-                  <TableRow sx={{ display: 'block' }}>
+                  <TableRow sx={{ display: 'block', marginLeft: '20px' }}>
                     <div style={{ display: 'flex' }}>
                       <div
                         style={{
@@ -1310,7 +1321,7 @@ const CISTContents = (props: Props) => {
               } else if (content.ko === '네모네개') {
                 return (
                   <>
-                    <TableRow sx={{ display: 'block' }}>
+                    <TableRow sx={{ display: 'block', marginLeft: '20px' }}>
                       <div style={{ display: 'flex' }}>
                         <StyledTableCellTwo
                           align="left"
@@ -1340,7 +1351,7 @@ const CISTContents = (props: Props) => {
                                     sx={{
                                       paddingLeft: '16px',
                                       marginTop: '20px',
-                                      width: '1145px',
+                                      width: '1080px',
                                     }}
                                   >
                                     <Figure2 />
@@ -1400,7 +1411,7 @@ const CISTContents = (props: Props) => {
                 );
               } else if (content.ko === '언어 추론') {
                 return (
-                  <TableRow sx={{ display: 'block' }}>
+                  <TableRow sx={{ display: 'block', marginLeft: '20px' }}>
                     <div style={{ display: 'flex' }}>
                       <div
                         style={{
@@ -1435,7 +1446,7 @@ const CISTContents = (props: Props) => {
               } else if (content.ko === '네모안에 글씨') {
                 return (
                   <>
-                    <TableRow sx={{ display: 'block' }}>
+                    <TableRow sx={{ display: 'block', marginLeft: '20px' }}>
                       <div style={{ display: 'flex' }}>
                         <StyledTableCellTwo
                           align="left"
@@ -1465,7 +1476,7 @@ const CISTContents = (props: Props) => {
                                     sx={{
                                       paddingLeft: '16px',
                                       marginTop: '20px',
-                                      width: '1010px',
+                                      width: '945px',
                                     }}
                                   >
                                     <Figure3 />
@@ -1547,7 +1558,7 @@ const CISTContents = (props: Props) => {
       <Grid item xs={12}>
         <div>
           <TableRow>
-            <div style={{ display: 'flex' }}>
+            <div style={{ display: 'flex', marginLeft: '20px' }}>
               <div
                 style={{
                   display: 'flex',
@@ -1575,7 +1586,8 @@ const CISTContents = (props: Props) => {
               height: '230px',
               display: 'flex',
               flexDirection: 'column',
-              width: '800px',
+              width: '700px',
+              marginLeft: '20px',
             }}
           >
             {기억력3차.map((v, i) => (
@@ -1607,7 +1619,7 @@ const CISTContents = (props: Props) => {
 
         <div>
           <TableRow>
-            <div style={{ display: 'flex' }}>
+            <div style={{ display: 'flex', marginLeft: '20px' }}>
               <div
                 style={{
                   display: 'flex',
@@ -1638,7 +1650,8 @@ const CISTContents = (props: Props) => {
                 height: '230px',
                 display: 'flex',
                 flexDirection: 'column',
-                width: '800px',
+                width: '700px',
+                marginLeft: '20px',
               }}
             >
               {기억력4차.map((v, i) => (
@@ -1720,7 +1733,7 @@ const CISTContents = (props: Props) => {
             (content: { id: number; ko: string; desc: string[] }, i) => {
               if (content.ko === '이름 대기 1') {
                 return (
-                  <TableRow sx={{ display: 'block' }}>
+                  <TableRow sx={{ display: 'block', marginLeft: '20px' }}>
                     <div style={{ display: 'flex' }}>
                       <div
                         style={{
@@ -1753,7 +1766,7 @@ const CISTContents = (props: Props) => {
               } else if (content.ko === '그네') {
                 return (
                   <>
-                    <TableRow sx={{ display: 'block' }}>
+                    <TableRow sx={{ display: 'block', marginLeft: '20px' }}>
                       <div style={{ display: 'flex' }}>
                         <StyledTableCellTwo
                           align="left"
@@ -1783,7 +1796,7 @@ const CISTContents = (props: Props) => {
                                     sx={{
                                       paddingLeft: '16px',
                                       marginTop: '20px',
-                                      width: '1145px',
+                                      width: '1080px',
                                     }}
                                   >
                                     <Talk1 />
@@ -1845,7 +1858,7 @@ const CISTContents = (props: Props) => {
                 );
               } else if (content.ko === '이름 대기 2') {
                 return (
-                  <TableRow sx={{ display: 'block' }}>
+                  <TableRow sx={{ display: 'block', marginLeft: '20px' }}>
                     <div style={{ display: 'flex' }}>
                       <div
                         style={{
@@ -1878,7 +1891,7 @@ const CISTContents = (props: Props) => {
               } else if (content.ko === '칫솔') {
                 return (
                   <>
-                    <TableRow sx={{ display: 'block' }}>
+                    <TableRow sx={{ display: 'block', marginLeft: '20px' }}>
                       <div style={{ display: 'flex' }}>
                         <StyledTableCellTwo
                           align="left"
@@ -1908,7 +1921,7 @@ const CISTContents = (props: Props) => {
                                     sx={{
                                       paddingLeft: '16px',
                                       marginTop: '20px',
-                                      width: '1145px',
+                                      width: '1080px',
                                     }}
                                   >
                                     <Talk2 />
@@ -1970,7 +1983,7 @@ const CISTContents = (props: Props) => {
                 );
               } else if (content.ko === '이름 대기 3') {
                 return (
-                  <TableRow sx={{ display: 'block' }}>
+                  <TableRow sx={{ display: 'block', marginLeft: '20px' }}>
                     <div style={{ display: 'flex' }}>
                       <div
                         style={{
@@ -2003,7 +2016,7 @@ const CISTContents = (props: Props) => {
               } else if (content.ko === '주사위') {
                 return (
                   <>
-                    <TableRow sx={{ display: 'block' }}>
+                    <TableRow sx={{ display: 'block', marginLeft: '20px' }}>
                       <div style={{ display: 'flex' }}>
                         <StyledTableCellTwo
                           align="left"
@@ -2033,7 +2046,7 @@ const CISTContents = (props: Props) => {
                                     sx={{
                                       paddingLeft: '16px',
                                       marginTop: '20px',
-                                      width: '1145px',
+                                      width: '1080px',
                                     }}
                                   >
                                     <Talk3 />
@@ -2095,7 +2108,7 @@ const CISTContents = (props: Props) => {
                 );
               } else if (content.ko === '이해력') {
                 return (
-                  <TableRow sx={{ display: 'block' }}>
+                  <TableRow sx={{ display: 'block', marginLeft: '20px' }}>
                     <div style={{ display: 'flex' }}>
                       <div
                         style={{
@@ -2127,7 +2140,7 @@ const CISTContents = (props: Props) => {
               } else if (content.ko === '말하는대로') {
                 return (
                   <>
-                    <TableRow sx={{ display: 'block' }}>
+                    <TableRow sx={{ display: 'block', marginLeft: '20px' }}>
                       <div style={{ display: 'flex' }}>
                         <StyledTableCellTwo
                           align="left"
@@ -2156,7 +2169,7 @@ const CISTContents = (props: Props) => {
                                   <Box
                                     sx={{
                                       paddingLeft: '20px',
-                                      width: '1145px',
+                                      width: '1080px',
                                     }}
                                   >
                                     박수를 두 번 치고, 주먹을 쥐세요.
@@ -2227,7 +2240,7 @@ const CISTContents = (props: Props) => {
             (content: { id: number; ko: string; desc: string[] }, i) => {
               if (content.ko === '유창성') {
                 return (
-                  <TableRow sx={{ display: 'block' }}>
+                  <TableRow sx={{ display: 'block', marginLeft: '20px' }}>
                     <div style={{ display: 'flex' }}>
                       <div
                         style={{
@@ -2258,13 +2271,13 @@ const CISTContents = (props: Props) => {
                 );
               } else {
                 return (
-                  <TableRow>
+                  <TableRow sx={{ marginLeft: '50px' }}>
                     <StyledTableCellTwo
                       align="left"
                       sx={{
                         paddingTop: '16px',
                         paddingBottom: '16px',
-                        width: '130px',
+                        width: '150px',
                         whiteSpace: 'pre-wrap',
                       }}
                     >
@@ -2277,9 +2290,10 @@ const CISTContents = (props: Props) => {
                             sx={{
                               height: '44px',
                               lineHeight: '44px',
+                              marginLeft: '20px',
                             }}
                           >
-                            <Box sx={{ paddingLeft: '125px', width: '1145px' }}>
+                            <Box sx={{ width: '965px', marginLeft: '20px' }}>
                               {v}
                               <Typography
                                 sx={{
