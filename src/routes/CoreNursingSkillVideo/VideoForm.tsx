@@ -49,7 +49,7 @@ const VideoForm = (props: Props) => {
     }
 
     const newSize = Number(
-      (totalSize - files[i].file.size / Math.pow(1024, 3)).toFixed(4)
+      (totalSize - files[i].file.size / Math.pow(2048, 3)).toFixed(4)
     );
     setTotalSize(newSize < 0 ? 0 : newSize);
     const newFiles = [
@@ -93,7 +93,7 @@ const VideoForm = (props: Props) => {
       .then(({ data }) => {
         const { file_info, total_video_size } = data;
 
-        setTotalSize(Number((total_video_size / Math.pow(1024, 3)).toFixed(4)));
+        setTotalSize(Number((total_video_size / Math.pow(2048, 3)).toFixed(4)));
         let savedFiles = [...files];
         file_info.forEach((file: any) => {
           savedFiles[file.video_num - 1] = {
@@ -149,7 +149,7 @@ const VideoForm = (props: Props) => {
                       }
                     }
                     setTotalSize(
-                      Number((totalSize + size / Math.pow(1024, 3)).toFixed(4))
+                      Number((totalSize + size / Math.pow(2048, 3)).toFixed(4))
                     );
                     setFiles([...newFiles]);
                     setValue('files', newFiles);
