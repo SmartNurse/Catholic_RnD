@@ -44,7 +44,7 @@ const DeathRecord = (props: Props) => {
             disabled={disabled}
             defaultValue={getValues('default_info.destination.value')}
             onChange={v => setValue('default_info.destination.value', v)}
-            width={'350px'}
+            width={'30vw'}
           />
           <Form.MuiTextField
             required={false}
