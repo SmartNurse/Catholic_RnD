@@ -145,7 +145,7 @@ function SignInForm({ errors, register, onSignUp }: Props) {
           </Typography>
 
           <CardMedia
-            height={23}
+            height={50}
             component="img"
             image={awsAhnlabCloudLogo}
             sx={{ objectFit: 'contain', mb: 4 }}
