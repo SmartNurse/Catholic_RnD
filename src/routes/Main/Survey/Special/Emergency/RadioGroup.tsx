@@ -53,7 +53,7 @@ const MuiRadioGroup = ({
                 disabled={disabled}
                 control={<Radio size="small" />}
                 label={label(value)}
-                sx={{ width: `${width ? width : '100px'}` }}
+                sx={{ width: `${width ? width : '70px'}` }}
               />
             );
           } else {
@@ -64,7 +64,7 @@ const MuiRadioGroup = ({
                 disabled={disabled}
                 control={<Radio size="small" />}
                 label={label(value)}
-                sx={{ width: `${width ? width : '233px'}` }}
+                sx={{ width: `${width ? width : '14vw'}` }}
               />
             );
           }

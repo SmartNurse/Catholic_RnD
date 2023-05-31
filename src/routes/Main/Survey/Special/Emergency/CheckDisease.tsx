@@ -3,6 +3,7 @@ import { IFormRegister, IFormValues } from 'routes/Main/type';
 import { Grid, Box, Stack } from '@mui/material';
 
 import SectionTitle from '../../components/SectionTitle';
+import MuiCheckbox from './CheckboxSub';
 
 interface Props extends IFormRegister, IFormValues {
   disabled?: boolean;
@@ -34,14 +35,14 @@ const CheckDisease = (props: Props) => {
     <>
       <SectionTitle title="내원시 교육" />
       <Box
-        sx={{ width: '70%', margin: '48px auto 24px 40px', display: 'flex' }}
+        sx={{ width: '99%', margin: '48px auto 24px 40px', display: 'flex' }}
       >
         <Grid container xs={11}>
           {checks.map((v, i) => {
             if (v.label === '기타') {
               return (
                 <Stack direction="row" spacing={1}>
-                  <Form.MuiCheckbox
+                  <MuiCheckbox
                     label={v.label}
                     disabled={disabled}
                     defaultValue={Boolean(getValues(v.key)) ? [v.label] : []}
@@ -59,8 +60,8 @@ const CheckDisease = (props: Props) => {
               );
             } else {
               return (
-                <Grid item xs={3}>
-                  <Form.MuiCheckbox
+                <Grid sx={{width:"14vw"}}>
+                  <MuiCheckbox
                     label={v.label}
                     disabled={disabled}
                     defaultValue={Boolean(getValues(v.key)) ? [v.label] : []}
