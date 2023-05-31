@@ -1062,9 +1062,9 @@ const CISTContents = (props: Props) => {
                                 >
                                   <Box
                                     sx={{
-                                      paddingLeft: '16px',
+                                      paddingLeft: '1.2vw',
                                       marginTop: '20px',
-                                      width: '49.2vw',
+                                      width: '43.2vw',
                                     }}
                                   >
                                     <Spacetime />
@@ -1091,7 +1091,7 @@ const CISTContents = (props: Props) => {
                               >
                                 <Box
                                   sx={{
-                                    width: '13vw',
+                                    width: '19vw',
                                     textAlign: 'right',
                                     paddingTop: '50px',
                                   }}
