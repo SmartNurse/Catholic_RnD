@@ -112,7 +112,6 @@ const UpperEndoscopy = (
         }}
       >
         상부위장관내시경(식도, 위, 십이지장) 설명서 / 동의서
-        <br /> - 테스트 중 입니다. -
       </Typography>
       <CommonPatientInfo patientInfo={patientInfo} nurseName={nurseName} />
       <Box sx={{ marginTop: '48px' }}>
