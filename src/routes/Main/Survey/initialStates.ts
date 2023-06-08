@@ -1004,19 +1004,37 @@ export const initialMedicalRecords = {
 
 export const initialDNR = {
   update_at: '',
-  fall_education: {
+  pt_name: '',
+  pt_ssn: '',
+  pt_addr: '',
+  pt_contact: '',
+
+  willing: true, //호스피스 이용 의향
+
+  explanation: {
     checked1: false,
     checked2: false,
     checked3: false,
     checked4: false,
     checked5: false,
     checked6: false,
-    checked7: false,
-    checked8: false,
   },
-  signature: '',
-  date: '',
-  personnel_signature: '',
+  explanation_check: '',
+
+  pt_available: '',
+
+  center_name: '',
+  center_location: '',
+  center_consultant: '',
+  center_contact: '',
+
+  recorde_date: '',
+  recorde_person_name: '',
+  recorde_person_sig: '',
+
+  register_date: '',
+  register_person_name: '',
+  register_person_sig: '',
 };
 
 export const initialDNA = {

@@ -28,8 +28,8 @@ const Hospice = (props: Props) => {
               i18nKey="EXIST"
               values={[2, 1]}
               disabled={disabled}
-              defaultValue={getValues('economy_history.counseling')}
-              onChange={v => setValue('economy_history.counseling', v)}
+              defaultValue={getValues('willing')}
+              onChange={v => setValue('willing', v)}
             />
           </RowContent>
         </RowContainer>

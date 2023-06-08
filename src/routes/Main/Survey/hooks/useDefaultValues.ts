@@ -663,18 +663,13 @@ const useDefaultValues = ({ setDefaultValues, user_id }: Props) => {
       case MENU.DNR:
         getDNR({ user_id, patient_id })
           .then(({ data }) => {
-            const { update_at, fall_confirm } = data;
+            const { update_at, advance_directive_confirmation } = data;
             convertDataToStates(
               {
                 update_at,
-                fall_education: fall_confirm
-                  ? JSON.parse(fall_confirm.fall_education)
-                  : {},
-                signature: fall_confirm?.signature,
-                date: fall_confirm?.date,
-                personnel_signature: fall_confirm?.personnel_signature,
+                ...advance_directive_confirmation,
               },
-              initialFallConfirm
+              initialDNR
             );
           })
           .catch(e => onFail('알 수 없는 오류가 발생했습니다.', e));

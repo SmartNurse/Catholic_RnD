@@ -35,10 +35,10 @@ const Counselor = (props: Props) => {
   const { disabled, register } = props;
 
   const infos = [
-    { title: '기관명칭', value: 'name' },
-    { title: '소재지', value: 'patient_id' },
-    { title: '상담자 성명', value: 'address' },
-    { title: '전화번호', value: 'number' },
+    { title: '기관명칭', value: 'center_name' },
+    { title: '소재지', value: 'center_location' },
+    { title: '상담자 성명', value: 'center_consultant' },
+    { title: '전화번호', value: 'center_contact' },
   ];
 
   return (

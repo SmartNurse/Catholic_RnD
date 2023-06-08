@@ -25,13 +25,6 @@ interface Props extends IFormValues, IFormWatch, IFormRegister {
 const DeathRecord = (props: Props) => {
   const { disabled, register, getValues, setValue } = props;
 
-  const infos = [
-    { title: '성명', value: 'name' },
-    { title: '주민등록번호', value: 'patient_id' },
-    { title: '주소', value: 'address' },
-    { title: '전화번호', value: 'number' },
-  ];
-
   return (
     <Fragment>
       <SectionTitle title="환자 사망전 알림허용 여부" />
@@ -42,8 +35,8 @@ const DeathRecord = (props: Props) => {
             i18nNullKey="ETC"
             values={[1, 2, 0]}
             disabled={disabled}
-            defaultValue={getValues('default_info.destination.value')}
-            onChange={v => setValue('default_info.destination.value', v)}
+            defaultValue={getValues('pt_available')}
+            onChange={v => setValue('pt_available', v)}
             width={'30vw'}
           />
           <Form.MuiTextField
@@ -51,7 +44,7 @@ const DeathRecord = (props: Props) => {
             disabled={disabled}
             placeholder="직접 입력"
             sx={{ width: '200px' }}
-            {...register('default_info.destination.input')}
+            {...register('pt_available.input')}
           />
         </Stack>
       </RowContainer>

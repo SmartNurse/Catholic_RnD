@@ -482,12 +482,14 @@ export const updateMedicalRecords = (request: IUpdateMedicalRecords) => {
 
 // DNR
 export const getDNR = (request: IGetSurvey) => {
-  const url = `/survey/fallConfirm?${formatToRequestParameter(request)}`;
+  const url = `/survey/advanceDirectiveConfirm?${formatToRequestParameter(
+    request
+  )}`;
   return apiGateway.get(url);
 };
 
 export const updateDNR = (request: IUpdateDNR) => {
-  const url = `/survey/fallConfirm`;
+  const url = `/survey/advanceDirectiveConfirm`;
   return apiGateway.post(url, camelcaseKeys(request));
 };
 

@@ -6,8 +6,8 @@ import useNotification from 'hooks/useNotification';
 import { Typography, Box } from '@mui/material';
 import MuiDialog from 'components/MuiDialog';
 
-import { SurveyDialogProps, TFallConfirmDefaultValues } from '../../type';
-import { updateFallConfirm } from 'apis/survey';
+import { SurveyDialogProps, TDNRDefaultValues } from '../../type';
+import { updateDNR } from 'apis/survey';
 
 import CommonPatientInfo from '../../components/CommonPatientInfo';
 import PatientInfo from './PatientInfo';
@@ -19,9 +19,7 @@ import DeathRecord from './DeathRecord';
 import Explanation from './Explanation';
 import CautionList from './CautionList';
 
-const FallPrevention = (
-  props: SurveyDialogProps<TFallConfirmDefaultValues>
-) => {
+const FallPrevention = (props: SurveyDialogProps<TDNRDefaultValues>) => {
   const {
     title,
     isOpen,
@@ -39,31 +37,77 @@ const FallPrevention = (
     defaultValues,
   });
 
-  const onSubmit = (data: TFallConfirmDefaultValues) => {
-    const { fall_education, signature, date, personnel_signature } = data;
+  const onSubmit = (data: TDNRDefaultValues) => {
+    const {
+      pt_name,
+      pt_ssn,
+      pt_addr,
+      pt_contact,
+
+      willing,
+
+      explanation,
+      explanation_check,
+
+      pt_available,
+
+      center_name,
+      center_location,
+      center_consultant,
+      center_contact,
+
+      recorde_date,
+      recorde_person_name,
+      recorde_person_sig,
+
+      register_date,
+      register_person_name,
+      register_person_sig,
+    } = data;
 
     const request = {
       user_id,
       patient_id: patientInfo.patient_id,
-      fall_confirm: {
-        fall_education: JSON.stringify(fall_education),
-        signature,
-        date,
-        personnel_signature,
+      advance_directive_confirmation: {
+        pt_name,
+        pt_ssn,
+        pt_addr,
+        pt_contact,
+
+        //호스피스 이용 의향
+        willing,
+
+        explanation: JSON.stringify(explanation),
+        explanation_check,
+
+        pt_available,
+
+        center_name,
+        center_location,
+        center_consultant,
+        center_contact,
+
+        recorde_date,
+        recorde_person_name,
+        recorde_person_sig,
+
+        register_date,
+        register_person_name,
+        register_person_sig,
       },
     };
 
     console.log(request);
 
-    updateFallConfirm(request)
+    updateDNR(request)
       .then(({ data: { rc } }) => {
         if (rc !== 1) return onResultCode(rc);
 
         onUpdateIsSave(true);
-        onSuccess('낙상 예방교육 확인서 저장에 성공하였습니다.');
+        onSuccess('사전연명의료의향서 저장에 성공하였습니다.');
       })
       .catch(e => {
-        onFail('낙상 예방교육 확인서 저장에 실패하였습니다.', e);
+        onFail('사전연명의료의향서 저장에 실패하였습니다.', e);
         console.log(e);
       });
   };
@@ -95,7 +139,6 @@ const FallPrevention = (
         }}
       >
         사전연명의료의향서
-        <br />- 테스트 중 입니다-
       </Typography>
       <CommonPatientInfo patientInfo={patientInfo} nurseName={nurseName} />
       <Box sx={{ marginTop: '48px' }}>

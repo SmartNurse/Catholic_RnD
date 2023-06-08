@@ -822,11 +822,31 @@ export interface IUpdateMedicalRecords extends IGetSurvey {
 
 // DNR
 export interface IUpdateDNR extends IGetSurvey {
-  fall_confirm: {
-    fall_education: string;
-    signature: string;
-    date: string;
-    personnel_signature: string;
+  advance_directive_confirmation: {
+    pt_name: string;
+    pt_ssn: string;
+    pt_addr: string;
+    pt_contact: string;
+
+    willing: boolean; //호스피스 이용 의향
+
+    explanation: string;
+    explanation_check: string;
+
+    pt_available: string;
+
+    center_name: string;
+    center_location: string;
+    center_consultant: string;
+    center_contact: string;
+
+    recorde_date: string;
+    recorde_person_name: string;
+    recorde_person_sig: string;
+
+    register_date: string;
+    register_person_name: string;
+    register_person_sig: string;
   };
 }
 
