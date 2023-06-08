@@ -14,8 +14,8 @@ const Signature = (props: Props) => {
 
   const labels = [
     { title: '날짜', variable: 'date' },
-    { title: '성명', variable: 'personnel_signature' },
-    { title: '서명', variable: 'signature' },
+    { title: '성명', variable: 'name' },
+    { title: '서명', variable: 'sig' },
   ];
 
   return (

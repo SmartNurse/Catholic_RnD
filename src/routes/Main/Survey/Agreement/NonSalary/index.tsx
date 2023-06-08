@@ -6,16 +6,14 @@ import useNotification from 'hooks/useNotification';
 import { Typography, Box } from '@mui/material';
 import MuiDialog from 'components/MuiDialog';
 
-import { SurveyDialogProps, TFallConfirmDefaultValues } from '../../type';
-import { updateFallConfirm } from 'apis/survey';
+import { SurveyDialogProps, TNonSalaryDefaultValues } from '../../type';
+import { updateNonSalary } from 'apis/survey';
 
 import CommonPatientInfo from '../../components/CommonPatientInfo';
 import CautionList from './CautionList';
 import Signature from './Signature';
 
-const FallPrevention = (
-  props: SurveyDialogProps<TFallConfirmDefaultValues>
-) => {
+const NonSalary = (props: SurveyDialogProps<TNonSalaryDefaultValues>) => {
   const {
     title,
     isOpen,
@@ -33,23 +31,50 @@ const FallPrevention = (
     defaultValues,
   });
 
-  const onSubmit = (data: TFallConfirmDefaultValues) => {
-    const { fall_education, signature, date, personnel_signature } = data;
+  const onSubmit = (data: TNonSalaryDefaultValues) => {
+    const {
+      item_01,
+      fee_01,
+      no_01,
+      item_02,
+      fee_02,
+      no_02,
+      item_03,
+      fee_03,
+      no_03,
+      item_04,
+      fee_04,
+      no_04,
+      date,
+      name,
+      sig,
+    } = data;
 
     const request = {
       user_id,
       patient_id: patientInfo.patient_id,
-      fall_confirm: {
-        fall_education: JSON.stringify(fall_education),
-        signature,
+      uninsured_benefit_confirmation: {
+        item_01,
+        fee_01,
+        no_01,
+        item_02,
+        fee_02,
+        no_02,
+        item_03,
+        fee_03,
+        no_03,
+        item_04,
+        fee_04,
+        no_04,
         date,
-        personnel_signature,
+        name,
+        sig,
       },
     };
 
     console.log(request);
 
-    updateFallConfirm(request)
+    updateNonSalary(request)
       .then(({ data: { rc } }) => {
         if (rc !== 1) return onResultCode(rc);
 
@@ -100,4 +125,4 @@ const FallPrevention = (
   );
 };
 
-export default FallPrevention;
+export default NonSalary;

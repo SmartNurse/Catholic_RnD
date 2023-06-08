@@ -458,12 +458,14 @@ export const updateUpperEndoscopy = (request: IUpdateUpperEndoscopy) => {
 
 // 비급여확인서
 export const getNonSalary = (request: IGetSurvey) => {
-  const url = `/survey/fallConfirm?${formatToRequestParameter(request)}`;
+  const url = `/survey/uninsuredBenefitConfirm?${formatToRequestParameter(
+    request
+  )}`;
   return apiGateway.get(url);
 };
 
 export const updateNonSalary = (request: IUpdateNonSalary) => {
-  const url = `/survey/fallConfirm`;
+  const url = `/survey/uninsuredBenefitConfirm`;
   return apiGateway.post(url, camelcaseKeys(request));
 };
 

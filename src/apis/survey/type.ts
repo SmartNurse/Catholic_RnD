@@ -771,11 +771,26 @@ export interface IUpdateUpperEndoscopy extends IGetSurvey {
 
 // 비급여 동의서
 export interface IUpdateNonSalary extends IGetSurvey {
-  fall_confirm: {
-    fall_education: string;
-    signature: string;
+  uninsured_benefit_confirmation: {
+    item_01: string;
+    fee_01: string;
+    no_01: boolean;
+
+    item_02: string;
+    fee_02: string;
+    no_02: boolean;
+
+    item_03: string;
+    fee_03: string;
+    no_03: boolean;
+
+    item_04: string;
+    fee_04: string;
+    no_04: boolean;
+
     date: string;
-    personnel_signature: string;
+    name: string;
+    sig: string;
   };
 }
 

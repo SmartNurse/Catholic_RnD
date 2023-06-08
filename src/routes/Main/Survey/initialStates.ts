@@ -957,19 +957,25 @@ export const initialUpperEndoscopy = {
 
 export const initialNonSalary = {
   update_at: '',
-  fall_education: {
-    checked1: false,
-    checked2: false,
-    checked3: false,
-    checked4: false,
-    checked5: false,
-    checked6: false,
-    checked7: false,
-    checked8: false,
-  },
-  signature: '',
+  item_01: '',
+  fee_01: '',
+  no_01: true,
+
+  item_02: '',
+  fee_02: '',
+  no_02: true,
+
+  item_03: '',
+  fee_03: '',
+  no_03: true,
+
+  item_04: '',
+  fee_04: '',
+  no_04: true,
+
   date: '',
-  personnel_signature: '',
+  name: '',
+  sig: '',
 };
 
 export const initialMedicalRecords = {
