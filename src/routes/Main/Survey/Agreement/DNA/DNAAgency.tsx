@@ -35,8 +35,8 @@ const DNAAgency = (props: Props) => {
   const { disabled, register } = props;
 
   const infos = [
-    { title: '기관명', value: 'name' },
-    { title: '전화번호', value: 'patient_id' },
+    { title: '기관명', value: 'lab_name' },
+    { title: '전화번호', value: 'lab_contact' },
   ];
 
   return (

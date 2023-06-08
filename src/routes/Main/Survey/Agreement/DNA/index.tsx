@@ -6,10 +6,9 @@ import useNotification from 'hooks/useNotification';
 import { Typography, Box } from '@mui/material';
 import MuiDialog from 'components/MuiDialog';
 
-import { SurveyDialogProps, TFallConfirmDefaultValues } from '../../type';
-import { updateFallConfirm } from 'apis/survey';
+import { SurveyDialogProps, TDNADefaultValues } from '../../type';
+import { updateDNA } from 'apis/survey';
 
-import CommonPatientInfo from '../../components/CommonPatientInfo';
 import Signature from './Signature';
 import PatientInfo from './PatientInfo';
 import GuardianInfo from './GuardianInfo';
@@ -17,9 +16,7 @@ import DNAAgency from './DNAAgency';
 import InspectionItems from './InspectionItems';
 import CautionList from './CautionList';
 
-const FallPrevention = (
-  props: SurveyDialogProps<TFallConfirmDefaultValues>
-) => {
+const FallPrevention = (props: SurveyDialogProps<TDNADefaultValues>) => {
   const {
     title,
     isOpen,
@@ -37,31 +34,80 @@ const FallPrevention = (
     defaultValues,
   });
 
-  const onSubmit = (data: TFallConfirmDefaultValues) => {
-    const { fall_education, signature, date, personnel_signature } = data;
+  const onSubmit = (data: TDNADefaultValues) => {
+    const {
+      test_object_name,
+      test_object_ssn,
+      test_object_addr,
+      test_object_contact,
+
+      legal_representative_name,
+      legal_representative_ssn,
+      legal_representative_addr,
+      legal_representative_contact,
+
+      lab_name,
+      lab_contact,
+
+      pt_purpose,
+      pt_test,
+
+      date,
+
+      testee_name,
+      testee_sig,
+
+      representative_name,
+      representative_sig,
+
+      consultant_name,
+      consultant_sig,
+    } = data;
 
     const request = {
       user_id,
       patient_id: patientInfo.patient_id,
-      fall_confirm: {
-        fall_education: JSON.stringify(fall_education),
-        signature,
+      gene_test_confirmation: {
+        test_object_name,
+        test_object_ssn,
+        test_object_addr,
+        test_object_contact,
+
+        legal_representative_name,
+        legal_representative_ssn,
+        legal_representative_addr,
+        legal_representative_contact,
+
+        lab_name,
+        lab_contact,
+
+        pt_purpose,
+        pt_test,
+
         date,
-        personnel_signature,
+
+        testee_name,
+        testee_sig,
+
+        representative_name,
+        representative_sig,
+
+        consultant_name,
+        consultant_sig,
       },
     };
 
     console.log(request);
 
-    updateFallConfirm(request)
+    updateDNA(request)
       .then(({ data: { rc } }) => {
         if (rc !== 1) return onResultCode(rc);
 
         onUpdateIsSave(true);
-        onSuccess('낙상 예방교육 확인서 저장에 성공하였습니다.');
+        onSuccess('유전자검사 동의서 저장에 성공하였습니다.');
       })
       .catch(e => {
-        onFail('낙상 예방교육 확인서 저장에 실패하였습니다.', e);
+        onFail('유전자검사 동의서 저장에 실패하였습니다.', e);
         console.log(e);
       });
   };
@@ -93,7 +139,6 @@ const FallPrevention = (
         }}
       >
         유전자검사 동의서
-        <br />- 테스트 중 입니다-
       </Typography>
       {/* <CommonPatientInfo patientInfo={patientInfo} nurseName={nurseName} /> */}
       <Box sx={{ marginTop: '48px' }}>

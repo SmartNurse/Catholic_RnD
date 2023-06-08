@@ -42,6 +42,7 @@ import {
   initialNonSalary,
   initialMedicalRecords,
   initialDNR,
+  initialDNA,
   initialCoreNursingSkillVideo,
   initialCoreNursingSkillVideoExemple,
   initialFourScore,
@@ -160,6 +161,7 @@ export type TUpperEndoscopyDefaultValues = typeof initialUpperEndoscopy;
 export type TNonSalaryDefaultValues = typeof initialNonSalary;
 export type TMedicalRecordDefaultValues = typeof initialMedicalRecords;
 export type TDNRDefaultValues = typeof initialDNR;
+export type TDNADefaultValues = typeof initialDNA;
 
 export type TCoreNursingSkillVideoDefaultValues =
   typeof initialCoreNursingSkillVideo;

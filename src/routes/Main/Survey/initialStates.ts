@@ -1039,19 +1039,29 @@ export const initialDNR = {
 
 export const initialDNA = {
   update_at: '',
-  fall_education: {
-    checked1: false,
-    checked2: false,
-    checked3: false,
-    checked4: false,
-    checked5: false,
-    checked6: false,
-    checked7: false,
-    checked8: false,
-  },
-  signature: '',
+  test_object_name: '',
+  test_object_ssn: '',
+  test_object_addr: '',
+  test_object_contact: '',
+
+  legal_representative_name: '',
+  legal_representative_ssn: '',
+  legal_representative_addr: '',
+  legal_representative_contact: '',
+
+  lab_name: '',
+  lab_contact: '',
+
+  pt_purpose: '',
+  pt_test: '',
+
   date: '',
-  personnel_signature: '',
+  testee_name: '',
+  testee_sig: '',
+  representative_name: '',
+  representative_sig: '',
+  consultant_name: '',
+  consultant_sig: '',
 };
 
 export const initialCoreNursingSkillVideo = {

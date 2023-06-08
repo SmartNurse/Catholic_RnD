@@ -852,10 +852,29 @@ export interface IUpdateDNR extends IGetSurvey {
 
 // DNA
 export interface IUpdateDNA extends IGetSurvey {
-  fall_confirm: {
-    fall_education: string;
-    signature: string;
+  gene_test_confirmation: {
+    test_object_name: string;
+    test_object_ssn: string;
+    test_object_addr: string;
+    test_object_contact: string;
+
+    legal_representative_name: string;
+    legal_representative_ssn: string;
+    legal_representative_addr: string;
+    legal_representative_contact: string;
+
+    lab_name: string;
+    lab_contact: string;
+
+    pt_purpose: string;
+    pt_test: string;
+
     date: string;
-    personnel_signature: string;
+    testee_name: string;
+    testee_sig: string;
+    representative_name: string;
+    representative_sig: string;
+    consultant_name: string;
+    consultant_sig: string;
   };
 }

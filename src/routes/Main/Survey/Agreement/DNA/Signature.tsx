@@ -14,12 +14,12 @@ const Signature = (props: Props) => {
 
   const labels = [
     { title: '날짜', variable: 'date' },
-    { title: '검사대상자 성명', variable: 'signature' },
-    { title: '검사대상자 서명', variable: 'personnel_signature' },
-    { title: '법정대리인 성명', variable: 'personnel_signature' },
-    { title: '법정대리인 서명', variable: 'personnel_signature' },
-    { title: '상담자 성명', variable: 'personnel_signature' },
-    { title: '상담자 성명', variable: 'personnel_signature' },
+    { title: '검사대상자 성명', variable: 'testee_name' },
+    { title: '검사대상자 서명', variable: 'testee_sig' },
+    { title: '법정대리인 성명', variable: 'representative_name' },
+    { title: '법정대리인 서명', variable: 'representative_sig' },
+    { title: '상담자 성명', variable: 'consultant_name' },
+    { title: '상담자 성명', variable: 'consultant_sig' },
   ];
 
   return (

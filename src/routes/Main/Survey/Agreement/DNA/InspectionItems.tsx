@@ -35,8 +35,8 @@ const InspectionItems = (props: Props) => {
   const { disabled, register } = props;
 
   const infos = [
-    { title: '검사목적', value: 'name' },
-    { title: '검사명', value: 'patient_id' },
+    { title: '검사목적', value: 'pt_purpose' },
+    { title: '검사명', value: 'pt_test' },
   ];
 
   return (

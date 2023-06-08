@@ -493,13 +493,13 @@ export const updateDNR = (request: IUpdateDNR) => {
   return apiGateway.post(url, camelcaseKeys(request));
 };
 
-// 낙상예방교육확인서
+// DNA
 export const getDNA = (request: IGetSurvey) => {
-  const url = `/survey/fallConfirm?${formatToRequestParameter(request)}`;
+  const url = `/survey/geneTestConfirm?${formatToRequestParameter(request)}`;
   return apiGateway.get(url);
 };
 
 export const updateDNA = (request: IUpdateDNA) => {
-  const url = `/survey/fallConfirm`;
+  const url = `/survey/geneTestConfirm`;
   return apiGateway.post(url, camelcaseKeys(request));
 };

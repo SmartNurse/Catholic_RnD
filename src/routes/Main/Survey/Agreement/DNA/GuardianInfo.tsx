@@ -35,10 +35,10 @@ const GuardianInfo = (props: Props) => {
   const { disabled, register } = props;
 
   const infos = [
-    { title: '성명', value: 'name' },
-    { title: '주민등록번호', value: 'patient_id' },
-    { title: '주소', value: 'address' },
-    { title: '전화번호', value: 'number' },
+    { title: '성명', value: 'legal_representative_name' },
+    { title: '주민등록번호', value: 'legal_representative_ssn' },
+    { title: '주소', value: 'legal_representative_addr' },
+    { title: '전화번호', value: 'legal_representative_contact' },
   ];
 
   return (
