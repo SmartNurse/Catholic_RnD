@@ -736,11 +736,19 @@ export interface IUpdateFallConfirm extends IGetSurvey {
 
 // 대장 내시경
 export interface IUpdateColonoscopy extends IGetSurvey {
-  fall_confirm: {
-    fall_education: string;
-    signature: string;
-    date: string;
-    personnel_signature: string;
+  colono_scopy_confirmation: {
+    agree_check_01: string;
+    agree_check_02: string;
+    patient_bday: string;
+    patient_contact: string;
+    patient_name: string;
+    patient_sig: string;
+    companion_bday: string;
+    companion_contact: string;
+    companion_name: string;
+    companion_sig: string;
+    dr_name: string;
+    dr_sig: string;
   };
 }
 

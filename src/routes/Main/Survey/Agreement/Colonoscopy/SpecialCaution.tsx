@@ -12,7 +12,7 @@ interface Props extends IFormRegister, IFormValues {
 }
 
 const SpecialCaution = (props: Props) => {
-  const { disabled, register, getValues, setValue } = props;
+  const { disabled, getValues, setValue } = props;
 
   return (
     <>
@@ -34,8 +34,8 @@ const SpecialCaution = (props: Props) => {
               i18nKey="YESORNO"
               values={[1, 2]}
               disabled={disabled}
-              defaultValue={getValues('economy_history.counseling')}
-              onChange={v => setValue('economy_history.counseling', v)}
+              defaultValue={getValues('agree_check_01')}
+              onChange={v => setValue('agree_check_01', v)}
             />
           </RowContent>
 
@@ -48,8 +48,8 @@ const SpecialCaution = (props: Props) => {
               i18nKey="YESORNO"
               values={[1, 2]}
               disabled={disabled}
-              defaultValue={getValues('economy_history.counseling')}
-              onChange={v => setValue('economy_history.counseling', v)}
+              defaultValue={getValues('agree_check_02')}
+              onChange={v => setValue('agree_check_02', v)}
             />
           </RowContent>
           <Typography sx={{ fontSize: '14px', margin: '20px 0 0 30px' }}>

@@ -37,6 +37,7 @@ import {
   initialDietNutrition,
   initialHospitalConfirm,
   initialFallConfirm,
+  initialColonoscopy,
   initialCoreNursingSkillVideo,
   initialCoreNursingSkillVideoExemple,
   initialFourScore,
@@ -150,6 +151,8 @@ export type THomeCareDefaultValues = typeof initialHomeCare;
 export type TDietNutritionDefaultValues = typeof initialDietNutrition;
 export type THospitalConfirmDefaultValues = typeof initialHospitalConfirm;
 export type TFallConfirmDefaultValues = typeof initialFallConfirm;
+export type TColonoscopyDefaultValues = typeof initialColonoscopy;
+
 export type TCoreNursingSkillVideoDefaultValues =
   typeof initialCoreNursingSkillVideo;
 export type TCoreNursingSkillVideoDeExemplefaultValues =

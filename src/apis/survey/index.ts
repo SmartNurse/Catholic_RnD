@@ -434,12 +434,12 @@ export const updateFallConfirm = (request: IUpdateFallConfirm) => {
 
 // 대장 내시경
 export const getColonoscopy = (request: IGetSurvey) => {
-  const url = `/survey/fallConfirm?${formatToRequestParameter(request)}`;
+  const url = `/survey/colonoScopyConfirm?${formatToRequestParameter(request)}`;
   return apiGateway.get(url);
 };
 
 export const updateColonoscopy = (request: IUpdateColonoscopy) => {
-  const url = `/survey/fallConfirm`;
+  const url = `/survey/colonoScopyConfirm`;
   return apiGateway.post(url, camelcaseKeys(request));
 };
 

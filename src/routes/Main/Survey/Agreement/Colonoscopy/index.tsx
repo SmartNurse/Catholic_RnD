@@ -6,8 +6,8 @@ import useNotification from 'hooks/useNotification';
 import { Typography, Box } from '@mui/material';
 import MuiDialog from 'components/MuiDialog';
 
-import { SurveyDialogProps, TFallConfirmDefaultValues } from '../../type';
-import { updateFallConfirm } from 'apis/survey';
+import { SurveyDialogProps, TColonoscopyDefaultValues } from '../../type';
+import { updateColonoscopy } from 'apis/survey';
 
 import CommonPatientInfo from '../../components/CommonPatientInfo';
 import ResultPurpose from './ResultPurpose';
@@ -17,9 +17,7 @@ import Complications from './Complications';
 import MethodandProcess from './MethodandProcess';
 import SpecialCaution from './SpecialCaution';
 
-const FallPrevention = (
-  props: SurveyDialogProps<TFallConfirmDefaultValues>
-) => {
+const Colonoscopy = (props: SurveyDialogProps<TColonoscopyDefaultValues>) => {
   const {
     title,
     isOpen,
@@ -37,31 +35,52 @@ const FallPrevention = (
     defaultValues,
   });
 
-  const onSubmit = (data: TFallConfirmDefaultValues) => {
-    const { fall_education, signature, date, personnel_signature } = data;
+  const onSubmit = (data: TColonoscopyDefaultValues) => {
+    const {
+      agree_check_01,
+      agree_check_02,
+      patient_bday,
+      patient_contact,
+      patient_name,
+      patient_sig,
+      companion_bday,
+      companion_contact,
+      companion_name,
+      companion_sig,
+      dr_name,
+      dr_sig,
+    } = data;
 
     const request = {
       user_id,
       patient_id: patientInfo.patient_id,
-      fall_confirm: {
-        fall_education: JSON.stringify(fall_education),
-        signature,
-        date,
-        personnel_signature,
+      colono_scopy_confirmation: {
+        agree_check_01,
+        agree_check_02,
+        patient_bday,
+        patient_contact,
+        patient_name,
+        patient_sig,
+        companion_bday,
+        companion_contact,
+        companion_name,
+        companion_sig,
+        dr_name,
+        dr_sig,
       },
     };
 
-    console.log(request);
+    console.log('리퀘스트', request);
 
-    updateFallConfirm(request)
+    updateColonoscopy(request)
       .then(({ data: { rc } }) => {
         if (rc !== 1) return onResultCode(rc);
 
         onUpdateIsSave(true);
-        onSuccess('낙상 예방교육 확인서 저장에 성공하였습니다.');
+        onSuccess('대장내시경 동의서 저장에 성공하였습니다.');
       })
       .catch(e => {
-        onFail('낙상 예방교육 확인서 저장에 실패하였습니다.', e);
+        onFail('대장내시경 동의서 저장에 실패하였습니다.', e);
         console.log(e);
       });
   };
@@ -108,4 +127,4 @@ const FallPrevention = (
   );
 };
 
-export default FallPrevention;
+export default Colonoscopy;

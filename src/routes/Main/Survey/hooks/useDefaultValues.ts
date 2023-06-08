@@ -203,10 +203,6 @@ const useDefaultValues = ({ setDefaultValues, user_id }: Props) => {
               vital_sign: JSON.parse(vital_sign),
               io_check: JSON.parse(io_check),
             };
-
-            console.log('hihihi testtt', vital_sign);
-            console.log('hihihi testtt', m_data);
-
             convertDataToStates(m_data, initialClinicalObservation);
           })
           .catch(e => onFail('알 수 없는 오류가 발생했습니다.', e));
@@ -611,18 +607,13 @@ const useDefaultValues = ({ setDefaultValues, user_id }: Props) => {
       case MENU.COLONOSCOPY:
         getColonoscopy({ user_id, patient_id })
           .then(({ data }) => {
-            const { update_at, fall_confirm } = data;
+            const { update_at, colono_scopy_confirmation } = data;
             convertDataToStates(
               {
                 update_at,
-                fall_education: fall_confirm
-                  ? JSON.parse(fall_confirm.fall_education)
-                  : {},
-                signature: fall_confirm?.signature,
-                date: fall_confirm?.date,
-                personnel_signature: fall_confirm?.personnel_signature,
+                ...colono_scopy_confirmation,
               },
-              initialFallConfirm
+              initialColonoscopy
             );
           })
           .catch(e => onFail('알 수 없는 오류가 발생했습니다.', e));
