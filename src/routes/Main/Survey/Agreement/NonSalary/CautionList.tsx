@@ -53,8 +53,7 @@ const CautionList = (props: Props) => {
               <div style={{ width: '35%' }}>비용</div>
               <div
                 style={{
-                  width: '100px',
-                  marginLeft: '123px',
+                  marginLeft: '8vw',
                 }}
               >
                 확인함
@@ -72,14 +71,14 @@ const CautionList = (props: Props) => {
           element: (
             <div style={{ display: 'flex' }}>
               <MuiTextField
-                sx={{ width: '400px', paddingRight: '30px', height: 'auto' }}
+                sx={{ width: '35%', paddingRight: '30px', height: 'auto' }}
                 {...register('item_01')}
                 required={false}
                 multiline
                 minRows={1}
               />
               <MuiTextField
-                sx={{ width: '400px', paddingRight: '30px', height: 'auto' }}
+                sx={{ width: '35%', paddingRight: '30px', height: 'auto' }}
                 {...register('fee_01')}
                 required={false}
                 multiline
@@ -91,7 +90,7 @@ const CautionList = (props: Props) => {
                 defaultChecked={getValues('no_01')}
                 {...register('no_01')}
                 sx={{
-                  marginLeft: '135px',
+                  marginLeft: '8vw',
                 }}
               />
             </div>
@@ -107,14 +106,14 @@ const CautionList = (props: Props) => {
           element: (
             <div style={{ display: 'flex' }}>
               <MuiTextField
-                sx={{ width: '400px', paddingRight: '30px', height: 'auto' }}
+                sx={{ width: '35%', paddingRight: '30px', height: 'auto' }}
                 required={false}
                 multiline
                 minRows={1}
                 {...register('item_02')}
               />
               <MuiTextField
-                sx={{ width: '400px', paddingRight: '30px', height: 'auto' }}
+                sx={{ width: '35%', paddingRight: '30px', height: 'auto' }}
                 required={false}
                 multiline
                 minRows={1}
@@ -126,7 +125,7 @@ const CautionList = (props: Props) => {
                 defaultChecked={getValues('no_02')}
                 {...register('no_02')}
                 sx={{
-                  marginLeft: '135px',
+                  marginLeft: '8vw',
                 }}
               />
             </div>
@@ -142,14 +141,14 @@ const CautionList = (props: Props) => {
           element: (
             <div style={{ display: 'flex' }}>
               <MuiTextField
-                sx={{ width: '400px', paddingRight: '30px', height: 'auto' }}
+                sx={{ width: '35%', paddingRight: '30px', height: 'auto' }}
                 required={false}
                 multiline
                 minRows={1}
                 {...register('item_03')}
               />
               <MuiTextField
-                sx={{ width: '400px', paddingRight: '30px', height: 'auto' }}
+                sx={{ width: '35%', paddingRight: '30px', height: 'auto' }}
                 required={false}
                 multiline
                 minRows={1}
@@ -161,7 +160,7 @@ const CautionList = (props: Props) => {
                 defaultChecked={getValues('no_03')}
                 {...register('no_03')}
                 sx={{
-                  marginLeft: '135px',
+                  marginLeft: '8vw',
                 }}
               />
             </div>
@@ -177,14 +176,14 @@ const CautionList = (props: Props) => {
           element: (
             <div style={{ display: 'flex' }}>
               <MuiTextField
-                sx={{ width: '400px', paddingRight: '30px', height: 'auto' }}
+                sx={{ width: '35%', paddingRight: '30px', height: 'auto' }}
                 required={false}
                 multiline
                 minRows={1}
                 {...register('item_04')}
               />
               <MuiTextField
-                sx={{ width: '400px', paddingRight: '30px', height: 'auto' }}
+                sx={{ width: '35%', paddingRight: '30px', height: 'auto' }}
                 required={false}
                 multiline
                 minRows={1}
@@ -196,7 +195,7 @@ const CautionList = (props: Props) => {
                 defaultChecked={getValues('no_04')}
                 {...register('no_04')}
                 sx={{
-                  marginLeft: '135px',
+                  marginLeft: '8vw',
                 }}
               />
             </div>
