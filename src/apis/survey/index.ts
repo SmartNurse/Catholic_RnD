@@ -471,12 +471,12 @@ export const updateNonSalary = (request: IUpdateNonSalary) => {
 
 // 진료 기록
 export const getMedicalRecords = (request: IGetSurvey) => {
-  const url = `/survey/fallConfirm?${formatToRequestParameter(request)}`;
+  const url = `/survey/chartConfirm?${formatToRequestParameter(request)}`;
   return apiGateway.get(url);
 };
 
 export const updateMedicalRecords = (request: IUpdateMedicalRecords) => {
-  const url = `/survey/fallConfirm`;
+  const url = `/survey/chartConfirm`;
   return apiGateway.post(url, camelcaseKeys(request));
 };
 

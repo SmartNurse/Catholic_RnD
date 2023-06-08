@@ -980,19 +980,26 @@ export const initialNonSalary = {
 
 export const initialMedicalRecords = {
   update_at: '',
-  fall_education: {
-    checked1: false,
-    checked2: false,
-    checked3: false,
-    checked4: false,
-    checked5: false,
-    checked6: false,
-    checked7: false,
-    checked8: false,
-  },
-  signature: '',
+  pt_name: '',
+  pt_ssn: '',
+  pt_addr: '',
+  pt_contact: '',
+
+  applier_name: '',
+  applier_relp: '',
+  applier_bday: '',
+  applier_contact: '',
+  applier_addr: '',
+
+  scope_center: '',
+  scope_period_from: '',
+  scope_period_to: '',
+  scope_reason: '',
+  scope_detail: '',
+
   date: '',
-  personnel_signature: '',
+  name: '',
+  sig: '',
 };
 
 export const initialDNR = {

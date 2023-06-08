@@ -40,6 +40,7 @@ import {
   initialColonoscopy,
   initialUpperEndoscopy,
   initialNonSalary,
+  initialMedicalRecords,
   initialCoreNursingSkillVideo,
   initialCoreNursingSkillVideoExemple,
   initialFourScore,
@@ -156,6 +157,7 @@ export type TFallConfirmDefaultValues = typeof initialFallConfirm;
 export type TColonoscopyDefaultValues = typeof initialColonoscopy;
 export type TUpperEndoscopyDefaultValues = typeof initialUpperEndoscopy;
 export type TNonSalaryDefaultValues = typeof initialNonSalary;
+export type TMedicalRecordDefaultValues = typeof initialMedicalRecords;
 
 export type TCoreNursingSkillVideoDefaultValues =
   typeof initialCoreNursingSkillVideo;

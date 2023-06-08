@@ -33,10 +33,10 @@ const RecordInfo = (props: Props) => {
   const { disabled, register } = props;
 
   const infos = [
-    { title: '의료기관 명칭', value: 'name' },
-    { title: '진료기간', value: 'address' },
-    { title: '발급사유', value: 'relation' },
-    { title: '발급범위', value: 'number' },
+    { title: '의료기관 명칭', value: 'scope_center' },
+    { title: '진료기간', value: 'scope_period_date' },
+    { title: '발급사유', value: 'scope_reason' },
+    { title: '발급범위', value: 'scope_detail' },
   ];
 
   return (
@@ -52,7 +52,7 @@ const RecordInfo = (props: Props) => {
                     type="date"
                     required={false}
                     disabled={disabled}
-                    {...register('falling_type.date')}
+                    {...register('scope_period_from')}
                     sx={{ width: '514px', marginRight: '105px' }}
                   />
                   ~
@@ -60,7 +60,7 @@ const RecordInfo = (props: Props) => {
                     type="date"
                     required={false}
                     disabled={disabled}
-                    {...register('falling_type.date')}
+                    {...register('scope_period_to')}
                     sx={{ width: '514px', marginLeft: '101px' }}
                   />
                 </div>

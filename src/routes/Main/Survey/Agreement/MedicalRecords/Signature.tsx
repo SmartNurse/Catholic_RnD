@@ -14,8 +14,8 @@ const Signature = (props: Props) => {
 
   const labels = [
     { title: '날짜', variable: 'date' },
-    { title: '본인 (또는 법정대리인) 성명', variable: 'signature' },
-    { title: '본인 (또는 법정대리인) 서명', variable: 'personnel_signature' },
+    { title: '본인 (또는 법정대리인) 성명', variable: 'name' },
+    { title: '본인 (또는 법정대리인) 서명', variable: 'sig' },
   ];
 
   return (

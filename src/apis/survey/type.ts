@@ -796,11 +796,27 @@ export interface IUpdateNonSalary extends IGetSurvey {
 
 // 진료기록 열람
 export interface IUpdateMedicalRecords extends IGetSurvey {
-  fall_confirm: {
-    fall_education: string;
-    signature: string;
+  chart_confirmation: {
+    pt_name: string;
+    pt_ssn: string;
+    pt_addr: string;
+    pt_contact: string;
+
+    applier_name: string;
+    applier_relp: string;
+    applier_bday: string;
+    applier_contact: string;
+    applier_addr: string;
+
+    scope_center: string;
+    scope_period_from: string;
+    scope_period_to: string;
+    scope_reason: string;
+    scope_detail: string;
+
     date: string;
-    personnel_signature: string;
+    name: string;
+    sig: string;
   };
 }
 
