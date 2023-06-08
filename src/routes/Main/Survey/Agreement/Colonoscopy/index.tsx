@@ -112,7 +112,6 @@ const Colonoscopy = (props: SurveyDialogProps<TColonoscopyDefaultValues>) => {
         }}
       >
         대장내시경 및 용종 절제술 설명서 / 동의서
-        <br /> - 테스트 중입니다. -
       </Typography>
       <CommonPatientInfo patientInfo={patientInfo} nurseName={nurseName} />
       <Box sx={{ marginTop: '48px' }}>
