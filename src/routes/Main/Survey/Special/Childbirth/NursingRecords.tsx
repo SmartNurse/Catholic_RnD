@@ -12,7 +12,7 @@ import MuiTable from 'components/MuiTable';
 import MuiTextField from 'components/Form/MuiTextField';
 import SectionTitle from '../../components/SectionTitle';
 
-import { formatStringToDate } from "utils/formatting";
+import { formatStringToDate } from 'utils/formatting';
 
 interface Props extends IFormValues, IFormWatch, IFormRegister {
   disabled?: boolean;
@@ -24,22 +24,24 @@ const NursingRecords = (props: Props) => {
   const { disabled, watch, setValue, onRequired, onSuccess, register } = props;
   const nursingRecordList: INursingRecord[] = watch('nursing_records');
 
-  const [date, setDate] = useState("");
+  console.log('널싱리코드', nursingRecordList);
+
+  const [date, setDate] = useState('');
   const [time, setTime] = useState(null);
-  const [desc, setDesc] = useState("");
+  const [desc, setDesc] = useState('');
 
   const columns = [
     { fieldId: 'date', label: '', sx: { width: 200 } },
     { fieldId: 'time', label: '', sx: { width: 200 } },
     { fieldId: 'content', label: '' },
-    { fieldId: 'action', label: '', sx: { width: 100 } }
+    { fieldId: 'action', label: '', sx: { width: 100 } },
   ];
 
   const onAddRow = () => {
     const request = {
-        date,
-        time,
-        content: desc,
+      date,
+      time,
+      content: desc,
     };
 
     if (Object.values(request).filter(v => !v).length > 0) {
@@ -47,24 +49,27 @@ const NursingRecords = (props: Props) => {
     }
 
     onSuccess('간호 기록 추가되었습니다.');
-    setValue('nursing_records', nursingRecordList ? [...nursingRecordList, request] : [request]);
-    setValue("nursing_records.date", "");
-    setDate("");
+    setValue(
+      'nursing_records',
+      nursingRecordList ? [...nursingRecordList, request] : [request]
+    );
+    setValue('etc.nursing_records.date', '');
+    setDate('');
     setTime(null);
-    setDesc("");
+    setDesc('');
   };
 
   const inputRow = {
     id: 'add-glucose-record',
     date: (
-        <Form.MuiTextField
-            type="date"
-            required={false}
-            disabled={disabled}
-            {...register("nursing_records.date", {
-                onChange: (e) => setDate(e.target.value)
-            })}
-        />
+      <Form.MuiTextField
+        type="date"
+        required={false}
+        disabled={disabled}
+        {...register('etc.nursing_records.date', {
+          onChange: e => setDate(e.target.value),
+        })}
+      />
     ),
     time: (
       <MobileTimePicker
@@ -81,11 +86,11 @@ const NursingRecords = (props: Props) => {
       />
     ),
     content: (
-          <MuiTextField
-              value={desc}
-              required={false}
-              onChange={({ target: { value } }) => setDesc(value)}
-          />
+      <MuiTextField
+        value={desc}
+        required={false}
+        onChange={({ target: { value } }) => setDesc(value)}
+      />
     ),
     action: (
       <Button variant="contained" size="small" onClick={onAddRow}>
@@ -101,25 +106,22 @@ const NursingRecords = (props: Props) => {
     );
   };
 
-  const displayRows = nursingRecordList ? 
-    nursingRecordList.map((item, i) => ({
+  const displayRows = nursingRecordList
+    ? nursingRecordList.map((item, i) => ({
         ...item,
         id: i,
         time: formatStringToDate(item.time, 'hh:mm a'),
         action: (
-        <IconButton
+          <IconButton
             size="small"
             onClick={() => onDeleteRow(i)}
             sx={{ display: disabled ? 'none' : 'block' }}
-        >
-          <Delete />
-        </IconButton>
+          >
+            <Delete />
+          </IconButton>
         ),
-  }))
-  :
-  []
-  ;
-
+      }))
+    : [];
   const tableRow = disabled ? displayRows : [inputRow, ...displayRows];
 
   return (
