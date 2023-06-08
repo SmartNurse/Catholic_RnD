@@ -754,11 +754,18 @@ export interface IUpdateColonoscopy extends IGetSurvey {
 
 // 상부내시경
 export interface IUpdateUpperEndoscopy extends IGetSurvey {
-  fall_confirm: {
-    fall_education: string;
-    signature: string;
-    date: string;
-    personnel_signature: string;
+  upper_endo_scopy_confirmation: {
+    agree_check: string;
+    patient_bday: string;
+    patient_contact: string;
+    patient_name: string;
+    patient_sig: string;
+    companion_bday: string;
+    companion_contact: string;
+    companion_name: string;
+    companion_sig: string;
+    dr_name: string;
+    dr_sig: string;
   };
 }
 

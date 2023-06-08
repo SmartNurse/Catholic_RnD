@@ -6,8 +6,8 @@ import useNotification from 'hooks/useNotification';
 import { Typography, Box } from '@mui/material';
 import MuiDialog from 'components/MuiDialog';
 
-import { SurveyDialogProps, TFallConfirmDefaultValues } from '../../type';
-import { updateFallConfirm } from 'apis/survey';
+import { SurveyDialogProps, TUpperEndoscopyDefaultValues } from '../../type';
+import { updateUpperEndoscopy } from 'apis/survey';
 
 import CommonPatientInfo from '../../components/CommonPatientInfo';
 import InspectionPurpose from './InspectionPurpose';
@@ -17,8 +17,8 @@ import CautionList from './CautionList';
 import Complications from './Complications';
 import SpecialCaution from './SpecialCaution';
 
-const FallPrevention = (
-  props: SurveyDialogProps<TFallConfirmDefaultValues>
+const UpperEndoscopy = (
+  props: SurveyDialogProps<TUpperEndoscopyDefaultValues>
 ) => {
   const {
     title,
@@ -37,31 +37,50 @@ const FallPrevention = (
     defaultValues,
   });
 
-  const onSubmit = (data: TFallConfirmDefaultValues) => {
-    const { fall_education, signature, date, personnel_signature } = data;
+  const onSubmit = (data: TUpperEndoscopyDefaultValues) => {
+    const {
+      agree_check,
+      patient_bday,
+      patient_contact,
+      patient_name,
+      patient_sig,
+      companion_bday,
+      companion_contact,
+      companion_name,
+      companion_sig,
+      dr_name,
+      dr_sig,
+    } = data;
 
     const request = {
       user_id,
       patient_id: patientInfo.patient_id,
-      fall_confirm: {
-        fall_education: JSON.stringify(fall_education),
-        signature,
-        date,
-        personnel_signature,
+      upper_endo_scopy_confirmation: {
+        agree_check,
+        patient_bday,
+        patient_contact,
+        patient_name,
+        patient_sig,
+        companion_bday,
+        companion_contact,
+        companion_name,
+        companion_sig,
+        dr_name,
+        dr_sig,
       },
     };
 
     console.log(request);
 
-    updateFallConfirm(request)
+    updateUpperEndoscopy(request)
       .then(({ data: { rc } }) => {
         if (rc !== 1) return onResultCode(rc);
 
         onUpdateIsSave(true);
-        onSuccess('낙상 예방교육 확인서 저장에 성공하였습니다.');
+        onSuccess('상부내시경 동의서 저장에 성공하였습니다.');
       })
       .catch(e => {
-        onFail('낙상 예방교육 확인서 저장에 실패하였습니다.', e);
+        onFail('상부내시경 동의서 저장에 실패하였습니다.', e);
         console.log(e);
       });
   };
@@ -108,4 +127,4 @@ const FallPrevention = (
   );
 };
 
-export default FallPrevention;
+export default UpperEndoscopy;

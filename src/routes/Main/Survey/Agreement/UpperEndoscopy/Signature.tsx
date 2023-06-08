@@ -5,22 +5,11 @@ import RowContainer from '../../components/RowContainer';
 import RowContent from '../../components/RowContent';
 import SectionTitle from '../../components/SectionTitle';
 
-import {
-  Box,
-  Typography,
-  RadioGroup,
-  Radio,
-  Table,
-  TableBody,
-  TableHead,
-  TableRow,
-  useTheme,
-} from '@mui/material';
+import { Box, Table, TableBody, TableRow } from '@mui/material';
 
 import {
   StyledTableCell,
   StyledTableCellWithoutLeft,
-  StyledTableCellWithoutRight,
   StyledTableCellWithoutLeftRight,
 } from 'routes/Main/style';
 
@@ -57,7 +46,7 @@ const Signature = (props: Props) => {
                   <Form.MuiTextField
                     required={false}
                     disabled={disabled}
-                    {...register('das')}
+                    {...register('patient_bday')}
                   />
                   <Box
                     sx={{
@@ -73,7 +62,7 @@ const Signature = (props: Props) => {
                     sx={{ paddingRight: '60px' }}
                     required={false}
                     disabled={disabled}
-                    {...register('das')}
+                    {...register('patient_contact')}
                   />
                 </div>
                 <div style={{ display: 'flex', marginBottom: '20px' }}>
@@ -89,7 +78,7 @@ const Signature = (props: Props) => {
                   <Form.MuiTextField
                     required={false}
                     disabled={disabled}
-                    {...register('das')}
+                    {...register('patient_name')}
                   />
                   <Box
                     sx={{
@@ -104,7 +93,7 @@ const Signature = (props: Props) => {
                     required={false}
                     sx={{ paddingRight: '60px' }}
                     disabled={disabled}
-                    {...register('das')}
+                    {...register('patient_sig')}
                   />
                 </div>
               </StyledTableCellWithoutLeftRight>
@@ -132,7 +121,7 @@ const Signature = (props: Props) => {
                   <Form.MuiTextField
                     required={false}
                     disabled={disabled}
-                    {...register('das')}
+                    {...register('companion_bday')}
                   />
                   <Box
                     sx={{
@@ -147,7 +136,7 @@ const Signature = (props: Props) => {
                     sx={{ paddingRight: '60px' }}
                     required={false}
                     disabled={disabled}
-                    {...register('das')}
+                    {...register('companion_contact')}
                   />
                 </div>
                 <div style={{ display: 'flex', marginBottom: '20px' }}>
@@ -163,7 +152,7 @@ const Signature = (props: Props) => {
                   <Form.MuiTextField
                     required={false}
                     disabled={disabled}
-                    {...register('das')}
+                    {...register('companion_name')}
                   />
                   <Box
                     sx={{
@@ -178,7 +167,7 @@ const Signature = (props: Props) => {
                     sx={{ paddingRight: '60px' }}
                     required={false}
                     disabled={disabled}
-                    {...register('das')}
+                    {...register('companion_sig')}
                   />
                 </div>
               </StyledTableCellWithoutLeftRight>
@@ -206,7 +195,7 @@ const Signature = (props: Props) => {
                   <Form.MuiTextField
                     required={false}
                     disabled={disabled}
-                    {...register('das')}
+                    {...register('dr_name')}
                   />
                   <Box
                     sx={{
@@ -221,7 +210,7 @@ const Signature = (props: Props) => {
                     sx={{ paddingRight: '60px' }}
                     required={false}
                     disabled={disabled}
-                    {...register('das')}
+                    {...register('dr_sig')}
                   />
                 </div>
               </StyledTableCellWithoutLeftRight>

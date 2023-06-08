@@ -621,18 +621,13 @@ const useDefaultValues = ({ setDefaultValues, user_id }: Props) => {
       case MENU.UPPER_ENDOSCOPY:
         getUpperEndoscopy({ user_id, patient_id })
           .then(({ data }) => {
-            const { update_at, fall_confirm } = data;
+            const { update_at, upper_endo_scopy_confirmation } = data;
             convertDataToStates(
               {
                 update_at,
-                fall_education: fall_confirm
-                  ? JSON.parse(fall_confirm.fall_education)
-                  : {},
-                signature: fall_confirm?.signature,
-                date: fall_confirm?.date,
-                personnel_signature: fall_confirm?.personnel_signature,
+                ...upper_endo_scopy_confirmation,
               },
-              initialFallConfirm
+              initialUpperEndoscopy
             );
           })
           .catch(e => onFail('알 수 없는 오류가 발생했습니다.', e));

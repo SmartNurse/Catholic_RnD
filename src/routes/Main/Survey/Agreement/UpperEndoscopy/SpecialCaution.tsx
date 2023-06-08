@@ -34,15 +34,20 @@ const SpecialCaution = (props: Props) => {
               i18nKey="YESORNO"
               values={[1, 2]}
               disabled={disabled}
-              defaultValue={getValues('economy_history.counseling')}
-              onChange={v => setValue('economy_history.counseling', v)}
+              defaultValue={getValues('agree_check')}
+              onChange={v => setValue('agree_check', v)}
             />
           </RowContent>
 
           <Typography sx={{ fontSize: '14px', margin: '20px 0 0 30px' }}>
-          본인(또는 대리인)은 상부위장관내시경에 대하여 시술의 필요성, 검사 과정, 검사 후 발생할 수 있는 합병증과 후유증 및 이 검사방법 이외의 대체 검사방법에 대하여 의료진으로부터 설명을 듣고 그 내용을 이해하였으며
-          <br />
-           검사 전 후 불가항력적인 합병증 또는 환자의 특이체질로 인한 우발적 사고가 있을 수 있음을 사전 설명으로 충분히 이해하였습니다. 이에 본인은 귀 병원이 상기 검사를 하여 줄 것을 서면으로 요청합니다. 
+            본인(또는 대리인)은 상부위장관내시경에 대하여 시술의 필요성, 검사
+            과정, 검사 후 발생할 수 있는 합병증과 후유증 및 이 검사방법 이외의
+            대체 검사방법에 대하여 의료진으로부터 설명을 듣고 그 내용을
+            이해하였으며
+            <br />
+            검사 전 후 불가항력적인 합병증 또는 환자의 특이체질로 인한 우발적
+            사고가 있을 수 있음을 사전 설명으로 충분히 이해하였습니다. 이에
+            본인은 귀 병원이 상기 검사를 하여 줄 것을 서면으로 요청합니다.
           </Typography>
         </RowContainer>
       </Box>

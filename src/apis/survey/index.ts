@@ -445,12 +445,14 @@ export const updateColonoscopy = (request: IUpdateColonoscopy) => {
 
 // 상부내시경
 export const getUpperEndoscopy = (request: IGetSurvey) => {
-  const url = `/survey/fallConfirm?${formatToRequestParameter(request)}`;
+  const url = `/survey/upperEndoScopyConfirm?${formatToRequestParameter(
+    request
+  )}`;
   return apiGateway.get(url);
 };
 
 export const updateUpperEndoscopy = (request: IUpdateUpperEndoscopy) => {
-  const url = `/survey/fallConfirm`;
+  const url = `/survey/upperEndoScopyConfirm`;
   return apiGateway.post(url, camelcaseKeys(request));
 };
 

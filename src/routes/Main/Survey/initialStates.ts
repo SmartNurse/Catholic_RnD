@@ -942,19 +942,17 @@ export const initialColonoscopy = {
 
 export const initialUpperEndoscopy = {
   update_at: '',
-  fall_education: {
-    checked1: false,
-    checked2: false,
-    checked3: false,
-    checked4: false,
-    checked5: false,
-    checked6: false,
-    checked7: false,
-    checked8: false,
-  },
-  signature: '',
-  date: '',
-  personnel_signature: '',
+  agree_check: '',
+  patient_bday: '',
+  patient_contact: '',
+  patient_name: '',
+  patient_sig: '',
+  companion_bday: '',
+  companion_contact: '',
+  companion_name: '',
+  companion_sig: '',
+  dr_name: '',
+  dr_sig: '',
 };
 
 export const initialNonSalary = {
