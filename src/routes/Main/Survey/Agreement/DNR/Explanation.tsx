@@ -25,13 +25,6 @@ interface Props extends IFormValues, IFormWatch, IFormRegister {
 const Explanation = (props: Props) => {
   const { disabled, register, getValues, setValue } = props;
 
-  const infos = [
-    { title: '성명', value: 'name' },
-    { title: '주민등록번호', value: 'patient_id' },
-    { title: '주소', value: 'address' },
-    { title: '전화번호', value: 'number' },
-  ];
-
   return (
     <Fragment>
       <SectionTitle title="사전연명의료의향서 등록기관의 설명사항 확인방법" />
@@ -48,32 +41,32 @@ const Explanation = (props: Props) => {
             whiteSpace="pre"
             disabled={disabled}
             direction="column"
-            defaultValue={getValues('default_info.destination.value')}
-            onChange={v => setValue('default_info.destination.value', v)}
-            width={'150px'}
+            defaultValue={getValues('explanation_check')}
+            onChange={v => setValue('explanation_check', v)}
+            width={'9vw'}
           />
 
           <Form.MuiTextField
             type="date"
             required={false}
             disabled={disabled}
-            sx={{ width: '850px' }}
-            {...register('default_info.destination.input')}
+            sx={{ width: '45vw' }}
+            {...register('explanation_check_sig_date')}
           />
 
-          <RowContent title={'성명'} titleRatio={1.5} childrenRatio={9}>
+          <RowContent title={'성명'} titleRatio={1.5} childrenRatio={8}>
             <Form.MuiTextField
               required={false}
               disabled={disabled}
-              {...register('default_info.destination.input')}
+              {...register('explanation_check_sig_name')}
             />
           </RowContent>
 
-          <RowContent title={'서명'} titleRatio={1.5} childrenRatio={9}>
+          <RowContent title={'서명'} titleRatio={1.5} childrenRatio={8}>
             <Form.MuiTextField
               required={false}
               disabled={disabled}
-              {...register('default_info.destination.input')}
+              {...register('explanation_check_sig_sig')}
             />
           </RowContent>
         </Stack>

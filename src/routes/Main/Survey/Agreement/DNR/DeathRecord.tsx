@@ -44,7 +44,7 @@ const DeathRecord = (props: Props) => {
             disabled={disabled}
             placeholder="직접 입력"
             sx={{ width: '200px' }}
-            {...register('pt_available.input')}
+            {...register('pt_available_etc_memo')}
           />
         </Stack>
       </RowContainer>

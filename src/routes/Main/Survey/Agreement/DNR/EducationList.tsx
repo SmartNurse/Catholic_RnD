@@ -12,27 +12,27 @@ interface Props extends IFormRegister, IFormValues {
 const checks = [
   {
     label: '연명의료의 시행방법 및 연명의료중단 결정에 대한 사항',
-    key: 'explanation.checked1',
+    key: 'explanation01',
   },
   {
     label: '호스피스의 선택 및 이용에 관한 사항',
-    key: 'explanation.checked2',
+    key: 'explanation02',
   },
   {
     label: '사전연명의료의향서의 효력 및 효력 상실에 관한 사항',
-    key: 'explanation.checked3',
+    key: 'explanation03',
   },
   {
     label: '사전연명의료의향서의 작성, 등록, 보관 및 통보에 관한 사항',
-    key: 'explanation.checked4',
+    key: 'explanation04',
   },
   {
     label: '사전연명의료의향서의 변경, 철회 및 그에 따른 조치에 관한 사항',
-    key: 'explanation.checked5',
+    key: 'explanation05',
   },
   {
     label: '등록기관의 폐업, 휴업 및 지정 취소에 따른 기록의 이관에 관한 사항 ',
-    key: 'explanation.checked6',
+    key: 'explanation06',
   },
 ];
 

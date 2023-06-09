@@ -828,12 +828,22 @@ export interface IUpdateDNR extends IGetSurvey {
     pt_addr: string;
     pt_contact: string;
 
-    willing: boolean; //호스피스 이용 의향
+    willing: string; //호스피스 이용 의향
 
-    explanation: string;
+    explanation01: boolean;
+    explanation02: boolean;
+    explanation03: boolean;
+    explanation04: boolean;
+    explanation05: boolean;
+    explanation06: boolean;
+
     explanation_check: string;
+    explanation_check_sig_date: string;
+    explanation_check_sig_name: string;
+    explanation_check_sig_sig: string;
 
     pt_available: string;
+    pt_available_etc_memo: string;
 
     center_name: string;
     center_location: string;

@@ -46,10 +46,20 @@ const FallPrevention = (props: SurveyDialogProps<TDNRDefaultValues>) => {
 
       willing,
 
-      explanation,
+      explanation01,
+      explanation02,
+      explanation03,
+      explanation04,
+      explanation05,
+      explanation06,
+
       explanation_check,
+      explanation_check_sig_date,
+      explanation_check_sig_name,
+      explanation_check_sig_sig,
 
       pt_available,
+      pt_available_etc_memo,
 
       center_name,
       center_location,
@@ -77,10 +87,20 @@ const FallPrevention = (props: SurveyDialogProps<TDNRDefaultValues>) => {
         //호스피스 이용 의향
         willing,
 
-        explanation: JSON.stringify(explanation),
+        explanation01,
+        explanation02,
+        explanation03,
+        explanation04,
+        explanation05,
+        explanation06,
+
         explanation_check,
+        explanation_check_sig_date,
+        explanation_check_sig_name,
+        explanation_check_sig_sig,
 
         pt_available,
+        pt_available_etc_memo,
 
         center_name,
         center_location,

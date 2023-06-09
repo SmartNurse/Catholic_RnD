@@ -1009,19 +1009,22 @@ export const initialDNR = {
   pt_addr: '',
   pt_contact: '',
 
-  willing: true, //호스피스 이용 의향
+  willing: '', //호스피스 이용 의향
 
-  explanation: {
-    checked1: false,
-    checked2: false,
-    checked3: false,
-    checked4: false,
-    checked5: false,
-    checked6: false,
-  },
+  explanation01: false,
+  explanation02: false,
+  explanation03: false,
+  explanation04: false,
+  explanation05: false,
+  explanation06: false,
+
   explanation_check: '',
+  explanation_check_sig_date: '',
+  explanation_check_sig_name: '',
+  explanation_check_sig_sig: '',
 
   pt_available: '',
+  pt_available_etc_memo: '',
 
   center_name: '',
   center_location: '',
