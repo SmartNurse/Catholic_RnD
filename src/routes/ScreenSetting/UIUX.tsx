@@ -238,9 +238,7 @@ const UIUX = () => {
             }}
             onClick={() => {
               setTimeout(() => {
-                window.open(
-                  'http://amisasan.s3-website.kr.object.ncloudstorage.com/#/'
-                );
+                window.open('https://smartnurseasan.shop/');
               }, 1000);
 
               setLocalStorage('theme_color', '서울아산병원');
