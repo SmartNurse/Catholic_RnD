@@ -103,69 +103,33 @@ const MenuSettings = (props: Props) => {
       isPro: true,
       icon: <DateRangeOutlined />,
       label: '간호사 근무 스케줄표',
-      buttonClick: {
-        target: '_blank',
-        href: 'https://dutymaker.com/',
-      },
     },
     {
       icon: <NotificationsOutlined />,
       label: '공지사항',
-      buttonClick: {
-        target: '_blank',
-        href: 'https://www.smartnurse.co.kr/enrnotice',
-      },
     },
     {
       isPro: true,
       icon: <VideocamOutlined />,
       label: '핵심간호술기영상 저장',
-      buttonClick: {
-        onClick: () => {
-          if (!student_uuid) return onRequired('REQUIRED.STUDENT');
-          if (!patientInfo) return onRequired('REQUIRED.PATIENT');
-          onUpdateSurveyType('핵심간호술기영상 저장');
-        },
-      },
     },
     {
       isPro: true,
       icon: <ExempleVideo />,
       label: '핵심간호술기영상 예시',
-      buttonClick: {
-        onClick: () => {
-          onUpdateSurveyType('핵심간호술기예시 영상');
-          console.log('열려라');
-        },
-      },
     },
     {
       isPro: true,
       icon: <ComputerOutlined />,
       label: '화면설정',
-      buttonClick: {
-        onClick: () => navigate('/screensetting'),
-      },
     },
     {
       icon: <AccountCircleOutlined />,
       label: '계정설정',
-      buttonClick: {
-        onClick: () => navigate('/mypage'),
-      },
     },
     {
       icon: <LogoutOutlined />,
       label: '로그아웃',
-      buttonClick: {
-        onClick: () => {
-          onSignOut();
-          // 로그아웃 시 스토어 초기화
-          onResetStudent();
-          onResetPatient();
-          onCloseReadOnly();
-        },
-      },
     },
   ];
 
@@ -181,9 +145,27 @@ const MenuSettings = (props: Props) => {
     } else if (label === '한국보건의료정보원') {
       window.open('https://www.k-his.or.kr/');
       return;
+    } else if (label === '간호사 근무 스케줄표') {
+      window.open('https://dutymaker.com/');
+      return;
+    } else if (label === '공지사항') {
+      window.open('https://www.smartnurse.co.kr/enrnotice');
+      return;
+    } else if (label === '계정설정') {
+      navigate('/mypage');
+      return;
+    } else if (label === '화면설정') {
+      navigate('/screensetting');
+      return;
     }
 
-    if (!patientInfo) return onRequired('REQUIRED.PATIENT');
+    if (label === '로그아웃') {
+      onSignOut();
+      // 로그아웃 시 스토어 초기화
+      onResetStudent();
+      onResetPatient();
+      onCloseReadOnly();
+    } else if (!patientInfo) return onRequired('REQUIRED.PATIENT');
     onUpdateSurveyType(label);
   };
 

@@ -98,7 +98,7 @@ export enum MENU {
   DNR = '사전연명의료의향서',
   DNA = '유전자검사 동의서',
   CORE_NURSING_SKILL_VIDEO = '핵심간호술기영상 저장',
-  CORE_NURSING_SKILL_VIDEO_EXEMPLE = '핵심간호술기예시 영상',
+  CORE_NURSING_SKILL_VIDEO_EXEMPLE = '핵심간호술기영상 예시',
   NURSE_RECORD = '간호기록체크리스트',
   WODR = '병동',
   ER = '응급실',
