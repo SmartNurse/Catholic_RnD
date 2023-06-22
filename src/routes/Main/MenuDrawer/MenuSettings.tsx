@@ -18,6 +18,7 @@ import {
 import { ReactComponent as ProPlus } from '../../../assets/proPlus.svg';
 import { ReactComponent as ExempleVideo } from '../../../assets/exempleVideo.svg';
 import { ReactComponent as NurseRecordIcon } from '../../../assets/nurse-record-icon.svg';
+import { ReactComponent as MadicationLoog } from '../../../assets/madication-logo.svg';
 
 import useUser from 'store/user/useUser';
 import { useNavigate } from 'react-router-dom';
@@ -76,6 +77,11 @@ const MenuSettings = (props: Props) => {
         target: '_blank',
         href: 'https://www.k-his.or.kr/',
       },
+    },
+    {
+      isPro: true,
+      icon: <MadicationLoog />,
+      label: '약물계산기',
     },
     {
       disabled: true,
