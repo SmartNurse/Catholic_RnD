@@ -104,6 +104,7 @@ export enum MENU {
   ER = '응급실',
   OP = '수술실',
   DRUG_CALCULATOR = '약물계산기',
+  NURSE_CHECKLIST_ROOM = '병동',
 }
 
 export enum RECORD_TYPE {

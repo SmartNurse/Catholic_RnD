@@ -48,6 +48,7 @@ import DNA from './Agreement/DNA';
 import CoreNursingSkillVideo from 'routes/CoreNursingSkillVideo';
 import CoreNursingSkillVideoExemple from 'routes/CoreNursingSkillVideoExemple';
 import DrugCalculatior from './DrugCalculator';
+import NurseCheckListRoom from './NurseCheckList/ROOM';
 
 interface Props {
   surveyType: string;
@@ -243,6 +244,10 @@ const DisplaySurvey = (props: Props) => {
     case MENU.DRUG_CALCULATOR: {
       if (!defaultValues) return null;
       return <DrugCalculatior {...dialogProps} onClose={onCloseSave} />;
+    }
+    case MENU.NURSE_CHECKLIST_ROOM: {
+      if (!defaultValues) return null;
+      return <NurseCheckListRoom {...dialogProps} onClose={onCloseSave} />;
     }
     case MENU.CORE_NURSING_SKILL_VIDEO: {
       if (!defaultValues) return null;
