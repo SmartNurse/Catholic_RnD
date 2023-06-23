@@ -52,7 +52,7 @@ const Counselor = (props: Props) => {
 
   return (
     <Fragment>
-      <SectionTitle title="사전연명의료의향서 등록기관 및 상담자" />
+      <SectionTitle title="참고용 단위" />
       <RowContainer xs={12} sx={{ marginTop: '20px' }}>
         <RowContainer xs={6} sx={{ marginLeft: '-150px' }}>
           {infos.map((v, i) => (
