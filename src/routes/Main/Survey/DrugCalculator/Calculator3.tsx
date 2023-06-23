@@ -1,5 +1,5 @@
 import Form from 'components/Form';
-import { Fragment } from 'react';
+import { Fragment, useState } from 'react';
 import { Stack, Grid, Typography, Button } from '@mui/material';
 
 import MuiTable from 'components/MuiTable';
@@ -19,6 +19,34 @@ interface Props extends IFormValues, IFormWatch, IFormRegister {
 
 const Calculator3 = (props: Props) => {
   const { disabled, register, getValues, setValue } = props;
+
+  // 시간당 주입량 / 3
+  const [gtt, setGtt] = useState('');
+  const handleChangeGtt = (event: any) => {
+    setGtt(event.target.value);
+    return Number(setGtt);
+  };
+
+  const [answer, setAnswer] = useState(0);
+
+  const result = () => {
+    const a = Number(gtt) / Number(3);
+    return setAnswer(a);
+  };
+
+  // 1분당 방울 수(gtt) X 3
+  const [gtt1, setGtt1] = useState('');
+  const handleChangeGtt1 = (event: any) => {
+    setGtt1(event.target.value);
+    return Number(setGtt1);
+  };
+
+  const [answer1, setAnswer1] = useState(0);
+
+  const result1 = () => {
+    const a = Number(gtt1) / Number(3);
+    return setAnswer1(a);
+  };
 
   return (
     <Fragment>
@@ -40,10 +68,11 @@ const Calculator3 = (props: Props) => {
             시간당 주입량
           </Typography>
           <Form.MuiTextField
+            type="number"
             required={false}
             disabled={disabled}
             sx={{ width: '75%' }}
-            {...register('default_info.hospitalization_path.input')}
+            onChange={handleChangeGtt}
           />
         </Stack>
         <EmtyLine />
@@ -65,9 +94,9 @@ const Calculator3 = (props: Props) => {
             disabled={disabled}
             InputProps={{ ...Form.adornment('', 'gtt') }}
             sx={{ width: '63%', marginRight: '3%' }}
-            {...register('default_info.hospitalization_path.input')}
+            value={answer}
           />
-          <Button variant="contained" size="small">
+          <Button variant="contained" size="small" onClick={result}>
             확인
           </Button>
         </Stack>
@@ -94,7 +123,7 @@ const Calculator3 = (props: Props) => {
             required={false}
             disabled={disabled}
             sx={{ width: '75.2%' }}
-            {...register('default_info.hospitalization_path.input')}
+            onChange={handleChangeGtt1}
           />
         </Stack>
         <EmtyLine />
@@ -116,9 +145,9 @@ const Calculator3 = (props: Props) => {
             disabled={disabled}
             InputProps={{ ...Form.adornment('', 'ml/hr') }}
             sx={{ width: '63.3%', marginRight: '3%' }}
-            {...register('default_info.hospitalization_path.input')}
+            value={answer1}
           />
-          <Button variant="contained" size="small">
+          <Button variant="contained" size="small" onClick={result1}>
             확인
           </Button>
         </Stack>

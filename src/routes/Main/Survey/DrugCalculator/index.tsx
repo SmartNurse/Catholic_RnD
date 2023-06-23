@@ -51,9 +51,9 @@ const DrugCalculatior = (props: SurveyDialogProps<TFallDefaultValues>) => {
       .then(({ data: { rc } }) => {
         if (rc !== 1) return onResultCode(rc);
         onUpdateIsSave(true);
-        onSuccess('낙상위험 평가도구 I 저장에 성공하였습니다.');
+        onSuccess('약물 계산기 저장에 성공하였습니다.');
       })
-      .catch(e => onFail('낙상위험 평가도구 I 저장에 실패하였습니다.', e));
+      .catch(e => onFail('약물 계산기 저장에 실패하였습니다.', e));
   };
 
   const formProps = {
