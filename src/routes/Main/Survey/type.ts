@@ -103,6 +103,7 @@ export enum MENU {
   WODR = '병동',
   ER = '응급실',
   OP = '수술실',
+  DRUG_CALCULATOR = '약물계산기',
 }
 
 export enum RECORD_TYPE {

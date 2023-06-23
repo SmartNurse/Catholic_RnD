@@ -47,6 +47,7 @@ import DNR from './Agreement/DNR';
 import DNA from './Agreement/DNA';
 import CoreNursingSkillVideo from 'routes/CoreNursingSkillVideo';
 import CoreNursingSkillVideoExemple from 'routes/CoreNursingSkillVideoExemple';
+import DrugCalculatior from './DrugCalculator';
 
 interface Props {
   surveyType: string;
@@ -238,6 +239,10 @@ const DisplaySurvey = (props: Props) => {
     case MENU.DNA: {
       if (!defaultValues) return null;
       return <DNA {...dialogProps} onClose={onCloseSave} />;
+    }
+    case MENU.DRUG_CALCULATOR: {
+      if (!defaultValues) return null;
+      return <DrugCalculatior {...dialogProps} onClose={onCloseSave} />;
     }
     case MENU.CORE_NURSING_SKILL_VIDEO: {
       if (!defaultValues) return null;
