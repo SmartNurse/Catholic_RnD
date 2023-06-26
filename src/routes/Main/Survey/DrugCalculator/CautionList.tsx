@@ -14,7 +14,7 @@ const contents = [
   'mcg/kg/hr , mg/kg/hr = 처방속도 X 몸무게 X 혼합액 총량(cc) / 약품용량(mcg or mg)',
   'mg/hr = 처방속도 X 혼합액 총량(cc) / 약품용량(mg)',
   'mg/min, u/min = 처방속도 X 60 X 혼합액 총량(cc) / 약품용량(mg or u)',
-  '1분당 방울 수(gtt) = 시간당 주입량 / 3 ',
+  '1분당 방울 수(gtt) = 시간당 주입량(ml/hr) / 3 ',
   '시간당 주입량(ml/hr) = 1분당 방울 수(gtt) X 3',
 ];
 

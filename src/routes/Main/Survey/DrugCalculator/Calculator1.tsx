@@ -81,9 +81,7 @@ const Calculator1 = (props: Props) => {
   const [answer1, setAnswer1] = useState(0);
 
   const result1 = () => {
-    const a =
-      (Number(kgHr) * Number(hrCc) * Number(60) * Number(weight1)) /
-      Number(volume1);
+    const a = (Number(kgHr) * Number(hrCc) * Number(weight1)) / Number(volume1);
     return setAnswer1(a);
   };
 
