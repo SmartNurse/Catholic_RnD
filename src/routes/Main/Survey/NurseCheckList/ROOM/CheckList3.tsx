@@ -71,7 +71,7 @@ const CheckList3 = (props: Props) => {
   ];
   return (
     <Fragment>
-      <SectionTitle title="교육" />
+      <SectionTitle title="교육현황" />
       <Grid item xs={12}>
         <div style={{ display: 'table-row' }}>
           {교육.map(

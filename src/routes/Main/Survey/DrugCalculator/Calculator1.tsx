@@ -96,7 +96,7 @@ const Calculator1 = (props: Props) => {
             sx={{
               fontSize: '14px',
               lineHeight: '37px',
-              marginRight: '15%',
+              width: '150px',
             }}
           >
             처방속도
@@ -112,8 +112,8 @@ const Calculator1 = (props: Props) => {
             sx={{
               fontSize: '14px',
               lineHeight: '37px',
-              marginRight: '9%',
-              marginLeft: '3%',
+              width: '170px',
+              paddingLeft: '20px',
             }}
           >
             혼합액 총량(cc)
@@ -136,7 +136,7 @@ const Calculator1 = (props: Props) => {
             sx={{
               fontSize: '14px',
               lineHeight: '37px',
-              marginRight: '18.5%',
+              width: '150px',
             }}
           >
             체중
@@ -152,8 +152,8 @@ const Calculator1 = (props: Props) => {
             sx={{
               fontSize: '14px',
               lineHeight: '37px',
-              marginRight: '3.4%',
-              marginLeft: '3%',
+              width: '170px',
+              paddingLeft: '20px',
             }}
           >
             약품 용량(mcg or mg)
@@ -176,7 +176,7 @@ const Calculator1 = (props: Props) => {
             sx={{
               fontSize: '14px',
               lineHeight: '37px',
-              marginRight: '18.5%',
+              width: '150px',
             }}
           >
             결과
@@ -203,7 +203,7 @@ const Calculator1 = (props: Props) => {
             sx={{
               fontSize: '14px',
               lineHeight: '37px',
-              marginRight: '15%',
+              width: '150px',
             }}
           >
             처방속도
@@ -219,8 +219,8 @@ const Calculator1 = (props: Props) => {
             sx={{
               fontSize: '14px',
               lineHeight: '37px',
-              marginRight: '9%',
-              marginLeft: '3%',
+              width: '170px',
+              paddingLeft: '20px',
             }}
           >
             혼합액 총량(cc)
@@ -242,7 +242,7 @@ const Calculator1 = (props: Props) => {
             sx={{
               fontSize: '14px',
               lineHeight: '37px',
-              marginRight: '18.5%',
+              width: '150px',
             }}
           >
             체중
@@ -258,8 +258,8 @@ const Calculator1 = (props: Props) => {
             sx={{
               fontSize: '14px',
               lineHeight: '37px',
-              marginRight: '3.4%',
-              marginLeft: '3%',
+              width: '170px',
+              paddingLeft: '20px',
             }}
           >
             약품 용량(mcg or mg)
@@ -282,7 +282,7 @@ const Calculator1 = (props: Props) => {
             sx={{
               fontSize: '14px',
               lineHeight: '37px',
-              marginRight: '18.5%',
+              width: '150px',
             }}
           >
             결과

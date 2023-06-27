@@ -2,28 +2,14 @@ import Form from 'components/Form';
 
 import { Fragment, useState } from 'react';
 import { Delete } from '@mui/icons-material';
-import {
-  Checkbox,
-  Grid,
-  IconButton,
-  Table,
-  TableBody,
-  TableCell,
-  TableRow,
-  Typography,
-} from '@mui/material';
+import { Typography } from '@mui/material';
 
 import RowContainer from '../components/RowContainer';
 import RowContent from '../components/RowContent';
 
-import { Ti18nId } from 'hooks/useI18n';
-import { IMentalNursingRecord } from 'apis/survey/type';
 import { IFormRegister, IFormValues, IFormWatch } from 'routes/Main/type';
 
-import MuiTextField from 'components/Form/MuiTextField';
 import SectionTitle from '../components/SectionTitle';
-
-import { formatStringToDate } from 'utils/formatting';
 
 interface Props extends IFormValues, IFormWatch, IFormRegister {
   disabled?: boolean;

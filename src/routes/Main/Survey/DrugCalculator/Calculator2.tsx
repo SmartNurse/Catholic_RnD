@@ -76,13 +76,13 @@ const Calculator2 = (props: Props) => {
       <EmtyTitle />
 
       <RowContainer xs={6}>
-        <SectionTitle title="mcg/hr" mb={3} />
+        <SectionTitle title="mg/hr" mb={3} />
         <Stack direction="row" sx={{ marginLeft: '38px', width: '100%' }}>
           <Typography
             sx={{
               fontSize: '14px',
               lineHeight: '37px',
-              marginRight: '15%',
+              width: '150px',
             }}
           >
             처방속도
@@ -98,8 +98,8 @@ const Calculator2 = (props: Props) => {
             sx={{
               fontSize: '14px',
               lineHeight: '37px',
-              marginRight: '9%',
-              marginLeft: '3%',
+              width: '170px',
+              paddingLeft: '20px',
             }}
           >
             혼합액 총량(cc)
@@ -121,7 +121,7 @@ const Calculator2 = (props: Props) => {
             sx={{
               fontSize: '14px',
               lineHeight: '37px',
-              marginRight: '10.2%',
+              width: '150px',
             }}
           >
             약품 용량(mg)
@@ -143,7 +143,7 @@ const Calculator2 = (props: Props) => {
             sx={{
               fontSize: '14px',
               lineHeight: '37px',
-              marginRight: '18.5%',
+              width: '150px',
             }}
           >
             결과
@@ -164,13 +164,13 @@ const Calculator2 = (props: Props) => {
 
       {/* 오른쪽편 */}
       <RowContainer xs={6}>
-        <SectionTitle title="mcg/min , u/min" mb={3} />
+        <SectionTitle title="mg/min , u/min" mb={3} />
         <Stack direction="row" sx={{ marginLeft: '38px', width: '100%' }}>
           <Typography
             sx={{
               fontSize: '14px',
               lineHeight: '37px',
-              marginRight: '15%',
+              width: '150px',
             }}
           >
             처방속도
@@ -186,8 +186,8 @@ const Calculator2 = (props: Props) => {
             sx={{
               fontSize: '14px',
               lineHeight: '37px',
-              marginRight: '9%',
-              marginLeft: '3%',
+              width: '170px',
+              marginLeft: '20px',
             }}
           >
             혼합액 총량(cc)
@@ -209,7 +209,7 @@ const Calculator2 = (props: Props) => {
             sx={{
               fontSize: '14px',
               lineHeight: '37px',
-              marginRight: '5.2%',
+              width: '150px',
             }}
           >
             약품 용량(mcg or u)
@@ -218,7 +218,7 @@ const Calculator2 = (props: Props) => {
             type="number"
             required={false}
             disabled={disabled}
-            sx={{ width: '75.2%' }}
+            sx={{ width: '77%' }}
             onChange={handleChangeVolume1}
           />
         </Stack>
@@ -231,7 +231,7 @@ const Calculator2 = (props: Props) => {
             sx={{
               fontSize: '14px',
               lineHeight: '37px',
-              marginRight: '18.5%',
+              width: '150px',
             }}
           >
             결과
@@ -240,7 +240,7 @@ const Calculator2 = (props: Props) => {
             type="number"
             required={false}
             disabled={disabled}
-            InputProps={{ ...Form.adornment('', 'mcg/min , u/min') }}
+            InputProps={{ ...Form.adornment('', 'mg/min , u/min') }}
             sx={{ width: '63.3%', marginRight: '3%' }}
             value={answer1}
           />

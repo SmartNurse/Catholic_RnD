@@ -62,7 +62,7 @@ const Calculator3 = (props: Props) => {
             sx={{
               fontSize: '14px',
               lineHeight: '37px',
-              marginRight: '10.8%',
+              width: '150px',
             }}
           >
             시간당 주입량
@@ -84,7 +84,7 @@ const Calculator3 = (props: Props) => {
             sx={{
               fontSize: '14px',
               lineHeight: '37px',
-              marginRight: '18.4%',
+              width: '150px',
             }}
           >
             결과
@@ -114,7 +114,7 @@ const Calculator3 = (props: Props) => {
             sx={{
               fontSize: '14px',
               lineHeight: '37px',
-              marginRight: '7%',
+              width: '150px',
             }}
           >
             1분 당 방울 수(gtt)
@@ -135,7 +135,7 @@ const Calculator3 = (props: Props) => {
             sx={{
               fontSize: '14px',
               lineHeight: '37px',
-              marginRight: '18.5%',
+              width: '150px',
             }}
           >
             결과
