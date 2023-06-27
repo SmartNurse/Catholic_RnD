@@ -25,7 +25,7 @@ interface Props extends IFormValues, IFormWatch {
 const CheckList3 = (props: Props) => {
   const { setValue, getValues, disabled } = props;
 
-  const radioId = ['교육1', '교육2'];
+  const radioId = ['edu01', 'edu02'];
 
   const 교육 = [
     {
@@ -44,7 +44,7 @@ const CheckList3 = (props: Props) => {
     },
   ];
 
-  const radioId1 = ['CarePlan1', 'CarePlan2', 'CarePlan3'];
+  const radioId1 = ['care_plan01', 'care_plan02', 'care_plan03'];
 
   const CarePlan = [
     {
@@ -69,6 +69,14 @@ const CheckList3 = (props: Props) => {
       ],
     },
   ];
+
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement>,
+    checked: boolean
+  ) => {
+    setValue(e.target.name, e.target.value);
+  };
+
   return (
     <Fragment>
       <SectionTitle title="교육현황" />
@@ -157,6 +165,7 @@ const CheckList3 = (props: Props) => {
                                 <Radio
                                   disabled={disabled}
                                   name={radioId[content.id - 1]}
+                                  onChange={handleChange}
                                   value={i}
                                 />
                               }
@@ -168,7 +177,8 @@ const CheckList3 = (props: Props) => {
                                 <Radio
                                   disabled={disabled}
                                   name={radioId[content.id - 1]}
-                                  value={i + 1}
+                                  onChange={handleChange}
+                                  value={1}
                                 />
                               }
                             />
@@ -178,7 +188,8 @@ const CheckList3 = (props: Props) => {
                                 <Radio
                                   disabled={disabled}
                                   name={radioId[content.id - 1]}
-                                  value={i + 2}
+                                  onChange={handleChange}
+                                  value={2}
                                 />
                               }
                             />
@@ -279,7 +290,8 @@ const CheckList3 = (props: Props) => {
                               control={
                                 <Radio
                                   disabled={disabled}
-                                  name={radioId[content.id - 1]}
+                                  name={radioId1[content.id - 1]}
+                                  onChange={handleChange}
                                   value={i}
                                 />
                               }
@@ -290,8 +302,9 @@ const CheckList3 = (props: Props) => {
                               control={
                                 <Radio
                                   disabled={disabled}
-                                  name={radioId[content.id - 1]}
-                                  value={i + 1}
+                                  name={radioId1[content.id - 1]}
+                                  onChange={handleChange}
+                                  value={1}
                                 />
                               }
                             />
@@ -300,8 +313,9 @@ const CheckList3 = (props: Props) => {
                               control={
                                 <Radio
                                   disabled={disabled}
-                                  name={radioId[content.id - 1]}
-                                  value={i + 2}
+                                  name={radioId1[content.id - 1]}
+                                  onChange={handleChange}
+                                  value={2}
                                 />
                               }
                             />

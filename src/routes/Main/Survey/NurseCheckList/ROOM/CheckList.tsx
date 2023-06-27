@@ -26,10 +26,10 @@ const CheckList = (props: Props) => {
   const { setValue, getValues, disabled } = props;
 
   const radioId = [
-    '간호정보조사1',
-    '간호정보조사2',
-    '간호정보조사3',
-    '간호정보조사4',
+    'info_info01',
+    'info_info02',
+    'info_info03',
+    'info_mental01',
   ];
 
   const contentLabel = [
@@ -62,6 +62,13 @@ const CheckList = (props: Props) => {
       ],
     },
   ];
+
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement>,
+    checked: boolean
+  ) => {
+    setValue(e.target.name, e.target.value);
+  };
 
   return (
     <Fragment>
@@ -152,6 +159,7 @@ const CheckList = (props: Props) => {
                                   disabled={disabled}
                                   name={radioId[content.id - 1]}
                                   value={i}
+                                  onChange={handleChange}
                                 />
                               }
                             />
@@ -162,7 +170,8 @@ const CheckList = (props: Props) => {
                                 <Radio
                                   disabled={disabled}
                                   name={radioId[content.id - 1]}
-                                  value={i + 1}
+                                  value={1}
+                                  onChange={handleChange}
                                 />
                               }
                             />
@@ -172,7 +181,8 @@ const CheckList = (props: Props) => {
                                 <Radio
                                   disabled={disabled}
                                   name={radioId[content.id - 1]}
-                                  value={i + 2}
+                                  value={2}
+                                  onChange={handleChange}
                                 />
                               }
                             />

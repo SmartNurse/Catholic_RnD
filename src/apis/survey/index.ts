@@ -44,6 +44,7 @@ import {
   IUpdateMedicalRecords,
   IUpdateDNR,
   IUpdateDNA,
+  IUpdateCheckListRoom,
 } from './type';
 
 // e-CARDEX
@@ -501,5 +502,18 @@ export const getDNA = (request: IGetSurvey) => {
 
 export const updateDNA = (request: IUpdateDNA) => {
   const url = `/survey/geneTestConfirm`;
+  return apiGateway.post(url, camelcaseKeys(request));
+};
+
+// 간호체크리스트 ( 병동 )
+export const getCheckListRoom = (request: IGetSurvey) => {
+  const url = `/survey/nursing_check_list_ward?${formatToRequestParameter(
+    request
+  )}`;
+  return apiGateway.get(url);
+};
+
+export const updateCheckListRoom = (request: IUpdateCheckListRoom) => {
+  const url = `/survey/nursing_check_list_ward`;
   return apiGateway.post(url, camelcaseKeys(request));
 };

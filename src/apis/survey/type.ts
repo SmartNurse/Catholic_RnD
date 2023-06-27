@@ -888,3 +888,102 @@ export interface IUpdateDNA extends IGetSurvey {
     consultant_sig: string;
   };
 }
+
+// 간호체크리스트 ( 병동 )
+export interface IUpdateCheckListRoom extends IGetSurvey {
+  nursing_check_list_ward: {
+    info_info01: string;
+    info_info02: string;
+    info_info03: string;
+
+    info_mental01: string;
+
+    fall01: string;
+    fall02: string;
+    fall03: string;
+    fall04: string;
+    fall05: string;
+
+    bed_sore01: string;
+    bed_sore02: string;
+    bed_sore03: string;
+    bed_sore04: string;
+    bed_sore05: string;
+
+    edu01: string;
+    edu02: string;
+
+    care_plan01: string;
+    care_plan02: string;
+    care_plan03: string;
+
+    surgery01: string;
+    surgery02: string;
+    surgery03: string;
+
+    medicine01: string;
+    medicine02: string;
+
+    hospitalization01: string;
+    hospitalization02: string;
+    hospitalization03: string;
+    hospitalization04: string;
+    hospitalization05: string;
+    hospitalization06: string;
+    hospitalization07: string;
+    hospitalization08: string;
+
+    ns_fall01: string;
+    ns_fall02: string;
+
+    ns_bedsore01: string;
+
+    ns_pt_moving01: string;
+    ns_pt_moving02: string;
+
+    ns_edu01: string;
+
+    ns_surgery01: string;
+
+    ns_transfusion01: string;
+
+    ns_infection01: string;
+
+    ns_pain01: string;
+    ns_pain02: string;
+    ns_pain03: string;
+
+    ns_re_pain01: string;
+    ns_re_pain02: string;
+    ns_re_pain03: string;
+    ns_re_pain04: string;
+
+    ns_pca01: string;
+    ns_pca02: string;
+    ns_pca03: string;
+    ns_pca04: string;
+
+    ns_nausea01: string;
+    ns_nausea02: string;
+
+    ns_chemo_side_eff01: string;
+
+    ns_restraint01: string;
+    ns_restraint02: string;
+    ns_restraint03: string;
+    ns_restraint04: string;
+    ns_restraint05: string;
+
+    ns_high_risk01: string;
+    ns_high_risk02: string;
+
+    right01: string;
+
+    discharge01: string;
+    discharge02: string;
+    discharge03: string;
+    discharge04: string;
+
+    ocs01: string;
+  };
+}

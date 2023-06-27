@@ -1,11 +1,14 @@
 import { Grid, Typography } from '@mui/material';
 import { useForm } from 'react-hook-form';
 
-import { updateFall } from 'apis/survey';
+import { updateCheckListRoom } from 'apis/survey';
 import useSurvey from 'store/survey/useSurvey';
 import useNotification from 'hooks/useNotification';
 import MuiDialog from 'components/MuiDialog';
-import { TFallDefaultValues, SurveyDialogProps } from 'routes/Main/Survey/type';
+import {
+  TCheckListRoomDefaultValues,
+  SurveyDialogProps,
+} from 'routes/Main/Survey/type';
 
 import CommonPatientInfo from '../../components/CommonPatientInfo';
 import CheckList from './CheckList';
@@ -16,7 +19,9 @@ import CheckList5 from './CheckList5';
 import CheckList6 from './CheckList6';
 import CheckList7 from './CheckList7';
 
-const NurseCheckListRoom = (props: SurveyDialogProps<TFallDefaultValues>) => {
+const NurseCheckListRoom = (
+  props: SurveyDialogProps<TCheckListRoomDefaultValues>
+) => {
   const {
     title,
     isOpen,
@@ -35,20 +40,210 @@ const NurseCheckListRoom = (props: SurveyDialogProps<TFallDefaultValues>) => {
     defaultValues,
   });
 
-  const onSubmit = (data: TFallDefaultValues) => {
+  const onSubmit = (data: TCheckListRoomDefaultValues) => {
     const { patient_id } = patientInfo;
-    const { contents, date } = data;
+    const {
+      info_info01,
+      info_info02,
+      info_info03,
 
-    const contentsValues = Object.values(contents);
-    console.log('빈칸?', contentsValues);
+      info_mental01,
+
+      fall01,
+      fall02,
+      fall03,
+      fall04,
+      fall05,
+
+      bed_sore01,
+      bed_sore02,
+      bed_sore03,
+      bed_sore04,
+      bed_sore05,
+
+      edu01,
+      edu02,
+
+      care_plan01,
+      care_plan02,
+      care_plan03,
+
+      surgery01,
+      surgery02,
+      surgery03,
+
+      medicine01,
+      medicine02,
+
+      hospitalization01,
+      hospitalization02,
+      hospitalization03,
+      hospitalization04,
+      hospitalization05,
+      hospitalization06,
+      hospitalization07,
+      hospitalization08,
+
+      ns_fall01,
+      ns_fall02,
+
+      ns_bedsore01,
+
+      ns_pt_moving01,
+      ns_pt_moving02,
+
+      ns_edu01,
+
+      ns_surgery01,
+
+      ns_transfusion01,
+
+      ns_infection01,
+
+      ns_pain01,
+      ns_pain02,
+      ns_pain03,
+
+      ns_re_pain01,
+      ns_re_pain02,
+      ns_re_pain03,
+      ns_re_pain04,
+
+      ns_pca01,
+      ns_pca02,
+      ns_pca03,
+      ns_pca04,
+
+      ns_nausea01,
+      ns_nausea02,
+
+      ns_chemo_side_eff01,
+
+      ns_restraint01,
+      ns_restraint02,
+      ns_restraint03,
+      ns_restraint04,
+      ns_restraint05,
+
+      ns_high_risk01,
+      ns_high_risk02,
+
+      right01,
+
+      discharge01,
+      discharge02,
+      discharge03,
+      discharge04,
+
+      ocs01,
+    } = data;
+
+    // const contentsValues = Object.values(contents);
+    // if (contentsValues.includes('')) return onRequired('REQUIRED.FALL');
+
     const request = {
       user_id,
       patient_id,
-      date,
-      contents: JSON.stringify(contents),
+      nursing_check_list_ward: {
+        info_info01,
+        info_info02,
+        info_info03,
+
+        info_mental01,
+
+        fall01,
+        fall02,
+        fall03,
+        fall04,
+        fall05,
+
+        bed_sore01,
+        bed_sore02,
+        bed_sore03,
+        bed_sore04,
+        bed_sore05,
+
+        edu01,
+        edu02,
+
+        care_plan01,
+        care_plan02,
+        care_plan03,
+
+        surgery01,
+        surgery02,
+        surgery03,
+
+        medicine01,
+        medicine02,
+
+        hospitalization01,
+        hospitalization02,
+        hospitalization03,
+        hospitalization04,
+        hospitalization05,
+        hospitalization06,
+        hospitalization07,
+        hospitalization08,
+
+        ns_fall01,
+        ns_fall02,
+
+        ns_bedsore01,
+
+        ns_pt_moving01,
+        ns_pt_moving02,
+
+        ns_edu01,
+
+        ns_surgery01,
+
+        ns_transfusion01,
+
+        ns_infection01,
+
+        ns_pain01,
+        ns_pain02,
+        ns_pain03,
+
+        ns_re_pain01,
+        ns_re_pain02,
+        ns_re_pain03,
+        ns_re_pain04,
+
+        ns_pca01,
+        ns_pca02,
+        ns_pca03,
+        ns_pca04,
+
+        ns_nausea01,
+        ns_nausea02,
+
+        ns_chemo_side_eff01,
+
+        ns_restraint01,
+        ns_restraint02,
+        ns_restraint03,
+        ns_restraint04,
+        ns_restraint05,
+
+        ns_high_risk01,
+        ns_high_risk02,
+
+        right01,
+
+        discharge01,
+        discharge02,
+        discharge03,
+        discharge04,
+
+        ocs01,
+      },
     };
 
-    updateFall(request)
+    console.log('데이터', request);
+
+    updateCheckListRoom(request)
       .then(({ data: { rc } }) => {
         if (rc !== 1) return onResultCode(rc);
         onUpdateIsSave(true);

@@ -26,14 +26,49 @@ const CheckList6 = (props: Props) => {
   const { setValue, getValues, disabled } = props;
 
   const radioId = [
-    '간호기록1',
-    '간호기록2',
-    '간호기록3',
-    '간호기록4',
-    '간호기록5',
-    '간호기록6',
-    '간호기록7',
-    '간호기록8',
+    'ns_fall01',
+    'ns_fall02',
+
+    'ns_bedsore01',
+
+    'ns_pt_moving01',
+    'ns_pt_moving02',
+
+    'ns_edu01',
+
+    'ns_surgery01',
+
+    'ns_transfusion01',
+
+    'ns_infection01',
+
+    'ns_pain01',
+    'ns_pain02',
+    'ns_pain03',
+
+    'ns_re_pain01',
+    'ns_re_pain02',
+    'ns_re_pain03',
+    'ns_re_pain04',
+
+    'ns_pca01',
+    'ns_pca02',
+    'ns_pca03',
+    'ns_pca04',
+
+    'ns_nausea01',
+    'ns_nausea02',
+
+    'ns_chemo_side_eff01',
+
+    'ns_restraint01',
+    'ns_restraint02',
+    'ns_restraint03',
+    'ns_restraint04',
+    'ns_restraint05',
+
+    'ns_high_risk01',
+    'ns_high_risk02',
   ];
 
   const contentLabel = [
@@ -241,6 +276,13 @@ const CheckList6 = (props: Props) => {
     },
   ];
 
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement>,
+    checked: boolean
+  ) => {
+    setValue(e.target.name, e.target.value);
+  };
+
   return (
     <Fragment>
       <SectionTitle title="간호 기록" />
@@ -332,6 +374,7 @@ const CheckList6 = (props: Props) => {
                                 <Radio
                                   disabled={disabled}
                                   name={radioId[content.id - 1]}
+                                  onChange={handleChange}
                                   value={i}
                                 />
                               }
@@ -343,7 +386,8 @@ const CheckList6 = (props: Props) => {
                                 <Radio
                                   disabled={disabled}
                                   name={radioId[content.id - 1]}
-                                  value={i + 1}
+                                  onChange={handleChange}
+                                  value={1}
                                 />
                               }
                             />
@@ -353,7 +397,8 @@ const CheckList6 = (props: Props) => {
                                 <Radio
                                   disabled={disabled}
                                   name={radioId[content.id - 1]}
-                                  value={i + 2}
+                                  onChange={handleChange}
+                                  value={2}
                                 />
                               }
                             />

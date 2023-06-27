@@ -26,14 +26,14 @@ const CheckList5 = (props: Props) => {
   const { setValue, getValues, disabled } = props;
 
   const radioId = [
-    '입원시간호기록1',
-    '입원시간호기록2',
-    '입원시간호기록3',
-    '입원시간호기록4',
-    '입원시간호기록5',
-    '입원시간호기록6',
-    '입원시간호기록7',
-    '입원시간호기록8',
+    'hospitalization01',
+    'hospitalization02',
+    'hospitalization03',
+    'hospitalization04',
+    'hospitalization05',
+    'hospitalization06',
+    'hospitalization07',
+    'hospitalization08',
   ];
 
   const contentLabel = [
@@ -90,6 +90,13 @@ const CheckList5 = (props: Props) => {
       ],
     },
   ];
+
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement>,
+    checked: boolean
+  ) => {
+    setValue(e.target.name, e.target.value);
+  };
 
   return (
     <Fragment>
@@ -179,6 +186,7 @@ const CheckList5 = (props: Props) => {
                                 <Radio
                                   disabled={disabled}
                                   name={radioId[content.id - 1]}
+                                  onChange={handleChange}
                                   value={i}
                                 />
                               }
@@ -190,7 +198,8 @@ const CheckList5 = (props: Props) => {
                                 <Radio
                                   disabled={disabled}
                                   name={radioId[content.id - 1]}
-                                  value={i + 1}
+                                  onChange={handleChange}
+                                  value={1}
                                 />
                               }
                             />
@@ -200,7 +209,8 @@ const CheckList5 = (props: Props) => {
                                 <Radio
                                   disabled={disabled}
                                   name={radioId[content.id - 1]}
-                                  value={i + 2}
+                                  onChange={handleChange}
+                                  value={2}
                                 />
                               }
                             />

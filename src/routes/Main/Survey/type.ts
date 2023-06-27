@@ -46,6 +46,7 @@ import {
   initialCoreNursingSkillVideo,
   initialCoreNursingSkillVideoExemple,
   initialFourScore,
+  initialCheckListRoom,
 } from './initialStates';
 
 export enum MENU {
@@ -99,10 +100,6 @@ export enum MENU {
   DNA = '유전자검사 동의서',
   CORE_NURSING_SKILL_VIDEO = '핵심간호술기영상 저장',
   CORE_NURSING_SKILL_VIDEO_EXEMPLE = '핵심간호술기영상 예시',
-  NURSE_RECORD = '간호기록체크리스트',
-  WODR = '병동',
-  ER = '응급실',
-  OP = '수술실',
   DRUG_CALCULATOR = '약물계산기',
   NURSE_CHECKLIST_ROOM = '병동',
 }
@@ -168,6 +165,7 @@ export type TNonSalaryDefaultValues = typeof initialNonSalary;
 export type TMedicalRecordDefaultValues = typeof initialMedicalRecords;
 export type TDNRDefaultValues = typeof initialDNR;
 export type TDNADefaultValues = typeof initialDNA;
+export type TCheckListRoomDefaultValues = typeof initialCheckListRoom;
 
 export type TCoreNursingSkillVideoDefaultValues =
   typeof initialCoreNursingSkillVideo;
