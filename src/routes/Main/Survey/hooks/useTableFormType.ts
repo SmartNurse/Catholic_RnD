@@ -1,4 +1,5 @@
 import { IFormRegister, IFormValues, IFormWatch } from 'routes/Main/type';
+import { SxProps } from '@mui/material';
 
 export interface IUseTableFormProps
   extends IFormValues,
@@ -13,6 +14,7 @@ export interface IUseTableRadioGroup {
   i18nNullKey?: string;
   width?: string;
   whiteSpace?: string;
+  sx?: SxProps;
 }
 export interface IUseTableCheckbox {
   key: string;
