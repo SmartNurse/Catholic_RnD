@@ -48,9 +48,9 @@ const FFI = (props: SurveyDialogProps<TNRSDefaultValues>) => {
         if (rc !== 1) return onResultCode(rc);
 
         onUpdateIsSave(true);
-        onSuccess('NRS 저장에 성공하였습니다.');
+        onSuccess('FFI 저장에 성공하였습니다.');
       })
-      .catch(e => onFail('NRS 저장에 실패하였습니다.', e));
+      .catch(e => onFail('FFI 저장에 실패하였습니다.', e));
   };
 
   const formProps = {
