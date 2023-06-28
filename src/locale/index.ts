@@ -527,6 +527,61 @@ const locale = {
     'DNR.EXPLANATION.1': '서명 :       날짜',
     'DNR.EXPLANATION.2': '녹화',
     'DNR.EXPLANATION.3': '녹취',
+
+    // KOOS
+    'KOOS.SYMPTOMS.1': '전혀 없었음',
+    'KOOS.SYMPTOMS.2': '거의 없었음',
+    'KOOS.SYMPTOMS.3': '가끔 있었음',
+    'KOOS.SYMPTOMS.4': '자주 있었음',
+    'KOOS.SYMPTOMS.5': '항상 있었음',
+
+    'KOOS.STIFFNESS.1': '전혀 없었음',
+    'KOOS.STIFFNESS.2': '약간의 경직',
+    'KOOS.STIFFNESS.3': '보통의 경직',
+    'KOOS.STIFFNESS.4': '심한 경직',
+    'KOOS.STIFFNESS.5': '극도의 경직',
+
+    'KOOS.PAIN.1': '전혀 없었음',
+    'KOOS.PAIN.2': '매달',
+    'KOOS.PAIN.3': '매주',
+    'KOOS.PAIN.4': '매일',
+    'KOOS.PAIN.5': '항상',
+
+    'KOOS.PAIN.TOW.1': '전혀 없음',
+    'KOOS.PAIN.TOW.2': '약간의 통증',
+    'KOOS.PAIN.TOW.3': '보통의 통증',
+    'KOOS.PAIN.TOW.4': '심한 통증',
+    'KOOS.PAIN.TOW.5': '극도의 통증',
+
+    'KOOS.DAILYFUNCTION.1': '전혀 어려움 없음',
+    'KOOS.DAILYFUNCTION.2': '약간의 어려움',
+    'KOOS.DAILYFUNCTION.3': '보통의 어려움',
+    'KOOS.DAILYFUNCTION.4': '심한 어려움',
+    'KOOS.DAILYFUNCTION.5': '극심하게 어려움',
+
+    'KOOS.SPORTS.1': '전혀 어려움 없음',
+    'KOOS.SPORTS.2': '약간의 어려움',
+    'KOOS.SPORTS.3': '보통의 어려움',
+    'KOOS.SPORTS.4': '심한 어려움',
+    'KOOS.SPORTS.5': '극심하게 어려움',
+
+    'KOOS.LIFEQUALITY.1': '문제 없음',
+    'KOOS.LIFEQUALITY.2': '매달',
+    'KOOS.LIFEQUALITY.3': '매주',
+    'KOOS.LIFEQUALITY.4': '매일',
+    'KOOS.LIFEQUALITY.5': '항상',
+
+    'KOOS.LIFEQUALITY.TWO.1': '개선하지 않았음',
+    'KOOS.LIFEQUALITY.TWO.2': '약간 개선하였음',
+    'KOOS.LIFEQUALITY.TWO.3': '조금 개선하였음',
+    'KOOS.LIFEQUALITY.TWO.4': '많이 개선하였음',
+    'KOOS.LIFEQUALITY.TWO.5': '모두 개선하였음',
+
+    'KOOS.LIFEQUALITY.THREE.1': '전혀 어려움이 없음',
+    'KOOS.LIFEQUALITY.THREE.2': '전혀 어려움이 있었음',
+    'KOOS.LIFEQUALITY.THREE.3': '보통의 어려움 있었음',
+    'KOOS.LIFEQUALITY.THREE.4': '심한 어려움 있었음',
+    'KOOS.LIFEQUALITY.THREE.5': '극도의 어려움 있었음',
   },
 };
 
