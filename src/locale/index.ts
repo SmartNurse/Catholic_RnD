@@ -587,6 +587,12 @@ const locale = {
     'STARTSCREENING.SCORE.1': 'No(0point)',
     'STARTSCREENING.SCORE.2': 'Yes(1point)',
 
+    'STARTSCREENING.SCORE.FIVE.0': 'Not at all (0 point)',
+    'STARTSCREENING.SCORE.FIVE.1': 'Slightly (0 point)',
+    'STARTSCREENING.SCORE.FIVE.2': 'Moderately (0 point)',
+    'STARTSCREENING.SCORE.FIVE.3': 'Very much (1 point)',
+    'STARTSCREENING.SCORE.FIVE.4': 'Extremely (1 point)',
+
     // Nothing
     'NOTHING.1': '',
     'NOTHING.2': '',

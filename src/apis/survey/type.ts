@@ -992,3 +992,7 @@ export interface IUpdateLEFS extends IGetSurvey {
   date: string;
   contents: string;
 }
+
+export interface IUpdateSTarTBack extends IGetSurvey {
+  contents: string;
+}

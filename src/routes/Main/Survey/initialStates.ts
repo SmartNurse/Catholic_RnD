@@ -1200,3 +1200,18 @@ export const initialLEFS = {
     lefs20: '',
   },
 };
+
+export const initialSTarTBack = {
+  update_at: '',
+  contents: {
+    sTarTBack01: '',
+    sTarTBack02: '',
+    sTarTBack03: '',
+    sTarTBack04: '',
+    sTarTBack05: '',
+    sTarTBack06: '',
+    sTarTBack07: '',
+    sTarTBack08: '',
+    sTarTBack09: '',
+  },
+};

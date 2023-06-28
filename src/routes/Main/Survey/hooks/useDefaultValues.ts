@@ -43,6 +43,7 @@ import {
   getMentalNursing,
   getCheckListRoom,
   getLEFS,
+  getSTarT,
 } from 'apis/survey';
 import useNotification from 'hooks/useNotification';
 import { findKeyValueToObj, findKeyValueToObjNoParse } from 'utils/convert';
@@ -95,6 +96,7 @@ import {
   initialCoreNursingSkillVideoExemple,
   initialCheckListRoom,
   initialLEFS,
+  initialSTarTBack,
 } from '../initialStates';
 import { MENU } from '../type';
 
@@ -857,10 +859,12 @@ const useDefaultValues = ({ setDefaultValues, user_id }: Props) => {
           .catch(e => onFail('알 수 없는 오류가 발생했습니다.', e));
         break;
       case MENU.STarT_BacknScreening:
-        getBDI({ user_id, patient_id })
+        getSTarT({ user_id, patient_id })
           .then(({ data }) => {
-            const { update_at, bdi_survey } = data;
-            convertDataToStates({ update_at, ...bdi_survey }, initialBDI);
+            const { contents } = data;
+            const m_data = { ...data, contents: JSON.parse(contents) };
+
+            convertDataToStates(m_data, initialSTarTBack);
           })
           .catch(e => onFail('알 수 없는 오류가 발생했습니다.', e));
         break;

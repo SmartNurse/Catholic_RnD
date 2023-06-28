@@ -46,6 +46,7 @@ import {
   IUpdateDNA,
   IUpdateCheckListRoom,
   IUpdateLEFS,
+  IUpdateSTarTBack,
 } from './type';
 
 // e-CARDEX
@@ -520,13 +521,23 @@ export const updateCheckListRoom = (request: IUpdateCheckListRoom) => {
 };
 
 // 통증 ( LEFS )
-// 욕창위험도평가도구
 export const getLEFS = (request: IGetSurvey) => {
   const url = `/survey/bedsore?${formatToRequestParameter(request)}`;
   return apiGateway.get(url);
 };
 
 export const updateLEFS = (request: IUpdateLEFS) => {
+  const url = `/survey/bedsore`;
+  return apiGateway.post(url, camelcaseKeys(request));
+};
+
+// 통증 (STarT Back)
+export const getSTarT = (request: IGetSurvey) => {
+  const url = `/survey/bedsore?${formatToRequestParameter(request)}`;
+  return apiGateway.get(url);
+};
+
+export const updateSTarT = (request: IUpdateSTarTBack) => {
   const url = `/survey/bedsore`;
   return apiGateway.post(url, camelcaseKeys(request));
 };
