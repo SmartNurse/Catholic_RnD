@@ -49,6 +49,11 @@ import CoreNursingSkillVideo from 'routes/CoreNursingSkillVideo';
 import CoreNursingSkillVideoExemple from 'routes/CoreNursingSkillVideoExemple';
 import DrugCalculatior from './DrugCalculator';
 import NurseCheckListRoom from './NurseCheckList/ROOM';
+import FFI from './Pain/FFI';
+import KOOS from './Pain/KOOS';
+import LEFS from './Pain/LEFS';
+import NDI from './Pain/NDI';
+import STarTBackScreening from './Pain/STarTBackScreening';
 
 interface Props {
   surveyType: string;
@@ -261,6 +266,26 @@ const DisplaySurvey = (props: Props) => {
           onClose={onCloseReadOnly}
         />
       );
+    }
+    case MENU.FFI: {
+      if (!defaultValues) return null;
+      return <FFI {...dialogProps} onClose={onCloseSave} />;
+    }
+    case MENU.KOOS: {
+      if (!defaultValues) return null;
+      return <KOOS {...dialogProps} onClose={onCloseSave} />;
+    }
+    case MENU.LEFS: {
+      if (!defaultValues) return null;
+      return <LEFS {...dialogProps} onClose={onCloseSave} />;
+    }
+    case MENU.NDI: {
+      if (!defaultValues) return null;
+      return <NDI {...dialogProps} onClose={onCloseSave} />;
+    }
+    case MENU.STarT_BacknScreening: {
+      if (!defaultValues) return null;
+      return <STarTBackScreening {...dialogProps} onClose={onCloseSave} />;
     }
     default:
       return null;

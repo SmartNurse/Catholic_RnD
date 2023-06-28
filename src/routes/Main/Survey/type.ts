@@ -102,6 +102,11 @@ export enum MENU {
   CORE_NURSING_SKILL_VIDEO_EXEMPLE = '핵심간호술기영상 예시',
   DRUG_CALCULATOR = '약물계산기',
   NURSE_CHECKLIST_ROOM = '병동',
+  FFI = 'FFI',
+  KOOS = 'KOOS',
+  LEFS = 'LEFS',
+  NDI = 'NDI',
+  STarT_BacknScreening = 'STarT Back\nScreening',
 }
 
 export enum RECORD_TYPE {

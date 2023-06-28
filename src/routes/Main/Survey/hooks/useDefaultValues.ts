@@ -817,7 +817,50 @@ const useDefaultValues = ({ setDefaultValues, user_id }: Props) => {
             );
           })
           .catch(e => onFail('알 수 없는 오류가 발생했습니다.', e));
-
+        break;
+      case MENU.FFI:
+        getNRS({ user_id, patient_id })
+          .then(({ data }) => {
+            convertDataToStates(data, initialNRS);
+          })
+          .catch(e => onFail('알 수 없는 오류가 발생했습니다', e));
+        break;
+      case MENU.KOOS:
+        getFall({ user_id, patient_id })
+          .then(({ data }) => {
+            const { contents } = data;
+            const m_data = { ...data, contents: JSON.parse(contents) };
+            convertDataToStates(m_data, initialFall);
+          })
+          .catch(e => onFail('알 수 없는 오류가 발생했습니다.', e));
+        break;
+      case MENU.LEFS:
+        getBedScore({ user_id, patient_id })
+          .then(({ data }) => {
+            const { contents } = data;
+            const m_data = { ...data, contents: JSON.parse(contents) };
+            convertDataToStates(m_data, initialBedScoreTwo);
+          })
+          .catch(e => onFail('알 수 없는 오류가 발생했습니다.', e));
+        break;
+      case MENU.NDI:
+        getFourScore({ user_id, patient_id })
+          .then(({ data }) => {
+            const { update_at, four_score_survey } = data;
+            convertDataToStates(
+              { update_at, ...four_score_survey },
+              initialFourScore
+            );
+          })
+          .catch(e => onFail('알 수 없는 오류가 발생했습니다.', e));
+        break;
+      case MENU.STarT_BacknScreening:
+        getBDI({ user_id, patient_id })
+          .then(({ data }) => {
+            const { update_at, bdi_survey } = data;
+            convertDataToStates({ update_at, ...bdi_survey }, initialBDI);
+          })
+          .catch(e => onFail('알 수 없는 오류가 발생했습니다.', e));
         break;
 
       default:

@@ -180,6 +180,31 @@ const MenuRecords = (props: Props) => {
       toggle: toggle.pain,
     },
     {
+      isPro: true,
+      label: 'FFI',
+      toggle: toggle.pain,
+    },
+    {
+      isPro: true,
+      label: 'KOOS',
+      toggle: toggle.pain,
+    },
+    {
+      isPro: true,
+      label: 'LEFS',
+      toggle: toggle.pain,
+    },
+    {
+      isPro: true,
+      label: 'NDI',
+      toggle: toggle.pain,
+    },
+    {
+      isPro: true,
+      label: 'STarT Back\nScreening',
+      toggle: toggle.pain,
+    },
+    {
       icon: <PsychologyOutlined />,
       disabled: true,
       isPro: true,
