@@ -212,7 +212,7 @@ const Calculator2 = (props: Props) => {
               width: '150px',
             }}
           >
-            약품 용량(mcg or u)
+            약품 용량(mg or u)
           </Typography>
           <Form.MuiTextField
             type="number"
