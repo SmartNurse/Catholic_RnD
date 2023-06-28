@@ -4,7 +4,7 @@ import {
   IUseTableCheckbox,
   IUseTableFormProps,
   IUseTableRadioGroup,
-} from './useTableFormType';
+} from '../../../hooks/useTableFormType';
 
 const useTableForm = (props: IUseTableFormProps) => {
   const { disabled, watch, register, getValues, setValue } = props;
@@ -16,7 +16,9 @@ const useTableForm = (props: IUseTableFormProps) => {
     i18nNullKey,
     width,
     whiteSpace,
-  }: IUseTableRadioGroup) => {
+    sx,
+  }: // sx,
+  IUseTableRadioGroup) => {
     let radio = {} as any;
     if (!watch) return null;
 
@@ -34,6 +36,7 @@ const useTableForm = (props: IUseTableFormProps) => {
           onChange={(v: any) => setValue(key, v)}
           width={width}
           whiteSpace={whiteSpace}
+          sx={{ ...sx }}
         />
       );
       return null;

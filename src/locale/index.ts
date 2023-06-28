@@ -582,6 +582,17 @@ const locale = {
     'KOOS.LIFEQUALITY.THREE.3': '보통의 어려움 있었음',
     'KOOS.LIFEQUALITY.THREE.4': '심한 어려움 있었음',
     'KOOS.LIFEQUALITY.THREE.5': '극도의 어려움 있었음',
+
+    // STarTScreening
+    'STARTSCREENING.SCORE.1': 'No(0point)',
+    'STARTSCREENING.SCORE.2': 'Yes(1point)',
+
+    // Nothing
+    'NOTHING.1': '',
+    'NOTHING.2': '',
+    'NOTHING.3': '',
+    'NOTHING.4': '',
+    'NOTHING.5': '',
   },
 };
 

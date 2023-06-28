@@ -45,6 +45,7 @@ import {
   IUpdateDNR,
   IUpdateDNA,
   IUpdateCheckListRoom,
+  IUpdateLEFS,
 } from './type';
 
 // e-CARDEX
@@ -515,5 +516,17 @@ export const getCheckListRoom = (request: IGetSurvey) => {
 
 export const updateCheckListRoom = (request: IUpdateCheckListRoom) => {
   const url = `/survey/nursing_check_list_ward`;
+  return apiGateway.post(url, camelcaseKeys(request));
+};
+
+// 통증 ( LEFS )
+// 욕창위험도평가도구
+export const getLEFS = (request: IGetSurvey) => {
+  const url = `/survey/bedsore?${formatToRequestParameter(request)}`;
+  return apiGateway.get(url);
+};
+
+export const updateLEFS = (request: IUpdateLEFS) => {
+  const url = `/survey/bedsore`;
   return apiGateway.post(url, camelcaseKeys(request));
 };

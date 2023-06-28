@@ -1,19 +1,16 @@
 import { Grid, Typography } from '@mui/material';
 import { useForm } from 'react-hook-form';
 
-import { updateBedScore } from 'apis/survey';
+import { updateLEFS } from 'apis/survey';
 import useSurvey from 'store/survey/useSurvey';
 import useNotification from 'hooks/useNotification';
 import MuiDialog from 'components/MuiDialog';
-import {
-  TBedScoreDefaultValues,
-  SurveyDialogProps,
-} from 'routes/Main/Survey/type';
+import { TLEFSDefaultValues, SurveyDialogProps } from 'routes/Main/Survey/type';
 
 import CommonPatientInfo from '../../components/CommonPatientInfo';
 import LEFSContents from './LEFSContents';
 
-const LEFS = (props: SurveyDialogProps<TBedScoreDefaultValues>) => {
+const LEFS = (props: SurveyDialogProps<TLEFSDefaultValues>) => {
   const {
     title,
     isOpen,
@@ -32,7 +29,7 @@ const LEFS = (props: SurveyDialogProps<TBedScoreDefaultValues>) => {
     defaultValues,
   });
 
-  const onSubmit = (data: TBedScoreDefaultValues) => {
+  const onSubmit = (data: TLEFSDefaultValues) => {
     const { patient_id } = patientInfo;
     const { contents, date } = data;
 
@@ -46,7 +43,7 @@ const LEFS = (props: SurveyDialogProps<TBedScoreDefaultValues>) => {
       contents: JSON.stringify(contents),
     };
 
-    updateBedScore(request)
+    updateLEFS(request)
       .then(({ data: { rc } }) => {
         if (rc !== 1) return onResultCode(rc);
         onUpdateIsSave(true);

@@ -987,3 +987,8 @@ export interface IUpdateCheckListRoom extends IGetSurvey {
     ocs01: string;
   };
 }
+
+export interface IUpdateLEFS extends IGetSurvey {
+  date: string;
+  contents: string;
+}

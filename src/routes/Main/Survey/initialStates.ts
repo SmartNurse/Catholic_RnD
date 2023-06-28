@@ -1173,3 +1173,30 @@ export const initialCheckListRoom = {
 
   ocs01: '',
 };
+
+export const initialLEFS = {
+  date: '',
+  update_at: '',
+  contents: {
+    lefs01: '',
+    lefs02: '',
+    lefs03: '',
+    lefs04: '',
+    lefs05: '',
+    lefs06: '',
+    lefs07: '',
+    lefs08: '',
+    lefs09: '',
+    lefs10: '',
+    lefs11: '',
+    lefs12: '',
+    lefs13: '',
+    lefs14: '',
+    lefs15: '',
+    lefs16: '',
+    lefs17: '',
+    lefs18: '',
+    lefs19: '',
+    lefs20: '',
+  },
+};

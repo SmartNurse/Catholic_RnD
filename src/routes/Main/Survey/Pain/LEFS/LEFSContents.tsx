@@ -5,7 +5,7 @@ import MuiTable from 'components/MuiTable';
 import { IFormValues, IFormWatch } from 'routes/Main/type';
 
 import SectionTitle from '../../components/SectionTitle';
-import useTableForm from '../../hooks/useTableForm';
+import useTableForm from './components/useTableForm';
 
 interface Props extends IFormValues, IFormWatch {}
 
@@ -24,220 +24,221 @@ const LEFSContents = (props: Props) => {
 
   const rows = [
     {
-      id: 'sensoryPerception',
+      id: 'lefs01',
       title: '1. 집안일, 학교생활 등 평상시에 하는 일',
       ...radioGroup({
-        key: 'contents.sensoryPerception',
-        options: [1, 2, 3, 4, 5],
+        key: 'contents.lefs01',
+        options: [0, 1, 2, 3, 4],
         sx: {
           paddingLeft: '30px',
         },
       }),
     },
     {
-      id: 'humidity',
+      id: 'lefs02',
       title: '2. 취미생활, 레크레이션, 스포츠 활동',
       ...radioGroup({
-        key: 'contents.humidity',
-        options: [1, 2, 3, 4, 5],
+        key: 'contents.lefs02',
+        options: [0, 1, 2, 3, 4],
         sx: {
           paddingLeft: '30px',
         },
       }),
     },
     {
-      id: 'activity',
+      id: 'lefs03',
       title: '3. 욕조에 들어가거나 나오기',
       ...radioGroup({
-        key: 'contents.activity',
-        options: [1, 2, 3, 4, 5],
+        key: 'contents.lefs03',
+        options: [0, 1, 2, 3, 4],
         sx: {
           paddingLeft: '30px',
         },
       }),
     },
     {
-      id: 'mobility',
+      id: 'lefs04',
       title: '4. 방에서 다른 방으로 걸어서 이동',
       ...radioGroup({
-        key: 'contents.mobility',
-        options: [1, 2, 3, 4, 5],
+        key: 'contents.lefs04',
+        options: [0, 1, 2, 3, 4],
         sx: {
           paddingLeft: '30px',
         },
       }),
     },
     {
-      id: 'nutrition',
+      id: 'lefs05',
       title: '5. 신발이나 양말 신기',
       ...radioGroup({
-        key: 'contents.nutrition',
-        options: [1, 2, 3, 4, 5],
+        key: 'contents.lefs05',
+        options: [0, 1, 2, 3, 4],
         sx: {
           paddingLeft: '30px',
         },
       }),
     },
     {
-      id: 'frictionAndDissolutionForce',
+      id: 'lefs06',
       title: '6. 쪼그려 앉기',
       ...radioGroup({
-        key: 'contents.frictionAndDissolutionForce',
-        options: [1, 2, 3, 4, 5],
+        key: 'contents.lefs06',
+        options: [0, 1, 2, 3, 4],
         sx: {
           paddingLeft: '30px',
         },
       }),
     },
     {
-      id: 'frictionAndDissolutionForce',
+      id: 'lefs07',
       title: '7. 바닥에 놓은 가방이나 장바구니를 들어올리기',
       ...radioGroup({
-        key: 'contents.frictionAndDissolutionForce',
-        options: [1, 2, 3, 4, 5],
+        key: 'contents.lefs07',
+        options: [0, 1, 2, 3, 4],
         sx: {
           paddingLeft: '30px',
         },
       }),
     },
     {
-      id: 'frictionAndDissolutionForce',
+      id: 'lefs08',
       title: '8. 쉬운 집안 일 하기',
       ...radioGroup({
-        key: 'contents.frictionAndDissolutionForce',
-        options: [1, 2, 3, 4, 5],
+        key: 'contents.lefs08',
+        options: [0, 1, 2, 3, 4],
         sx: {
           paddingLeft: '30px',
         },
       }),
     },
     {
-      id: 'frictionAndDissolutionForce',
+      id: 'lefs09',
       title: '9. 힘든 집안 일 하기',
       ...radioGroup({
-        key: 'contents.frictionAndDissolutionForce',
-        options: [1, 2, 3, 4, 5],
+        key: 'contents.lefs09',
+        options: [0, 1, 2, 3, 4],
         sx: {
           paddingLeft: '30px',
         },
       }),
     },
     {
-      id: 'frictionAndDissolutionForce',
+      id: 'lefs10',
       title: '10. 차에 타고 내리기',
       ...radioGroup({
-        key: 'contents.frictionAndDissolutionForce',
-        options: [1, 2, 3, 4, 5],
+        key: 'contents.lefs10',
+        options: [0, 1, 2, 3, 4],
         sx: {
           paddingLeft: '30px',
         },
       }),
     },
     {
-      id: 'frictionAndDissolutionForce',
+      id: 'lefs11',
       title: '11. 200m 걷기',
       ...radioGroup({
-        key: 'contents.frictionAndDissolutionForce',
-        options: [1, 2, 3, 4, 5],
+        key: 'contents.lefs11',
+        options: [0, 1, 2, 3, 4],
         sx: {
           paddingLeft: '30px',
         },
       }),
     },
     {
-      id: 'frictionAndDissolutionForce',
+      id: 'lefs12',
       title: '12. 1.6km (1 mile) 걷기',
       ...radioGroup({
-        key: 'contents.frictionAndDissolutionForce',
-        options: [1, 2, 3, 4, 5],
+        key: 'contents.lefs12',
+        options: [0, 1, 2, 3, 4],
         sx: {
           paddingLeft: '30px',
         },
       }),
     },
     {
-      id: 'frictionAndDissolutionForce',
+      id: 'lefs13',
       title: '13. 10개의 계단을 오르거나 내리기(한 층 정도)',
       ...radioGroup({
-        key: 'contents.frictionAndDissolutionForce',
-        options: [1, 2, 3, 4, 5],
+        key: 'contents.lefs13',
+        options: [0, 1, 2, 3, 4],
         sx: {
           paddingLeft: '30px',
         },
       }),
     },
     {
-      id: 'frictionAndDissolutionForce',
+      id: 'lefs14',
       title: '14. 1시간 동안 서 있기',
       ...radioGroup({
-        key: 'contents.frictionAndDissolutionForce',
-        options: [1, 2, 3, 4, 5],
+        key: 'contents.lefs14',
+        options: [0, 1, 2, 3, 4],
         sx: {
           paddingLeft: '30px',
         },
       }),
     },
     {
-      id: 'frictionAndDissolutionForce',
+      id: 'lefs15',
       title: '15. 1시간 동안 바닥에 앉아 있기',
       ...radioGroup({
-        key: 'contents.frictionAndDissolutionForce',
-        options: [1, 2, 3, 4, 5],
+        key: 'contents.lefs15',
+        options: [0, 1, 2, 3, 4],
         sx: {
           paddingLeft: '30px',
         },
       }),
     },
     {
-      id: 'frictionAndDissolutionForce',
+      id: 'lefs16',
       title: '16. 평지에서 뛰기',
       ...radioGroup({
-        key: 'contents.frictionAndDissolutionForce',
-        options: [1, 2, 3, 4, 5],
+        key: 'contents.lefs16',
+        options: [0, 1, 2, 3, 4],
         sx: {
           paddingLeft: '30px',
         },
       }),
     },
     {
-      id: 'frictionAndDissolutionForce',
+      id: 'lefs17',
       title: '17. 고르지 못한 지면에서 뛰기',
       ...radioGroup({
-        key: 'contents.frictionAndDissolutionForce',
-        options: [1, 2, 3, 4, 5],
+        key: 'contents.lefs17',
+        options: [0, 1, 2, 3, 4],
         sx: {
           paddingLeft: '30px',
         },
       }),
     },
     {
-      id: 'frictionAndDissolutionForce',
+      id: 'lefs18',
       title: '18. 빠르게 달리다 급회전하기',
       ...radioGroup({
-        key: 'contents.frictionAndDissolutionForce',
-        options: [1, 2, 3, 4, 5],
+        key: 'contents.lefs18',
+        options: [0, 1, 2, 3, 4],
         sx: {
           paddingLeft: '30px',
         },
       }),
     },
     {
-      id: 'frictionAndDissolutionForce',
+      id: 'lefs19',
       title: '19. 깡충깡충 뛰기',
       ...radioGroup({
-        key: 'contents.frictionAndDissolutionForce',
-        options: [1, 2, 3, 4, 5],
+        key: 'contents.lefs19',
+        options: [0, 1, 2, 3, 4],
         sx: {
           paddingLeft: '30px',
         },
       }),
     },
     {
-      id: 'frictionAndDissolutionForce',
+      id: 'lefs20',
       title: '20. 침대에서 돌아눕기',
       ...radioGroup({
-        key: 'contents.frictionAndDissolutionForce',
-        options: [1, 2, 3, 4, 5],
+        key: 'contents.lefs20',
+        options: [0, 1, 2, 3, 4],
+        i18nKey: 'NOTHING',
         sx: {
           paddingLeft: '30px',
         },
@@ -246,13 +247,7 @@ const LEFSContents = (props: Props) => {
   ];
 
   const watchSumValues = () => {
-    const values = rows.map(({ id }) => {
-      if (Number(props.watch(`contents.${id}`)) > 0) {
-        return Number(props.watch(`contents.${id}`)) - Number(1);
-      } else {
-        return Number(props.watch(`contents.${id}`));
-      }
-    });
+    const values = rows.map(({ id }) => Number(props.watch(`contents.${id}`)));
     return sumValues(values);
   };
 
