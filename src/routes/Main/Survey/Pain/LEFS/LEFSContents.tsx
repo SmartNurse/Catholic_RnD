@@ -258,6 +258,13 @@ const LEFSContents = (props: Props) => {
 
   return (
     <Fragment>
+      <Typography sx={{ fontSize: '14px', margin: '40px 0 -10px 25px' }}>
+        이 설문지는 환자의 입장에서 느끼는 무릎 관절의 상태에 대한 질문입니다.이
+        정보는 당신이 느끼고 있는 무릎 관절의 증상에 대해 알 수 있도록 도와주며
+        당신의 일상 생활을 영위할 수 있게 하는 정보를 줍니다.
+        <br />
+        각각의 질문에 대해 가장 적당한 하나의 항목에 대해서만 표기해 주십시오.
+      </Typography>
       <SectionTitle title="Lower Extremity Functional Scale (LEFS)" />
       <Grid item xs={12}>
         <MuiTable columns={columns} rows={rows} />
