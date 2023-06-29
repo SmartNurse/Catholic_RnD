@@ -720,7 +720,10 @@ const useDefaultValues = ({ setDefaultValues, user_id }: Props) => {
           .then(({ data }) => {
             const { nursing_check_list_ward, update_at } = data;
 
-            convertDataToStates(nursing_check_list_ward, initialCheckListRoom);
+            convertDataToStates(
+              { update_at, ...nursing_check_list_ward },
+              initialCheckListRoom
+            );
           })
           .catch(e => onFail('알 수 없는 오류가 발생했습니다.', e));
         break;

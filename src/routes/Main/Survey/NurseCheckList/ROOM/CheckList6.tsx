@@ -364,9 +364,9 @@ const CheckList6 = (props: Props) => {
                     <RadioGroup
                       name={radioId[content.id - 1]}
                       defaultValue={
-                        getValues(radioId[content.id - 1]).length > 0
+                        Number(getValues(radioId[content.id - 1])) > 0
                           ? Number(getValues(radioId[content.id - 1]))
-                          : 3
+                          : 4
                       }
                     >
                       {content.desc.map((_, i) => (
@@ -386,7 +386,7 @@ const CheckList6 = (props: Props) => {
                                   disabled={disabled}
                                   name={radioId[content.id - 1]}
                                   onChange={handleChange}
-                                  value={i}
+                                  value={1}
                                 />
                               }
                             />
@@ -398,7 +398,7 @@ const CheckList6 = (props: Props) => {
                                   disabled={disabled}
                                   name={radioId[content.id - 1]}
                                   onChange={handleChange}
-                                  value={1}
+                                  value={2}
                                 />
                               }
                             />
@@ -409,7 +409,7 @@ const CheckList6 = (props: Props) => {
                                   disabled={disabled}
                                   name={radioId[content.id - 1]}
                                   onChange={handleChange}
-                                  value={2}
+                                  value={3}
                                 />
                               }
                             />

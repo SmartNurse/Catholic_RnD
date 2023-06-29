@@ -42,7 +42,101 @@ const NurseCheckListRoom = (
 
   const onSubmit = (data: TCheckListRoomDefaultValues) => {
     const { patient_id } = patientInfo;
-    const {} = data;
+    const {
+      info_info01,
+      info_info02,
+      info_info03,
+
+      info_mental01,
+
+      fall01,
+      fall02,
+      fall03,
+      fall04,
+      fall05,
+
+      bed_sore01,
+      bed_sore02,
+      bed_sore03,
+      bed_sore04,
+      bed_sore05,
+
+      edu01,
+      edu02,
+
+      care_plan01,
+      care_plan02,
+      care_plan03,
+
+      surgery01,
+      surgery02,
+      surgery03,
+
+      medicine01,
+      medicine02,
+
+      hospitalization01,
+      hospitalization02,
+      hospitalization03,
+      hospitalization04,
+      hospitalization05,
+      hospitalization06,
+      hospitalization07,
+      hospitalization08,
+
+      ns_fall01,
+      ns_fall02,
+
+      ns_bedsore01,
+
+      ns_pt_moving01,
+      ns_pt_moving02,
+
+      ns_edu01,
+
+      ns_surgery01,
+
+      ns_transfusion01,
+
+      ns_infection01,
+
+      ns_pain01,
+      ns_pain02,
+      ns_pain03,
+
+      ns_re_pain01,
+      ns_re_pain02,
+      ns_re_pain03,
+      ns_re_pain04,
+
+      ns_pca01,
+      ns_pca02,
+      ns_pca03,
+      ns_pca04,
+
+      ns_nausea01,
+      ns_nausea02,
+
+      ns_chemo_side_eff01,
+
+      ns_restraint01,
+      ns_restraint02,
+      ns_restraint03,
+      ns_restraint04,
+      ns_restraint05,
+
+      ns_high_risk01,
+      ns_high_risk02,
+
+      right01,
+
+      discharge01,
+      discharge02,
+      discharge03,
+      discharge04,
+
+      ocs01,
+    } = data;
 
     // const contentsValues = Object.values(contents);
     // if (contentsValues.includes('')) return onRequired('REQUIRED.FALL');

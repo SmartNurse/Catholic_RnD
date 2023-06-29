@@ -183,15 +183,15 @@ const CheckList2 = (props: Props) => {
                     <RadioGroup
                       name={radioId[content.id - 1]}
                       defaultValue={
-                        getValues(radioId[content.id - 1]).length > 0
+                        Number(getValues(radioId[content.id - 1])) > 0
                           ? Number(getValues(radioId[content.id - 1]))
-                          : 3
+                          : 4
                       }
                     >
                       {content.desc.map((_, i) => {
                         console.log(
                           '히히',
-                          getValues(radioId[content.id - 1]).length
+                          Number(getValues(radioId[content.id - 1]))
                         );
                         return (
                           <TableRow
@@ -210,7 +210,7 @@ const CheckList2 = (props: Props) => {
                                     disabled={disabled}
                                     name={radioId[content.id - 1]}
                                     onChange={handleChange}
-                                    value={i}
+                                    value={1}
                                   />
                                 }
                               />
@@ -221,7 +221,7 @@ const CheckList2 = (props: Props) => {
                                   <Radio
                                     disabled={disabled}
                                     name={radioId[content.id - 1]}
-                                    value={1}
+                                    value={2}
                                     onChange={handleChange}
                                   />
                                 }
@@ -233,7 +233,7 @@ const CheckList2 = (props: Props) => {
                                     disabled={disabled}
                                     name={radioId[content.id - 1]}
                                     onChange={handleChange}
-                                    value={2}
+                                    value={3}
                                   />
                                 }
                               />
@@ -319,9 +319,9 @@ const CheckList2 = (props: Props) => {
                     <RadioGroup
                       name={radioId1[content.id - 1]}
                       defaultValue={
-                        getValues(radioId1[content.id - 1]).length > 0
-                          ? Number(getValues(radioId[content.id - 1]))
-                          : 3
+                        Number(getValues(radioId1[content.id - 1])) > 0
+                          ? Number(getValues(radioId1[content.id - 1]))
+                          : 4
                       }
                     >
                       {content.desc.map((_, i) => (
@@ -341,7 +341,7 @@ const CheckList2 = (props: Props) => {
                                   disabled={disabled}
                                   name={radioId1[content.id - 1]}
                                   onChange={handleChange}
-                                  value={i}
+                                  value={1}
                                 />
                               }
                             />
@@ -352,7 +352,7 @@ const CheckList2 = (props: Props) => {
                                 <Radio
                                   disabled={disabled}
                                   name={radioId1[content.id - 1]}
-                                  value={1}
+                                  value={2}
                                   onChange={handleChange}
                                 />
                               }
@@ -364,7 +364,7 @@ const CheckList2 = (props: Props) => {
                                   disabled={disabled}
                                   name={radioId1[content.id - 1]}
                                   onChange={handleChange}
-                                  value={2}
+                                  value={3}
                                 />
                               }
                             />
