@@ -182,55 +182,65 @@ const CheckList2 = (props: Props) => {
                   <StyledTableCellWithoutLeftTwo>
                     <RadioGroup
                       name={radioId[content.id - 1]}
-                      defaultValue={Number(getValues(radioId[content.id - 1]))}
+                      defaultValue={
+                        getValues(radioId[content.id - 1]).length > 0
+                          ? Number(getValues(radioId[content.id - 1]))
+                          : 3
+                      }
                     >
-                      {content.desc.map((_, i) => (
-                        <TableRow
-                          sx={{
-                            height: '44px',
-                            lineHeight: '44px',
-                            textAlign: 'right',
-                          }}
-                        >
-                          <Box sx={{ width: '240px' }}>
-                            <FormControlLabel
-                              sx={{ paddingRight: '35px' }}
-                              label="Y"
-                              control={
-                                <Radio
-                                  disabled={disabled}
-                                  name={radioId[content.id - 1]}
-                                  onChange={handleChange}
-                                  value={i}
-                                />
-                              }
-                            />
-                            <FormControlLabel
-                              sx={{ paddingRight: '30px' }}
-                              label="N"
-                              control={
-                                <Radio
-                                  disabled={disabled}
-                                  name={radioId[content.id - 1]}
-                                  value={1}
-                                  onChange={handleChange}
-                                />
-                              }
-                            />
-                            <FormControlLabel
-                              label="해당없음"
-                              control={
-                                <Radio
-                                  disabled={disabled}
-                                  name={radioId[content.id - 1]}
-                                  onChange={handleChange}
-                                  value={2}
-                                />
-                              }
-                            />
-                          </Box>
-                        </TableRow>
-                      ))}
+                      {content.desc.map((_, i) => {
+                        console.log(
+                          '히히',
+                          getValues(radioId[content.id - 1]).length
+                        );
+                        return (
+                          <TableRow
+                            sx={{
+                              height: '44px',
+                              lineHeight: '44px',
+                              textAlign: 'right',
+                            }}
+                          >
+                            <Box sx={{ width: '240px' }}>
+                              <FormControlLabel
+                                sx={{ paddingRight: '35px' }}
+                                label="Y"
+                                control={
+                                  <Radio
+                                    disabled={disabled}
+                                    name={radioId[content.id - 1]}
+                                    onChange={handleChange}
+                                    value={i}
+                                  />
+                                }
+                              />
+                              <FormControlLabel
+                                sx={{ paddingRight: '30px' }}
+                                label="N"
+                                control={
+                                  <Radio
+                                    disabled={disabled}
+                                    name={radioId[content.id - 1]}
+                                    value={1}
+                                    onChange={handleChange}
+                                  />
+                                }
+                              />
+                              <FormControlLabel
+                                label="해당없음"
+                                control={
+                                  <Radio
+                                    disabled={disabled}
+                                    name={radioId[content.id - 1]}
+                                    onChange={handleChange}
+                                    value={2}
+                                  />
+                                }
+                              />
+                            </Box>
+                          </TableRow>
+                        );
+                      })}
                     </RadioGroup>
                   </StyledTableCellWithoutLeftTwo>
                 </TableRow>
@@ -308,7 +318,11 @@ const CheckList2 = (props: Props) => {
                   <StyledTableCellWithoutLeftTwo>
                     <RadioGroup
                       name={radioId1[content.id - 1]}
-                      defaultValue={Number(getValues(radioId1[content.id - 1]))}
+                      defaultValue={
+                        getValues(radioId1[content.id - 1]).length > 0
+                          ? Number(getValues(radioId[content.id - 1]))
+                          : 3
+                      }
                     >
                       {content.desc.map((_, i) => (
                         <TableRow

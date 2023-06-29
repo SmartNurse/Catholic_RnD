@@ -147,7 +147,11 @@ const CheckList4 = (props: Props) => {
                   <StyledTableCellWithoutLeftTwo>
                     <RadioGroup
                       name={radioId[content.id - 1]}
-                      defaultValue={Number(getValues(radioId[content.id - 1]))}
+                      defaultValue={
+                        getValues(radioId[content.id - 1]).length > 0
+                          ? Number(getValues(radioId[content.id - 1]))
+                          : 3
+                      }
                     >
                       {content.desc.map((_, i) => (
                         <TableRow
@@ -272,7 +276,11 @@ const CheckList4 = (props: Props) => {
                   <StyledTableCellWithoutLeftTwo>
                     <RadioGroup
                       name={radioId1[content.id - 1]}
-                      defaultValue={Number(getValues(radioId1[content.id - 1]))}
+                      defaultValue={
+                        getValues(radioId1[content.id - 1]).length > 0
+                          ? Number(getValues(radioId[content.id - 1]))
+                          : 3
+                      }
                     >
                       {content.desc.map((_, i) => (
                         <TableRow
