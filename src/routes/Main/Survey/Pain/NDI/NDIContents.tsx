@@ -208,27 +208,27 @@ const NDIContents = (props: Props) => {
             sx={{ color: `${palette.primary.main}`, marginTop: '30px' }}
           >
             <Typography variant="inherit">
-              <Box component={'strong'} mr={0.5} sx={{ fontSize: '14px' }}>
+              <Box component={'strong'} mr={0.5}>
                 0~4점(0~8%) : 장애없음
               </Box>
             </Typography>
             <Typography variant="inherit">
-              <Box component={'strong'} mr={0.5} sx={{ fontSize: '14px' }}>
+              <Box component={'strong'} mr={0.5}>
                 5~14점(10~28%) : 경미한 장애
               </Box>
             </Typography>
             <Typography variant="inherit">
-              <Box component={'strong'} mr={0.5} sx={{ fontSize: '14px' }}>
+              <Box component={'strong'} mr={0.5}>
                 15~24점(30~48%) : 중증도 장애
               </Box>
             </Typography>
             <Typography variant="inherit">
-              <Box component={'strong'} mr={0.5} sx={{ fontSize: '14px' }}>
+              <Box component={'strong'} mr={0.5}>
                 25~34점(50~64%) : 중증 장애
               </Box>
             </Typography>
             <Typography variant="inherit">
-              <Box component={'strong'} mr={0.5} sx={{ fontSize: '14px' }}>
+              <Box component={'strong'} mr={0.5}>
                 35~50점(70~100%) : 완전한 장애
               </Box>
             </Typography>

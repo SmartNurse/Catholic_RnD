@@ -346,17 +346,17 @@ const STarTContents = (props: Props) => {
             sx={{ color: `${palette.primary.main}`, marginTop: ' 40px' }}
           >
             <Typography variant="inherit">
-              <Box component={'strong'} mr={0.5} sx={{ fontSize: '16px' }}>
+              <Box component={'strong'} mr={0.5}>
                 Low risk: Total score-3 or less
               </Box>
             </Typography>
             <Typography variant="inherit">
-              <Box component={'strong'} mr={0.5} sx={{ fontSize: '16px' }}>
+              <Box component={'strong'} mr={0.5}>
                 Medium risk: Total score-4 or more, Sub score(Q5~9)-3 or less
               </Box>
             </Typography>
             <Typography variant="inherit">
-              <Box component={'strong'} mr={0.5} sx={{ fontSize: '16px' }}>
+              <Box component={'strong'} mr={0.5}>
                 high risk: Total score-4 or more, Sub score(Q5~9)-4 or more
               </Box>
             </Typography>

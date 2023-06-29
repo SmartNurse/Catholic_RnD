@@ -280,7 +280,7 @@ const LEFSContents = (props: Props) => {
             sx={{ color: `${palette.primary.main}`, marginTop: ' 40px' }}
           >
             <Typography variant="inherit">
-              <Box component={'strong'} mr={0.5} sx={{ fontSize: '16px' }}>
+              <Box component={'strong'} mr={0.5}>
                 최대 80점이 가능하고, 점수가 높을 수록 기능이 좋은 것을 의미한다
               </Box>
             </Typography>
