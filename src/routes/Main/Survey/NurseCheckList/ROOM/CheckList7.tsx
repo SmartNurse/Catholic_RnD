@@ -27,10 +27,10 @@ const CheckList7 = (props: Props) => {
 
   const radioId = ['right01'];
 
-  const 권리 = [
+  const 사생활보호 = [
     {
       id: 1,
-      ko: '권리',
+      ko: '사생활보호',
       desc: [
         '입원사실 비공개를 원하는 환자는 “환자정보 비공개” 환자로 등록되어 있는가?',
       ],
@@ -88,7 +88,7 @@ const CheckList7 = (props: Props) => {
       <SectionTitle title="권리" />
       <Grid item xs={12}>
         <div style={{ display: 'table-row' }}>
-          {권리.map(
+          {사생활보호.map(
             (content: { id: number; ko: string; desc: string[] }, i) => {
               return (
                 <TableRow sx={{ display: 'block' }}>

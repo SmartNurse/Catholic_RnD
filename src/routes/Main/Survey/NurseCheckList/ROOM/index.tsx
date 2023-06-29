@@ -114,7 +114,7 @@ const NurseCheckListRoom = (
         <CheckList5 {...formProps} />
         {/* 간호기록  */}
         <CheckList6 {...formProps} />
-        {/* 권리 - 퇴원 메모  */}
+        {/* 사생활보호 - 퇴원 메모  */}
         <CheckList7 {...formProps} />
       </Grid>
     </MuiDialog.SurveyForm>
