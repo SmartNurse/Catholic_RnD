@@ -71,7 +71,7 @@ const MuiRadioGroup = ({
                 disabled={disabled}
                 control={<Radio size="small" />}
                 label={label(value)}
-                sx={{ width: '9vw' }}
+                sx={{ width: '9.4vw' }}
               />
             );
           }

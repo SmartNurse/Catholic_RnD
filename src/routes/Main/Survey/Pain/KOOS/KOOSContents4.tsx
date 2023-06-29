@@ -23,7 +23,7 @@ const KOOSContents4 = (props: Props) => {
 
   return (
     <Fragment>
-      <SectionTitle title="증상 (Symptoms)" />
+      <SectionTitle title="운동 및 놀이 활동 기능 (Function, Sports and Recreational Activities)" />
       <Grid item xs={12}>
         <Typography
           sx={{

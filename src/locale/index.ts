@@ -578,7 +578,7 @@ const locale = {
     'KOOS.LIFEQUALITY.TWO.5': '모두 개선하였음',
 
     'KOOS.LIFEQUALITY.THREE.1': '전혀 어려움이 없음',
-    'KOOS.LIFEQUALITY.THREE.2': '전혀 어려움이 있었음',
+    'KOOS.LIFEQUALITY.THREE.2': '약간 어려움이 있었음',
     'KOOS.LIFEQUALITY.THREE.3': '보통의 어려움 있었음',
     'KOOS.LIFEQUALITY.THREE.4': '심한 어려움 있었음',
     'KOOS.LIFEQUALITY.THREE.5': '극도의 어려움 있었음',

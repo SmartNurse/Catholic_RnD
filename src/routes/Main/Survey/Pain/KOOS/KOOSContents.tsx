@@ -299,9 +299,8 @@ const KOOSContents = (props: Props) => {
                   textOverflow="ellipsis"
                   whiteSpace={'pre-line'}
                 >
-                  늦은 오후 시간에 앉거나 눕거나 휴식할 때 느끼는
-                  <br />
-                  무릎의 경직성은 어느 정도였습니까?
+                  늦은 오후 시간에 앉거나 눕거나 휴식할 때 느끼는 무릎의
+                  경직성은 어느 정도였습니까?
                 </Typography>
               </TableCell>
               <TableCell sx={{ textAlign: 'right' }}>

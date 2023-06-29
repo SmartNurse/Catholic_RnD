@@ -16,10 +16,10 @@ const LEFSContents = (props: Props) => {
   const columns = [
     { fieldId: 'title', label: '' },
     { fieldId: '0', label: '심하게 어려움(0점)' },
-    { fieldId: '1', label: '완전 도움(1점)' },
-    { fieldId: '2', label: '완전 도움(2점)' },
-    { fieldId: '3', label: '부분도움(3점)' },
-    { fieldId: '4', label: '완전자립(4점)' },
+    { fieldId: '1', label: '상당히 활동 어려움(1점)' },
+    { fieldId: '2', label: '보통 어려움(2점)' },
+    { fieldId: '3', label: '조금 어려움(3점)' },
+    { fieldId: '4', label: '어려움 없음(4점)' },
   ];
 
   const rows = [
