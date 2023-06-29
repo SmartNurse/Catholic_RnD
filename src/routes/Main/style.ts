@@ -214,3 +214,11 @@ export const StyledTableCellWithoutLeftRightTwo = styled(TableCell)({
   borderRight: 'none',
   padding: '0px',
 });
+
+// 통증 ( STarTBack )
+export const StyledTableCellWithoutLine = styled(TableCell)({
+  borderLeft: 'none',
+  borderRight: 'none',
+  borderTop: 'none',
+  padding: '0px',
+});

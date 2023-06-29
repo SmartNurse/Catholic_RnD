@@ -584,8 +584,8 @@ const locale = {
     'KOOS.LIFEQUALITY.THREE.5': '극도의 어려움 있었음',
 
     // STarTScreening
-    'STARTSCREENING.SCORE.1': 'No(0point)',
-    'STARTSCREENING.SCORE.2': 'Yes(1point)',
+    'STARTSCREENING.SCORE.0': 'No(0point)',
+    'STARTSCREENING.SCORE.1': 'Yes(1point)',
 
     'STARTSCREENING.SCORE.FIVE.0': 'Not at all (0 point)',
     'STARTSCREENING.SCORE.FIVE.1': 'Slightly (0 point)',
