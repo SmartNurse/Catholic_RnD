@@ -83,12 +83,8 @@ const KOOSContents = (props: Props) => {
                   i18nNullKey="ETC"
                   i18nKey="KOOS.SYMPTOMS"
                   values={[1, 2, 3, 4, 5]}
-                  defaultValue={getValues(
-                    'default_info.hospitalization_path.value'
-                  )}
-                  onChange={v =>
-                    setValue('default_info.hospitalization_path.value', v)
-                  }
+                  defaultValue={getValues('spt01')}
+                  onChange={v => setValue('spt01', v)}
                 />
               </TableCell>
             </TableRow>
@@ -118,12 +114,8 @@ const KOOSContents = (props: Props) => {
                   i18nNullKey="ETC"
                   i18nKey="KOOS.SYMPTOMS"
                   values={[1, 2, 3, 4, 5]}
-                  defaultValue={getValues(
-                    'default_info.hospitalization_path.value'
-                  )}
-                  onChange={v =>
-                    setValue('default_info.hospitalization_path.value', v)
-                  }
+                  defaultValue={getValues('spt02')}
+                  onChange={v => setValue('spt02', v)}
                 />
               </TableCell>
             </TableRow>
@@ -151,12 +143,8 @@ const KOOSContents = (props: Props) => {
                   i18nNullKey="ETC"
                   i18nKey="KOOS.SYMPTOMS"
                   values={[1, 2, 3, 4, 5]}
-                  defaultValue={getValues(
-                    'default_info.hospitalization_path.value'
-                  )}
-                  onChange={v =>
-                    setValue('default_info.hospitalization_path.value', v)
-                  }
+                  defaultValue={getValues('spt03')}
+                  onChange={v => setValue('spt03', v)}
                 />
               </TableCell>
             </TableRow>
@@ -184,12 +172,8 @@ const KOOSContents = (props: Props) => {
                   i18nNullKey="ETC"
                   i18nKey="KOOS.SYMPTOMS"
                   values={[1, 2, 3, 4, 5]}
-                  defaultValue={getValues(
-                    'default_info.hospitalization_path.value'
-                  )}
-                  onChange={v =>
-                    setValue('default_info.hospitalization_path.value', v)
-                  }
+                  defaultValue={getValues('spt04')}
+                  onChange={v => setValue('spt04', v)}
                 />
               </TableCell>
             </TableRow>
@@ -217,18 +201,15 @@ const KOOSContents = (props: Props) => {
                   i18nNullKey="ETC"
                   i18nKey="KOOS.SYMPTOMS"
                   values={[1, 2, 3, 4, 5]}
-                  defaultValue={getValues(
-                    'default_info.hospitalization_path.value'
-                  )}
-                  onChange={v =>
-                    setValue('default_info.hospitalization_path.value', v)
-                  }
+                  defaultValue={getValues('spt05')}
+                  onChange={v => setValue('spt05', v)}
                 />
               </TableCell>
             </TableRow>
           </TableBody>
         </Table>
       </Grid>
+
       <SectionTitle title="경직성 (Stiffness)" />
       <Grid item xs={12}>
         <Typography
@@ -275,12 +256,8 @@ const KOOSContents = (props: Props) => {
                   i18nNullKey="ETC"
                   i18nKey="KOOS.STIFFNESS"
                   values={[1, 2, 3, 4, 5]}
-                  defaultValue={getValues(
-                    'default_info.hospitalization_path.value'
-                  )}
-                  onChange={v =>
-                    setValue('default_info.hospitalization_path.value', v)
-                  }
+                  defaultValue={getValues('stf01')}
+                  onChange={v => setValue('stf01', v)}
                 />
               </TableCell>
             </TableRow>
@@ -309,12 +286,8 @@ const KOOSContents = (props: Props) => {
                   i18nNullKey="ETC"
                   i18nKey="KOOS.STIFFNESS"
                   values={[1, 2, 3, 4, 5]}
-                  defaultValue={getValues(
-                    'default_info.hospitalization_path.value'
-                  )}
-                  onChange={v =>
-                    setValue('default_info.hospitalization_path.value', v)
-                  }
+                  defaultValue={getValues('stf02')}
+                  onChange={v => setValue('stf02', v)}
                 />
               </TableCell>
             </TableRow>

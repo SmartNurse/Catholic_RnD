@@ -1203,6 +1203,57 @@ export const initialFFI = {
   ffi23: 0,
 };
 
+export const initialKOOS = {
+  update_at: '',
+  spt01: '',
+  spt02: '',
+  spt03: '',
+  spt04: '',
+  spt05: '',
+
+  stf01: '',
+  stf02: '',
+
+  pain01: '',
+  pain02: '',
+  pain03: '',
+  pain04: '',
+  pain05: '',
+  pain06: '',
+  pain07: '',
+  pain08: '',
+  pain09: '',
+
+  daily01: '',
+  daily02: '',
+  daily03: '',
+  daily04: '',
+  daily05: '',
+  daily06: '',
+  daily07: '',
+  daily08: '',
+  daily09: '',
+  daily10: '',
+  daily11: '',
+  daily12: '',
+  daily13: '',
+  daily14: '',
+  daily15: '',
+  daily16: '',
+  daily17: '',
+
+  actv01: '',
+  actv02: '',
+  actv03: '',
+  actv04: '',
+  actv05: '',
+
+  qol01: '',
+  qol02: '',
+  qol03: '',
+  qol04: '',
+};
+
 export const initialLEFS = {
   date: '',
   update_at: '',

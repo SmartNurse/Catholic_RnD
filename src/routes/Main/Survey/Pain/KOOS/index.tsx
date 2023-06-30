@@ -1,11 +1,11 @@
 import { Grid, Typography } from '@mui/material';
 import { useForm } from 'react-hook-form';
 
-import { updateFall } from 'apis/survey';
+import { updateKOOS } from 'apis/survey';
 import useSurvey from 'store/survey/useSurvey';
 import useNotification from 'hooks/useNotification';
 import MuiDialog from 'components/MuiDialog';
-import { TFallDefaultValues, SurveyDialogProps } from 'routes/Main/Survey/type';
+import { TKOOSDefaultValues, SurveyDialogProps } from 'routes/Main/Survey/type';
 
 import CommonPatientInfo from '../../components/CommonPatientInfo';
 import KOOSContents from './KOOSContents';
@@ -13,7 +13,7 @@ import KOOSContents2 from './KOOSContents2';
 import KOOSContents3 from './KOOSContents3';
 import KOOSContents4 from './KOOSContents4';
 
-const KOOS = (props: SurveyDialogProps<TFallDefaultValues>) => {
+const KOOS = (props: SurveyDialogProps<TKOOSDefaultValues>) => {
   const {
     title,
     isOpen,
@@ -32,23 +32,69 @@ const KOOS = (props: SurveyDialogProps<TFallDefaultValues>) => {
     defaultValues,
   });
 
-  const onSubmit = (data: TFallDefaultValues) => {
+  const onSubmit = (data: TKOOSDefaultValues) => {
     const { patient_id } = patientInfo;
-    const { contents, date } = data;
+    const {
+      spt01,
+      spt02,
+      spt03,
+      spt04,
+      spt05,
 
-    const contentsValues = Object.values(contents);
-    if (contentsValues.includes('')) return onRequired('REQUIRED.FALL');
+      stf01,
+      stf02,
+
+      pain01,
+      pain02,
+      pain03,
+      pain04,
+      pain05,
+      pain06,
+      pain07,
+      pain08,
+      pain09,
+
+      daily01,
+      daily02,
+      daily03,
+      daily04,
+      daily05,
+      daily06,
+      daily07,
+      daily08,
+      daily09,
+      daily10,
+      daily11,
+      daily12,
+      daily13,
+      daily14,
+      daily15,
+      daily16,
+      daily17,
+
+      actv01,
+      actv02,
+      actv03,
+      actv04,
+      actv05,
+
+      qol01,
+      qol02,
+      qol03,
+      qol04,
+    } = data;
 
     const request = {
       user_id,
       patient_id,
-      date,
-      contents: JSON.stringify(contents),
+      contents: data,
     };
+    console.log('뭐지;', data);
 
-    updateFall(request)
+    updateKOOS(request)
       .then(({ data: { rc } }) => {
         if (rc !== 1) return onResultCode(rc);
+
         onUpdateIsSave(true);
         onSuccess('KOOS 저장에 성공하였습니다.');
       })
@@ -87,8 +133,6 @@ const KOOS = (props: SurveyDialogProps<TFallDefaultValues>) => {
           }}
         >
           Knee injury and Osteoarthritis Outcome Score (KOOS)
-          <br />
-          테스트중입니다.
         </Typography>
         <CommonPatientInfo patientInfo={patientInfo} nurseName={nurseName} />
         {/* 증상 - 경직성 */}

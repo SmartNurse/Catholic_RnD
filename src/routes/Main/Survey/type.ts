@@ -47,9 +47,10 @@ import {
   initialCoreNursingSkillVideoExemple,
   initialFourScore,
   initialCheckListRoom,
+  initialFFI,
+  initialKOOS,
   initialLEFS,
   initialSTarTBack,
-  initialFFI,
 } from './initialStates';
 
 export enum MENU {
@@ -178,6 +179,7 @@ export type TDNADefaultValues = typeof initialDNA;
 export type TCheckListRoomDefaultValues = typeof initialCheckListRoom;
 
 export type TFFIDefaultValues = typeof initialFFI;
+export type TKOOSDefaultValues = typeof initialKOOS;
 export type TLEFSDefaultValues = typeof initialLEFS;
 export type TSTarTBackScreeningDefaultValues = typeof initialSTarTBack;
 

@@ -66,12 +66,8 @@ const KOOSContents3 = (props: Props) => {
                   i18nNullKey="ETC"
                   i18nKey="KOOS.DAILYFUNCTION"
                   values={[1, 2, 3, 4, 5]}
-                  defaultValue={getValues(
-                    'default_info.hospitalization_path.value'
-                  )}
-                  onChange={v =>
-                    setValue('default_info.hospitalization_path.value', v)
-                  }
+                  defaultValue={getValues('daily01')}
+                  onChange={v => setValue('daily01', v)}
                 />
               </TableCell>
             </TableRow>
@@ -99,12 +95,8 @@ const KOOSContents3 = (props: Props) => {
                   i18nNullKey="ETC"
                   i18nKey="KOOS.DAILYFUNCTION"
                   values={[1, 2, 3, 4, 5]}
-                  defaultValue={getValues(
-                    'default_info.hospitalization_path.value'
-                  )}
-                  onChange={v =>
-                    setValue('default_info.hospitalization_path.value', v)
-                  }
+                  defaultValue={getValues('daily02')}
+                  onChange={v => setValue('daily02', v)}
                 />
               </TableCell>
             </TableRow>
@@ -132,12 +124,8 @@ const KOOSContents3 = (props: Props) => {
                   i18nNullKey="ETC"
                   i18nKey="KOOS.DAILYFUNCTION"
                   values={[1, 2, 3, 4, 5]}
-                  defaultValue={getValues(
-                    'default_info.hospitalization_path.value'
-                  )}
-                  onChange={v =>
-                    setValue('default_info.hospitalization_path.value', v)
-                  }
+                  defaultValue={getValues('daily03')}
+                  onChange={v => setValue('daily03', v)}
                 />
               </TableCell>
             </TableRow>
@@ -165,12 +153,8 @@ const KOOSContents3 = (props: Props) => {
                   i18nNullKey="ETC"
                   i18nKey="KOOS.DAILYFUNCTION"
                   values={[1, 2, 3, 4, 5]}
-                  defaultValue={getValues(
-                    'default_info.hospitalization_path.value'
-                  )}
-                  onChange={v =>
-                    setValue('default_info.hospitalization_path.value', v)
-                  }
+                  defaultValue={getValues('daily04')}
+                  onChange={v => setValue('daily04', v)}
                 />
               </TableCell>
             </TableRow>
@@ -198,12 +182,8 @@ const KOOSContents3 = (props: Props) => {
                   i18nNullKey="ETC"
                   i18nKey="KOOS.DAILYFUNCTION"
                   values={[1, 2, 3, 4, 5]}
-                  defaultValue={getValues(
-                    'default_info.hospitalization_path.value'
-                  )}
-                  onChange={v =>
-                    setValue('default_info.hospitalization_path.value', v)
-                  }
+                  defaultValue={getValues('daily05')}
+                  onChange={v => setValue('daily05', v)}
                 />
               </TableCell>
             </TableRow>
@@ -231,12 +211,8 @@ const KOOSContents3 = (props: Props) => {
                   i18nNullKey="ETC"
                   i18nKey="KOOS.DAILYFUNCTION"
                   values={[1, 2, 3, 4, 5]}
-                  defaultValue={getValues(
-                    'default_info.hospitalization_path.value'
-                  )}
-                  onChange={v =>
-                    setValue('default_info.hospitalization_path.value', v)
-                  }
+                  defaultValue={getValues('daily06')}
+                  onChange={v => setValue('daily06', v)}
                 />
               </TableCell>
             </TableRow>
@@ -264,12 +240,8 @@ const KOOSContents3 = (props: Props) => {
                   i18nNullKey="ETC"
                   i18nKey="KOOS.DAILYFUNCTION"
                   values={[1, 2, 3, 4, 5]}
-                  defaultValue={getValues(
-                    'default_info.hospitalization_path.value'
-                  )}
-                  onChange={v =>
-                    setValue('default_info.hospitalization_path.value', v)
-                  }
+                  defaultValue={getValues('daily07')}
+                  onChange={v => setValue('daily07', v)}
                 />
               </TableCell>
             </TableRow>
@@ -297,12 +269,8 @@ const KOOSContents3 = (props: Props) => {
                   i18nNullKey="ETC"
                   i18nKey="KOOS.DAILYFUNCTION"
                   values={[1, 2, 3, 4, 5]}
-                  defaultValue={getValues(
-                    'default_info.hospitalization_path.value'
-                  )}
-                  onChange={v =>
-                    setValue('default_info.hospitalization_path.value', v)
-                  }
+                  defaultValue={getValues('daily08')}
+                  onChange={v => setValue('daily08', v)}
                 />
               </TableCell>
             </TableRow>
@@ -330,12 +298,8 @@ const KOOSContents3 = (props: Props) => {
                   i18nNullKey="ETC"
                   i18nKey="KOOS.DAILYFUNCTION"
                   values={[1, 2, 3, 4, 5]}
-                  defaultValue={getValues(
-                    'default_info.hospitalization_path.value'
-                  )}
-                  onChange={v =>
-                    setValue('default_info.hospitalization_path.value', v)
-                  }
+                  defaultValue={getValues('daily09')}
+                  onChange={v => setValue('daily09', v)}
                 />
               </TableCell>
             </TableRow>
@@ -363,12 +327,8 @@ const KOOSContents3 = (props: Props) => {
                   i18nNullKey="ETC"
                   i18nKey="KOOS.DAILYFUNCTION"
                   values={[1, 2, 3, 4, 5]}
-                  defaultValue={getValues(
-                    'default_info.hospitalization_path.value'
-                  )}
-                  onChange={v =>
-                    setValue('default_info.hospitalization_path.value', v)
-                  }
+                  defaultValue={getValues('daily10')}
+                  onChange={v => setValue('daily10', v)}
                 />
               </TableCell>
             </TableRow>
@@ -396,12 +356,8 @@ const KOOSContents3 = (props: Props) => {
                   i18nNullKey="ETC"
                   i18nKey="KOOS.DAILYFUNCTION"
                   values={[1, 2, 3, 4, 5]}
-                  defaultValue={getValues(
-                    'default_info.hospitalization_path.value'
-                  )}
-                  onChange={v =>
-                    setValue('default_info.hospitalization_path.value', v)
-                  }
+                  defaultValue={getValues('daily11')}
+                  onChange={v => setValue('daily11', v)}
                 />
               </TableCell>
             </TableRow>
@@ -429,12 +385,8 @@ const KOOSContents3 = (props: Props) => {
                   i18nNullKey="ETC"
                   i18nKey="KOOS.DAILYFUNCTION"
                   values={[1, 2, 3, 4, 5]}
-                  defaultValue={getValues(
-                    'default_info.hospitalization_path.value'
-                  )}
-                  onChange={v =>
-                    setValue('default_info.hospitalization_path.value', v)
-                  }
+                  defaultValue={getValues('daily12')}
+                  onChange={v => setValue('daily12', v)}
                 />
               </TableCell>
             </TableRow>
@@ -462,12 +414,8 @@ const KOOSContents3 = (props: Props) => {
                   i18nNullKey="ETC"
                   i18nKey="KOOS.DAILYFUNCTION"
                   values={[1, 2, 3, 4, 5]}
-                  defaultValue={getValues(
-                    'default_info.hospitalization_path.value'
-                  )}
-                  onChange={v =>
-                    setValue('default_info.hospitalization_path.value', v)
-                  }
+                  defaultValue={getValues('daily13')}
+                  onChange={v => setValue('daily13', v)}
                 />
               </TableCell>
             </TableRow>
@@ -495,12 +443,8 @@ const KOOSContents3 = (props: Props) => {
                   i18nNullKey="ETC"
                   i18nKey="KOOS.DAILYFUNCTION"
                   values={[1, 2, 3, 4, 5]}
-                  defaultValue={getValues(
-                    'default_info.hospitalization_path.value'
-                  )}
-                  onChange={v =>
-                    setValue('default_info.hospitalization_path.value', v)
-                  }
+                  defaultValue={getValues('daily14')}
+                  onChange={v => setValue('daily14', v)}
                 />
               </TableCell>
             </TableRow>
@@ -528,12 +472,8 @@ const KOOSContents3 = (props: Props) => {
                   i18nNullKey="ETC"
                   i18nKey="KOOS.DAILYFUNCTION"
                   values={[1, 2, 3, 4, 5]}
-                  defaultValue={getValues(
-                    'default_info.hospitalization_path.value'
-                  )}
-                  onChange={v =>
-                    setValue('default_info.hospitalization_path.value', v)
-                  }
+                  defaultValue={getValues('daily15')}
+                  onChange={v => setValue('daily15', v)}
                 />
               </TableCell>
             </TableRow>
@@ -561,12 +501,8 @@ const KOOSContents3 = (props: Props) => {
                   i18nNullKey="ETC"
                   i18nKey="KOOS.DAILYFUNCTION"
                   values={[1, 2, 3, 4, 5]}
-                  defaultValue={getValues(
-                    'default_info.hospitalization_path.value'
-                  )}
-                  onChange={v =>
-                    setValue('default_info.hospitalization_path.value', v)
-                  }
+                  defaultValue={getValues('daily16')}
+                  onChange={v => setValue('daily16', v)}
                 />
               </TableCell>
             </TableRow>
@@ -594,12 +530,8 @@ const KOOSContents3 = (props: Props) => {
                   i18nNullKey="ETC"
                   i18nKey="KOOS.DAILYFUNCTION"
                   values={[1, 2, 3, 4, 5]}
-                  defaultValue={getValues(
-                    'default_info.hospitalization_path.value'
-                  )}
-                  onChange={v =>
-                    setValue('default_info.hospitalization_path.value', v)
-                  }
+                  defaultValue={getValues('daily17')}
+                  onChange={v => setValue('daily17', v)}
                 />
               </TableCell>
             </TableRow>

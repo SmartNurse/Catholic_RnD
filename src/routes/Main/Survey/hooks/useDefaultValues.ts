@@ -45,6 +45,7 @@ import {
   getFFI,
   getLEFS,
   getSTarT,
+  getKOOS,
 } from 'apis/survey';
 import useNotification from 'hooks/useNotification';
 import { findKeyValueToObj, findKeyValueToObjNoParse } from 'utils/convert';
@@ -99,6 +100,7 @@ import {
   initialFFI,
   initialLEFS,
   initialSTarTBack,
+  initialKOOS,
 } from '../initialStates';
 import { MENU } from '../type';
 
@@ -738,11 +740,10 @@ const useDefaultValues = ({ setDefaultValues, user_id }: Props) => {
           .catch(e => onFail('알 수 없는 오류가 발생했습니다', e));
         break;
       case MENU.KOOS:
-        getFall({ user_id, patient_id })
+        getKOOS({ user_id, patient_id })
           .then(({ data }) => {
-            const { contents } = data;
-            const m_data = { ...data, contents: JSON.parse(contents) };
-            convertDataToStates(m_data, initialFall);
+            const { update_at, contents } = data;
+            convertDataToStates({ update_at, ...contents }, initialKOOS);
           })
           .catch(e => onFail('알 수 없는 오류가 발생했습니다.', e));
         break;

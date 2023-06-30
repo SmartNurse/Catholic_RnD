@@ -1018,6 +1018,57 @@ export interface IUpdateFFI extends IGetSurvey {
   };
 }
 
+export interface IUpdateKOOS extends IGetSurvey {
+  contents: {
+    spt02: string;
+    spt03: string;
+    spt04: string;
+    spt05: string;
+
+    stf01: string;
+    stf02: string;
+
+    pain01: string;
+    pain02: string;
+    pain03: string;
+    pain04: string;
+    pain05: string;
+    pain06: string;
+    pain07: string;
+    pain08: string;
+    pain09: string;
+
+    daily01: string;
+    daily02: string;
+    daily03: string;
+    daily04: string;
+    daily05: string;
+    daily06: string;
+    daily07: string;
+    daily08: string;
+    daily09: string;
+    daily10: string;
+    daily11: string;
+    daily12: string;
+    daily13: string;
+    daily14: string;
+    daily15: string;
+    daily16: string;
+    daily17: string;
+
+    actv01: string;
+    actv02: string;
+    actv03: string;
+    actv04: string;
+    actv05: string;
+
+    qol01: string;
+    qol02: string;
+    qol03: string;
+    qol04: string;
+  };
+}
+
 export interface IUpdateLEFS extends IGetSurvey {
   date: string;
   contents: string;

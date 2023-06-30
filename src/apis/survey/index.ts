@@ -46,6 +46,7 @@ import {
   IUpdateDNA,
   IUpdateCheckListRoom,
   IUpdateFFI,
+  IUpdateKOOS,
   IUpdateLEFS,
   IUpdateSTarTBack,
 } from './type';
@@ -529,6 +530,17 @@ export const getFFI = (request: IGetSurvey) => {
 
 export const updateFFI = (request: IUpdateFFI) => {
   const url = `survey/ffi`;
+  return apiGateway.post(url, camelcaseKeys(request));
+};
+
+// 통증 ( KOOS )
+export const getKOOS = (request: IGetSurvey) => {
+  const url = `/survey/koos?${formatToRequestParameter(request)}`;
+  return apiGateway.get(url);
+};
+
+export const updateKOOS = (request: IUpdateKOOS) => {
+  const url = `/survey/koos`;
   return apiGateway.post(url, camelcaseKeys(request));
 };
 
