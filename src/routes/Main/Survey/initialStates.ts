@@ -1278,6 +1278,20 @@ export const initialLEFS = {
   lefs20: '',
 };
 
+export const initialNDI = {
+  update_at: '',
+  ndi01: '',
+  ndi02: '',
+  ndi03: '',
+  ndi04: '',
+  ndi05: '',
+  ndi06: '',
+  ndi07: '',
+  ndi08: '',
+  ndi09: '',
+  ndi10: '',
+};
+
 export const initialSTarTBack = {
   update_at: '',
   contents: {

@@ -51,6 +51,7 @@ import {
   initialKOOS,
   initialLEFS,
   initialSTarTBack,
+  initialNDI,
 } from './initialStates';
 
 export enum MENU {
@@ -181,6 +182,7 @@ export type TCheckListRoomDefaultValues = typeof initialCheckListRoom;
 export type TFFIDefaultValues = typeof initialFFI;
 export type TKOOSDefaultValues = typeof initialKOOS;
 export type TLEFSDefaultValues = typeof initialLEFS;
+export type TNDIDefaultValues = typeof initialNDI;
 export type TSTarTBackScreeningDefaultValues = typeof initialSTarTBack;
 
 export type TCoreNursingSkillVideoDefaultValues =

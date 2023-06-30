@@ -46,6 +46,7 @@ import {
   getLEFS,
   getSTarT,
   getKOOS,
+  getNDI,
 } from 'apis/survey';
 import useNotification from 'hooks/useNotification';
 import { findKeyValueToObj, findKeyValueToObjNoParse } from 'utils/convert';
@@ -101,6 +102,7 @@ import {
   initialLEFS,
   initialSTarTBack,
   initialKOOS,
+  initialNDI,
 } from '../initialStates';
 import { MENU } from '../type';
 
@@ -756,13 +758,10 @@ const useDefaultValues = ({ setDefaultValues, user_id }: Props) => {
           .catch(e => onFail('알 수 없는 오류가 발생했습니다.', e));
         break;
       case MENU.NDI:
-        getFourScore({ user_id, patient_id })
+        getNDI({ user_id, patient_id })
           .then(({ data }) => {
-            const { update_at, four_score_survey } = data;
-            convertDataToStates(
-              { update_at, ...four_score_survey },
-              initialFourScore
-            );
+            const { update_at, contents } = data;
+            convertDataToStates({ update_at, ...contents }, initialNDI);
           })
           .catch(e => onFail('알 수 없는 오류가 발생했습니다.', e));
         break;

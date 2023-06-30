@@ -48,6 +48,7 @@ import {
   IUpdateFFI,
   IUpdateKOOS,
   IUpdateLEFS,
+  IUpdateNDI,
   IUpdateSTarTBack,
 } from './type';
 
@@ -552,6 +553,17 @@ export const getLEFS = (request: IGetSurvey) => {
 
 export const updateLEFS = (request: IUpdateLEFS) => {
   const url = `/survey/lefs`;
+  return apiGateway.post(url, camelcaseKeys(request));
+};
+
+// 통증 ( NDI )
+export const getNDI = (request: IGetSurvey) => {
+  const url = `/survey/ndi?${formatToRequestParameter(request)}`;
+  return apiGateway.get(url);
+};
+
+export const updateNDI = (request: IUpdateNDI) => {
+  const url = `/survey/ndi`;
   return apiGateway.post(url, camelcaseKeys(request));
 };
 

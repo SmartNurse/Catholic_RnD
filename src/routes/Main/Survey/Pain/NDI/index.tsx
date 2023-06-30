@@ -6,14 +6,14 @@ import useNotification from 'hooks/useNotification';
 import { Typography, Grid } from '@mui/material';
 import MuiDialog from 'components/MuiDialog';
 
-import { SurveyDialogProps, TBDIDefaultValues } from '../../type';
+import { SurveyDialogProps, TNDIDefaultValues } from '../../type';
 
 import CommonPatientInfo from '../../components/CommonPatientInfo';
 import NDIContents from './NDIContents';
 
-import { updateBDI } from 'apis/survey';
+import { updateNDI } from 'apis/survey';
 
-const NDI = (props: SurveyDialogProps<TBDIDefaultValues>) => {
+const NDI = (props: SurveyDialogProps<TNDIDefaultValues>) => {
   const {
     title,
     isOpen,
@@ -31,25 +31,34 @@ const NDI = (props: SurveyDialogProps<TBDIDefaultValues>) => {
     defaultValues,
   });
 
-  const onSubmit = (data: TBDIDefaultValues) => {
+  const onSubmit = (data: TNDIDefaultValues) => {
     const { patient_id } = patientInfo;
-    const { content, sum } = data;
-
-    if (content.length < 21) return onRequired('REQUIRED.BAI');
+    const {
+      ndi01,
+      ndi02,
+      ndi03,
+      ndi04,
+      ndi05,
+      ndi06,
+      ndi07,
+      ndi08,
+      ndi09,
+      ndi10,
+    } = data;
 
     const request = {
       user_id,
       patient_id,
-      bdi_survey: { content, sum },
+      contents: { ...data },
     };
 
-    updateBDI(request)
+    updateNDI(request)
       .then(({ data: { rc } }) => {
         if (rc !== 1) return onResultCode(rc);
         onUpdateIsSave(true);
-        onSuccess('BDI 저장에 성공하였습니다.');
+        onSuccess('NDI 저장에 성공하였습니다.');
       })
-      .catch(e => onFail('BDI 저장에 실패하였습니다.', e));
+      .catch(e => onFail('NDI 저장에 실패하였습니다.', e));
   };
 
   const formProps = {
@@ -85,8 +94,7 @@ const NDI = (props: SurveyDialogProps<TBDIDefaultValues>) => {
             textAlign: 'center',
           }}
         >
-          목기능 불능 지수(Neck Disability Index,NDI) <br />
-          테스트중입니다.
+          목기능 불능 지수(Neck Disability Index,NDI)
         </Typography>
         <CommonPatientInfo patientInfo={patientInfo} nurseName={nurseName} />
         <NDIContents {...formProps} />

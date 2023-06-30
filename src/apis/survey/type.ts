@@ -1094,6 +1094,21 @@ export interface IUpdateLEFS extends IGetSurvey {
   };
 }
 
+export interface IUpdateNDI extends IGetSurvey {
+  contents: {
+    ndi01: string;
+    ndi02: string;
+    ndi03: string;
+    ndi04: string;
+    ndi05: string;
+    ndi06: string;
+    ndi07: string;
+    ndi08: string;
+    ndi09: string;
+    ndi10: string;
+  };
+}
+
 export interface IUpdateSTarTBack extends IGetSurvey {
   contents: string;
 }
