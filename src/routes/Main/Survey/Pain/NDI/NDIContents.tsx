@@ -209,28 +209,33 @@ const NDIContents = (props: Props) => {
           >
             <Typography variant="inherit">
               <Box component={'strong'} mr={0.5}>
-                0~4점(0~8%) : 장애없음
+                0~4점(0~8%) :
               </Box>
+              장애없음
             </Typography>
             <Typography variant="inherit">
               <Box component={'strong'} mr={0.5}>
-                5~14점(10~28%) : 경미한 장애
+                5~14점(10~28%) :
               </Box>
+              경미한 장애
             </Typography>
             <Typography variant="inherit">
               <Box component={'strong'} mr={0.5}>
-                15~24점(30~48%) : 중증도 장애
+                15~24점(30~48%) :
               </Box>
+              중증도 장애
             </Typography>
             <Typography variant="inherit">
               <Box component={'strong'} mr={0.5}>
-                25~34점(50~64%) : 중증 장애
+                25~34점(50~64%) :
               </Box>
+              중증 장애
             </Typography>
             <Typography variant="inherit">
               <Box component={'strong'} mr={0.5}>
-                35~50점(70~100%) : 완전한 장애
+                35~50점(70~100%) :
               </Box>
+              완전한 장애
             </Typography>
           </Typography>
         </Box>
