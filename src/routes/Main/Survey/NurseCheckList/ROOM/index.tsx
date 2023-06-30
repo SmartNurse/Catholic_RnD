@@ -192,8 +192,6 @@ const NurseCheckListRoom = (
           }}
         >
           간호기록 체크리스트(병동)
-          <br />
-          테스트중입니다
         </Typography>
         <CommonPatientInfo patientInfo={patientInfo} nurseName={nurseName} />
         {/* 간호정보조사 */}
