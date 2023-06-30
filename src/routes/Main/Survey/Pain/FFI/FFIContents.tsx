@@ -17,57 +17,99 @@ import {
 import { StyledSlider } from 'routes/Main/style';
 
 import { Ti18nId } from 'hooks/useI18n';
-import { IFormValues, IFormWatch } from 'routes/Main/type';
+import { IFormValues, IFormWatch, IFormRegister } from 'routes/Main/type';
 import { INRS } from 'apis/survey/type';
 
-interface Props extends IFormValues, IFormWatch {
+interface Props extends IFormValues, IFormWatch, IFormRegister {
   disabled?: boolean;
   onRequired: (id: Ti18nId) => void;
   onSuccess: (message: string) => void;
 }
 
 const FFIContents = (props: Props) => {
-  const { disabled, watch, setValue, onRequired, onSuccess } = props;
+  const { disabled, watch, setValue, onRequired, onSuccess, getValues } = props;
   const { palette } = useTheme();
 
-  const nrsList: INRS[] = watch('nrs_survey');
+  const [painScore1, setPainScore1] = useState(
+    getValues('ffi01') !== undefined ? getValues('ffi01') : 0
+  );
+  const [painScore2, setPainScore2] = useState(
+    getValues('ffi02') !== undefined ? getValues('ffi02') : 0
+  );
+  const [painScore3, setPainScore3] = useState(
+    getValues('ffi03') !== undefined ? getValues('ffi03') : 0
+  );
+  const [painScore4, setPainScore4] = useState(
+    getValues('ffi04') !== undefined ? getValues('ffi04') : 0
+  );
+  const [painScore5, setPainScore5] = useState(
+    getValues('ffi05') !== undefined ? getValues('ffi05') : 0
+  );
+  const [painScore6, setPainScore6] = useState(
+    getValues('ffi06') !== undefined ? getValues('ffi06') : 0
+  );
+  const [painScore7, setPainScore7] = useState(
+    getValues('ffi07') !== undefined ? getValues('ffi07') : 0
+  );
+  const [painScore8, setPainScore8] = useState(
+    getValues('ffi08') !== undefined ? getValues('ffi08') : 0
+  );
+  const [painScore9, setPainScore9] = useState(
+    getValues('ffi09') !== undefined ? getValues('ffi09') : 0
+  );
 
-  const [checkTime, setCheckTime] = useState(null);
+  const [functionScore1, setFunctionScore1] = useState(
+    getValues('ffi10') !== undefined ? getValues('ffi10') : 0
+  );
+  const [functionScore2, setFunctionScore2] = useState(
+    getValues('ffi11') !== undefined ? getValues('ffi11') : 0
+  );
+  const [functionScore3, setFunctionScore3] = useState(
+    getValues('ffi12') !== undefined ? getValues('ffi12') : 0
+  );
+  const [functionScore4, setFunctionScore4] = useState(
+    getValues('ffi13') !== undefined ? getValues('ffi13') : 0
+  );
+  const [functionScore5, setFunctionScore5] = useState(
+    getValues('ffi14') !== undefined ? getValues('ffi14') : 0
+  );
+  const [functionScore6, setFunctionScore6] = useState(
+    getValues('ffi15') !== undefined ? getValues('ffi15') : 0
+  );
+  const [functionScore7, setFunctionScore7] = useState(
+    getValues('ffi16') !== undefined ? getValues('ffi16') : 0
+  );
+  const [functionScore8, setFunctionScore8] = useState(
+    getValues('ffi17') !== undefined ? getValues('ffi17') : 0
+  );
+  const [functionScore9, setFunctionScore9] = useState(
+    getValues('ffi18') !== undefined ? getValues('ffi18') : 0
+  );
 
-  const [painScore1, setPainScore1] = useState('');
-  const [painScore2, setPainScore2] = useState('');
-  const [painScore3, setPainScore3] = useState('');
-  const [painScore4, setPainScore4] = useState('');
-  const [painScore5, setPainScore5] = useState('');
-  const [painScore6, setPainScore6] = useState('');
-  const [painScore7, setPainScore7] = useState('');
-  const [painScore8, setPainScore8] = useState('');
-  const [painScore9, setPainScore9] = useState('');
-
-  const [functionScore1, setFunctionScore1] = useState('');
-  const [functionScore2, setFunctionScore2] = useState('');
-  const [functionScore3, setFunctionScore3] = useState('');
-  const [functionScore4, setFunctionScore4] = useState('');
-  const [functionScore5, setFunctionScore5] = useState('');
-  const [functionScore6, setFunctionScore6] = useState('');
-  const [functionScore7, setFunctionScore7] = useState('');
-  const [functionScore8, setFunctionScore8] = useState('');
-  const [functionScore9, setFunctionScore9] = useState('');
-
-  const [limiteScore1, setLimiteScore1] = useState('');
-  const [limiteScore2, setLimiteScore2] = useState('');
-  const [limiteScore3, setLimiteScore3] = useState('');
-  const [limiteScore4, setLimiteScore4] = useState('');
-  const [limiteScore5, setLimiteScore5] = useState('');
-
-  const [answer, setAnswer] = useState(0);
+  const [limiteScore1, setLimiteScore1] = useState(
+    getValues('ffi19') !== undefined ? getValues('ffi19') : 0
+  );
+  const [limiteScore2, setLimiteScore2] = useState(
+    getValues('ffi20') !== undefined ? getValues('ffi20') : 0
+  );
+  const [limiteScore3, setLimiteScore3] = useState(
+    getValues('ffi21') !== undefined ? getValues('ffi21') : 0
+  );
+  const [limiteScore4, setLimiteScore4] = useState(
+    getValues('ffi22') !== undefined ? getValues('ffi22') : 0
+  );
+  const [limiteScore5, setLimiteScore5] = useState(
+    getValues('ffi23') !== undefined ? getValues('ffi23') : 0
+  );
 
   // 리펙토링 해볼 map
+  const before = [painScore1];
+
+  const after = [setPainScore1];
+
   const contentLabel = [
     {
-      value: 'painScore',
-      setValue: 'setPainSore',
-      desc: [],
+      desc: '1. 가장 심할 때 통증의 정도는?',
     },
   ];
 
@@ -97,6 +139,7 @@ const FFIContents = (props: Props) => {
     Number(limiteScore5);
 
   const resultAnswer2 = ((resultAnswer / 230) * 100).toFixed(2);
+  console.log('겟밸류', getValues('ffi01'));
 
   return (
     <Fragment>
@@ -131,6 +174,48 @@ const FFIContents = (props: Props) => {
             </TableRow>
           </TableHead>
           <TableBody>
+            {/* {contentLabel.map(
+              (content: { desc: string }, j) => {
+                return (
+                  <TableRow>
+                    <TableCell>
+                      <Typography
+                        sx={{
+                          fontSize: 14,
+                          fontWeight: '400',
+                          width: '500px',
+                        }}
+                        maxHeight={20}
+                        display="block"
+                        variant="caption"
+                        overflow="hidden"
+                        textOverflow="ellipsis"
+                        whiteSpace={'pre-line'}
+                      >
+                        {content.desc}
+                      </Typography>
+                    </TableCell>
+                    <TableCell sx={{ textAlign: 'right' }}>
+                      <StyledSlider
+                        disabled={disabled}
+                        min={0}
+                        max={10}
+                        marks={Array(11)
+                          .fill(0)
+                          .map((_, i) => {
+                            return { value: i };
+                          })}
+                        sx={{ width: '428px' }}
+                        value={painScore1 === '' ? 0 : parseInt(painScore1)}
+                        onChange={(_, value) =>
+                          setPainScore1(String(value))
+                        }
+                      />
+                    </TableCell>
+                  </TableRow>
+                );
+              }
+            )} */}
             <TableRow>
               <TableCell>
                 <Typography
@@ -160,8 +245,12 @@ const FFIContents = (props: Props) => {
                       return { value: i };
                     })}
                   sx={{ width: '428px' }}
-                  value={painScore1 === '' ? 0 : parseInt(painScore1)}
-                  onChange={(_, value) => setPainScore1(String(value))}
+                  value={painScore1}
+                  defaultValue={painScore1}
+                  onChange={(_, value) => {
+                    setPainScore1(Number(value));
+                    setValue('ffi01', value);
+                  }}
                 />
               </TableCell>
             </TableRow>
@@ -194,8 +283,12 @@ const FFIContents = (props: Props) => {
                       return { value: i };
                     })}
                   sx={{ width: '428px' }}
-                  value={painScore2 === '' ? 0 : parseInt(painScore2)}
-                  onChange={(_, value) => setPainScore2(String(value))}
+                  value={painScore2}
+                  defaultValue={painScore2}
+                  onChange={(_, value) => {
+                    setPainScore2(Number(value));
+                    setValue('ffi02', value);
+                  }}
                 />
               </TableCell>
             </TableRow>
@@ -228,8 +321,12 @@ const FFIContents = (props: Props) => {
                       return { value: i };
                     })}
                   sx={{ width: '428px' }}
-                  value={painScore3 === '' ? 0 : parseInt(painScore3)}
-                  onChange={(_, value) => setPainScore3(String(value))}
+                  value={painScore3}
+                  defaultValue={painScore3}
+                  onChange={(_, value) => {
+                    setPainScore3(Number(value));
+                    setValue('ffi03', value);
+                  }}
                 />
               </TableCell>
             </TableRow>
@@ -262,8 +359,12 @@ const FFIContents = (props: Props) => {
                       return { value: i };
                     })}
                   sx={{ width: '428px' }}
-                  value={painScore4 === '' ? 0 : parseInt(painScore4)}
-                  onChange={(_, value) => setPainScore4(String(value))}
+                  value={painScore4}
+                  defaultValue={painScore4}
+                  onChange={(_, value) => {
+                    setPainScore4(Number(value));
+                    setValue('ffi04', value);
+                  }}
                 />
               </TableCell>
             </TableRow>
@@ -296,8 +397,12 @@ const FFIContents = (props: Props) => {
                       return { value: i };
                     })}
                   sx={{ width: '428px' }}
-                  value={painScore5 === '' ? 0 : parseInt(painScore5)}
-                  onChange={(_, value) => setPainScore5(String(value))}
+                  value={painScore5}
+                  defaultValue={painScore5}
+                  onChange={(_, value) => {
+                    setPainScore5(Number(value));
+                    setValue('ffi05', value);
+                  }}
                 />
               </TableCell>
             </TableRow>
@@ -330,8 +435,12 @@ const FFIContents = (props: Props) => {
                       return { value: i };
                     })}
                   sx={{ width: '428px' }}
-                  value={painScore6 === '' ? 0 : parseInt(painScore6)}
-                  onChange={(_, value) => setPainScore6(String(value))}
+                  value={painScore6}
+                  defaultValue={painScore6}
+                  onChange={(_, value) => {
+                    setPainScore6(Number(value));
+                    setValue('ffi06', value);
+                  }}
                 />
               </TableCell>
             </TableRow>
@@ -364,8 +473,12 @@ const FFIContents = (props: Props) => {
                       return { value: i };
                     })}
                   sx={{ width: '428px' }}
-                  value={painScore7 === '' ? 0 : parseInt(painScore7)}
-                  onChange={(_, value) => setPainScore7(String(value))}
+                  value={painScore7}
+                  defaultValue={painScore7}
+                  onChange={(_, value) => {
+                    setPainScore7(Number(value));
+                    setValue('ffi07', value);
+                  }}
                 />
               </TableCell>
             </TableRow>
@@ -398,8 +511,12 @@ const FFIContents = (props: Props) => {
                       return { value: i };
                     })}
                   sx={{ width: '428px' }}
-                  value={painScore8 === '' ? 0 : parseInt(painScore8)}
-                  onChange={(_, value) => setPainScore8(String(value))}
+                  value={painScore8}
+                  defaultValue={painScore8}
+                  onChange={(_, value) => {
+                    setPainScore8(Number(value));
+                    setValue('ffi08', value);
+                  }}
                 />
               </TableCell>
             </TableRow>
@@ -432,8 +549,12 @@ const FFIContents = (props: Props) => {
                       return { value: i };
                     })}
                   sx={{ width: '428px' }}
-                  value={painScore9 === '' ? 0 : parseInt(painScore9)}
-                  onChange={(_, value) => setPainScore9(String(value))}
+                  value={painScore9}
+                  defaultValue={painScore9}
+                  onChange={(_, value) => {
+                    setPainScore9(Number(value));
+                    setValue('ffi09', value);
+                  }}
                 />
               </TableCell>
             </TableRow>
@@ -502,8 +623,12 @@ const FFIContents = (props: Props) => {
                       return { value: i };
                     })}
                   sx={{ width: '428px' }}
-                  value={functionScore1 === '' ? 0 : parseInt(functionScore1)}
-                  onChange={(_, value) => setFunctionScore1(String(value))}
+                  value={functionScore1}
+                  defaultValue={functionScore1}
+                  onChange={(_, value) => {
+                    setFunctionScore1(Number(value));
+                    setValue('ffi10', value);
+                  }}
                 />
               </TableCell>
             </TableRow>
@@ -536,8 +661,12 @@ const FFIContents = (props: Props) => {
                       return { value: i };
                     })}
                   sx={{ width: '428px' }}
-                  value={functionScore2 === '' ? 0 : parseInt(functionScore2)}
-                  onChange={(_, value) => setFunctionScore2(String(value))}
+                  value={functionScore2}
+                  defaultValue={functionScore2}
+                  onChange={(_, value) => {
+                    setFunctionScore2(Number(value));
+                    setValue('ffi11', value);
+                  }}
                 />
               </TableCell>
             </TableRow>
@@ -570,8 +699,12 @@ const FFIContents = (props: Props) => {
                       return { value: i };
                     })}
                   sx={{ width: '428px' }}
-                  value={functionScore3 === '' ? 0 : parseInt(functionScore3)}
-                  onChange={(_, value) => setFunctionScore3(String(value))}
+                  value={functionScore3}
+                  defaultValue={functionScore3}
+                  onChange={(_, value) => {
+                    setFunctionScore3(Number(value));
+                    setValue('ffi12', value);
+                  }}
                 />
               </TableCell>
             </TableRow>
@@ -604,8 +737,12 @@ const FFIContents = (props: Props) => {
                       return { value: i };
                     })}
                   sx={{ width: '428px' }}
-                  value={functionScore4 === '' ? 0 : parseInt(functionScore4)}
-                  onChange={(_, value) => setFunctionScore4(String(value))}
+                  value={functionScore4}
+                  defaultValue={functionScore4}
+                  onChange={(_, value) => {
+                    setFunctionScore4(Number(value));
+                    setValue('ffi13', value);
+                  }}
                 />
               </TableCell>
             </TableRow>
@@ -638,8 +775,12 @@ const FFIContents = (props: Props) => {
                       return { value: i };
                     })}
                   sx={{ width: '428px' }}
-                  value={functionScore5 === '' ? 0 : parseInt(functionScore5)}
-                  onChange={(_, value) => setFunctionScore5(String(value))}
+                  value={functionScore5}
+                  defaultValue={functionScore5}
+                  onChange={(_, value) => {
+                    setFunctionScore5(Number(value));
+                    setValue('ffi14', value);
+                  }}
                 />
               </TableCell>
             </TableRow>
@@ -672,8 +813,12 @@ const FFIContents = (props: Props) => {
                       return { value: i };
                     })}
                   sx={{ width: '428px' }}
-                  value={functionScore6 === '' ? 0 : parseInt(functionScore6)}
-                  onChange={(_, value) => setFunctionScore6(String(value))}
+                  value={functionScore6}
+                  defaultValue={functionScore6}
+                  onChange={(_, value) => {
+                    setFunctionScore6(Number(value));
+                    setValue('ffi15', value);
+                  }}
                 />
               </TableCell>
             </TableRow>
@@ -706,8 +851,12 @@ const FFIContents = (props: Props) => {
                       return { value: i };
                     })}
                   sx={{ width: '428px' }}
-                  value={functionScore7 === '' ? 0 : parseInt(functionScore7)}
-                  onChange={(_, value) => setFunctionScore7(String(value))}
+                  value={functionScore7}
+                  defaultValue={functionScore7}
+                  onChange={(_, value) => {
+                    setFunctionScore7(Number(value));
+                    setValue('ffi16', value);
+                  }}
                 />
               </TableCell>
             </TableRow>
@@ -740,8 +889,12 @@ const FFIContents = (props: Props) => {
                       return { value: i };
                     })}
                   sx={{ width: '428px' }}
-                  value={functionScore8 === '' ? 0 : parseInt(functionScore8)}
-                  onChange={(_, value) => setFunctionScore8(String(value))}
+                  value={functionScore8}
+                  defaultValue={functionScore8}
+                  onChange={(_, value) => {
+                    setFunctionScore8(Number(value));
+                    setValue('ffi17', value);
+                  }}
                 />
               </TableCell>
             </TableRow>
@@ -774,8 +927,12 @@ const FFIContents = (props: Props) => {
                       return { value: i };
                     })}
                   sx={{ width: '428px' }}
-                  value={functionScore9 === '' ? 0 : parseInt(functionScore9)}
-                  onChange={(_, value) => setFunctionScore9(String(value))}
+                  value={functionScore9}
+                  defaultValue={functionScore9}
+                  onChange={(_, value) => {
+                    setFunctionScore9(Number(value));
+                    setValue('ffi18', value);
+                  }}
                 />
               </TableCell>
             </TableRow>
@@ -844,8 +1001,12 @@ const FFIContents = (props: Props) => {
                       return { value: i };
                     })}
                   sx={{ width: '428px' }}
-                  value={limiteScore1 === '' ? 0 : parseInt(limiteScore1)}
-                  onChange={(_, value) => setLimiteScore1(String(value))}
+                  value={limiteScore1}
+                  defaultValue={limiteScore1}
+                  onChange={(_, value) => {
+                    setLimiteScore1(Number(value));
+                    setValue('ffi19', value);
+                  }}
                 />
               </TableCell>
             </TableRow>
@@ -878,8 +1039,12 @@ const FFIContents = (props: Props) => {
                       return { value: i };
                     })}
                   sx={{ width: '428px' }}
-                  value={limiteScore2 === '' ? 0 : parseInt(limiteScore2)}
-                  onChange={(_, value) => setLimiteScore2(String(value))}
+                  value={limiteScore2}
+                  defaultValue={limiteScore2}
+                  onChange={(_, value) => {
+                    setLimiteScore2(Number(value));
+                    setValue('ffi20', value);
+                  }}
                 />
               </TableCell>
             </TableRow>
@@ -913,8 +1078,12 @@ const FFIContents = (props: Props) => {
                       return { value: i };
                     })}
                   sx={{ width: '428px' }}
-                  value={limiteScore3 === '' ? 0 : parseInt(limiteScore3)}
-                  onChange={(_, value) => setLimiteScore3(String(value))}
+                  value={limiteScore2}
+                  defaultValue={limiteScore2}
+                  onChange={(_, value) => {
+                    setLimiteScore2(Number(value));
+                    setValue('ffi21', value);
+                  }}
                 />
               </TableCell>
             </TableRow>
@@ -948,8 +1117,12 @@ const FFIContents = (props: Props) => {
                       return { value: i };
                     })}
                   sx={{ width: '428px' }}
-                  value={limiteScore4 === '' ? 0 : parseInt(limiteScore4)}
-                  onChange={(_, value) => setLimiteScore4(String(value))}
+                  value={limiteScore3}
+                  defaultValue={limiteScore3}
+                  onChange={(_, value) => {
+                    setLimiteScore3(Number(value));
+                    setValue('ffi22', value);
+                  }}
                 />
               </TableCell>
             </TableRow>
@@ -982,8 +1155,12 @@ const FFIContents = (props: Props) => {
                       return { value: i };
                     })}
                   sx={{ width: '428px' }}
-                  value={limiteScore5 === '' ? 0 : parseInt(limiteScore5)}
-                  onChange={(_, value) => setLimiteScore5(String(value))}
+                  value={limiteScore4}
+                  defaultValue={limiteScore4}
+                  onChange={(_, value) => {
+                    setLimiteScore4(Number(value));
+                    setValue('ffi23', value);
+                  }}
                 />
               </TableCell>
             </TableRow>
@@ -1009,18 +1186,21 @@ const FFIContents = (props: Props) => {
           >
             <Typography variant="inherit">
               <Box component={'strong'} mr={0.5}>
-                FFI 점수 범위 : 0 ~ 100%
+                FFI 점수 범위 :
               </Box>
+              0 ~ 100%
             </Typography>
             <Typography variant="inherit">
               <Box component={'strong'} mr={0.5}>
-                0% : 건강한 상태
+                0% :
               </Box>
+              건강한 상태
             </Typography>
             <Typography variant="inherit">
               <Box component={'strong'} mr={0.5}>
-                100% : 심각한 통증 있으며, 운동 일상생활에 큰 제한이 있는 상태
+                100% :
               </Box>
+              심각한 통증 있으며, 운동 일상생활에 큰 제한이 있는 상태
             </Typography>
           </Typography>
           <Typography

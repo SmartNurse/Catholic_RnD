@@ -45,6 +45,7 @@ import {
   IUpdateDNR,
   IUpdateDNA,
   IUpdateCheckListRoom,
+  IUpdateFFI,
   IUpdateLEFS,
   IUpdateSTarTBack,
 } from './type';
@@ -520,14 +521,25 @@ export const updateCheckListRoom = (request: IUpdateCheckListRoom) => {
   return apiGateway.post(url, camelcaseKeys(request));
 };
 
+// 통증 ( FFI )
+export const getFFI = (request: IGetSurvey) => {
+  const url = `survey/ffi?${formatToRequestParameter(request)}`;
+  return apiGateway.get(url);
+};
+
+export const updateFFI = (request: IUpdateFFI) => {
+  const url = `survey/ffi`;
+  return apiGateway.post(url, camelcaseKeys(request));
+};
+
 // 통증 ( LEFS )
 export const getLEFS = (request: IGetSurvey) => {
-  const url = `/survey/bedsore?${formatToRequestParameter(request)}`;
+  const url = `/survey/koos?${formatToRequestParameter(request)}`;
   return apiGateway.get(url);
 };
 
 export const updateLEFS = (request: IUpdateLEFS) => {
-  const url = `/survey/bedsore`;
+  const url = `/survey/koos`;
   return apiGateway.post(url, camelcaseKeys(request));
 };
 

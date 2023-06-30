@@ -42,6 +42,7 @@ import {
   getDNA,
   getMentalNursing,
   getCheckListRoom,
+  getFFI,
   getLEFS,
   getSTarT,
 } from 'apis/survey';
@@ -95,6 +96,7 @@ import {
   initialCoreNursingSkillVideo,
   initialCoreNursingSkillVideoExemple,
   initialCheckListRoom,
+  initialFFI,
   initialLEFS,
   initialSTarTBack,
 } from '../initialStates';
@@ -728,9 +730,10 @@ const useDefaultValues = ({ setDefaultValues, user_id }: Props) => {
           .catch(e => onFail('알 수 없는 오류가 발생했습니다.', e));
         break;
       case MENU.FFI:
-        getNRS({ user_id, patient_id })
+        getFFI({ user_id, patient_id })
           .then(({ data }) => {
-            convertDataToStates(data, initialNRS);
+            const { update_at, ffi_survey } = data;
+            convertDataToStates({ update_at, ...ffi_survey }, initialFFI);
           })
           .catch(e => onFail('알 수 없는 오류가 발생했습니다', e));
         break;

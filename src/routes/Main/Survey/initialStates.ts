@@ -1174,6 +1174,35 @@ export const initialCheckListRoom = {
   ocs01: '',
 };
 
+export const initialFFI = {
+  update_at: '',
+  ffi01: 0,
+  ffi02: 0,
+  ffi03: 0,
+  ffi04: 0,
+  ffi05: 0,
+  ffi06: 0,
+  ffi07: 0,
+  ffi08: 0,
+
+  ffi09: 0,
+  ffi10: 0,
+  ffi11: 0,
+  ffi12: 0,
+  ffi13: 0,
+  ffi14: 0,
+  ffi15: 0,
+  ffi16: 0,
+  ffi17: 0,
+  ffi18: 0,
+
+  ffi19: 0,
+  ffi20: 0,
+  ffi21: 0,
+  ffi22: 0,
+  ffi23: 0,
+};
+
 export const initialLEFS = {
   date: '',
   update_at: '',

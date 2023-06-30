@@ -9,11 +9,11 @@ import MuiDialog from 'components/MuiDialog';
 import CommonPatientInfo from '../../components/CommonPatientInfo';
 import FFIContents from './FFIContents';
 
-import { SurveyDialogProps, TNRSDefaultValues } from '../../type';
+import { SurveyDialogProps, TFFIDefaultValues } from '../../type';
 import { INRS } from 'apis/survey/type';
-import { updateNRS } from 'apis/survey';
+import { updateFFI } from 'apis/survey';
 
-const FFI = (props: SurveyDialogProps<TNRSDefaultValues>) => {
+const FFI = (props: SurveyDialogProps<TFFIDefaultValues>) => {
   const {
     title,
     isOpen,
@@ -27,23 +27,46 @@ const FFI = (props: SurveyDialogProps<TNRSDefaultValues>) => {
 
   const { onUpdateIsSave } = useSurvey();
   const { onSuccess, onFail, onResultCode, onRequired } = useNotification();
-  const { handleSubmit, watch, getValues, setValue } = useForm({
+  const { handleSubmit, watch, getValues, setValue, register } = useForm({
     defaultValues,
   });
 
-  const onSubmit = (data: TNRSDefaultValues) => {
-    const { nrs_survey } = data;
+  const onSubmit = (data: TFFIDefaultValues) => {
+    const {
+      ffi01,
+      ffi02,
+      ffi03,
+      ffi04,
+      ffi05,
+      ffi06,
+      ffi07,
+      ffi08,
+
+      ffi09,
+      ffi10,
+      ffi11,
+      ffi12,
+      ffi13,
+      ffi14,
+      ffi15,
+      ffi16,
+      ffi17,
+      ffi18,
+
+      ffi19,
+      ffi20,
+      ffi21,
+      ffi22,
+      ffi23,
+    } = data;
 
     const request = {
       user_id,
       patient_id: patientInfo.patient_id,
-      nrs_survey: nrs_survey?.map(({ time, pain_score }: INRS) => ({
-        time,
-        pain_score,
-      })),
+      ffi_survey: { ...data },
     };
-    console.log(request);
-    updateNRS(request)
+
+    updateFFI(request)
       .then(({ data: { rc } }) => {
         if (rc !== 1) return onResultCode(rc);
 
@@ -60,6 +83,7 @@ const FFI = (props: SurveyDialogProps<TNRSDefaultValues>) => {
     setValue,
     onSuccess,
     onRequired,
+    register,
   };
 
   return (
@@ -79,8 +103,6 @@ const FFI = (props: SurveyDialogProps<TNRSDefaultValues>) => {
         }}
       >
         발, 발목 관절 기능 척도 평가(Foot function index , FFI)
-        <br />
-        테스트중입니다.
       </Typography>
       <CommonPatientInfo patientInfo={patientInfo} nurseName={nurseName} />
       <FFIContents {...formProps} />

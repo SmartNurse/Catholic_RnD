@@ -988,6 +988,36 @@ export interface IUpdateCheckListRoom extends IGetSurvey {
   };
 }
 
+export interface IUpdateFFI extends IGetSurvey {
+  ffi_survey: {
+    ffi01: number;
+    ffi02: number;
+    ffi03: number;
+    ffi04: number;
+    ffi05: number;
+    ffi06: number;
+    ffi07: number;
+    ffi08: number;
+
+    ffi09: number;
+    ffi10: number;
+    ffi11: number;
+    ffi12: number;
+    ffi13: number;
+    ffi14: number;
+    ffi15: number;
+    ffi16: number;
+    ffi17: number;
+    ffi18: number;
+
+    ffi19: number;
+    ffi20: number;
+    ffi21: number;
+    ffi22: number;
+    ffi23: number;
+  };
+}
+
 export interface IUpdateLEFS extends IGetSurvey {
   date: string;
   contents: string;
