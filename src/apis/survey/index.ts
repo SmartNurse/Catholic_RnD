@@ -546,12 +546,12 @@ export const updateKOOS = (request: IUpdateKOOS) => {
 
 // 통증 ( LEFS )
 export const getLEFS = (request: IGetSurvey) => {
-  const url = `/survey/koos?${formatToRequestParameter(request)}`;
+  const url = `/survey/lefs?${formatToRequestParameter(request)}`;
   return apiGateway.get(url);
 };
 
 export const updateLEFS = (request: IUpdateLEFS) => {
-  const url = `/survey/koos`;
+  const url = `/survey/lefs`;
   return apiGateway.post(url, camelcaseKeys(request));
 };
 

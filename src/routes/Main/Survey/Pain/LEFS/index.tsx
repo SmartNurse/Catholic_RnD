@@ -31,16 +31,33 @@ const LEFS = (props: SurveyDialogProps<TLEFSDefaultValues>) => {
 
   const onSubmit = (data: TLEFSDefaultValues) => {
     const { patient_id } = patientInfo;
-    const { contents, date } = data;
-
-    const contentsValues = Object.values(contents);
-    if (contentsValues.includes('')) return onRequired('REQUIRED.BED.SCORE');
+    const {
+      lefs01,
+      lefs02,
+      lefs03,
+      lefs04,
+      lefs05,
+      lefs06,
+      lefs07,
+      lefs08,
+      lefs09,
+      lefs10,
+      lefs11,
+      lefs12,
+      lefs13,
+      lefs14,
+      lefs15,
+      lefs16,
+      lefs17,
+      lefs18,
+      lefs19,
+      lefs20,
+    } = data;
 
     const request = {
       user_id,
       patient_id,
-      date,
-      contents: JSON.stringify(contents),
+      contents: { ...data },
     };
 
     updateLEFS(request)

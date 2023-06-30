@@ -1070,8 +1070,28 @@ export interface IUpdateKOOS extends IGetSurvey {
 }
 
 export interface IUpdateLEFS extends IGetSurvey {
-  date: string;
-  contents: string;
+  contents: {
+    lefs01: string;
+    lefs02: string;
+    lefs03: string;
+    lefs04: string;
+    lefs05: string;
+    lefs06: string;
+    lefs07: string;
+    lefs08: string;
+    lefs09: string;
+    lefs10: string;
+    lefs11: string;
+    lefs12: string;
+    lefs13: string;
+    lefs14: string;
+    lefs15: string;
+    lefs16: string;
+    lefs17: string;
+    lefs18: string;
+    lefs19: string;
+    lefs20: string;
+  };
 }
 
 export interface IUpdateSTarTBack extends IGetSurvey {
