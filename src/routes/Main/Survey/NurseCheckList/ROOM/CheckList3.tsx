@@ -30,7 +30,7 @@ const CheckList3 = (props: Props) => {
   const 교육 = [
     {
       id: 1,
-      ko: '교육',
+      ko: '교육현황',
       desc: [
         '간호정보조사지에서 기록된 환자요구도에 있는 내용이 교육현황에서 모두 조회되는가?',
       ],
@@ -79,7 +79,7 @@ const CheckList3 = (props: Props) => {
 
   return (
     <Fragment>
-      <SectionTitle title="교육현황" />
+      <SectionTitle title="교육" />
       <Grid item xs={12}>
         <div style={{ display: 'table-row' }}>
           {교육.map(

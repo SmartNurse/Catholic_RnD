@@ -30,7 +30,7 @@ const CheckList4 = (props: Props) => {
   const 수술 = [
     {
       id: 1,
-      ko: '수술',
+      ko: '수술환자',
       desc: [
         `"수술 전 처지 및 간호상태 확인"을 작성했으며 서식의 '수술일'은 실제 수술일인가?\n(수술 전날 작성해도 수술일로 바꿔야함- 처음 작성시 바꾸고 수술보내면서 재확인함)`,
       ],
@@ -79,7 +79,7 @@ const CheckList4 = (props: Props) => {
 
   return (
     <Fragment>
-      <SectionTitle title="수술환자" />
+      <SectionTitle title="수술" />
       <Grid item xs={12}>
         <div style={{ display: 'table-row' }}>
           {수술.map(
