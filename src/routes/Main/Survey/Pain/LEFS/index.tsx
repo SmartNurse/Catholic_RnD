@@ -116,8 +116,6 @@ const LEFS = (props: SurveyDialogProps<TLEFSDefaultValues>) => {
           }}
         >
           Lower Extremity Functional Scale (LEFS)
-          <br />
-          테스트중입니다.
         </Typography>
         <CommonPatientInfo patientInfo={patientInfo} nurseName={nurseName} />
         <LEFSContents {...formProps} />
