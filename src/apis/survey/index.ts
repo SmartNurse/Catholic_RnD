@@ -569,11 +569,11 @@ export const updateNDI = (request: IUpdateNDI) => {
 
 // 통증 (STarT Back)
 export const getSTarT = (request: IGetSurvey) => {
-  const url = `/survey/bedsore?${formatToRequestParameter(request)}`;
+  const url = `/survey/start_back?${formatToRequestParameter(request)}`;
   return apiGateway.get(url);
 };
 
 export const updateSTarT = (request: IUpdateSTarTBack) => {
-  const url = `/survey/bedsore`;
+  const url = `/survey/start_back`;
   return apiGateway.post(url, camelcaseKeys(request));
 };

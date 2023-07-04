@@ -1110,5 +1110,14 @@ export interface IUpdateNDI extends IGetSurvey {
 }
 
 export interface IUpdateSTarTBack extends IGetSurvey {
-  contents: string;
+  contents: {
+    sb01: string;
+    sb02: string;
+    sb03: string;
+    sb04: string;
+    sb05: string;
+    sb06: string;
+    sb07: string;
+    sb08: string;
+  };
 }

@@ -38,17 +38,25 @@ const STarTBackScreening = (
 
   const onSubmit = (data: TSTarTBackScreeningDefaultValues) => {
     const { patient_id } = patientInfo;
-    const { contents } = data;
-
-    const contentsValues = Object.values(contents);
-    if (contentsValues.includes('')) return onRequired('REQUIRED.BED.SCORE');
+    const { sb01, sb02, sb03, sb04, sb05, sb06, sb07, sb08, sb09 } = data;
 
     const request = {
       user_id,
       patient_id,
-      contents: JSON.stringify(contents),
+      contents: { ...data },
     };
 
+    if (data.sb01 === undefined) return onRequired('REQUIRED.FALL');
+    if (data.sb02 === undefined) return onRequired('REQUIRED.FALL');
+    if (data.sb03 === undefined) return onRequired('REQUIRED.FALL');
+    if (data.sb04 === undefined) return onRequired('REQUIRED.FALL');
+    if (data.sb05 === undefined) return onRequired('REQUIRED.FALL');
+    if (data.sb06 === undefined) return onRequired('REQUIRED.FALL');
+    if (data.sb07 === undefined) return onRequired('REQUIRED.FALL');
+    if (data.sb08 === undefined) return onRequired('REQUIRED.FALL');
+    if (data.sb09 === undefined) return onRequired('REQUIRED.FALL');
+
+    console.log('데이터', data);
     updateSTarT(request)
       .then(({ data: { rc } }) => {
         if (rc !== 1) return onResultCode(rc);
@@ -91,7 +99,7 @@ const STarTBackScreening = (
             textAlign: 'center',
           }}
         >
-          STarT(Subgroups for Targeted Treatment) Back Screening{' '}
+          STarT(Subgroups for Targeted Treatment) Back Screening
           <Typography
             sx={{
               marginTop: '3px',
@@ -103,7 +111,6 @@ const STarTBackScreening = (
             Thinking about the last 2 weeks please answer the following
             questions.
           </Typography>
-          테스트중입니다.
         </Typography>
         <CommonPatientInfo patientInfo={patientInfo} nurseName={nurseName} />
         <STarTContents {...formProps} />

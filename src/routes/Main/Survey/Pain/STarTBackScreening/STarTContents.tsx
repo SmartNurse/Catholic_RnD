@@ -63,11 +63,11 @@ const STarTContents = (props: Props) => {
 
   const rows = [
     {
-      id: 'sTarTBack01',
+      id: 'sb01',
       title:
         '1. My back pain has spread down my leg(s) at some time in the last 2 weeks.',
       ...radioGroup({
-        key: 'contents.sTarTBack01',
+        key: 'sb01',
         options: [0, 1],
         i18nKey: 'STARTSCREENING.SCORE',
         width: '150px',
@@ -75,11 +75,11 @@ const STarTContents = (props: Props) => {
       }),
     },
     {
-      id: 'sTarTBack02',
+      id: 'sb02',
       title:
         '2. I have had pain in the shoulder or neck at some time in the last 2 weeks.',
       ...radioGroup({
-        key: 'contents.sTarTBack02',
+        key: 'sb02',
         options: [0, 1],
         i18nKey: 'STARTSCREENING.SCORE',
         sx: { whiteSpace: 'nowrap' },
@@ -87,11 +87,11 @@ const STarTContents = (props: Props) => {
       }),
     },
     {
-      id: 'sTarTBack03',
+      id: 'sb03',
       title:
         '3. I have only walked short distances because of my back pain in the last 2 weeks.',
       ...radioGroup({
-        key: 'contents.sTarTBack03',
+        key: 'sb03',
         options: [0, 1],
         i18nKey: 'STARTSCREENING.SCORE',
         sx: { whiteSpace: 'nowrap' },
@@ -99,11 +99,11 @@ const STarTContents = (props: Props) => {
       }),
     },
     {
-      id: 'sTarTBack04',
+      id: 'sb04',
       title:
         '4. In the last 2 weeks, I have dressed more slowly than usual because of back pain.',
       ...radioGroup({
-        key: 'contents.sTarTBack04',
+        key: 'sb04',
         options: [0, 1],
         i18nKey: 'STARTSCREENING.SCORE',
         sx: { whiteSpace: 'nowrap' },
@@ -111,11 +111,11 @@ const STarTContents = (props: Props) => {
       }),
     },
     {
-      id: 'sTarTBack05',
+      id: 'sb05',
       title:
         '5. It is not really safe for a person with a condition like mine to be physically active.',
       ...radioGroup({
-        key: 'contents.sTarTBack05',
+        key: 'sb05',
         options: [0, 1],
         i18nKey: 'STARTSCREENING.SCORE',
         sx: { whiteSpace: 'nowrap' },
@@ -123,11 +123,11 @@ const STarTContents = (props: Props) => {
       }),
     },
     {
-      id: 'sTarTBack06',
+      id: 'sb06',
       title:
         '6. Worrying thoughts have been going through my mind a lot of the time.',
       ...radioGroup({
-        key: 'contents.sTarTBack06',
+        key: 'sb06',
         options: [0, 1],
         i18nKey: 'STARTSCREENING.SCORE',
         sx: { whiteSpace: 'nowrap' },
@@ -135,11 +135,11 @@ const STarTContents = (props: Props) => {
       }),
     },
     {
-      id: 'sTarTBack07',
+      id: 'sb07',
       title:
         "7. I feel that my back pain is terrible and it's never going to get any better.",
       ...radioGroup({
-        key: 'contents.sTarTBack07',
+        key: 'sb07',
         options: [0, 1],
         i18nKey: 'STARTSCREENING.SCORE',
         sx: { whiteSpace: 'nowrap' },
@@ -147,28 +147,17 @@ const STarTContents = (props: Props) => {
       }),
     },
     {
-      id: 'sTarTBack08',
+      id: 'sb08',
       title:
         '8. In general, I have not enjoyed all the things I used to enjoy.',
       ...radioGroup({
-        key: 'contents.sTarTBack08',
+        key: 'sb08',
         options: [0, 1],
         i18nKey: 'STARTSCREENING.SCORE',
         sx: { whiteSpace: 'nowrap' },
         width: '150px',
       }),
     },
-    // {
-    //   id: 'sTarTBack09',
-    //   title:
-    //     '9. In general, I have not enjoyed all the things I used to enjoy.',
-    //   ...radioGroup({
-    //     key: 'contents.sTarTBack09',
-    //     options: [0, 1, 2, 3, 4],
-    //     i18nKey: 'STARTSCREENING.SCORE.FIVE',
-    //     width: '150px',
-    //   }),
-    // },
   ];
 
   const [nine, setNine] = useState('');
@@ -178,37 +167,56 @@ const STarTContents = (props: Props) => {
     checked: boolean
   ) => {
     if (Number(e.target.value) === 3) {
-      return setNine('1');
+      return setNine('1'), setValue('sb09', '3');
     } else if (Number(e.target.value) === 4) {
-      return setNine('1');
+      return setNine('1'), setValue('sb09', '4');
+    } else if (Number(e.target.value) === 2) {
+      return setNine('0'), setValue('sb09', '2');
+    } else if (Number(e.target.value) === 1) {
+      return setNine('0'), setValue('sb09', '1');
     } else {
-      return setNine('0');
+      return setNine('0'), setValue('sb09', '0');
     }
   };
+  console.log('겟벨류09', getValues('sb09'));
 
   const watchSumValues = () => {
     if (Number(nine) > 0) {
       const values = rows.map(({ id }) => {
-        return Number(props.watch(`contents.${id}`));
+        if (props.watch(`${id}`) === undefined) {
+          return 0;
+        } else {
+          return Number(props.watch(`${id}`));
+        }
       });
       return sumValues(values) + 1;
     } else {
       const values = rows.map(({ id }) => {
-        return Number(props.watch(`contents.${id}`));
+        if (props.watch(`${id}`) === undefined) {
+          return 0;
+        } else {
+          return Number(props.watch(`${id}`));
+        }
       });
       return sumValues(values);
     }
   };
 
   const subSumValues = () => {
-    const values1 = Number(props.watch('contents.sTarTBack05'));
-    const values2 = Number(props.watch('contents.sTarTBack06'));
-    const values3 = Number(props.watch('contents.sTarTBack07'));
-    const values4 = Number(props.watch('contents.sTarTBack08'));
+    const values1 =
+      props.watch('sb05') === undefined ? 0 : Number(props.watch('sb05'));
+    const values2 =
+      props.watch('sb06') === undefined ? 0 : Number(props.watch('sb06'));
+    const values3 =
+      props.watch('sb07') === undefined ? 0 : Number(props.watch('sb07'));
+    const values4 =
+      props.watch('sb08') === undefined ? 0 : Number(props.watch('sb08'));
     const values5 = Number(nine);
 
     return values1 + values2 + values3 + values4 + values5;
   };
+
+  console.log('기본값', getValues('sb09'));
 
   return (
     <Fragment>
@@ -236,10 +244,10 @@ const STarTContents = (props: Props) => {
                   enjoy.
                 </Typography>
                 <RadioGroup
-                  name={'contents.sTarTBack09'}
+                  name={'sb09'}
                   defaultValue={
-                    getValues('contents.sTarTBack09').length > 0
-                      ? Number(getValues('contents.sTarTBack09'))
+                    Number(getValues('sb09')) < 5
+                      ? Number(getValues('sb09'))
                       : 5
                   }
                 >
@@ -257,7 +265,7 @@ const STarTContents = (props: Props) => {
                         control={
                           <Radio
                             disabled={disabled}
-                            name={`contents.sTarTBack09`}
+                            name={`sb09`}
                             value={0}
                             onChange={handleChange}
                           />
@@ -269,7 +277,7 @@ const STarTContents = (props: Props) => {
                         control={
                           <Radio
                             disabled={disabled}
-                            name={'contents.sTarTBack09'}
+                            name={'sb09'}
                             value={1}
                             onChange={handleChange}
                           />
@@ -281,7 +289,7 @@ const STarTContents = (props: Props) => {
                         control={
                           <Radio
                             disabled={disabled}
-                            name={'contents.sTarTBack09'}
+                            name={'sb09'}
                             value={2}
                             onChange={handleChange}
                           />
@@ -293,7 +301,7 @@ const STarTContents = (props: Props) => {
                         control={
                           <Radio
                             disabled={disabled}
-                            name={'contents.sTarTBack09'}
+                            name={'sb09'}
                             value={3}
                             onChange={handleChange}
                           />
@@ -305,7 +313,7 @@ const STarTContents = (props: Props) => {
                         control={
                           <Radio
                             disabled={disabled}
-                            name={'contents.sTarTBack09'}
+                            name={'sb09'}
                             value={4}
                             onChange={handleChange}
                           />

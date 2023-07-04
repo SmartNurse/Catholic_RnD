@@ -768,10 +768,8 @@ const useDefaultValues = ({ setDefaultValues, user_id }: Props) => {
       case MENU.STarT_BacknScreening:
         getSTarT({ user_id, patient_id })
           .then(({ data }) => {
-            const { contents } = data;
-            const m_data = { ...data, contents: JSON.parse(contents) };
-
-            convertDataToStates(m_data, initialSTarTBack);
+            const { update_at, contents } = data;
+            convertDataToStates({ update_at, ...contents }, initialSTarTBack);
           })
           .catch(e => onFail('알 수 없는 오류가 발생했습니다.', e));
         break;

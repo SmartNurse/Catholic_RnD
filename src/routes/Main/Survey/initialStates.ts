@@ -1294,15 +1294,13 @@ export const initialNDI = {
 
 export const initialSTarTBack = {
   update_at: '',
-  contents: {
-    sTarTBack01: '',
-    sTarTBack02: '',
-    sTarTBack03: '',
-    sTarTBack04: '',
-    sTarTBack05: '',
-    sTarTBack06: '',
-    sTarTBack07: '',
-    sTarTBack08: '',
-    sTarTBack09: '',
-  },
+  sb01: '',
+  sb02: '',
+  sb03: '',
+  sb04: '',
+  sb05: '',
+  sb06: '',
+  sb07: '',
+  sb08: '',
+  sb09: '',
 };

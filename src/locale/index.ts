@@ -594,11 +594,11 @@ const locale = {
     'STARTSCREENING.SCORE.FIVE.4': 'Extremely (1 point)',
 
     // Nothing
-    'NOTHING.1': '',
-    'NOTHING.2': '',
-    'NOTHING.3': '',
-    'NOTHING.4': '',
-    'NOTHING.5': '',
+    'NOTHING.1': ' ',
+    'NOTHING.2': ' ',
+    'NOTHING.3': ' ',
+    'NOTHING.4': ' ',
+    'NOTHING.5': ' ',
   },
 };
 

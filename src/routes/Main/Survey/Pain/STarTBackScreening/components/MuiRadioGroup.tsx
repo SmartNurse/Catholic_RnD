@@ -10,7 +10,7 @@ import useI18n, { Ti18nId } from 'hooks/useI18n';
 interface Props extends RadioGroupProps {
   i18nKey?: string;
   i18nNullKey?: string;
-  value?: number;
+  value?: number | null;
   values: number[];
   defaultValue: number;
   disabled?: boolean;
