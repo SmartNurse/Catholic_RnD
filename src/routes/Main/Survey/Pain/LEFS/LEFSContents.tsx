@@ -7,11 +7,14 @@ import { IFormValues, IFormWatch } from 'routes/Main/type';
 import SectionTitle from '../../components/SectionTitle';
 import useTableForm from './components/useTableForm';
 
-interface Props extends IFormValues, IFormWatch {}
+interface Props extends IFormValues, IFormWatch {
+  disabled?: boolean;
+}
 
 const LEFSContents = (props: Props) => {
   const { palette } = useTheme();
   const { radioGroup, sumValues } = useTableForm(props);
+  const { getValues } = props;
 
   const columns = [
     { fieldId: 'title', label: '' },
@@ -238,16 +241,22 @@ const LEFSContents = (props: Props) => {
       ...radioGroup({
         key: 'lefs20',
         options: [0, 1, 2, 3, 4],
-        i18nKey: 'NOTHING',
         sx: {
           paddingLeft: '30px',
         },
       }),
     },
   ];
+  console.log('잉', getValues('lefs02'));
 
   const watchSumValues = () => {
-    const values = rows.map(({ id }) => Number(props.watch(`${id}`)));
+    const values = rows.map(({ id }) => {
+      if (props.watch(`${id}`) === undefined) {
+        return 0;
+      } else {
+        return Number(props.watch(`${id}`));
+      }
+    });
     return sumValues(values);
   };
 

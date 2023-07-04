@@ -60,6 +60,27 @@ const LEFS = (props: SurveyDialogProps<TLEFSDefaultValues>) => {
       contents: { ...data },
     };
 
+    if (data.lefs01 === undefined) return onRequired('REQUIRED.FALL');
+    if (data.lefs02 === undefined) return onRequired('REQUIRED.FALL');
+    if (data.lefs03 === undefined) return onRequired('REQUIRED.FALL');
+    if (data.lefs04 === undefined) return onRequired('REQUIRED.FALL');
+    if (data.lefs05 === undefined) return onRequired('REQUIRED.FALL');
+    if (data.lefs06 === undefined) return onRequired('REQUIRED.FALL');
+    if (data.lefs07 === undefined) return onRequired('REQUIRED.FALL');
+    if (data.lefs08 === undefined) return onRequired('REQUIRED.FALL');
+    if (data.lefs09 === undefined) return onRequired('REQUIRED.FALL');
+    if (data.lefs10 === undefined) return onRequired('REQUIRED.FALL');
+    if (data.lefs11 === undefined) return onRequired('REQUIRED.FALL');
+    if (data.lefs12 === undefined) return onRequired('REQUIRED.FALL');
+    if (data.lefs13 === undefined) return onRequired('REQUIRED.FALL');
+    if (data.lefs14 === undefined) return onRequired('REQUIRED.FALL');
+    if (data.lefs15 === undefined) return onRequired('REQUIRED.FALL');
+    if (data.lefs16 === undefined) return onRequired('REQUIRED.FALL');
+    if (data.lefs17 === undefined) return onRequired('REQUIRED.FALL');
+    if (data.lefs18 === undefined) return onRequired('REQUIRED.FALL');
+    if (data.lefs19 === undefined) return onRequired('REQUIRED.FALL');
+    if (data.lefs20 === undefined) return onRequired('REQUIRED.FALL');
+
     updateLEFS(request)
       .then(({ data: { rc } }) => {
         if (rc !== 1) return onResultCode(rc);
