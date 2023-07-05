@@ -16,10 +16,10 @@ const FallTwoContents = (props: Props) => {
   const { radioGroup, sumValues } = useTableForm(props);
 
   const columns = [
-    { fieldId: 'title', label: '' },
-    { fieldId: '0', label: '' },
-    { fieldId: '1', label: '' },
-    { fieldId: '2', label: '' },
+    { fieldId: 'title', label: '', sx: { width: 400 } },
+    { fieldId: '0', label: '', sx: { width: 320 } },
+    { fieldId: '1', label: '', sx: { width: 320 } },
+    { fieldId: '2', label: '', sx: { width: 320 } },
   ];
 
   const rows = [
