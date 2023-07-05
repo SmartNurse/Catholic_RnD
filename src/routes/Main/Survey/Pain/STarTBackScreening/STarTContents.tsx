@@ -160,7 +160,8 @@ const STarTContents = (props: Props) => {
     },
   ];
 
-  const [nine, setNine] = useState('');
+  const [nine, setNine] = useState(getValues('sb09'));
+  console.log('????', nine);
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement>,
@@ -198,6 +199,7 @@ const STarTContents = (props: Props) => {
           return Number(props.watch(`${id}`));
         }
       });
+      console.log('합?', values);
       return sumValues(values);
     }
   };
@@ -211,9 +213,14 @@ const STarTContents = (props: Props) => {
       props.watch('sb07') === undefined ? 0 : Number(props.watch('sb07'));
     const values4 =
       props.watch('sb08') === undefined ? 0 : Number(props.watch('sb08'));
-    const values5 = Number(nine);
 
-    return values1 + values2 + values3 + values4 + values5;
+    const values5 = Number(nine);
+    console.log('밸류5', Number(nine));
+    if (values5 === 0) {
+      return values1 + values2 + values3 + values4;
+    } else {
+      return values1 + values2 + values3 + values4 + 1;
+    }
   };
 
   console.log('기본값', getValues('sb09'));
