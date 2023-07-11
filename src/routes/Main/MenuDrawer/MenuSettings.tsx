@@ -57,26 +57,22 @@ const MenuSettings = (props: Props) => {
     {
       label: '응급 모니터링시스템',
       toggle: toggle.medical_information,
-      buttonClick: {
-        target: '_blank',
-        href: 'http://dw.nemc.or.kr/nemcMonitoring/mainmgr/Main.do',
-      },
     },
     {
       label: '보건의료빅데이터개방시스템',
       toggle: toggle.medical_information,
-      buttonClick: {
-        target: '_blank',
-        href: 'https://opendata.hira.or.kr/home.do',
-      },
     },
     {
       label: '한국보건의료정보원',
       toggle: toggle.medical_information,
-      buttonClick: {
-        target: '_blank',
-        href: 'https://www.k-his.or.kr/',
-      },
+    },
+    {
+      label: 'Chat GPT',
+      toggle: toggle.medical_information,
+    },
+    {
+      label: 'Google BARD',
+      toggle: toggle.medical_information,
     },
     {
       isPro: true,
@@ -150,6 +146,12 @@ const MenuSettings = (props: Props) => {
       return;
     } else if (label === '한국보건의료정보원') {
       window.open('https://www.k-his.or.kr/');
+      return;
+    } else if (label === 'Chat GPT') {
+      window.open('https://chat.openai.com/chat');
+      return;
+    } else if (label === 'Google BARD') {
+      window.open('https://bard.google.com/');
       return;
     } else if (label === '간호사 근무 스케줄표') {
       window.open('https://dutymaker.com/');
