@@ -54,7 +54,7 @@ const UIUX = () => {
             disabled={true}
             onClick={() => {
               setTimeout(() => {
-                window.location.href = `http://amisasan.s3-website.kr.object.ncloudstorage.com/#/`;
+                window.location.href = `https://d2k5pz0iwlhdwz.cloudfront.net/`;
               }, 1000);
 
               setLocalStorage(
