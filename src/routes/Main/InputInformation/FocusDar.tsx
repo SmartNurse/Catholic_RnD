@@ -13,7 +13,6 @@ function FocusDar({ register, disabled }: Props) {
     <Stack spacing={2}>
       <Form.Item label="포커스 Focus">
         <TextField
-          required
           fullWidth
           multiline
           minRows={2}
@@ -26,7 +25,6 @@ function FocusDar({ register, disabled }: Props) {
 
       <Form.Item label="데이터 Data">
         <TextField
-          required
           fullWidth
           multiline
           minRows={4}
@@ -39,7 +37,6 @@ function FocusDar({ register, disabled }: Props) {
 
       <Form.Item label="활동 Action">
         <TextField
-          required
           fullWidth
           multiline
           minRows={3}
@@ -52,7 +49,6 @@ function FocusDar({ register, disabled }: Props) {
 
       <Form.Item label="반응 Response">
         <TextField
-          required
           fullWidth
           multiline
           minRows={5}

@@ -46,6 +46,12 @@ const Childbirth = (props: SurveyDialogProps<TChildbirthDefaultValues>) => {
       nursing_records,
     } = data;
 
+    if (nursing_records === undefined) {
+      return onRequired('REQUIRED.NEEDS.BODY.STATUS');
+    }
+
+    console.log('널싱리코드', Object.values(nursing_records));
+
     const request = {
       user_id,
       patient_id: patientInfo.patient_id,

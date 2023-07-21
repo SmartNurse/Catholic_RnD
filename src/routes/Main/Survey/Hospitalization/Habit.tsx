@@ -28,6 +28,7 @@ const Habit = (props: Props) => {
         <RowContent title="대변">
           <Stack direction="row" spacing={1}>
             <Form.MuiTextField
+              required={false}
               type="number"
               textAlign="right"
               disabled={disabled}
@@ -55,6 +56,7 @@ const Habit = (props: Props) => {
         <RowContent title="소변">
           <Stack direction="row" spacing={1}>
             <Form.MuiTextField
+              required={false}
               type="number"
               textAlign="right"
               disabled={disabled}

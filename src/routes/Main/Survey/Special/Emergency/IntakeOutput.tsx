@@ -47,6 +47,7 @@ const IntakeOutput = (props: Props) => {
               <>
                 <Typography fontSize="12px">{title}</Typography>
                 <MuiTextField
+                  required={false}
                   {...register(variable)}
                   sx={{ width: '15%', margin: '0px 15px' }}
                 />
@@ -60,6 +61,7 @@ const IntakeOutput = (props: Props) => {
               <>
                 <Typography fontSize="12px">{title}</Typography>
                 <MuiTextField
+                  required={false}
                   {...register(variable)}
                   sx={{ width: '15%', margin: '0px 15px' }}
                 />

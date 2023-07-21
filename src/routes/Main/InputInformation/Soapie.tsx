@@ -13,7 +13,6 @@ function Soapie({ register, disabled }: Props) {
     <Stack spacing={2}>
       <Form.Item label="주관적 증상 Subjective Data">
         <TextField
-          required
           fullWidth
           multiline
           minRows={2}
@@ -26,7 +25,6 @@ function Soapie({ register, disabled }: Props) {
 
       <Form.Item label="객관적 정보 Objective Data">
         <TextField
-          required
           fullWidth
           multiline
           minRows={2}
@@ -39,7 +37,6 @@ function Soapie({ register, disabled }: Props) {
 
       <Form.Item label="사정 Assessment">
         <TextField
-          required
           fullWidth
           multiline
           minRows={2}
@@ -52,7 +49,6 @@ function Soapie({ register, disabled }: Props) {
 
       <Form.Item label="계획 Planning">
         <TextField
-          required
           fullWidth
           multiline
           minRows={2}
@@ -65,7 +61,6 @@ function Soapie({ register, disabled }: Props) {
 
       <Form.Item label="중재 Interventions">
         <TextField
-          required
           fullWidth
           multiline
           minRows={2}
@@ -78,7 +73,6 @@ function Soapie({ register, disabled }: Props) {
 
       <Form.Item label="평가 Evaluation">
         <TextField
-          required
           fullWidth
           multiline
           minRows={2}

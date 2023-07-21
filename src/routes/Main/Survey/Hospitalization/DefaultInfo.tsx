@@ -117,6 +117,7 @@ const DefaultInfo = (props: Props) => {
         <RowContent title="신체">
           <Stack direction="row" spacing={1}>
             <Form.MuiTextField
+              required={false}
               type="number"
               textAlign="right"
               disabled={disabled}
@@ -124,6 +125,7 @@ const DefaultInfo = (props: Props) => {
               {...register('default_info.height')}
             />
             <Form.MuiTextField
+              required={false}
               type="number"
               textAlign="right"
               disabled={disabled}
@@ -135,12 +137,14 @@ const DefaultInfo = (props: Props) => {
         <RowContent title="활력징후">
           <Stack direction="row" spacing={1} sx={{ mb: 1 }}>
             <Form.MuiTextField
+              required={false}
               textAlign="right"
               disabled={disabled}
               InputProps={{ ...Form.adornment('SBP', 'mmHg') }}
               {...register('default_info.SBP')}
             />
             <Form.MuiTextField
+              required={false}
               textAlign="right"
               disabled={disabled}
               InputProps={{ ...Form.adornment('DBP', 'mmHg') }}
@@ -149,24 +153,28 @@ const DefaultInfo = (props: Props) => {
           </Stack>
           <Stack direction="row" spacing={1}>
             <Form.MuiTextField
+              required={false}
               textAlign="right"
               disabled={disabled}
               InputProps={{ ...Form.adornment('PR', '회') }}
               {...register('default_info.PR')}
             />
             <Form.MuiTextField
+              required={false}
               textAlign="right"
               disabled={disabled}
               InputProps={{ ...Form.adornment('RR', '회') }}
               {...register('default_info.RR')}
             />
             <Form.MuiTextField
+              required={false}
               textAlign="right"
               disabled={disabled}
               InputProps={{ ...Form.adornment('BT', '℃') }}
               {...register('default_info.BT')}
             />
             <Form.MuiTextField
+              required={false}
               textAlign="right"
               disabled={disabled}
               InputProps={{ ...Form.adornment('SpO2', '%') }}
@@ -176,12 +184,14 @@ const DefaultInfo = (props: Props) => {
         </RowContent>
         <RowContent title="주호소">
           <Form.MuiTextField
+            required={false}
             disabled={disabled}
             {...register('default_info.joo_ho_so')}
           />
         </RowContent>
         <RowContent title="입원동기">
           <Form.MuiTextField
+            required={false}
             multiline
             disabled={disabled}
             InputProps={{ sx: { height: 63 } }}

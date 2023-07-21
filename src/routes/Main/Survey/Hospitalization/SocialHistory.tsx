@@ -37,6 +37,7 @@ const SocialHistory = (props: Props) => {
         </RowContent>
         <RowContent title="직업" titleRatio={2.65} childrenRatio={8.2}>
           <Form.MuiTextField
+            required={false}
             disabled={disabled}
             placeholder="직접 입력"
             {...register('social_history.job')}

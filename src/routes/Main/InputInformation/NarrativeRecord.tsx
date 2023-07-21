@@ -16,7 +16,6 @@ function NarrativeRecord({ register, disabled }: Props) {
     <Stack spacing={2}>
       <Form.Item label={i18n('NARRATIVE.NARRATIVENOTE')}>
         <TextField
-          required
           fullWidth
           multiline
           rows={20}

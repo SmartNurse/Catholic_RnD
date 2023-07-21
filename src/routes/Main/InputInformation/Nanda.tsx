@@ -94,7 +94,6 @@ function Nanda(props: Props) {
 
       <Form.Item label="자료 수집 주관적 / 객관적">
         <TextField
-          required
           fullWidth
           multiline
           minRows={3}
@@ -107,7 +106,6 @@ function Nanda(props: Props) {
 
       <Form.Item label="간호목표 단기/장기 Goal">
         <TextField
-          required
           fullWidth
           multiline
           minRows={3}
@@ -120,7 +118,6 @@ function Nanda(props: Props) {
 
       <Form.Item label="간호계획 Plan">
         <TextField
-          required
           fullWidth
           multiline
           minRows={3}
@@ -133,7 +130,6 @@ function Nanda(props: Props) {
 
       <Form.Item label="간호수행/중재/이론적 근거 Interventions">
         <TextField
-          required
           fullWidth
           multiline
           minRows={5}
@@ -146,7 +142,6 @@ function Nanda(props: Props) {
 
       <Form.Item label="간호평가 Evaluation">
         <TextField
-          required
           fullWidth
           multiline
           minRows={3}

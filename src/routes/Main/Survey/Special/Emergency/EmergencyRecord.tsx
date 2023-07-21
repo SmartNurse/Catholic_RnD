@@ -95,6 +95,7 @@ const EmergencyRecord = (props: Props) => {
             multiline
             minRows={8}
             disabled={disabled}
+            required={false}
             {...register('emergency_information.memo')}
             placeholder={'내원 동기 및 현상태를 서술하여 주세요'}
           />

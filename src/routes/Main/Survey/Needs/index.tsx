@@ -38,11 +38,6 @@ const Needs = (props: SurveyDialogProps<TNeedsDefaultValues>) => {
     const { patient_id } = patientInfo;
     const { body_status, disease_status, reason1, reason2, date } = data;
 
-    const bodyStatusValues = Object.values(body_status);
-    if (bodyStatusValues.includes('')) {
-      return onRequired('REQUIRED.NEEDS.BODY.STATUS');
-    }
-
     const request = {
       user_id,
       patient_id,

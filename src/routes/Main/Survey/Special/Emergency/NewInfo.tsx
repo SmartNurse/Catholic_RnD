@@ -25,6 +25,7 @@ const NewInfo = (props: Props) => {
       label: '주증상',
       element: (
         <Form.MuiTextField
+          required={false}
           {...register('emergency_patient_information.symptom')}
         />
       ),
@@ -33,6 +34,7 @@ const NewInfo = (props: Props) => {
       label: '기타 증상',
       element: (
         <Form.MuiTextField
+          required={false}
           {...register('emergency_patient_information.etc_symptom')}
         />
       ),
@@ -144,6 +146,7 @@ const NewInfo = (props: Props) => {
       label: '과거력',
       element: (
         <Form.MuiTextField
+          required={false}
           {...register('emergency_patient_information.history')}
         />
       ),
@@ -152,6 +155,7 @@ const NewInfo = (props: Props) => {
       label: '알레르기',
       element: (
         <Form.MuiTextField
+          required={false}
           {...register('emergency_patient_information.allergy')}
         />
       ),
@@ -160,6 +164,7 @@ const NewInfo = (props: Props) => {
       label: '투약상태',
       element: (
         <Form.MuiTextField
+          required={false}
           {...register('emergency_patient_information.medication')}
         />
       ),
@@ -188,7 +193,10 @@ const NewInfo = (props: Props) => {
     {
       label: 'GCS',
       element: (
-        <Form.MuiTextField {...register('emergency_patient_information.gcs')} />
+        <Form.MuiTextField
+          required={false}
+          {...register('emergency_patient_information.gcs')}
+        />
       ),
     },
 
@@ -196,6 +204,7 @@ const NewInfo = (props: Props) => {
       label: 'MOTOR',
       element: (
         <Form.MuiTextField
+          required={false}
           {...register('emergency_patient_information.motor')}
         />
       ),
@@ -205,6 +214,7 @@ const NewInfo = (props: Props) => {
       label: 'PUPIL',
       element: (
         <Form.MuiTextField
+          required={false}
           {...register('emergency_patient_information.pupil')}
         />
       ),
@@ -213,7 +223,10 @@ const NewInfo = (props: Props) => {
     {
       label: 'NRS',
       element: (
-        <Form.MuiTextField {...register('emergency_patient_information.nrs')} />
+        <Form.MuiTextField
+          required={false}
+          {...register('emergency_patient_information.nrs')}
+        />
       ),
     },
 
@@ -221,6 +234,7 @@ const NewInfo = (props: Props) => {
       label: 'PQRST',
       element: (
         <Form.MuiTextField
+          required={false}
           {...register('emergency_patient_information.pqrst')}
         />
       ),
@@ -249,6 +263,7 @@ const NewInfo = (props: Props) => {
       label: '예상되는 진단명',
       element: (
         <Form.MuiTextField
+          required={false}
           {...register('emergency_patient_information.expected_diagnosis')}
         />
       ),

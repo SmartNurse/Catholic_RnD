@@ -29,14 +29,14 @@ const Medicines = (props: Props) => {
       name: (
         <Form.MuiTextField
           fullWidth
-          required={!i}
+          required={false}
           disabled={disabled}
           {...register(`${prefix}.name`)}
         />
       ),
       amount: (
         <Form.MuiTextField
-          required={!i}
+          required={false}
           disabled={disabled}
           {...register(`${prefix}.amount`)}
         />
@@ -44,7 +44,7 @@ const Medicines = (props: Props) => {
       count: (
         <Form.MuiTextField
           type="number"
-          required={!i}
+          required={false}
           disabled={disabled}
           {...register(`${prefix}.count`)}
         />
@@ -52,14 +52,14 @@ const Medicines = (props: Props) => {
       days: (
         <Form.MuiTextField
           type="number"
-          required={!i}
+          required={false}
           disabled={disabled}
           {...register(`${prefix}.days`)}
         />
       ),
       how_to: (
         <Form.MuiTextField
-          required={!i}
+          required={false}
           disabled={disabled}
           {...register(`${prefix}.how_to`)}
         />

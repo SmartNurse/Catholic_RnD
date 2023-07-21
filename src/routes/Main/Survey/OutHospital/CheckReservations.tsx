@@ -28,21 +28,21 @@ const CheckReservations = (props: Props) => {
       id: i,
       name: (
         <Form.MuiTextField
-          required={!i}
+          required={false}
           disabled={disabled}
           {...register(`${prefix}.name`)}
         />
       ),
       destination: (
         <Form.MuiTextField
-          required={!i}
+          required={false}
           disabled={disabled}
           {...register(`${prefix}.destination`)}
         />
       ),
       warning: (
         <Form.MuiTextField
-          required={!i}
+          required={false}
           disabled={disabled}
           {...register(`${prefix}.warning`)}
         />
@@ -50,7 +50,7 @@ const CheckReservations = (props: Props) => {
       call_number: (
         <Form.MuiTextField
           type="tel"
-          required={!i}
+          required={false}
           disabled={disabled}
           {...register(`${prefix}.call_number`)}
         />
@@ -58,7 +58,7 @@ const CheckReservations = (props: Props) => {
       date: (
         <Form.MuiTextField
           type="date"
-          required={!i}
+          required={false}
           disabled={disabled}
           {...register(`${prefix}.date`)}
         />

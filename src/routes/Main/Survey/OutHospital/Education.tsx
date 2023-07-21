@@ -21,6 +21,7 @@ const Education = (props: Props) => {
       <RowContainer xs={12}>
         <Grid item flex={1}>
           <Form.MuiTextField
+            required={false}
             multiline
             minRows={5}
             disabled={disabled}

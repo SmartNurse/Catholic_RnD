@@ -15,7 +15,7 @@ const Reason = ({ disabled, registerKey, register }: Props) => {
         진단근거
       </Typography>
       <Form.MuiTextField
-        required
+        required={false}
         multiline
         minRows={5}
         disabled={disabled}

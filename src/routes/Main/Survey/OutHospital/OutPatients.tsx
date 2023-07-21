@@ -28,21 +28,21 @@ const OutPatients = (props: Props) => {
       id: i,
       department: (
         <Form.MuiTextField
-          required={!i}
+          required={false}
           disabled={disabled}
           {...register(`${prefix}.department`)}
         />
       ),
       doctor: (
         <Form.MuiTextField
-          required={!i}
+          required={false}
           disabled={disabled}
           {...register(`${prefix}.doctor`)}
         />
       ),
       location: (
         <Form.MuiTextField
-          required={!i}
+          required={false}
           disabled={disabled}
           {...register(`${prefix}.location`)}
         />
@@ -50,7 +50,7 @@ const OutPatients = (props: Props) => {
       call_number: (
         <Form.MuiTextField
           type="tel"
-          required={!i}
+          required={false}
           disabled={disabled}
           {...register(`${prefix}.call_number`)}
         />
@@ -58,7 +58,7 @@ const OutPatients = (props: Props) => {
       date: (
         <Form.MuiTextField
           type="date"
-          required={!i}
+          required={false}
           disabled={disabled}
           {...register(`${prefix}.date`)}
         />

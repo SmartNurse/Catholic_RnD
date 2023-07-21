@@ -58,7 +58,11 @@ const PatientInfo = (props: Props) => {
           </RowContent>
         ) : title === '입원일' || title === '퇴원일' ? (
           <RowContent title={title} titleRatio={1} childrenRatio={2}>
-            <Form.MuiTextField type="date" {...register(`${value}`)} />
+            <Form.MuiTextField
+              required={false}
+              type="date"
+              {...register(`${value}`)}
+            />
           </RowContent>
         ) : (
           <RowContent title={title} titleRatio={1} childrenRatio={2}>
