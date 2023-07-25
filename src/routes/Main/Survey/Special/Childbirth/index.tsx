@@ -46,11 +46,11 @@ const Childbirth = (props: SurveyDialogProps<TChildbirthDefaultValues>) => {
       nursing_records,
     } = data;
 
-    if (nursing_records === undefined) {
-      return onRequired('REQUIRED.NEEDS.BODY.STATUS');
-    }
+    // if (nursing_records === undefined) {
+    //   return onRequired('REQUIRED.NEEDS.BODY.STATUS');
+    // }
 
-    console.log('널싱리코드', Object.values(nursing_records));
+    console.log('널싱리코드불러오는거', nursing_records);
 
     const request = {
       user_id,
@@ -61,7 +61,7 @@ const Childbirth = (props: SurveyDialogProps<TChildbirthDefaultValues>) => {
         apgar,
         placenta_removal,
         maternal_condition,
-        nursing_records: [...nursing_records],
+        nursing_records,
       },
     };
 
