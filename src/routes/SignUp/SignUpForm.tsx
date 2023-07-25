@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { CheckCircle, ContactlessOutlined, KeyboardArrowLeft } from '@mui/icons-material';
+import { CheckCircle, KeyboardArrowLeft } from '@mui/icons-material';
 import { LoadingButton } from '@mui/lab';
 import {
   Box,
@@ -11,7 +11,7 @@ import {
   Grid,
   Stack,
   TextField,
-  MenuItem
+  MenuItem,
 } from '@mui/material';
 import {
   FieldValues,
@@ -27,7 +27,6 @@ import MuiAutocomplete from 'components/MuiAutocomplete';
 import { ISendMailProps, IVerifyMailProps } from './types';
 import SignUpDialog from './SignUpDialog';
 import { styled } from '@mui/styles';
-
 
 interface Props {
   register: UseFormRegister<FieldValues>;
@@ -54,26 +53,35 @@ function SignUpForm(props: Props) {
     />
   );
 
-
-
   // 출생년도 옵션
   const rendering = () => {
     const result = [];
     for (let i = 1950; i < 2011; i++) {
       result.push(
-      <StMenuItem key={i} value={i}>
-        {i}
-      </StMenuItem>);
+        <StMenuItem key={i} value={i}>
+          {i}
+        </StMenuItem>
+      );
     }
     return result;
   };
 
-  
-  
   // select option style
   const StMenuItem = styled(MenuItem)({
-    height: 55
+    height: 55,
   });
+
+  // 비밀번호 에러 찾기
+  const [passwordValue, setPasswordValue] = useState('');
+
+  const passwordRegex = () => {
+    let check =
+      /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&^~\-\+\\()_=|])[A-Za-z\d@$!%*#?&^~\-\+\\()_=|]{8,}$/i;
+    console.log(passwordValue.includes('.*[@$!%*#?&^~-+\\()_=|]'));
+    return check.test(passwordValue);
+  };
+
+  const [passwordCheck, setPasswordCheck] = useState('');
 
   return (
     <Box>
@@ -135,9 +143,19 @@ function SignUpForm(props: Props) {
           <Form.Item label="비밀번호">
             <Form.Password
               required
+              value={passwordValue}
               fullWidth
-              helperText="영문+숫자+특수기호를 포함해서 8자리 이상 입력해 주세요."
-              {...register('userPassword')}
+              placeholder="영문 + 숫자 + 특수기호를 포함해서 8자리 이상 입력해 주세요."
+              helperText={
+                passwordRegex()
+                  ? '안전합니다!'
+                  : '특수문자는 @ $ ! % * # ^ () _ = | ] 만 가능합니다.'
+              }
+              color={passwordRegex() ? 'success' : 'warning'}
+              {...(register('userPassword'),
+              {
+                onChange: e => setPasswordValue(e.target.value),
+              })}
             />
           </Form.Item>
           <Form.Item label="비밀번호 확인">
@@ -145,7 +163,16 @@ function SignUpForm(props: Props) {
               required
               fullWidth
               isHideVisibleBtn
-              {...register('userPasswordConfirm')}
+              helperText={
+                passwordValue === passwordCheck
+                  ? '일치합니다!'
+                  : '일치하지않습니다!'
+              }
+              color={passwordValue === passwordCheck ? 'success' : 'warning'}
+              {...(register('userPasswordConfirm'),
+              {
+                onChange: e => setPasswordCheck(e.target.value),
+              })}
             />
           </Form.Item>
           <Form.Item label="이름">
@@ -195,7 +222,7 @@ function SignUpForm(props: Props) {
               {...register('studentNo')}
             />
           </Form.Item>
-          <Form.Item label="출생년도" >
+          <Form.Item label="출생년도">
             <TextField
               required
               fullWidth
@@ -205,7 +232,7 @@ function SignUpForm(props: Props) {
               {...register('birth')}
             >
               {rendering()}
-          </TextField>
+            </TextField>
           </Form.Item>
         </Stack>
 
