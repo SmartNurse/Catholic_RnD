@@ -2,7 +2,14 @@ import Form from 'components/Form';
 
 import { Fragment, useState } from 'react';
 import { AccessTime, Delete } from '@mui/icons-material';
-import { Button, Grid, IconButton, MenuItem, Box, TextField } from '@mui/material';
+import {
+  Button,
+  Grid,
+  IconButton,
+  MenuItem,
+  Box,
+  TextField,
+} from '@mui/material';
 import { DatePicker, MobileTimePicker } from '@mui/x-date-pickers';
 
 import { Ti18nId } from 'hooks/useI18n';
@@ -12,7 +19,7 @@ import MuiTable from 'components/MuiTable';
 import MuiTextField from 'components/Form/MuiTextField';
 import SectionTitle from '../components/SectionTitle';
 
-import { formatStringToDate } from "utils/formatting";
+import { formatStringToDate } from 'utils/formatting';
 
 interface Props extends IFormValues, IFormWatch, IFormRegister {
   disabled?: boolean;
@@ -26,11 +33,11 @@ const GlucoseRecords = (props: Props) => {
 
   const [date, setDate] = useState(null);
   const [time, setTime] = useState(null);
-  const [meal, setMeal] = useState("");
-  const [mealEtc, setMealEtc] = useState("");
-  const [item, setItem] = useState("");
-  const [itemEtc, setItemEtc] = useState("");
-  const [result, setResult] = useState("");
+  const [meal, setMeal] = useState('');
+  const [mealEtc, setMealEtc] = useState('');
+  const [item, setItem] = useState('');
+  const [itemEtc, setItemEtc] = useState('');
+  const [result, setResult] = useState('');
 
   const columns = [
     { fieldId: 'date', label: '일자', sx: { width: 200 } },
@@ -38,19 +45,25 @@ const GlucoseRecords = (props: Props) => {
     { fieldId: 'activity', label: '식사', sx: { width: 200 } },
     { fieldId: 'category', label: '검사항목', sx: { width: 200 } },
     { fieldId: 'level', label: '검사결과', sx: { width: 400 } },
-    { fieldId: 'action', label: '', sx: { width: 100 } }
+    { fieldId: 'action', label: '', sx: { width: 100 } },
   ];
 
   const meals = ['식사 전', '식사 후', '기타(직접입력)'];
-  const items = ['Glucose(혈당)', 'FBS(공복혈당)', 'PP2(경구당부하검사)', 'HbA1c(당화혈색소)', '기타(직접입력)'];
+  const items = [
+    'Glucose(혈당)',
+    'FBS(공복혈당)',
+    'PP2(경구당부하검사)',
+    'HbA1c(당화혈색소)',
+    '기타(직접입력)',
+  ];
 
   const onAddRow = () => {
     const request = {
-        date,
-        time,
-        activity: meal === "기타(직접입력)" ? mealEtc : meal,
-        category: item === "기타(직접입력)" ? itemEtc : item,
-        level: result
+      date,
+      time,
+      activity: meal === '기타(직접입력)' ? mealEtc : meal,
+      category: item === '기타(직접입력)' ? itemEtc : item,
+      level: result,
     };
 
     if (Object.values(request).filter(v => !v).length > 0) {
@@ -58,54 +71,32 @@ const GlucoseRecords = (props: Props) => {
     }
 
     onSuccess('혈당 기록 추가되었습니다.');
-    setValue('blood_sugar_log', glucoseRecordList ? [...glucoseRecordList, request] : [request]);
-    setValue("glucose_date", "");
+    setValue(
+      'blood_sugar_log',
+      glucoseRecordList ? [...glucoseRecordList, request] : [request]
+    );
+    setValue('glucose_date', '');
     setDate(null);
     setTime(null);
-    setMeal("");
-    setMealEtc("");
-    setItem("");
-    setItemEtc("");
-    setResult("");
+    setMeal('');
+    setMealEtc('');
+    setItem('');
+    setItemEtc('');
+    setResult('');
   };
-
-  const dateNow = new Date(); // Creating a new date object with the current date and time
-  const year = dateNow.getFullYear(); // Getting current year from the created Date object
-  const monthWithOffset = dateNow.getUTCMonth() + 1; // January is 0 by default in JS. Offsetting +1 to fix date for calendar.
-  const month = // Setting current Month number from current Date object
-    monthWithOffset.toString().length < 2 // Checking if month is < 10 and pre-prending 0 if not to adjust for date input.
-      ? `0${monthWithOffset}`
-      : monthWithOffset;
-  const date1 =
-    dateNow.getUTCDate().toString().length < 2 // Checking if date is < 10 and pre-prending 0 if not to adjust for date input.
-      ? `0${dateNow.getUTCDate()}`
-      : dateNow.getUTCDate();
-  
-  const materialDateInput = `${year}-${month}-${date1}`; // combining to format for defaultValue or value attribute of material <TextField>
-  
 
   const inputRow = {
     id: 'add-glucose-record',
     date: (
-      // <DatePicker
-      //   value={date}
-      //           label="Basic example"
-      //           onChange={(newValue) => {
-      //               setDate(newValue);
-      //           }}
-      //           renderInput={(params) => <TextField {...params} />}
-      // />
-        <Form.MuiTextField
-            type="date"
-            label='Please enter a date'
-            InputLabelProps={{ shrink: true }}
-            required={false}
-            defaultValue={materialDateInput} 
-            disabled={disabled}
-            {...register("glucose_date", {
-                onChange: (e) => setDate(e.target.value)
-            })}
-        />
+      <Form.MuiTextField
+        type="date"
+        InputLabelProps={{ shrink: true }}
+        required={false}
+        disabled={disabled}
+        {...register('glucose_date', {
+          onChange: e => setDate(e.target.value),
+        })}
+      />
     ),
     time: (
       <MobileTimePicker
@@ -122,42 +113,48 @@ const GlucoseRecords = (props: Props) => {
       />
     ),
     activity: (
-        <Box sx={{ display: "flex" }}>
-            <MuiTextField
-                select
-                value={meal}
-                required={false}
-                onChange={({ target: { value } }) => setMeal(value)}
-            >
-                {meals.map((option) => (
-                    <MenuItem key={option} value={option}>
-                        {option}
-                    </MenuItem>
-                ))}
-            </MuiTextField>
-            {meal === "기타(직접입력)" &&
-                <MuiTextField value={mealEtc} onChange={({ target: { value }}) => setMealEtc(value)} />
-            }
-        </Box>
+      <Box sx={{ display: 'flex' }}>
+        <MuiTextField
+          select
+          value={meal}
+          required={false}
+          onChange={({ target: { value } }) => setMeal(value)}
+        >
+          {meals.map(option => (
+            <MenuItem key={option} value={option}>
+              {option}
+            </MenuItem>
+          ))}
+        </MuiTextField>
+        {meal === '기타(직접입력)' && (
+          <MuiTextField
+            value={mealEtc}
+            onChange={({ target: { value } }) => setMealEtc(value)}
+          />
+        )}
+      </Box>
     ),
     category: (
-        <Box sx={{ display: "flex" }}>
-            <MuiTextField
-                select
-                value={item}
-                required={false}
-                onChange={({ target: { value } }) => setItem(value)}
-            >
-                {items.map((option) => (
-                    <MenuItem key={option} value={option}>
-                    {option}
-                    </MenuItem>
-                ))}
-            </MuiTextField>
-            {item === "기타(직접입력)" &&
-                <MuiTextField value={itemEtc} onChange={({ target: { value }}) => setItemEtc(value)} />
-            }
-        </Box>
+      <Box sx={{ display: 'flex' }}>
+        <MuiTextField
+          select
+          value={item}
+          required={false}
+          onChange={({ target: { value } }) => setItem(value)}
+        >
+          {items.map(option => (
+            <MenuItem key={option} value={option}>
+              {option}
+            </MenuItem>
+          ))}
+        </MuiTextField>
+        {item === '기타(직접입력)' && (
+          <MuiTextField
+            value={itemEtc}
+            onChange={({ target: { value } }) => setItemEtc(value)}
+          />
+        )}
+      </Box>
     ),
     level: (
       <MuiTextField
@@ -180,25 +177,22 @@ const GlucoseRecords = (props: Props) => {
     );
   };
 
-  const displayRows = glucoseRecordList ? 
-    glucoseRecordList.map((item, i) => ({
+  const displayRows = glucoseRecordList
+    ? glucoseRecordList.map((item, i) => ({
         ...item,
         id: i,
         time: formatStringToDate(item.time, 'hh:mm a'),
         action: (
-        <IconButton
+          <IconButton
             size="small"
             onClick={() => onDeleteRow(i)}
             sx={{ display: disabled ? 'none' : 'block' }}
-        >
-          <Delete />
-        </IconButton>
+          >
+            <Delete />
+          </IconButton>
         ),
-  }))
-  :
-  []
-  ;
-
+      }))
+    : [];
   const tableRow = disabled ? displayRows : [inputRow, ...displayRows];
 
   return (
