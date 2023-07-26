@@ -136,7 +136,16 @@ const MenuSettings = (props: Props) => {
   ];
 
   const onClickListItem = (label: string) => {
-    if (!student_uuid) return onRequired('REQUIRED.STUDENT');
+    if (label === '로그아웃') {
+      onSignOut();
+      // 로그아웃 시 스토어 초기화
+      onResetStudent();
+      onResetPatient();
+      onCloseReadOnly();
+    } else if (!patientInfo) return onRequired('REQUIRED.PATIENT');
+    onUpdateSurveyType(label);
+
+    // if (!student_uuid) return onRequired('REQUIRED.STUDENT');
 
     if (label === '응급 모니터링시스템') {
       window.open('http://dw.nemc.or.kr/nemcMonitoring/mainmgr/Main.do');
@@ -166,15 +175,6 @@ const MenuSettings = (props: Props) => {
       navigate('/screensetting');
       return;
     }
-
-    if (label === '로그아웃') {
-      onSignOut();
-      // 로그아웃 시 스토어 초기화
-      onResetStudent();
-      onResetPatient();
-      onCloseReadOnly();
-    } else if (!patientInfo) return onRequired('REQUIRED.PATIENT');
-    onUpdateSurveyType(label);
   };
 
   const onClickDisabledItem = (sublabel: string | undefined) => {

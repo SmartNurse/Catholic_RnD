@@ -143,7 +143,6 @@ function SignUpForm(props: Props) {
           <Form.Item label="비밀번호">
             <Form.Password
               required
-              value={passwordValue}
               fullWidth
               placeholder="영문 + 숫자 + 특수기호를 포함해서 8자리 이상 입력해 주세요."
               helperText={
@@ -152,8 +151,7 @@ function SignUpForm(props: Props) {
                   : '특수문자는 @ $ ! % * # ^ () _ = | ] 만 가능합니다.'
               }
               color={passwordRegex() ? 'success' : 'warning'}
-              {...(register('userPassword'),
-              {
+              {...register('userPassword', {
                 onChange: e => setPasswordValue(e.target.value),
               })}
             />
@@ -169,8 +167,7 @@ function SignUpForm(props: Props) {
                   : '일치하지않습니다!'
               }
               color={passwordValue === passwordCheck ? 'success' : 'warning'}
-              {...(register('userPasswordConfirm'),
-              {
+              {...register('userPasswordConfirm', {
                 onChange: e => setPasswordCheck(e.target.value),
               })}
             />
