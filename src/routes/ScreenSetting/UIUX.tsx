@@ -238,7 +238,7 @@ const UIUX = () => {
             }}
             onClick={() => {
               setTimeout(() => {
-                window.open('https://smartnurseasan.shop/');
+                window.open('https://d2k5pz0iwlhdwz.cloudfront.net/');
               }, 1000);
 
               setLocalStorage('theme_color', '서울아산병원');
