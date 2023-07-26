@@ -67,16 +67,18 @@ function SignUp() {
       return onRequired('REQUIRED.EMAIL.VERIFICATION');
     }
 
-    // 비밀번호 유효성 검사
-    if (!regex.password.test(data.userPassword)) {
-      return onRequired('REQUIRED.PASSWORD.FORMAT');
-    }
+    // // 비밀번호 유효성 검사
+    // if (!regex.password.test(data.userPassword.target?.value)) {
+    //   return onRequired('REQUIRED.PASSWORD.FORMAT');
+    // }
 
-    // 비밀번호 일치 여부
-    const isPasswordConfirm = data.userPassword === data.userPasswordConfirm;
-    if (!isPasswordConfirm) {
-      return onRequired('REQUIRED.PASSWORD.CONFIRM');
-    }
+    // // 비밀번호 일치 여부
+    // const isPasswordConfirm =
+    //   data.userPassword.target?.value ===
+    //   data.userPasswordConfirm.tartget?.value;
+    // if (!isPasswordConfirm) {
+    //   return onRequired('REQUIRED.PASSWORD.CONFIRM');
+    // }
 
     // 학교 선택 여부
     if (!data.college) {
@@ -87,6 +89,8 @@ function SignUp() {
     if (!regex.studentNo.test(data.studentNo)) {
       return onRequired('REQUIRED.STUDENT.NO');
     }
+
+    console.log('ll???', data);
 
     const request = {
       user_email: data.userEmail,
