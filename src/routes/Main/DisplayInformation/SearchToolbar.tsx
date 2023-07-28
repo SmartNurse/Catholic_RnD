@@ -12,9 +12,9 @@ const SearchToolbar = () => {
   if (isStudent) return <PatientsList user_id={user_id} />;
   return (
     <Grid container alignItems="center" spacing={1}>
-      <Grid item xs={2}>
+      {/* <Grid item xs={2}>
         <Typography>{college_name}</Typography>
-      </Grid>
+      </Grid> */}
       <Grid item xs={5}>
         <StudentList user_id={user_id} />
       </Grid>
