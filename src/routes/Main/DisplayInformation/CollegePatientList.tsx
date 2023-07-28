@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 
 import { ListItemButton, Typography } from '@mui/material';
 import { getCollegePatientList } from 'apis/admin';
