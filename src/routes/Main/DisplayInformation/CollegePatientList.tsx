@@ -35,7 +35,7 @@ const CollegePatientList = ({ user_id }: { user_id: number }) => {
         user_id: Number(`${student_uuid}`),
         patient_id: Number(`${patient_id}`),
       }).then(({ data }) => {
-        console.log('데이터', data);
+        // console.log('데이터', data);
         setNursingRecord(data.nursing_records);
       });
     });
