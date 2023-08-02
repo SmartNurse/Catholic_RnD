@@ -21,7 +21,7 @@ import {
 } from 'recharts';
 
 import { Ti18nId } from 'hooks/useI18n';
-import { IVitalSign } from 'apis/survey/type';
+import { IEmergencyVitalsignRecord } from 'apis/survey/type';
 import { IFormValues, IFormWatch } from 'routes/Main/type';
 
 import { formatStringToDate } from 'utils/formatting';
@@ -54,11 +54,13 @@ const VitalSign = (props: Props) => {
 
   const { disabled, watch, setValue, onRequired, onSuccess } = props;
 
-  const vitalSignList: IVitalSign[] = watch('patient_status_list_record');
+  const vitalSignList: IEmergencyVitalsignRecord[] = watch(
+    'patient_status_list_record'
+  );
   const [vitalsignData, setVitalsignData] = useState<
     {
       name: string;
-      data: { timestamp: string; value?: number; temp?: number }[];
+      data: { timestamp: string; value?: string; temp?: string }[];
     }[]
   >([
     { name: 'BT (℃)', data: [] },
@@ -248,7 +250,7 @@ const VitalSign = (props: Props) => {
       vitalSignList.filter((_, i) => i !== index)
     );
   };
-
+  console.log('왜 오류야 시발', vitalSignList);
   const displayRows = vitalSignList
     ? vitalSignList
         .slice()
