@@ -39,18 +39,17 @@ const VitalSign = (props: Props) => {
   const colors = ['#FE2503', '#FF9200', '#02F900', '#0333FF', '#942092'];
 
   const columns = [
-    { fieldId: 'checkTime', label: '체크시간', sx: { width: 200 } },
+    { fieldId: 'check_time', label: '체크시간', sx: { width: 200 } },
     { fieldId: 'sbp', label: 'SBP (mmHg)' },
     { fieldId: 'dbp', label: 'DBP (mmHg)' },
     { fieldId: 'pr', label: 'PR (회)' },
     { fieldId: 'rr', label: 'RR (회)' },
     { fieldId: 'bt', label: 'BT (℃)' },
-    { fieldId: 'sp02', label: 'SPO2 (%)' },
-    { fieldId: 'etc', label: '비고', sx: { width: 200 } },
+    { fieldId: 'note', label: '비고', sx: { width: 200 } },
     { fieldId: 'action', label: '', sx: { width: 100 } },
   ];
 
-  const etc_labels = ['환자 도착', '환자 퇴실', '기타'];
+  const etc_labels = ['도착', '퇴실', '직접입력'];
 
   const { disabled, watch, setValue, onRequired, onSuccess } = props;
 
@@ -76,8 +75,8 @@ const VitalSign = (props: Props) => {
   const [pr, setPr] = useState('');
   const [rr, setRr] = useState('');
   const [bt, setBt] = useState('');
-  const [sp02, setSp02] = useState('');
   const [etc, setEtc] = useState('');
+  const [labelEtc, setLabelEtc] = useState('');
   const [errors, setErrors] = useState({
     sbp: 0,
     dbp: 0,
@@ -87,8 +86,27 @@ const VitalSign = (props: Props) => {
   });
 
   const onAddRow = () => {
-    const request = { checkTime, sbp, dbp, pr, rr, bt, sp02, etc };
-    if (Object.values(request).filter(v => !v).length > 0) {
+    const request = {
+      check_time: checkTime,
+      sbp,
+      dbp,
+      pr,
+      rr,
+      bt,
+      note: etc === '직접입력' ? labelEtc : etc,
+    };
+
+    if (checkTime === null) {
+      return onRequired('CLINICAL.OBSERVATION.ADD.ROW');
+    } else if (sbp === '') {
+      return onRequired('CLINICAL.OBSERVATION.ADD.ROW');
+    } else if (dbp === '') {
+      return onRequired('CLINICAL.OBSERVATION.ADD.ROW');
+    } else if (pr === '') {
+      return onRequired('CLINICAL.OBSERVATION.ADD.ROW');
+    } else if (rr === '') {
+      return onRequired('CLINICAL.OBSERVATION.ADD.ROW');
+    } else if (bt === '') {
       return onRequired('CLINICAL.OBSERVATION.ADD.ROW');
     }
 
@@ -102,8 +120,8 @@ const VitalSign = (props: Props) => {
       newRecord
         .slice()
         .sort((a, b) =>
-          a.checkTime && b.checkTime
-            ? Number(new Date(a.checkTime)) - Number(new Date(b.checkTime))
+          a.check_time && b.check_time
+            ? Number(new Date(a.check_time)) - Number(new Date(b.check_time))
             : 0
         )
     );
@@ -113,13 +131,13 @@ const VitalSign = (props: Props) => {
     setPr('');
     setRr('');
     setBt('');
-    setSp02('');
     setEtc('');
+    setLabelEtc('');
   };
 
   const inputRow = {
     id: 'add-vital-sign',
-    checkTime: (
+    check_time: (
       <MobileTimePicker
         value={checkTime}
         onChange={setCheckTime}
@@ -228,24 +246,26 @@ const VitalSign = (props: Props) => {
         ) : null}
       </>
     ),
-    sp02: (
-      <MuiTextField
-        value={sp02}
-        required={false}
-        onChange={({ target: { value } }) => setSp02(value)}
-      />
-    ),
-    etc: (
-      <MuiTextField
-        select
-        value={etc}
-        required={false}
-        onChange={({ target: { value } }) => setEtc(value)}
-      >
-        {etc_labels.map(option => (
-          <MenuItem value={option}>{option}</MenuItem>
-        ))}
-      </MuiTextField>
+    note: (
+      <div style={{ width: '300px', display: 'flex' }}>
+        <MuiTextField
+          select
+          value={etc}
+          required={false}
+          onChange={({ target: { value } }) => setEtc(value)}
+        >
+          {etc_labels.map(option => {
+            return <MenuItem value={option}>{option}</MenuItem>;
+          })}
+        </MuiTextField>
+        {etc === '직접입력' && (
+          <MuiTextField
+            sx={{ marginLeft: '10px' }}
+            value={labelEtc}
+            onChange={({ target: { value } }) => setLabelEtc(value)}
+          />
+        )}
+      </div>
     ),
     action: (
       <Button variant="contained" size="small" onClick={onAddRow}>
@@ -267,7 +287,7 @@ const VitalSign = (props: Props) => {
     ? vitalSignList.map((item, i) => ({
         ...item,
         id: i,
-        checkTime: formatStringToDate(item.checkTime, 'hh:mm a'),
+        check_time: formatStringToDate(item.check_time, 'hh:mm a'),
         action: (
           <IconButton
             size="small"
@@ -288,35 +308,35 @@ const VitalSign = (props: Props) => {
     if (sortedVitalSignList.length) {
       const btData = sortedVitalSignList.map(v => {
         return {
-          timestamp: formatStringToDate(v.checkTime, 'hh:mm:a'),
+          timestamp: formatStringToDate(v.check_time, 'hh:mm:a'),
           note: v.note,
           temp: v.bt,
         };
       });
       const prData = sortedVitalSignList.map(v => {
         return {
-          timestamp: formatStringToDate(v.checkTime, 'hh:mm:a'),
+          timestamp: formatStringToDate(v.check_time, 'hh:mm:a'),
           note: v.note,
           value: v.pr,
         };
       });
       const rrData = sortedVitalSignList.map(v => {
         return {
-          timestamp: formatStringToDate(v.checkTime, 'hh:mm:a'),
+          timestamp: formatStringToDate(v.check_time, 'hh:mm:a'),
           note: v.note,
           value: v.rr,
         };
       });
       const sbpData = sortedVitalSignList.map(v => {
         return {
-          timestamp: formatStringToDate(v.checkTime, 'hh:mm:a'),
+          timestamp: formatStringToDate(v.check_time, 'hh:mm:a'),
           note: v.note,
           value: v.sbp,
         };
       });
       const dbpData = sortedVitalSignList.map(v => {
         return {
-          timestamp: formatStringToDate(v.checkTime, 'hh:mm:a'),
+          timestamp: formatStringToDate(v.check_time, 'hh:mm:a'),
           note: v.note,
           value: v.dbp,
         };

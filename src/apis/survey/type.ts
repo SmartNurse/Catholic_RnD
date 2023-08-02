@@ -566,7 +566,7 @@ export interface IUpdateDialysis extends IGetSurvey {
 
 // 응급기록지
 export interface IEmergencyVitalsignRecord {
-  checkTime: string;
+  check_time: string;
   sbp: string;
   dbp: string;
   pr: string;
