@@ -7,10 +7,8 @@ import {
   TableBody,
   TableCell,
   TableRow,
-  Tooltip,
   Typography,
   Table,
-  Stack,
   TableHead,
   useTheme,
 } from '@mui/material';
@@ -18,7 +16,6 @@ import { StyledSlider } from 'routes/Main/style';
 
 import { Ti18nId } from 'hooks/useI18n';
 import { IFormValues, IFormWatch, IFormRegister } from 'routes/Main/type';
-import { INRS } from 'apis/survey/type';
 
 interface Props extends IFormValues, IFormWatch, IFormRegister {
   disabled?: boolean;
@@ -27,7 +24,7 @@ interface Props extends IFormValues, IFormWatch, IFormRegister {
 }
 
 const FFIContents = (props: Props) => {
-  const { disabled, watch, setValue, onRequired, onSuccess, getValues } = props;
+  const { disabled, setValue, getValues } = props;
   const { palette } = useTheme();
 
   const [painScore1, setPainScore1] = useState(
@@ -174,48 +171,6 @@ const FFIContents = (props: Props) => {
             </TableRow>
           </TableHead>
           <TableBody>
-            {/* {contentLabel.map(
-              (content: { desc: string }, j) => {
-                return (
-                  <TableRow>
-                    <TableCell>
-                      <Typography
-                        sx={{
-                          fontSize: 14,
-                          fontWeight: '400',
-                          width: '500px',
-                        }}
-                        maxHeight={20}
-                        display="block"
-                        variant="caption"
-                        overflow="hidden"
-                        textOverflow="ellipsis"
-                        whiteSpace={'pre-line'}
-                      >
-                        {content.desc}
-                      </Typography>
-                    </TableCell>
-                    <TableCell sx={{ textAlign: 'right' }}>
-                      <StyledSlider
-                        disabled={disabled}
-                        min={0}
-                        max={10}
-                        marks={Array(11)
-                          .fill(0)
-                          .map((_, i) => {
-                            return { value: i };
-                          })}
-                        sx={{ width: '428px' }}
-                        value={painScore1 === '' ? 0 : parseInt(painScore1)}
-                        onChange={(_, value) =>
-                          setPainScore1(String(value))
-                        }
-                      />
-                    </TableCell>
-                  </TableRow>
-                );
-              }
-            )} */}
             <TableRow>
               <TableCell>
                 <Typography
@@ -1078,10 +1033,10 @@ const FFIContents = (props: Props) => {
                       return { value: i };
                     })}
                   sx={{ width: '428px' }}
-                  value={limiteScore2}
-                  defaultValue={limiteScore2}
+                  value={limiteScore3}
+                  defaultValue={limiteScore3}
                   onChange={(_, value) => {
-                    setLimiteScore2(Number(value));
+                    setLimiteScore3(Number(value));
                     setValue('ffi21', value);
                   }}
                 />
@@ -1117,10 +1072,10 @@ const FFIContents = (props: Props) => {
                       return { value: i };
                     })}
                   sx={{ width: '428px' }}
-                  value={limiteScore3}
-                  defaultValue={limiteScore3}
+                  value={limiteScore4}
+                  defaultValue={limiteScore4}
                   onChange={(_, value) => {
-                    setLimiteScore3(Number(value));
+                    setLimiteScore4(Number(value));
                     setValue('ffi22', value);
                   }}
                 />
@@ -1155,10 +1110,10 @@ const FFIContents = (props: Props) => {
                       return { value: i };
                     })}
                   sx={{ width: '428px' }}
-                  value={limiteScore4}
-                  defaultValue={limiteScore4}
+                  value={limiteScore5}
+                  defaultValue={limiteScore5}
                   onChange={(_, value) => {
-                    setLimiteScore4(Number(value));
+                    setLimiteScore5(Number(value));
                     setValue('ffi23', value);
                   }}
                 />
