@@ -2,7 +2,7 @@ import Form from 'components/Form';
 
 import { Fragment, useState } from 'react';
 import { Delete } from '@mui/icons-material';
-import { Button, Grid, IconButton } from '@mui/material';
+import { Button, Grid, IconButton, MenuItem } from '@mui/material';
 
 import { Ti18nId } from 'hooks/useI18n';
 import { IECardexImagingTest } from 'apis/survey/type';
@@ -20,9 +20,12 @@ const ImageTest = (props: Props) => {
   const { disabled, watch, setValue, onRequired, onSuccess, register } = props;
   const imageTestList: IECardexImagingTest[] = watch('imaging_test_data');
 
+  const etcSelcet = ['접수', '시행', '직접입력'];
+
   const [date, setDate] = useState('');
   const [imageTest, setImageTest] = useState('');
   const [receipt, setReceipt] = useState('');
+  const [receiptEtc, setReceiptEtc] = useState('');
   const [result, setResult] = useState('');
 
   const columns = [
@@ -41,14 +44,10 @@ const ImageTest = (props: Props) => {
     const request = {
       date,
       imaging_test: imageTest,
-      implementing_and_inspection: receipt,
+      implementing_and_inspection:
+        receipt === '직접입력' ? receiptEtc : receipt,
       result,
     };
-    // console.log(request);
-    // console.log(request);
-    // if (Object.values(request).filter(v => !v).length > 0) {
-    //   return onRequired('CLINICAL.OBSERVATION.ADD.ROW');
-    // }
 
     onSuccess('영상 검사 추가되었습니다.');
     setValue(
@@ -82,11 +81,26 @@ const ImageTest = (props: Props) => {
       />
     ),
     implementing_and_inspection: (
-      <MuiTextField
-        value={receipt}
-        required={false}
-        onChange={({ target: { value } }) => setReceipt(value)}
-      />
+      <div style={{ display: 'flex' }}>
+        <MuiTextField
+          select
+          value={receipt}
+          required={false}
+          onChange={({ target: { value } }) => setReceipt(value)}
+        >
+          {etcSelcet.map(option => {
+            return <MenuItem value={option}>{option}</MenuItem>;
+          })}
+        </MuiTextField>
+        {receipt === '직접입력' && (
+          <MuiTextField
+            required={false}
+            sx={{ marginLeft: '10px' }}
+            value={receiptEtc}
+            onChange={({ target: { value } }) => setReceiptEtc(value)}
+          />
+        )}
+      </div>
     ),
     result: (
       <MuiTextField
