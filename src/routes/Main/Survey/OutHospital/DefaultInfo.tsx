@@ -45,7 +45,7 @@ const DefaultInfo = (props: Props) => {
               i18nKey="OUT.HOSPITAL.WAY"
               i18nNullKey="ETC"
               disabled={disabled}
-              values={[1, 2, 3, 0]}
+              values={[1, 2, 3, 4, 0]}
               defaultValue={getValues('default_info.out_hospital_way.value')}
               onChange={v => setValue('default_info.out_hospital_way.value', v)}
               width="80px"
@@ -70,7 +70,7 @@ const DefaultInfo = (props: Props) => {
           />
           <Form.MuiTextField
             required={false}
-            sx={{ width: "85px" }}
+            sx={{ width: '85px' }}
             disabled={disabled}
             placeholder="직접 입력"
             {...register('default_info.guardians.input')}
