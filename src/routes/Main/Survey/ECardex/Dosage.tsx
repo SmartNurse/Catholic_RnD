@@ -11,7 +11,7 @@ import { IFormRegister, IFormValues, IFormWatch } from 'routes/Main/type';
 import MuiTable from 'components/MuiTable';
 import MuiTextField from 'components/Form/MuiTextField';
 
-import { formatStringToDate } from "utils/formatting";
+import { formatStringToDate } from 'utils/formatting';
 
 interface Props extends IFormValues, IFormWatch, IFormRegister {
   disabled?: boolean;
@@ -23,11 +23,11 @@ const Dosage = (props: Props) => {
   const { disabled, watch, setValue, onRequired, onSuccess, register } = props;
   const dosageList: IECardexDosage[] = watch('medication_data');
 
-  const [date, setDate] = useState("");
-  const [dosage, setDosage] = useState("");
-  const [method, setMethod] = useState("");
+  const [date, setDate] = useState('');
+  const [dosage, setDosage] = useState('');
+  const [method, setMethod] = useState('');
   const [time, setTime] = useState(null);
-  const [termination, setTermination] = useState("");
+  const [termination, setTermination] = useState('');
 
   const columns = [
     { fieldId: 'date', label: '일시', sx: { width: 200 } },
@@ -39,34 +39,43 @@ const Dosage = (props: Props) => {
   ];
 
   const onAddRow = () => {
-    const request = { date, medication: dosage, method, time, end: termination };
+    const request = {
+      date,
+      medication: dosage,
+      method,
+      time,
+      end: termination,
+    };
 
-    console.log(request);
-    if (Object.values(request).filter(v => !v).length > 0) {
-      return onRequired('CLINICAL.OBSERVATION.ADD.ROW');
-    }
+    // console.log(request);
+    // if (Object.values(request).filter(v => !v).length > 0) {
+    //   return onRequired('CLINICAL.OBSERVATION.ADD.ROW');
+    // }
 
     onSuccess('투약 추가되었습니다.');
-    setValue('medication_data', dosageList ? [...dosageList, request] : [request]);
-    setValue("etc.dosage.date", "");
-    setDate("");
-    setDosage("");
-    setMethod("");
+    setValue(
+      'medication_data',
+      dosageList ? [...dosageList, request] : [request]
+    );
+    setValue('etc.dosage.date', '');
+    setDate('');
+    setDosage('');
+    setMethod('');
     setTime(null);
-    setTermination("");
+    setTermination('');
   };
 
   const inputRow = {
     id: 'add-dosage',
     date: (
-        <Form.MuiTextField
-            type="date"
-            required={false}
-            disabled={disabled}
-            {...register("etc.dosage.date", {
-                onChange: (e) => setDate(e.target.value)
-            })}
-          />
+      <Form.MuiTextField
+        type="date"
+        required={false}
+        disabled={disabled}
+        {...register('etc.dosage.date', {
+          onChange: e => setDate(e.target.value),
+        })}
+      />
     ),
     medication: (
       <MuiTextField
@@ -116,25 +125,22 @@ const Dosage = (props: Props) => {
     );
   };
 
-  const displayRows = dosageList ? 
-    dosageList.map((item, i) => ({
+  const displayRows = dosageList
+    ? dosageList.map((item, i) => ({
         ...item,
         id: i,
         time: formatStringToDate(item.time, 'hh:mm a'),
         action: (
-        <IconButton
+          <IconButton
             size="small"
             onClick={() => onDeleteRow(i)}
             sx={{ display: disabled ? 'none' : 'block' }}
-        >
-          <Delete />
-        </IconButton>
+          >
+            <Delete />
+          </IconButton>
         ),
-  }))
-  :
-  []
-  ;
-
+      }))
+    : [];
   const tableRow = disabled ? displayRows : [inputRow, ...displayRows];
 
   return (

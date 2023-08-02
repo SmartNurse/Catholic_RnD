@@ -20,47 +20,59 @@ const ImageTest = (props: Props) => {
   const { disabled, watch, setValue, onRequired, onSuccess, register } = props;
   const imageTestList: IECardexImagingTest[] = watch('imaging_test_data');
 
-  const [date, setDate] = useState("");
-  const [imageTest, setImageTest] = useState("");
-  const [receipt, setReceipt] = useState("");
-  const [result, setResult] = useState("");
+  const [date, setDate] = useState('');
+  const [imageTest, setImageTest] = useState('');
+  const [receipt, setReceipt] = useState('');
+  const [result, setResult] = useState('');
 
   const columns = [
     { fieldId: 'date', label: '일시', sx: { width: 200 } },
     { fieldId: 'imaging_test', label: '영상 검사' },
-    { fieldId: 'implementing_and_inspection', label: '접수/시행', sx: { width: 200 } },
+    {
+      fieldId: 'implementing_and_inspection',
+      label: '접수/시행',
+      sx: { width: 200 },
+    },
     { fieldId: 'result', label: '결과', sx: { width: 200 } },
     { fieldId: 'action', label: '', sx: { width: 100 } },
   ];
 
   const onAddRow = () => {
-    const request = { date, imaging_test: imageTest, implementing_and_inspection: receipt, result };
-    console.log(request);
-    console.log(request);
-    if (Object.values(request).filter(v => !v).length > 0) {
-      return onRequired('CLINICAL.OBSERVATION.ADD.ROW');
-    }
+    const request = {
+      date,
+      imaging_test: imageTest,
+      implementing_and_inspection: receipt,
+      result,
+    };
+    // console.log(request);
+    // console.log(request);
+    // if (Object.values(request).filter(v => !v).length > 0) {
+    //   return onRequired('CLINICAL.OBSERVATION.ADD.ROW');
+    // }
 
     onSuccess('영상 검사 추가되었습니다.');
-    setValue('imaging_test_data', imageTestList ? [...imageTestList, request] : [request]);
-    setValue("etc.image_test.date", "");
-    setDate("");
-    setImageTest("");
-    setReceipt("");
-    setResult("");
+    setValue(
+      'imaging_test_data',
+      imageTestList ? [...imageTestList, request] : [request]
+    );
+    setValue('etc.image_test.date', '');
+    setDate('');
+    setImageTest('');
+    setReceipt('');
+    setResult('');
   };
 
   const inputRow = {
     id: 'add-image_test',
     date: (
-        <Form.MuiTextField
-            type="date"
-            required={false}
-            disabled={disabled}
-            {...register("etc.image_test.date", {
-                onChange: (e) => setDate(e.target.value)
-            })}
-          />
+      <Form.MuiTextField
+        type="date"
+        required={false}
+        disabled={disabled}
+        {...register('etc.image_test.date', {
+          onChange: e => setDate(e.target.value),
+        })}
+      />
     ),
     imaging_test: (
       <MuiTextField
@@ -97,24 +109,21 @@ const ImageTest = (props: Props) => {
     );
   };
 
-  const displayRows = imageTestList ? 
-    imageTestList.map((item, i) => ({
+  const displayRows = imageTestList
+    ? imageTestList.map((item, i) => ({
         ...item,
         id: i,
         action: (
-        <IconButton
+          <IconButton
             size="small"
             onClick={() => onDeleteRow(i)}
             sx={{ display: disabled ? 'none' : 'block' }}
-        >
+          >
             <Delete />
-        </IconButton>
+          </IconButton>
         ),
-  }))
-  :
-  []
-  ;
-
+      }))
+    : [];
   const tableRow = disabled ? displayRows : [inputRow, ...displayRows];
 
   return (

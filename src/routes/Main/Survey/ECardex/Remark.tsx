@@ -20,8 +20,8 @@ const Remark = (props: Props) => {
   const { disabled, watch, setValue, onRequired, onSuccess, register } = props;
   const remarkList: IECardexRemark[] = watch('remark_data');
 
-  const [date, setDate] = useState("");
-  const [remark, setRemark] = useState("");
+  const [date, setDate] = useState('');
+  const [remark, setRemark] = useState('');
 
   const columns = [
     { fieldId: 'date', label: '일시', sx: { width: 200 } },
@@ -32,29 +32,29 @@ const Remark = (props: Props) => {
   const onAddRow = () => {
     const request = { date, remark };
 
-    console.log(request);
-    if (Object.values(request).filter(v => !v).length > 0) {
-      return onRequired('CLINICAL.OBSERVATION.ADD.ROW');
-    }
+    // console.log(request);
+    // if (Object.values(request).filter(v => !v).length > 0) {
+    //   return onRequired('CLINICAL.OBSERVATION.ADD.ROW');
+    // }
 
     onSuccess('Remark 추가되었습니다.');
     setValue('remark_data', remarkList ? [...remarkList, request] : [request]);
-    setValue("etc.remark.date", "");
-    setDate("");
-    setRemark("");
+    setValue('etc.remark.date', '');
+    setDate('');
+    setRemark('');
   };
 
   const inputRow = {
     id: 'add-remark',
     date: (
-        <Form.MuiTextField
-            type="date"
-            required={false}
-            disabled={disabled}
-            {...register("etc.remark.date", {
-                onChange: (e) => setDate(e.target.value)
-            })}
-          />
+      <Form.MuiTextField
+        type="date"
+        required={false}
+        disabled={disabled}
+        {...register('etc.remark.date', {
+          onChange: e => setDate(e.target.value),
+        })}
+      />
     ),
     remark: (
       <MuiTextField
@@ -77,24 +77,21 @@ const Remark = (props: Props) => {
     );
   };
 
-  const displayRows = remarkList ? 
-    remarkList.map((item, i) => ({
+  const displayRows = remarkList
+    ? remarkList.map((item, i) => ({
         ...item,
         id: i,
         action: (
-        <IconButton
+          <IconButton
             size="small"
             onClick={() => onDeleteRow(i)}
             sx={{ display: disabled ? 'none' : 'block' }}
-        >
+          >
             <Delete />
-        </IconButton>
+          </IconButton>
         ),
-  }))
-  :
-  []
-  ;
-
+      }))
+    : [];
   const tableRow = disabled ? displayRows : [inputRow, ...displayRows];
 
   return (

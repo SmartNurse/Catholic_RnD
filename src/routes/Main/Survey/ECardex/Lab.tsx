@@ -20,15 +20,19 @@ const Lab = (props: Props) => {
   const { disabled, watch, setValue, onRequired, onSuccess, register } = props;
   const labList: IECardexLab[] = watch('lab_data');
 
-  const [date, setDate] = useState("");
-  const [lab, setLab] = useState("");
-  const [receipt, setReceipt] = useState("");
-  const [result, setResult] = useState("");
+  const [date, setDate] = useState('');
+  const [lab, setLab] = useState('');
+  const [receipt, setReceipt] = useState('');
+  const [result, setResult] = useState('');
 
   const columns = [
     { fieldId: 'date', label: '일시', sx: { width: 200 } },
     { fieldId: 'lab', label: 'LAB' },
-    { fieldId: 'implementing_and_inspection', label: '접수/시행', sx: { width: 200 } },
+    {
+      fieldId: 'implementing_and_inspection',
+      label: '접수/시행',
+      sx: { width: 200 },
+    },
     { fieldId: 'result', label: '결과', sx: { width: 200 } },
     { fieldId: 'action', label: '', sx: { width: 100 } },
   ];
@@ -36,31 +40,31 @@ const Lab = (props: Props) => {
   const onAddRow = () => {
     const request = { date, lab, implementing_and_inspection: receipt, result };
 
-    console.log(request);
-    if (Object.values(request).filter(v => !v).length > 0) {
-      return onRequired('CLINICAL.OBSERVATION.ADD.ROW');
-    }
+    // console.log(request);
+    // if (Object.values(request).filter(v => !v).length > 0) {
+    //   return onRequired('CLINICAL.OBSERVATION.ADD.ROW');
+    // }
 
     onSuccess('LAB 추가되었습니다.');
     setValue('lab_data', labList ? [...labList, request] : [request]);
-    setValue("etc.lab.date", "");
-    setDate("");
-    setLab("");
-    setReceipt("");
-    setResult("");
+    setValue('etc.lab.date', '');
+    setDate('');
+    setLab('');
+    setReceipt('');
+    setResult('');
   };
 
   const inputRow = {
     id: 'add-lab',
     date: (
-        <Form.MuiTextField
-            type="date"
-            required={false}
-            disabled={disabled}
-            {...register("etc.lab.date", {
-                onChange: (e) => setDate(e.target.value)
-            })}
-          />
+      <Form.MuiTextField
+        type="date"
+        required={false}
+        disabled={disabled}
+        {...register('etc.lab.date', {
+          onChange: e => setDate(e.target.value),
+        })}
+      />
     ),
     lab: (
       <MuiTextField
@@ -97,24 +101,21 @@ const Lab = (props: Props) => {
     );
   };
 
-  const displayRows = labList ? 
-    labList.map((item, i) => ({
+  const displayRows = labList
+    ? labList.map((item, i) => ({
         ...item,
         id: i,
         action: (
-        <IconButton
+          <IconButton
             size="small"
             onClick={() => onDeleteRow(i)}
             sx={{ display: disabled ? 'none' : 'block' }}
-        >
+          >
             <Delete />
-        </IconButton>
+          </IconButton>
         ),
-  }))
-  :
-  []
-  ;
-
+      }))
+    : [];
   const tableRow = disabled ? displayRows : [inputRow, ...displayRows];
 
   return (
