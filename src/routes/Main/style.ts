@@ -194,6 +194,35 @@ export const StyledTableCellWithoutLeftRight = styled(TableCell)({
   padding: '0px',
 });
 
+// CNPS 선 변경
+export const CNPSStyledTableCell = styled(TableCell)({
+  border: '1px solid lightgray',
+  borderBottom: '4px solid lightgray',
+  padding: '0px',
+});
+
+export const CNPSStyledTableCellWithoutLeft = styled(TableCell)({
+  border: '1px solid lightgray',
+  borderBottom: '4px solid lightgray',
+  borderLeft: 'none',
+  padding: '0px',
+});
+
+export const CNPSStyledTableCellWithoutRight = styled(TableCell)({
+  border: '1px solid lightgray',
+  borderBottom: '4px solid lightgray',
+  borderRight: 'none',
+  padding: '0px',
+});
+
+export const CNPSStyledTableCellWithoutLeftRight = styled(TableCell)({
+  border: '1px solid lightgray',
+  borderBottom: '4px solid lightgray',
+  borderLeft: 'none',
+  borderRight: 'none',
+  padding: '0px',
+});
+
 // GCS
 export const StyledTableCellTwo = styled(TableCell)({
   padding: '0px',

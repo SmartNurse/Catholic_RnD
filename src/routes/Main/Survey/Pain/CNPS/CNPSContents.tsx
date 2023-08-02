@@ -11,10 +11,10 @@ import {
   useTheme,
 } from '@mui/material';
 import {
-  StyledTableCell,
-  StyledTableCellWithoutLeft,
-  StyledTableCellWithoutRight,
-  StyledTableCellWithoutLeftRight,
+  CNPSStyledTableCell,
+  CNPSStyledTableCellWithoutLeft,
+  CNPSStyledTableCellWithoutRight,
+  CNPSStyledTableCellWithoutLeftRight,
 } from 'routes/Main/style';
 
 import { IFormValues, IFormWatch } from 'routes/Main/type';
@@ -107,44 +107,44 @@ const CNPSContents = (props: Props) => {
         <Table aria-label="simple table">
           <TableHead>
             <TableRow>
-              <StyledTableCell
+              <CNPSStyledTableCell
                 colSpan={2.5}
                 align="center"
                 sx={{ padding: '16px' }}
               >
                 지표
-              </StyledTableCell>
-              <StyledTableCellWithoutRight
+              </CNPSStyledTableCell>
+              <CNPSStyledTableCellWithoutRight
                 align="center"
                 sx={{ padding: '16px' }}
               >
                 점수
-              </StyledTableCellWithoutRight>
-              <StyledTableCellWithoutLeft
+              </CNPSStyledTableCellWithoutRight>
+              <CNPSStyledTableCellWithoutLeft
                 colSpan={2}
                 sx={{ padding: '16px', paddingLeft: '60px' }}
               >
                 설명
-              </StyledTableCellWithoutLeft>
+              </CNPSStyledTableCellWithoutLeft>
             </TableRow>
           </TableHead>
           <TableBody>
             {contentLabel.map(
               (content: { id: number; ko: string; desc: string[] }, i) => (
                 <TableRow>
-                  <StyledTableCell
+                  <CNPSStyledTableCell
                     align="center"
                     sx={{ padding: '16px', width: '60px' }}
                   >
                     {content.id}
-                  </StyledTableCell>
-                  <StyledTableCell
+                  </CNPSStyledTableCell>
+                  <CNPSStyledTableCell
                     align="center"
                     sx={{ padding: '16px', width: '180px' }}
                   >
                     {content.ko}
-                  </StyledTableCell>
-                  <StyledTableCellWithoutRight>
+                  </CNPSStyledTableCell>
+                  <CNPSStyledTableCellWithoutRight>
                     {content.desc.map((_, i) => (
                       <TableRow
                         sx={{
@@ -161,8 +161,8 @@ const CNPSContents = (props: Props) => {
                         </Box>
                       </TableRow>
                     ))}
-                  </StyledTableCellWithoutRight>
-                  <StyledTableCellWithoutLeftRight>
+                  </CNPSStyledTableCellWithoutRight>
+                  <CNPSStyledTableCellWithoutLeftRight>
                     {content.desc.map((v, i) => (
                       <TableRow
                         sx={{
@@ -179,8 +179,8 @@ const CNPSContents = (props: Props) => {
                         </Box>
                       </TableRow>
                     ))}
-                  </StyledTableCellWithoutLeftRight>
-                  <StyledTableCellWithoutLeft>
+                  </CNPSStyledTableCellWithoutLeftRight>
+                  <CNPSStyledTableCellWithoutLeft>
                     <RadioGroup
                       name={radioId[content.id - 1]}
                       defaultValue={Number(getValues(radioId[content.id - 1]))}
@@ -208,7 +208,7 @@ const CNPSContents = (props: Props) => {
                         </TableRow>
                       ))}
                     </RadioGroup>
-                  </StyledTableCellWithoutLeft>
+                  </CNPSStyledTableCellWithoutLeft>
                 </TableRow>
               )
             )}
