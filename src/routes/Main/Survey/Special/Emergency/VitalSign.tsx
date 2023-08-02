@@ -247,7 +247,7 @@ const VitalSign = (props: Props) => {
       </>
     ),
     note: (
-      <div style={{ width: '300px', display: 'flex' }}>
+      <div style={{ display: 'flex' }}>
         <MuiTextField
           select
           value={etc}
@@ -260,6 +260,7 @@ const VitalSign = (props: Props) => {
         </MuiTextField>
         {etc === '직접입력' && (
           <MuiTextField
+            required={false}
             sx={{ marginLeft: '10px' }}
             value={labelEtc}
             onChange={({ target: { value } }) => setLabelEtc(value)}
