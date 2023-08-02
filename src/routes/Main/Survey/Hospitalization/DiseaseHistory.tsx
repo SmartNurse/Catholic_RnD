@@ -1,4 +1,4 @@
-import { Fragment } from 'react';
+import { Fragment, useState } from 'react';
 import { Stack } from '@mui/material';
 
 import Form from 'components/Form';
@@ -15,6 +15,10 @@ interface Props extends IFormRegister, IFormValues {
 const DiseaseHistory = (props: Props) => {
   const { disabled, register, getValues, setValue } = props;
 
+  const [history, setHistory] = useState(
+    getValues('disease_history.history.value')
+  );
+
   return (
     <Fragment>
       <SectionTitle title="병력" />
@@ -27,7 +31,10 @@ const DiseaseHistory = (props: Props) => {
               values={[1, 2]}
               disabled={disabled}
               defaultValue={getValues('disease_history.history.value')}
-              onChange={v => setValue('disease_history.history.value', v)}
+              onChange={v => {
+                setValue('disease_history.history.value', v);
+                setHistory(v);
+              }}
             />
             <Form.MuiTextField
               type="date"
@@ -41,11 +48,13 @@ const DiseaseHistory = (props: Props) => {
           <Stack direction="row" spacing={1}>
             <Form.MuiCheckboxGroup
               i18nNullKey="ETC"
-              disabled={disabled}
+              disabled={history === '1' ? true : false}
               i18nKey="HOSPITALIZATION.DISEASE.HISTORY"
               values={[1, 2, 3, 4, 5, 0]}
               defaultValue={getValues('disease_history.history.checked')}
-              onChange={v => setValue('disease_history.history.checked', v)}
+              onChange={v => {
+                setValue('disease_history.history.checked', v);
+              }}
             />
             <Form.MuiTextField
               required={false}

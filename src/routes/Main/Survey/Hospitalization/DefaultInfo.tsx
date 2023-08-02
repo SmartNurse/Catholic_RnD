@@ -74,42 +74,13 @@ const DefaultInfo = (props: Props) => {
           />
         </RowContent>
         <RowContent title="발병일자">
-          <Controller
-            name={'default_info.date'}
-            control={control}
-            render={({
-              field: { onChange, onBlur, value, name, ref },
-              fieldState: { invalid, isTouched, isDirty, error },
-            }) => {
-              console.log('filedState is ', invalid, isTouched, isDirty, error);
-              return (
-                <DatePicker
-                  label="날짜를 선택해주세요"
-                  renderInput={props => (
-                    <Form.MuiTextField
-                      type="date"
-                      disabled={disabled}
-                      fullWidth={false}
-                      required={false}
-                      InputLabelProps={{ shrink: true }}
-                      {...props}
-                    />
-                  )}
-                  onChange={date => onChange(date)}
-                  value={value}
-                />
-              );
-            }}
-          />
-          {/* <Form.MuiTextField
+          <Form.MuiTextField
             type="date"
             disabled={disabled}
             fullWidth={false}
             required={false}
-            label='Please enter a date'
-            InputLabelProps={{ shrink: true }}
             {...register('default_info.date')}
-          /> */}
+          />
         </RowContent>
       </RowContainer>
 
