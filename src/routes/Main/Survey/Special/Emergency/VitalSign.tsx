@@ -250,7 +250,7 @@ const VitalSign = (props: Props) => {
       vitalSignList.filter((_, i) => i !== index)
     );
   };
-  console.log('왜 오류야 시발', vitalSignList);
+
   const displayRows = vitalSignList
     ? vitalSignList
         .slice()
