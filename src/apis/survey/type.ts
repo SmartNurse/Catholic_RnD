@@ -610,15 +610,7 @@ export interface IUpdateEmergency extends IGetSurvey {
       blood_clot_amount: string;
       output_etc: string;
     };
-    patient_status_list_record: {
-      checkTime: string;
-      sbp: string;
-      dbp: string;
-      pr: string;
-      rr: string;
-      bt: string;
-      note: string;
-    };
+    patient_status_list_record: IEmergencyVitalsignRecord[];
     emergency_care_result: {
       result: object;
       status: object;

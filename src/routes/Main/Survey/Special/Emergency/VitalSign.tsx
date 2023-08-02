@@ -93,9 +93,19 @@ const VitalSign = (props: Props) => {
     }
 
     onSuccess('Vital Sign 추가되었습니다.');
+
+    const newRecord = vitalSignList
+      ? [...vitalSignList, { ...request, etc }]
+      : [request];
     setValue(
       'patient_status_list_record',
-      vitalSignList ? [...vitalSignList, { ...request, etc }] : [request]
+      newRecord
+        .slice()
+        .sort((a, b) =>
+          a.checkTime && b.checkTime
+            ? Number(new Date(a.checkTime)) - Number(new Date(b.checkTime))
+            : 0
+        )
     );
     setCheckTime(null);
     setSbp('');
@@ -251,69 +261,63 @@ const VitalSign = (props: Props) => {
     );
   };
 
+  console.log('오류바이탈', vitalSignList);
+
   const displayRows = vitalSignList
-    ? vitalSignList
-        .slice()
-        .sort(
-          (a, b) =>
-            Number(new Date(a.checkTime)) - Number(new Date(b.checkTime))
-        )
-        .map((item, i) => ({
-          ...item,
-          id: i,
-          checkTime: formatStringToDate(item.checkTime, 'hh:mm a'),
-          action: (
-            <IconButton
-              size="small"
-              onClick={() => onDeleteRow(i)}
-              sx={{ display: disabled ? 'none' : 'block' }}
-            >
-              <Delete />
-            </IconButton>
-          ),
-        }))
+    ? vitalSignList.map((item, i) => ({
+        ...item,
+        id: i,
+        checkTime: formatStringToDate(item.checkTime, 'hh:mm a'),
+        action: (
+          <IconButton
+            size="small"
+            onClick={() => onDeleteRow(i)}
+            sx={{ display: disabled ? 'none' : 'block' }}
+          >
+            <Delete />
+          </IconButton>
+        ),
+      }))
     : [];
 
   const tableRow = disabled ? displayRows : [inputRow, ...displayRows];
 
   useEffect(() => {
-    const sortedVitalSignList = vitalSignList
-      ? vitalSignList
-          .slice()
-          .sort(
-            (a, b) =>
-              Number(new Date(a.checkTime)) - Number(new Date(b.checkTime))
-          )
-      : [];
+    const sortedVitalSignList = vitalSignList ? [...vitalSignList] : [];
 
     if (sortedVitalSignList.length) {
       const btData = sortedVitalSignList.map(v => {
         return {
           timestamp: formatStringToDate(v.checkTime, 'hh:mm:a'),
+          note: v.note,
           temp: v.bt,
         };
       });
       const prData = sortedVitalSignList.map(v => {
         return {
           timestamp: formatStringToDate(v.checkTime, 'hh:mm:a'),
+          note: v.note,
           value: v.pr,
         };
       });
       const rrData = sortedVitalSignList.map(v => {
         return {
           timestamp: formatStringToDate(v.checkTime, 'hh:mm:a'),
+          note: v.note,
           value: v.rr,
         };
       });
       const sbpData = sortedVitalSignList.map(v => {
         return {
           timestamp: formatStringToDate(v.checkTime, 'hh:mm:a'),
+          note: v.note,
           value: v.sbp,
         };
       });
       const dbpData = sortedVitalSignList.map(v => {
         return {
           timestamp: formatStringToDate(v.checkTime, 'hh:mm:a'),
+          note: v.note,
           value: v.dbp,
         };
       });

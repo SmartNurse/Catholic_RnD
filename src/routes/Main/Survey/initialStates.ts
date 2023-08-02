@@ -658,15 +658,7 @@ export const initialEmergency = {
     blood_clot_amount: '',
     output_etc: '',
   },
-  patient_status_list_record: {
-    checkTime: '',
-    sbp: '',
-    dbp: '',
-    pr: '',
-    rr: '',
-    bt: '',
-    note: '',
-  },
+  patient_status_list_record: [],
   emergency_care_result: {
     result: { value: 1, input: '' },
     status: {
