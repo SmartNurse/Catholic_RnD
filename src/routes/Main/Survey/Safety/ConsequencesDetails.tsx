@@ -5,6 +5,8 @@ import RowContainer from '../components/RowContainer';
 import RowContent from '../components/RowContent';
 import SectionTitle from '../components/SectionTitle';
 
+import FirstRadio from './components/FirstRadio';
+
 interface Props extends IFormValues, IFormRegister {
   disabled?: boolean;
 }
@@ -35,7 +37,7 @@ const ConsequencesDetails = (props: Props) => {
           />
         </RowContent>
         <RowContent title="발생 장소" titleRatio={1} childrenRatio={11}>
-          <Form.MuiRadioGroup
+          <FirstRadio
             i18nKey="SAFETY.DISCOVERY.PLACE"
             values={[1, 2, 3, 4, 5, 0]}
             disabled={disabled}
@@ -57,7 +59,7 @@ const ConsequencesDetails = (props: Props) => {
           />
         </RowContent>
         <RowContent title="사고 유형" titleRatio={1} childrenRatio={11}>
-          <Form.MuiRadioGroup
+          <FirstRadio
             i18nKey="SAFETY.ACCIDENT.TYPE"
             values={[1, 2, 3]}
             disabled={disabled}
@@ -71,7 +73,7 @@ const ConsequencesDetails = (props: Props) => {
           />
         </RowContent>
         <RowContent title="사고 분류" titleRatio={1} childrenRatio={11}>
-          <Form.MuiRadioGroup
+          <FirstRadio
             i18nKey="SAFETY.ACCIDENT.CLASSIFICATION"
             values={[1, 2, 3, 4, 5, 6, 7, 8, 0]}
             disabled={disabled}

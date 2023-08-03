@@ -5,6 +5,10 @@ import RowContainer from '../components/RowContainer';
 import RowContent from '../components/RowContent';
 import SectionTitle from '../components/SectionTitle';
 
+import TwoRadio from './components/TwoRadio';
+import FallingCheckbox from './components/FallingCheckbox';
+import FallingRowContent from './components/FallingRowContent';
+
 interface Props extends IFormValues, IFormRegister, IFormWatch {
   disabled?: boolean;
 }
@@ -17,7 +21,7 @@ const FallingType = (props: Props) => {
       <SectionTitle title="오류 유형 - 낙상" />
       <RowContainer xs={12}>
         <RowContent title="의식상태" titleRatio={1} childrenRatio={11}>
-          <Form.MuiRadioGroup
+          <TwoRadio
             i18nKey="SAFETY.TYPE.CONSCIOUSNESS.LEVEL"
             values={[1, 2, 3, 4, 5]}
             disabled={disabled}
@@ -27,7 +31,7 @@ const FallingType = (props: Props) => {
           />
         </RowContent>
         <RowContent title="활동상태" titleRatio={1} childrenRatio={11}>
-          <Form.MuiRadioGroup
+          <TwoRadio
             i18nKey="SAFETY.TYPE.ACTIVITY.STATUS"
             values={[1, 2, 3, 4, 5]}
             disabled={disabled}
@@ -37,7 +41,7 @@ const FallingType = (props: Props) => {
           />
         </RowContent>
         <RowContent title="보조기구 사용" titleRatio={1} childrenRatio={11}>
-          <Form.MuiRadioGroup
+          <TwoRadio
             i18nKey="SAFETY.TYPE.ASSISTING.DEVICES"
             values={[1, 2, 0]}
             disabled={disabled}
@@ -47,7 +51,7 @@ const FallingType = (props: Props) => {
           />
         </RowContent>
         <RowContent title="낙상장소" titleRatio={1} childrenRatio={11}>
-          <Form.MuiRadioGroup
+          <TwoRadio
             i18nKey="SAFETY.TYPE.PLACE.FALLING.ACCIDENT"
             values={[1, 2, 3, 4, 5, 0]}
             disabled={disabled}
@@ -65,18 +69,29 @@ const FallingType = (props: Props) => {
           />
         </RowContent>
         <RowContent title="환자 위험요인" titleRatio={1} childrenRatio={11}>
-          <Form.MuiCheckboxGroup
+          <FallingCheckbox
             i18nNullKey="ETC"
             disabled={disabled}
             i18nKey="SAFETY.PATIENT.RISK.FACTORS"
-            values={[1, 2, 3, 4, 5, 6, 7, 8, 9, 10]}
+            values={[1, 2, 3, 4, 5]}
             defaultValue={getValues('falling_type.patient_risk_factors')}
             onChange={v => setValue('falling_type.patient_risk_factors', v)}
           />
         </RowContent>
-        <RowContent
-          title="낙상위험도 평가도구 점수"
-          titleRatio={1.2}
+        <RowContent title="" titleRatio={1} childrenRatio={11}>
+          <FallingCheckbox
+            i18nNullKey="ETC"
+            disabled={disabled}
+            i18nKey="SAFETY.PATIENT.RISK.FACTORS"
+            values={[6, 7, 8, 9, 10]}
+            defaultValue={getValues('falling_type.patient_risk_factors')}
+            onChange={v => setValue('falling_type.patient_risk_factors', v)}
+          />
+        </RowContent>
+        <FallingRowContent
+          title="낙상위험도
+평가도구 점수"
+          titleRatio={1}
           childrenRatio={2.4}
         >
           <Form.MuiTextField
@@ -88,7 +103,7 @@ const FallingType = (props: Props) => {
               endAdornment: '점',
             }}
           />
-        </RowContent>
+        </FallingRowContent>
         <RowContent title="평가 날짜" titleRatio={1} childrenRatio={7}>
           <Form.MuiTextField
             fullWidth={false}
@@ -99,7 +114,7 @@ const FallingType = (props: Props) => {
           />
         </RowContent>
         <RowContent title="낙상 유형" titleRatio={1} childrenRatio={11}>
-          <Form.MuiRadioGroup
+          <TwoRadio
             i18nKey="SAFETY.TYPE.FALL.TYPE"
             values={[1, 2, 3, 4]}
             disabled={disabled}
@@ -109,7 +124,7 @@ const FallingType = (props: Props) => {
           />
         </RowContent>
         <RowContent title="낙상 위험요인" titleRatio={1} childrenRatio={11}>
-          <Form.MuiRadioGroup
+          <TwoRadio
             i18nKey="SAFETY.TYPE.RISK.FACTOR"
             values={[1, 2, 3, 4, 5, 0]}
             disabled={disabled}
