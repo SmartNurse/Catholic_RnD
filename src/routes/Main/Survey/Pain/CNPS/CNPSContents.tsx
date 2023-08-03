@@ -11,6 +11,8 @@ import {
   useTheme,
 } from '@mui/material';
 import {
+  CNPSThreeStyledTableCell,
+  CNPSFourStyledTableCell,
   CNPSStyledTableCell,
   CNPSStyledTableCellWithoutLeft,
   CNPSStyledTableCellWithoutRight,
@@ -130,87 +132,265 @@ const CNPSContents = (props: Props) => {
           </TableHead>
           <TableBody>
             {contentLabel.map(
-              (content: { id: number; ko: string; desc: string[] }, i) => (
-                <TableRow>
-                  <CNPSStyledTableCell
-                    align="center"
-                    sx={{ padding: '16px', width: '60px' }}
-                  >
-                    {content.id}
-                  </CNPSStyledTableCell>
-                  <CNPSStyledTableCell
-                    align="center"
-                    sx={{ padding: '16px', width: '180px' }}
-                  >
-                    {content.ko}
-                  </CNPSStyledTableCell>
-                  <CNPSStyledTableCellWithoutRight>
-                    {content.desc.map((_, i) => (
-                      <TableRow
+              (content: { id: number; ko: string; desc: string[] }, i) => {
+                if (content.id === 3) {
+                  return (
+                    <TableRow>
+                      <CNPSThreeStyledTableCell
+                        align="center"
                         sx={{
-                          height: '44px',
-                          lineHeight: '44px',
-                          borderBottom:
-                            i !== content.desc.length - 1
-                              ? '1px solid lightgray'
-                              : '',
+                          width: '60px',
+                          paddingTop: '160px',
                         }}
                       >
-                        <Box sx={{ minWidth: '130px', textAlign: 'center' }}>
-                          {i}점
-                        </Box>
-                      </TableRow>
-                    ))}
-                  </CNPSStyledTableCellWithoutRight>
-                  <CNPSStyledTableCellWithoutLeftRight>
-                    {content.desc.map((v, i) => (
-                      <TableRow
-                        sx={{
-                          height: '44px',
-                          lineHeight: '44px',
-                          borderBottom:
-                            i !== content.desc.length - 1
-                              ? '1px solid lightgray'
-                              : '',
-                        }}
+                        {content.id}
+                      </CNPSThreeStyledTableCell>
+                      <CNPSStyledTableCell
+                        align="center"
+                        sx={{ padding: '16px', width: '180px' }}
                       >
-                        <Box sx={{ paddingLeft: '60px', minWidth: '650px' }}>
-                          {v}
-                        </Box>
-                      </TableRow>
-                    ))}
-                  </CNPSStyledTableCellWithoutLeftRight>
-                  <CNPSStyledTableCellWithoutLeft>
-                    <RadioGroup
-                      name={radioId[content.id - 1]}
-                      defaultValue={Number(getValues(radioId[content.id - 1]))}
-                    >
-                      {content.desc.map((_, i) => (
-                        <TableRow
-                          sx={{
-                            height: '44px',
-                            lineHeight: '44px',
-                            textAlign: 'center',
-                            borderBottom:
-                              i !== content.desc.length - 1
-                                ? '1px solid lightgray'
-                                : '',
-                          }}
+                        {content.ko}
+                      </CNPSStyledTableCell>
+                      <CNPSStyledTableCellWithoutRight>
+                        {content.desc.map((_, i) => (
+                          <TableRow
+                            sx={{
+                              lineHeight: '44px',
+                              borderBottom:
+                                i !== content.desc.length - 1
+                                  ? '1px solid lightgray'
+                                  : '',
+                            }}
+                          >
+                            <Box
+                              sx={{ minWidth: '130px', textAlign: 'center' }}
+                            >
+                              {i}점
+                            </Box>
+                          </TableRow>
+                        ))}
+                      </CNPSStyledTableCellWithoutRight>
+                      <CNPSStyledTableCellWithoutLeftRight>
+                        {content.desc.map((v, i) => (
+                          <TableRow
+                            sx={{
+                              lineHeight: '44px',
+                              borderBottom:
+                                i !== content.desc.length - 1
+                                  ? '1px solid lightgray'
+                                  : '',
+                            }}
+                          >
+                            <Box
+                              sx={{ paddingLeft: '60px', minWidth: '650px' }}
+                            >
+                              {v}
+                            </Box>
+                          </TableRow>
+                        ))}
+                      </CNPSStyledTableCellWithoutLeftRight>
+                      <CNPSStyledTableCellWithoutLeft>
+                        <RadioGroup
+                          name={radioId[content.id - 1]}
+                          defaultValue={Number(
+                            getValues(radioId[content.id - 1])
+                          )}
                         >
-                          <Box sx={{ width: '180px' }}>
-                            <Radio
-                              disabled={disabled}
-                              name={radioId[content.id - 1]}
-                              value={i}
-                              onChange={handleChange}
-                            />
-                          </Box>
-                        </TableRow>
-                      ))}
-                    </RadioGroup>
-                  </CNPSStyledTableCellWithoutLeft>
-                </TableRow>
-              )
+                          {content.desc.map((_, i) => (
+                            <TableRow
+                              sx={{
+                                lineHeight: '43.8px',
+                                textAlign: 'center',
+                                borderBottom:
+                                  i !== content.desc.length - 1
+                                    ? '1px solid lightgray'
+                                    : '',
+                              }}
+                            >
+                              <Box sx={{ width: '180px' }}>
+                                <Radio
+                                  disabled={disabled}
+                                  name={radioId[content.id - 1]}
+                                  value={i}
+                                  onChange={handleChange}
+                                />
+                              </Box>
+                            </TableRow>
+                          ))}
+                        </RadioGroup>
+                      </CNPSStyledTableCellWithoutLeft>
+                    </TableRow>
+                  );
+                } else if (content.id === 4) {
+                  return (
+                    <TableRow>
+                      <CNPSFourStyledTableCell
+                        align="center"
+                        sx={{ padding: '16px', width: '60px' }}
+                      ></CNPSFourStyledTableCell>
+                      <CNPSStyledTableCell
+                        align="center"
+                        sx={{ padding: '16px', width: '180px' }}
+                      >
+                        {content.ko}
+                      </CNPSStyledTableCell>
+                      <CNPSStyledTableCellWithoutRight>
+                        {content.desc.map((_, i) => (
+                          <TableRow
+                            sx={{
+                              lineHeight: '44px',
+                              borderBottom:
+                                i !== content.desc.length - 1
+                                  ? '1px solid lightgray'
+                                  : '',
+                            }}
+                          >
+                            <Box
+                              sx={{ minWidth: '130px', textAlign: 'center' }}
+                            >
+                              {i}점
+                            </Box>
+                          </TableRow>
+                        ))}
+                      </CNPSStyledTableCellWithoutRight>
+                      <CNPSStyledTableCellWithoutLeftRight>
+                        {content.desc.map((v, i) => (
+                          <TableRow
+                            sx={{
+                              lineHeight: '44px',
+                              borderBottom:
+                                i !== content.desc.length - 1
+                                  ? '1px solid lightgray'
+                                  : '',
+                            }}
+                          >
+                            <Box
+                              sx={{ paddingLeft: '60px', minWidth: '650px' }}
+                            >
+                              {v}
+                            </Box>
+                          </TableRow>
+                        ))}
+                      </CNPSStyledTableCellWithoutLeftRight>
+                      <CNPSStyledTableCellWithoutLeft>
+                        <RadioGroup
+                          name={radioId[content.id - 1]}
+                          defaultValue={Number(
+                            getValues(radioId[content.id - 1])
+                          )}
+                        >
+                          {content.desc.map((_, i) => (
+                            <TableRow
+                              sx={{
+                                lineHeight: '43.8px',
+                                textAlign: 'center',
+                                borderBottom:
+                                  i !== content.desc.length - 1
+                                    ? '1px solid lightgray'
+                                    : '',
+                              }}
+                            >
+                              <Box sx={{ width: '180px' }}>
+                                <Radio
+                                  disabled={disabled}
+                                  name={radioId[content.id - 1]}
+                                  value={i}
+                                  onChange={handleChange}
+                                />
+                              </Box>
+                            </TableRow>
+                          ))}
+                        </RadioGroup>
+                      </CNPSStyledTableCellWithoutLeft>
+                    </TableRow>
+                  );
+                } else {
+                  return (
+                    <TableRow>
+                      <CNPSStyledTableCell
+                        align="center"
+                        sx={{ padding: '16px', width: '60px' }}
+                      >
+                        {content.id}
+                      </CNPSStyledTableCell>
+                      <CNPSStyledTableCell
+                        align="center"
+                        sx={{ padding: '16px', width: '180px' }}
+                      >
+                        {content.ko}
+                      </CNPSStyledTableCell>
+                      <CNPSStyledTableCellWithoutRight>
+                        {content.desc.map((_, i) => (
+                          <TableRow
+                            sx={{
+                              lineHeight: '44px',
+                              borderBottom:
+                                i !== content.desc.length - 1
+                                  ? '1px solid lightgray'
+                                  : '',
+                            }}
+                          >
+                            <Box
+                              sx={{ minWidth: '130px', textAlign: 'center' }}
+                            >
+                              {i}점
+                            </Box>
+                          </TableRow>
+                        ))}
+                      </CNPSStyledTableCellWithoutRight>
+                      <CNPSStyledTableCellWithoutLeftRight>
+                        {content.desc.map((v, i) => (
+                          <TableRow
+                            sx={{
+                              lineHeight: '44px',
+                              borderBottom:
+                                i !== content.desc.length - 1
+                                  ? '1px solid lightgray'
+                                  : '',
+                            }}
+                          >
+                            <Box
+                              sx={{ paddingLeft: '60px', minWidth: '650px' }}
+                            >
+                              {v}
+                            </Box>
+                          </TableRow>
+                        ))}
+                      </CNPSStyledTableCellWithoutLeftRight>
+                      <CNPSStyledTableCellWithoutLeft>
+                        <RadioGroup
+                          name={radioId[content.id - 1]}
+                          defaultValue={Number(
+                            getValues(radioId[content.id - 1])
+                          )}
+                        >
+                          {content.desc.map((_, i) => (
+                            <TableRow
+                              sx={{
+                                lineHeight: '43.8px',
+                                textAlign: 'center',
+                                borderBottom:
+                                  i !== content.desc.length - 1
+                                    ? '1px solid lightgray'
+                                    : '',
+                              }}
+                            >
+                              <Box sx={{ width: '180px' }}>
+                                <Radio
+                                  disabled={disabled}
+                                  name={radioId[content.id - 1]}
+                                  value={i}
+                                  onChange={handleChange}
+                                />
+                              </Box>
+                            </TableRow>
+                          ))}
+                        </RadioGroup>
+                      </CNPSStyledTableCellWithoutLeft>
+                    </TableRow>
+                  );
+                }
+              }
             )}
           </TableBody>
         </Table>

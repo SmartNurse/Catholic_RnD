@@ -195,6 +195,20 @@ export const StyledTableCellWithoutLeftRight = styled(TableCell)({
 });
 
 // CNPS 선 변경
+export const CNPSThreeStyledTableCell = styled(TableCell)({
+  border: '1px solid lightgray',
+  // borderBottom: '4px solid lightgray',
+  borderBottom: 'none',
+  padding: '0px',
+});
+
+export const CNPSFourStyledTableCell = styled(TableCell)({
+  border: '1px solid lightgray',
+  borderBottom: '4px solid lightgray',
+  borderTop: 'none',
+  padding: '0px',
+});
+
 export const CNPSStyledTableCell = styled(TableCell)({
   border: '1px solid lightgray',
   borderBottom: '4px solid lightgray',
