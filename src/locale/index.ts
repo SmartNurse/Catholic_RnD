@@ -255,35 +255,35 @@ const locale = {
     'REQUIRED.NEEDS.BODY.STATUS': '신체상태 항목을 모두 선택해주세요',
 
     // fall
-    'FALL.0': '없음 (0점)',
+    'FALL.1': '없음 (0점)',
     'FALL.15': '있음 (15점)',
     'FALL.25': '있음 (25점)',
     'FALL.20': '있음 (20점)',
-    'FALL.WALKING.AIDS.0': '없음/침상안정/간호보조 (0점)',
+    'FALL.WALKING.AIDS.1': '없음/침상안정/간호보조 (0점)',
     'FALL.WALKING.AIDS.15': '목발/지팡이/보행기 (15점)',
     'FALL.WALKING.AIDS.30': '기구를 잡고 이동 (30점)',
-    'FALL.GAIT.0': '정상/침상안정/부동 (0점)',
+    'FALL.GAIT.1': '정상/침상안정/부동 (0점)',
     'FALL.GAIT.10': '허약 (10점)',
     'FALL.GAIT.20': '장애 (20점)',
-    'FALL.CONSCIOUSNESS.0': '자신의 기능수준을 인지함 (0점)',
+    'FALL.CONSCIOUSNESS.1': '자신의 기능수준을 인지함 (0점)',
     'FALL.CONSCIOUSNESS.15': '자신의 기능수준을 인지하지 못함 (15점)',
     'REQUIRED.FALL': '평가항목을 모두 선택해주세요',
 
     // fall II
-    'FALLTWO.0': '없음 (0점)',
+    'FALLTWO.1': '없음 (0점)',
     'FALLTWO.15': '있음 (15점)',
     'FALLTWO.25': '있음 (25점)',
     'FALLTWO.20': '있음 (20점)',
-    'FALLTWO.WALKING.AIDS.0':
+    'FALLTWO.WALKING.AIDS.1':
       '보조기 사용하지 않음/침상안정/ \n휠체어/사람이 도와줌 (0점)',
     'FALLTWO.WALKING.AIDS.15': '목발/지팡이/보행기 (15점)',
     'FALLTWO.WALKING.AIDS.30':
       '보조기 이외에 주변 기물/기구를 잡고 보행 (30점)',
-    'FALLTWO.GAIT.0': '정상보행(0점) \n (시선, 균형, 보폭 유지/침상안정/부동)',
+    'FALLTWO.GAIT.1': '정상보행(0점) \n (시선, 균형, 보폭 유지/침상안정/부동)',
     'FALLTWO.GAIT.10': '균형 및 시선 유지되지만, 기력이 저하됨 (10점)',
     'FALLTWO.GAIT.20':
       '장애가 있음 (20점) \n (사람이나 기구의 도움 없이는 걸을 수 없는 사람/\n시선 및 균형 유지불가능/의족 착용/파킨슨 보행)',
-    'FALLTWO.CONSCIOUSNESS.0':
+    'FALLTWO.CONSCIOUSNESS.1':
       '의식 명료하며 자신의 기능 수준에 대해 \n 잘 알고 있음 (0점)',
     'FALLTWO.CONSCIOUSNESS.15':
       '의식 명료하지 않거나 자신의 기능 수준을 \n 과대평가하거나 잊어버림 (15점)',

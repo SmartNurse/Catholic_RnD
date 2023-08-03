@@ -28,7 +28,7 @@ const FallTwoContents = (props: Props) => {
       title: '과거 낙상 경험(3개월 이내)',
       ...radioGroup({
         key: 'contents.experience',
-        options: [0, 25],
+        options: [1, 25],
         i18nKey: 'FALLTWO',
       }),
     },
@@ -37,7 +37,7 @@ const FallTwoContents = (props: Props) => {
       title: '이차적인 진단',
       ...radioGroup({
         key: 'contents.diagnosis',
-        options: [0, 15],
+        options: [1, 15],
         i18nKey: 'FALLTWO',
       }),
     },
@@ -46,7 +46,7 @@ const FallTwoContents = (props: Props) => {
       title: '보행보조(보조 기구)',
       ...radioGroup({
         key: 'contents.walkingAids',
-        options: [0, 15, 30],
+        options: [1, 15, 30],
         i18nKey: 'FALLTWO.WALKING.AIDS',
       }),
     },
@@ -55,7 +55,7 @@ const FallTwoContents = (props: Props) => {
       title: '정맥주사요법 / 헤파린록',
       ...radioGroup({
         key: 'contents.intravenousLine',
-        options: [0, 20],
+        options: [1, 20],
         i18nKey: 'FALLTWO',
       }),
     },
@@ -64,7 +64,7 @@ const FallTwoContents = (props: Props) => {
       title: '걸음걸이(보행/이동)',
       ...radioGroup({
         key: 'contents.gait',
-        options: [0, 10, 20],
+        options: [1, 10, 20],
         i18nKey: 'FALLTWO.GAIT',
       }),
     },
@@ -73,14 +73,21 @@ const FallTwoContents = (props: Props) => {
       title: '의식상태(정신이상 및 이행동)',
       ...radioGroup({
         key: 'contents.consciousness',
-        options: [0, 15],
+        options: [1, 15],
         i18nKey: 'FALLTWO.CONSCIOUSNESS',
       }),
     },
   ];
 
   const watchSumValues = () => {
-    const values = rows.map(({ id }) => Number(props.watch(`contents.${id}`)));
+    const values = rows.map(({ id }) => {
+      if (Number(props.watch(`contents.${id}`)) === 1) {
+        return Number(0);
+      } else {
+        return Number(props.watch(`contents.${id}`));
+      }
+    });
+
     return sumValues(values);
   };
 

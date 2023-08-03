@@ -1,11 +1,14 @@
 import { Grid, Typography } from '@mui/material';
 import { useForm } from 'react-hook-form';
 
-import { updateFall } from 'apis/survey';
+import { updateFallTwo } from 'apis/survey';
 import useSurvey from 'store/survey/useSurvey';
 import useNotification from 'hooks/useNotification';
 import MuiDialog from 'components/MuiDialog';
-import { TFallTwoDefaultValues, SurveyDialogProps } from 'routes/Main/Survey/type';
+import {
+  TFallTwoDefaultValues,
+  SurveyDialogProps,
+} from 'routes/Main/Survey/type';
 
 import CommonPatientInfo from '../components/CommonPatientInfo';
 import FallTwoContents from './FallTwoContents';
@@ -43,7 +46,7 @@ const FallTwo = (props: SurveyDialogProps<TFallTwoDefaultValues>) => {
       contents: JSON.stringify(contents),
     };
 
-    updateFall(request)
+    updateFallTwo(request)
       .then(({ data: { rc } }) => {
         if (rc !== 1) return onResultCode(rc);
         onUpdateIsSave(true);
@@ -75,7 +78,14 @@ const FallTwo = (props: SurveyDialogProps<TFallTwoDefaultValues>) => {
         columnSpacing={3}
         sx={{ py: 5, px: 1 }}
       >
-        <Typography sx={{ margin: "40px auto 0px auto", fontWeight: "700", fontSize: "16px", textAlign: "center" }}>
+        <Typography
+          sx={{
+            margin: '40px auto 0px auto',
+            fontWeight: '700',
+            fontSize: '16px',
+            textAlign: 'center',
+          }}
+        >
           낙상위험 평가도구 II
         </Typography>
         <CommonPatientInfo patientInfo={patientInfo} nurseName={nurseName} />

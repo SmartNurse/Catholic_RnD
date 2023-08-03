@@ -152,6 +152,17 @@ export const updateBedScore = (request: IUpdateBedScore) => {
   return apiGateway.post(url, camelcaseKeys(request));
 };
 
+// 욕창위험도평가도구
+export const getBedScoreTwo = (request: IGetSurvey) => {
+  const url = `/survey/bedsore2?${formatToRequestParameter(request)}`;
+  return apiGateway.get(url);
+};
+
+export const updateBedScoreTwo = (request: IUpdateBedScore) => {
+  const url = `/survey/bedsore2`;
+  return apiGateway.post(url, camelcaseKeys(request));
+};
+
 // 욕구평가기록지
 export const getNeeds = (request: IGetSurvey) => {
   const url = `/survey/needs?${formatToRequestParameter(request)}`;
@@ -176,12 +187,12 @@ export const updateFall = (request: IUpdateFall) => {
 
 // 낙상위험 평가도구 II
 export const getFallTwo = (request: IGetSurvey) => {
-  const url = `/survey/fall?${formatToRequestParameter(request)}`;
+  const url = `/survey/fall2?${formatToRequestParameter(request)}`;
   return apiGateway.get(url);
 };
 
 export const updateFallTwo = (request: IUpdateFallTwo) => {
-  const url = `/survey/fall`;
+  const url = `/survey/fall2`;
   return apiGateway.post(url, camelcaseKeys(request));
 };
 
