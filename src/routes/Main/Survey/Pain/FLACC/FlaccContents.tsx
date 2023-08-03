@@ -17,11 +17,11 @@ import MuiTextField from 'components/Form/MuiTextField';
 import MuiTable from 'components/MuiTable';
 
 import { Ti18nId } from 'hooks/useI18n';
-import { IFormValues, IFormWatch } from 'routes/Main/type';
+import { IFormValues, IFormWatch, IFormRegister } from 'routes/Main/type';
 import { IFLACC } from 'apis/survey/type';
 import { formatStringToDate } from 'utils/formatting';
 
-interface Props extends IFormValues, IFormWatch {
+interface Props extends IFormValues, IFormWatch, IFormRegister {
   disabled?: boolean;
   onRequired: (id: Ti18nId) => void;
   onSuccess: (message: string) => void;
@@ -32,9 +32,10 @@ const radioId = ['face', 'legs', 'activity', 'cry', 'consolability'];
 const FlaccContents = (props: Props) => {
   const { palette } = useTheme();
 
-  const { disabled, watch, setValue, onRequired, onSuccess } = props;
+  const { disabled, watch, setValue, onRequired, onSuccess, register } = props;
   const flaccList: IFLACC[] = watch('flacc_survey');
 
+  const [date, setDate] = useState(null);
   const [checkTime, setCheckTime] = useState(null);
   const [sumValue, setSumValue] = useState(0);
 
@@ -49,13 +50,14 @@ const FlaccContents = (props: Props) => {
   };
 
   const columns = [
+    { fieldId: 'date', label: '날짜', sx: { width: 200 } },
     { fieldId: 'time', label: '체크시간', sx: { width: 200 } },
     { fieldId: 'sum', label: '합계' },
     { fieldId: 'action', label: '', sx: { width: 100 } },
   ];
 
   const onAddRow = () => {
-    const request = { time: checkTime, sum: sumValue };
+    const request = { date, time: checkTime, sum: sumValue };
 
     if (checkTime === null) return onRequired('FLACC.ADD.ROW');
     for (let i = 0; i < radioId.length; i++) {
@@ -64,11 +66,24 @@ const FlaccContents = (props: Props) => {
 
     onSuccess('FLACC Scale 추가되었습니다.');
     setValue('flacc_survey', flaccList ? [...flaccList, request] : [request]);
+    setValue('flacc_scale_date', '');
+    setDate(null);
     setCheckTime(null);
   };
 
   const inputRow = {
     id: 'add-nrs',
+    date: (
+      <MuiTextField
+        required={false}
+        fullWidth={false}
+        type="date"
+        disabled={disabled}
+        {...register('flacc_scale_date', {
+          onChange: e => setDate(e.target.value),
+        })}
+      />
+    ),
     time: (
       <MobileTimePicker
         value={checkTime}

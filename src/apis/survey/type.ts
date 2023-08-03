@@ -313,6 +313,7 @@ export interface IUpdateSafety extends IGetSurvey {
 
 // NRS
 export interface INRS {
+  date: string;
   time: string;
   pain_score: number;
 }
@@ -323,6 +324,7 @@ export interface IUpdateNRS extends IGetSurvey {
 
 // FLACC Scale
 export interface IFLACC {
+  date: string;
   time: string;
   sum: number;
 }
