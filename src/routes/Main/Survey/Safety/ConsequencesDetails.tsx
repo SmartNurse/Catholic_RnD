@@ -36,6 +36,20 @@ const ConsequencesDetails = (props: Props) => {
             {...register('accident_consequences_details.discovery_date')}
           />
         </RowContent>
+        <RowContent title="사고 유형" titleRatio={1} childrenRatio={11}>
+          <FirstRadio
+            i18nKey="SAFETY.ACCIDENT.TYPE"
+            values={[1, 2, 3]}
+            disabled={disabled}
+            defaultValue={getValues(
+              'accident_consequences_details.accident_type'
+            )}
+            onChange={v =>
+              setValue('accident_consequences_details.accident_type', v)
+            }
+            width="auto"
+          />
+        </RowContent>
         <RowContent title="발생 장소" titleRatio={1} childrenRatio={11}>
           <FirstRadio
             i18nKey="SAFETY.DISCOVERY.PLACE"
@@ -58,20 +72,7 @@ const ConsequencesDetails = (props: Props) => {
             {...register('accident_consequences_details.discovery_place_etc')}
           />
         </RowContent>
-        <RowContent title="사고 유형" titleRatio={1} childrenRatio={11}>
-          <FirstRadio
-            i18nKey="SAFETY.ACCIDENT.TYPE"
-            values={[1, 2, 3]}
-            disabled={disabled}
-            defaultValue={getValues(
-              'accident_consequences_details.accident_type'
-            )}
-            onChange={v =>
-              setValue('accident_consequences_details.accident_type', v)
-            }
-            width="auto"
-          />
-        </RowContent>
+
         <RowContent title="사고 분류" titleRatio={1} childrenRatio={11}>
           <FirstRadio
             i18nKey="SAFETY.ACCIDENT.CLASSIFICATION"
