@@ -40,7 +40,7 @@ const DiseaseHistory = (props: Props) => {
               type="date"
               required={false}
               fullWidth={false}
-              disabled={disabled}
+              disabled={history === '1' ? true : false}
               placeholder="날짜 선택"
               {...register('disease_history.history.date')}
             />

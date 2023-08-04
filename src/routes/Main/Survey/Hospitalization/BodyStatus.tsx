@@ -23,6 +23,7 @@ const BodyStatus = (props: Props) => {
   );
   const [nerve, setNerve] = useState(getValues('body_status.nerve.value'));
   const [skin, setSkin] = useState(getValues('body_status.skin.value'));
+
   return (
     <Fragment>
       <SectionTitle title="신체사정" />
