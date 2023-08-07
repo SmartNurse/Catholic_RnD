@@ -18,8 +18,8 @@ interface Props extends IFormRegister, IFormValues {
 const Habit = (props: Props) => {
   const { gender, disabled, register, getValues, setValue } = props;
 
-  // gender 여성인 경우 필수
-  const isRequiredObstetric = gender === 1;
+  // // gender 여성인 경우 필수
+  // const isRequiredObstetric = gender === 1;
 
   return (
     <Fragment>
@@ -184,35 +184,35 @@ const Habit = (props: Props) => {
             <Form.MuiTextField
               fullWidth={false}
               disabled={disabled}
-              required={isRequiredObstetric}
+              required={false}
               InputProps={{ ...Form.adornment('G') }}
               {...register('habit.obstetric.G')}
             />
             <Form.MuiTextField
               fullWidth={false}
               disabled={disabled}
-              required={isRequiredObstetric}
+              required={false}
               InputProps={{ ...Form.adornment('T') }}
               {...register('habit.obstetric.T')}
             />
             <Form.MuiTextField
               fullWidth={false}
               disabled={disabled}
-              required={isRequiredObstetric}
+              required={false}
               InputProps={{ ...Form.adornment('P') }}
               {...register('habit.obstetric.P')}
             />
             <Form.MuiTextField
               fullWidth={false}
               disabled={disabled}
-              required={isRequiredObstetric}
+              required={false}
               InputProps={{ ...Form.adornment('A') }}
               {...register('habit.obstetric.A')}
             />
             <Form.MuiTextField
               fullWidth={false}
               disabled={disabled}
-              required={isRequiredObstetric}
+              required={false}
               InputProps={{ ...Form.adornment('L') }}
               {...register('habit.obstetric.L')}
             />
