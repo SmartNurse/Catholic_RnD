@@ -1,4 +1,10 @@
-import { Fragment, useEffect, useState } from 'react';
+import { Fragment, useEffect, useState, useCallback, useRef } from 'react';
+
+import { Close } from '@mui/icons-material';
+
+import html2canvas from 'html2canvas';
+import saveAs from 'file-saver';
+
 import {
   Card,
   Divider,
@@ -6,9 +12,14 @@ import {
   Skeleton,
   Stack,
   Typography,
+  Button,
+  DialogTitle,
+  DialogContent,
+  useTheme,
+  IconButton,
 } from '@mui/material';
 
-import { getPatientInfo } from 'apis/admin';
+import { getPatientInfo, getPatientBarcode } from 'apis/admin';
 import useI18n from 'hooks/useI18n';
 import useNotification from 'hooks/useNotification';
 import useStudent from 'store/student/useStudent';
@@ -16,11 +27,40 @@ import usePatient from 'store/patient/usePatient';
 
 import PatientInfoItem from './PatientInfoItem';
 
+import Modal from './Modal';
+
 const PatientInfo = () => {
   const i18n = useI18n();
   const { onFail } = useNotification();
   const { student_name: userName } = useStudent();
   const { patient, patientInfo, onSelectedPatientInfo } = usePatient();
+
+  // 바코드 모달창 만들기
+  const { zIndex, breakpoints } = useTheme();
+
+  const [isOpenModal, setOpenModal] = useState<boolean>(false);
+
+  const onClickToggleModal = useCallback(() => {
+    setOpenModal(!isOpenModal);
+  }, [isOpenModal]);
+
+  const divRef = useRef<HTMLDivElement>(null);
+
+  const handleDownload = async () => {
+    if (!divRef.current) return;
+
+    try {
+      const div = divRef.current;
+      const canvas = await html2canvas(div, { scale: 2 });
+      canvas.toBlob(blob => {
+        if (blob !== null) {
+          saveAs(blob, 'result.png');
+        }
+      });
+    } catch (error) {
+      console.error('Error converting div to image:', error);
+    }
+  };
 
   // 부진단 코드 index
   const [diseaseSubIndex, setDiseaseSubIndex] = useState(0);
@@ -32,6 +72,25 @@ const PatientInfo = () => {
     getPatientInfo({ patient_id: patient.patient_id })
       .then(({ data }) => {
         onSelectedPatientInfo(data);
+      })
+      .catch(e => {
+        onSelectedPatientInfo(null);
+        onFail(`가상환자 데이터 조회에 실패했습니다.`, e);
+      });
+    // eslint-disable-next-line
+  }, [patient]);
+
+  // 바코드 변수에 담기
+  const [imgBarcode, setImgBarcode] = useState('');
+
+  useEffect(() => {
+    if (!patient) return;
+
+    // 가상환자 상세정보 요청
+    getPatientBarcode({ patient_id: patient.patient_id })
+      .then(({ data }) => {
+        console.log('바코드?', data);
+        setImgBarcode(data);
       })
       .catch(e => {
         onSelectedPatientInfo(null);
@@ -83,10 +142,88 @@ const PatientInfo = () => {
   );
 
   return (
-    <Fragment>
-      <Typography variant="subtitle2" fontSize={13} mb={1}>
-        {name} 환자 정보
-      </Typography>
+    <div style={{ zIndex: 1000 }}>
+      <div
+        style={{
+          display: 'flex',
+          justifyContent: 'space-between',
+        }}
+      >
+        <Typography variant="subtitle2" fontSize={13} mb={1}>
+          {name} 환자 정보
+        </Typography>
+        <Button
+          variant="contained"
+          size="small"
+          sx={{ marginBottom: '5px', marginTop: '-10px' }}
+          onClick={onClickToggleModal}
+        >
+          환자 라벨 인쇄
+        </Button>
+        {isOpenModal && (
+          <Modal onClickToggleModal={onClickToggleModal}>
+            <DialogTitle
+              display="flex"
+              alignItems="center"
+              position="sticky"
+              sx={{
+                top: 0,
+                zIndex: zIndex.modal,
+                background: '#fff',
+                borderBottom: '1px solid rgba(0, 0, 0, 0.3)',
+              }}
+            >
+              <IconButton size="small" sx={{ mr: 1.5 }}>
+                <Close color="primary" onClick={onClickToggleModal} />
+              </IconButton>
+              환자 팔찌 인쇄
+            </DialogTitle>
+            <DialogContent ref={divRef}>
+              <div
+                onClick={handleDownload}
+                style={{
+                  width: '280px',
+                  height: '140px',
+                  backgroundColor: 'white',
+                  cursor: 'pointer',
+
+                  marginTop: '50px',
+                  padding: '5px 30px 5px 30px',
+                }}
+              >
+                <div
+                  style={{
+                    display: 'flex',
+                    justifyContent: 'space-between',
+                  }}
+                >
+                  <Typography sx={{ fontSize: '13px' }}>
+                    {patient_id}
+                  </Typography>
+                  <Typography sx={{ fontSize: '13px' }}>
+                    {ward}/{room}
+                  </Typography>
+                </div>
+                <Typography sx={{ fontSize: '13px' }}>{name}</Typography>
+                <div
+                  style={{
+                    display: 'flex',
+                    gap: '20px',
+                  }}
+                >
+                  <Typography sx={{ fontSize: '13px' }}>
+                    {age}/{gender}
+                  </Typography>
+                  <Typography sx={{ fontSize: '13px' }}>{blood}</Typography>
+                </div>
+                <div>
+                  <img src={imgBarcode} alt="바코드" />
+                </div>
+              </div>
+            </DialogContent>
+          </Modal>
+        )}
+      </div>
 
       <Card
         component="section"
@@ -140,7 +277,7 @@ const PatientInfo = () => {
           />
         </Stack>
       </Card>
-    </Fragment>
+    </div>
   );
 };
 

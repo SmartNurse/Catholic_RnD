@@ -22,6 +22,10 @@ export interface IGetPatientInfo {
   patient_id: number;
 }
 
+export interface IGetPatientBarcode {
+  patient_id: number;
+}
+
 interface IDisease {
   disease_id: string;
   disease_kor: string;

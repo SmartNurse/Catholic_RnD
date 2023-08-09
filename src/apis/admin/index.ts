@@ -7,6 +7,7 @@ import {
   IGetPatientMemo,
   IGetStudentList,
   IPostPatientMemo,
+  IGetPatientBarcode,
 } from './type';
 
 export const getCollegeList = (request: IGetSearch) => {
@@ -25,6 +26,11 @@ export const getPatients = (request: IGetPatientList) => {
 
 export const getPatientInfo = (request: IGetPatientInfo) => {
   const url = `/main/patient_info?${formatToRequestParameter(request)}`;
+  return apiGateway.get(url);
+};
+
+export const getPatientBarcode = (request: IGetPatientBarcode) => {
+  const url = `main/get_barcode?${formatToRequestParameter(request)}`;
   return apiGateway.get(url);
 };
 
