@@ -176,48 +176,58 @@ const PatientInfo = () => {
               <IconButton size="small" sx={{ mr: 1.5 }}>
                 <Close color="primary" onClick={onClickToggleModal} />
               </IconButton>
-              환자 팔찌 인쇄
+              환자 라벨 인쇄
             </DialogTitle>
             <DialogContent ref={divRef}>
               <div
                 onClick={handleDownload}
                 style={{
                   width: '280px',
-                  height: '140px',
+                  height: '90px',
                   backgroundColor: 'white',
                   cursor: 'pointer',
 
                   marginTop: '50px',
-                  padding: '5px 30px 5px 30px',
+                  padding: '3px 10px 3px 10px',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+
+                  display: 'flex',
                 }}
               >
                 <div
                   style={{
-                    display: 'flex',
-                    justifyContent: 'space-between',
+                    width: '170px',
                   }}
                 >
-                  <Typography sx={{ fontSize: '13px' }}>
-                    {patient_id}
+                  <div>
+                    <Typography sx={{ fontSize: '10px' }}>
+                      {patient_id}
+                    </Typography>
+                  </div>
+
+                  <div>
+                    <Typography sx={{ fontSize: '10px' }}>
+                      {ward}/{room}
+                    </Typography>
+                  </div>
+                  <Typography sx={{ fontSize: '10px', fontWeight: 600 }}>
+                    {name}
                   </Typography>
-                  <Typography sx={{ fontSize: '13px' }}>
-                    {ward}/{room}
-                  </Typography>
+                  <div style={{ display: 'flex', gap: '20px' }}>
+                    <Typography sx={{ fontSize: '10px' }}>
+                      {age}/{gender}
+                    </Typography>
+                    <Typography sx={{ fontSize: '10px' }}>{blood}</Typography>
+                  </div>
                 </div>
-                <Typography sx={{ fontSize: '13px' }}>{name}</Typography>
-                <div
-                  style={{
-                    display: 'flex',
-                    gap: '20px',
-                  }}
-                >
-                  <Typography sx={{ fontSize: '13px' }}>
-                    {age}/{gender}
-                  </Typography>
-                  <Typography sx={{ fontSize: '13px' }}>{blood}</Typography>
-                </div>
-                <div>
-                  <img src={imgBarcode} alt="바코드" />
+
+                <div style={{}}>
+                  <img
+                    src={imgBarcode}
+                    alt="바코드"
+                    style={{ height: '30px', marginLeft: '10px' }}
+                  />
                 </div>
               </div>
             </DialogContent>

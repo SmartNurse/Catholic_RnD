@@ -26,7 +26,7 @@ function Modal({
 }
 
 const ModalContainer = styled.div`
-  width: 80%;
+  width: 800px;
   height: 100%;
   display: flex;
   align-items: center;
@@ -48,7 +48,7 @@ const DialogBox = styled.dialog`
 `;
 
 const Backdrop = styled.div`
-  width: 100vw;
+  width: 120vw;
   height: 100vh;
   position: fixed;
   top: 0;
