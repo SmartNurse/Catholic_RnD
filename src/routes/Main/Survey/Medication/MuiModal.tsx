@@ -162,9 +162,10 @@ export default function NestedModal(props: Props) {
           >
             {medicationList.map((item, i) => {
               return (
-                <div ref={divRef}>
+                <div>
                   <div
                     onClick={handleDownload}
+                    ref={divRef}
                     style={{
                       width: '280px',
                       height: '186px',
