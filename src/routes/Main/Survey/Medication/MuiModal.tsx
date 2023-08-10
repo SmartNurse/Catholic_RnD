@@ -60,12 +60,6 @@ export default function NestedModal(props: Props) {
   const { patient, onSelectedPatientInfo, patientInfo } = usePatient();
   const { zIndex, breakpoints } = useTheme();
 
-  const [isOpenModal, setOpenModal] = useState<boolean>(false);
-
-  const onClickToggleModal = useCallback(() => {
-    setOpenModal(!isOpenModal);
-  }, [isOpenModal]);
-
   const divRef = useRef<HTMLDivElement>(null);
 
   const handleDownload = async () => {
@@ -123,27 +117,7 @@ export default function NestedModal(props: Props) {
     return <Skeleton variant="rectangular" sx={{ flex: 1 }} />;
   }
 
-  const {
-    // column1
-    patient_id,
-    name,
-    age,
-    gender,
-    blood,
-    // column2
-    height,
-    weight,
-    admin_hod,
-    admin_pod,
-    // column3
-    department,
-    ward,
-    room,
-    main_doctor,
-    // column4
-    disease_main,
-    disease_sub,
-  } = patientInfo;
+  const { patient_id, name, age, gender, blood, ward, room } = patientInfo;
 
   return (
     <div>
@@ -153,7 +127,7 @@ export default function NestedModal(props: Props) {
         variant="contained"
         size="small"
       >
-        약품 라벨 인쇄
+        약물 라벨 인쇄
       </Button>
       <Modal
         open={open}
@@ -176,7 +150,7 @@ export default function NestedModal(props: Props) {
             <IconButton size="small" sx={{ mr: 1.5 }}>
               <Close color="primary" onClick={handleClose} />
             </IconButton>
-            약품 라벨 인쇄
+            약물 라벨 인쇄
           </DialogTitle>
           <DialogContent
             sx={{
