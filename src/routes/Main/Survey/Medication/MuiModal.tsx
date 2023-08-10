@@ -280,7 +280,11 @@ export default function NestedModal(props: Props) {
                       }}
                     >
                       <Typography
-                        sx={{ fontSize: '10px', whiteSpace: 'nowrap' }}
+                        sx={{
+                          fontSize: '10px',
+                          whiteSpace: 'pre-wrap',
+                          height: '30px',
+                        }}
                       >
                         {item.medication_note}
                       </Typography>
@@ -290,7 +294,7 @@ export default function NestedModal(props: Props) {
                       <img
                         src={imgBarcode}
                         alt="바코드"
-                        style={{ height: '53px', marginTop: '10px' }}
+                        style={{ height: '53px' }}
                       />
                     </div>
                   </div>
