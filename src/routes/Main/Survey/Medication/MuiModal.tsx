@@ -59,6 +59,7 @@ export default function NestedModal(props: Props) {
   const { onFail } = useNotification();
   const { patient, onSelectedPatientInfo, patientInfo } = usePatient();
   const { zIndex, breakpoints } = useTheme();
+
   const [isOpenModal, setOpenModal] = useState<boolean>(false);
 
   const onClickToggleModal = useCallback(() => {
@@ -152,7 +153,7 @@ export default function NestedModal(props: Props) {
         variant="contained"
         size="small"
       >
-        환자 라벨 인쇄
+        약품 라벨 인쇄
       </Button>
       <Modal
         open={open}
@@ -173,9 +174,9 @@ export default function NestedModal(props: Props) {
             }}
           >
             <IconButton size="small" sx={{ mr: 1.5 }}>
-              <Close color="primary" onClick={onClickToggleModal} />
+              <Close color="primary" onClick={handleClose} />
             </IconButton>
-            환자 팔찌 인쇄
+            약품 라벨 인쇄
           </DialogTitle>
           <DialogContent sx={{ display: '-webkit-box', gap: '20px' }}>
             {medicationList.map((item, i) => {
