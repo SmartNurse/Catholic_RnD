@@ -161,7 +161,7 @@ export default function NestedModal(props: Props) {
         aria-labelledby="parent-modal-title"
         aria-describedby="parent-modal-description"
       >
-        <Box sx={{ ...style, width: 'auto' }}>
+        <Box sx={{ ...style, width: 'auto', maxWidth: '1200px' }}>
           <DialogTitle
             display="flex"
             alignItems="center"
@@ -178,15 +178,22 @@ export default function NestedModal(props: Props) {
             </IconButton>
             약품 라벨 인쇄
           </DialogTitle>
-          <DialogContent sx={{ display: '-webkit-box', gap: '20px' }}>
+          <DialogContent
+            sx={{
+              display: 'flex',
+              flexWrap: 'wrap',
+              gap: '20px',
+              width: '950px',
+            }}
+          >
             {medicationList.map((item, i) => {
               return (
                 <div ref={divRef}>
                   <div
                     onClick={handleDownload}
                     style={{
-                      width: '300px',
-                      height: 'auto',
+                      width: '280px',
+                      height: '186px',
                       backgroundColor: 'white',
                       cursor: 'pointer',
 
@@ -200,10 +207,14 @@ export default function NestedModal(props: Props) {
                         justifyContent: 'space-between',
                       }}
                     >
-                      <Typography sx={{ fontSize: '13px' }}>
+                      <Typography
+                        sx={{ fontSize: '10px', whiteSpace: 'nowrap' }}
+                      >
                         {patient_id}
                       </Typography>
-                      <Typography sx={{ fontSize: '13px' }}>
+                      <Typography
+                        sx={{ fontSize: '10px', whiteSpace: 'nowrap' }}
+                      >
                         {ward}/{room}
                       </Typography>
                     </div>
@@ -213,25 +224,30 @@ export default function NestedModal(props: Props) {
                         justifyContent: 'space-between',
                       }}
                     >
-                      <Typography sx={{ fontSize: '13px' }}>{name}</Typography>
-                      <Typography sx={{ fontSize: '13px' }}>
+                      <Typography
+                        sx={{ fontSize: '10px', whiteSpace: 'nowrap' }}
+                      >
+                        {name}
+                      </Typography>
+                      <Typography
+                        sx={{ fontSize: '10px', whiteSpace: 'nowrap' }}
+                      >
                         {age} / {gender === 1 ? '여자' : '남자'}
                       </Typography>
-                      <Typography sx={{ fontSize: '13px' }}>{blood}</Typography>
+                      <Typography
+                        sx={{ fontSize: '10px', whiteSpace: 'nowrap' }}
+                      >
+                        {blood}
+                      </Typography>
                     </div>
                     <div
                       style={{
                         display: 'flex',
                       }}
                     >
-                      <Typography sx={{ fontSize: '13px' }}>{blood}</Typography>
-                    </div>
-                    <div
-                      style={{
-                        display: 'flex',
-                      }}
-                    >
-                      <Typography sx={{ fontSize: '13px' }}>
+                      <Typography
+                        sx={{ fontSize: '10px', whiteSpace: 'nowrap' }}
+                      >
                         {item.medication_name}
                       </Typography>
                     </div>
@@ -240,7 +256,9 @@ export default function NestedModal(props: Props) {
                         display: 'flex',
                       }}
                     >
-                      <Typography sx={{ fontSize: '13px' }}>
+                      <Typography
+                        sx={{ fontSize: '10px', whiteSpace: 'nowrap' }}
+                      >
                         {item.medication_content} {item.medication_measure}
                       </Typography>
                     </div>
@@ -249,7 +267,9 @@ export default function NestedModal(props: Props) {
                         display: 'flex',
                       }}
                     >
-                      <Typography sx={{ fontSize: '13px' }}>
+                      <Typography
+                        sx={{ fontSize: '10px', whiteSpace: 'nowrap' }}
+                      >
                         {item.medication_amount} 투여횟수 :{' '}
                         {item.medication_freq}
                       </Typography>
@@ -259,13 +279,19 @@ export default function NestedModal(props: Props) {
                         display: 'flex',
                       }}
                     >
-                      <Typography sx={{ fontSize: '13px' }}>
+                      <Typography
+                        sx={{ fontSize: '10px', whiteSpace: 'nowrap' }}
+                      >
                         {item.medication_note}
                       </Typography>
                     </div>
 
                     <div>
-                      <img src={imgBarcode} alt="바코드" />
+                      <img
+                        src={imgBarcode}
+                        alt="바코드"
+                        style={{ height: '53px', marginTop: '10px' }}
+                      />
                     </div>
                   </div>
                 </div>
