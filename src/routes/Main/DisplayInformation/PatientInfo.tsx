@@ -178,9 +178,10 @@ const PatientInfo = () => {
               </IconButton>
               환자 라벨 인쇄
             </DialogTitle>
-            <DialogContent ref={divRef}>
+            <DialogContent>
               <div
                 onClick={handleDownload}
+                ref={divRef}
                 style={{
                   width: '280px',
                   height: '90px',
