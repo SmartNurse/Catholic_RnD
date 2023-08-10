@@ -1,4 +1,5 @@
 import { Fragment } from 'react';
+
 import { AccessTime } from '@mui/icons-material';
 import { Checkbox, Grid, Box } from '@mui/material';
 import { MobileTimePicker } from '@mui/x-date-pickers';
@@ -11,7 +12,8 @@ import SectionTitle from '../components/SectionTitle';
 import MuiTable from 'components/MuiTable';
 import { formatStringToDate } from 'utils/formatting';
 
-import { ReactComponent as DrugInfo } from "assets/drug-info.svg";
+import { ReactComponent as DrugInfo } from 'assets/drug-info.svg';
+import MuiModal from './MuiModal';
 
 interface Props extends IFormValues, IFormWatch {
   disabled?: boolean;
@@ -85,14 +87,25 @@ const Medications = (props: Props) => {
           disabled={disabled}
           checked={medicationDo}
           onChange={onChangeMedicationDo}
-          sx={{ marginLeft:"4px"}}
+          sx={{ marginLeft: '4px' }}
         />
       ),
       medication_info: (
-        <Box sx={{ display: "flex", alignItems: "center", justifyContent: "center" }}>
+        <Box
+          sx={{
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+          }}
+        >
           <DrugInfo
-            style={{ cursor: "pointer", marginRight:"20px" }}
-            onClick={() => window.open("https://terms.naver.com/search.naver?query=" + item.medication_name)}
+            style={{ cursor: 'pointer' }}
+            onClick={() =>
+              window.open(
+                'https://terms.naver.com/search.naver?query=' +
+                  item.medication_name
+              )
+            }
           />
         </Box>
       ),
@@ -104,6 +117,14 @@ const Medications = (props: Props) => {
       <SectionTitle title="처방 내역" />
       <Grid item xs={12}>
         <MuiTable columns={columns} rows={rows} />
+        <div style={{ paddingLeft: '90%' }}>
+          <MuiModal
+            watch={watch}
+            disabled={disabled}
+            getValues={getValues}
+            setValue={setValue}
+          />
+        </div>
       </Grid>
     </Fragment>
   );
