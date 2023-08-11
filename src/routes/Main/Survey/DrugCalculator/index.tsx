@@ -88,8 +88,6 @@ const DrugCalculatior = (props: SurveyDialogProps<TFallDefaultValues>) => {
           }}
         >
           약물계산기
-          <br />
-          테스트중입니다
         </Typography>
         <Calculator1 {...formProps} />
         <Calculator2 {...formProps} />
