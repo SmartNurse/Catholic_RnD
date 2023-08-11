@@ -173,7 +173,7 @@ export default function NestedModal(props: Props) {
                       cursor: 'pointer',
 
                       marginTop: '50px',
-                      padding: '5px 30px 5px 30px',
+                      padding: '13px 30px 0px 30px',
                     }}
                   >
                     <div
