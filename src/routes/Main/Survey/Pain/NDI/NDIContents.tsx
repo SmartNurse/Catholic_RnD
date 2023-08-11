@@ -183,7 +183,13 @@ const NDIContents = (props: Props) => {
                     {answer.desc.map((v, i) => {
                       return (
                         <TableRow>
-                          <TableCell sx={{ width: '80%' }}>{v}</TableCell>
+                          <TableCell
+                            sx={{
+                              width: '80%',
+                            }}
+                          >
+                            {v}
+                          </TableCell>
                           <TableCell
                             sx={{ width: '10%' }}
                           >{`${i}점`}</TableCell>
@@ -193,7 +199,7 @@ const NDIContents = (props: Props) => {
                               name={`${answer.title}`}
                               values={[i]}
                               value={Number(getValues(`${answer.id}`))}
-                              sx={{ height: '44px' }}
+                              sx={{ height: '20px' }}
                               defaultValue={Number(getValues(`${answer.id}`))}
                               onChange={() => {
                                 setValue(`${answer.id}`, i);
