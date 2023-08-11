@@ -35,7 +35,7 @@ const DialysisInfo = (props: Props) => {
 
   const contents = [
     {
-      label: '투석일*',
+      label: '투석일',
       element: (
         <Form.MuiTextField
           required={false}
@@ -47,7 +47,7 @@ const DialysisInfo = (props: Props) => {
       ),
     },
     {
-      label: '투석시간*',
+      label: '투석시간',
       element: (
         <MobileTimePicker
           disabled={disabled}
