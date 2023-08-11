@@ -23,8 +23,8 @@ const BloodInfo = (props: Props) => {
   const rows = [
     { title: '혈액번호', variable: 'blood_number', type: 'text' },
     { title: '혈액명', variable: 'blood_name', type: 'text' },
-    { title: '혈액형*', variable: 'type', type: 'label' },
-    { title: '용량(mL)*', variable: 'volume', type: 'text' },
+    { title: '혈액형', variable: 'type', type: 'label' },
+    { title: '용량(mL)', variable: 'volume', type: 'text' },
     { title: '도착확인시간', variable: 'arrival_time', type: 'time' },
     {
       title: '수혈도착확인자',
@@ -34,12 +34,12 @@ const BloodInfo = (props: Props) => {
     { title: '수혈확인자1', variable: 'transfusion_check1', type: 'text' },
     { title: '수혈확인자2', variable: 'transfusion_check2', type: 'text' },
     {
-      title: '수혈시작일시*',
+      title: '수혈시작일시',
       variable: 'transfusion_start_time',
       type: 'time',
     },
     { title: '수혈시작의료인', variable: 'practitioner_start', type: 'text' },
-    { title: '수혈종료일시*', variable: 'transfusion_end_time', type: 'time' },
+    { title: '수혈종료일시', variable: 'transfusion_end_time', type: 'time' },
     { title: '수혈종료의료인', variable: 'practitioner_end', type: 'text' },
   ];
 
