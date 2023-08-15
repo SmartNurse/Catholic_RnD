@@ -47,7 +47,7 @@ function SurveyForm(props: SurveyFormProps) {
           position="sticky"
           sx={{
             top: 0,
-            zIndex: zIndex.modal,
+            zIndex: 1000000,
             background: '#fff',
             borderBottom: '1px solid rgba(0, 0, 0, 0.3)',
           }}
