@@ -199,7 +199,6 @@ const NDIContents = (props: Props) => {
                               name={`${answer.title}`}
                               values={[i]}
                               value={Number(getValues(`${answer.id}`))}
-                              sx={{ height: '20px' }}
                               defaultValue={Number(getValues(`${answer.id}`))}
                               onChange={() => {
                                 setValue(`${answer.id}`, i);
