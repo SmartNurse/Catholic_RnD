@@ -10,6 +10,7 @@ import {
   useTheme,
 } from '@mui/material';
 import { formatStringToDate } from 'utils/formatting';
+import useUser from 'store/user/useUser';
 
 export interface SurveyFormProps {
   title: string;
@@ -21,7 +22,7 @@ export interface SurveyFormProps {
 }
 
 function SurveyForm(props: SurveyFormProps) {
-  const { zIndex, breakpoints } = useTheme();
+  const { breakpoints } = useTheme();
   const isMobile = useMediaQuery(breakpoints.down('sm'));
 
   const {
@@ -32,6 +33,9 @@ function SurveyForm(props: SurveyFormProps) {
     onClose,
     onSubmit,
   } = props;
+
+  const { isStudent } = useUser();
+  console.log('학생이니', isStudent);
 
   return (
     <Dialog
@@ -67,6 +71,7 @@ function SurveyForm(props: SurveyFormProps) {
             type="submit"
             variant="contained"
             sx={{ display: onSubmit ? 'block' : 'none' }}
+            disabled={isStudent ? false : true}
           >
             저장
           </Button>

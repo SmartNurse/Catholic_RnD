@@ -14,6 +14,7 @@ import RowContainer from '../components/RowContainer';
 import RowContent from '../components/RowContent';
 import MuiTable from './MuiTable';
 import MuiTextField from 'components/Form/MuiTextField';
+import useUser from 'store/user/useUser';
 
 interface Props extends IFormRegister, IFormValues, IFormWatch {
   disabled?: boolean;
@@ -35,10 +36,11 @@ const PatientInfo = (props: Props) => {
     setValue,
   } = props;
 
+  const { isStudent } = useUser();
+
   const { infoEtc, onUpdateInfo } = useInfoEtc();
 
-  
-  const etcInpoList: IInpomation[] = watch("info_etc");
+  const etcInpoList: IInpomation[] = watch('info_etc');
 
   const [contact, setContact] = useState('');
   const [name, setName] = useState('');
@@ -64,7 +66,7 @@ const PatientInfo = (props: Props) => {
       'info_etc',
       etcInpoList ? [...etcInpoList, { ...request }] : [request]
     );
- console.log('데이터', etcInpoList)
+    console.log('데이터', etcInpoList);
     onUpdateInfo({
       isUpdated: !infoEtc.isUpdated,
       data: [
@@ -140,6 +142,7 @@ const PatientInfo = (props: Props) => {
         size="small"
         onClick={onAddRow}
         sx={{ marginLeft: '70px' }}
+        disabled={isStudent ? false : true}
       >
         추가
       </Button>
@@ -156,21 +159,23 @@ const PatientInfo = (props: Props) => {
       data: infoEtc.data.filter((_, i) => i !== index),
     });
   };
-  console.log('데이터2222', etcInpoList, typeof etcInpoList)
+  console.log('데이터2222', etcInpoList, typeof etcInpoList);
 
-  const displayRows = etcInpoList ? etcInpoList.map((item, i) => ({
-    ...item,
-    id: i,
-    action: (
-      <IconButton
-        size="small"
-        onClick={() => onDeleteRow(i)}
-        sx={{ display: disabled ? 'none' : 'block' }}
-      >
-        <Delete />
-      </IconButton>
-    ),
-  })) : [];
+  const displayRows = etcInpoList
+    ? etcInpoList.map((item, i) => ({
+        ...item,
+        id: i,
+        action: (
+          <IconButton
+            size="small"
+            onClick={() => onDeleteRow(i)}
+            sx={{ display: disabled ? 'none' : 'block' }}
+          >
+            <Delete />
+          </IconButton>
+        ),
+      }))
+    : [];
 
   const tableRow = disabled ? displayRows : [inputRow, ...displayRows];
 
