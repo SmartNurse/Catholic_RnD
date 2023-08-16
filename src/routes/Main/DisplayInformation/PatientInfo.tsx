@@ -217,7 +217,7 @@ const PatientInfo = () => {
                   </Typography>
                   <div style={{ display: 'flex', gap: '20px' }}>
                     <Typography sx={{ fontSize: '10px' }}>
-                      {age}/{gender}
+                      {age}/{gender === 2 ? '남자' : '여자'}
                     </Typography>
                     <Typography sx={{ fontSize: '10px' }}>{blood}</Typography>
                   </div>
