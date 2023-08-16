@@ -27,6 +27,8 @@ import {
   Diversity2Outlined,
 } from '@mui/icons-material';
 import { ReactComponent as ProPlus } from '../../../assets/proPlus.svg';
+import { ReactComponent as Severity } from '../../../assets/severityAssessment.svg';
+
 import Survey from '../Survey';
 import useSurvey from 'store/survey/useSurvey';
 import usePatient from 'store/patient/usePatient';
@@ -281,6 +283,43 @@ const MenuRecords = (props: Props) => {
       isPro: true,
       label: '가정간호 기록지',
       toggle: toggle.special,
+    },
+    {
+      isPro: true,
+      disabled: true,
+      icon: <Severity />,
+      label: '중증도 평가도구',
+      id: 'severity',
+    },
+    {
+      isPro: true,
+      label: 'KPCS',
+      toggle: toggle.severity,
+    },
+    {
+      isPro: true,
+      label: 'KPCSC',
+      toggle: toggle.severity,
+    },
+    {
+      isPro: true,
+      label: 'KPCSN',
+      toggle: toggle.severity,
+    },
+    {
+      isPro: true,
+      label: 'KPCS-GW',
+      toggle: toggle.severity,
+    },
+    {
+      isPro: true,
+      label: 'KPCS-ICU',
+      toggle: toggle.severity,
+    },
+    {
+      isPro: true,
+      label: 'KPCS-NICU',
+      toggle: toggle.severity,
     },
     {
       isPro: true,
