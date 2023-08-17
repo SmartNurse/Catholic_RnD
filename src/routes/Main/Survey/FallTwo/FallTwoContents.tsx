@@ -110,7 +110,7 @@ const FallTwoContents = (props: Props) => {
           <Typography
             minWidth={115}
             variant="caption"
-            sx={{ color: '#2264A8' }}
+            sx={{ color: `${palette.primary.main}` }}
           >
             <Typography variant="inherit">
               <Box component={'strong'} mr={0.5}>
