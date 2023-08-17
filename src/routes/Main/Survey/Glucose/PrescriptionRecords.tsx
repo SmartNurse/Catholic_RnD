@@ -2,7 +2,14 @@ import Form from 'components/Form';
 
 import { Fragment, useState } from 'react';
 import { AccessTime, Delete } from '@mui/icons-material';
-import { Button, Grid, IconButton, MenuItem, TextField, Checkbox } from '@mui/material';
+import {
+  Button,
+  Grid,
+  IconButton,
+  MenuItem,
+  TextField,
+  Checkbox,
+} from '@mui/material';
 import { MobileTimePicker } from '@mui/x-date-pickers';
 
 import { Ti18nId } from 'hooks/useI18n';
@@ -12,7 +19,7 @@ import MuiTable from 'components/MuiTable';
 import MuiTextField from 'components/Form/MuiTextField';
 import SectionTitle from '../components/SectionTitle';
 
-import { formatStringToDate } from "utils/formatting";
+import { formatStringToDate } from 'utils/formatting';
 
 interface Props extends IFormValues, IFormWatch, IFormRegister {
   disabled?: boolean;
@@ -22,16 +29,17 @@ interface Props extends IFormValues, IFormWatch, IFormRegister {
 
 const GlucoseRecords = (props: Props) => {
   const { disabled, watch, setValue, onRequired, onSuccess, register } = props;
-  const prescriptionRecordList: IGlucosePrescriptionRecord[] = watch('prescription');
+  const prescriptionRecordList: IGlucosePrescriptionRecord[] =
+    watch('prescription');
 
-  const [date, setDate] = useState("");
+  const [date, setDate] = useState('');
   const [time, setTime] = useState(null);
-  const [title, setTitle] = useState("");
-  const [content, setContent] = useState("");
-  const [unit, setUnit] = useState("");
-  const [amount, setAmount] = useState("");
-  const [count, setCount] = useState("");
-  const [detail, setDetail] = useState("");
+  const [title, setTitle] = useState('');
+  const [content, setContent] = useState('');
+  const [unit, setUnit] = useState('');
+  const [amount, setAmount] = useState('');
+  const [count, setCount] = useState('');
+  const [detail, setDetail] = useState('');
   const [finished, setFinished] = useState(false);
 
   const columns = [
@@ -44,42 +52,60 @@ const GlucoseRecords = (props: Props) => {
     { fieldId: 'administration_no', label: '투여횟수', sx: { width: 100 } },
     { fieldId: 'methods', label: '상세투여방법', sx: { width: 100 } },
     { fieldId: 'completed', label: '완료', sx: { width: 50 } },
-    { fieldId: 'action', label: '', sx: { width: 100 } }
+    { fieldId: 'action', label: '', sx: { width: 100 } },
   ];
 
   const onAddRow = () => {
-    const request = { date, time, medication: title, content, unit, dose: amount, administration_no: count, methods: detail };
+    const request = {
+      date,
+      time,
+      medication: title,
+      content,
+      unit,
+      dose: amount,
+      administration_no: count,
+      methods: detail,
+    };
 
     if (Object.values(request).filter(v => !v).length > 0) {
       return onRequired('CLINICAL.OBSERVATION.ADD.ROW');
     }
 
     onSuccess('처방 기록 추가되었습니다.');
-    setValue('prescription', prescriptionRecordList ? [...prescriptionRecordList, {...request, completed: String(finished)}] : [{...request, completed: String(finished)}]);
+    setValue(
+      'prescription',
+      prescriptionRecordList
+        ? [
+            ...prescriptionRecordList,
+            { ...request, completed: String(finished) },
+          ]
+        : [{ ...request, completed: String(finished) }]
+    );
     console.log(prescriptionRecordList);
-    setValue("prescription_date", "");
-    setDate("");
+    setValue('prescription_date', '');
+    setDate('');
     setTime(null);
-    setTitle("");
-    setContent("");
-    setUnit("");
-    setAmount("");
-    setCount("");
-    setDetail("");
+    setTitle('');
+    setContent('');
+    setUnit('');
+    setAmount('');
+    setCount('');
+    setDetail('');
     setFinished(false);
   };
 
   const inputRow = {
     id: 'add-prescription-record',
     date: (
-        <Form.MuiTextField
-            type="date"
-            required={false}
-            disabled={disabled}
-            {...register("prescription_date", {
-                onChange: (e) => setDate(e.target.value)
-            })}
-        />
+      <Form.MuiTextField
+        type="date"
+        sx={{ width: '160px' }}
+        required={false}
+        disabled={disabled}
+        {...register('prescription_date', {
+          onChange: e => setDate(e.target.value),
+        })}
+      />
     ),
     time: (
       <MobileTimePicker
@@ -89,6 +115,7 @@ const GlucoseRecords = (props: Props) => {
           <MuiTextField
             {...params}
             required={false}
+            sx={{ width: '160px' }}
             placeholder="00:00 pm"
             InputProps={{ endAdornment: <AccessTime /> }}
           />
@@ -99,6 +126,7 @@ const GlucoseRecords = (props: Props) => {
       <MuiTextField
         value={title}
         required={false}
+        sx={{ width: '160px' }}
         onChange={({ target: { value } }) => setTitle(value)}
       />
     ),
@@ -138,7 +166,12 @@ const GlucoseRecords = (props: Props) => {
       />
     ),
     completed: (
-        <Checkbox size="small" defaultChecked={false} value={finished} onChange={(e) => setFinished(e.target.checked)} />
+      <Checkbox
+        size="small"
+        defaultChecked={false}
+        value={finished}
+        onChange={e => setFinished(e.target.checked)}
+      />
     ),
     action: (
       <Button variant="contained" size="small" onClick={onAddRow}>
@@ -154,26 +187,28 @@ const GlucoseRecords = (props: Props) => {
     );
   };
 
-  const displayRows = prescriptionRecordList ? 
-    prescriptionRecordList.map((item, i) => ({
+  const displayRows = prescriptionRecordList
+    ? prescriptionRecordList.map((item, i) => ({
         ...item,
         id: i,
         time: formatStringToDate(item.time, 'hh:mm a'),
-        completed: <Checkbox size="small" defaultChecked={item.completed === "true" ? true : false} />,
+        completed: (
+          <Checkbox
+            size="small"
+            defaultChecked={item.completed === 'true' ? true : false}
+          />
+        ),
         action: (
-        <IconButton
+          <IconButton
             size="small"
             onClick={() => onDeleteRow(i)}
             sx={{ display: disabled ? 'none' : 'block' }}
-        >
-          <Delete />
-        </IconButton>
+          >
+            <Delete />
+          </IconButton>
         ),
-  }))
-  :
-  []
-  ;
-
+      }))
+    : [];
   const tableRow = disabled ? displayRows : [inputRow, ...displayRows];
 
   return (
