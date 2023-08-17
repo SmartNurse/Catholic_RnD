@@ -92,6 +92,7 @@ const GlucoseRecords = (props: Props) => {
         type="date"
         InputLabelProps={{ shrink: true }}
         required={false}
+        sx={{ width: '160px' }}
         disabled={disabled}
         {...register('glucose_date', {
           onChange: e => setDate(e.target.value),
@@ -106,6 +107,7 @@ const GlucoseRecords = (props: Props) => {
           <MuiTextField
             {...params}
             required={false}
+            sx={{ width: '160px' }}
             placeholder="00:00 pm"
             InputProps={{ endAdornment: <AccessTime /> }}
           />
