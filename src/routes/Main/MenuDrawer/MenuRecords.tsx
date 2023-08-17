@@ -162,12 +162,10 @@ const MenuRecords = (props: Props) => {
     {
       icon: <SickOutlined />,
       disabled: true,
-      isPro: true,
       label: '통증평가도구',
       id: 'pain',
     },
     {
-      isPro: true,
       label: 'NRS',
       toggle: toggle.pain,
     },
