@@ -35,7 +35,7 @@ function SurveyForm(props: SurveyFormProps) {
   } = props;
 
   const { isStudent } = useUser();
-  console.log('학생이니', isStudent);
+  // console.log('학생이니', isStudent);
 
   return (
     <Dialog
