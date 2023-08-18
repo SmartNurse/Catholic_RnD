@@ -1,12 +1,12 @@
 import * as React from 'react';
 import { Fragment, useRef, useEffect, useState, useCallback } from 'react';
-import html2canvas from 'html2canvas';
-import saveAs from 'file-saver';
+
 import usePatient from 'store/patient/usePatient';
 import { getPatientBarcode, getPatientInfo } from 'apis/admin';
 import useNotification from 'hooks/useNotification';
 import { IMedication } from 'apis/survey/type';
 import { IFormValues, IFormWatch } from 'routes/Main/type';
+import MedicationItem from './MedicationItem';
 
 import {
   Checkbox,
@@ -59,24 +59,6 @@ export default function NestedModal(props: Props) {
   const { onFail } = useNotification();
   const { patient, onSelectedPatientInfo, patientInfo } = usePatient();
   const { zIndex, breakpoints } = useTheme();
-
-  const divRef = useRef<HTMLDivElement>(null);
-
-  const handleDownload = async () => {
-    if (!divRef.current) return;
-
-    try {
-      const div = divRef.current;
-      const canvas = await html2canvas(div, { scale: 2 });
-      canvas.toBlob(blob => {
-        if (blob !== null) {
-          saveAs(blob, 'Label.png');
-        }
-      });
-    } catch (error) {
-      console.error('Error converting div to image:', error);
-    }
-  };
 
   // 환자 정보 요청
   useEffect(() => {
@@ -162,118 +144,11 @@ export default function NestedModal(props: Props) {
           >
             {medicationList.map((item, i) => {
               return (
-                <div>
-                  <div
-                    onClick={handleDownload}
-                    ref={divRef}
-                    style={{
-                      width: '280px',
-                      height: '186px',
-                      backgroundColor: 'white',
-                      cursor: 'pointer',
-
-                      marginTop: '50px',
-                      padding: '13px 30px 0px 30px',
-                    }}
-                  >
-                    <div
-                      style={{
-                        display: 'flex',
-                        justifyContent: 'space-between',
-                      }}
-                    >
-                      <Typography
-                        sx={{ fontSize: '10px', whiteSpace: 'nowrap' }}
-                      >
-                        {patient_id}
-                      </Typography>
-                      <Typography
-                        sx={{ fontSize: '10px', whiteSpace: 'nowrap' }}
-                      >
-                        {ward}/{room}
-                      </Typography>
-                    </div>
-                    <div
-                      style={{
-                        display: 'flex',
-                        justifyContent: 'space-between',
-                      }}
-                    >
-                      <Typography
-                        sx={{ fontSize: '10px', whiteSpace: 'nowrap' }}
-                      >
-                        {name}
-                      </Typography>
-                      <Typography
-                        sx={{ fontSize: '10px', whiteSpace: 'nowrap' }}
-                      >
-                        {age} / {gender === 1 ? '여자' : '남자'}
-                      </Typography>
-                      <Typography
-                        sx={{ fontSize: '10px', whiteSpace: 'nowrap' }}
-                      >
-                        {blood}
-                      </Typography>
-                    </div>
-                    <div
-                      style={{
-                        display: 'flex',
-                      }}
-                    >
-                      <Typography
-                        sx={{ fontSize: '10px', whiteSpace: 'nowrap' }}
-                      >
-                        {item.medication_name}
-                      </Typography>
-                    </div>
-                    <div
-                      style={{
-                        display: 'flex',
-                      }}
-                    >
-                      <Typography
-                        sx={{ fontSize: '10px', whiteSpace: 'nowrap' }}
-                      >
-                        {item.medication_content} {item.medication_measure}
-                      </Typography>
-                    </div>
-                    <div
-                      style={{
-                        display: 'flex',
-                      }}
-                    >
-                      <Typography
-                        sx={{ fontSize: '10px', whiteSpace: 'nowrap' }}
-                      >
-                        {item.medication_amount} 투여횟수 :{' '}
-                        {item.medication_freq}
-                      </Typography>
-                    </div>
-                    <div
-                      style={{
-                        display: 'flex',
-                      }}
-                    >
-                      <Typography
-                        sx={{
-                          fontSize: '10px',
-                          whiteSpace: 'pre-wrap',
-                          height: '30px',
-                        }}
-                      >
-                        {item.medication_note}
-                      </Typography>
-                    </div>
-
-                    <div>
-                      <img
-                        src={imgBarcode}
-                        alt="바코드"
-                        style={{ height: '53px' }}
-                      />
-                    </div>
-                  </div>
-                </div>
+                <MedicationItem
+                  item={item}
+                  patientInfo={patientInfo}
+                  barcorde={imgBarcode}
+                />
               );
             })}
           </DialogContent>
