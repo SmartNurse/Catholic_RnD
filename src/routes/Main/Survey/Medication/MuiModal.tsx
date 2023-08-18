@@ -70,7 +70,7 @@ export default function NestedModal(props: Props) {
       const canvas = await html2canvas(div, { scale: 2 });
       canvas.toBlob(blob => {
         if (blob !== null) {
-          saveAs(blob, 'result.png');
+          saveAs(blob, 'Label.png');
         }
       });
     } catch (error) {
