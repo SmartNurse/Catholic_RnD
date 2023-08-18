@@ -54,13 +54,14 @@ const PatientInfo = () => {
       const canvas = await html2canvas(div, { scale: 2 });
       canvas.toBlob(blob => {
         if (blob !== null) {
-          saveAs(blob, 'Label.png');
+          saveAs(blob, `${userName}-${patientInfo?.name}.png`);
         }
       });
     } catch (error) {
       console.error('Error converting div to image:', error);
     }
   };
+  console.log(patient);
 
   // 부진단 코드 index
   const [diseaseSubIndex, setDiseaseSubIndex] = useState(0);
