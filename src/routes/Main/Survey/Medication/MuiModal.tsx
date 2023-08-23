@@ -37,6 +37,7 @@ const style = {
   pt: 2,
   px: 4,
   pb: 3,
+  overflow: 'scroll',
 };
 
 interface Props extends IFormValues, IFormWatch {
@@ -140,6 +141,7 @@ export default function NestedModal(props: Props) {
               flexWrap: 'wrap',
               gap: '20px',
               width: '950px',
+              maxHeight: '500px',
             }}
           >
             {medicationList.map((item, i) => {
