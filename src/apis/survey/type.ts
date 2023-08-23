@@ -699,6 +699,17 @@ export interface IUpdateHomeCare extends IGetSurvey {
 }
 
 // 식이/영양 기록지
+export interface IUpdateDietList extends IGetSurvey {
+  dietary_survey: {
+    birth: string;
+    classification: number;
+    string_break_fast: string;
+    string_lunch: string;
+    string_dinner: string;
+  };
+}
+
+// 식이/영양 기록지  (기존거)
 export interface IUpdateDietNutrition extends IGetSurvey {
   dietary_survey: {
     birth: string;

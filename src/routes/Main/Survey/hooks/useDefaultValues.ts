@@ -542,29 +542,45 @@ const useDefaultValues = ({ setDefaultValues, user_id }: Props) => {
                 classification: dietary_survey
                   ? dietary_survey.classification
                   : 1,
-                select_meal: dietary_survey
-                  ? JSON.parse(dietary_survey.select_meal)
+                string_break_fast: dietary_survey
+                  ? JSON.parse(dietary_survey?.string_break_fast)
                   : {},
-                basic_meal: dietary_survey
-                  ? JSON.parse(dietary_survey.basic_meal)
+                string_lunch: dietary_survey
+                  ? JSON.parse(dietary_survey?.string_lunch)
                   : {},
-                therapuetic_diet: {
-                  intestinal: dietary_survey
-                    ? JSON.parse(dietary_survey.therapuetic_diet.intestinal)
-                    : {},
-                  kidney: dietary_survey
-                    ? JSON.parse(dietary_survey.therapuetic_diet.kidney)
-                    : {},
-                  liver: dietary_survey
-                    ? JSON.parse(dietary_survey.therapuetic_diet.liver)
-                    : {},
-                },
-                controlled_diet: dietary_survey
-                  ? JSON.parse(dietary_survey.controlled_diet)
+                string_dinner: dietary_survey
+                  ? JSON.parse(dietary_survey?.string_dinner)
                   : {},
-                specifics: dietary_survey
-                  ? JSON.parse(dietary_survey.specifics)
-                  : {},
+
+                //기존식이기록지
+                // update_at,
+                // birth: dietary_survey?.birth,
+                // classification: dietary_survey
+                //   ? dietary_survey.classification
+                //   : 1,
+                // select_meal: dietary_survey
+                //   ? JSON.parse(dietary_survey.select_meal)
+                //   : {},
+                // basic_meal: dietary_survey
+                //   ? JSON.parse(dietary_survey.basic_meal)
+                //   : {},
+                // therapuetic_diet: {
+                //   intestinal: dietary_survey
+                //     ? JSON.parse(dietary_survey.therapuetic_diet.intestinal)
+                //     : {},
+                //   kidney: dietary_survey
+                //     ? JSON.parse(dietary_survey.therapuetic_diet.kidney)
+                //     : {},
+                //   liver: dietary_survey
+                //     ? JSON.parse(dietary_survey.therapuetic_diet.liver)
+                //     : {},
+                // },
+                // controlled_diet: dietary_survey
+                //   ? JSON.parse(dietary_survey.controlled_diet)
+                //   : {},
+                // specifics: dietary_survey
+                //   ? JSON.parse(dietary_survey.specifics)
+                //   : {},
               },
               initialDietNutrition
             );

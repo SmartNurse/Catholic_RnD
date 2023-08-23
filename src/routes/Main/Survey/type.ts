@@ -52,6 +52,7 @@ import {
   initialLEFS,
   initialSTarTBack,
   initialNDI,
+  initialDietList,
 } from './initialStates';
 
 export enum MENU {
@@ -166,6 +167,7 @@ export type TDialysisDefaultValues = typeof initialDialysis;
 export type TEmergencyDefaultValues = typeof initialEmergency;
 export type TChildbirthDefaultValues = typeof initialChildbirth;
 export type THomeCareDefaultValues = typeof initialHomeCare;
+export type TDietListDefaultValues = typeof initialDietList;
 export type TDietNutritionDefaultValues = typeof initialDietNutrition;
 
 export type THospitalConfirmDefaultValues = typeof initialHospitalConfirm;

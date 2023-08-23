@@ -37,6 +37,8 @@ import Emergency from './Special/Emergency';
 import Childbirth from './Special/Childbirth';
 import HomeCare from './Special/HomeCare';
 import DietNutrition from './DietNutrition';
+import DietList from './DietList';
+
 import HospitalizationInfo from './Agreement/HospitalizationInfo';
 import FallPrevention from './Agreement/FallPrevention';
 import Colonoscopy from './Agreement/Colonoscopy';
@@ -212,7 +214,8 @@ const DisplaySurvey = (props: Props) => {
     }
     case MENU.DIET_NUTRITION: {
       if (!defaultValues) return null;
-      return <DietNutrition {...dialogProps} onClose={onCloseSave} />;
+      return <DietList {...dialogProps} onClose={onCloseSave} />;
+      // return <DietNutrition {...dialogProps} onClose={onCloseSave} />;
     }
     case MENU.HOSPITAL_CONFIRM: {
       if (!defaultValues) return null;

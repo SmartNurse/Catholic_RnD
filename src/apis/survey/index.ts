@@ -36,6 +36,7 @@ import {
   IUpdateChildbirth,
   IUpdateHomeCare,
   IUpdateDietNutrition,
+  IUpdateDietList,
   IUpdateHospitalConfirm,
   IUpdateFallConfirm,
   IUpdateColonoscopy,
@@ -417,6 +418,17 @@ export const updateHomeCare = (request: IUpdateHomeCare) => {
 };
 
 // 식이/영양 기록지
+export const getDietList = (request: IGetSurvey) => {
+  const url = `/survey/dietary?${formatToRequestParameter(request)}`;
+  return apiGateway.get(url);
+};
+
+export const updateDietList = (request: IUpdateDietList) => {
+  const url = `/survey/dietary`;
+  return apiGateway.post(url, camelcaseKeys(request));
+};
+
+// 식이/영양 기록지 (기존거)
 export const getDietNutrition = (request: IGetSurvey) => {
   const url = `/survey/dietary?${formatToRequestParameter(request)}`;
   return apiGateway.get(url);
