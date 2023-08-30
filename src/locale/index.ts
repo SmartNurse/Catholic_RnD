@@ -19,7 +19,7 @@ const locale = {
 
     // error message
     'ERROR.CODE.0': '알 수 없는 오류가 발생했습니다. ErrorCode: {rc}',
-    'ERROR.CODE.100': '계정에 문제가 발생했습니다. 관리자에게 문의해주세요',
+    'ERROR.CODE.100': '최초 사용자는 회원가입(이메일)인증을 한번 더 해주세요',
     'ERROR.CODE.101': '이메일 인증 코드가 일치하지 않습니다.',
     'ERROR.CODE.102': '가상환자의 ID가 올바르지 않습니다.',
     'ERROR.CODE.104': '기록지 ID가 올바르지 않습니다.',
