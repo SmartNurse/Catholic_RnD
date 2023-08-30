@@ -173,7 +173,12 @@ function SignUpForm(props: Props) {
             />
           </Form.Item>
           <Form.Item label="이름">
-            <TextField required fullWidth {...register('userName')} />
+            <TextField
+              required
+              fullWidth
+              {...register('userName')}
+              autoComplete="off"
+            />
           </Form.Item>
           <Grid container>
             <Grid item xs={6}>
