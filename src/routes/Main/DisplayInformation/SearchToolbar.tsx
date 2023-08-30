@@ -18,9 +18,6 @@ const SearchToolbar = () => {
       spacing={1}
       sx={{ zIndex: zIndex.modal }}
     >
-      {/* <Grid item xs={2}>
-        <Typography>{college_name}</Typography>
-      </Grid> */}
       <Grid item xs={5}>
         <StudentList user_id={user_id} />
       </Grid>
