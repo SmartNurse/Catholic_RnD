@@ -2,9 +2,18 @@ import Form from 'components/Form';
 import { Fragment, useState, useEffect } from 'react';
 import { IPatientInfo } from 'apis/admin/type';
 import { IFormRegister, IFormValues, IFormWatch } from 'routes/Main/type';
-import { Button, IconButton, Stack, FormHelperText, Grid } from '@mui/material';
-import { Delete } from '@mui/icons-material';
-import regex from 'utils/regex';
+import {
+  Button,
+  IconButton,
+  Stack,
+  FormHelperText,
+  Grid,
+  Table,
+  TableHead,
+  TableBody,
+  TableCell,
+  Typography,
+} from '@mui/material';
 
 import { Ti18nId } from 'hooks/useI18n';
 import { IInpomation } from 'apis/survey/type';
@@ -12,8 +21,6 @@ import useInfoEtc from 'store/patientEtc/useinfoEtc';
 
 import RowContainer from '../components/RowContainer';
 import RowContent from '../components/RowContent';
-import MuiTable from 'components/MuiTable';
-import MuiTextField from 'components/Form/MuiTextField';
 import useUser from 'store/user/useUser';
 
 interface Props extends IFormRegister, IFormValues, IFormWatch {
@@ -45,116 +52,6 @@ const PatientInfo = (props: Props) => {
   const [contact, setContact] = useState('');
   const [name, setName] = useState('');
   const [relation, setRelation] = useState('');
-
-  const columns = [
-    { fieldId: 'name', label: '보호자 이름' },
-    { fieldId: 'relation', label: '관계' },
-    { fieldId: 'contact', label: '비상 연락처' },
-    { fieldId: 'action', label: '', sx: { width: 100 } },
-  ];
-
-  const onAddRow = () => {
-    const request = { contact, name, relation };
-    if (Object.values(request).filter(v => !v).length > 0) {
-      return onRequired('CLINICAL.OBSERVATION.ADD.ROW');
-    } else if (!regex.contact.test(contact)) {
-      return onRequired('REQUIRED.CONTACK.FORMAT');
-    }
-
-    onSuccess('추가되었습니다.');
-    setValue(
-      'info_etc',
-      etcInpoList ? [...etcInpoList, { ...request }] : [request]
-    );
-    console.log('데이터', etcInpoList);
-    onUpdateInfo({
-      isUpdated: !infoEtc.isUpdated,
-      data: [
-        ...infoEtc.data,
-        {
-          contact: String(contact),
-          name: String(name),
-          relation: String(relation),
-        },
-      ],
-    });
-    setContact('');
-    setName('');
-    setRelation('');
-  };
-
-  const inputRow = {
-    id: 'infoEtc',
-    name: (
-      <MuiTextField
-        required={false}
-        disabled={disabled}
-        placeholder="직접 입력"
-        value={name}
-        onChange={({ target: { value } }) => setName(value)}
-        sx={{ width: '200px' }}
-      />
-    ),
-    relation: (
-      <Form.MuiTextField
-        value={relation}
-        required={false}
-        placeholder="직접 입력"
-        onChange={({ target: { value } }) => setRelation(value)}
-        sx={{ width: '200px' }}
-      />
-    ),
-    contact: (
-      <Form.MuiTextField
-        value={contact}
-        required={false}
-        placeholder="숫자만 입력해주세요."
-        onChange={({ target: { value } }) => {
-          setContact(value);
-        }}
-      />
-    ),
-    action: (
-      <Button
-        variant="contained"
-        size="small"
-        onClick={onAddRow}
-        disabled={isStudent ? false : true}
-      >
-        추가
-      </Button>
-    ),
-  };
-
-  const onDeleteRow = (index: number) => {
-    setValue(
-      'info_etc',
-      etcInpoList.filter((_, i) => i !== index)
-    );
-    onUpdateInfo({
-      isUpdated: !infoEtc.isUpdated,
-      data: infoEtc.data.filter((_, i) => i !== index),
-    });
-  };
-  console.log('데이터2222', etcInpoList, typeof etcInpoList);
-
-  const displayRows = etcInpoList
-    ? etcInpoList.map((item, i) => ({
-        ...item,
-        id: i,
-        action: (
-          <IconButton
-            size="small"
-            onClick={() => onDeleteRow(i)}
-            sx={{ display: disabled ? 'none' : 'block' }}
-          >
-            <Delete />
-          </IconButton>
-        ),
-      }))
-    : [];
-
-  const tableRow = disabled ? displayRows : [inputRow, ...displayRows];
 
   return (
     <RowContainer xs={12}>
@@ -208,9 +105,131 @@ const PatientInfo = (props: Props) => {
           {...register('default_info.hospitalization_path.input')}
         />
       </RowContent>
-      <Grid item xs={12}>
-        <MuiTable columns={columns} rows={tableRow} />
-      </Grid>
+      <Table sx={{ marginLeft: '16px' }}>
+        <TableBody>
+          <TableCell></TableCell>
+        </TableBody>
+        <Typography
+          sx={{
+            fontSize: 12,
+            fontWeight: 'bold',
+            marginLeft: '16px',
+            marginTop: '16px',
+          }}
+        >
+          보호자
+        </Typography>
+      </Table>
+      <RowContent title="보호자 1 성함" titleRatio={1} childrenRatio={2}>
+        <Form.MuiTextField
+          required={false}
+          fullWidth={false}
+          disabled={disabled}
+          placeholder="직접 입력"
+          {...register('default_info.hospitalization_path.input')}
+        />
+      </RowContent>
+      <RowContent title="관계" titleRatio={1} childrenRatio={2}>
+        <Form.MuiTextField
+          required={false}
+          fullWidth={false}
+          disabled={disabled}
+          placeholder="직접 입력"
+          {...register('default_info.hospitalization_path.input')}
+        />
+      </RowContent>
+      <RowContent title="전화번호" titleRatio={1} childrenRatio={2}>
+        <Form.MuiTextField
+          required={false}
+          fullWidth={false}
+          disabled={disabled}
+          placeholder="직접 입력"
+          {...register('default_info.hospitalization_path.input')}
+        />
+      </RowContent>
+      <RowContent title="기타" titleRatio={1} childrenRatio={2}>
+        <Form.MuiTextField
+          required={false}
+          fullWidth={false}
+          disabled={disabled}
+          placeholder="ex. 치료 방향, 물품 연락"
+          {...register('default_info.hospitalization_path.input')}
+        />
+      </RowContent>
+
+      <RowContent title="보호자 2 성함" titleRatio={1} childrenRatio={2}>
+        <Form.MuiTextField
+          required={false}
+          fullWidth={false}
+          disabled={disabled}
+          placeholder="직접 입력"
+          {...register('default_info.hospitalization_path.input')}
+        />
+      </RowContent>
+      <RowContent title="관계" titleRatio={1} childrenRatio={2}>
+        <Form.MuiTextField
+          required={false}
+          fullWidth={false}
+          disabled={disabled}
+          placeholder="직접 입력"
+          {...register('default_info.hospitalization_path.input')}
+        />
+      </RowContent>
+      <RowContent title="전화번호" titleRatio={1} childrenRatio={2}>
+        <Form.MuiTextField
+          required={false}
+          fullWidth={false}
+          disabled={disabled}
+          placeholder="직접 입력"
+          {...register('default_info.hospitalization_path.input')}
+        />
+      </RowContent>
+      <RowContent title="기타" titleRatio={1} childrenRatio={2}>
+        <Form.MuiTextField
+          required={false}
+          fullWidth={false}
+          disabled={disabled}
+          placeholder="ex. 치료 방향, 물품 연락"
+          {...register('default_info.hospitalization_path.input')}
+        />
+      </RowContent>
+
+      <RowContent title="보호자 3 성함" titleRatio={1} childrenRatio={2}>
+        <Form.MuiTextField
+          required={false}
+          fullWidth={false}
+          disabled={disabled}
+          placeholder="직접 입력"
+          {...register('default_info.hospitalization_path.input')}
+        />
+      </RowContent>
+      <RowContent title="관계" titleRatio={1} childrenRatio={2}>
+        <Form.MuiTextField
+          required={false}
+          fullWidth={false}
+          disabled={disabled}
+          placeholder="직접 입력"
+          {...register('default_info.hospitalization_path.input')}
+        />
+      </RowContent>
+      <RowContent title="전화번호" titleRatio={1} childrenRatio={2}>
+        <Form.MuiTextField
+          required={false}
+          fullWidth={false}
+          disabled={disabled}
+          placeholder="직접 입력"
+          {...register('default_info.hospitalization_path.input')}
+        />
+      </RowContent>
+      <RowContent title="기타" titleRatio={1} childrenRatio={2}>
+        <Form.MuiTextField
+          required={false}
+          fullWidth={false}
+          disabled={disabled}
+          placeholder="ex. 치료 방향, 물품 연락"
+          {...register('default_info.hospitalization_path.input')}
+        />
+      </RowContent>
     </RowContainer>
   );
 };
