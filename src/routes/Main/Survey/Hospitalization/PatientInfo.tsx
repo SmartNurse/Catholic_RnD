@@ -2,7 +2,7 @@ import Form from 'components/Form';
 import { Fragment, useState, useEffect } from 'react';
 import { IPatientInfo } from 'apis/admin/type';
 import { IFormRegister, IFormValues, IFormWatch } from 'routes/Main/type';
-import { Button, IconButton, Stack, FormHelperText } from '@mui/material';
+import { Button, IconButton, Stack, FormHelperText, Grid } from '@mui/material';
 import { Delete } from '@mui/icons-material';
 import regex from 'utils/regex';
 
@@ -12,7 +12,7 @@ import useInfoEtc from 'store/patientEtc/useinfoEtc';
 
 import RowContainer from '../components/RowContainer';
 import RowContent from '../components/RowContent';
-import MuiTable from './MuiTable';
+import MuiTable from 'components/MuiTable';
 import MuiTextField from 'components/Form/MuiTextField';
 import useUser from 'store/user/useUser';
 
@@ -86,62 +86,39 @@ const PatientInfo = (props: Props) => {
   const inputRow = {
     id: 'infoEtc',
     name: (
-      <div
-        style={{
-          display: 'inline-flex',
-          marginTop: '10px',
-          marginLeft: '16px',
-        }}
-      >
-        <RowContent title="보호자 이름">
-          <MuiTextField
-            required={false}
-            fullWidth={false}
-            disabled={disabled}
-            placeholder="직접 입력"
-            value={name}
-            onChange={({ target: { value } }) => setName(value)}
-            sx={{ marginLeft: '68px', width: '219px' }}
-          />
-        </RowContent>
-      </div>
+      <MuiTextField
+        required={false}
+        disabled={disabled}
+        placeholder="직접 입력"
+        value={name}
+        onChange={({ target: { value } }) => setName(value)}
+        sx={{ width: '200px' }}
+      />
     ),
     relation: (
-      <div style={{ display: 'inline-flex', marginTop: '10px' }}>
-        <RowContent title="관계">
-          <Stack direction="row" spacing={1}>
-            <Form.MuiTextField
-              value={relation}
-              required={false}
-              placeholder="직접 입력"
-              onChange={({ target: { value } }) => setRelation(value)}
-              sx={{ marginLeft: '68px', width: '250px' }}
-            />
-          </Stack>
-        </RowContent>
-      </div>
+      <Form.MuiTextField
+        value={relation}
+        required={false}
+        placeholder="직접 입력"
+        onChange={({ target: { value } }) => setRelation(value)}
+        sx={{ width: '200px' }}
+      />
     ),
     contact: (
-      <div style={{ display: 'inline-flex', marginTop: '10px' }}>
-        <RowContent title="비상연락처">
-          <Form.MuiTextField
-            value={contact}
-            required={false}
-            sx={{ width: '400px', marginLeft: '44px' }}
-            placeholder="숫자만 입력해주세요."
-            onChange={({ target: { value } }) => {
-              setContact(value);
-            }}
-          />
-        </RowContent>
-      </div>
+      <Form.MuiTextField
+        value={contact}
+        required={false}
+        placeholder="숫자만 입력해주세요."
+        onChange={({ target: { value } }) => {
+          setContact(value);
+        }}
+      />
     ),
     action: (
       <Button
         variant="contained"
         size="small"
         onClick={onAddRow}
-        sx={{ marginLeft: '70px' }}
         disabled={isStudent ? false : true}
       >
         추가
@@ -231,7 +208,9 @@ const PatientInfo = (props: Props) => {
           {...register('default_info.hospitalization_path.input')}
         />
       </RowContent>
-      <MuiTable columns={columns} rows={tableRow} />
+      <Grid item xs={12}>
+        <MuiTable columns={columns} rows={tableRow} />
+      </Grid>
     </RowContainer>
   );
 };

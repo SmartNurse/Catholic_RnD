@@ -8,12 +8,9 @@ import { SurveyDialogProps, TDietListDefaultValues } from '../type';
 import MuiDialog from 'components/MuiDialog';
 
 import PatientInfo from './PatientInfo';
-import DietResultBox from './DietResultBox';
-import DietSelection from './DietSelection';
-import DefaultDiet from './DefaultDiet';
-import Treatment from './Treatment';
-import Controlled from './Controlled';
-import Special from './Special';
+import DietSelection1 from './DietSelection1';
+import DietSelection2 from './DietSelection2';
+import DietSelection3 from './DietSelection3';
 
 import { Grid, Typography } from '@mui/material';
 
@@ -100,30 +97,22 @@ const DietList = (props: SurveyDialogProps<TDietListDefaultValues>) => {
           <br />
           테스트용
         </Typography>
-
         <PatientInfo {...formProps} {...patientInfo} />
-        {/* <DietResultBox {...formProps} dietList={dietList} /> */}
-        <DietSelection
+        <DietSelection1
           {...formProps}
           dietList={dietList}
           setDietList={setDietList}
         />
-        {/* <DefaultDiet
-          {...formProps}
-          dietList={getDiet()}
-          setDietList={setDiet}
-        />
-        <Treatment
+        <DietSelection2
           {...formProps}
           dietList={dietList}
           setDietList={setDietList}
         />
-        <Controlled
+        <DietSelection3
           {...formProps}
           dietList={dietList}
           setDietList={setDietList}
         />
-        <Special {...formProps} dietList={dietList} setDietList={setDietList} /> */}
       </Grid>
     </MuiDialog.SurveyForm>
   );

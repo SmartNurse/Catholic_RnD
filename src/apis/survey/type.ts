@@ -698,6 +698,68 @@ export interface IUpdateHomeCare extends IGetSurvey {
   };
 }
 
+// KPCS
+export interface IKPCSRecord {
+  yes_or_no: number;
+  number: number;
+  unit: number;
+}
+
+export interface IUpdateKPCS extends IGetSurvey {
+  kpcs_survey: {
+    no01: number;
+    no02: number;
+    no03: number;
+    no04: number;
+    no05: number;
+    no06: number;
+    no07: number;
+    no08: number;
+    no09: number;
+    no10: number;
+    no11: number;
+    no12: number;
+    no13: number;
+    no14: number;
+    no15: number;
+    no16: number;
+    no17: number;
+    no18: number;
+    no19: number;
+    no20: number;
+    no21: number;
+    no22: number;
+    no23: number;
+    no24: number;
+    no25: number;
+    no26: number;
+    no27: number;
+    no28: number;
+    no29: number;
+    no30: number;
+    no31: number;
+    transfusion: IKPCSRecord[];
+    no33: number;
+    no34: number;
+    no35: number;
+    no36: number;
+    no37: number;
+    no38: number;
+    no39: number;
+    no40: number;
+    no41: number;
+    no42: number;
+    no43: number;
+    no44: number;
+    no45: number;
+    no46: number;
+    no47: number;
+    no48: number;
+    no49: number;
+    no50: number;
+  };
+}
+
 // 식이/영양 기록지
 export interface IUpdateDietList extends IGetSurvey {
   dietary_survey: {

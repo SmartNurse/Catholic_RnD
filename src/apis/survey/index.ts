@@ -36,6 +36,7 @@ import {
   IUpdateChildbirth,
   IUpdateHomeCare,
   IUpdateDietNutrition,
+  IUpdateKPCS,
   IUpdateDietList,
   IUpdateHospitalConfirm,
   IUpdateFallConfirm,
@@ -414,6 +415,17 @@ export const getHomeCare = (request: IGetSurvey) => {
 
 export const updateHomeCare = (request: IUpdateHomeCare) => {
   const url = `/survey/homecare`;
+  return apiGateway.post(url, camelcaseKeys(request));
+};
+
+// KPCS
+export const getKPCS = (request: IGetSurvey) => {
+  const url = `/survey/kpcs?${formatToRequestParameter(request)}`;
+  return apiGateway.get(url);
+};
+
+export const updateKPCS = (request: IUpdateKPCS) => {
+  const url = `/survey/kpcs`;
   return apiGateway.post(url, camelcaseKeys(request));
 };
 

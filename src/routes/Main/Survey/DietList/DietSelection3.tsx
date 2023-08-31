@@ -233,7 +233,7 @@ const MenuProps = {
   },
 };
 
-const DietSelection = (props: Props) => {
+const DietSelection3 = (props: Props) => {
   const theme = useTheme();
   const { disabled, register, getValues, setValue } = props;
 
@@ -390,7 +390,7 @@ const DietSelection = (props: Props) => {
 
   return (
     <>
-      <SectionTitle title={'조식'} />
+      <SectionTitle title="석식" />
       <Box
         sx={{
           width: '90%',
@@ -428,7 +428,7 @@ const DietSelection = (props: Props) => {
               fontWeight: '400',
               fontSize: '14px',
               lineHeight: '24px',
-              paddingRight: '48px',
+              paddingRight: '20px',
             }}
           >
             1일 합계 칼로리:
@@ -454,7 +454,7 @@ const DietSelection = (props: Props) => {
       <Box
         sx={{
           width: '90%',
-          margin: '48px auto 0px auto',
+          margin: '20px auto 0px auto',
           display: 'flex',
           gap: '16%',
         }}
@@ -538,7 +538,7 @@ const DietSelection = (props: Props) => {
       <Box
         sx={{
           width: '90%',
-          margin: '48px auto 0px auto',
+          margin: '20px auto 0px auto',
           display: 'flex',
           gap: '16%',
         }}
@@ -570,7 +570,7 @@ const DietSelection = (props: Props) => {
       <Box
         sx={{
           width: '90%',
-          margin: '48px auto 0px auto',
+          margin: '20px auto 0px auto',
           display: 'flex',
           gap: '16%',
         }}
@@ -654,7 +654,7 @@ const DietSelection = (props: Props) => {
       <Box
         sx={{
           width: '90%',
-          margin: '48px auto 0px auto',
+          margin: '20px auto 0px auto',
           display: 'flex',
           gap: '16%',
         }}
@@ -698,7 +698,7 @@ const DietSelection = (props: Props) => {
             maxRows={5}
             placeholder="기타 (직접 입력)"
             {...register('select_meal.calorie')}
-            sx={{ width: '230px' }}
+            sx={{ width: '230px', m: 1 }}
             required={false}
           />
         </Box>
@@ -707,4 +707,4 @@ const DietSelection = (props: Props) => {
   );
 };
 
-export default DietSelection;
+export default DietSelection3;

@@ -48,6 +48,7 @@ import {
   getKOOS,
   getNDI,
   getBedScoreTwo,
+  getKPCS,
 } from 'apis/survey';
 import useNotification from 'hooks/useNotification';
 import { findKeyValueToObj, findKeyValueToObjNoParse } from 'utils/convert';
@@ -104,6 +105,7 @@ import {
   initialSTarTBack,
   initialKOOS,
   initialNDI,
+  initialKPCS,
 } from '../initialStates';
 import { MENU } from '../type';
 
@@ -528,6 +530,14 @@ const useDefaultValues = ({ setDefaultValues, user_id }: Props) => {
               { update_at, ...homecare_survey },
               initialHomeCare
             );
+          })
+          .catch(e => onFail('알 수 없는 오류가 발생했습니다.', e));
+        break;
+      case MENU.KPCS:
+        getKPCS({ user_id, patient_id })
+          .then(({ data }) => {
+            const { update_at, kpcs_survey } = data;
+            convertDataToStates({ update_at, ...kpcs_survey }, initialKPCS);
           })
           .catch(e => onFail('알 수 없는 오류가 발생했습니다.', e));
         break;

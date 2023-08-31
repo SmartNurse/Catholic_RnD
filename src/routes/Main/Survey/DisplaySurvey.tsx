@@ -39,6 +39,8 @@ import HomeCare from './Special/HomeCare';
 import DietNutrition from './DietNutrition';
 import DietList from './DietList';
 
+import KPCS from './KPCSs/KPCS';
+
 import HospitalizationInfo from './Agreement/HospitalizationInfo';
 import FallPrevention from './Agreement/FallPrevention';
 import Colonoscopy from './Agreement/Colonoscopy';
@@ -211,6 +213,10 @@ const DisplaySurvey = (props: Props) => {
     case MENU.HOME_CARE: {
       if (!defaultValues) return null;
       return <HomeCare {...dialogProps} onClose={onCloseSave} />;
+    }
+    case MENU.KPCS: {
+      if (!defaultValues) return null;
+      return <KPCS {...dialogProps} onClose={onCloseSave} />;
     }
     case MENU.DIET_NUTRITION: {
       if (!defaultValues) return null;
