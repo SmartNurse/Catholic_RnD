@@ -100,6 +100,7 @@ export enum MENU {
   AGREEMENT = '동의서',
   HOSPITAL_CONFIRM = '입원 안내 확인서',
   FALL_CONFIRM = '낙상 예방교육 확인서',
+  TRANSFUSIONAGREEMENT = '수혈 동의서',
   COLONOSCOPY = '대장내시경 동의서',
   UPPER_ENDOSCOPY = '상부내시경 동의서',
   NONSALARY = '비급여진료비동의서',

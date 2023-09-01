@@ -58,6 +58,7 @@ import KOOS from './Pain/KOOS';
 import LEFS from './Pain/LEFS';
 import NDI from './Pain/NDI';
 import STarTBackScreening from './Pain/STarTBackScreening';
+import TransfusionAgreement from './Agreement/Transfusion';
 
 interface Props {
   surveyType: string;
@@ -230,6 +231,10 @@ const DisplaySurvey = (props: Props) => {
     case MENU.FALL_CONFIRM: {
       if (!defaultValues) return null;
       return <FallPrevention {...dialogProps} onClose={onCloseSave} />;
+    }
+    case MENU.TRANSFUSIONAGREEMENT: {
+      if (!defaultValues) return null;
+      return <TransfusionAgreement {...dialogProps} onClose={onCloseSave} />;
     }
     case MENU.COLONOSCOPY: {
       if (!defaultValues) return null;

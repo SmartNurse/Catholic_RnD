@@ -657,6 +657,20 @@ const useDefaultValues = ({ setDefaultValues, user_id }: Props) => {
           })
           .catch(e => onFail('알 수 없는 오류가 발생했습니다.', e));
         break;
+      case MENU.TRANSFUSIONAGREEMENT:
+        getColonoscopy({ user_id, patient_id })
+          .then(({ data }) => {
+            const { update_at, colono_scopy_confirmation } = data;
+            convertDataToStates(
+              {
+                update_at,
+                ...colono_scopy_confirmation,
+              },
+              initialColonoscopy
+            );
+          })
+          .catch(e => onFail('알 수 없는 오류가 발생했습니다.', e));
+        break;
       case MENU.UPPER_ENDOSCOPY:
         getUpperEndoscopy({ user_id, patient_id })
           .then(({ data }) => {
