@@ -232,6 +232,7 @@ function SignUpForm(props: Props) {
               InputLabelProps={{ shrink: true }}
               defaultValue="2010"
               {...register('birth')}
+              SelectProps={{ MenuProps: { sx: { maxHeight: 400 } } }} // add this line
             >
               {rendering()}
             </TextField>
