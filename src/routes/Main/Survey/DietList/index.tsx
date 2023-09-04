@@ -12,6 +12,8 @@ import DietSelection1 from './DietSelection1';
 import DietSelection2 from './DietSelection2';
 import DietSelection3 from './DietSelection3';
 
+import CommonPatientInfo from '../components/CommonPatientInfo';
+
 import { Grid, Typography } from '@mui/material';
 
 import { updateDietList } from 'apis/survey';
@@ -23,6 +25,7 @@ const DietList = (props: SurveyDialogProps<TDietListDefaultValues>) => {
     disabled,
     defaultValues,
     user_id,
+    nurseName,
     patientInfo,
     onClose,
   } = props;
@@ -97,7 +100,8 @@ const DietList = (props: SurveyDialogProps<TDietListDefaultValues>) => {
           <br />
           테스트용
         </Typography>
-        <PatientInfo {...formProps} {...patientInfo} />
+        <CommonPatientInfo patientInfo={patientInfo} nurseName={nurseName} />
+
         <DietSelection1
           {...formProps}
           dietList={dietList}

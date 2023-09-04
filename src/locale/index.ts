@@ -529,7 +529,7 @@ const locale = {
     'DNR.EXPLANATION.2': '녹화',
     'DNR.EXPLANATION.3': '녹취',
 
-    // KOOS
+    // KOOS2
     'KOOS.SYMPTOMS.1': '전혀 없었음',
     'KOOS.SYMPTOMS.2': '거의 없었음',
     'KOOS.SYMPTOMS.3': '가끔 있었음',
@@ -600,6 +600,20 @@ const locale = {
     'NOTHING.3': ' ',
     'NOTHING.4': ' ',
     'NOTHING.5': ' ',
+
+    // 식이/영양 기록지
+    'DIETLIST.1': 'NPO',
+    'DIETLIST.2': 'SOW',
+    'DIETLIST.3': 'AQ',
+    'DIETLIST.4': 'LD',
+    'DIETLIST.5': 'SD',
+    'DIETLIST.6': 'SBD',
+    'DIETLIST.7': 'RD',
+    'DIETLIST.8': 'TD',
+    'DIETLIST.9': '치료식',
+    'DIETLIST.10': '소아',
+
+    'DIETLIST.GUARD.1': '보호자 식이',
   },
 };
 
