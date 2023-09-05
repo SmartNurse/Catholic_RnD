@@ -1,11 +1,6 @@
 import { useEffect, useState } from 'react';
 
-import {
-  ListItemButton,
-  Typography,
-  useTheme,
-  FormHelperText,
-} from '@mui/material';
+import { ListItemButton, Typography, useTheme } from '@mui/material';
 
 import { getPatients } from 'apis/admin';
 import usePatient from 'store/patient/usePatient';
