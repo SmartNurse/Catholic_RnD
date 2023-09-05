@@ -1,12 +1,19 @@
 import { useEffect, useState } from 'react';
 
-import { ListItemButton, Typography, useTheme } from '@mui/material';
+import {
+  ListItemButton,
+  Typography,
+  useTheme,
+  FormHelperText,
+} from '@mui/material';
 
 import { getPatients } from 'apis/admin';
 import usePatient from 'store/patient/usePatient';
 import MuiAutocomplete from 'components/MuiAutocomplete';
 
 import { getNursingRecords } from 'apis/main';
+import useUser from 'store/user/useUser';
+
 import { ReactComponent as Cookie } from 'assets/alarm-icon.svg';
 import { ReactComponent as Empty } from 'assets/alarm-icon-empty.svg';
 
@@ -23,6 +30,7 @@ interface Props {
 const PatientsList = ({ user_id }: Props) => {
   const { palette } = useTheme();
   const { onSelectedPatient } = usePatient();
+  const { student_uuid: isStudent } = useUser();
 
   const optionLabel = ({ patient_id, name }: IOption) =>
     `${patient_id} ${name}`;
@@ -37,12 +45,11 @@ const PatientsList = ({ user_id }: Props) => {
         user_id,
         patient_id: Number(`${patient_id}`),
       }).then(({ data }) => {
-        // console.log('데이터', data);
         setNursingRecord(data.nursing_records);
       });
     });
 
-    if (nursingRecord.length === 0) {
+    if (nursingRecord) {
       return (
         <ListItemButton {...props} sx={{ gap: 0.5 }}>
           <Empty />
@@ -91,7 +98,11 @@ const PatientsList = ({ user_id }: Props) => {
       placeholder="환자 검색"
       noOptionsText="검색한 환자가 없습니다 다른 환자 이름을 입력해주세요"
       getOptionLabel={optionLabel}
-      renderOption={(props, option) => <Option {...props} {...option} />}
+      renderOption={(props, option) => {
+        if (!user_id) {
+          return null;
+        } else return <Option {...props} {...option} />;
+      }}
       onChange={onSelectedPatient}
       getApi={params => getPatients({ ...params, user_id })}
     />

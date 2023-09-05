@@ -8,9 +8,16 @@ interface IOption {
   user_id: number;
   student_name: string;
   student_no: string;
+
+  okay: boolean;
+  setOkay: (okay: boolean) => void;
 }
 
-const StudentList = ({ user_id }: Pick<IOption, 'user_id'>) => {
+const StudentList = ({
+  user_id,
+  okay,
+  setOkay,
+}: Pick<IOption, 'user_id' | 'okay' | 'setOkay'>) => {
   const { onSelectedStudent } = useStudent();
 
   const optionLabel = ({ student_name, student_no }: IOption) =>
@@ -34,8 +41,15 @@ const StudentList = ({ user_id }: Pick<IOption, 'user_id'>) => {
       noOptionsText="검색한 학생이 없습니다 다른 학생 이름을 입력해주세요"
       getOptionLabel={optionLabel}
       renderOption={(props, option) => <Option {...props} {...option} />}
-      onChange={onSelectedStudent}
-      getApi={request => isNaN(Number(request.keyword)) ? getStudentList({ user_id, searchType: 1, ...request }) : getStudentList({ user_id, searchType: 2, ...request }) }
+      onChange={e => {
+        onSelectedStudent(e);
+        setOkay(true);
+      }}
+      getApi={request =>
+        isNaN(Number(request.keyword))
+          ? getStudentList({ user_id, searchType: 1, ...request })
+          : getStudentList({ user_id, searchType: 2, ...request })
+      }
     />
   );
 };
