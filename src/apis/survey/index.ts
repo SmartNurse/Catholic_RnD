@@ -52,6 +52,7 @@ import {
   IUpdateLEFS,
   IUpdateNDI,
   IUpdateSTarTBack,
+  IUpdateTransfusionAgree,
 } from './type';
 
 // e-CARDEX
@@ -470,6 +471,19 @@ export const getFallConfirm = (request: IGetSurvey) => {
 
 export const updateFallConfirm = (request: IUpdateFallConfirm) => {
   const url = `/survey/fallConfirm`;
+  return apiGateway.post(url, camelcaseKeys(request));
+};
+
+// 수혈 동의서
+export const getTransfusionAgree = (request: IGetSurvey) => {
+  const url = `/survey/transfusion_confirm?${formatToRequestParameter(
+    request
+  )}`;
+  return apiGateway.get(url);
+};
+
+export const updateTransfusionAgree = (request: IUpdateTransfusionAgree) => {
+  const url = `/survey/transfusion_confirm`;
   return apiGateway.post(url, camelcaseKeys(request));
 };
 

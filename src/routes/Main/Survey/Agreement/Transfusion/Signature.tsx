@@ -51,7 +51,7 @@ const Signature = (props: Props) => {
                   <Form.MuiTextField
                     required={false}
                     disabled={disabled}
-                    {...register('patient_bday')}
+                    {...register('pt_bday')}
                   />
                   <Box
                     sx={{
@@ -67,7 +67,7 @@ const Signature = (props: Props) => {
                     sx={{ paddingRight: '60px' }}
                     required={false}
                     disabled={disabled}
-                    {...register('patient_contact')}
+                    {...register('pt_contact')}
                   />
                 </div>
                 <div style={{ display: 'flex', marginBottom: '20px' }}>
@@ -83,7 +83,7 @@ const Signature = (props: Props) => {
                   <Form.MuiTextField
                     required={false}
                     disabled={disabled}
-                    {...register('patient_name')}
+                    {...register('pt_name')}
                   />
                   <Box
                     sx={{
@@ -98,7 +98,7 @@ const Signature = (props: Props) => {
                     required={false}
                     sx={{ paddingRight: '60px' }}
                     disabled={disabled}
-                    {...register('patient_sig')}
+                    {...register('pt_sig')}
                   />
                 </div>
               </StyledTableCellWithoutLeftRight>
@@ -126,7 +126,7 @@ const Signature = (props: Props) => {
                   <Form.MuiTextField
                     required={false}
                     disabled={disabled}
-                    {...register('companion_bday')}
+                    {...register('representative_bday')}
                   />
                   <Box
                     sx={{
@@ -141,7 +141,7 @@ const Signature = (props: Props) => {
                     sx={{ paddingRight: '60px' }}
                     required={false}
                     disabled={disabled}
-                    {...register('companion_contact')}
+                    {...register('representative_contact')}
                   />
                 </div>
                 <div style={{ display: 'flex', marginBottom: '20px' }}>
@@ -157,7 +157,7 @@ const Signature = (props: Props) => {
                   <Form.MuiTextField
                     required={false}
                     disabled={disabled}
-                    {...register('companion_name')}
+                    {...register('representative_name')}
                   />
                   <Box
                     sx={{
@@ -172,7 +172,7 @@ const Signature = (props: Props) => {
                     sx={{ paddingRight: '60px' }}
                     required={false}
                     disabled={disabled}
-                    {...register('companion_sig')}
+                    {...register('representative_sig')}
                   />
                 </div>
               </StyledTableCellWithoutLeftRight>

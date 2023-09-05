@@ -6,8 +6,8 @@ import useNotification from 'hooks/useNotification';
 import { Typography, Box } from '@mui/material';
 import MuiDialog from 'components/MuiDialog';
 
-import { SurveyDialogProps, TColonoscopyDefaultValues } from '../../type';
-import { updateColonoscopy } from 'apis/survey';
+import { SurveyDialogProps, TTransfusionAgreeDefaultValues } from '../../type';
+import { updateTransfusionAgree } from 'apis/survey';
 
 import CommonPatientInfo from '../../components/CommonPatientInfo';
 import ResultPurpose from './ResultPurpose';
@@ -15,10 +15,9 @@ import CautionList from './CautionList';
 import Signature from './Signature';
 import Complications from './Complications';
 import MethodandProcess from './MethodandProcess';
-import SpecialCaution from './SpecialCaution';
 
 const TransfusionAgreement = (
-  props: SurveyDialogProps<TColonoscopyDefaultValues>
+  props: SurveyDialogProps<TTransfusionAgreeDefaultValues>
 ) => {
   const {
     title,
@@ -37,18 +36,18 @@ const TransfusionAgreement = (
     defaultValues,
   });
 
-  const onSubmit = (data: TColonoscopyDefaultValues) => {
+  const onSubmit = (data: TTransfusionAgreeDefaultValues) => {
     const {
-      agree_check_01,
-      agree_check_02,
-      patient_bday,
-      patient_contact,
-      patient_name,
-      patient_sig,
-      companion_bday,
-      companion_contact,
-      companion_name,
-      companion_sig,
+      pt_bday,
+      pt_contact,
+      pt_name,
+      pt_sig,
+
+      representative_bday,
+      representative_contact,
+      representative_name,
+      representative_sig,
+
       dr_name,
       dr_sig,
     } = data;
@@ -56,17 +55,17 @@ const TransfusionAgreement = (
     const request = {
       user_id,
       patient_id: patientInfo.patient_id,
-      colono_scopy_confirmation: {
-        agree_check_01,
-        agree_check_02,
-        patient_bday,
-        patient_contact,
-        patient_name,
-        patient_sig,
-        companion_bday,
-        companion_contact,
-        companion_name,
-        companion_sig,
+      transfusion_confirmation: {
+        pt_bday,
+        pt_contact,
+        pt_name,
+        pt_sig,
+
+        representative_bday,
+        representative_contact,
+        representative_name,
+        representative_sig,
+
         dr_name,
         dr_sig,
       },
@@ -74,15 +73,15 @@ const TransfusionAgreement = (
 
     console.log('리퀘스트', request);
 
-    updateColonoscopy(request)
+    updateTransfusionAgree(request)
       .then(({ data: { rc } }) => {
         if (rc !== 1) return onResultCode(rc);
 
         onUpdateIsSave(true);
-        onSuccess('대장내시경 동의서 저장에 성공하였습니다.');
+        onSuccess('수혈 동의서 저장에 성공하였습니다.');
       })
       .catch(e => {
-        onFail('대장내시경 동의서 저장에 실패하였습니다.', e);
+        onFail('수혈 동의서 저장에 실패하였습니다.', e);
         console.log(e);
       });
   };
@@ -121,7 +120,6 @@ const TransfusionAgreement = (
         <CautionList {...formProps} />
         <Complications {...formProps} />
         <MethodandProcess {...formProps} />
-        {/* <SpecialCaution {...formProps} /> */}
         <Signature {...formProps} />
       </Box>
     </MuiDialog.SurveyForm>

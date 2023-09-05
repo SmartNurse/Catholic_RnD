@@ -49,6 +49,7 @@ import {
   getNDI,
   getBedScoreTwo,
   getKPCS,
+  getTransfusionAgree,
 } from 'apis/survey';
 import useNotification from 'hooks/useNotification';
 import { findKeyValueToObj, findKeyValueToObjNoParse } from 'utils/convert';
@@ -106,6 +107,7 @@ import {
   initialKOOS,
   initialNDI,
   initialKPCS,
+  initialTransfusionAgree,
 } from '../initialStates';
 import { MENU } from '../type';
 
@@ -658,15 +660,15 @@ const useDefaultValues = ({ setDefaultValues, user_id }: Props) => {
           .catch(e => onFail('알 수 없는 오류가 발생했습니다.', e));
         break;
       case MENU.TRANSFUSIONAGREEMENT:
-        getColonoscopy({ user_id, patient_id })
+        getTransfusionAgree({ user_id, patient_id })
           .then(({ data }) => {
-            const { update_at, colono_scopy_confirmation } = data;
+            const { update_at, transfusion_confirmation } = data;
             convertDataToStates(
               {
                 update_at,
-                ...colono_scopy_confirmation,
+                ...transfusion_confirmation,
               },
-              initialColonoscopy
+              initialTransfusionAgree
             );
           })
           .catch(e => onFail('알 수 없는 오류가 발생했습니다.', e));

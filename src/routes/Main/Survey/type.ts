@@ -54,6 +54,7 @@ import {
   initialNDI,
   initialDietList,
   initialKPCS,
+  initialTransfusionAgree,
 } from './initialStates';
 
 export enum MENU {
@@ -176,6 +177,7 @@ export type TDietNutritionDefaultValues = typeof initialDietNutrition;
 
 export type THospitalConfirmDefaultValues = typeof initialHospitalConfirm;
 export type TFallConfirmDefaultValues = typeof initialFallConfirm;
+export type TTransfusionAgreeDefaultValues = typeof initialTransfusionAgree;
 export type TColonoscopyDefaultValues = typeof initialColonoscopy;
 export type TUpperEndoscopyDefaultValues = typeof initialUpperEndoscopy;
 export type TNonSalaryDefaultValues = typeof initialNonSalary;

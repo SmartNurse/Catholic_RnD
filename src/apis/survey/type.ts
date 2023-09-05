@@ -811,6 +811,24 @@ export interface IUpdateFallConfirm extends IGetSurvey {
   };
 }
 
+// 수혈 동의서
+export interface IUpdateTransfusionAgree extends IGetSurvey {
+  transfusion_confirmation: {
+    pt_bday: string;
+    pt_contact: string;
+    pt_name: string;
+    pt_sig: string;
+
+    representative_bday: string;
+    representative_contact: string;
+    representative_name: string;
+    representative_sig: string;
+
+    dr_name: string;
+    dr_sig: string;
+  };
+}
+
 // 대장 내시경
 export interface IUpdateColonoscopy extends IGetSurvey {
   colono_scopy_confirmation: {

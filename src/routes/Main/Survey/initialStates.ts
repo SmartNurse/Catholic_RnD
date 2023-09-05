@@ -1336,6 +1336,22 @@ export const initialFallConfirm = {
   personnel_signature: '',
 };
 
+export const initialTransfusionAgree = {
+  update_at: '',
+  pt_bday: '',
+  pt_contact: '',
+  pt_name: '',
+  pt_sig: '',
+
+  representative_bday: '',
+  representative_contact: '',
+  representative_name: '',
+  representative_sig: '',
+
+  dr_name: '',
+  dr_sig: '',
+};
+
 export const initialColonoscopy = {
   update_at: '',
   agree_check_01: '',
