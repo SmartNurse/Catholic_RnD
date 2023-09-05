@@ -46,13 +46,23 @@ const KPCS = (props: SurveyDialogProps<TKPCSDefaultValues>) => {
   const [sum5, setSum5] = useState(0);
   const [sum6, setSum6] = useState(0);
 
+  // input 창
+  const [urin, setUrin] = useState(0);
+  const [poo, setPoo] = useState(0);
+
   const [sum7, setSum7] = useState(0);
   const [sum8, setSum8] = useState(0);
 
   const [sum7_1, setSum7_1] = useState(0);
 
+  // 수혈 input
+  const [trancfusion, setTransfusion] = useState(0);
+
   const [sum9, setSum9] = useState(0);
   const [sum10, setSum10] = useState(0);
+
+  // CPR input
+  const [cpr, setCpr] = useState(0);
 
   const [sum11, setSum11] = useState(0);
 
@@ -83,8 +93,6 @@ const KPCS = (props: SurveyDialogProps<TKPCSDefaultValues>) => {
     setValue,
     onRequired,
   };
-
-  console.log('sum', sum11);
 
   // console.log('합계', sum1 + sum2);
 
@@ -136,6 +144,10 @@ const KPCS = (props: SurveyDialogProps<TKPCSDefaultValues>) => {
           setSum5={setSum5}
           sum6={sum6}
           setSum6={setSum6}
+          urin={urin}
+          setUrin={setUrin}
+          poo={poo}
+          setPoo={setPoo}
         />
         <KPCSContents4
           {...formProps}
@@ -144,7 +156,13 @@ const KPCS = (props: SurveyDialogProps<TKPCSDefaultValues>) => {
           sum8={sum8}
           setSum8={setSum8}
         />
-        <KPCSContents401 {...formProps} sum7_1={sum7_1} setSum7_1={setSum7_1} />
+        <KPCSContents401
+          {...formProps}
+          sum7_1={sum7_1}
+          setSum7_1={setSum7_1}
+          trancfusion={trancfusion}
+          setTransfusion={setTransfusion}
+        />
 
         <KPCSContents5
           {...formProps}
@@ -152,6 +170,8 @@ const KPCS = (props: SurveyDialogProps<TKPCSDefaultValues>) => {
           setSum9={setSum9}
           sum10={sum10}
           setSum10={setSum10}
+          cpr={cpr}
+          setCpr={setCpr}
         />
         <KPCSContents6 {...formProps} sum11={sum11} setSum11={setSum11} />
         <Box
@@ -171,11 +191,14 @@ const KPCS = (props: SurveyDialogProps<TKPCSDefaultValues>) => {
             {sum1 +
               sum2 +
               sum3 +
+              urin +
+              poo +
               sum4 +
               sum5 +
               sum6 +
               sum7 +
               sum7_1 +
+              trancfusion +
               sum8 +
               sum9 +
               sum10 +

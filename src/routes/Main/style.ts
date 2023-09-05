@@ -256,6 +256,7 @@ export const StyledTableCellWithoutLeftRightTwo = styled(TableCell)({
   borderLeft: 'none',
   borderRight: 'none',
   padding: '0px',
+  paddingTop: '10px',
 });
 
 // 통증 ( STarTBack )

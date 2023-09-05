@@ -110,7 +110,7 @@ const KPCSContents6 = (props: Props) => {
                   <StyledTableCellWithoutLeftTwo>
                     <RadioGroup
                       sx={{
-                        paddingTop: content.info.length > 1 ? '35px' : '18px',
+                        paddingTop: content.info.length > 1 ? '55px' : '28px',
                       }}
                       name={radioId11[content.id - 1]}
                       defaultValue={Number(
@@ -164,7 +164,7 @@ const KPCSContents6 = (props: Props) => {
                           return (
                             <TableRow
                               sx={{
-                                lineHeight: '17px',
+                                lineHeight: '23px',
                                 height: '4px',
                               }}
                             >

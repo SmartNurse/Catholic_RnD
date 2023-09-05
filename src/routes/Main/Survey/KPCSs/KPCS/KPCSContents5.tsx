@@ -148,11 +148,15 @@ interface Props extends IFormValues, IFormWatch, IFormRegister {
 
   sum10: number;
   setSum10: (sum10: number) => void;
+
+  cpr: number;
+  setCpr: (cpr: number) => void;
 }
 const KPCSContents5 = (props: Props) => {
   const { palette } = useTheme();
 
-  const { disabled, setValue, getValues, setSum9, setSum10, register } = props;
+  const { disabled, setValue, getValues, setSum9, setSum10, setCpr, register } =
+    props;
 
   const calculateSumValue9 = () => {
     setSum9(
@@ -272,7 +276,7 @@ const KPCSContents5 = (props: Props) => {
                   <StyledTableCellWithoutLeftTwo>
                     <RadioGroup
                       sx={{
-                        paddingTop: content.info.length > 1 ? '35px' : '18px',
+                        paddingTop: content.info.length > 1 ? '55px' : '28px',
                       }}
                       name={radioId9[content.id - 1]}
                       defaultValue={Number(getValues(radioId9[content.id - 1]))}
@@ -324,7 +328,7 @@ const KPCSContents5 = (props: Props) => {
                           return (
                             <TableRow
                               sx={{
-                                lineHeight: '17px',
+                                lineHeight: '23px',
                                 height: '4px',
                               }}
                             >
@@ -397,7 +401,7 @@ const KPCSContents5 = (props: Props) => {
                   <StyledTableCellWithoutLeftTwo>
                     <RadioGroup
                       sx={{
-                        paddingTop: content.info.length > 1 ? '35px' : '18px',
+                        paddingTop: content.info.length > 1 ? '55px' : '28px',
                       }}
                       name={radioId10[content.id - 1]}
                       defaultValue={Number(
@@ -451,7 +455,7 @@ const KPCSContents5 = (props: Props) => {
                           return (
                             <TableRow
                               sx={{
-                                lineHeight: '17px',
+                                lineHeight: '23px',
                                 height: '4px',
                               }}
                             >
@@ -499,9 +503,10 @@ const KPCSContents5 = (props: Props) => {
                                     ...Form.adornment('', '시간'),
                                   }}
                                   {...register(`${v}`)}
-                                  onChange={e =>
-                                    setValue(`${v}`, e.target.value)
-                                  }
+                                  onChange={e => {
+                                    setValue(`${v}`, e.target.value);
+                                    setCpr(Number(e.target.value));
+                                  }}
                                 />
                               </Box>
                             </TableRow>

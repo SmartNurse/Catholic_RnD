@@ -195,7 +195,7 @@ const KPCSContents = (props: Props) => {
                   <StyledTableCellWithoutLeftTwo>
                     <RadioGroup
                       sx={{
-                        paddingTop: content.info.length > 1 ? '35px' : '18px',
+                        paddingTop: content.info.length > 1 ? '45px' : '28px',
                       }}
                       name={radioId[content.id - 1]}
                       defaultValue={Number(getValues(radioId[content.id - 1]))}
@@ -237,7 +237,7 @@ const KPCSContents = (props: Props) => {
                       {content.info.includes('') ? (
                         <TableRow
                           sx={{
-                            height: '16px',
+                            height: '21px',
                           }}
                         >
                           <Box sx={{ minWidth: '500px' }}> </Box>
@@ -252,7 +252,10 @@ const KPCSContents = (props: Props) => {
                               }}
                             >
                               <Box
-                                sx={{ minWidth: '65vw', marginLeft: '-28px' }}
+                                sx={{
+                                  minWidth: '65vw',
+                                  marginLeft: '-28px',
+                                }}
                               >
                                 ・ {item}
                               </Box>
@@ -268,7 +271,10 @@ const KPCSContents = (props: Props) => {
                               }}
                             >
                               <Box
-                                sx={{ minWidth: '65vw', marginLeft: '-28px' }}
+                                sx={{
+                                  minWidth: '65vw',
+                                  marginLeft: '-28px',
+                                }}
                               >
                                 ・ {item}
                               </Box>
@@ -320,7 +326,7 @@ const KPCSContents = (props: Props) => {
                   <StyledTableCellWithoutLeftTwo>
                     <RadioGroup
                       sx={{
-                        paddingTop: content.info.length > 1 ? '35px' : '18px',
+                        paddingTop: content.info.length > 1 ? '55px' : '28px',
                       }}
                       name={radioId1[content.id - 1]}
                       defaultValue={Number(getValues(radioId1[content.id - 1]))}
@@ -332,7 +338,7 @@ const KPCSContents = (props: Props) => {
                               sx={{
                                 lineHeight: '43px',
                                 textAlign: 'center',
-                                height: '43px',
+                                height: '48px',
                               }}
                             ></TableRow>
                           );
@@ -372,7 +378,7 @@ const KPCSContents = (props: Props) => {
                           return (
                             <TableRow
                               sx={{
-                                lineHeight: '17px',
+                                lineHeight: '23px',
                                 height: '4px',
                               }}
                             >

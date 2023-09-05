@@ -66,11 +66,27 @@ interface Props extends IFormValues, IFormWatch, IFormRegister {
 
   sum6: number;
   setSum6: (sum6: number) => void;
+
+  urin: number;
+  setUrin: (urin: number) => void;
+
+  poo: number;
+  setPoo: (poo: number) => void;
 }
+
 const KPCSContents3 = (props: Props) => {
   const { palette } = useTheme();
 
-  const { disabled, setValue, getValues, setSum5, setSum6, register } = props;
+  const {
+    disabled,
+    setValue,
+    getValues,
+    setSum5,
+    setSum6,
+    setUrin,
+    setPoo,
+    register,
+  } = props;
 
   const calculateSumValue5 = () => {
     setSum5(
@@ -150,7 +166,7 @@ const KPCSContents3 = (props: Props) => {
                   <StyledTableCellWithoutLeftTwo>
                     <RadioGroup
                       sx={{
-                        paddingTop: content.info.length > 1 ? '35px' : '18px',
+                        paddingTop: content.info.length > 1 ? '55px' : '28px',
                       }}
                       name={radioId5[content.id - 1]}
                       defaultValue={Number(getValues(radioId5[content.id - 1]))}
@@ -202,7 +218,7 @@ const KPCSContents3 = (props: Props) => {
                           return (
                             <TableRow
                               sx={{
-                                lineHeight: '17px',
+                                lineHeight: '23px',
                                 height: '4px',
                               }}
                             >
@@ -275,7 +291,7 @@ const KPCSContents3 = (props: Props) => {
                   <StyledTableCellWithoutLeftTwo>
                     <RadioGroup
                       sx={{
-                        paddingTop: content.info.length > 1 ? '35px' : '18px',
+                        paddingTop: content.info.length > 1 ? '55px' : '28px',
                       }}
                       name={radioId6[content.id - 1]}
                       defaultValue={Number(getValues(radioId6[content.id - 1]))}
@@ -327,7 +343,7 @@ const KPCSContents3 = (props: Props) => {
                           return (
                             <TableRow
                               sx={{
-                                lineHeight: '17px',
+                                lineHeight: '23px',
                                 height: '4px',
                               }}
                             >
@@ -357,7 +373,7 @@ const KPCSContents3 = (props: Props) => {
                         })
                       )}
                       {content.desc.map((v, i) => {
-                        if (v.includes('no')) {
+                        if (v.includes('no22')) {
                           return (
                             <TableRow
                               sx={{
@@ -375,9 +391,36 @@ const KPCSContents3 = (props: Props) => {
                                     ...Form.adornment('횟수', '회/day'),
                                   }}
                                   {...register(`${v}`)}
-                                  onChange={e =>
-                                    setValue(`${v}`, e.target.value)
-                                  }
+                                  onChange={e => {
+                                    setValue(`${v}`, e.target.value);
+                                    setUrin(Number(e.target.value));
+                                  }}
+                                />
+                              </Box>
+                            </TableRow>
+                          );
+                        } else if (v.includes('no23')) {
+                          return (
+                            <TableRow
+                              sx={{
+                                lineHeight: '42px',
+                              }}
+                            >
+                              <Box sx={{ minWidth: '500px' }}>
+                                <Form.MuiTextField
+                                  required={false}
+                                  type="number"
+                                  textAlign="right"
+                                  disabled={disabled}
+                                  sx={{ width: '200px' }}
+                                  InputProps={{
+                                    ...Form.adornment('횟수', '회/day'),
+                                  }}
+                                  {...register(`${v}`)}
+                                  onChange={e => {
+                                    setValue(`${v}`, e.target.value);
+                                    setPoo(Number(e.target.value));
+                                  }}
                                 />
                               </Box>
                             </TableRow>

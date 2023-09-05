@@ -70,11 +70,16 @@ interface Props extends IFormValues, IFormWatch, IFormRegister {
   disabled?: boolean;
   sum7_1: number;
   setSum7_1: (sum7_1: number) => void;
+
+  trancfusion: number;
+  setTransfusion: (trancfusion: number) => void;
 }
+
 const KPCSContents4_1 = (props: Props) => {
   const { palette } = useTheme();
 
-  const { disabled, setValue, getValues, setSum7_1, register } = props;
+  const { disabled, setValue, getValues, setSum7_1, setTransfusion, register } =
+    props;
 
   const calculateSumValue7_1 = () => {
     setSum7_1(
@@ -140,8 +145,8 @@ const KPCSContents4_1 = (props: Props) => {
                   <StyledTableCellWithoutLeftTwo>
                     <RadioGroup
                       sx={{
-                        paddingTop: content.info.length > 1 ? '35px' : '18px',
-                        marginTop: content.ko.includes('33.') ? '14px' : '0px',
+                        paddingTop: content.info.length > 1 ? '55px' : '28px',
+                        marginTop: content.ko.includes('33.') ? '5px' : '0px',
                       }}
                       name={radioId7_1[content.id - 1]}
                       defaultValue={Number(
@@ -244,9 +249,10 @@ const KPCSContents4_1 = (props: Props) => {
                                     ...Form.adornment('', 'unit'),
                                   }}
                                   {...register(`${v}`)}
-                                  onChange={e =>
-                                    setValue(`${v}`, e.target.value)
-                                  }
+                                  onChange={e => {
+                                    setValue(`${v}`, e.target.value);
+                                    setTransfusion(Number(e.target.value));
+                                  }}
                                 />
                               </Box>
                             </TableRow>

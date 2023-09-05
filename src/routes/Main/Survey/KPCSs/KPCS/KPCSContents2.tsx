@@ -95,14 +95,6 @@ const 영역4 = [
   },
 ];
 
-const scoreLabel = [
-  { score: '15', label: 'ALERT' },
-  { score: '13~14', label: 'DROWSY' },
-  { score: '8~12', label: 'STUPOR' },
-  { score: '4~7', label: 'SEMI-COMA' },
-  { score: '3', label: 'COMA' },
-];
-
 interface Props extends IFormValues, IFormWatch {
   disabled?: boolean;
   sum3: number;
@@ -211,7 +203,7 @@ const KPCSContents2 = (props: Props) => {
                   <StyledTableCellWithoutLeftTwo>
                     <RadioGroup
                       sx={{
-                        paddingTop: content.info.length > 1 ? '35px' : '18px',
+                        paddingTop: content.info.length > 1 ? '55px' : '28px',
                       }}
                       name={radioId3[content.id - 1]}
                       defaultValue={Number(getValues(radioId3[content.id - 1]))}
@@ -223,7 +215,7 @@ const KPCSContents2 = (props: Props) => {
                               sx={{
                                 lineHeight: '43px',
                                 textAlign: 'center',
-                                height: '43px',
+                                height: '48px',
                               }}
                             ></TableRow>
                           );
@@ -263,7 +255,7 @@ const KPCSContents2 = (props: Props) => {
                           return (
                             <TableRow
                               sx={{
-                                lineHeight: '17px',
+                                lineHeight: '23px',
                                 height: '4px',
                               }}
                             >
@@ -336,7 +328,7 @@ const KPCSContents2 = (props: Props) => {
                   <StyledTableCellWithoutLeftTwo>
                     <RadioGroup
                       sx={{
-                        paddingTop: content.info.length > 1 ? '35px' : '18px',
+                        paddingTop: content.info.length > 1 ? '55px' : '28px',
                       }}
                       name={radioId4[content.id - 1]}
                       defaultValue={Number(getValues(radioId4[content.id - 1]))}
@@ -388,7 +380,7 @@ const KPCSContents2 = (props: Props) => {
                           return (
                             <TableRow
                               sx={{
-                                lineHeight: '17px',
+                                lineHeight: '23px',
                                 height: '4px',
                               }}
                             >
