@@ -49,7 +49,7 @@ const DiseaseHistory = (props: Props) => {
             />
           </Stack>
         </RowContent>
-        <RowContent title="" titleRatio={3.2} childrenRatio={8.8}>
+        <RowContent title="">
           <Stack direction="row" spacing={3}>
             <Form.MuiTextField
               required={false}

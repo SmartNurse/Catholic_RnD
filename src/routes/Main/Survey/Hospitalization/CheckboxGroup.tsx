@@ -43,41 +43,54 @@ const CheckboxGroup = ({
             .map(v => Number(v))
             .includes(value);
           if (value === 0) {
-            return <FormControlLabel
-              key={value}
-              value={value}
-              label={label(value)}
-              disabled={disabled}
-              control={
-                <Checkbox size="small" defaultChecked={defaultChecked} />
-              }
-              sx={{ flexWrap: 'nowrap', whiteSpace: 'nowrap'}}
-            />
-          } else if (value === 1) {
-            return <FormControlLabel
-              key={value}
-              value={value}
-              label={label(value)}
-              disabled={disabled}
-              control={
-                <Checkbox size="small" defaultChecked={defaultChecked} />
-              }
-              sx={{ flexWrap: 'nowrap', whiteSpace: 'nowrap', marginLeft:"40px", width:"120px"}}
-            />
-          }
-          else {
             return (
-            <FormControlLabel
-              key={value}
-              value={value}
-              label={label(value)}
-              disabled={disabled}
-              control={
-                <Checkbox size="small" defaultChecked={defaultChecked} />
-              }
-              sx={{ flexWrap: 'nowrap', whiteSpace: 'nowrap', width:"120px" }}
-            />
-          )}
+              <FormControlLabel
+                key={value}
+                value={value}
+                label={label(value)}
+                disabled={disabled}
+                control={
+                  <Checkbox size="small" defaultChecked={defaultChecked} />
+                }
+                sx={{ flexWrap: 'nowrap', whiteSpace: 'nowrap' }}
+              />
+            );
+          } else if (value === 1) {
+            return (
+              <FormControlLabel
+                key={value}
+                value={value}
+                label={label(value)}
+                disabled={disabled}
+                control={
+                  <Checkbox size="small" defaultChecked={defaultChecked} />
+                }
+                sx={{
+                  flexWrap: 'nowrap',
+                  whiteSpace: 'nowrap',
+                  marginLeft: '0px',
+                  width: '120px',
+                }}
+              />
+            );
+          } else {
+            return (
+              <FormControlLabel
+                key={value}
+                value={value}
+                label={label(value)}
+                disabled={disabled}
+                control={
+                  <Checkbox size="small" defaultChecked={defaultChecked} />
+                }
+                sx={{
+                  flexWrap: 'nowrap',
+                  whiteSpace: 'nowrap',
+                  width: '120px',
+                }}
+              />
+            );
+          }
         })}
       </Stack>
     </FormGroup>

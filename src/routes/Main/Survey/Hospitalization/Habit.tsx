@@ -32,7 +32,7 @@ const Habit = (props: Props) => {
               type="number"
               textAlign="right"
               disabled={disabled}
-              sx={{ maxWidth: '150px' }}
+              sx={{ maxWidth: '150px', marginRight: '65px' }}
               InputProps={{ ...Form.adornment('횟수', '회/day') }}
               {...register('habit.feces.value')}
             />
@@ -60,7 +60,7 @@ const Habit = (props: Props) => {
               type="number"
               textAlign="right"
               disabled={disabled}
-              sx={{ maxWidth: '150px' }}
+              sx={{ maxWidth: '150px', marginRight: '65px' }}
               InputProps={{ ...Form.adornment('횟수', '회/day') }}
               {...register('habit.urine.value')}
             />
@@ -94,6 +94,11 @@ const Habit = (props: Props) => {
             <Form.MuiTextField
               required={false}
               disabled={disabled}
+              sx={{
+                paddingLeft: '30px',
+                minWidth: '340px',
+                width: '395px',
+              }}
               placeholder="기간"
               {...register('habit.drink.input')}
             />
@@ -107,6 +112,10 @@ const Habit = (props: Props) => {
               required={false}
               disabled={disabled}
               placeholder="기간"
+              sx={{
+                paddingLeft: '30px',
+                width: '395px',
+              }}
               {...register('habit.drink.input2')}
             />
           </Stack>
@@ -124,6 +133,11 @@ const Habit = (props: Props) => {
               required={false}
               disabled={disabled}
               placeholder="기간"
+              sx={{
+                paddingLeft: '30px',
+                minWidth: '340px',
+                width: '395px',
+              }}
               {...register('habit.smoke.input')}
             />
             <Form.MuiCheckbox
@@ -135,6 +149,10 @@ const Habit = (props: Props) => {
             <Form.MuiTextField
               required={false}
               placeholder="기간"
+              sx={{
+                paddingLeft: '30px',
+                width: '395px',
+              }}
               disabled={disabled}
               {...register('habit.smoke.input2')}
             />
@@ -180,7 +198,7 @@ const Habit = (props: Props) => {
           </Stack>
         </RowContent>
         <RowContent title="산과력">
-          <Stack direction="row" spacing={1}>
+          <Stack direction="row" spacing={1} gap={'26px'}>
             <Form.MuiTextField
               fullWidth={false}
               disabled={disabled}
