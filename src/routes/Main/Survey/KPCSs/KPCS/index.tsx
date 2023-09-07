@@ -94,8 +94,6 @@ const KPCS = (props: SurveyDialogProps<TKPCSDefaultValues>) => {
     onRequired,
   };
 
-  // console.log('합계', sum1 + sum2);
-
   return (
     <MuiDialog.SurveyForm
       title={title}
@@ -120,8 +118,6 @@ const KPCS = (props: SurveyDialogProps<TKPCSDefaultValues>) => {
           }}
         >
           한국형 환자분류도구 (KPCS)
-          <br />
-          테스트중입니다.
         </Typography>
         <CommonPatientInfo patientInfo={patientInfo} nurseName={nurseName} />
         <KPCSContents
