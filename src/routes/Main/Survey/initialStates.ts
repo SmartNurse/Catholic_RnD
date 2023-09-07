@@ -56,12 +56,11 @@ export const initialTakingOver = {
 export const initialHospitalizationSurvey = {
   offer: '',
   update_at: '',
-  contacts: [
-    { contact: '', name: '', relation: '' },
-    { contact: '', name: '', relation: '' },
-    { contact: '', name: '', relation: '' },
-  ],
-  info_etc: [],
+
+  contacts: [{ contact: '', name: '', relation: '', etc: '' }],
+  contacts2: [{ contact: '', name: '', relation: '', etc: '' }],
+  contacts3: [{ contact: '', name: '', relation: '', etc: '' }],
+
   default_info: {
     BT: '',
     DBP: '',
@@ -80,10 +79,10 @@ export const initialHospitalizationSurvey = {
     weight: '',
   },
   disease_history: {
-    allergy: { value: 3, input: '' },
+    history: { value: 3, checked: [], input: '' },
     family_history: { value: 3, input: '' },
+    allergy: { value: 3, input: '' },
     food_allergy: { value: 3, input: '' },
-    history: { value: 3, date: '', checked: [], input: '' },
     latest_medicine: { value: 3, input: '' },
     medicine_allergy: { value: 3, input: '' },
     operation_history: { value: 3, input: '' },

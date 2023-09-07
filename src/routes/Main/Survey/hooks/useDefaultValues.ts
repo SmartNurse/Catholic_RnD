@@ -172,13 +172,10 @@ const useDefaultValues = ({ setDefaultValues, user_id }: Props) => {
         getHospitalization({ user_id, patient_id })
           .then(({ data }) => {
             const { hospitalization_survey } = data;
-
-            const m_data = {
-              ...hospitalization_survey,
-              info_etc: JSON.parse(hospitalization_survey.info_etc),
-            };
-
-            convertDataToStates(m_data, initialHospitalizationSurvey);
+            convertDataToStates(
+              hospitalization_survey,
+              initialHospitalizationSurvey
+            );
           })
 
           .catch(e => onFail('알 수 없는 오류가 발생했습니다.', e));

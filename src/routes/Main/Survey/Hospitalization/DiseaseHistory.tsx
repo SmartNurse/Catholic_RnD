@@ -57,7 +57,7 @@ const DiseaseHistory = (props: Props) => {
               multiline
               minRows={5}
               placeholder="직접 입력"
-              {...register('disease_history.operation_history.input')}
+              {...register('disease_history.history.input')}
             />
           </Stack>
         </RowContent>

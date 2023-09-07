@@ -39,9 +39,10 @@ const Hospitalization = (
   const { onUpdateIsSave } = useSurvey();
   const { onSuccess, onFail, onResultCode, onRequired } = useNotification();
 
-  const { handleSubmit, register, getValues, setValue, watch, control } = useForm({
-    defaultValues,
-  });
+  const { handleSubmit, register, getValues, setValue, watch, control } =
+    useForm({
+      defaultValues,
+    });
 
   const onSubmit = (data: THospitalizationDefaultValues) => {
     const {
@@ -54,9 +55,9 @@ const Hospitalization = (
       education,
       out_hospital_plan,
       default_info,
-      info_etc,
     } = data;
 
+    console.log('data', data);
     const request = {
       user_id,
       patient_id: patientInfo.patient_id,
@@ -68,8 +69,11 @@ const Hospitalization = (
         user_name: nurseName,
         main_doctor: patientInfo.main_doctor,
         offer: data.offer,
+
         contacts: data.contacts,
-        info_etc: info_etc ? JSON.stringify(info_etc) : '',
+        contacts2: data.contacts2,
+        contacts3: data.contacts3,
+
         disease_history: findKeyValueToStr(disease_history),
         body_status: findKeyValueToStr(body_status),
         habit: findKeyValueToStr(habit),
