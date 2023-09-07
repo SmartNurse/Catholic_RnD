@@ -416,7 +416,9 @@ const MenuRecords = (props: Props) => {
 
     if (!patientInfo) return onRequired('REQUIRED.PATIENT');
     else if (label === '동의서 2') {
-      navigate('/agreement2');
+      // window.open('https://enr.smartnurse.co.kr/#/agreement2');
+      window.open('http://localhost:3000/#/agreement2');
+
       return;
     }
     onUpdateSurveyType(label);
