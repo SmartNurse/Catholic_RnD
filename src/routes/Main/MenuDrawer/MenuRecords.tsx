@@ -1,4 +1,6 @@
 import { Fragment, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+
 import {
   ListItem,
   ListItemButton,
@@ -47,6 +49,7 @@ interface Props {
 
 const MenuRecords = (props: Props) => {
   const { menuDrawerWidth, setMenuDrawerWidth, coachRef } = props;
+  const navigate = useNavigate();
 
   const { student_uuid } = useStudent();
   const { patientInfo } = usePatient();
@@ -381,7 +384,7 @@ const MenuRecords = (props: Props) => {
     {
       isPro: true,
       icon: <Agreement />,
-      label: '동의서2',
+      label: '동의서 2',
     },
     {
       isPro: true,
@@ -393,7 +396,10 @@ const MenuRecords = (props: Props) => {
   const onClickListItem = (label: string) => {
     if (!student_uuid) return onRequired('REQUIRED.STUDENT');
 
-    if (label === '영유아 건강검진 문진') {
+    if (label === '동의서 2') {
+      navigate('/agreement2');
+      return;
+    } else if (label === '영유아 건강검진 문진') {
       window.open(
         'http://www.imomhospital.co.kr/page/wellbaby/interview?PHPSESSID=57edd94c10d035ad8b305d29981c98ed'
       );
