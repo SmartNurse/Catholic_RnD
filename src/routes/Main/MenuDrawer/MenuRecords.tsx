@@ -26,8 +26,10 @@ import {
   WashOutlined,
   Diversity2Outlined,
 } from '@mui/icons-material';
+
 import { ReactComponent as ProPlus } from '../../../assets/proPlus.svg';
 import { ReactComponent as Severity } from '../../../assets/severityAssessment.svg';
+import { ReactComponent as Agreement } from '../../../assets/agreement.svg';
 
 import Survey from '../Survey';
 import useSurvey from 'store/survey/useSurvey';
@@ -375,6 +377,11 @@ const MenuRecords = (props: Props) => {
       isPro: true,
       label: '유전자검사 동의서',
       toggle: toggle.agreement,
+    },
+    {
+      isPro: true,
+      icon: <Agreement />,
+      label: '동의서2',
     },
     {
       isPro: true,
