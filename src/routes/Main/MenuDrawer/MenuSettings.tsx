@@ -127,7 +127,7 @@ const MenuSettings = (props: Props) => {
     },
     {
       icon: <AccountCircleOutlined />,
-      label: '계정설정',
+      label: '계정설정 및 수정',
     },
     {
       icon: <LogoutOutlined />,
@@ -142,12 +142,16 @@ const MenuSettings = (props: Props) => {
       onResetStudent();
       onResetPatient();
       onCloseReadOnly();
-    } else if (!patientInfo) return onRequired('REQUIRED.PATIENT');
-    onUpdateSurveyType(label);
-
-    // if (!student_uuid) return onRequired('REQUIRED.STUDENT');
-
-    if (label === '응급 모니터링시스템') {
+    } else if (label === '계정설정 및 수정') {
+      navigate('/mypage');
+      return;
+    } else if (label === '화면설정') {
+      navigate('/screensetting');
+      return;
+    } else if (label === '공지사항') {
+      window.open('https://www.smartnurse.co.kr/enrnotice');
+      return;
+    } else if (label === '응급 모니터링시스템') {
       window.open('http://dw.nemc.or.kr/nemcMonitoring/mainmgr/Main.do');
       return;
     } else if (label === '보건의료빅데이터개방시스템') {
@@ -165,16 +169,8 @@ const MenuSettings = (props: Props) => {
     } else if (label === '간호사 근무 스케줄표') {
       window.open('https://dutymaker.com/');
       return;
-    } else if (label === '공지사항') {
-      window.open('https://www.smartnurse.co.kr/enrnotice');
-      return;
-    } else if (label === '계정설정') {
-      navigate('/mypage');
-      return;
-    } else if (label === '화면설정') {
-      navigate('/screensetting');
-      return;
-    }
+    } else if (!patientInfo) return onRequired('REQUIRED.PATIENT');
+    onUpdateSurveyType(label);
   };
 
   const onClickDisabledItem = (sublabel: string | undefined) => {
