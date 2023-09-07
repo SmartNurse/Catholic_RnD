@@ -26,6 +26,7 @@ export interface IPostAccountCreateRequest extends IPostLoginRequest {
 
 export interface IPostChangePassword {
   userId: number;
+  student_name: string;
   password: string;
   newPassword: string;
 }

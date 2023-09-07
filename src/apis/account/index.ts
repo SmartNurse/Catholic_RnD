@@ -35,6 +35,6 @@ export const postLogin = (request: IPostLoginRequest) => {
 };
 
 export const postChangePassword = (request: IPostChangePassword) => {
-  const url = `/account/changePassword`;
+  const url = `/account/changePersonalInformation`;
   return apiGateway.post(url, request);
 };
