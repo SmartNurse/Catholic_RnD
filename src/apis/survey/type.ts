@@ -763,11 +763,9 @@ export interface IUpdateKPCS extends IGetSurvey {
 // 식이/영양 기록지
 export interface IUpdateDietList extends IGetSurvey {
   dietary_survey: {
-    birth: string;
-    classification: number;
-    string_break_fast: string;
-    string_lunch: string;
-    string_dinner: string;
+    break_fast: object;
+    lunch: object;
+    dinner: object;
   };
 }
 

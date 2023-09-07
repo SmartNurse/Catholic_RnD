@@ -22,8 +22,8 @@ interface Props extends IFormRegister, IFormValues {
 const DietSelection3 = (props: Props) => {
   const { disabled, register, getValues, setValue } = props;
 
-  const [dietList, setDietList] = useState(-1);
-  // const [dietList, setDietList] = useState(getValues('vascular_access'));
+  // const [dietList, setDietList] = useState(-1);
+  const [dietList, setDietList] = useState(getValues('dinner.basic_meal'));
 
   return (
     <Fragment>
@@ -43,9 +43,9 @@ const DietSelection3 = (props: Props) => {
             />
             <Form.MuiCheckbox
               label={'보호자 식이'}
-              defaultValue={getValues('disease_history.history.checked')}
+              defaultValue={getValues('dinner.guardian_meal')}
               onChange={v => {
-                setValue('disease_history.history.checked', v);
+                setValue('dinner.guardian_meal', v);
               }}
             />
           </Stack>
@@ -59,9 +59,8 @@ const DietSelection3 = (props: Props) => {
             defaultValue={dietList}
             value={dietList}
             onChange={v => {
-              setValue('agree_check_01', v);
+              setValue('dinner.basic_meal', v);
               setDietList(v);
-              if (v !== 0) setValue('vascular_access_etc', '');
             }}
           />
         </RowContent>
@@ -73,9 +72,8 @@ const DietSelection3 = (props: Props) => {
             defaultValue={dietList}
             value={dietList}
             onChange={v => {
-              setValue('agree_check_01', v);
+              setValue('dinner.basic_meal', v);
               setDietList(v);
-              if (v !== 0) setValue('vascular_access_etc', '');
             }}
           />
         </RowContent>
@@ -90,8 +88,8 @@ const DietSelection3 = (props: Props) => {
               select
               required={false}
               disabled={disabled}
-              defaultValue={getValues('operation_information.npo_status')}
-              {...register('operation_information.npo_status')}
+              defaultValue={getValues('dinner.therapuetic_intestinal')}
+              {...register('dinner.therapuetic_intestinal')}
               SelectProps={{ MenuProps: { sx: { maxHeight: 150 } } }} // add this line
             >
               <MenuItem value="위 절제 밥">위 절제 밥</MenuItem>
@@ -120,8 +118,8 @@ const DietSelection3 = (props: Props) => {
               select
               required={false}
               disabled={disabled}
-              defaultValue={getValues('operation_information.npo_status')}
-              {...register('operation_information.npo_status')}
+              defaultValue={getValues('dinner.therapuetic_kidney')}
+              {...register('dinner.therapuetic_kidney')}
               SelectProps={{ MenuProps: { sx: { maxHeight: 150 } } }} // add this line
             >
               <MenuItem value="신부전 밥">신부전 밥</MenuItem>
@@ -150,8 +148,8 @@ const DietSelection3 = (props: Props) => {
               select
               required={false}
               disabled={disabled}
-              defaultValue={getValues('operation_information.npo_status')}
-              {...register('operation_information.npo_status')}
+              defaultValue={getValues('dinner.therapuetic_liver')}
+              {...register('dinner.therapuetic_liver')}
               SelectProps={{ MenuProps: { sx: { maxHeight: 150 } } }} // add this line
             >
               <MenuItem value="중단백 간질환 밥">중단백 간질환 밥</MenuItem>
@@ -191,8 +189,8 @@ const DietSelection3 = (props: Props) => {
               select
               required={false}
               disabled={disabled}
-              defaultValue={getValues('operation_information.npo_status')}
-              {...register('operation_information.npo_status')}
+              defaultValue={getValues('dinner.controlled_diet')}
+              {...register('dinner.controlled_diet')}
               SelectProps={{ MenuProps: { sx: { maxHeight: 150 } } }} // add this line
             >
               <MenuItem value="저칼륨밥">저칼륨밥</MenuItem>
@@ -215,8 +213,8 @@ const DietSelection3 = (props: Props) => {
               select
               required={false}
               disabled={disabled}
-              defaultValue={getValues('operation_information.npo_status')}
-              {...register('operation_information.npo_status')}
+              defaultValue={getValues('dinner.specifics1')}
+              {...register('dinner.specifics1')}
               SelectProps={{ MenuProps: { sx: { maxHeight: 150 } } }} // add this line
             >
               <MenuItem value="진밥">진밥</MenuItem>
@@ -255,8 +253,8 @@ const DietSelection3 = (props: Props) => {
               select
               required={false}
               disabled={disabled}
-              defaultValue={getValues('operation_information.npo_status')}
-              {...register('operation_information.npo_status')}
+              defaultValue={getValues('dinner.specifics2')}
+              {...register('dinner.specifics2')}
               SelectProps={{ MenuProps: { sx: { maxHeight: 150 } } }} // add this line
             >
               <MenuItem value="서양식">서양식</MenuItem>
@@ -279,8 +277,8 @@ const DietSelection3 = (props: Props) => {
               required={false}
               placeholder="직접 입력"
               disabled={disabled}
-              defaultValue={getValues('operation_information.npo_status')}
-              {...register('operation_information.npo_status')}
+              defaultValue={getValues('dinner.specifics_etc')}
+              {...register('dinner.specifics_etc')}
             />
           </Stack>
         </RowContent>

@@ -18,208 +18,10 @@ interface Props extends IFormRegister, IFormValues {
   setDietList: (dietList: string[]) => void;
 }
 
-const 기본식사 = [
-  {
-    label: 'NPO',
-    key: 'basic_meal.checked1',
-  },
-  {
-    label: 'SOW',
-    key: 'basic_meal.checked2',
-  },
-  {
-    label: 'AQ',
-    key: 'basic_meal.checked3',
-  },
-  {
-    label: 'LD',
-    key: 'basic_meal.checked4',
-  },
-  {
-    label: 'SD',
-    key: 'basic_meal.checked5',
-  },
-  {
-    label: 'SBD',
-    key: 'basic_meal.checked6',
-  },
-  {
-    label: 'RD',
-    key: 'basic_meal.checked7',
-  },
-  {
-    label: 'TD',
-    key: 'basic_meal.checked8',
-  },
-  {
-    label: '치료식',
-    key: 'basic_meal.checked9',
-  },
-  {
-    label: '소아',
-    key: 'basic_meal.checked10',
-  },
-];
-
-const 장질환 = [
-  { label: '위 절제 밥', key: 'therapuetic_diet.intestinal.checked1' },
-  { label: '위 절제 죽', key: 'therapuetic_diet.intestinal.checked2' },
-  { label: '저 섬유 밥', key: 'therapuetic_diet.intestinal.checked3' },
-  { label: '저 섬유 죽', key: 'therapuetic_diet.intestinal.checked4' },
-  { label: '저 잔사 밥', key: 'therapuetic_diet.intestinal.checked5' },
-  { label: '위 절제 미음', key: 'therapuetic_diet.intestinal.checked6' },
-  { label: '저 잔사 미음', key: 'therapuetic_diet.intestinal.checked7' },
-  {
-    label: '비만 수술 후 식사 (맑은 유동식)',
-    key: 'therapuetic_diet.intestinal.checked8',
-  },
-  {
-    label: '비만 수술 후 식사 (일반 유동식)',
-    key: 'therapuetic_diet.intestinal.checked9',
-  },
-];
-
-const 신장질환 = [
-  { label: '신부전 밥', key: 'therapuetic_diet.kidney.checked1' },
-  { label: '신부전 죽', key: 'therapuetic_diet.kidney.checked2' },
-  { label: '신증후군 밥', key: 'therapuetic_diet.kidney.checked3' },
-  { label: '신증후군 죽', key: 'therapuetic_diet.kidney.checked4' },
-  { label: '당뇨신증 밥', key: 'therapuetic_diet.kidney.checked5' },
-  { label: '당뇨신증 죽', key: 'therapuetic_diet.kidney.checked6' },
-  { label: '혈액투석식 밥', key: 'therapuetic_diet.kidney.checked7' },
-  { label: '혈액투석식 죽', key: 'therapuetic_diet.kidney.checked8' },
-  { label: '복막투석식 밥', key: 'therapuetic_diet.kidney.checked9' },
-  { label: '복막투석식 죽', key: 'therapuetic_diet.kidney.checked10' },
-  { label: '신장이식 후 밥', key: 'therapuetic_diet.kidney.checked11' },
-  { label: '신장이식 후 죽', key: 'therapuetic_diet.kidney.checked12' },
-  { label: '신부전 당뇨 밥', key: 'therapuetic_diet.kidney.checked13' },
-  { label: '신부전 당뇨 죽', key: 'therapuetic_diet.kidney.checked14' },
-];
-
-const 간질환 = [
-  { label: '중단백 간질환 밥', key: 'therapuetic_diet.liver.checked1' },
-  { label: '중단백 간질환 죽', key: 'therapuetic_diet.liver.checked2' },
-  { label: '저단백 간질환 밥', key: 'therapuetic_diet.liver.checked3' },
-  { label: '저단백 간질환 죽', key: 'therapuetic_diet.liver.checked4' },
-  { label: '중단백 간질환당뇨 밥', key: 'therapuetic_diet.liver.checked5' },
-  { label: '중단백 간질환당뇨 죽', key: 'therapuetic_diet.liver.checked6' },
-  { label: '저단백 간질환당뇨 밥', key: 'therapuetic_diet.liver.checked7' },
-  { label: '저단백 간질환당뇨 죽', key: 'therapuetic_diet.liver.checked8' },
-  { label: '고단백 고열량 간질환 밥', key: 'therapuetic_diet.liver.checked9' },
-  { label: '고단백 고열량 간질환 죽', key: 'therapuetic_diet.liver.checked10' },
-  {
-    label: '고단백 고열량 간질환 당뇨 밥',
-    key: 'therapuetic_diet.liver.checked11',
-  },
-  {
-    label: '고단백 고열량 간질환 당뇨 죽',
-    key: 'therapuetic_diet.liver.checked12',
-  },
-];
-
-const 성분조절식 = [
-  {
-    label: '저칼륨밥',
-    key: 'controlled_diet.checked1',
-  },
-  {
-    label: '저칼륨죽',
-    key: 'controlled_diet.checked2',
-  },
-  {
-    label: '저칼슘밥',
-    key: 'controlled_diet.checked3',
-  },
-  {
-    label: '저칼슘죽',
-    key: 'controlled_diet.checked4',
-  },
-  {
-    label: '저칼슘미음',
-    key: 'controlled_diet.checked5',
-  },
-  {
-    label: '저퓨린밥',
-    key: 'controlled_diet.checked6',
-  },
-  {
-    label: '저퓨린죽',
-    key: 'controlled_diet.checked7',
-  },
-  {
-    label: '인제한밥',
-    key: 'controlled_diet.checked8',
-  },
-  {
-    label: '인제한죽',
-    key: 'controlled_diet.checked9',
-  },
-  {
-    label: '구리제한밥',
-    key: 'controlled_diet.checked10',
-  },
-  {
-    label: '구리제한죽',
-    key: 'controlled_diet.checked11',
-  },
-];
-
-const 밥종류 = [
-  { label: '진밥', key: 'specifics.checked2' },
-  { label: '된밥', key: 'specifics.checked3' },
-  { label: '잡곡밥', key: 'specifics.checked4' },
-  { label: '흰 죽', key: 'specifics.checked5' },
-  { label: '쌀 미음', key: 'specifics.checked6' },
-  { label: '찬 죽', key: 'specifics.checked7' },
-  { label: '찬 미음', key: 'specifics.checked8' },
-  { label: '치아보조 (갈아서)', key: 'specifics.checked34' },
-  { label: '치아보조 (다져서)', key: 'specifics.checked35' },
-];
-
-const 추가적인 = [
-  { label: '적은밥', key: 'specifics.checked1' },
-  { label: '국 추가', key: 'specifics.checked9' },
-  { label: '김치 많이', key: 'specifics.checked21' },
-  { label: '물김치 많이', key: 'specifics.checked22' },
-  { label: '반찬 많이', key: 'specifics.checked23' },
-  { label: '간장 추가', key: 'specifics.checked24' },
-  { label: '고추장 추가', key: 'specifics.checked25' },
-  { label: '고춧가루 추가', key: 'specifics.checked26' },
-  { label: '소금 추가', key: 'specifics.checked27' },
-  { label: '설탕 추가', key: 'specifics.checked28' },
-  { label: '미역국', key: 'specifics.checked29' },
-  { label: '두유', key: 'specifics.checked30' },
-  { label: '요구르트', key: 'specifics.checked31' },
-];
-
-const 제외 = [
-  { label: '국만 맵지 않게', key: 'specifics.checked10' },
-  { label: '맵지 않게', key: 'specifics.checked11' },
-  { label: '모든 생선 제외', key: 'specifics.checked12' },
-  { label: '등푸른 생선 제외', key: 'specifics.checked13' },
-  { label: '해물 제외', key: 'specifics.checked14' },
-  { label: '계란 제외', key: 'specifics.checked15' },
-  { label: '모든 고기 제외', key: 'specifics.checked16' },
-  { label: '돼지 고기 제외', key: 'specifics.checked17' },
-  { label: '닭 고기 제외', key: 'specifics.checked18' },
-  { label: '항상 배추 김치', key: 'specifics.checked19' },
-  { label: '물김치', key: 'specifics.checked20' },
-  { label: '모든 유제품 제외', key: 'specifics.checked32' },
-  { label: '간식 제외', key: 'specifics.checked33' },
-];
-
-const 식성 = [
-  { label: '서양식', key: 'specifics.checked36' },
-  { label: '이슬람 할랄식', key: 'specifics.checked37' },
-  { label: '비건식', key: 'specifics.checked38' },
-  { label: '기타', key: 'specifics.checked39' },
-];
-
 const DietSelection1 = (props: Props) => {
   const { disabled, register, getValues, setValue } = props;
 
-  const [dietList, setDietList] = useState(-1);
-  // const [dietList, setDietList] = useState(getValues('vascular_access'));
+  const [dietList, setDietList] = useState(getValues('break_fast.basic_meal'));
 
   return (
     <Fragment>
@@ -239,9 +41,9 @@ const DietSelection1 = (props: Props) => {
             />
             <Form.MuiCheckbox
               label={'보호자 식이'}
-              defaultValue={getValues('disease_history.history.checked')}
+              defaultValue={getValues('break_fast.guardian_meal')}
               onChange={v => {
-                setValue('disease_history.history.checked', v);
+                setValue('break_fast.guardian_meal', v);
               }}
             />
           </Stack>
@@ -255,9 +57,8 @@ const DietSelection1 = (props: Props) => {
             defaultValue={dietList}
             value={dietList}
             onChange={v => {
-              setValue('agree_check_01', v);
+              setValue('break_fast.basic_meal', v);
               setDietList(v);
-              if (v !== 0) setValue('vascular_access_etc', '');
             }}
           />
         </RowContent>
@@ -269,9 +70,8 @@ const DietSelection1 = (props: Props) => {
             defaultValue={dietList}
             value={dietList}
             onChange={v => {
-              setValue('agree_check_01', v);
+              setValue('break_fast.basic_meal', v);
               setDietList(v);
-              if (v !== 0) setValue('vascular_access_etc', '');
             }}
           />
         </RowContent>
@@ -286,8 +86,8 @@ const DietSelection1 = (props: Props) => {
               select
               required={false}
               disabled={disabled}
-              defaultValue={getValues('operation_information.npo_status')}
-              {...register('operation_information.npo_status')}
+              defaultValue={getValues('break_fast.therapuetic_intestinal')}
+              {...register('break_fast.therapuetic_intestinal')}
               SelectProps={{ MenuProps: { sx: { maxHeight: 150 } } }} // add this line
             >
               <MenuItem value="위 절제 밥">위 절제 밥</MenuItem>
@@ -316,8 +116,8 @@ const DietSelection1 = (props: Props) => {
               select
               required={false}
               disabled={disabled}
-              defaultValue={getValues('operation_information.npo_status')}
-              {...register('operation_information.npo_status')}
+              defaultValue={getValues('break_fast.therapuetic_kidney')}
+              {...register('break_fast.therapuetic_kidney')}
               SelectProps={{ MenuProps: { sx: { maxHeight: 150 } } }} // add this line
             >
               <MenuItem value="신부전 밥">신부전 밥</MenuItem>
@@ -346,8 +146,8 @@ const DietSelection1 = (props: Props) => {
               select
               required={false}
               disabled={disabled}
-              defaultValue={getValues('operation_information.npo_status')}
-              {...register('operation_information.npo_status')}
+              defaultValue={getValues('break_fast.therapuetic_liver')}
+              {...register('break_fast.therapuetic_liver')}
               SelectProps={{ MenuProps: { sx: { maxHeight: 150 } } }} // add this line
             >
               <MenuItem value="중단백 간질환 밥">중단백 간질환 밥</MenuItem>
@@ -387,8 +187,8 @@ const DietSelection1 = (props: Props) => {
               select
               required={false}
               disabled={disabled}
-              defaultValue={getValues('operation_information.npo_status')}
-              {...register('operation_information.npo_status')}
+              defaultValue={getValues('break_fast.controlled_diet')}
+              {...register('break_fast.controlled_diet')}
               SelectProps={{ MenuProps: { sx: { maxHeight: 150 } } }} // add this line
             >
               <MenuItem value="저칼륨밥">저칼륨밥</MenuItem>
@@ -411,8 +211,8 @@ const DietSelection1 = (props: Props) => {
               select
               required={false}
               disabled={disabled}
-              defaultValue={getValues('operation_information.npo_status')}
-              {...register('operation_information.npo_status')}
+              defaultValue={getValues('break_fast.specifics1')}
+              {...register('break_fast.specifics1')}
               SelectProps={{ MenuProps: { sx: { maxHeight: 150 } } }} // add this line
             >
               <MenuItem value="진밥">진밥</MenuItem>
@@ -451,8 +251,8 @@ const DietSelection1 = (props: Props) => {
               select
               required={false}
               disabled={disabled}
-              defaultValue={getValues('operation_information.npo_status')}
-              {...register('operation_information.npo_status')}
+              defaultValue={getValues('break_fast.specifics2')}
+              {...register('break_fast.specifics2')}
               SelectProps={{ MenuProps: { sx: { maxHeight: 150 } } }} // add this line
             >
               <MenuItem value="서양식">서양식</MenuItem>
@@ -475,8 +275,8 @@ const DietSelection1 = (props: Props) => {
               required={false}
               placeholder="직접 입력"
               disabled={disabled}
-              defaultValue={getValues('operation_information.npo_status')}
-              {...register('operation_information.npo_status')}
+              defaultValue={getValues('break_fast.specifics_etc')}
+              {...register('break_fast.specifics_etc')}
             />
           </Stack>
         </RowContent>

@@ -6,6 +6,7 @@ import useNotification from 'hooks/useNotification';
 
 import { SurveyDialogProps, TDietListDefaultValues } from '../type';
 import MuiDialog from 'components/MuiDialog';
+import { findKeyValueToStr } from 'utils/convert';
 
 import PatientInfo from './PatientInfo';
 import DietSelection1 from './DietSelection1';
@@ -44,21 +45,17 @@ const DietList = (props: SurveyDialogProps<TDietListDefaultValues>) => {
 
   const onSubmit = (data: TDietListDefaultValues) => {
     const { patient_id } = patientInfo;
-    const { classification, string_break_fast, string_lunch, string_dinner } =
-      data;
+    const { break_fast, lunch, dinner } = data;
 
     const request = {
       user_id,
       patient_id,
       dietary_survey: {
-        birth: JSON.stringify(dietList),
-        classification,
-        string_break_fast: JSON.stringify(string_break_fast),
-        string_lunch: JSON.stringify(string_lunch),
-        string_dinner: JSON.stringify(string_dinner),
+        break_fast: findKeyValueToStr(break_fast),
+        lunch: findKeyValueToStr(break_fast),
+        dinner: findKeyValueToStr(break_fast),
       },
     };
-
     console.log('데이터', request);
     updateDietList(request)
       .then(({ data: { rc } }) => {
