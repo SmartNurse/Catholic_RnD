@@ -14,7 +14,12 @@ import {
   TextField,
   Typography,
 } from '@mui/material';
-import { FieldValues, UseFormRegister } from 'react-hook-form';
+import {
+  FieldValues,
+  UseFormGetValues,
+  UseFormRegister,
+  UseFormSetValue,
+} from 'react-hook-form';
 
 import Form from 'components/Form';
 import SignUpDialog from 'routes/SignUp/SignUpDialog';
@@ -23,6 +28,8 @@ interface Props {
   studentGrade: number;
   studentGender: number;
   register: UseFormRegister<FieldValues>;
+  getValues: UseFormGetValues<any>;
+  setValue: UseFormSetValue<any>;
   isConfirmPassword: boolean;
   onConfirmPassword: () => void;
 }
@@ -36,6 +43,8 @@ function MyPageForm(props: Props) {
     register,
     isConfirmPassword,
     onConfirmPassword,
+    getValues,
+    setValue,
   } = props;
 
   const VerificationIcon = () => (
@@ -56,7 +65,7 @@ function MyPageForm(props: Props) {
           startIcon={<KeyboardArrowLeft />}
           sx={{ mb: 5, p: 0 }}
         >
-          계정 설정
+          계정 설정 및 수정
         </Button>
 
         <Stack spacing={2.5}>
@@ -104,7 +113,7 @@ function MyPageForm(props: Props) {
               {...register('newPassword')}
             />
           </Form.Item>
-          <Form.Item label="비밀번호 확인" isHidden={!isConfirmPassword}>
+          <Form.Item label="새 비밀번호 확인" isHidden={!isConfirmPassword}>
             <Form.Password
               required
               fullWidth
@@ -113,18 +122,8 @@ function MyPageForm(props: Props) {
             />
           </Form.Item>
 
-          <Form.Item isHidden={!isConfirmPassword}>
-            <Button fullWidth size="large" type="submit" variant="contained">
-              저장하기
-            </Button>
-          </Form.Item>
-
           <Form.Item label="이름">
-            <TextField
-              fullWidth
-              {...register('student_name')}
-              InputProps={{ readOnly: true }}
-            />
+            <TextField required fullWidth {...register('student_name')} />
           </Form.Item>
           <Grid container>
             <Grid item xs={6}>
@@ -174,25 +173,29 @@ function MyPageForm(props: Props) {
               InputLabelProps={{ shrink: true }}
             />
           </Form.Item>
+          <FormGroup sx={{ mt: 2.5 }}>
+            <Typography
+              gutterBottom
+              variant="body2"
+              onClick={() => setIsTerms(true)}
+              sx={{ cursor: 'pointer', textDecoration: 'underline' }}
+            >
+              스마트널스 서비스 이용약관
+            </Typography>
+            <Typography
+              variant="body2"
+              onClick={() => setIsPersonal(true)}
+              sx={{ cursor: 'pointer', textDecoration: 'underline' }}
+            >
+              개인정보 수집 및 이용약관
+            </Typography>
+          </FormGroup>
+          <Form.Item>
+            <Button fullWidth size="large" type="submit" variant="contained">
+              정보 수정
+            </Button>
+          </Form.Item>
         </Stack>
-
-        <FormGroup sx={{ mt: 2.5 }}>
-          <Typography
-            gutterBottom
-            variant="body2"
-            onClick={() => setIsTerms(true)}
-            sx={{ cursor: 'pointer', textDecoration: 'underline' }}
-          >
-            스마트널스 서비스 이용약관
-          </Typography>
-          <Typography
-            variant="body2"
-            onClick={() => setIsPersonal(true)}
-            sx={{ cursor: 'pointer', textDecoration: 'underline' }}
-          >
-            개인정보 수집 및 이용약관
-          </Typography>
-        </FormGroup>
       </Container>
 
       <SignUpDialog.TermsOfService

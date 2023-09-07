@@ -3,6 +3,9 @@ import { useForm } from 'react-hook-form';
 
 import regex from 'utils/regex';
 import useUser from 'store/user/useUser';
+import useStudent from 'store/student/useStudent';
+import usePatient from 'store/patient/usePatient';
+
 import useNotification from 'hooks/useNotification';
 import { postChangePassword, postLogin } from 'apis/account';
 
@@ -12,28 +15,33 @@ function MyPage() {
   const {
     student_uuid: userId,
     student_id,
-    student_name,
     student_gender,
     student_grade,
+    student_name,
     college_name,
     student_birth,
     student_no,
+    onSignOut,
   } = useUser();
+  const { onResetStudent } = useStudent();
+  const { onResetPatient } = usePatient();
+
   const { onResultCode, onSuccess, onFail, onRequired } = useNotification();
 
-  const { handleSubmit, getValues, register, reset } = useForm({
+  const { handleSubmit, getValues, register, reset, setValue } = useForm({
     defaultValues: {
       student_id,
-      student_name,
       student_gender,
       student_grade,
       college_name,
+      student_name,
       student_birth,
       student_no,
     } as any,
   });
 
   const [isConfirmPassword, setIsConfirmPassword] = useState(false);
+
   const onConfirmPassword = () => {
     const password = getValues('password');
     postLogin({ user_email: student_id!, user_password: password }).then(
@@ -61,16 +69,27 @@ function MyPage() {
       userId,
       password: data.password,
       newPassword: data.newPassword,
+
+      student_name: data.student_name,
     };
+
+    console.log('data', data);
 
     postChangePassword(request)
       .then(({ data: { rc } }) => {
         if (rc !== 1) return onResultCode(rc);
         reset();
         setIsConfirmPassword(false);
-        onSuccess('비밀번호 변경 성공했습니다.');
+        onSuccess(
+          '계정 정보 수정을 성공했습니다.\n 로그인을 다시 시도해주세요'
+        );
+
+        onSignOut();
+        // 로그아웃 시 스토어 초기화
+        onResetStudent();
+        onResetPatient();
       })
-      .catch(e => onFail('비밀번호 변경 실패했습니다.', e));
+      .catch(e => onFail('계정 정보 수정을 실패했습니다.', e));
   };
 
   return (
@@ -79,6 +98,8 @@ function MyPage() {
         studentGrade={student_grade!}
         studentGender={student_gender!}
         register={register}
+        getValues={getValues}
+        setValue={setValue}
         isConfirmPassword={isConfirmPassword}
         onConfirmPassword={onConfirmPassword}
       />
