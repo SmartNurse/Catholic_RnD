@@ -27,7 +27,7 @@ function RouterContainer() {
         <Route path="*" element={<Main />} />
         <Route path="/mypage" element={<MyPage />} />
         <Route path="/agreement2" element={<AgreementTow />} />
-        <Route path="/CheckHealthBaby" element={<CheckHealthBaby />} />
+        <Route path="/badyMedicalCheckup" element={<CheckHealthBaby />} />
         <Route path="/screensetting" element={<ScreenSetting />} />
       </Routes>
     </HashRouter>
