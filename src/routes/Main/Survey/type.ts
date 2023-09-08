@@ -34,7 +34,6 @@ import {
   initialEmergency,
   initialChildbirth,
   initialHomeCare,
-  initialDietNutrition,
   initialHospitalConfirm,
   initialFallConfirm,
   initialColonoscopy,
@@ -173,8 +172,6 @@ export type TChildbirthDefaultValues = typeof initialChildbirth;
 export type THomeCareDefaultValues = typeof initialHomeCare;
 export type TKPCSDefaultValues = typeof initialKPCS;
 export type TDietListDefaultValues = typeof initialDietList;
-export type TDietNutritionDefaultValues = typeof initialDietNutrition;
-
 export type THospitalConfirmDefaultValues = typeof initialHospitalConfirm;
 export type TFallConfirmDefaultValues = typeof initialFallConfirm;
 export type TTransfusionAgreeDefaultValues = typeof initialTransfusionAgree;

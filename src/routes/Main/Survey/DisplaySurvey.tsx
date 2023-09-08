@@ -36,7 +36,6 @@ import Dialysis from './Special/Dialysis';
 import Emergency from './Special/Emergency';
 import Childbirth from './Special/Childbirth';
 import HomeCare from './Special/HomeCare';
-import DietNutrition from './DietNutrition';
 import DietList from './DietList';
 
 import KPCS from './KPCSs/KPCS';

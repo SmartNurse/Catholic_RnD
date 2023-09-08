@@ -89,7 +89,6 @@ import {
   initialEmergency,
   initialChildbirth,
   initialHomeCare,
-  initialDietNutrition,
   initialHospitalConfirm,
   initialFallConfirm,
   initialColonoscopy,
