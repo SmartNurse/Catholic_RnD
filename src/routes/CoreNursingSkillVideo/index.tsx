@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import Loading from './Loading';
-import { Container } from '@mui/material';
+import { Container, Typography } from '@mui/material';
 
 import MuiDialog from 'components/MuiDialog';
 import {
@@ -129,7 +129,7 @@ const CoreNursingSkillVideo = (
       onSubmit={disabled ? undefined : handleSubmit(onSubmit)}
       update_at={defaultValues?.update_at}
     >
-      <Container maxWidth="md" sx={{ mt: 7.5, mb: 6, height: '300px' }}>
+      <Container maxWidth="md" sx={{ mt: 7.5, mb: 6, height: '350px' }}>
         {isStudent ? (
           <StudentInfo totalSize={totalSize} />
         ) : (
@@ -148,6 +148,30 @@ const CoreNursingSkillVideo = (
             refresh={refresh}
           />
         )}
+        <Typography
+          sx={{
+            whiteSpace: 'nowrap',
+            fontWeight: 400,
+            borderTop: '0.5px solid lightGray',
+            lineHeight: '50px',
+          }}
+        >
+          💡 핵심간호술기영상 저장이 안돼요 !
+        </Typography>
+        <Typography
+          sx={{
+            whiteSpace: 'pre-wrap',
+            width: '900px',
+            fontSize: '14px',
+            height: '100px',
+          }}
+        >
+          영상 저장이 안 되는 경우는, 동영상이 500MB 이하인지 확인해 주세요!
+          <br />
+          500MB 이상인 경우 구글에 “동영상 크기 줄이기”를 검색해 사이트를
+          이용하거나, 혹은 카카오톡으로 한번 전송해 용량을 줄이는 것을
+          추천드립니다 :)
+        </Typography>
         {/* <VideoForm {...formProps} user_id={isStudent ? user_id : student_uuid} patient_id={patientInfo.patient_id} patient_name={patientInfo.name} totalSize={totalSize} setTotalSize={setTotalSize} refresh={refresh} /> */}
       </Container>
     </MuiDialog.SurveyForm>
