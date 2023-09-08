@@ -73,6 +73,7 @@ function MyPageForm(props: Props) {
             <Box display="flex" gap={1}>
               <TextField
                 fullWidth
+                disabled={true}
                 {...register('student_id')}
                 InputProps={{ readOnly: true }}
               />
@@ -130,6 +131,7 @@ function MyPageForm(props: Props) {
               <Form.Item label="성별">
                 <Form.MuiRadioGroup
                   i18nKey="GENDER"
+                  disabled={true}
                   values={[1, 2]}
                   value={studentGender}
                   defaultValue={studentGender}
@@ -139,6 +141,7 @@ function MyPageForm(props: Props) {
             <Grid item xs={6}>
               <Form.Item label="구분">
                 <Form.MuiRadioGroup
+                  disabled={true}
                   i18nKey="GRADE"
                   values={[1, 2]}
                   value={studentGrade}
@@ -150,6 +153,7 @@ function MyPageForm(props: Props) {
 
           <Form.Item label="학교 선택">
             <TextField
+              disabled={true}
               fullWidth
               {...register('college_name')}
               InputProps={{
@@ -160,6 +164,7 @@ function MyPageForm(props: Props) {
           </Form.Item>
           <Form.Item label="학번/사번">
             <TextField
+              disabled={true}
               fullWidth
               InputProps={{ readOnly: true }}
               {...register('student_no')}
@@ -167,6 +172,7 @@ function MyPageForm(props: Props) {
           </Form.Item>
           <Form.Item label="생년월일">
             <TextField
+              disabled={true}
               fullWidth
               {...register('student_birth')}
               InputProps={{ readOnly: true }}
