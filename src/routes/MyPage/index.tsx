@@ -54,28 +54,44 @@ function MyPage() {
 
   // 비밀번호 변경
   const onSubmit = (data: any) => {
-    // 비밀번호 유효성 검사
-    if (!regex.password.test(data.newPassword)) {
+    // 비밀번호 확인
+    if (!isConfirmPassword) {
+      return onRequired('REQUIRED.PASSWORD.CONFIRMTRUE');
+    }
+
+    if (data.newPassword.length > 0 && !regex.password.test(data.newPassword)) {
+      // 비밀번호 유효성 검사
       return onRequired('REQUIRED.PASSWORD.FORMAT');
     }
 
     // 비밀번호 일치 여부
     const isConfirm = data.newPassword === data.newPasswordConfirm;
-    if (!isConfirm) {
+    if (
+      data.newPassword.length > 0 &&
+      data.newPasswordConfirm.length > 0 &&
+      !isConfirm
+    ) {
       return onRequired('REQUIRED.PASSWORD.CONFIRM');
     }
 
     const request = {
       userId,
       password: data.password,
-      newPassword: data.newPassword,
+      newPassword: data?.newPassword,
 
       student_name: data.student_name,
     };
 
-    console.log('data', data);
+    const request1 = {
+      userId,
+      // password: data.password,
 
-    postChangePassword(request)
+      student_name: data.student_name,
+    };
+
+    // console.log('data', data.newPassword !== '' ? request:request1);
+
+    postChangePassword(data.newPassword !== '' ? request : request1)
       .then(({ data: { rc } }) => {
         if (rc !== 1) return onResultCode(rc);
         reset();

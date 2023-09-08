@@ -40,6 +40,8 @@ const locale = {
     // signup
     'REQUIRED.EMAIL.FORMAT': '이메일 형식이 올바르지 않습니다',
     'REQUIRED.EMAIL.VERIFICATION': '이메일 인증번호를 확인해주세요',
+    'REQUIRED.PASSWORD.CONFIRMTRUE':
+      '비밀번호를 입력 후 확인버튼을 눌러주세요.',
     'REQUIRED.PASSWORD.FORMAT':
       '비밀번호는 영문+숫자+특수기호를 포함해서 8자리 이상 입력해 주세요',
     'REQUIRED.PASSWORD.CONFIRM': '입력하신 비밀번호가 일치하지 않습니다',

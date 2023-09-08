@@ -106,17 +106,17 @@ function MyPageForm(props: Props) {
               </Button>
             </Box>
           </Form.Item>
-          <Form.Item label="새 비밀번호 입력" isHidden={!isConfirmPassword}>
+          <Form.Item label="새 비밀번호 입력">
             <Form.Password
-              required
+              required={false}
               fullWidth
               helperText="영문+숫자+특수기호를 포함해서 8자리 이상 입력해 주세요."
               {...register('newPassword')}
             />
           </Form.Item>
-          <Form.Item label="새 비밀번호 확인" isHidden={!isConfirmPassword}>
+          <Form.Item label="새 비밀번호 확인">
             <Form.Password
-              required
+              required={false}
               fullWidth
               isHideVisibleBtn
               {...register('newPasswordConfirm')}
