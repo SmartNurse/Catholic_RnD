@@ -94,8 +94,6 @@ const DietList = (props: SurveyDialogProps<TDietListDefaultValues>) => {
           }}
         >
           식이/영양 기록지
-          <br />
-          테스트용
         </Typography>
         <CommonPatientInfo patientInfo={patientInfo} nurseName={nurseName} />
 
