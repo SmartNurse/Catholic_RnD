@@ -26,8 +26,8 @@ import useStudent from 'store/student/useStudent';
 import useSurvey from 'store/survey/useSurvey';
 import usePatient from 'store/patient/usePatient';
 import useNotification from 'hooks/useNotification';
-import { ISettingsToggleObj, IToggleObj } from './type';
-import { initialSettingsToggleObj, initialToggleObj } from './initialStates';
+import { IToggleObj } from './type';
+import { initialToggleObj } from './initialStates';
 import Survey from '../Survey';
 
 interface Props {
@@ -41,8 +41,8 @@ const MenuSettings = (props: Props) => {
   const navigate = useNavigate();
   const { onSignOut } = useUser();
   const { onCloseReadOnly, onUpdateSurveyType } = useSurvey();
-  const { student_uuid, onResetStudent } = useStudent();
-  const { patientInfo, onSelectedPatient, onResetPatient } = usePatient();
+  const { onResetStudent } = useStudent();
+  const { patientInfo, onResetPatient } = usePatient();
   const { onRequired } = useNotification();
 
   const [toggle, setToggle] = useState<IToggleObj>(initialToggleObj);
@@ -72,6 +72,10 @@ const MenuSettings = (props: Props) => {
     },
     {
       label: 'Google BARD',
+      toggle: toggle.medical_information,
+    },
+    {
+      label: 'CLOVA X',
       toggle: toggle.medical_information,
     },
     {
@@ -165,6 +169,9 @@ const MenuSettings = (props: Props) => {
       return;
     } else if (label === 'Google BARD') {
       window.open('https://bard.google.com/');
+      return;
+    } else if (label === 'CLOVA X') {
+      window.open('https://clova-x.naver.com');
       return;
     } else if (label === '간호사 근무 스케줄표') {
       window.open('https://dutymaker.com/');
