@@ -25,6 +25,37 @@ const DietSelection3 = (props: Props) => {
   // const [dietList, setDietList] = useState(-1);
   const [dietList, setDietList] = useState(getValues('dinner.basic_meal'));
 
+  const checks = [
+    { label: 'NPO', key: 'dinner.basic_meal', number: 1 },
+    { label: 'SOW', key: 'dinner.basic_meal', number: 2 },
+    { label: 'AQ', key: 'dinner.basic_meal', number: 3 },
+    { label: 'LD', key: 'dinner.basic_meal', number: 4 },
+    { label: 'SD', key: 'dinner.basic_meal', number: 5 },
+    { label: 'SBD', key: 'dinner.basic_meal', number: 6 },
+    { label: 'RD', key: 'dinner.basic_meal', number: 7 },
+    { label: 'TD', key: 'dinner.basic_meal', number: 8 },
+    { label: '치료식', key: 'dinner.basic_meal', number: 9 },
+    { label: '소아', key: 'dinner.basic_meal', number: 10 },
+  ];
+
+  const 식사신청 = checks
+    .map(v => (Number(getValues(v.key)) === v.number ? v.label : ''))
+    .filter(v => v !== '');
+
+  const 적용급식 = [
+    식사신청,
+    getValues('dinner.guardian_meal'),
+    getValues('dinner.therapeutic_intestinal'),
+    getValues('dinner.therapeutic_kidney'),
+    getValues('dinner.therapeutic_liver'),
+    getValues('dinner.controlled_diet'),
+    getValues('dinner.specifics1'),
+    getValues('dinner.specifics2'),
+    getValues('dinner.specifics_etc'),
+  ];
+
+  const 적용급식필터링 = 적용급식.filter(item => item).join(', ');
+
   return (
     <Fragment>
       <SectionTitle title="석식" />
@@ -39,7 +70,7 @@ const DietSelection3 = (props: Props) => {
             <Form.MuiTextField
               fullWidth
               InputProps={{ readOnly: true }}
-              placeholder={getValues('dd')}
+              placeholder={적용급식필터링}
             />
             <Form.MuiCheckbox
               label={'보호자 식이'}
@@ -88,8 +119,8 @@ const DietSelection3 = (props: Props) => {
               select
               required={false}
               disabled={disabled}
-              defaultValue={getValues('dinner.therapuetic_intestinal')}
-              {...register('dinner.therapuetic_intestinal')}
+              defaultValue={getValues('dinner.therapeutic_intestinal')}
+              {...register('dinner.therapeutic_intestinal')}
               SelectProps={{ MenuProps: { sx: { maxHeight: 150 } } }} // add this line
             >
               <MenuItem value="위 절제 밥">위 절제 밥</MenuItem>
@@ -118,8 +149,8 @@ const DietSelection3 = (props: Props) => {
               select
               required={false}
               disabled={disabled}
-              defaultValue={getValues('dinner.therapuetic_kidney')}
-              {...register('dinner.therapuetic_kidney')}
+              defaultValue={getValues('dinner.therapeutic_kidney')}
+              {...register('dinner.therapeutic_kidney')}
               SelectProps={{ MenuProps: { sx: { maxHeight: 150 } } }} // add this line
             >
               <MenuItem value="신부전 밥">신부전 밥</MenuItem>
@@ -148,8 +179,8 @@ const DietSelection3 = (props: Props) => {
               select
               required={false}
               disabled={disabled}
-              defaultValue={getValues('dinner.therapuetic_liver')}
-              {...register('dinner.therapuetic_liver')}
+              defaultValue={getValues('dinner.therapeutic_liver')}
+              {...register('dinner.therapeutic_liver')}
               SelectProps={{ MenuProps: { sx: { maxHeight: 150 } } }} // add this line
             >
               <MenuItem value="중단백 간질환 밥">중단백 간질환 밥</MenuItem>

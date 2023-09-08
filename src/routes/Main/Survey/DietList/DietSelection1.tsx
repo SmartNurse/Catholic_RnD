@@ -23,6 +23,37 @@ const DietSelection1 = (props: Props) => {
 
   const [dietList, setDietList] = useState(getValues('break_fast.basic_meal'));
 
+  const checks = [
+    { label: 'NPO', key: 'break_fast.basic_meal', number: 1 },
+    { label: 'SOW', key: 'break_fast.basic_meal', number: 2 },
+    { label: 'AQ', key: 'break_fast.basic_meal', number: 3 },
+    { label: 'LD', key: 'break_fast.basic_meal', number: 4 },
+    { label: 'SD', key: 'break_fast.basic_meal', number: 5 },
+    { label: 'SBD', key: 'break_fast.basic_meal', number: 6 },
+    { label: 'RD', key: 'break_fast.basic_meal', number: 7 },
+    { label: 'TD', key: 'break_fast.basic_meal', number: 8 },
+    { label: '치료식', key: 'break_fast.basic_meal', number: 9 },
+    { label: '소아', key: 'break_fast.basic_meal', number: 10 },
+  ];
+
+  const 식사신청 = checks
+    .map(v => (Number(getValues(v.key)) === v.number ? v.label : ''))
+    .filter(v => v !== '');
+
+  const 적용급식 = [
+    식사신청,
+    getValues('break_fast.guardian_meal'),
+    getValues('break_fast.therapeutic_intestinal'),
+    getValues('break_fast.therapeutic_kidney'),
+    getValues('break_fast.therapeutic_liver'),
+    getValues('break_fast.controlled_diet'),
+    getValues('break_fast.specifics1'),
+    getValues('break_fast.specifics2'),
+    getValues('break_fast.specifics_etc'),
+  ];
+
+  const 적용급식필터링 = 적용급식.filter(item => item).join(', ');
+
   return (
     <Fragment>
       <SectionTitle title="조식" />
@@ -37,7 +68,7 @@ const DietSelection1 = (props: Props) => {
             <Form.MuiTextField
               fullWidth
               InputProps={{ readOnly: true }}
-              placeholder={getValues('dd')}
+              placeholder={적용급식필터링}
             />
             <Form.MuiCheckbox
               label={'보호자 식이'}
@@ -86,8 +117,8 @@ const DietSelection1 = (props: Props) => {
               select
               required={false}
               disabled={disabled}
-              defaultValue={getValues('break_fast.therapuetic_intestinal')}
-              {...register('break_fast.therapuetic_intestinal')}
+              defaultValue={getValues('break_fast.therapeutic_intestinal')}
+              {...register('break_fast.therapeutic_intestinal')}
               SelectProps={{ MenuProps: { sx: { maxHeight: 150 } } }} // add this line
             >
               <MenuItem value="위 절제 밥">위 절제 밥</MenuItem>
@@ -116,8 +147,8 @@ const DietSelection1 = (props: Props) => {
               select
               required={false}
               disabled={disabled}
-              defaultValue={getValues('break_fast.therapuetic_kidney')}
-              {...register('break_fast.therapuetic_kidney')}
+              defaultValue={getValues('break_fast.therapeutic_kidney')}
+              {...register('break_fast.therapeutic_kidney')}
               SelectProps={{ MenuProps: { sx: { maxHeight: 150 } } }} // add this line
             >
               <MenuItem value="신부전 밥">신부전 밥</MenuItem>
@@ -146,8 +177,8 @@ const DietSelection1 = (props: Props) => {
               select
               required={false}
               disabled={disabled}
-              defaultValue={getValues('break_fast.therapuetic_liver')}
-              {...register('break_fast.therapuetic_liver')}
+              defaultValue={getValues('break_fast.therapeutic_liver')}
+              {...register('break_fast.therapeutic_liver')}
               SelectProps={{ MenuProps: { sx: { maxHeight: 150 } } }} // add this line
             >
               <MenuItem value="중단백 간질환 밥">중단백 간질환 밥</MenuItem>
