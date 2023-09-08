@@ -79,9 +79,9 @@ export interface ICreateHospitalization extends IGetSurvey {
     main_doctor: string;
     offer: typeof initialHospitalizationSurvey.offer;
 
-    contacts: typeof initialHospitalizationSurvey.contacts;
-    contacts2: typeof initialHospitalizationSurvey.contacts2;
-    contacts3: typeof initialHospitalizationSurvey.contacts3;
+    contact1: typeof initialHospitalizationSurvey.contact1;
+    contact2: typeof initialHospitalizationSurvey.contact2;
+    contact3: typeof initialHospitalizationSurvey.contact3;
 
     disease_history: object;
     body_status: object;

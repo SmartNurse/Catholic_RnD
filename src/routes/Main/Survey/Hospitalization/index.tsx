@@ -70,9 +70,9 @@ const Hospitalization = (
         main_doctor: patientInfo.main_doctor,
         offer: data.offer,
 
-        contacts: data.contacts,
-        contacts2: data.contacts2,
-        contacts3: data.contacts3,
+        contact1: data.contact1,
+        contact2: data.contact2,
+        contact3: data.contact3,
 
         disease_history: findKeyValueToStr(disease_history),
         body_status: findKeyValueToStr(body_status),

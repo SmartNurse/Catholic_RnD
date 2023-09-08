@@ -102,7 +102,7 @@ const PatientInfo = (props: Props) => {
           fullWidth={false}
           disabled={disabled}
           placeholder="직접 입력"
-          {...register('default_info.hospitalization_path.input')}
+          {...register('offer')}
         />
       </RowContent>
       <Table sx={{ marginLeft: '16px' }}>
@@ -126,7 +126,7 @@ const PatientInfo = (props: Props) => {
           fullWidth={false}
           disabled={disabled}
           placeholder="직접 입력"
-          {...register(`contacts${[0]}.contact`)}
+          {...register(`contact1.0.contact`)}
         />
       </RowContent>
       <RowContent title="관계" titleRatio={1} childrenRatio={2}>
@@ -135,7 +135,7 @@ const PatientInfo = (props: Props) => {
           fullWidth={false}
           disabled={disabled}
           placeholder="직접 입력"
-          {...register(`contacts${[0]}.name`)}
+          {...register(`contact1.0.name`)}
         />
       </RowContent>
       <RowContent title="전화번호" titleRatio={1} childrenRatio={2}>
@@ -144,7 +144,7 @@ const PatientInfo = (props: Props) => {
           fullWidth={false}
           disabled={disabled}
           placeholder="직접 입력"
-          {...register(`contacts${[0]}.relation`)}
+          {...register(`contact1.0.relation`)}
         />
       </RowContent>
       <RowContent title="기타" titleRatio={1} childrenRatio={2}>
@@ -153,7 +153,7 @@ const PatientInfo = (props: Props) => {
           fullWidth={false}
           disabled={disabled}
           placeholder="ex. 치료 방향, 물품 연락"
-          {...register(`contacts${[0]}.etc`)}
+          {...register(`contact1.0.etc`)}
         />
       </RowContent>
 
@@ -163,7 +163,7 @@ const PatientInfo = (props: Props) => {
           fullWidth={false}
           disabled={disabled}
           placeholder="직접 입력"
-          {...register(`contacts2${[0]}.contact`)}
+          {...register(`contact2.0.contact`)}
         />
       </RowContent>
       <RowContent title="관계" titleRatio={1} childrenRatio={2}>
@@ -172,7 +172,7 @@ const PatientInfo = (props: Props) => {
           fullWidth={false}
           disabled={disabled}
           placeholder="직접 입력"
-          {...register(`contacts2${[0]}.name`)}
+          {...register(`contact2.0.name`)}
         />
       </RowContent>
       <RowContent title="전화번호" titleRatio={1} childrenRatio={2}>
@@ -181,7 +181,7 @@ const PatientInfo = (props: Props) => {
           fullWidth={false}
           disabled={disabled}
           placeholder="직접 입력"
-          {...register(`contacts2${[0]}.relation`)}
+          {...register(`contact2.0.relation`)}
         />
       </RowContent>
       <RowContent title="기타" titleRatio={1} childrenRatio={2}>
@@ -190,7 +190,7 @@ const PatientInfo = (props: Props) => {
           fullWidth={false}
           disabled={disabled}
           placeholder="ex. 치료 방향, 물품 연락"
-          {...register(`contacts2${[0]}.etc`)}
+          {...register(`contact2.0.etc`)}
         />
       </RowContent>
 
@@ -200,7 +200,7 @@ const PatientInfo = (props: Props) => {
           fullWidth={false}
           disabled={disabled}
           placeholder="직접 입력"
-          {...register(`contacts3${[0]}.contact`)}
+          {...register(`contact3.0.contact`)}
         />
       </RowContent>
       <RowContent title="관계" titleRatio={1} childrenRatio={2}>
@@ -209,7 +209,7 @@ const PatientInfo = (props: Props) => {
           fullWidth={false}
           disabled={disabled}
           placeholder="직접 입력"
-          {...register(`contacts3${[0]}.name`)}
+          {...register(`contact3.0.name`)}
         />
       </RowContent>
       <RowContent title="전화번호" titleRatio={1} childrenRatio={2}>
@@ -218,7 +218,7 @@ const PatientInfo = (props: Props) => {
           fullWidth={false}
           disabled={disabled}
           placeholder="직접 입력"
-          {...register(`contacts3${[0]}.relation`)}
+          {...register(`contact3.0.relation`)}
         />
       </RowContent>
       <RowContent title="기타" titleRatio={1} childrenRatio={2}>
@@ -227,7 +227,7 @@ const PatientInfo = (props: Props) => {
           fullWidth={false}
           disabled={disabled}
           placeholder="ex. 치료 방향, 물품 연락"
-          {...register(`contacts3${[0]}.etc`)}
+          {...register(`contact3.0.etc`)}
         />
       </RowContent>
     </RowContainer>

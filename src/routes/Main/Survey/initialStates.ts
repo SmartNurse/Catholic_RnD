@@ -57,9 +57,9 @@ export const initialHospitalizationSurvey = {
   offer: '',
   update_at: '',
 
-  contacts: [{ contact: '', name: '', relation: '', etc: '' }],
-  contacts2: [{ contact: '', name: '', relation: '', etc: '' }],
-  contacts3: [{ contact: '', name: '', relation: '', etc: '' }],
+  contact1: [{ contact: '', name: '', relation: '', etc: '' }],
+  contact2: [{ contact: '', name: '', relation: '', etc: '' }],
+  contact3: [{ contact: '', name: '', relation: '', etc: '' }],
 
   default_info: {
     BT: '',
