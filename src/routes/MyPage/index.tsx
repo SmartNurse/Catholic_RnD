@@ -66,11 +66,10 @@ function MyPage() {
 
     // 비밀번호 일치 여부
     const isConfirm = data.newPassword === data.newPasswordConfirm;
-    if (
-      data.newPassword.length > 0 &&
-      data.newPasswordConfirm.length > 0 &&
-      !isConfirm
-    ) {
+
+    if (data.newPasswordConfirm.length === 0) {
+      return onRequired('REQUIRED.PASSWORD.CONFIRMTWO');
+    } else if (!isConfirm) {
       return onRequired('REQUIRED.PASSWORD.CONFIRM');
     }
 

@@ -84,7 +84,8 @@ function MyPageForm(props: Props) {
               <Form.Password
                 required
                 fullWidth
-                helperText="비밀번호를 변경하기 위해 기존 비밀번호를 입력해주세요."
+                helperText="계정 정보 수정을 위해 비밀번호를 확인합니다.
+기존 비밀번호 입력 후 확인을 눌러주세요."
                 InputProps={{
                   readOnly: isConfirmPassword,
                   endAdornment: <VerificationIcon />,
@@ -110,7 +111,7 @@ function MyPageForm(props: Props) {
             <Form.Password
               required={false}
               fullWidth
-              helperText="영문+숫자+특수기호를 포함해서 8자리 이상 입력해 주세요."
+              helperText="비밀번호를 변경하는 경우에만 입력해 주세요 (영문+숫자+특수기호 포함 8자리 이상)"
               {...register('newPassword')}
             />
           </Form.Item>
