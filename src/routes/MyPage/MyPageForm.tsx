@@ -85,7 +85,8 @@ function MyPageForm(props: Props) {
                 required
                 fullWidth
                 helperText="계정 정보 수정을 위해 비밀번호를 확인합니다.
-기존 비밀번호 입력 후 확인을 눌러주세요."
+                기존 비밀번호 입력 후 확인을 눌러주세요."
+                sx={{ whiteSpace: 'nowrap' }}
                 InputProps={{
                   readOnly: isConfirmPassword,
                   endAdornment: <VerificationIcon />,
@@ -107,6 +108,7 @@ function MyPageForm(props: Props) {
               </Button>
             </Box>
           </Form.Item>
+
           <Form.Item label="새 비밀번호 입력">
             <Form.Password
               required={false}
