@@ -133,7 +133,7 @@ function Contents7(props: Props) {
 
   return (
     <Box sx={{ margin: '40px' }}>
-      <SectionTitle title="ㅊ-ㅋ" />
+      <SectionTitle title="ㅍ-ㅎ" />
 
       <RowContainer xs={12}>
         <RowContent title="">
