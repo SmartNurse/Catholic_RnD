@@ -21,7 +21,7 @@ function Contents1(props: Props) {
     [
       {
         label: '4~6개월용 건강검진',
-        link: 'naver.com',
+        link: 'https://smartnurse-standard-video-bucket.s3.ap-northeast-2.amazonaws.com/%EC%98%81%EC%9C%A0%EC%95%84%EA%B2%80%EC%A7%84%EB%AC%B8%EC%A7%84%ED%91%9C/%EC%98%81%EC%9C%A0%EC%95%84%EA%B2%80%EC%A7%84%EB%AC%B8%EC%A7%84%ED%91%9C/4~6%E1%84%80%E1%85%A2%E1%84%8B%E1%85%AF%E1%86%AF%E1%84%8B%E1%85%AD%E1%86%BC+%E1%84%80%E1%85%A5%E1%86%AB%E1%84%80%E1%85%A1%E1%86%BC%E1%84%80%E1%85%A5%E1%86%B7%E1%84%8C%E1%85%B5%E1%86%AB.hwp',
       },
       {
         label: '9~12개월용 건강검진',
@@ -72,6 +72,7 @@ function Contents1(props: Props) {
             return (
               <Stack spacing={3} sx={{ mt: 2 }} direction="row">
                 <Button
+                  onClick={() => window.open(item[0].link)}
                   disabled={item[0].label === '' ? true : false}
                   color="inherit"
                   size="large"
