@@ -52,8 +52,8 @@ const DietList = (props: SurveyDialogProps<TDietListDefaultValues>) => {
       patient_id,
       dietary_survey: {
         break_fast: findKeyValueToStr(break_fast),
-        lunch: findKeyValueToStr(break_fast),
-        dinner: findKeyValueToStr(break_fast),
+        lunch: findKeyValueToStr(lunch),
+        dinner: findKeyValueToStr(dinner),
       },
     };
     console.log('데이터', request);

@@ -53,7 +53,7 @@ const DietSelection2 = (props: Props) => {
     getValues('lunch.specifics_etc'),
   ];
 
-  const 적용급식필터링 = 적용급식.filter(item => item).join(', ');
+  const 적용급식필터링2 = 적용급식.filter(item => item).join(', ');
 
   return (
     <Fragment>
@@ -69,7 +69,7 @@ const DietSelection2 = (props: Props) => {
             <Form.MuiTextField
               fullWidth
               InputProps={{ readOnly: true }}
-              placeholder={적용급식필터링}
+              placeholder={적용급식필터링2}
             />
             <Form.MuiCheckbox
               label={'보호자 식이'}
