@@ -72,10 +72,13 @@ const DietSelection2 = (props: Props) => {
               placeholder={적용급식필터링2}
             />
             <Form.MuiCheckbox
+              disabled={disabled}
               label={'보호자 식이'}
-              defaultValue={getValues('lunch.guardian_meal')}
-              onChange={v => {
-                setValue('lunch.guardian_meal', v);
+              defaultValue={
+                Boolean(getValues('lunch.guardian_meal')) ? ['보호자 식이'] : []
+              }
+              onChange={(_, checked) => {
+                setValue('lunch.guardian_meal', checked);
               }}
             />
           </Stack>

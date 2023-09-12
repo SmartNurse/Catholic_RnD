@@ -4,6 +4,7 @@ import { Fragment, useState } from 'react';
 import { MenuItem, Stack, TextField } from '@mui/material';
 
 import MuiRadioGroup from './MuiRadioGroup';
+import MuiCheckbox from './MuiCheckbox';
 
 import Form from 'components/Form';
 import { IFormRegister, IFormValues } from 'routes/Main/type';
@@ -70,11 +71,16 @@ const DietSelection1 = (props: Props) => {
               InputProps={{ readOnly: true }}
               placeholder={적용급식필터링}
             />
-            <Form.MuiCheckbox
+            <MuiCheckbox
+              disabled={disabled}
               label={'보호자 식이'}
-              defaultValue={getValues('break_fast.guardian_meal')}
-              onChange={v => {
-                setValue('break_fast.guardian_meal', v);
+              defaultValue={
+                Boolean(getValues('break_fast.guardian_meal'))
+                  ? ['보호자 식이']
+                  : []
+              }
+              onChange={(_, checked) => {
+                setValue('break_fast.guardian_meal', checked);
               }}
             />
           </Stack>

@@ -74,9 +74,13 @@ const DietSelection3 = (props: Props) => {
             />
             <Form.MuiCheckbox
               label={'보호자 식이'}
-              defaultValue={getValues('dinner.guardian_meal')}
-              onChange={v => {
-                setValue('dinner.guardian_meal', v);
+              defaultValue={
+                Boolean(getValues('dinner.guardian_meal'))
+                  ? ['보호자 식이']
+                  : []
+              }
+              onChange={(_, checked) => {
+                setValue('dinner.guardian_meal', checked);
               }}
             />
           </Stack>
