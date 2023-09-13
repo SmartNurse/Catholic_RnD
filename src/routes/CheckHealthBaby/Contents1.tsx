@@ -25,33 +25,33 @@ function Contents1(props: Props) {
       },
       {
         label: '9~12개월용 건강검진',
-        link: 'naver.com',
+        link: 'https://smartnurse-standard-video-bucket.s3.ap-northeast-2.amazonaws.com/%EC%98%81%EC%9C%A0%EC%95%84%EA%B2%80%EC%A7%84%EB%AC%B8%EC%A7%84%ED%91%9C/%EC%98%81%EC%9C%A0%EC%95%84%EA%B2%80%EC%A7%84%EB%AC%B8%EC%A7%84%ED%91%9C/9~12%E1%84%80%E1%85%A2%E1%84%8B%E1%85%AF%E1%86%AF%E1%84%8B%E1%85%AD%E1%86%BC+%E1%84%80%E1%85%A5%E1%86%AB%E1%84%80%E1%85%A1%E1%86%BC%E1%84%80%E1%85%A5%E1%86%B7%E1%84%8C%E1%85%B5%E1%86%AB.hwp',
       },
       {
         label: '18~24개월용 건강검진',
-        link: 'naver.com',
+        link: 'https://smartnurse-standard-video-bucket.s3.ap-northeast-2.amazonaws.com/%EC%98%81%EC%9C%A0%EC%95%84%EA%B2%80%EC%A7%84%EB%AC%B8%EC%A7%84%ED%91%9C/%EC%98%81%EC%9C%A0%EC%95%84%EA%B2%80%EC%A7%84%EB%AC%B8%EC%A7%84%ED%91%9C/18~24%E1%84%80%E1%85%A2%E1%84%8B%E1%85%AF%E1%86%AF%E1%84%8B%E1%85%AD%E1%86%BC+%E1%84%80%E1%85%A5%E1%86%AB%E1%84%80%E1%85%A1%E1%86%BC%E1%84%80%E1%85%A5%E1%86%B7%E1%84%8C%E1%85%B5%E1%86%AB.hwp',
       },
       {
         label: '30~36개월용 건강검진',
-        link: 'naver.com',
+        link: 'https://smartnurse-standard-video-bucket.s3.ap-northeast-2.amazonaws.com/%EC%98%81%EC%9C%A0%EC%95%84%EA%B2%80%EC%A7%84%EB%AC%B8%EC%A7%84%ED%91%9C/%EC%98%81%EC%9C%A0%EC%95%84%EA%B2%80%EC%A7%84%EB%AC%B8%EC%A7%84%ED%91%9C/30~36%E1%84%80%E1%85%A2%E1%84%8B%E1%85%AF%E1%86%AF%E1%84%8B%E1%85%AD%E1%86%BC+%E1%84%80%E1%85%A5%E1%86%AB%E1%84%80%E1%85%A1%E1%86%BC%E1%84%80%E1%85%A5%E1%86%B7%E1%84%8C%E1%85%B5%E1%86%AB.hwp',
       },
     ],
     [
       {
         label: '42~48개월용 건강검진',
-        link: 'naver.com',
+        link: 'https://smartnurse-standard-video-bucket.s3.ap-northeast-2.amazonaws.com/%EC%98%81%EC%9C%A0%EC%95%84%EA%B2%80%EC%A7%84%EB%AC%B8%EC%A7%84%ED%91%9C/%EC%98%81%EC%9C%A0%EC%95%84%EA%B2%80%EC%A7%84%EB%AC%B8%EC%A7%84%ED%91%9C/42~48%E1%84%80%E1%85%A2%E1%84%8B%E1%85%AF%E1%86%AF%E1%84%8B%E1%85%AD%E1%86%BC+%E1%84%80%E1%85%A5%E1%86%AB%E1%84%80%E1%85%A1%E1%86%BC%E1%84%80%E1%85%A5%E1%86%B7%E1%84%8C%E1%85%B5%E1%86%AB.hwp',
       },
       {
         label: '54~60개월용 건강검진 ',
-        link: 'naver.com',
+        link: 'https://smartnurse-standard-video-bucket.s3.ap-northeast-2.amazonaws.com/%EC%98%81%EC%9C%A0%EC%95%84%EA%B2%80%EC%A7%84%EB%AC%B8%EC%A7%84%ED%91%9C/%EC%98%81%EC%9C%A0%EC%95%84%EA%B2%80%EC%A7%84%EB%AC%B8%EC%A7%84%ED%91%9C/54~60%E1%84%80%E1%85%A2%E1%84%8B%E1%85%AF%E1%86%AF%E1%84%8B%E1%85%AD%E1%86%BC+%E1%84%80%E1%85%A5%E1%86%AB%E1%84%80%E1%85%A1%E1%86%BC%E1%84%80%E1%85%A5%E1%86%B7%E1%84%8C%E1%85%B5%E1%86%AB.hwp',
       },
       {
         label: '66~71개월용 건강검진',
-        link: 'naver.com',
+        link: 'https://smartnurse-standard-video-bucket.s3.ap-northeast-2.amazonaws.com/%EC%98%81%EC%9C%A0%EC%95%84%EA%B2%80%EC%A7%84%EB%AC%B8%EC%A7%84%ED%91%9C/%EC%98%81%EC%9C%A0%EC%95%84%EA%B2%80%EC%A7%84%EB%AC%B8%EC%A7%84%ED%91%9C/66~71%E1%84%80%E1%85%A2%E1%84%8B%E1%85%AF%E1%86%AF%E1%84%8B%E1%85%AD%E1%86%BC+%E1%84%80%E1%85%A5%E1%86%AB%E1%84%80%E1%85%A1%E1%86%BC%E1%84%80%E1%85%A5%E1%86%B7%E1%84%8C%E1%85%B5%E1%86%AB.hwp',
       },
       {
         label: '',
-        link: 'naver.com',
+        link: '',
       },
     ],
   ];
@@ -91,6 +91,7 @@ function Contents1(props: Props) {
                   {item[0].label}
                 </Button>
                 <Button
+                  onClick={() => window.open(item[1].link)}
                   disabled={item[1].label === '' ? true : false}
                   color="inherit"
                   size="large"
@@ -109,6 +110,7 @@ function Contents1(props: Props) {
                   {item[1].label}
                 </Button>
                 <Button
+                  onClick={() => window.open(item[2].link)}
                   disabled={item[2].label === '' ? true : false}
                   color="inherit"
                   size="large"
@@ -127,6 +129,7 @@ function Contents1(props: Props) {
                   {item[2].label}
                 </Button>
                 <Button
+                  onClick={() => window.open(item[3].link)}
                   disabled={item[3].label === '' ? true : false}
                   color="inherit"
                   size="large"

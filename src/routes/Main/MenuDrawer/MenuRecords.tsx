@@ -397,9 +397,8 @@ const MenuRecords = (props: Props) => {
     if (!student_uuid) return onRequired('REQUIRED.STUDENT');
 
     if (label === '영유아 건강검진 문진') {
-      window.open(
-        'http://www.imomhospital.co.kr/page/wellbaby/interview?PHPSESSID=57edd94c10d035ad8b305d29981c98ed'
-      );
+      window.open('https://enr.smartnurse.co.kr/#/badyMedicalCheckup');
+      // window.open('http://localhost:3000/#/agreement2');
       return;
     } else if (label === 'NEDIS') {
       window.open('https://portal.nemc.or.kr:444/member/login_page.do');
