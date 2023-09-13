@@ -14,7 +14,10 @@ const useUser = () => {
   const isStudent = userState.student_grade === 1 ? true : false;
 
   const onSignIn = useCallback(
-    (user: UserState) => dispatch(signIn(user)),
+    (user: UserState) => {
+      dispatch(signIn(user));
+      setTimeout(onSignOut, 43200);
+    },
     [dispatch]
   );
 
