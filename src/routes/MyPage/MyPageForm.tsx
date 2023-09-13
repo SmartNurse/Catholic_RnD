@@ -14,12 +14,7 @@ import {
   TextField,
   Typography,
 } from '@mui/material';
-import {
-  FieldValues,
-  UseFormGetValues,
-  UseFormRegister,
-  UseFormSetValue,
-} from 'react-hook-form';
+import { FieldValues, UseFormRegister } from 'react-hook-form';
 
 import Form from 'components/Form';
 import SignUpDialog from 'routes/SignUp/SignUpDialog';
@@ -28,8 +23,6 @@ interface Props {
   studentGrade: number;
   studentGender: number;
   register: UseFormRegister<FieldValues>;
-  getValues: UseFormGetValues<any>;
-  setValue: UseFormSetValue<any>;
   isConfirmPassword: boolean;
   onConfirmPassword: () => void;
 }
@@ -43,8 +36,6 @@ function MyPageForm(props: Props) {
     register,
     isConfirmPassword,
     onConfirmPassword,
-    getValues,
-    setValue,
   } = props;
 
   const VerificationIcon = () => (
