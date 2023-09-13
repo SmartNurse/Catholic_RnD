@@ -28,7 +28,7 @@ function MyPage() {
 
   const { onResultCode, onSuccess, onFail, onRequired } = useNotification();
 
-  const { handleSubmit, getValues, register, reset, setValue } = useForm({
+  const { handleSubmit, getValues, register, reset } = useForm({
     defaultValues: {
       student_id,
       student_gender,
@@ -116,8 +116,6 @@ function MyPage() {
         studentGrade={student_grade!}
         studentGender={student_gender!}
         register={register}
-        getValues={getValues}
-        setValue={setValue}
         isConfirmPassword={isConfirmPassword}
         onConfirmPassword={onConfirmPassword}
       />
