@@ -44,7 +44,7 @@ const PatientsList = ({ user_id }: Props) => {
       });
     });
 
-    if (nursingRecord) {
+    if (nursingRecord.length === 0) {
       return (
         <ListItemButton {...props} sx={{ gap: 0.5 }}>
           <Empty />
