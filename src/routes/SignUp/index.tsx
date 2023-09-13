@@ -31,7 +31,9 @@ function SignUp() {
     }
 
     postSendMail({ user_email })
-      .then(() => {
+      .then(({ data: { rc } }) => {
+        if (rc === 108) return onResultCode(rc);
+
         setSendMail(true);
         setIsVerification(false);
         onSuccess('요청하신 이메일로 인증번호를 발송하였습니다.');
