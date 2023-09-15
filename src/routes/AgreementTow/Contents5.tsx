@@ -22,111 +22,111 @@ function Contents5(props: Props) {
     [
       {
         label: '자가 모발 이식수술1',
-        link: 'naver.com',
+        link: 'https://smartnurse-standard-video-bucket.s3.ap-northeast-2.amazonaws.com/%EB%8F%99%EC%9D%98%EC%84%9C/%E1%84%8C%E1%85%A1%E1%84%80%E1%85%A1+%E1%84%86%E1%85%A9%E1%84%87%E1%85%A1%E1%86%AF+%E1%84%8B%E1%85%B5%E1%84%89%E1%85%B5%E1%86%A8%E1%84%89%E1%85%AE%E1%84%89%E1%85%AE%E1%86%AF1.pdf',
       },
       {
         label: '자가 모발 이식수술2',
-        link: 'naver.com',
+        link: 'https://smartnurse-standard-video-bucket.s3.ap-northeast-2.amazonaws.com/%EB%8F%99%EC%9D%98%EC%84%9C/%E1%84%8C%E1%85%A1%E1%84%80%E1%85%A1+%E1%84%86%E1%85%A9%E1%84%87%E1%85%A1%E1%86%AF+%E1%84%8B%E1%85%B5%E1%84%89%E1%85%B5%E1%86%A8%E1%84%89%E1%85%AE%E1%84%89%E1%85%AE%E1%86%AF2.pdf',
       },
       {
         label: '자가 헌혈 동의서',
-        link: 'naver.com',
+        link: 'https://smartnurse-standard-video-bucket.s3.ap-northeast-2.amazonaws.com/%EB%8F%99%EC%9D%98%EC%84%9C/%E1%84%8C%E1%85%A1%E1%84%80%E1%85%A1+%E1%84%92%E1%85%A5%E1%86%AB%E1%84%92%E1%85%A7%E1%86%AF+%E1%84%83%E1%85%A9%E1%86%BC%E1%84%8B%E1%85%B4%E1%84%89%E1%85%A5.pdf',
       },
       {
         label: '자기공명영상(MRI) 검사',
-        link: 'naver.com',
+        link: 'https://smartnurse-standard-video-bucket.s3.ap-northeast-2.amazonaws.com/%EB%8F%99%EC%9D%98%EC%84%9C/%E1%84%8C%E1%85%A1%E1%84%80%E1%85%B5%E1%84%80%E1%85%A9%E1%86%BC%E1%84%86%E1%85%A7%E1%86%BC%E1%84%8B%E1%85%A7%E1%86%BC%E1%84%89%E1%85%A1%E1%86%BC(MRI)+%E1%84%80%E1%85%A5%E1%86%B7%E1%84%89%E1%85%A1.pdf',
       },
       {
         label: '자발성 거미막하 출혈수술',
-        link: 'naver.com',
+        link: 'https://smartnurse-standard-video-bucket.s3.ap-northeast-2.amazonaws.com/%EB%8F%99%EC%9D%98%EC%84%9C/%E1%84%8C%E1%85%A1%E1%84%87%E1%85%A1%E1%86%AF%E1%84%89%E1%85%A5%E1%86%BC+%E1%84%80%E1%85%A5%E1%84%86%E1%85%B5%E1%84%86%E1%85%A1%E1%86%A8%E1%84%92%E1%85%A1+%E1%84%8E%E1%85%AE%E1%86%AF%E1%84%92%E1%85%A7%E1%86%AF%E1%84%89%E1%85%AE%E1%84%89%E1%85%AE%E1%86%AF.pdf',
       },
     ],
     [
       {
         label: '장 폐쇄증 수술',
-        link: 'naver.com',
+        link: 'https://smartnurse-standard-video-bucket.s3.ap-northeast-2.amazonaws.com/%EB%8F%99%EC%9D%98%EC%84%9C/%E1%84%8C%E1%85%A1%E1%86%BC+%E1%84%91%E1%85%A8%E1%84%89%E1%85%AB%E1%84%8C%E1%85%B3%E1%86%BC+%E1%84%89%E1%85%AE%E1%84%89%E1%85%AE%E1%86%AF.pdf',
       },
       {
         label: '재접합술',
-        link: 'naver.com',
+        link: 'https://smartnurse-standard-video-bucket.s3.ap-northeast-2.amazonaws.com/%EB%8F%99%EC%9D%98%EC%84%9C/%E1%84%8C%E1%85%A2%E1%84%8C%E1%85%A5%E1%86%B8%E1%84%92%E1%85%A1%E1%86%B8%E1%84%89%E1%85%AE%E1%86%AF.pdf',
       },
       {
         label: '재활도수요법',
-        link: 'naver.com',
+        link: 'https://smartnurse-standard-video-bucket.s3.ap-northeast-2.amazonaws.com/%EB%8F%99%EC%9D%98%EC%84%9C/%E1%84%8C%E1%85%A2%E1%84%92%E1%85%AA%E1%86%AF%E1%84%83%E1%85%A9%E1%84%89%E1%85%AE%E1%84%8B%E1%85%AD%E1%84%87%E1%85%A5%E1%86%B8.pdf',
       },
       {
         label: '전기경련요법',
-        link: 'naver.com',
+        link: 'https://smartnurse-standard-video-bucket.s3.ap-northeast-2.amazonaws.com/%EB%8F%99%EC%9D%98%EC%84%9C/%E1%84%8C%E1%85%A5%E1%86%AB%E1%84%80%E1%85%B5%E1%84%80%E1%85%A7%E1%86%BC%E1%84%85%E1%85%A7%E1%86%AB%E1%84%8B%E1%85%AD%E1%84%87%E1%85%A5%E1%86%B8.pdf',
       },
       {
         label: '전립샘비대 수술',
-        link: 'naver.com',
+        link: 'https://smartnurse-standard-video-bucket.s3.ap-northeast-2.amazonaws.com/%EB%8F%99%EC%9D%98%EC%84%9C/%E1%84%8C%E1%85%A5%E1%86%AB%E1%84%85%E1%85%B5%E1%86%B8%E1%84%89%E1%85%A2%E1%86%B7%E1%84%87%E1%85%B5%E1%84%83%E1%85%A2+%E1%84%89%E1%85%AE%E1%84%89%E1%85%AE%E1%86%AF.pdf',
       },
     ],
     [
       {
         label: '전안부레이저치료',
-        link: 'naver.com',
+        link: 'https://smartnurse-standard-video-bucket.s3.ap-northeast-2.amazonaws.com/%EB%8F%99%EC%9D%98%EC%84%9C/%E1%84%8C%E1%85%A5%E1%86%AB%E1%84%8B%E1%85%A1%E1%86%AB%E1%84%87%E1%85%AE%E1%84%85%E1%85%A6%E1%84%8B%E1%85%B5%E1%84%8C%E1%85%A5%E1%84%8E%E1%85%B5%E1%84%85%E1%85%AD.pdf',
       },
       {
         label: '전이성 뼈종양의 치료',
-        link: 'naver.com',
+        link: 'https://smartnurse-standard-video-bucket.s3.ap-northeast-2.amazonaws.com/%EB%8F%99%EC%9D%98%EC%84%9C/%E1%84%8C%E1%85%A5%E1%86%AB%E1%84%8B%E1%85%B5%E1%84%89%E1%85%A5%E1%86%BC+%E1%84%88%E1%85%A7%E1%84%8C%E1%85%A9%E1%86%BC%E1%84%8B%E1%85%A3%E1%86%BC%E1%84%8B%E1%85%B4+%E1%84%8E%E1%85%B5%E1%84%85%E1%85%AD.pdf',
       },
       {
         label: '점막하 절제술',
-        link: 'naver.com',
+        link: 'https://smartnurse-standard-video-bucket.s3.ap-northeast-2.amazonaws.com/%EB%8F%99%EC%9D%98%EC%84%9C/%E1%84%8C%E1%85%A5%E1%86%B7%E1%84%86%E1%85%A1%E1%86%A8%E1%84%92%E1%85%A1+%E1%84%8C%E1%85%A5%E1%86%AF%E1%84%8C%E1%85%A6%E1%84%89%E1%85%AE%E1%86%AF.pdf',
       },
       {
         label: '정관절제술',
-        link: 'naver.com',
+        link: 'https://smartnurse-standard-video-bucket.s3.ap-northeast-2.amazonaws.com/%EB%8F%99%EC%9D%98%EC%84%9C/%E1%84%8C%E1%85%A5%E1%86%BC%E1%84%80%E1%85%AA%E1%86%AB%E1%84%8C%E1%85%A5%E1%86%AF%E1%84%8C%E1%85%A6%E1%84%89%E1%85%AE%E1%86%AF.pdf',
       },
       {
         label: '정맥요로조영술(IVP)',
-        link: 'naver.com',
+        link: 'https://smartnurse-standard-video-bucket.s3.ap-northeast-2.amazonaws.com/%EB%8F%99%EC%9D%98%EC%84%9C/%E1%84%8C%E1%85%A5%E1%86%BC%E1%84%86%E1%85%A2%E1%86%A8%E1%84%8B%E1%85%AD%E1%84%85%E1%85%A9%E1%84%8C%E1%85%A9%E1%84%8B%E1%85%A7%E1%86%BC%E1%84%89%E1%85%AE%E1%86%AF(IVP).pdf',
       },
     ],
     [
       {
         label: '제왕절개 분만 수술',
-        link: 'naver.com',
+        link: 'https://smartnurse-standard-video-bucket.s3.ap-northeast-2.amazonaws.com/%EB%8F%99%EC%9D%98%EC%84%9C/%E1%84%8C%E1%85%A6%E1%84%8B%E1%85%AA%E1%86%BC%E1%84%8C%E1%85%A5%E1%86%AF%E1%84%80%E1%85%A2+%E1%84%87%E1%85%AE%E1%86%AB%E1%84%86%E1%85%A1%E1%86%AB+%E1%84%89%E1%85%AE%E1%84%89%E1%85%AE%E1%86%AF.pdf',
       },
       {
         label: '조혈모세포(골수)이식 시술',
-        link: 'naver.com',
+        link: 'https://smartnurse-standard-video-bucket.s3.ap-northeast-2.amazonaws.com/%EB%8F%99%EC%9D%98%EC%84%9C/%E1%84%8C%E1%85%A9%E1%84%92%E1%85%A7%E1%86%AF%E1%84%86%E1%85%A9%E1%84%89%E1%85%A6%E1%84%91%E1%85%A9(%E1%84%80%E1%85%A9%E1%86%AF%E1%84%89%E1%85%AE)%E1%84%8B%E1%85%B5%E1%84%89%E1%85%B5%E1%86%A8+%E1%84%89%E1%85%B5%E1%84%89%E1%85%AE%E1%86%AF.pdf',
       },
       {
         label: '족관절(발목관절) 수술',
-        link: 'naver.com',
+        link: 'https://smartnurse-standard-video-bucket.s3.ap-northeast-2.amazonaws.com/%EB%8F%99%EC%9D%98%EC%84%9C/%E1%84%8C%E1%85%A9%E1%86%A8%E1%84%80%E1%85%AA%E1%86%AB%E1%84%8C%E1%85%A5%E1%86%AF(%E1%84%87%E1%85%A1%E1%86%AF%E1%84%86%E1%85%A9%E1%86%A8%E1%84%80%E1%85%AA%E1%86%AB%E1%84%8C%E1%85%A5%E1%86%AF)+%E1%84%89%E1%85%AE%E1%84%89%E1%85%AE%E1%86%AF.pdf',
       },
       {
         label: '중증 근무력증',
-        link: 'naver.com',
+        link: 'https://smartnurse-standard-video-bucket.s3.ap-northeast-2.amazonaws.com/%EB%8F%99%EC%9D%98%EC%84%9C/%E1%84%8C%E1%85%AE%E1%86%BC%E1%84%8C%E1%85%B3%E1%86%BC+%E1%84%80%E1%85%B3%E1%86%AB%E1%84%86%E1%85%AE%E1%84%85%E1%85%A7%E1%86%A8%E1%84%8C%E1%85%B3%E1%86%BC.pdf',
       },
       {
         label: '직장경유 전립샘 침생검',
-        link: 'naver.com',
+        link: 'https://smartnurse-standard-video-bucket.s3.ap-northeast-2.amazonaws.com/%EB%8F%99%EC%9D%98%EC%84%9C/%E1%84%8C%E1%85%B5%E1%86%A8%E1%84%8C%E1%85%A1%E1%86%BC%E1%84%80%E1%85%A7%E1%86%BC%E1%84%8B%E1%85%B2+%E1%84%8C%E1%85%A5%E1%86%AB%E1%84%85%E1%85%B5%E1%86%B8%E1%84%89%E1%85%A2%E1%86%B7+%E1%84%8E%E1%85%B5%E1%86%B7%E1%84%89%E1%85%A2%E1%86%BC%E1%84%80%E1%85%A5%E1%86%B7.pdf',
       },
     ],
     [
       {
         label: '직장암 수술',
-        link: 'naver.com',
+        link: 'https://smartnurse-standard-video-bucket.s3.ap-northeast-2.amazonaws.com/%EB%8F%99%EC%9D%98%EC%84%9C/%E1%84%8C%E1%85%B5%E1%86%A8%E1%84%8C%E1%85%A1%E1%86%BC%E1%84%8B%E1%85%A1%E1%86%B7+%E1%84%89%E1%85%AE%E1%84%89%E1%85%AE%E1%86%AF+.pdf',
       },
       {
         label: '진전 섬망 ',
-        link: 'naver.com',
+        link: 'https://smartnurse-standard-video-bucket.s3.ap-northeast-2.amazonaws.com/%EB%8F%99%EC%9D%98%EC%84%9C/%E1%84%8C%E1%85%B5%E1%86%AB%E1%84%8C%E1%85%A5%E1%86%AB+%E1%84%89%E1%85%A5%E1%86%B7%E1%84%86%E1%85%A1%E1%86%BC.pdf',
       },
       {
         label: '',
-        link: 'naver.com',
+        link: '',
       },
       {
         label: '',
-        link: 'naver.com',
+        link: '',
       },
       {
         label: '',
-        link: 'naver.com',
+        link: '',
       },
     ],
   ];
