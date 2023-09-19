@@ -119,6 +119,7 @@ function Contents6(props: Props) {
             return (
               <Stack spacing={3} sx={{ mt: 2 }} direction="row">
                 <Button
+                  onClick={() => window.open(item[0].link)}
                   disabled={item[0].label === '' ? true : false}
                   color="inherit"
                   size="large"
@@ -137,6 +138,7 @@ function Contents6(props: Props) {
                   {item[0].label}
                 </Button>
                 <Button
+                  onClick={() => window.open(item[1].link)}
                   disabled={item[1].label === '' ? true : false}
                   color="inherit"
                   size="large"
@@ -155,6 +157,7 @@ function Contents6(props: Props) {
                   {item[1].label}
                 </Button>
                 <Button
+                  onClick={() => window.open(item[2].link)}
                   disabled={item[2].label === '' ? true : false}
                   color="inherit"
                   size="large"
@@ -173,6 +176,7 @@ function Contents6(props: Props) {
                   {item[2].label}
                 </Button>
                 <Button
+                  onClick={() => window.open(item[3].link)}
                   disabled={item[3].label === '' ? true : false}
                   color="inherit"
                   size="large"
@@ -191,6 +195,7 @@ function Contents6(props: Props) {
                   {item[3].label}
                 </Button>
                 <Button
+                  onClick={() => window.open(item[4].link)}
                   disabled={item[4].label === '' ? true : false}
                   color="inherit"
                   size="large"
