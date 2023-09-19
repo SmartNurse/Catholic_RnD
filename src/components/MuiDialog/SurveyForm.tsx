@@ -11,6 +11,7 @@ import {
 } from '@mui/material';
 import { formatStringToDate } from 'utils/formatting';
 import useUser from 'store/user/useUser';
+import zIndex from '@mui/material/styles/zIndex';
 
 export interface SurveyFormProps {
   title: string;
@@ -51,7 +52,7 @@ function SurveyForm(props: SurveyFormProps) {
           position="sticky"
           sx={{
             top: 0,
-            zIndex: 1000000,
+            zIndex: zIndex.modal,
             background: '#fff',
             borderBottom: '1px solid rgba(0, 0, 0, 0.3)',
           }}
