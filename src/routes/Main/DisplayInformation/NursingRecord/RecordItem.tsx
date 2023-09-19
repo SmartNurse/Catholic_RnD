@@ -7,7 +7,6 @@ import { INursingRecord } from 'apis/main/type';
 
 import RecordTitle from './RecordTitle';
 import ActionButtons from './ActionButtons';
-import Remarks from 'routes/Main/InputInformation/Remarks';
 
 interface Props extends INursingRecord {
   activeId?: number;
@@ -17,7 +16,7 @@ interface Props extends INursingRecord {
 }
 
 const RecordItem = (props: Props) => {
-  const { palette } = useTheme(); 
+  const { palette } = useTheme();
   const i18n = useI18n();
   const {
     activeId,
@@ -56,65 +55,76 @@ const RecordItem = (props: Props) => {
   const contentKeys = Object.keys(contents) as any[];
 
   return (
-    <List sx={{
-      pt: 0,
+    <List
+      sx={{
+        pt: 0,
 
-      '&.active': {
-        backgroundColor: palette.grey[100],
-      },
-      ':not(:first-of-type)': {
-        mt: 2,
-        px: 1,
-        borderTop: '1px solid rgba(0, 0, 0, 0.05)',
-      },
-      ':not(:last-of-type)': {
-        px: 1,
-      },
-    }} className={className} component="ul">
+        '&.active': {
+          backgroundColor: palette.grey[100],
+        },
+        ':not(:first-of-type)': {
+          mt: 2,
+          px: 1,
+          borderTop: '1px solid rgba(0, 0, 0, 0.05)',
+        },
+        ':not(:last-of-type)': {
+          px: 1,
+        },
+      }}
+      className={className}
+      component="ul"
+    >
       <RecordTitle {...titleProps} />
       {contentKeys.map(contentKey => {
-          if(contentKey === 'diagnosisRelate'){
-            return <Fragment key={contentKey}>
-            <Typography component="li" variant="caption" fontWeight="bold" >
-              • 간호진단 (Diagnosis)
-            </Typography>  
-            <Typography
-              component="li"
-              variant="caption"
-              sx={{ pl: 1, whiteSpace: 'pre-wrap' }}
-            >
-              {contents[contentKey]}
-            </Typography>
-            <Typography component="li" variant="caption" marginLeft={'8px'} >
-              {i18n(`${type}.${contentKey}` as any)}
-            </Typography>
-          </Fragment>
-          }else if(type === 'REMARKS' && contentKey === 'diagnosis'  ){
-            return <Fragment key={contentKey}>
-            <Typography
-              component="li"
-              variant="caption"
-              sx={{ pl: 1, whiteSpace: 'pre-wrap' }}
-            >
-              {contents[contentKey]}
-            </Typography>
-            <br/>
-          </Fragment>
-          } else {
-          return <Fragment key={contentKey}>
-            <Typography component="li" variant="caption" fontWeight="bold">
-              • {i18n(`${type}.${contentKey}` as any)}
-            </Typography>
-            <Typography
-              component="li"
-              variant="caption"
-              sx={{ pl: 1, whiteSpace: 'pre-wrap' }}
-            >
-              {contents[contentKey]}
-            </Typography>
-            <br />
-          </Fragment>
-        }})}
+        if (contentKey === 'diagnosisRelate') {
+          return (
+            <Fragment key={contentKey}>
+              <Typography component="li" variant="caption" fontWeight="bold">
+                • 간호진단 (Diagnosis)
+              </Typography>
+              <Typography
+                component="li"
+                variant="caption"
+                sx={{ pl: 1, whiteSpace: 'pre-wrap' }}
+              >
+                {contents[contentKey]}
+              </Typography>
+              <Typography component="li" variant="caption" marginLeft={'8px'}>
+                {i18n(`${type}.${contentKey}` as any)}
+              </Typography>
+            </Fragment>
+          );
+        } else if (type === 'REMARKS' && contentKey === 'diagnosis') {
+          return (
+            <Fragment key={contentKey}>
+              <Typography
+                component="li"
+                variant="caption"
+                sx={{ pl: 1, whiteSpace: 'pre-wrap' }}
+              >
+                {contents[contentKey]}
+              </Typography>
+              <br />
+            </Fragment>
+          );
+        } else {
+          return (
+            <Fragment key={contentKey}>
+              <Typography component="li" variant="caption" fontWeight="bold">
+                • {i18n(`${type}.${contentKey}` as any)}
+              </Typography>
+              <Typography
+                component="li"
+                variant="caption"
+                sx={{ pl: 1, whiteSpace: 'pre-wrap' }}
+              >
+                {contents[contentKey]}
+              </Typography>
+              <br />
+            </Fragment>
+          );
+        }
+      })}
     </List>
   );
 };
