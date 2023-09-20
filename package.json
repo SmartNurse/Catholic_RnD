@@ -33,6 +33,7 @@
     "react-router-dom": "^6.3.0",
     "react-script": "^2.0.5",
     "react-scripts": "5.0.1",
+    "react-to-print": "^2.14.13",
     "recharts": "^2.1.16",
     "redux-persist": "^6.0.0",
     "styled-components": "^6.0.7",

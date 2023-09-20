@@ -1,3 +1,6 @@
+import React, { useRef } from 'react';
+import ReactDOM from 'react-dom';
+
 import { Close } from '@mui/icons-material';
 import {
   Button,
@@ -25,6 +28,12 @@ export interface SurveyFormProps {
 function SurveyForm(props: SurveyFormProps) {
   const { breakpoints } = useTheme();
   const isMobile = useMediaQuery(breakpoints.down('sm'));
+
+  const printRef = useRef(null);
+
+  const onClickPrint = () => {
+    window.print();
+  };
 
   const {
     title,
@@ -68,6 +77,16 @@ function SurveyForm(props: SurveyFormProps) {
           </Typography>
 
           <Button
+            onClick={onClickPrint}
+            size="small"
+            variant="contained"
+            sx={{ marginRight: '10px' }}
+            disabled={isStudent ? false : true}
+          >
+            인쇄
+          </Button>
+
+          <Button
             size="small"
             type="submit"
             variant="contained"
@@ -78,7 +97,9 @@ function SurveyForm(props: SurveyFormProps) {
           </Button>
         </DialogTitle>
 
-        <DialogContent>{children}</DialogContent>
+        <DialogContent>
+          <div ref={printRef}>{children}</div>
+        </DialogContent>
       </form>
     </Dialog>
   );
