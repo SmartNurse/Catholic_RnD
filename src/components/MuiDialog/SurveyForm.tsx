@@ -1,5 +1,4 @@
 import React, { useRef } from 'react';
-import ReactDOM from 'react-dom';
 
 import { Close } from '@mui/icons-material';
 import {
@@ -45,7 +44,6 @@ function SurveyForm(props: SurveyFormProps) {
   } = props;
 
   const { isStudent } = useUser();
-  // console.log('학생이니', isStudent);
 
   return (
     <Dialog
@@ -79,6 +77,7 @@ function SurveyForm(props: SurveyFormProps) {
           <Button
             onClick={onClickPrint}
             size="small"
+            type="button"
             variant="contained"
             sx={{ marginRight: '10px' }}
             disabled={isStudent ? false : true}
