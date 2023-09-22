@@ -1,4 +1,5 @@
 import React, { useRef } from 'react';
+import ReactDOM from 'react-dom';
 
 import { Close } from '@mui/icons-material';
 import {
@@ -14,6 +15,7 @@ import {
 import { formatStringToDate } from 'utils/formatting';
 import useUser from 'store/user/useUser';
 import zIndex from '@mui/material/styles/zIndex';
+import styled from 'styled-components';
 
 export interface SurveyFormProps {
   title: string;
@@ -97,7 +99,9 @@ function SurveyForm(props: SurveyFormProps) {
         </DialogTitle>
 
         <DialogContent>
-          <div ref={printRef}>{children}</div>
+          <div ref={printRef}>
+            <PrintableBodyWrapper>{children}</PrintableBodyWrapper>
+          </div>
         </DialogContent>
       </form>
     </Dialog>
@@ -105,3 +109,27 @@ function SurveyForm(props: SurveyFormProps) {
 }
 
 export default SurveyForm;
+
+const PrintableBodyWrapper = styled.div`
+  page-break-before: auto;
+
+  @media print and (width: 21cm) and (height: 29.7cm) {
+    @page {
+      margin: 3cm;
+    }
+  }
+
+  /* style sheet for "letter" printing */
+  @media print and (width: 8.5in) and (height: 11in) {
+    @page {
+      margin: 1in;
+    }
+  }
+
+  /* A4 Landscape*/
+  @page {
+    size: A3 landscape;
+    margin: 0%;
+    margin-top: 1%;
+  }
+`;
