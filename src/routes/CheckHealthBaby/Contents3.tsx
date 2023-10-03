@@ -111,7 +111,7 @@ function Contents3(props: Props) {
 
   return (
     <Box sx={{ margin: '40px' }}>
-      <SectionTitle title="ㅂ-ㅅ" />
+      <SectionTitle title="영유아발달 선별 검사지 다운로드" />
 
       <RowContainer xs={12}>
         <RowContent title="">
