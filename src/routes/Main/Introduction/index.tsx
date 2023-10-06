@@ -40,8 +40,6 @@ function Introduction(props: SimpleDialogProps) {
     college_name,
   } = useUser();
 
-  console.log(student_grade);
-
   const contents = [
     {
       title: 'Platform',

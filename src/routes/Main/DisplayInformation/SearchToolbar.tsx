@@ -12,11 +12,10 @@ import StudentList from './StudentList';
 const SearchToolbar = () => {
   const { student_uuid: user_id, isStudent, college_name } = useUser();
 
-  const { onRequired } = useNotification();
   const [okay, setOkay] = useState<boolean>(false);
-  console.log('dhzpdl', okay);
 
   if (isStudent) return <PatientsList user_id={user_id} />;
+
   if (!okay)
     return (
       <Grid

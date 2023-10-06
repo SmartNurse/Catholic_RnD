@@ -49,7 +49,6 @@ interface Props {
 
 const MenuRecords = (props: Props) => {
   const { menuDrawerWidth, setMenuDrawerWidth, coachRef } = props;
-  const navigate = useNavigate();
 
   const { student_uuid } = useStudent();
   const { patientInfo } = usePatient();

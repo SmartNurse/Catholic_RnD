@@ -52,7 +52,6 @@ const CoreNursingSkillVideo = (
     let toSaveCount = 0;
     let lastSaveIdx = 0;
     setLoading(true);
-    console.log('시작지점', loading);
     for (let i = 0; i < 3; i++) {
       if (!files[i]['saved'] && files[i]['file'] !== null) {
         toSaveCount++;
@@ -64,7 +63,6 @@ const CoreNursingSkillVideo = (
       onUpdateIsSave(true);
       setLoading(false);
       onSuccess('핵심간호술기영상 저장에 성공하였습니다.');
-      console.log('로오딩', loading);
       return;
     }
 
@@ -89,7 +87,6 @@ const CoreNursingSkillVideo = (
           )
           .then(res => {
             if (res.data.bucket_url === null) {
-              console.log(res);
               onFail(
                 '핵심간호술기영상 저장에 실패하였습니다.',
                 'bucket_url is null'
@@ -101,7 +98,6 @@ const CoreNursingSkillVideo = (
               onUpdateIsSave(true);
               setLoading(false);
               onSuccess('핵심간호술기영상 저장에 성공하였습니다.');
-              console.log('로오딩', loading);
               setRefresh(!refresh);
               return;
             }

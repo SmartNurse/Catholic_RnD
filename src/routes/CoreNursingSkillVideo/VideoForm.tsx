@@ -42,9 +42,7 @@ const VideoForm = (props: Props) => {
   const deleteFile = (i: number) => {
     if (files[i].saved) {
       deleteVideo({ user_id, patient_id, video_num: i + 1 })
-        .then(res => {
-          // console.log(res);
-        })
+        .then(res => {})
         .catch(e => onFail('삭제에 실패하였습니다.', e));
     }
 
@@ -143,7 +141,6 @@ const VideoForm = (props: Props) => {
                         file: target.files[0],
                       };
                       size = target.files[0].size;
-                      // console.log('사이즈', size);
                       if (size > 512000000) {
                         return onRequired('REQUIRED.VIDIEO.FORMAT');
                       }

@@ -32,11 +32,6 @@ const Remark = (props: Props) => {
   const onAddRow = () => {
     const request = { date, remark };
 
-    // console.log(request);
-    // if (Object.values(request).filter(v => !v).length > 0) {
-    //   return onRequired('CLINICAL.OBSERVATION.ADD.ROW');
-    // }
-
     onSuccess('Remark 추가되었습니다.');
     setValue('remark_data', remarkList ? [...remarkList, request] : [request]);
     setValue('etc.remark.date', '');
