@@ -118,7 +118,7 @@ const CoreNursingSkillVideo = (
   };
 
   return (
-    <MuiDialog.SurveyForm
+    <MuiDialog.SurveyFormTwo
       title={title}
       isOpen={isOpen}
       onClose={onClose}
@@ -170,7 +170,7 @@ const CoreNursingSkillVideo = (
         </Typography>
         {/* <VideoForm {...formProps} user_id={isStudent ? user_id : student_uuid} patient_id={patientInfo.patient_id} patient_name={patientInfo.name} totalSize={totalSize} setTotalSize={setTotalSize} refresh={refresh} /> */}
       </Container>
-    </MuiDialog.SurveyForm>
+    </MuiDialog.SurveyFormTwo>
   );
 };
 
