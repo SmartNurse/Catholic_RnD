@@ -40,7 +40,7 @@ const Survey = () => {
     nurseName: student_name,
     title: surveyType,
     isOpen: Boolean(surveyType),
-    disabled: false,
+    disabled: !isStudent,
   };
 
   return (
