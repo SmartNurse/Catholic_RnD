@@ -82,7 +82,7 @@ function SurveyForm(props: SurveyFormProps) {
             type="button"
             variant="contained"
             sx={{ marginRight: '10px' }}
-            disabled={isStudent ? false : true}
+            disabled={false}
           >
             인쇄
           </Button>
