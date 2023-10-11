@@ -220,7 +220,7 @@ const BAIContents = (props: Props) => {
     },
   ];
 
-  console.log('언디파인?', watch(`content[20]`));
+  // console.log('언디파인?', watch(`content[20]`));
 
   const watchSumValues = () => {
     const values = rows.map(({ id }) => (watch(id) ? Number(watch(id)) : 0));

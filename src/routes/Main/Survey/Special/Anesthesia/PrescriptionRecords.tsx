@@ -23,10 +23,12 @@ interface Props extends IFormValues, IFormWatch, IFormRegister {
 
 const PrescriptionRecords = (props: Props) => {
   const { disabled, watch, setValue, onRequired, onSuccess, register } = props;
-  const prescriptionRecordList: IAnesthesiaPrescriptionRecord[] = watch('prescription_record');
+  const prescriptionRecordList: IAnesthesiaPrescriptionRecord[] = watch(
+    'prescription_record'
+  );
 
   const [time, setTime] = useState(null);
-  const [desc, setDesc] = useState("");
+  const [desc, setDesc] = useState('');
 
   const columns = [
     { fieldId: 'time', label: '', sx: { width: 200 } },
@@ -40,28 +42,31 @@ const PrescriptionRecords = (props: Props) => {
     if (Object.values(request).filter(v => !v).length > 0) {
       return onRequired('CLINICAL.OBSERVATION.ADD.ROW');
     }
-    console.log(request);
+    // console.log(request);
     onSuccess('처방 기록이 추가되었습니다.');
-    setValue('prescription_record', prescriptionRecordList ? [...prescriptionRecordList, request] : [request]);
+    setValue(
+      'prescription_record',
+      prescriptionRecordList ? [...prescriptionRecordList, request] : [request]
+    );
     setTime(null);
-    setDesc("");
+    setDesc('');
   };
 
   const inputRow = {
     id: 'add-remark',
     time: (
-        <MobileTimePicker
-            value={time}
-            onChange={setTime}
-            renderInput={params => (
-            <Form.MuiTextField
-                {...params}
-                required={false}
-                placeholder="00:00 pm"
-                InputProps={{ endAdornment: <AccessTime /> }}
-            />
-            )}
-        />
+      <MobileTimePicker
+        value={time}
+        onChange={setTime}
+        renderInput={params => (
+          <Form.MuiTextField
+            {...params}
+            required={false}
+            placeholder="00:00 pm"
+            InputProps={{ endAdornment: <AccessTime /> }}
+          />
+        )}
+      />
     ),
     content: (
       <MuiTextField
@@ -84,30 +89,27 @@ const PrescriptionRecords = (props: Props) => {
     );
   };
 
-  const displayRows = prescriptionRecordList ? 
-    prescriptionRecordList.map((item, i) => ({
+  const displayRows = prescriptionRecordList
+    ? prescriptionRecordList.map((item, i) => ({
         ...item,
         id: i,
         time: formatStringToDate(item.time, 'hh:mm a'),
         action: (
-        <IconButton
+          <IconButton
             size="small"
             onClick={() => onDeleteRow(i)}
             sx={{ display: disabled ? 'none' : 'block' }}
-        >
+          >
             <Delete />
-        </IconButton>
+          </IconButton>
         ),
-  }))
-  :
-  []
-  ;
-
+      }))
+    : [];
   const tableRow = disabled ? displayRows : [inputRow, ...displayRows];
 
   return (
     <Fragment>
-      <SectionTitle title="처방 기록"/>
+      <SectionTitle title="처방 기록" />
       <Grid item xs={12}>
         <MuiTable columns={columns} rows={[...tableRow]} />
       </Grid>

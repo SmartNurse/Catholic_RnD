@@ -136,7 +136,7 @@ const FFIContents = (props: Props) => {
     Number(limiteScore5);
 
   const resultAnswer2 = ((resultAnswer / 230) * 100).toFixed(2);
-  console.log('겟밸류', getValues('ffi01'));
+  // console.log('겟밸류', getValues('ffi01'));
 
   return (
     <Fragment>

@@ -61,7 +61,7 @@ const PatientInfo = () => {
       console.error('Error converting div to image:', error);
     }
   };
-  console.log(patient);
+  // console.log(patient);
 
   // 부진단 코드 index
   const [diseaseSubIndex, setDiseaseSubIndex] = useState(0);
@@ -90,7 +90,7 @@ const PatientInfo = () => {
     // 가상환자 상세정보 요청
     getPatientBarcode({ patient_id: patient.patient_id })
       .then(({ data }) => {
-        console.log('바코드?', data);
+        // console.log('바코드?', data);
         setImgBarcode(data);
       })
       .catch(e => {

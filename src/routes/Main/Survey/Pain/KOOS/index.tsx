@@ -89,7 +89,7 @@ const KOOS = (props: SurveyDialogProps<TKOOSDefaultValues>) => {
       patient_id,
       contents: data,
     };
-    console.log('뭐지;', data);
+    // console.log('뭐지;', data);
 
     updateKOOS(request)
       .then(({ data: { rc } }) => {

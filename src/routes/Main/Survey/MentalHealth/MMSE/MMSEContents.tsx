@@ -264,7 +264,7 @@ const MMSEContents = (props: Props) => {
                           {...register(`score[${content.ids[i]}]`)}
                           onChange={e => {
                             var value = parseInt(e.target.value, 10);
-                            console.log('✅', content.desc[i]);
+                            // console.log('✅', content.desc[i]);
 
                             let max = { score };
 
@@ -295,7 +295,7 @@ const MMSEContents = (props: Props) => {
                               setInput11(value);
                             if (content.desc[i].includes('12.'))
                               setInput12(value);
-                            console.log('1부터여야함', content.desc[i]);
+                            // console.log('1부터여야함', content.desc[i]);
                           }}
                         />
                       </Box>

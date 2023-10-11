@@ -86,7 +86,7 @@ const FallPrevention = (
       },
     };
 
-    console.log(request);
+    // console.log(request);
 
     updateMedicalRecords(request)
       .then(({ data: { rc } }) => {
@@ -97,7 +97,7 @@ const FallPrevention = (
       })
       .catch(e => {
         onFail('진료기록 열람 및 사본발급 동의서 저장에 실패하였습니다.', e);
-        console.log(e);
+        // console.log(e);
       });
   };
 

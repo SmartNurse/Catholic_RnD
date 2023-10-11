@@ -247,7 +247,7 @@ const LEFSContents = (props: Props) => {
       }),
     },
   ];
-  console.log('잉', getValues('lefs02'));
+  // console.log('잉', getValues('lefs02'));
 
   const watchSumValues = () => {
     const values = rows.map(({ id }) => {

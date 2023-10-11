@@ -58,7 +58,7 @@ const BAI = (props: SurveyDialogProps<TBAIDefaultValues>) => {
     if (content[19] === undefined) return onRequired('REQUIRED.BAI');
     if (content[20] === undefined) return onRequired('REQUIRED.BAI');
 
-    console.log('데이터', content);
+    // console.log('데이터', content);
     const request = {
       user_id,
       patient_id,

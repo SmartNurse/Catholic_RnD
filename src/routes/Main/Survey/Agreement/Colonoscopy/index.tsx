@@ -70,7 +70,7 @@ const Colonoscopy = (props: SurveyDialogProps<TColonoscopyDefaultValues>) => {
       },
     };
 
-    console.log('리퀘스트', request);
+    // console.log('리퀘스트', request);
 
     updateColonoscopy(request)
       .then(({ data: { rc } }) => {
@@ -81,7 +81,7 @@ const Colonoscopy = (props: SurveyDialogProps<TColonoscopyDefaultValues>) => {
       })
       .catch(e => {
         onFail('대장내시경 동의서 저장에 실패하였습니다.', e);
-        console.log(e);
+        // console.log(e);
       });
   };
 

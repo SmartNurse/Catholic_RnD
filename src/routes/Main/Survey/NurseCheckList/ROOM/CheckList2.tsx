@@ -189,10 +189,10 @@ const CheckList2 = (props: Props) => {
                       }
                     >
                       {content.desc.map((_, i) => {
-                        console.log(
-                          '히히',
-                          Number(getValues(radioId[content.id - 1]))
-                        );
+                        // console.log(
+                        //   '히히',
+                        //   Number(getValues(radioId[content.id - 1]))
+                        // );
                         return (
                           <TableRow
                             sx={{

@@ -160,7 +160,7 @@ const NDIContents = (props: Props) => {
     return sumValues(values);
   };
 
-  console.log('기본값', Number(getValues('ndi10')));
+  // console.log('기본값', Number(getValues('ndi10')));
 
   return (
     <Fragment>

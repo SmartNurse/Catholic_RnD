@@ -81,7 +81,7 @@ const GlucoseRecords = (props: Props) => {
           ]
         : [{ ...request, completed: String(finished) }]
     );
-    console.log(prescriptionRecordList);
+    // console.log(prescriptionRecordList);
     setValue('prescription_date', '');
     setDate('');
     setTime(null);

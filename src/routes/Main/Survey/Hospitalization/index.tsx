@@ -57,7 +57,7 @@ const Hospitalization = (
       default_info,
     } = data;
 
-    console.log('data', data);
+    // console.log('data', data);
     const request = {
       user_id,
       patient_id: patientInfo.patient_id,

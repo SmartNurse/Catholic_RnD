@@ -56,7 +56,7 @@ const DietList = (props: SurveyDialogProps<TDietListDefaultValues>) => {
         dinner: findKeyValueToStr(dinner),
       },
     };
-    console.log('데이터', request);
+    // console.log('데이터', request);
     updateDietList(request)
       .then(({ data: { rc } }) => {
         if (rc !== 1) return onResultCode(rc);

@@ -147,7 +147,7 @@ const NurseCheckListRoom = (
       nursing_check_list_ward: data,
     };
 
-    console.log('데이터', request);
+    // console.log('데이터', request);
 
     updateCheckListRoom(request)
       .then(({ data: { rc } }) => {

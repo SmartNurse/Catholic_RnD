@@ -12,8 +12,8 @@ export interface Props extends TableHeadListProps {
 }
 
 const TableBodyList = ({ columns, rows }: Props) => {
-  console.log('row.length', rows.length);
-  console.log('row', rows);
+  // console.log('row.length', rows.length);
+  // console.log('row', rows);
 
   if (rows.length === 0) {
     return (

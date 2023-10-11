@@ -71,7 +71,7 @@ const TransfusionAgreement = (
       },
     };
 
-    console.log('리퀘스트', request);
+    // console.log('리퀘스트', request);
 
     updateTransfusionAgree(request)
       .then(({ data: { rc } }) => {
@@ -82,7 +82,7 @@ const TransfusionAgreement = (
       })
       .catch(e => {
         onFail('수혈 동의서 저장에 실패하였습니다.', e);
-        console.log(e);
+        // console.log(e);
       });
   };
 

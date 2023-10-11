@@ -204,7 +204,7 @@ const BDIContents = (props: Props) => {
               <Table aria-label="simple table">
                 <TableBody>
                   {answers[idx].map((answer, i) => {
-                    console.log('답이모까');
+                    // console.log('답이모까');
                     if (idx === 19) {
                       return (
                         <TableRow key={answer}>

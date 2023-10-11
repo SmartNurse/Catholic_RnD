@@ -72,7 +72,7 @@ const NonSalary = (props: SurveyDialogProps<TNonSalaryDefaultValues>) => {
       },
     };
 
-    console.log(request);
+    // console.log(request);
 
     updateNonSalary(request)
       .then(({ data: { rc } }) => {
@@ -83,7 +83,7 @@ const NonSalary = (props: SurveyDialogProps<TNonSalaryDefaultValues>) => {
       })
       .catch(e => {
         onFail('비급여진료동의서 저장에 실패하였습니다.', e);
-        console.log(e);
+        // console.log(e);
       });
   };
 

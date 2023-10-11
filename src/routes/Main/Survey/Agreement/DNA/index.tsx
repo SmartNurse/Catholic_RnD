@@ -97,7 +97,7 @@ const FallPrevention = (props: SurveyDialogProps<TDNADefaultValues>) => {
       },
     };
 
-    console.log(request);
+    // console.log(request);
 
     updateDNA(request)
       .then(({ data: { rc } }) => {
@@ -108,7 +108,7 @@ const FallPrevention = (props: SurveyDialogProps<TDNADefaultValues>) => {
       })
       .catch(e => {
         onFail('유전자검사 동의서 저장에 실패하였습니다.', e);
-        console.log(e);
+        // console.log(e);
       });
   };
 

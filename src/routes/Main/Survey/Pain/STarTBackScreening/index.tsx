@@ -56,7 +56,7 @@ const STarTBackScreening = (
     if (data.sb08 === undefined) return onRequired('REQUIRED.FALL');
     if (data.sb09 === undefined) return onRequired('REQUIRED.FALL');
 
-    console.log('데이터', data);
+    // console.log('데이터', data);
     updateSTarT(request)
       .then(({ data: { rc } }) => {
         if (rc !== 1) return onResultCode(rc);

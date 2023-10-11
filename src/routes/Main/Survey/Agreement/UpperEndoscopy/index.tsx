@@ -70,7 +70,7 @@ const UpperEndoscopy = (
       },
     };
 
-    console.log(request);
+    // console.log(request);
 
     updateUpperEndoscopy(request)
       .then(({ data: { rc } }) => {
@@ -81,7 +81,7 @@ const UpperEndoscopy = (
       })
       .catch(e => {
         onFail('상부내시경 동의서 저장에 실패하였습니다.', e);
-        console.log(e);
+        // console.log(e);
       });
   };
 

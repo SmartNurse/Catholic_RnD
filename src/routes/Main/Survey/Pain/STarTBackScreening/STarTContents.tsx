@@ -161,7 +161,7 @@ const STarTContents = (props: Props) => {
   ];
 
   const [nine, setNine] = useState(getValues('sb09'));
-  console.log('????', nine);
+  // console.log('????', nine);
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement>,
@@ -179,7 +179,7 @@ const STarTContents = (props: Props) => {
       return setNine('0'), setValue('sb09', '0');
     }
   };
-  console.log('겟벨류09', getValues('sb09'));
+  // console.log('겟벨류09', getValues('sb09'));
 
   const watchSumValues = () => {
     if (Number(nine) > 0) {
@@ -199,7 +199,7 @@ const STarTContents = (props: Props) => {
           return Number(props.watch(`${id}`));
         }
       });
-      console.log('합?', values);
+      // console.log('합?', values);
       return sumValues(values);
     }
   };
@@ -215,7 +215,7 @@ const STarTContents = (props: Props) => {
       props.watch('sb08') === undefined ? 0 : Number(props.watch('sb08'));
 
     const values5 = Number(nine);
-    console.log('밸류5', Number(nine));
+    // console.log('밸류5', Number(nine));
     if (values5 === 0) {
       return values1 + values2 + values3 + values4;
     } else {
@@ -223,7 +223,7 @@ const STarTContents = (props: Props) => {
     }
   };
 
-  console.log('기본값', getValues('sb09'));
+  // console.log('기본값', getValues('sb09'));
 
   return (
     <Fragment>

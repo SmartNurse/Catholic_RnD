@@ -92,7 +92,7 @@ function SignUp() {
       return onRequired('REQUIRED.STUDENT.NO');
     }
 
-    console.log('ll???', data);
+    // console.log('ll???', data);
 
     const request = {
       user_email: data.userEmail,

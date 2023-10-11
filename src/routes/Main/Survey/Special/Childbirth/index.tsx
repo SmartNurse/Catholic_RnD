@@ -50,7 +50,7 @@ const Childbirth = (props: SurveyDialogProps<TChildbirthDefaultValues>) => {
     //   return onRequired('REQUIRED.NEEDS.BODY.STATUS');
     // }
 
-    console.log('널싱리코드불러오는거', nursing_records);
+    // console.log('널싱리코드불러오는거', nursing_records);
 
     const request = {
       user_id,

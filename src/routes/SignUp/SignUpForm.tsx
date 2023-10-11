@@ -77,7 +77,7 @@ function SignUpForm(props: Props) {
   const passwordRegex = () => {
     let check =
       /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&^~\-\+\\()_=|])[A-Za-z\d@$!%*#?&^~\-\+\\()_=|]{8,}$/i;
-    console.log(passwordValue.includes('.*[@$!%*#?&^~-+\\()_=|]'));
+    // console.log(passwordValue.includes('.*[@$!%*#?&^~-+\\()_=|]'));
     return check.test(passwordValue);
   };
 

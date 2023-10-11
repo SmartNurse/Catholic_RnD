@@ -117,7 +117,7 @@ const FallPrevention = (props: SurveyDialogProps<TDNRDefaultValues>) => {
       },
     };
 
-    console.log(request);
+    // console.log(request);
 
     updateDNR(request)
       .then(({ data: { rc } }) => {
@@ -128,7 +128,7 @@ const FallPrevention = (props: SurveyDialogProps<TDNRDefaultValues>) => {
       })
       .catch(e => {
         onFail('사전연명의료의향서 저장에 실패하였습니다.', e);
-        console.log(e);
+        // console.log(e);
       });
   };
 

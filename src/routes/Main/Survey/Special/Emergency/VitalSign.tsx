@@ -282,7 +282,7 @@ const VitalSign = (props: Props) => {
     );
   };
 
-  console.log('오류바이탈', vitalSignList);
+  // console.log('오류바이탈', vitalSignList);
 
   const displayRows = vitalSignList
     ? vitalSignList.map((item, i) => ({

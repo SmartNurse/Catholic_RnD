@@ -24,7 +24,7 @@ const NursingRecords = (props: Props) => {
   const { disabled, watch, setValue, onRequired, onSuccess, register } = props;
   const nursingRecordList: INursingRecord[] = watch('nursing_records');
 
-  console.log('널싱리코드', nursingRecordList);
+  // console.log('널싱리코드', nursingRecordList);
 
   const [date, setDate] = useState('');
   const [time, setTime] = useState(null);
