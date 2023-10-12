@@ -11,16 +11,16 @@ import Nu from 'assets/emr2.svg';
 const UIUX = () => {
   const { onSuccess } = useNotification();
 
-  const buttons = [
-    {
-      param: '가톨릭의료원 계열, 경희의료 중앙대의료원, 양지병원 등',
-      text: 'nU(Neuro Ubiquitous System)',
-      color: '#13AD74',
-    },
-    { param: '연세의료원', text: 'u-Severance 3.0', color: '#AD4751' },
-    { param: '삼성서울병원', text: '삼성SDS 다윈', color: '#6A3A87' },
-    { param: '한림대의료원', text: 'RefoMAX', color: '#333333' },
-  ];
+  // const buttons = [
+  //   {
+  //     param: '가톨릭의료원 계열, 경희의료 중앙대의료원, 양지병원 등',
+  //     text: 'nU(Neuro Ubiquitous System)',
+  //     color: '#13AD74',
+  //   },
+  //   { param: '연세의료원', text: 'u-Severance 3.0', color: '#AD4751' },
+  //   { param: '삼성서울병원', text: '삼성SDS 다윈', color: '#6A3A87' },
+  //   { param: '한림대의료원', text: 'RefoMAX', color: '#333333' },
+  // ];
 
   return (
     <>
@@ -256,6 +256,50 @@ const UIUX = () => {
             }}
           >
             서울아산병원
+          </Typography>
+        </Stack>
+
+        <Stack key={'고려대의료원'} spacing={1}>
+          <Button
+            size="large"
+            variant="contained"
+            sx={{
+              width: '660px',
+              ':hover': {
+                color: `#2264A8`,
+                backgroundColor: 'white',
+                border: `1px solid #2264A8`,
+              },
+              height: '100px',
+              boxShadow: '0px 8px 8px 0px #0000001F',
+              color: 'black',
+              backgroundColor: `#EDF3FA`,
+              whiteSpace: 'pre',
+              fontSize: '19px',
+            }}
+            disabled={true}
+            onClick={() => {
+              setTimeout(() => {
+                window.location.href = `http://amisasan.s3-website.kr.object.ncloudstorage.com/#/`;
+              }, 1000);
+
+              setLocalStorage('theme_color', '고려대의료원');
+              onSuccess(`화면 EMR이 고려대의료원으로 변경되었습니다`);
+            }}
+          >
+            P-HIS
+          </Button>
+          <Typography
+            sx={{
+              color: 'gray',
+              fontSize: '14px',
+              textAlign: 'center',
+              width: '660px',
+            }}
+          >
+            고려대의료원
+            <br />
+            테스트중입니다.
           </Typography>
         </Stack>
 
