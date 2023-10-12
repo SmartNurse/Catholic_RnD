@@ -9,6 +9,8 @@ import { IFormValues } from 'routes/Main/type';
 import { getVideo, deleteVideo } from 'apis/video';
 import axios from 'axios';
 
+import DeleteConfirmButton from './components/DeleteConfirmButton';
+
 interface Props extends IFormValues {
   disabled?: boolean;
   user_id: number;
@@ -39,14 +41,16 @@ const VideoForm = (props: Props) => {
     { saved: false, path: '', file: null },
   ]);
 
+  const [yesDelet, setYesDelet] = useState(false);
+
   const deleteFile = (i: number) => {
-    const isConfirm = window.confirm('삭제하겠습니까?');
-    if (isConfirm) {
-      if (files[i].saved) {
-        deleteVideo({ user_id, patient_id, video_num: i + 1 })
-          .then(res => {})
-          .catch(e => onFail('삭제에 실패하였습니다.', e));
-      }
+    // const isConfirm = window.confirm('삭제하겠습니까?');
+    if (yesDelet) {
+      deleteVideo({ user_id, patient_id, video_num: i + 1 })
+        .then(res => {})
+        .catch(e => onFail('삭제에 실패하였습니다.', e));
+    } else {
+      return;
     }
 
     const newSize = Number(
@@ -160,14 +164,26 @@ const VideoForm = (props: Props) => {
             </TableCell>
 
             {files[i].path !== '' ? (
+              // <TableCell sx={{ width: '10%' }}>
+              //   <Button
+              //     variant="contained"
+              //     size="small"
+              //     onClick={() => deleteFile(i)}
+              //   >
+              //     삭제
+              //   </Button>
+              // </TableCell>
               <TableCell sx={{ width: '10%' }}>
-                <Button
-                  variant="contained"
-                  size="small"
-                  onClick={() => deleteFile(i)}
-                >
-                  삭제
-                </Button>
+                <DeleteConfirmButton
+                  yesDelet={yesDelet}
+                  setYesDelet={setYesDelet}
+                  i={i}
+                  deleteFile={deleteFile}
+                  title="삭제"
+                  middleTitle="정말 삭제하시겠어요?"
+                  message={`삭제 버튼 선택 시, 해당 내용은 복구되지 않습니다.`}
+                  color={'white'}
+                />
               </TableCell>
             ) : (
               <TableCell sx={{ width: '10%' }}>
