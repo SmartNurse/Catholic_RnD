@@ -40,10 +40,13 @@ const VideoForm = (props: Props) => {
   ]);
 
   const deleteFile = (i: number) => {
-    if (files[i].saved) {
-      deleteVideo({ user_id, patient_id, video_num: i + 1 })
-        .then(res => {})
-        .catch(e => onFail('삭제에 실패하였습니다.', e));
+    const isConfirm = window.confirm('삭제하겠습니까?');
+    if (isConfirm) {
+      if (files[i].saved) {
+        deleteVideo({ user_id, patient_id, video_num: i + 1 })
+          .then(res => {})
+          .catch(e => onFail('삭제에 실패하였습니다.', e));
+      }
     }
 
     const newSize = Number(
