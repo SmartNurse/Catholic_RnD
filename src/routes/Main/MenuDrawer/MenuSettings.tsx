@@ -19,6 +19,7 @@ import { ReactComponent as ProPlus } from '../../../assets/proPlus.svg';
 import { ReactComponent as ExempleVideo } from '../../../assets/exempleVideo.svg';
 import { ReactComponent as NurseRecordIcon } from '../../../assets/nurse-record-icon.svg';
 import { ReactComponent as MadicationLoog } from '../../../assets/madication-logo.svg';
+import { ReactComponent as NonStudentVideo } from '../../../assets/icon-nonStudent-video.svg';
 
 import useUser from 'store/user/useUser';
 import { useNavigate } from 'react-router-dom';
@@ -39,7 +40,7 @@ const MenuSettings = (props: Props) => {
   const { menuDrawerWidth, setMenuDrawerWidth } = props;
 
   const navigate = useNavigate();
-  const { onSignOut } = useUser();
+  const { onSignOut, isStudent } = useUser();
   const { onCloseReadOnly, onUpdateSurveyType } = useSurvey();
   const { onResetStudent } = useStudent();
   const { patientInfo, onResetPatient } = usePatient();
@@ -47,97 +48,195 @@ const MenuSettings = (props: Props) => {
 
   const [toggle, setToggle] = useState<IToggleObj>(initialToggleObj);
 
-  const settings = [
-    {
-      disabled: true,
-      icon: <MedicalInformationOutlined />,
-      label: '간호정보학',
-      id: 'medical_information',
-    },
-    {
-      label: '응급 모니터링시스템',
-      toggle: toggle.medical_information,
-    },
-    {
-      label: '보건의료빅데이터개방시스템',
-      toggle: toggle.medical_information,
-    },
-    {
-      label: '한국보건의료정보원',
-      toggle: toggle.medical_information,
-    },
-    {
-      label: 'Chat GPT',
-      toggle: toggle.medical_information,
-    },
-    {
-      label: 'Google BARD',
-      toggle: toggle.medical_information,
-    },
-    {
-      label: 'CLOVA X',
-      toggle: toggle.medical_information,
-    },
-    {
-      isPro: true,
-      icon: <MadicationLoog />,
-      label: '약물계산기',
-    },
-    {
-      disabled: true,
-      isPro: true,
-      icon: <NurseRecordIcon />,
-      label: '간호기록체크리스트',
-      id: 'nurse_record',
-    },
-    {
-      isPro: true,
-      label: '병동',
-      toggle: toggle.nurse_record,
-    },
-    {
-      isPro: true,
-      label: '응급실',
-      toggle: toggle.nurse_record,
-    },
-    {
-      isPro: true,
-      label: '수술실',
-      toggle: toggle.nurse_record,
-    },
-    {
-      isPro: true,
-      icon: <DateRangeOutlined />,
-      label: '간호사 근무 스케줄표',
-    },
-    {
-      icon: <NotificationsOutlined />,
-      label: '공지사항',
-    },
-    {
-      isPro: true,
-      icon: <VideocamOutlined />,
-      label: '핵심간호술기영상 저장',
-    },
-    {
-      isPro: true,
-      icon: <ExempleVideo />,
-      label: '핵심간호술기영상 예시',
-    },
-    {
-      isPro: true,
-      icon: <ComputerOutlined />,
-      label: '화면설정',
-    },
-    {
-      icon: <AccountCircleOutlined />,
-      label: '계정설정 및 수정',
-    },
-    {
-      icon: <LogoutOutlined />,
-      label: '로그아웃',
-    },
-  ];
+  // 학생 메뉴와 교수 메뉴 변경
+  const settings = isStudent
+    ? [
+        {
+          disabled: true,
+          icon: <MedicalInformationOutlined />,
+          label: '간호정보학',
+          id: 'medical_information',
+        },
+        {
+          label: '응급 모니터링시스템',
+          toggle: toggle.medical_information,
+        },
+        {
+          label: '보건의료빅데이터개방시스템',
+          toggle: toggle.medical_information,
+        },
+        {
+          label: '한국보건의료정보원',
+          toggle: toggle.medical_information,
+        },
+        {
+          label: 'Chat GPT',
+          toggle: toggle.medical_information,
+        },
+        {
+          label: 'Google BARD',
+          toggle: toggle.medical_information,
+        },
+        {
+          label: 'CLOVA X',
+          toggle: toggle.medical_information,
+        },
+        {
+          isPro: true,
+          icon: <MadicationLoog />,
+          label: '약물계산기',
+        },
+        {
+          disabled: true,
+          isPro: true,
+          icon: <NurseRecordIcon />,
+          label: '간호기록체크리스트',
+          id: 'nurse_record',
+        },
+        {
+          isPro: true,
+          label: '병동',
+          toggle: toggle.nurse_record,
+        },
+        {
+          isPro: true,
+          label: '응급실',
+          toggle: toggle.nurse_record,
+        },
+        {
+          isPro: true,
+          label: '수술실',
+          toggle: toggle.nurse_record,
+        },
+        {
+          isPro: true,
+          icon: <DateRangeOutlined />,
+          label: '간호사 근무 스케줄표',
+        },
+        {
+          icon: <NotificationsOutlined />,
+          label: '공지사항',
+        },
+        {
+          isPro: true,
+          icon: <VideocamOutlined />,
+          label: '핵심간호술기영상 저장',
+        },
+        {
+          isPro: true,
+          icon: <ExempleVideo />,
+          label: '핵심간호술기영상 예시',
+        },
+        {
+          isPro: true,
+          icon: <ComputerOutlined />,
+          label: '화면설정',
+        },
+        {
+          icon: <AccountCircleOutlined />,
+          label: '계정설정 및 수정',
+        },
+        {
+          icon: <LogoutOutlined />,
+          label: '로그아웃',
+        },
+      ]
+    : [
+        {
+          disabled: true,
+          icon: <MedicalInformationOutlined />,
+          label: '간호정보학',
+          id: 'medical_information',
+        },
+        {
+          label: '응급 모니터링시스템',
+          toggle: toggle.medical_information,
+        },
+        {
+          label: '보건의료빅데이터개방시스템',
+          toggle: toggle.medical_information,
+        },
+        {
+          label: '한국보건의료정보원',
+          toggle: toggle.medical_information,
+        },
+        {
+          label: 'Chat GPT',
+          toggle: toggle.medical_information,
+        },
+        {
+          label: 'Google BARD',
+          toggle: toggle.medical_information,
+        },
+        {
+          label: 'CLOVA X',
+          toggle: toggle.medical_information,
+        },
+        {
+          isPro: true,
+          icon: <MadicationLoog />,
+          label: '약물계산기',
+        },
+        {
+          disabled: true,
+          isPro: true,
+          icon: <NurseRecordIcon />,
+          label: '간호기록체크리스트',
+          id: 'nurse_record',
+        },
+        {
+          isPro: true,
+          label: '병동',
+          toggle: toggle.nurse_record,
+        },
+        {
+          isPro: true,
+          label: '응급실',
+          toggle: toggle.nurse_record,
+        },
+        {
+          isPro: true,
+          label: '수술실',
+          toggle: toggle.nurse_record,
+        },
+        {
+          isPro: true,
+          icon: <DateRangeOutlined />,
+          label: '간호사 근무 스케줄표',
+        },
+        {
+          icon: <NotificationsOutlined />,
+          label: '공지사항',
+        },
+        {
+          isPro: true,
+          icon: <NonStudentVideo />,
+          label: '핵심간호술기영상 관리',
+        },
+        {
+          isPro: true,
+          icon: <VideocamOutlined />,
+          label: '핵심간호술기영상 저장',
+        },
+        {
+          isPro: true,
+          icon: <ExempleVideo />,
+          label: '핵심간호술기영상 예시',
+        },
+        {
+          isPro: true,
+          icon: <ComputerOutlined />,
+          label: '화면설정',
+        },
+        {
+          icon: <AccountCircleOutlined />,
+          label: '계정설정 및 수정',
+        },
+        {
+          icon: <LogoutOutlined />,
+          label: '로그아웃',
+        },
+      ];
 
   const onClickListItem = (label: string) => {
     if (label === '로그아웃') {
@@ -176,7 +275,12 @@ const MenuSettings = (props: Props) => {
     } else if (label === '간호사 근무 스케줄표') {
       window.open('https://dutymaker.com/');
       return;
-    } else if (!patientInfo) return onRequired('REQUIRED.PATIENT');
+    }
+    //  else if (label === '핵심간호술기영상 관리') {
+    //   window.open('https://dutymaker.com/');
+    //   return;
+    // }
+    else if (!patientInfo) return onRequired('REQUIRED.PATIENT');
     onUpdateSurveyType(label);
   };
 
