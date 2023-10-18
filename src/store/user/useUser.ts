@@ -16,9 +16,6 @@ const useUser = () => {
   const onSignIn = useCallback(
     (user: UserState) => {
       dispatch(signIn(user));
-
-      // 3시간뒤 로그아웃
-      setTimeout(onSignOut, 10800000);
     },
     [dispatch]
   );
