@@ -396,7 +396,7 @@ const MenuRecords = (props: Props) => {
     if (!student_uuid) return onRequired('REQUIRED.STUDENT');
 
     if (label === '영유아 건강검진 문진') {
-      window.open('https://https://standard.smartnurse.co.kr/#/badyMedicalCheckup');
+      window.open('https://standard.smartnurse.co.kr/#/badyMedicalCheckup');
       // window.open('http://localhost:3000/#/agreement2');
       return;
     } else if (label === 'NEDIS') {
@@ -414,7 +414,7 @@ const MenuRecords = (props: Props) => {
 
     if (!patientInfo) return onRequired('REQUIRED.PATIENT');
     else if (label === '동의서 2') {
-      window.open('https://https://standard.smartnurse.co.kr/#/agreement2');
+      window.open('https://standard.smartnurse.co.kr/#/agreement2');
       // window.open('http://localhost:3000/#/agreement2');
       return;
     }
