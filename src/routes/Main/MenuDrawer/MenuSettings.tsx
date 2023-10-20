@@ -275,12 +275,10 @@ const MenuSettings = (props: Props) => {
     } else if (label === '간호사 근무 스케줄표') {
       window.open('https://dutymaker.com/');
       return;
-    }
-    //  else if (label === '핵심간호술기영상 관리') {
-    //   window.open('https://dutymaker.com/');
-    //   return;
-    // }
-    else if (!patientInfo) return onRequired('REQUIRED.PATIENT');
+    } else if (label === '핵심간호술기영상 관리') {
+      window.open('/coreSkillVideo');
+      return;
+    } else if (!patientInfo) return onRequired('REQUIRED.PATIENT');
     onUpdateSurveyType(label);
   };
 
