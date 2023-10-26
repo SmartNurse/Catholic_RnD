@@ -57,7 +57,7 @@ const DisplayInformation = (props: Props) => {
     }
 
     return (
-      <Box {...contentBoxProps}>
+      <Box>
         <ContentsVideo patientInfo={patientInfo} />
       </Box>
     );
