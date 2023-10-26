@@ -1217,3 +1217,11 @@ export interface IUpdateSTarTBack extends IGetSurvey {
     sb08: string;
   };
 }
+
+export interface IUpedateSkillVideo extends IGetSurvey {
+  student_no: string;
+  student_id: string;
+  student_name: string;
+  student_uuid: string;
+  student_video: string;
+}
