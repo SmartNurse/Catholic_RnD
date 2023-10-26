@@ -30,7 +30,7 @@ const ContentsVideo = ({ patientInfo }: Props) => {
 
   console.log('list', list);
 
-  return <>ㅋㅋ시발</>;
+  return <>ㅋㅋ</>;
 };
 
 export default ContentsVideo;
