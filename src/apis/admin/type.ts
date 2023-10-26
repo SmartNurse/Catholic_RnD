@@ -64,3 +64,9 @@ export interface IGetStudentList extends IGetSearch {
 export interface IGetPatientList extends IGetSearch {
   user_id: number;
 }
+
+export interface IPatientInfoSmall {
+  patient_id: number;
+  name: string;
+  age: string;
+}
