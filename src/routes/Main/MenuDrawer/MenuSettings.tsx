@@ -70,21 +70,8 @@ const MenuSettings = (props: Props) => {
           toggle: toggle.medical_information,
         },
         {
-          label: 'Chat GPT',
+          label: 'ICNP brower',
           toggle: toggle.medical_information,
-        },
-        {
-          label: 'Google BARD',
-          toggle: toggle.medical_information,
-        },
-        {
-          label: 'CLOVA X',
-          toggle: toggle.medical_information,
-        },
-        {
-          isPro: true,
-          icon: <MadicationLoog />,
-          label: '약물계산기',
         },
         {
           disabled: true,
@@ -161,15 +148,7 @@ const MenuSettings = (props: Props) => {
           toggle: toggle.medical_information,
         },
         {
-          label: 'Chat GPT',
-          toggle: toggle.medical_information,
-        },
-        {
-          label: 'Google BARD',
-          toggle: toggle.medical_information,
-        },
-        {
-          label: 'CLOVA X',
+          label: 'ICNP brower',
           toggle: toggle.medical_information,
         },
         {
@@ -211,7 +190,7 @@ const MenuSettings = (props: Props) => {
         {
           isPro: true,
           icon: <NonStudentVideo />,
-          label: '핵심간호술기영상 관리',
+          label: '학생 기록 관리',
         },
         {
           isPro: true,
@@ -263,20 +242,14 @@ const MenuSettings = (props: Props) => {
     } else if (label === '한국보건의료정보원') {
       window.open('https://www.k-his.or.kr/');
       return;
-    } else if (label === 'Chat GPT') {
-      window.open('https://chat.openai.com/chat');
-      return;
-    } else if (label === 'Google BARD') {
-      window.open('https://bard.google.com/');
-      return;
-    } else if (label === 'CLOVA X') {
-      window.open('https://clova-x.naver.com');
+    } else if (label === 'ICNP brower') {
+      window.open('https://www.icn.ch/icnp-browser');
       return;
     } else if (label === '간호사 근무 스케줄표') {
       window.open('https://dutymaker.com/');
       return;
-    } else if (label === '핵심간호술기영상 관리') {
-      window.open('/coreSkillVideo');
+    } else if (label === '학생 기록 관리') {
+      window.open('/#/coreSkillVideo');
       return;
     } else if (!patientInfo) return onRequired('REQUIRED.PATIENT');
     onUpdateSurveyType(label);
