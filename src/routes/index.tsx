@@ -8,6 +8,7 @@ import SignUp from './SignUp';
 import ScreenSetting from './ScreenSetting';
 import AgreementTow from './AgreementTow';
 import CheckHealthBaby from './CheckHealthBaby';
+import CoreSkillVideo from './CoreSkillVideo';
 
 function RouterContainer() {
   const { student_uuid } = useUser();
@@ -29,6 +30,7 @@ function RouterContainer() {
         <Route path="/agreement2" element={<AgreementTow />} />
         <Route path="/badyMedicalCheckup" element={<CheckHealthBaby />} />
         <Route path="/screensetting" element={<ScreenSetting />} />
+        <Route path="/coreSkillVideo" element={<CoreSkillVideo />} />
       </Routes>
     </HashRouter>
   );
