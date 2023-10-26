@@ -17,6 +17,11 @@ const locale = {
     'CIST.SCORE.1': '0',
     'CIST.SCORE.2': '1',
 
+    'REQUIRED.KEYWORD': '검색어를 입력해주세요',
+    'REQUIRED.STRING': '이름 값을 입력해주세요',
+    'REQUIRED.NUMBER': '아이디 값(숫자)을 입력해주세요',
+    'REQUIRED.COLLEGENUMBER': '학교코드 값(숫자)을 입력해주세요',
+
     // error message
     'ERROR.CODE.0': '알 수 없는 오류가 발생했습니다. ErrorCode: {rc}',
     'ERROR.CODE.100':
