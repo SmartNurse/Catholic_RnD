@@ -626,3 +626,9 @@ export const updateSTarT = (request: IUpdateSTarTBack) => {
   const url = `/survey/start_back`;
   return apiGateway.post(url, camelcaseKeys(request));
 };
+
+// 핵심간호술기 영상관리 페이지
+export const getSkillVideo = (request: IGetSurvey) => {
+  const url = `/main/manage_video?${formatToRequestParameter(request)}`;
+  return apiGateway.get(url);
+};
