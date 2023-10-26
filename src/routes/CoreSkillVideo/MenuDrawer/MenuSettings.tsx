@@ -41,11 +41,10 @@ const MenuSettings = (props: Props) => {
 
   const onClickListItem = (label: string) => {
     if (label === '나가기') {
-      onSignOut();
-      // 로그아웃 시 스토어 초기화
       onResetStudent();
       onResetPatient();
       onCloseReadOnly();
+      window.close();
     }
   };
 
