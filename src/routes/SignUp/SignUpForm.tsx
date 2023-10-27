@@ -81,6 +81,15 @@ function SignUpForm(props: Props) {
     return check.test(passwordValue);
   };
 
+  // 학번 숫자만 입력하게끔
+  const [학번, set학번] = useState('');
+
+  const 학번Regex = () => {
+    let check = /^[0-9]+$/;
+    // console.log(passwordValue.includes('.*[@$!%*#?&^~-+\\()_=|]'));
+    return check.test(passwordValue);
+  };
+
   const [passwordCheck, setPasswordCheck] = useState('');
 
   return (
@@ -217,11 +226,14 @@ function SignUpForm(props: Props) {
           </Form.Item>
           <Form.Item label="학번/사번">
             <TextField
+              helperText={학번Regex() ? '' : '숫자만 입력가능합니다.'}
+              color={학번Regex() ? 'success' : 'warning'}
               required
               fullWidth
-              type="number"
               variant="outlined"
-              {...register('studentNo')}
+              {...register('studentNo', {
+                onChange: e => set학번(e.target.value),
+              })}
             />
           </Form.Item>
           <Form.Item label="출생년도">
