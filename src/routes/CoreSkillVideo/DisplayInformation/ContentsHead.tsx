@@ -104,7 +104,7 @@ const ContentsHead = ({ onRequired, currentSearchType }: Props) => {
   return (
     <Box display="flex" alignItems="center" sx={{ mb: 2 }}>
       <Typography variant="subtitle2" sx={{ mr: 'auto' }}></Typography>
-      {/* <SearchKeyword /> */}
+      <SearchKeyword />
     </Box>
   );
 };
