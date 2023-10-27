@@ -9,6 +9,7 @@ import {
 
 import { ReactComponent as ProPlus } from '../../../assets/proPlus.svg';
 import { ReactComponent as NonStudentVideo } from '../../../assets/icon-nonStudent-video.svg';
+import { ReactComponent as NonStudentNursint } from '../../../assets/icon-nonStudent-nursing.svg';
 
 import Survey from '../../Main/Survey';
 
@@ -27,20 +28,18 @@ const MenuRecords = (props: Props) => {
 
   const menus = [
     {
-      isPro: true,
       icon: <NonStudentVideo />,
       label: '핵심간호술기영상 관리',
+    },
+    {
+      icon: <NonStudentNursint />,
+      label: '간호기록 전체조회',
     },
   ];
 
   return (
     <Fragment>
-      {menus.map(({ icon, label, isPro }) => {
-        const ProIcon = () => {
-          if (!isPro) return null;
-          return <ProPlus />;
-        };
-
+      {menus.map(({ icon, label }) => {
         return (
           <>
             {menuDrawerWidth !== 220 ? (
@@ -56,18 +55,16 @@ const MenuRecords = (props: Props) => {
                 <ListItemButton>
                   <ListItemIcon>{icon}</ListItemIcon>
                   <ListItemText primary={label} />
-                  <ProIcon />
                 </ListItemButton>
               </ListItem>
             ) : toggle ? (
               <ListItem key={label} disablePadding>
-                <ListItemButton className={isPro ? 'isPro' : ''}>
+                <ListItemButton className={''}>
                   <ListItemIcon>{icon}</ListItemIcon>
                   <ListItemText
                     primary={label}
                     sx={{ whiteSpace: 'pre-wrap' }}
                   />
-                  <ProIcon />
                 </ListItemButton>
               </ListItem>
             ) : (
