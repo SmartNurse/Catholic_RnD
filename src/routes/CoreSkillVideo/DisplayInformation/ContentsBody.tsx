@@ -38,7 +38,6 @@ function ContentsBody(props: Props) {
       valueFormatter: ({ value }: { value: TGender }) =>
         i18n(`GENDER.${value}`),
     },
-    { field: 'student_uuid', headerName: '학생아이디값' },
     {
       field: 'student_video.student_info,nursery_video1',
       headerName: 'level 1',
@@ -62,9 +61,11 @@ function ContentsBody(props: Props) {
       loading={isLoading}
       onPageChange={onPageChange}
       page={page}
-      pageSize={20}
+      pageSize={100}
       rows={list.map(item => ({ ...item, id: item.student_no }))}
       rowCount={totalCount}
+      onSelectionModelChange={models => onSelected(models as string[])}
+      selectionModel={selected}
     />
   );
 }
