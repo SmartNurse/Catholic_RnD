@@ -286,7 +286,7 @@ const MenuSettings = (props: Props) => {
       window.open('https://dutymaker.com/');
       return;
     } else if (label === '학생 기록 관리') {
-      window.open('/#/coreSkillVideo');
+      // window.open('/#/coreSkillVideo');
       return;
     } else if (!patientInfo) return onRequired('REQUIRED.PATIENT');
     onUpdateSurveyType(label);
