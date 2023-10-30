@@ -32,6 +32,7 @@ import {
 import { ReactComponent as ProPlus } from '../../../assets/proPlus.svg';
 import { ReactComponent as Severity } from '../../../assets/severityAssessment.svg';
 import { ReactComponent as Agreement } from '../../../assets/agreement.svg';
+import { ReactComponent as IO } from '../../../assets/io-icon.svg';
 
 import Survey from '../Survey';
 import useSurvey from 'store/survey/useSurvey';
@@ -96,7 +97,11 @@ const MenuRecords = (props: Props) => {
     },
     {
       icon: <MonitorHeartOutlined />,
-      label: '임상관찰 기록지',
+      label: '활력징후 기록지',
+    },
+    {
+      icon: <IO />,
+      label: '섭취 및 배설량 기록지',
     },
     {
       icon: <WashOutlined />,

@@ -52,9 +52,9 @@ const ClinicalObservation = (
         if (rc !== 1) return onResultCode(rc);
 
         onUpdateIsSave(true);
-        onSuccess('임상관찰 기록지 저장에 성공하였습니다.');
+        onSuccess('활력징후 기록지 저장에 성공하였습니다.');
       })
-      .catch(e => onFail('임상관찰 기록지 저장에 실패하였습니다.', e));
+      .catch(e => onFail('활력징후 기록지 저장에 실패하였습니다.', e));
   };
 
   const formProps = {
@@ -89,7 +89,7 @@ const ClinicalObservation = (
             textAlign: 'center',
           }}
         >
-          임상관찰 기록지
+          활력징후 기록지
         </Typography>
         <CommonPatientInfo patientInfo={patientInfo} nurseName={nurseName} />
         <VitalSignGraph {...formProps} />
