@@ -58,6 +58,7 @@ import LEFS from './Pain/LEFS';
 import NDI from './Pain/NDI';
 import STarTBackScreening from './Pain/STarTBackScreening';
 import TransfusionAgreement from './Agreement/Transfusion';
+import IORecord from './IORecord';
 
 interface Props {
   surveyType: string;
@@ -109,6 +110,10 @@ const DisplaySurvey = (props: Props) => {
     case MENU.CLINICAL_OBSERVATION: {
       if (!defaultValues) return null;
       return <ClinicalObservation {...dialogProps} onClose={onCloseSave} />;
+    }
+    case MENU.IORECORD: {
+      if (!defaultValues) return null;
+      return <IORecord {...dialogProps} onClose={onCloseSave} />;
     }
     case MENU.GLUCOSE: {
       if (!defaultValues) return null;
