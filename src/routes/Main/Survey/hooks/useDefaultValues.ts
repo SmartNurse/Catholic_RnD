@@ -224,20 +224,19 @@ const useDefaultValues = ({ setDefaultValues, user_id }: Props) => {
           })
           .catch(e => onFail('알 수 없는 오류가 발생했습니다.', e));
         break;
-      case MENU.CLINICAL_OBSERVATION:
-        // getClinicObservation({ user_id, patient_id }).then(({ data }) => {
-        //   const { vital_sign, io_check } = data;
-        //   const m_data = {
-        //     ...data,
-        //     vital_sign: JSON.parse(vital_sign),
-        //     io_check: JSON.parse(io_check),
-        //   };
-        //   convertDataToStates(m_data, initialClinicalObservation);
-        // });
-        convertDataToStates(
-          { vital_sign: [], io_check: [] },
-          initialClinicalObservation
-        );
+
+      case MENU.IORECORD:
+        getClinicObservation({ user_id, patient_id })
+          .then(({ data }) => {
+            const { vital_sign, io_check } = data;
+            const m_data = {
+              ...data,
+              vital_sign: JSON.parse(vital_sign),
+              io_check: JSON.parse(io_check),
+            };
+            convertDataToStates(m_data, initialClinicalObservation);
+          })
+          .catch(e => onFail('알 수 없는 오류가 발생했습니다.', e));
         break;
       case MENU.GLUCOSE:
         getGlucose({ user_id, patient_id })
