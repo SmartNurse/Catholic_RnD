@@ -185,6 +185,87 @@ export interface IUpdateClinicObservation extends IGetSurvey {
   io_check: string;
 }
 
+// 정신간호기록지
+export interface IIORCheckCord {
+  date: string;
+  duty: string;
+  input1: string;
+  input2: number;
+  input3: string;
+  input4: number;
+  input5: string;
+  input6: number;
+
+  inputTwo1: string;
+  inputTwo2: number;
+  inputTwo3: string;
+  inputTwo4: number;
+  inputTwo5: string;
+  inputTwo6: number;
+
+  inputThree1: string;
+  inputThree2: number;
+  inputThree3: string;
+  inputThree4: number;
+  inputThree5: string;
+  inputThree6: number;
+
+  inputFour1: string;
+  inputFour2: number;
+  inputFour3: string;
+  inputFour4: number;
+  inputFour5: string;
+  inputFour6: number;
+
+  inputFive1: string;
+  inputFive2: number;
+  inputFive3: string;
+  inputFive4: number;
+  inputFive5: string;
+  inputFive6: number;
+
+  total: number;
+
+  output1: string;
+  output2: number;
+  output3: string;
+  output4: number;
+  output5: string;
+  output6: number;
+
+  outputTwo1: string;
+  outputTwo2: number;
+  outputTwo3: string;
+  outputTwo4: number;
+  outputTwo5: string;
+  outputTwo6: number;
+
+  outputThree1: string;
+  outputThree2: number;
+  outputThree3: string;
+  outputThree4: number;
+  outputThree5: string;
+  outputThree6: number;
+
+  outputFour1: string;
+  outputFour2: number;
+  outputFour3: string;
+  outputFour4: number;
+  outputFour5: string;
+  outputFour6: number;
+
+  outputFive1: string;
+  outputFive2: number;
+  outputFive3: string;
+  outputFive4: number;
+  outputFive5: string;
+  outputFive6: number;
+}
+
+export interface IUpdateIONursing extends IGetSurvey {
+  io_survey: IIORCheckCord[];
+}
+
 // 혈당기록지
 export interface IGlucoseRecord {
   date: string;

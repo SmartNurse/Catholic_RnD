@@ -423,6 +423,11 @@ export const initialMentalNursing = {
   mental_survey: [],
 };
 
+export const initialIoCheckRecord = {
+  update_at: '',
+  io_survey: [],
+};
+
 export const initialBDI = {
   update_at: '',
   content: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
