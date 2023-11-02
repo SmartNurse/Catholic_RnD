@@ -11,7 +11,7 @@ const Nurse = (props: SurveyDialogProps<null>) => {
   const moreRef = useRef(null);
 
   return (
-    <MuiDialog.SurveyForm title={title} isOpen={isOpen} onClose={onClose}>
+    <MuiDialog.SurveyFormColumn title={title} isOpen={isOpen} onClose={onClose}>
       <Box component="section" sx={{ py: 5, px: 1 }}>
         <RecordList
           user_id={user_id}
@@ -21,7 +21,7 @@ const Nurse = (props: SurveyDialogProps<null>) => {
         />
         <div ref={moreRef} />
       </Box>
-    </MuiDialog.SurveyForm>
+    </MuiDialog.SurveyFormColumn>
   );
 };
 
