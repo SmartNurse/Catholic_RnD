@@ -11,11 +11,13 @@ import useSelectorTyped from 'store/useSelectorTyped';
 
 interface Props {
   menuDrawerWidth: number;
+  menuState: string;
 }
 
 const DisplayInformation = (props: Props) => {
   const { palette } = useTheme();
-  const { menuDrawerWidth } = props;
+  const { menuDrawerWidth, menuState } = props;
+  console.log('menuState', menuState);
 
   // shallowEqual 해도 리렌더링 발생해서 이곳만 별도로 선택해서 사용
   const patientInfo = useSelectorTyped(state => state.patient.patient);
@@ -56,11 +58,20 @@ const DisplayInformation = (props: Props) => {
       );
     }
 
-    return (
-      <Box>
-        <ContentsVideo patientInfo={patientInfo} />
-      </Box>
-    );
+    if (menuState === '핵심간호술기영상 관리') {
+      return (
+        <Box>
+          <ContentsVideo patientInfo={patientInfo} />
+        </Box>
+      );
+    } else {
+      return (
+        <Box>
+          {/* <ContentsVideo patientInfo={patientInfo} /> */}
+          ㅋㅋㅋㅋ도ㅒㅆ다!
+        </Box>
+      );
+    }
   };
 
   return (
