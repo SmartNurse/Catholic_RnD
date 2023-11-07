@@ -16,6 +16,8 @@ interface Props {
   college_name?: string;
   menuDrawerWidth: number;
   setMenuDrawerWidth: (menuDrawerWidth: number) => void;
+  menuState: string;
+  setMenuState: (menuState: string) => void;
 }
 
 const MenuDrawer = (props: Props) => {
@@ -25,6 +27,9 @@ const MenuDrawer = (props: Props) => {
     college_name,
     menuDrawerWidth,
     setMenuDrawerWidth,
+    // 왼쪽 메뉴 버튼 작동하게하려고
+    menuState,
+    setMenuState,
   } = props;
 
   return (
@@ -58,6 +63,8 @@ const MenuDrawer = (props: Props) => {
         </Box>
         <List>
           <MenuRecords
+            menuState={menuState}
+            setMenuState={setMenuState}
             menuDrawerWidth={menuDrawerWidth}
             setMenuDrawerWidth={setMenuDrawerWidth}
           />
