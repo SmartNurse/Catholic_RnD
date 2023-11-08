@@ -8,6 +8,14 @@ export interface IGetSurvey {
   patient_id: number;
 }
 
+export interface IGetSearchSurvey {
+  user_id: number;
+  searchType?: string | (string | null)[] | null;
+  keyword?: string | (string | null)[] | null;
+  patient_id?: string | (string | null)[] | null;
+  page?: string | (string | null)[] | null;
+}
+
 // e-Cardex
 export interface IECardexRemark {
   date: string;
