@@ -24,7 +24,7 @@ interface Props {
   patientInfo: IPatientInfoSmall;
 }
 
-const ContentsVideo = ({ patientInfo }: Props) => {
+const NurseContents = ({ patientInfo }: Props) => {
   const { student_uuid: user_id } = useUser();
   const { search } = useLocation();
   const { onFail, onRequired } = useNotification();
@@ -78,4 +78,4 @@ const ContentsVideo = ({ patientInfo }: Props) => {
   );
 };
 
-export default ContentsVideo;
+export default NurseContents;

@@ -138,7 +138,10 @@ const VideoForm = (props: Props) => {
                   type="file"
                   value={files[i].path}
                   onChange={e => {
+                    console.log('files : ', files);
                     let newFiles = [...files];
+                    console.log('newFiles : ', newFiles);
+
                     let size = 0;
                     const target = e.target as HTMLInputElement;
                     if (target && target.files) {

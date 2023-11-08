@@ -3,9 +3,9 @@ import { Box, Toolbar, Skeleton, useTheme } from '@mui/material';
 import { StyledContentContainer } from '../../Main/style';
 import SearchToolbar from './SearchToolbar';
 
-import Advertisement from './/Advertisement';
+import Advertisement from './Advertisement';
 import usePatient from 'store/patient/usePatient';
-import ContentsVideo from './ContentsVideo';
+import VideoContents from './VideoContents/VideoContents';
 
 import useSelectorTyped from 'store/useSelectorTyped';
 
@@ -61,7 +61,7 @@ const DisplayInformation = (props: Props) => {
     if (menuState === '핵심간호술기영상 관리') {
       return (
         <Box>
-          <ContentsVideo patientInfo={patientInfo} />
+          <VideoContents patientInfo={patientInfo} />
         </Box>
       );
     } else {

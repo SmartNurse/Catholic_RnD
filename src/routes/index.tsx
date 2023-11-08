@@ -8,7 +8,7 @@ import SignUp from './SignUp';
 import ScreenSetting from './ScreenSetting';
 import AgreementTow from './AgreementTow';
 import CheckHealthBaby from './CheckHealthBaby';
-import CoreSkillVideo from './CoreSkillVideo';
+import CoreSkillVideo from './StudentManagement';
 
 function RouterContainer() {
   const { student_uuid } = useUser();

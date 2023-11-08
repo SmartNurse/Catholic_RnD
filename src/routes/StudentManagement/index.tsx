@@ -17,7 +17,7 @@ const CoreSkillVideo = () => {
   const title = student_grade === 1 ? '간호사' : '(교수/조교)';
 
   const [menuDrawerWidth, setMenuDrawerWidth] = useState(220);
-  const [menuState, setMenuState] = useState('핵심간호술기영상 관리');
+  const [isMenuName, setIsMenuName] = useState('핵심간호술기영상 관리');
 
   return (
     <Box display="flex" minWidth={1440}>
@@ -28,13 +28,13 @@ const CoreSkillVideo = () => {
         college_ci={college_ci}
         menuDrawerWidth={menuDrawerWidth}
         setMenuDrawerWidth={setMenuDrawerWidth}
-        setMenuState={setMenuState}
-        menuState={menuState}
+        setMenuState={setIsMenuName}
+        menuState={isMenuName}
       />
       {/* 오른쪽에 툴바 및 컨텐츠 */}
       <DisplayInformation
         menuDrawerWidth={menuDrawerWidth}
-        menuState={menuState}
+        menuState={isMenuName}
       />
     </Box>
   );
