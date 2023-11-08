@@ -15,7 +15,7 @@ const SearchToolbar = () => {
       spacing={1}
       sx={{ zIndex: zIndex.modal }}
     >
-      <Grid item xs={5}>
+      <Grid item xs={8}>
         <CollegePatientList user_id={user_id} />
       </Grid>
     </Grid>
