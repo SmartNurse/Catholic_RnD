@@ -46,7 +46,11 @@ const NurseContents = ({ patientInfo }: Props) => {
     if (!patientInfo) return;
 
     // 가상환자 상세정보 요청
-    getSkillVideo({ patient_id: patientInfo.patient_id, user_id })
+    getSkillVideo({
+      page: String(page),
+      patient_id: String(patientInfo.patient_id),
+      user_id,
+    })
       .then(({ data }) => {
         setList(data.student_info);
       })
