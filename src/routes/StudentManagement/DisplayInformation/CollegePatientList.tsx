@@ -1,11 +1,5 @@
-import { useEffect, useState } from 'react';
-
 import { ListItemButton, Typography } from '@mui/material';
 import { getCollegePatientList } from 'apis/admin';
-
-import { getNursingRecords } from 'apis/main';
-import { ReactComponent as Cookie } from 'assets/alarm-icon.svg';
-import { ReactComponent as Empty } from 'assets/alarm-icon-empty.svg';
 
 import usePatient from 'store/patient/usePatient';
 import useStudent from 'store/student/useStudent';
