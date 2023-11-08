@@ -60,11 +60,11 @@ function ContentsBody(props: Props) {
       columns={columns}
       loading={isLoading}
       onPageChange={onPageChange}
+      onSelectionModelChange={models => onSelected(models as string[])}
       page={page}
-      pageSize={100}
+      pageSize={20}
       rows={list.map(item => ({ ...item, id: item.student_no }))}
       rowCount={totalCount}
-      onSelectionModelChange={models => onSelected(models as string[])}
       selectionModel={selected}
     />
   );
