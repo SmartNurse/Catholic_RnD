@@ -4,6 +4,7 @@ import { formatToRequestParameter } from 'utils/formatting';
 import apiGateway from '../axios';
 import {
   IGetSurvey,
+  IGetSearchSurvey,
   ICreateHospitalization,
   ICreateOutHospital,
   IUpdateMedication,
@@ -628,7 +629,7 @@ export const updateSTarT = (request: IUpdateSTarTBack) => {
 };
 
 // 핵심간호술기 영상관리 페이지
-export const getSkillVideo = (request: IGetSurvey) => {
-  const url = `/main/manage_video?${formatToRequestParameter(request)}`;
+export const getSkillVideo = (request: IGetSearchSurvey) => {
+  const url = `/main/manage_video?size=20&${formatToRequestParameter(request)}`;
   return apiGateway.get(url);
 };
