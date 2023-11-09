@@ -68,7 +68,7 @@ const DisplayInformation = (props: Props) => {
       return (
         <Box>
           {/* <ContentsVideo patientInfo={patientInfo} /> */}
-          ㅋㅋㅋㅋ도ㅒㅆ다!
+          간호전체기록 준비중
         </Box>
       );
     }
