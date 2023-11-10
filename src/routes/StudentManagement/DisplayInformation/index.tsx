@@ -17,7 +17,6 @@ interface Props {
 const DisplayInformation = (props: Props) => {
   const { palette } = useTheme();
   const { menuDrawerWidth, menuState } = props;
-  console.log('menuState', menuState);
 
   // shallowEqual 해도 리렌더링 발생해서 이곳만 별도로 선택해서 사용
   const patientInfo = useSelectorTyped(state => state.patient.patient);
