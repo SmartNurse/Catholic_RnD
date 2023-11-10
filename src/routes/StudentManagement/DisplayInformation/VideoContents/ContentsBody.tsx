@@ -113,7 +113,7 @@ function ContentsBody(props: Props) {
       onPageChange={onPageChange}
       page={page}
       pageSize={20}
-      rows={list.map(item => ({ ...item, id: item.student_no }))}
+      rows={list.map(item => ({ ...item, id: item.student_uuid }))}
       rowCount={totalCount}
     />
   );
