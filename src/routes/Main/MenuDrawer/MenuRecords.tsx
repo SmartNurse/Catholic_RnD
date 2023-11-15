@@ -27,12 +27,12 @@ import {
   PsychologyOutlined,
   WashOutlined,
   Diversity2Outlined,
+  ExposureOutlined,
+  LocalHotelOutlined,
+  AssignmentTurnedInOutlined,
 } from '@mui/icons-material';
 
 import { ReactComponent as ProPlus } from '../../../assets/proPlus.svg';
-import { ReactComponent as Severity } from '../../../assets/severityAssessment.svg';
-import { ReactComponent as Agreement } from '../../../assets/agreement.svg';
-import { ReactComponent as IO } from '../../../assets/io-icon.svg';
 
 import Survey from '../Survey';
 import useSurvey from 'store/survey/useSurvey';
@@ -100,7 +100,7 @@ const MenuRecords = (props: Props) => {
       label: '활력징후 기록지',
     },
     {
-      icon: <IO />,
+      icon: <ExposureOutlined />,
       label: '섭취 및 배설량 기록지',
     },
     {
@@ -294,7 +294,7 @@ const MenuRecords = (props: Props) => {
     {
       isPro: true,
       disabled: true,
-      icon: <Severity />,
+      icon: <LocalHotelOutlined />,
       label: '중증도 평가도구',
       id: 'severity',
     },
@@ -387,7 +387,7 @@ const MenuRecords = (props: Props) => {
     },
     {
       isPro: true,
-      icon: <Agreement />,
+      icon: <AssignmentTurnedInOutlined />,
       label: '동의서 2',
     },
     {
