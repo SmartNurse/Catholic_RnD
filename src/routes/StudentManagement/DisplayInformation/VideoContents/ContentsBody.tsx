@@ -43,15 +43,21 @@ function ContentsBody(props: Props) {
         }
         return (
           <Stack direction="row">
-            <Typography sx={{ fontSize: '13px', lineHeight: '30px' }}>
-              {list.row.student_video.video_name1}
-            </Typography>
-
             <Button
+              sx={{ marginLeft: '-25px' }}
               onClick={() => window.open(list.row.student_video.nursery_video1)}
             >
               <FileIcon />
             </Button>
+            <Typography
+              sx={{
+                fontSize: '13px',
+                lineHeight: '30px',
+                whiteSpace: 'nowrap',
+              }}
+            >
+              {list.row.student_video.video_name1}
+            </Typography>
           </Stack>
         );
       },
