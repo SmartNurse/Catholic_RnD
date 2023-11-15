@@ -630,6 +630,14 @@ export const updateSTarT = (request: IUpdateSTarTBack) => {
 
 // 핵심간호술기 영상관리 페이지
 export const getSkillVideo = (request: IGetSearchSurvey) => {
-  const url = `/main/manage_video?size=20&${formatToRequestParameter(request)}`;
+  const { keyword, sort_method } = request;
+
+  const baseUrl = () => {
+    if (keyword) return '/main/search_video?';
+    if (sort_method) return '/main/sort_video?';
+    return '/main/manage_video?';
+  };
+
+  const url = `${baseUrl()}size=20&${formatToRequestParameter(request)}`;
   return apiGateway.get(url);
 };
