@@ -14,12 +14,14 @@ import {
   ComputerOutlined,
   MedicalInformationOutlined,
   ExpandMore,
+  VideoLibraryOutlined,
 } from '@mui/icons-material';
+import { AiOutlineCalculator } from 'react-icons/ai';
+import { BsCardChecklist } from 'react-icons/bs';
+import { MdPeopleAlt } from 'react-icons/md';
+
 import { ReactComponent as ProPlus } from '../../../assets/proPlus.svg';
 import { ReactComponent as ExempleVideo } from '../../../assets/exempleVideo.svg';
-import { ReactComponent as NurseRecordIcon } from '../../../assets/nurse-record-icon.svg';
-import { ReactComponent as MadicationLoog } from '../../../assets/madication-logo.svg';
-import { ReactComponent as NonStudentVideo } from '../../../assets/icon-nonStudent-video.svg';
 
 import useUser from 'store/user/useUser';
 import { useNavigate } from 'react-router-dom';
@@ -87,13 +89,13 @@ const MenuSettings = (props: Props) => {
         },
         {
           isPro: true,
-          icon: <MadicationLoog />,
+          icon: <AiOutlineCalculator />,
           label: '약물계산기',
         },
         {
           disabled: true,
           isPro: true,
-          icon: <NurseRecordIcon />,
+          icon: <BsCardChecklist />,
           label: '간호기록체크리스트',
           id: 'nurse_record',
         },
@@ -128,7 +130,7 @@ const MenuSettings = (props: Props) => {
         },
         {
           isPro: true,
-          icon: <ExempleVideo />,
+          icon: <VideoLibraryOutlined />,
           label: '핵심간호술기영상 예시',
         },
         {
@@ -182,13 +184,13 @@ const MenuSettings = (props: Props) => {
         },
         {
           isPro: true,
-          icon: <MadicationLoog />,
+          icon: <AiOutlineCalculator />,
           label: '약물계산기',
         },
         {
           disabled: true,
           isPro: true,
-          icon: <NurseRecordIcon />,
+          icon: <BsCardChecklist />,
           label: '간호기록체크리스트',
           id: 'nurse_record',
         },
@@ -218,7 +220,7 @@ const MenuSettings = (props: Props) => {
         },
         {
           isPro: true,
-          icon: <NonStudentVideo />,
+          icon: <MdPeopleAlt />,
           label: '학생 기록 관리',
         },
         {
@@ -228,7 +230,7 @@ const MenuSettings = (props: Props) => {
         },
         {
           isPro: true,
-          icon: <ExempleVideo />,
+          icon: <VideoLibraryOutlined />,
           label: '핵심간호술기영상 예시',
         },
         {
