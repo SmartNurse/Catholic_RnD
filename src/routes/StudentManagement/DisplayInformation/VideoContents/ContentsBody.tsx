@@ -1,5 +1,5 @@
 import { GridColDef } from '@mui/x-data-grid';
-import { ReactComponent as FileIcon } from 'assets/file-icon.svg';
+import { ReactComponent as FileIcon } from 'assets/download-icon.svg';
 import { Typography, Button, Stack } from '@mui/material';
 import MuiDataGrid from 'components/MuiDataGrid';
 import { IUpedateSkillVideo } from 'apis/survey/type';
@@ -74,14 +74,14 @@ function ContentsBody(props: Props) {
         }
         return (
           <Stack direction="row">
-            <Typography sx={{ fontSize: '13px', lineHeight: '30px' }}>
-              {list.row.student_video.video_name2}
-            </Typography>
             <Button
               onClick={() => window.open(list.row.student_video.nursery_video2)}
             >
               <FileIcon />
             </Button>
+            <Typography sx={{ fontSize: '13px', lineHeight: '30px' }}>
+              {list.row.student_video.video_name2}
+            </Typography>
           </Stack>
         );
       },
@@ -98,14 +98,14 @@ function ContentsBody(props: Props) {
         }
         return (
           <Stack direction="row">
-            <Typography sx={{ fontSize: '13px', lineHeight: '30px' }}>
-              {list.row.student_video.video_name3}
-            </Typography>
             <Button
               onClick={() => window.open(list.row.student_video.nursery_video3)}
             >
               <FileIcon />
             </Button>
+            <Typography sx={{ fontSize: '13px', lineHeight: '30px' }}>
+              {list.row.student_video.video_name3}
+            </Typography>
           </Stack>
         );
       },
