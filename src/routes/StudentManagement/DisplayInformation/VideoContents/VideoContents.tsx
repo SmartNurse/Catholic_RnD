@@ -29,7 +29,7 @@ const VideoContents = ({ patientInfo }: Props) => {
   const { search } = useLocation();
   const { onFail, onRequired } = useNotification();
 
-  const { page = 1, keyword, searchType, patient_id } = getSearchQuery(search);
+  const { page = 1, keyword, searchType, sort_method } = getSearchQuery(search);
   const {
     list,
     setList,
@@ -50,6 +50,9 @@ const VideoContents = ({ patientInfo }: Props) => {
       page: String(page),
       patient_id: String(patientInfo.patient_id),
       user_id,
+      keyword,
+      searchType,
+      sort_method,
     })
       .then(({ data }) => {
         setList(data.student_info);
@@ -61,20 +64,22 @@ const VideoContents = ({ patientInfo }: Props) => {
       })
       .finally(() => setIsLoading(false));
     // eslint-disable-next-line
-  }, [page, keyword, searchType]);
+  }, [page, keyword, searchType, sort_method]);
 
   useEffect(onGetList, [onGetList]);
 
   return (
     <Box flex={2} display="flex" flexDirection="column" overflow="auto">
       <ContentsHead
+        totalCount={totalCount}
         onRequired={onRequired}
         currentSearchType={searchType as any}
+        currentSortType={sort_method as any}
       />
       <ContentsBody
+        totalCount={totalCount}
         list={list}
         isLoading={isLoading}
-        totalCount={totalCount}
         page={Number(page) - 1}
         selected={selected}
         onSelected={setSelected}
