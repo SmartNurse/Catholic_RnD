@@ -41,6 +41,8 @@ const VideoForm = (props: Props) => {
     { saved: false, path: '', file: null },
   ]);
 
+  console.log('files : ', files);
+
   const [yesDelet, setYesDelet] = useState(false);
 
   const deleteFile = (i: number) => {

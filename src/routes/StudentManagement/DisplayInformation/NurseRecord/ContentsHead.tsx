@@ -61,6 +61,11 @@ const ContentsHead = ({ onRequired, currentSearchType }: Props) => {
 
   const SearchKeyword = () => (
     <Stack direction={'row'} spacing={0.5} alignItems="center">
+      <Typography
+        sx={{ mr: 'auto', padding: '0 10px 0 10px', fontSize: '13px' }}
+      >
+        조회 년도
+      </Typography>
       <NativeSelect
         size="small"
         input={<OutlinedInput sx={{ fontSize: '12px', height: '33px' }} />}
@@ -72,20 +77,6 @@ const ContentsHead = ({ onRequired, currentSearchType }: Props) => {
         <option value={3}>학교</option>
       </NativeSelect>
 
-      <TextField
-        placeholder="검색"
-        inputRef={keywordRef}
-        sx={{
-          input: {
-            minHeight: 33,
-            boxSizing: 'border-box',
-            fontSize: '12px',
-          },
-        }}
-      />
-      <Button variant="contained" onClick={onSearch} sx={{ height: '33px' }}>
-        검색
-      </Button>
       <Typography sx={{ mr: 'auto', padding: '0 10px 0 10px' }}>|</Typography>
 
       <NativeSelect
@@ -94,8 +85,8 @@ const ContentsHead = ({ onRequired, currentSearchType }: Props) => {
         inputRef={searchTypeRef}
         defaultValue={currentSearchType}
       >
-        <option value={1}>이름 순</option>
-        <option value={2}>아이디 순</option>
+        <option value={1}>이름순</option>
+        <option value={2}>아</option>
         <option value={3}>학교 순</option>
       </NativeSelect>
     </Stack>
@@ -103,7 +94,6 @@ const ContentsHead = ({ onRequired, currentSearchType }: Props) => {
 
   return (
     <Box display="flex" alignItems="center" sx={{ mb: 2 }}>
-      <Typography variant="subtitle2" sx={{ mr: 'auto' }}></Typography>
       <SearchKeyword />
     </Box>
   );
