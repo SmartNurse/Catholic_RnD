@@ -125,7 +125,7 @@ const CoreNursingSkillVideo = (
       onSubmit={disabled ? undefined : handleSubmit(onSubmit)}
       update_at={defaultValues?.update_at}
     >
-      <Container maxWidth="md" sx={{ mt: 7.5, mb: 6, height: '350px' }}>
+      <Container maxWidth="md" sx={{ mt: 7.5, mb: 9, height: '350px' }}>
         {isStudent ? (
           <StudentInfo totalSize={totalSize} />
         ) : (
@@ -159,7 +159,7 @@ const CoreNursingSkillVideo = (
             whiteSpace: 'pre-wrap',
             width: '900px',
             fontSize: '14px',
-            height: '100px',
+            height: '200px',
           }}
         >
           영상 저장이 안 되는 경우는, 동영상이 500MB 이하인지 확인해 주세요!
@@ -167,6 +167,18 @@ const CoreNursingSkillVideo = (
           500MB 이상인 경우 구글에 “동영상 크기 줄이기”를 검색해 사이트를
           이용하거나, 혹은 카카오톡으로 한번 전송해 용량을 줄이는 것을
           추천드립니다 :)
+          <p />
+          영상을 Level2에만 올리고 싶어요.
+          <br />
+          👉
+          <br />
+          레벨 1번에 용량이 작은 임의 파일을 업로드 하신 후, 레벨 2번에 영상을
+          업로드 해주세요.
+          <br />
+          저장이 완료 된 후 레벨 1번 임의 파일을 삭제하시면, 레벨 2번에만 영상
+          파일이 저장됩니다.
+          <br />
+          문의 사항은 홈페이지에 있는 문의하기 챗봇으로 문의 주세요.
         </Typography>
         {/* <VideoForm {...formProps} user_id={isStudent ? user_id : student_uuid} patient_id={patientInfo.patient_id} patient_name={patientInfo.name} totalSize={totalSize} setTotalSize={setTotalSize} refresh={refresh} /> */}
       </Container>
