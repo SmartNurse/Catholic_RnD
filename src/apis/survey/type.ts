@@ -14,6 +14,7 @@ export interface IGetSearchSurvey {
   keyword?: string | (string | null)[] | null;
   patient_id?: string | (string | null)[] | null;
   page?: string | (string | null)[] | null;
+  sort_method?: string | (string | null)[] | null;
 }
 
 // e-Cardex
