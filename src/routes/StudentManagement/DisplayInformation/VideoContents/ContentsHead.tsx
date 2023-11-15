@@ -80,7 +80,7 @@ const ContentsHead = ({
           defaultValue={currentSearchType}
         >
           <option value={1}>이름</option>
-          <option value={2}>아이디</option>
+          <option value={2}>학번</option>
         </NativeSelect>
 
         <TextField
@@ -106,9 +106,9 @@ const ContentsHead = ({
           defaultValue={currentSortType}
           onChange={onSort}
         >
-          <option value={1}>이름 순</option>
-          <option value={2}>학번 오름차순</option>
-          <option value={3}>학번 내림차순</option>
+          <option value={1}>이름순</option>
+          <option value={2}>학번(숫자낮은순)</option>
+          <option value={3}>학번(숫자높은순)</option>
         </NativeSelect>
       </Stack>
     );
