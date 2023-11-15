@@ -8,6 +8,7 @@ import usePatient from 'store/patient/usePatient';
 import VideoContents from './VideoContents/VideoContents';
 
 import useSelectorTyped from 'store/useSelectorTyped';
+import NurseContents from './NurseRecord/NurseContents';
 
 interface Props {
   menuDrawerWidth: number;
@@ -66,7 +67,7 @@ const DisplayInformation = (props: Props) => {
     } else {
       return (
         <Box>
-          {/* <ContentsVideo patientInfo={patientInfo} /> */}
+          {/* <NurseContents patientInfo={patientInfo} /> */}
           간호전체기록 준비중
         </Box>
       );
