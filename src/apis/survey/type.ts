@@ -955,6 +955,32 @@ export interface IUpdateUpperEndoscopy extends IGetSurvey {
   };
 }
 
+// 억제대동의서
+export interface IUpdateSuppressor extends IGetSurvey {
+  chart_confirmation: {
+    pt_name: string;
+    pt_ssn: string;
+    pt_addr: string;
+    pt_contact: string;
+
+    applier_name: string;
+    applier_relp: string;
+    applier_bday: string;
+    applier_contact: string;
+    applier_addr: string;
+
+    scope_center: string;
+    scope_period_from: string;
+    scope_period_to: string;
+    scope_reason: string;
+    scope_detail: string;
+
+    date: string;
+    name: string;
+    sig: string;
+  };
+}
+
 // 비급여 동의서
 export interface IUpdateNonSalary extends IGetSurvey {
   uninsured_benefit_confirmation: {
