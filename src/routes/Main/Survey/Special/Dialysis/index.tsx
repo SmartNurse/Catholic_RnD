@@ -18,6 +18,7 @@ import DialysisInfo from './DialysisInfo';
 import WeightInfo from './WeightInfo';
 import DialysisDB from './DialysisDB';
 import TextAreaSection from '../../components/TextAreaSection';
+import DialysisCRRT from './DialysisCRRT';
 
 const Dialysis = (props: SurveyDialogProps<TDialysisDefaultValues>) => {
   const {
@@ -136,11 +137,13 @@ const Dialysis = (props: SurveyDialogProps<TDialysisDefaultValues>) => {
           }}
         >
           투석 기록지
+          <br /> - 테스트중 입니다. -
         </Typography>
         <CommonPatientInfo patientInfo={patientInfo} nurseName={nurseName} />
         <DialysisInfo {...formProps} />
         <WeightInfo {...formProps} />
         <DialysisDB {...formProps} />
+        <DialysisCRRT {...formProps} />
         <TextAreaSection
           {...formProps}
           title="투약 및 처치 / 특이사항"
