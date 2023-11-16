@@ -61,6 +61,7 @@ import TransfusionAgreement from './Agreement/Transfusion';
 import IORecord from './IORecord';
 import Suppressor from './Agreement/Suppressor';
 import CRRT from './Agreement/CRRT';
+import Intubation from './Special/Intubation';
 
 interface Props {
   surveyType: string;
@@ -204,6 +205,10 @@ const DisplaySurvey = (props: Props) => {
     case MENU.TRANSFUSION: {
       if (!defaultValues) return null;
       return <Transfusion {...dialogProps} onClose={onCloseSave} />;
+    }
+    case MENU.INTUBATION: {
+      if (!defaultValues) return null;
+      return <Intubation {...dialogProps} onClose={onCloseSave} />;
     }
     case MENU.DIALYSIS: {
       if (!defaultValues) return null;

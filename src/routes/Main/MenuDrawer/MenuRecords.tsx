@@ -274,6 +274,11 @@ const MenuRecords = (props: Props) => {
     },
     {
       isPro: true,
+      label: '삽관 기록지',
+      toggle: toggle.special,
+    },
+    {
+      isPro: true,
       label: '응급 기록지',
       toggle: toggle.special,
     },
