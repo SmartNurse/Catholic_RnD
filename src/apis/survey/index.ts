@@ -43,6 +43,7 @@ import {
   IUpdateFallConfirm,
   IUpdateColonoscopy,
   IUpdateUpperEndoscopy,
+  IUpdateSuppressor,
   IUpdateNonSalary,
   IUpdateMedicalRecords,
   IUpdateDNR,
@@ -509,6 +510,17 @@ export const getUpperEndoscopy = (request: IGetSurvey) => {
 
 export const updateUpperEndoscopy = (request: IUpdateUpperEndoscopy) => {
   const url = `/survey/upperEndoScopyConfirm`;
+  return apiGateway.post(url, camelcaseKeys(request));
+};
+
+// 억제대 동의서
+export const getSuppressor = (request: IGetSurvey) => {
+  const url = `/survey/chartConfirm?${formatToRequestParameter(request)}`;
+  return apiGateway.get(url);
+};
+
+export const updateSuppressor = (request: IUpdateSuppressor) => {
+  const url = `/survey/chartConfirm`;
   return apiGateway.post(url, camelcaseKeys(request));
 };
 
