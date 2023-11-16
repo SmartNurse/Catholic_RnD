@@ -60,6 +60,7 @@ import STarTBackScreening from './Pain/STarTBackScreening';
 import TransfusionAgreement from './Agreement/Transfusion';
 import IORecord from './IORecord';
 import Suppressor from './Agreement/Suppressor';
+import CRRT from './Agreement/CRRT';
 
 interface Props {
   surveyType: string;
@@ -240,6 +241,10 @@ const DisplaySurvey = (props: Props) => {
     case MENU.TRANSFUSIONAGREEMENT: {
       if (!defaultValues) return null;
       return <TransfusionAgreement {...dialogProps} onClose={onCloseSave} />;
+    }
+    case MENU.CRRT_AGREEMENT: {
+      if (!defaultValues) return null;
+      return <CRRT {...dialogProps} onClose={onCloseSave} />;
     }
     case MENU.COLONOSCOPY: {
       if (!defaultValues) return null;

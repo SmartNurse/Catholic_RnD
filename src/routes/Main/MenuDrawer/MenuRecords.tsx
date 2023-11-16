@@ -357,6 +357,11 @@ const MenuRecords = (props: Props) => {
     },
     {
       isPro: true,
+      label: 'CRRT 동의서',
+      toggle: toggle.agreement,
+    },
+    {
+      isPro: true,
       label: '대장내시경 동의서',
       toggle: toggle.agreement,
     },
