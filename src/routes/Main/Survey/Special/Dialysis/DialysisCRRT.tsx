@@ -142,26 +142,10 @@ const DialysisCRRT = (props: Props) => {
                       {Array(4)
                         .fill(0)
                         .map((_, idx) => (
-                          <TableCell key={idx} sx={{ height: '50px' }}>
-                            {/* <Form.MuiTextField
-                              value={
-                                dialysisRecord
-                                  ? dialysisRecord[idx][registerIds[labelIdx]]
-                                  : ''
-                              }
-                              onChange={e => {
-                                let newRecord = dialysisRecord
-                                  ? [...dialysisRecord]
-                                  : [];
-                                newRecord[idx][registerIds[labelIdx]] =
-                                  e.target.value;
-                                setDialysisRecord(newRecord);
-                                setValue('dialysis_db', newRecord);
-                              }}
-                              required={false}
-                              disabled={disabled}
-                            /> */}
-                          </TableCell>
+                          <TableCell
+                            key={idx}
+                            sx={{ height: '50px' }}
+                          ></TableCell>
                         ))}
                     </TableRow>
                   );
