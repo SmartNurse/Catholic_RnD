@@ -337,7 +337,7 @@ const MenuRecords = (props: Props) => {
       isPro: true,
       disabled: true,
       icon: <VerifiedUserOutlined />,
-      label: '동의서',
+      label: '동의서 1',
       id: 'agreement',
     },
     {
