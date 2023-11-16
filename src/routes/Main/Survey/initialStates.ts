@@ -916,6 +916,30 @@ export const initialTransfusionAgree = {
   dr_sig: '',
 };
 
+export const initialCRRT = {
+  update_at: '',
+  pt_name: '',
+  pt_ssn: '',
+  pt_addr: '',
+  pt_contact: '',
+
+  applier_name: '',
+  applier_relp: '',
+  applier_bday: '',
+  applier_contact: '',
+  applier_addr: '',
+
+  scope_center: '',
+  scope_period_from: '',
+  scope_period_to: '',
+  scope_reason: '',
+  scope_detail: '',
+
+  date: '',
+  name: '',
+  sig: '',
+};
+
 export const initialColonoscopy = {
   update_at: '',
   agree_check_01: '',

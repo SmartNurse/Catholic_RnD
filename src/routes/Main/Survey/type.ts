@@ -55,6 +55,7 @@ import {
   initialDietList,
   initialKPCS,
   initialTransfusionAgree,
+  initialCRRT,
 } from './initialStates';
 
 export enum MENU {
@@ -103,6 +104,7 @@ export enum MENU {
   HOSPITAL_CONFIRM = '입원 안내 확인서',
   FALL_CONFIRM = '낙상 예방교육 확인서',
   TRANSFUSIONAGREEMENT = '수혈 동의서',
+  CRRT_AGREEMENT = 'CRRT 동의서',
   COLONOSCOPY = '대장내시경 동의서',
   UPPER_ENDOSCOPY = '상부내시경 동의서',
   SUPPRESSOR = '억제대 동의서',
@@ -179,11 +181,12 @@ export type TDietListDefaultValues = typeof initialDietList;
 export type THospitalConfirmDefaultValues = typeof initialHospitalConfirm;
 export type TFallConfirmDefaultValues = typeof initialFallConfirm;
 export type TTransfusionAgreeDefaultValues = typeof initialTransfusionAgree;
+export type TCRRTDefaultValues = typeof initialCRRT;
 export type TColonoscopyDefaultValues = typeof initialColonoscopy;
 export type TUpperEndoscopyDefaultValues = typeof initialUpperEndoscopy;
+export type TSuppressorDefaultValues = typeof initialSuppressor;
 export type TNonSalaryDefaultValues = typeof initialNonSalary;
 export type TMedicalRecordDefaultValues = typeof initialMedicalRecords;
-export type TSuppressorDefaultValues = typeof initialSuppressor;
 export type TDNRDefaultValues = typeof initialDNR;
 export type TDNADefaultValues = typeof initialDNA;
 
