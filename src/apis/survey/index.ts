@@ -56,6 +56,7 @@ import {
   IUpdateNDI,
   IUpdateSTarTBack,
   IUpdateCRRT,
+  IUpdateCentralVenous,
 } from './type';
 
 // e-CARDEX
@@ -497,6 +498,17 @@ export const getCRRT = (request: IGetSurvey) => {
 };
 
 export const updateCRRT = (request: IUpdateCRRT) => {
+  const url = `/survey/chartConfirm`;
+  return apiGateway.post(url, camelcaseKeys(request));
+};
+
+// CRRT
+export const getCentralVenous = (request: IGetSurvey) => {
+  const url = `/survey/chartConfirm?${formatToRequestParameter(request)}`;
+  return apiGateway.get(url);
+};
+
+export const updateCentralVenous = (request: IUpdateCentralVenous) => {
   const url = `/survey/chartConfirm`;
   return apiGateway.post(url, camelcaseKeys(request));
 };
