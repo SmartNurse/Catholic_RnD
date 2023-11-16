@@ -55,6 +55,7 @@ import {
   IUpdateLEFS,
   IUpdateNDI,
   IUpdateSTarTBack,
+  IUpdateCRRT,
 } from './type';
 
 // e-CARDEX
@@ -486,6 +487,17 @@ export const getTransfusionAgree = (request: IGetSurvey) => {
 
 export const updateTransfusionAgree = (request: IUpdateTransfusionAgree) => {
   const url = `/survey/transfusion_confirm`;
+  return apiGateway.post(url, camelcaseKeys(request));
+};
+
+// CRRT
+export const getCRRT = (request: IGetSurvey) => {
+  const url = `/survey/chartConfirm?${formatToRequestParameter(request)}`;
+  return apiGateway.get(url);
+};
+
+export const updateCRRT = (request: IUpdateCRRT) => {
+  const url = `/survey/chartConfirm`;
   return apiGateway.post(url, camelcaseKeys(request));
 };
 
