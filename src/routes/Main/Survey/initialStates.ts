@@ -627,6 +627,29 @@ export const initialDialysis = {
   additional_information: '',
 };
 
+export const initialIntubation = {
+  update_at: '',
+  date: '',
+  time: '',
+  visiting_route: '',
+  visiting_route_etc: '',
+  dialysis_machine: '',
+  dialyzer: '',
+  dialysate: '',
+  vascular_access: '',
+  vascular_access_etc: '',
+  starting_nurse: '',
+  ending_nurse: '',
+  pre_previous_weight: '',
+  pre_today_weight: '',
+  pre_weight_change: '',
+  post_previous_weight: '',
+  post_today_weight: '',
+  post_weight_change: '',
+  dialysis_db: [],
+  additional_information: '',
+};
+
 export const initialEmergency = {
   update_at: '',
   emergency_information: {
