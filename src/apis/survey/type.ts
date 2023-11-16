@@ -920,6 +920,32 @@ export interface IUpdateTransfusionAgree extends IGetSurvey {
   };
 }
 
+// 억제대동의서
+export interface IUpdateCRRT extends IGetSurvey {
+  chart_confirmation: {
+    pt_name: string;
+    pt_ssn: string;
+    pt_addr: string;
+    pt_contact: string;
+
+    applier_name: string;
+    applier_relp: string;
+    applier_bday: string;
+    applier_contact: string;
+    applier_addr: string;
+
+    scope_center: string;
+    scope_period_from: string;
+    scope_period_to: string;
+    scope_reason: string;
+    scope_detail: string;
+
+    date: string;
+    name: string;
+    sig: string;
+  };
+}
+
 // 대장 내시경
 export interface IUpdateColonoscopy extends IGetSurvey {
   colono_scopy_confirmation: {
