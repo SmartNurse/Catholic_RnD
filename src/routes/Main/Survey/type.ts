@@ -40,6 +40,7 @@ import {
   initialUpperEndoscopy,
   initialNonSalary,
   initialMedicalRecords,
+  initialSuppressor,
   initialDNR,
   initialDNA,
   initialCoreNursingSkillVideo,
@@ -104,6 +105,7 @@ export enum MENU {
   TRANSFUSIONAGREEMENT = '수혈 동의서',
   COLONOSCOPY = '대장내시경 동의서',
   UPPER_ENDOSCOPY = '상부내시경 동의서',
+  SUPPRESSOR = '억제대 동의서',
   NONSALARY = '비급여진료비동의서',
   MEDICALRECORDS = '진료기록 열람, \n사본발급 동의서',
   DNR = '사전연명의료의향서',
@@ -181,6 +183,7 @@ export type TColonoscopyDefaultValues = typeof initialColonoscopy;
 export type TUpperEndoscopyDefaultValues = typeof initialUpperEndoscopy;
 export type TNonSalaryDefaultValues = typeof initialNonSalary;
 export type TMedicalRecordDefaultValues = typeof initialMedicalRecords;
+export type TSuppressorDefaultValues = typeof initialSuppressor;
 export type TDNRDefaultValues = typeof initialDNR;
 export type TDNADefaultValues = typeof initialDNA;
 

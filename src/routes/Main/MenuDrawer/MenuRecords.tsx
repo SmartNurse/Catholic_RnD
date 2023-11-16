@@ -367,6 +367,11 @@ const MenuRecords = (props: Props) => {
     },
     {
       isPro: true,
+      label: '억제대 동의서',
+      toggle: toggle.agreement,
+    },
+    {
+      isPro: true,
       label: '비급여진료비동의서',
       toggle: toggle.agreement,
     },

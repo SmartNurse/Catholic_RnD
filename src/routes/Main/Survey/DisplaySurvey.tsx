@@ -59,6 +59,7 @@ import NDI from './Pain/NDI';
 import STarTBackScreening from './Pain/STarTBackScreening';
 import TransfusionAgreement from './Agreement/Transfusion';
 import IORecord from './IORecord';
+import Suppressor from './Agreement/Suppressor';
 
 interface Props {
   surveyType: string;
@@ -247,6 +248,10 @@ const DisplaySurvey = (props: Props) => {
     case MENU.UPPER_ENDOSCOPY: {
       if (!defaultValues) return null;
       return <UpperEndoscopy {...dialogProps} onClose={onCloseSave} />;
+    }
+    case MENU.SUPPRESSOR: {
+      if (!defaultValues) return null;
+      return <Suppressor {...dialogProps} onClose={onCloseSave} />;
     }
     case MENU.NONSALARY: {
       if (!defaultValues) return null;
