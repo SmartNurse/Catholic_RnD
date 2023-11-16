@@ -62,6 +62,7 @@ import IORecord from './IORecord';
 import Suppressor from './Agreement/Suppressor';
 import CRRT from './Agreement/CRRT';
 import Intubation from './Special/Intubation';
+import CentralVenous from './Agreement/CentralVenous';
 
 interface Props {
   surveyType: string;
@@ -250,6 +251,10 @@ const DisplaySurvey = (props: Props) => {
     case MENU.CRRT_AGREEMENT: {
       if (!defaultValues) return null;
       return <CRRT {...dialogProps} onClose={onCloseSave} />;
+    }
+    case MENU.CENTRALVENOUS: {
+      if (!defaultValues) return null;
+      return <CentralVenous {...dialogProps} onClose={onCloseSave} />;
     }
     case MENU.COLONOSCOPY: {
       if (!defaultValues) return null;
