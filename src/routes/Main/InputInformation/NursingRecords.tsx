@@ -187,6 +187,18 @@ const NursingRecords = ({ coachRef }: Props) => {
         >
           <Tab label="NANDA" value={RECORD_TYPE.NANDA} />
           <Tab label="SOAPIE" value={RECORD_TYPE.SOAPIE} />
+          <Tab label="ICNP" value={RECORD_TYPE.ICNP} disabled={true} />
+          {/* <Tab label="Focus DAR" value={RECORD_TYPE.FOCUS_DAR} />
+          <Tab label="서술기록" value={RECORD_TYPE.NARRATIVE_RECORD} />
+          <Tab label="간호과정" value={RECORD_TYPE.REMARKS} /> */}
+        </TabList>
+        <TabList
+          variant="fullWidth"
+          onChange={(_, value) => setRecordType(value)}
+          ref={coachRef}
+        >
+          {/* <Tab label="NANDA" value={RECORD_TYPE.NANDA} />
+          <Tab label="SOAPIE" value={RECORD_TYPE.SOAPIE} /> */}
           <Tab label="Focus DAR" value={RECORD_TYPE.FOCUS_DAR} />
           <Tab label="서술기록" value={RECORD_TYPE.NARRATIVE_RECORD} />
           <Tab label="간호과정" value={RECORD_TYPE.REMARKS} />

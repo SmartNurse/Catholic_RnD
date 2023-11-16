@@ -54,8 +54,8 @@ export interface INursingRecord {
   create_at: string;
   nursing_record_id: number;
   patient_id: number;
-  // 0:nanda 1:soapie 2:focusdar 3:서술기록 4:특기사항
-  record_type: 0 | 1 | 2 | 3 | 4;
+  // 0:nanda 1:soapie 2: ICNP 3:focusdar 4:서술기록 5:특기사항
+  record_type: 0 | 1 | 2 | 3 | 4 | 5;
   record_time: string;
   user_id: number;
 }
