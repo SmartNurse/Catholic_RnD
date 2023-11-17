@@ -18,10 +18,11 @@ import { setSearchQuery } from 'utils/searchQuery';
 interface Props {
   onRequired: (id: Ti18nId) => void;
   currentSearchType?: number;
+  totalCount: number;
 }
 
-const ContentsHead = ({ onRequired, currentSearchType }: Props) => {
-  const keywordRef = useRef<HTMLInputElement>(null);
+const ContentsHead = ({ onRequired, currentSearchType, totalCount }: Props) => {
+  const keywordRef = useRef<HTMLSelectElement>(null);
   const navigate = useNavigate();
   const { pathname } = useLocation();
   const searchTypeRef = useRef<HTMLSelectElement>(null);
@@ -30,32 +31,19 @@ const ContentsHead = ({ onRequired, currentSearchType }: Props) => {
     const keyword = keywordRef.current?.value;
 
     const searchType = searchTypeRef.current?.value;
-    if (!keyword) return onRequired('REQUIRED.KEYWORD');
-    if (searchType === '3' && isNaN(Number(keyword)))
-      return onRequired('REQUIRED.COLLEGENUMBER');
-    if (searchType === '2' && isNaN(Number(keyword)))
-      return onRequired('REQUIRED.NUMBER');
-    if (searchType === '1' && !isNaN(Number(keyword)))
-      return onRequired('REQUIRED.STRING');
+    if (keyword === '') return onRequired('REQUIRED.KEYWORD');
+    // if (searchType === '3' && isNaN(Number(keyword)))
+    //   return onRequired('REQUIRED.COLLEGENUMBER');
+    // if (searchType === '2' && isNaN(Number(keyword)))
+    //   return onRequired('REQUIRED.NUMBER');
+    // if (searchType === '1' && !isNaN(Number(keyword)))
+    //   return onRequired('REQUIRED.STRING');
 
-    const query = isNaN(Number(keyword))
-      ? setSearchQuery({
-          page: 1,
-          searchType,
-          keyword,
-        })
-      : searchType === '2'
-      ? setSearchQuery({
-          page: 1,
-          searchType,
-          keyword: '',
-        })
-      : setSearchQuery({
-          page: 1,
-          searchType,
-          patient_id: '',
-          keyword: '',
-        });
+    const query = setSearchQuery({
+      page: 1,
+      sort_method: searchType,
+      year: keyword,
+    });
     navigate(`${pathname}?${query}`);
   };
 
@@ -68,27 +56,39 @@ const ContentsHead = ({ onRequired, currentSearchType }: Props) => {
       </Typography>
       <NativeSelect
         size="small"
-        input={<OutlinedInput sx={{ fontSize: '12px', height: '33px' }} />}
-        inputRef={searchTypeRef}
+        input={
+          <OutlinedInput
+            sx={{ fontSize: '12px', height: '33px', width: '120px' }}
+          />
+        }
+        inputRef={keywordRef}
         defaultValue={currentSearchType}
       >
-        <option value={1}>이름</option>
-        <option value={2}>아이디</option>
-        <option value={3}>학교</option>
+        {/* 년도 지날 때마다 수정 필요 */}
+        <option value={2023} selected>
+          2023
+        </option>
+        <option value={2022}>2022</option>
+        {/* <option value={3}>2024</option> */}
       </NativeSelect>
 
       <Typography sx={{ mr: 'auto', padding: '0 10px 0 10px' }}>|</Typography>
 
       <NativeSelect
         size="small"
-        input={<OutlinedInput sx={{ fontSize: '12px' }} />}
+        input={<OutlinedInput sx={{ fontSize: '12px', width: '120px' }} />}
         inputRef={searchTypeRef}
         defaultValue={currentSearchType}
       >
-        <option value={1}>이름순</option>
-        <option value={2}>아</option>
-        <option value={3}>학교 순</option>
+        <option value={1} selected>
+          이름순
+        </option>
+        <option value={2}>학번(숫자낮은순)</option>
+        <option value={3}>학번(숫자높은순)</option>
       </NativeSelect>
+      <Button variant="contained" onClick={onSearch} sx={{ height: '33px' }}>
+        조회
+      </Button>
     </Stack>
   );
 
