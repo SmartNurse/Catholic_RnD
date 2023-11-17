@@ -9,7 +9,7 @@ import ContentsHead from './ContentsHead';
 import useNotification from 'hooks/useNotification';
 import ContentsBody from './ContentsBody';
 import useTable from 'hooks/useTable';
-import { IUpedateSkillVideo } from 'apis/survey/type';
+import { IUpedateNursingRecord } from 'apis/survey/type';
 import { getSearchQuery } from 'utils/searchQuery';
 import {
   Box,
@@ -29,7 +29,7 @@ const NurseContents = ({ patientInfo }: Props) => {
   const { search } = useLocation();
   const { onFail, onRequired } = useNotification();
 
-  const { page = 1, keyword, searchType, sort_method } = getSearchQuery(search);
+  const { page = 1, year, sort_method } = getSearchQuery(search);
   const {
     list,
     setList,
@@ -40,7 +40,7 @@ const NurseContents = ({ patientInfo }: Props) => {
     onPageChange,
     selected,
     setSelected,
-  } = useTable<IUpedateSkillVideo>();
+  } = useTable<IUpedateNursingRecord>();
 
   const onGetList = useCallback(() => {
     setSelected([]);
@@ -50,8 +50,7 @@ const NurseContents = ({ patientInfo }: Props) => {
       page: String(page),
       patient_id: String(patientInfo.patient_id),
       user_id,
-      keyword,
-      searchType,
+      year,
       sort_method,
     })
       .then(({ data }) => {
@@ -64,15 +63,16 @@ const NurseContents = ({ patientInfo }: Props) => {
       })
       .finally(() => setIsLoading(false));
     // eslint-disable-next-line
-  }, [page, keyword, searchType, sort_method]);
+  }, [page, year, sort_method]);
 
   useEffect(onGetList, [onGetList]);
 
   return (
     <Box flex={2} display="flex" flexDirection="column" overflow="auto">
       <ContentsHead
+        totalCount={totalCount}
         onRequired={onRequired}
-        currentSearchType={searchType as any}
+        currentSearchType={sort_method as any}
       />
       <ContentsBody
         list={list}
@@ -80,8 +80,6 @@ const NurseContents = ({ patientInfo }: Props) => {
         totalCount={totalCount}
         page={Number(page) - 1}
         onPageChange={onPageChange}
-        selected={selected}
-        onSelected={setSelected}
       />
     </Box>
   );
