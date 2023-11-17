@@ -15,6 +15,7 @@ export interface IGetSearchSurvey {
   patient_id?: string | (string | null)[] | null;
   page?: string | (string | null)[] | null;
   sort_method?: string | (string | null)[] | null;
+  year?: string | (string | null)[] | null;
 }
 
 // e-Cardex
@@ -1392,4 +1393,12 @@ export interface IUpedateSkillVideo extends IGetSurvey {
   student_name: string;
   student_uuid: string;
   student_video: string;
+}
+
+export interface IUpedateNursingRecord extends IGetSurvey {
+  student_no: string;
+  student_id: string;
+  student_name: string;
+  student_uuid: string;
+  student_nursing_record: string;
 }
