@@ -67,8 +67,8 @@ const DisplayInformation = (props: Props) => {
     } else {
       return (
         <Box>
-          {/* <NurseContents patientInfo={patientInfo} /> */}
-          간호전체기록 준비중
+          <NurseContents patientInfo={patientInfo} />
+          {/* 간호전체기록 준비중 */}
         </Box>
       );
     }
