@@ -680,11 +680,10 @@ export const getSkillVideo = (request: IGetSearchSurvey) => {
 
 // 간호기록 전체조회 페이지
 export const getNursingRecode = (request: IGetSearchSurvey) => {
-  const { keyword, sort_method } = request;
+  const { year, sort_method } = request;
 
   const baseUrl = () => {
-    if (keyword) return '/main/search_nursing_record?';
-    if (sort_method) return '/main/sort_nursing_record?';
+    if (sort_method && year) return '/main/inquiry_nursing_record?';
     return '/main/manage_nursing_record?';
   };
 
