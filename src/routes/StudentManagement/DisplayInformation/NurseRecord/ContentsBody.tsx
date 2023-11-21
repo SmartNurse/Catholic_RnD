@@ -64,8 +64,8 @@ function ContentsBody(props: Props) {
         const recordTypes = list.row.student_nursing_record.map(
           (type: any) => type.record_type
         );
-        console.log('recordTypes : ', recordTypes);
-        console.log('list : ', list.row);
+        // console.log('recordTypes : ', recordTypes);
+        // console.log('list : ', list.row);
         return (
           <Box>
             <Stack direction="row" mt={1}>
@@ -106,7 +106,7 @@ function ContentsBody(props: Props) {
 
               const create_at = list.row.student_nursing_record[i].record_time;
 
-              console.log('contents : ', categoryKeys);
+              // console.log('contents : ', categoryKeys);
 
               if (type === 0) {
                 return (
