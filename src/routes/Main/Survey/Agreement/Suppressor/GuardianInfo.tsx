@@ -57,7 +57,7 @@ const GuardianInfo = (props: Props) => {
 
   return (
     <Fragment>
-      <SectionTitle title="2. 설명 및 기재사항(가라 항목은 반드시 포함)" />
+      <SectionTitle title="2. 설명 및 기재사항 (가~라 항목은 반드시 포함)" />
       <RowContainer xs={11.5} sx={{ margin: '20px 0px 30px 0px' }}>
         {infos.map(({ title, value }) => (
           <>

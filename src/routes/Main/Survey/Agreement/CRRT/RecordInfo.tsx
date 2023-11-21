@@ -65,7 +65,7 @@ const RecordInfo = (props: Props) => {
 
   return (
     <>
-      <SectionTitle title="3. 보호사가 서명하게 된 이유(보호자가 서명한 경우에만)" />
+      <SectionTitle title="3. 시술 설명 사항" />
       <Box sx={{ margin: '48px 0px 30px 20px' }}>
         <Grid container xs={11.8}>
           <Typography sx={{ fontSize: '14px', fontWeight: 500 }}>
@@ -103,8 +103,8 @@ const RecordInfo = (props: Props) => {
         <Typography
           sx={{ margin: '30px 0 20px 0', fontSize: '14px', fontWeight: 500 }}
         >
-          위 설명을 듣고 본인/보호자는 지속적 신대체요법에 대하여 충분한 설명을
-          듣고 이해했으며 환자의 안전과 치료를 위해 동의합니다.
+          본인/보호자는 지속적신대체요법에 대하여 위의 충분한 설명을 듣고
+          이해했으며 환자의 안전과 치료를 위해 동의합니다.
         </Typography>
       </Box>
     </>

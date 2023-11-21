@@ -95,8 +95,8 @@ const RecordInfo = (props: Props) => {
         <Typography
           sx={{ margin: '30px 0 20px 0', fontSize: '14px', fontWeight: 500 }}
         >
-          위 설명을 듣고 본인/보호자는 신체 억제대 사용에 대하여 충분한 설명을
-          들었으며 이에 동의합니다.
+          본인/보호자는 신체 억제대 사용에 대하여 위의 충분한 설명을 들었으며
+          이에 동의합니다.
         </Typography>
       </Box>
     </>
