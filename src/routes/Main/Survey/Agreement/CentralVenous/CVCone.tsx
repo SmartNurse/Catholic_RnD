@@ -16,20 +16,20 @@ interface Props extends IFormValues, IFormWatch, IFormRegister {
 
 const checks = [
   {
-    label: '비 터널형 중심정맥 (Subclavian catheter)',
+    label: '비 터널형 중심정맥 (Subclavian Catheter)',
     key: 'fall_education.checked1',
   },
   {
-    label: '터널형 중심정맥관 히크만카테터 (Hickman catheter)',
+    label: '터널형 중심정맥관 히크만카테터 (Hickman Catheter)',
     key: 'fall_education.checked2',
   },
   {
     label:
-      '말초 삽입 중심정맥관 (PICC : peripherally inserted central catheter)',
+      '말초 삽입 중심정맥관 (PICC : Peripherally Inserted Central Catheter)',
     key: 'fall_education.checked3',
   },
   {
-    label: '매립형 중심정맥관 케모포트 (Chemo-port)',
+    label: '매립형 중심정맥관 케모포트 (Chemo-Port)',
     key: 'fall_education.checked4',
   },
 ];
