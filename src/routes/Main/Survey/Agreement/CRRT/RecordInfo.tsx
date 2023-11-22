@@ -44,12 +44,16 @@ const checks = [
     key: 'fall_education.checked3',
   },
   {
-    label: '폐부종과 같은 체액과다가 약물투여로 조절이 안되는 경우',
+    label: '출혈성 경향',
     key: 'fall_education.checked4',
   },
   {
+    label: '폐부종과 같은 체액과다가 약물투여로 조절이 안되는 경우',
+    key: 'fall_education.checked5',
+  },
+  {
     label: '핍뇨 혹은 무뇨 환자에서 대사성 산증이 심해지는 경우',
-    key: 'fall_education.checked4',
+    key: 'fall_education.checked6',
   },
 ];
 

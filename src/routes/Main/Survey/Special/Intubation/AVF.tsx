@@ -98,6 +98,25 @@ const AVF = (props: Props) => {
           <Table sx={{ minWidth: 650 }} aria-label="simple table" size="small">
             <TableBody>
               <TableRow
+                key={'기록 일시'}
+                sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
+              >
+                <TableCell component="th" scope="row">
+                  기록 일시
+                </TableCell>
+                {Array(4)
+                  .fill(0)
+                  .map((_, idx) => (
+                    <TableCell key={idx}>
+                      <Form.MuiTextField
+                        type="date"
+                        disabled={disabled}
+                        // {...register(`${time}`)}
+                      />
+                    </TableCell>
+                  ))}
+              </TableRow>
+              <TableRow
                 key={'삽입 일시'}
                 sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
               >
