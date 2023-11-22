@@ -687,6 +687,6 @@ export const getNursingRecode = (request: IGetSearchSurvey) => {
     return '/main/manage_nursing_record?';
   };
 
-  const url = `${baseUrl()}size=20&${formatToRequestParameter(request)}`;
+  const url = `${baseUrl()}size=100&${formatToRequestParameter(request)}`;
   return apiGateway.get(url);
 };
