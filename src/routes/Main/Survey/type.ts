@@ -129,10 +129,10 @@ export enum MENU {
 export enum RECORD_TYPE {
   NANDA = '0',
   SOAPIE = '1',
-  ICNP = '5',
   FOCUS_DAR = '2',
   NARRATIVE_RECORD = '3',
   REMARKS = '4',
+  ICNP = '5',
 }
 
 export interface SurveyDialogProps<T>
