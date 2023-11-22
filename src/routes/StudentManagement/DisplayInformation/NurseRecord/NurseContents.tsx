@@ -1,4 +1,4 @@
-import { useEffect, useState, useCallback, useRef } from 'react';
+import { useEffect, useCallback } from 'react';
 import { useLocation } from 'react-router-dom';
 
 import useUser from 'store/user/useUser';
@@ -11,14 +11,7 @@ import ContentsBody from './ContentsBody';
 import useTable from 'hooks/useTable';
 import { IUpedateNursingRecord } from 'apis/survey/type';
 import { getSearchQuery } from 'utils/searchQuery';
-import {
-  Box,
-  List,
-  ListItem,
-  ListItemButton,
-  ListSubheader,
-  Typography,
-} from '@mui/material';
+import { Box } from '@mui/material';
 
 interface Props {
   patientInfo: IPatientInfoSmall;
@@ -38,12 +31,9 @@ const NurseContents = ({ patientInfo }: Props) => {
     isLoading,
     setIsLoading,
     onPageChange,
-    selected,
-    setSelected,
   } = useTable<IUpedateNursingRecord>();
 
   const onGetList = useCallback(() => {
-    setSelected([]);
     setIsLoading(true);
 
     getNursingRecode({
