@@ -32,6 +32,7 @@ import CIST from './MentalHealth/CIST';
 import Operation from './Special/Operation';
 import Anesthesia from './Special/Anesthesia';
 import Transfusion from './Special/Transfusion';
+import CPR from './Special/CPR';
 import Dialysis from './Special/Dialysis';
 import Emergency from './Special/Emergency';
 import Childbirth from './Special/Childbirth';
@@ -206,6 +207,10 @@ const DisplaySurvey = (props: Props) => {
     case MENU.TRANSFUSION: {
       if (!defaultValues) return null;
       return <Transfusion {...dialogProps} onClose={onCloseSave} />;
+    }
+    case MENU.CPR: {
+      if (!defaultValues) return null;
+      return <CPR {...dialogProps} onClose={onCloseSave} />;
     }
     case MENU.INTUBATION: {
       if (!defaultValues) return null;
