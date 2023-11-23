@@ -32,6 +32,7 @@ import {
   IUpdateOperation,
   IUpdateAnesthesia,
   IUpdateTransfusion,
+  IUpdateCPR,
   IUpdateDialysis,
   IUpdateEmergency,
   IUpdateChildbirth,
@@ -376,6 +377,17 @@ export const getTransfusion = (request: IGetSurvey) => {
 
 export const updateTransfusion = (request: IUpdateTransfusion) => {
   const url = `/survey/transfusion`;
+  return apiGateway.post(url, camelcaseKeys(request));
+};
+
+// CPR 기록지
+export const getCPR = (request: IGetSurvey) => {
+  const url = `/survey/cnps?${formatToRequestParameter(request)}`;
+  return apiGateway.get(url);
+};
+
+export const updateCPR = (request: IUpdateCPR) => {
+  const url = `/survey/cnps`;
   return apiGateway.post(url, camelcaseKeys(request));
 };
 
