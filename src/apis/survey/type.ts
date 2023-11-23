@@ -616,6 +616,16 @@ export interface IUpdateTransfusion extends IGetSurvey {
   };
 }
 
+// CPR 기록지
+export interface IUpdateCPR extends IGetSurvey {
+  cnps_survey: {
+    face: string;
+    activity: string;
+    respiratory: string;
+    vocalization: string;
+  };
+}
+
 // 투석기록지
 export interface IDialysisRecord {
   [index: string]: string | null;

@@ -604,6 +604,15 @@ export const initialTransfusion = {
   transfusion_record: [],
 };
 
+export const initialCPR = {
+  update_at: '',
+  face: '',
+  activity: '',
+  respiratory: '',
+  vocalization: '',
+  sum: '',
+};
+
 export const initialDialysis = {
   update_at: '',
   date: '',
