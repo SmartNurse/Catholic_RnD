@@ -3,13 +3,14 @@ import { Grid, Typography, useTheme } from '@mui/material';
 interface Props {
   title: string;
   mb?: number;
+  mt?: number;
 }
 
-const SectionTitle = ({ title, mb = -3 }: Props) => {
+const SectionTitle = ({ title, mb = -3, mt }: Props) => {
   const { palette } = useTheme();
 
   return (
-    <Grid item xs={12} sx={{ mb }}>
+    <Grid item xs={12} sx={{ mb, mt }}>
       <Typography
         color={palette.mode === 'dark' ? 'black' : palette.text.primary}
         fontSize={13}
