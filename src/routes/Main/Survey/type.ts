@@ -57,6 +57,7 @@ import {
   initialTransfusionAgree,
   initialCRRT,
   initialIntubation,
+  initialCPR,
 } from './initialStates';
 
 export enum MENU {
@@ -95,6 +96,7 @@ export enum MENU {
   OPERATION = '수술 기록지',
   ANESTHESIA = '마취 기록지',
   TRANSFUSION = '수혈 기록지',
+  CPR = 'CPR 기록지',
   DIALYSIS = '투석 기록지',
   EMERGENCY = '응급 기록지',
   INTUBATION = '삽관 기록지',
@@ -175,6 +177,7 @@ export type TCISTDefaultValues = typeof initialCIST;
 export type TOperationDefaultValues = typeof initialOperation;
 export type TAnesthesiaDefaultValues = typeof initialAnesthesia;
 export type TTransfusionDefaultValues = typeof initialTransfusion;
+export type TCPRDefaultValues = typeof initialCPR;
 export type TDialysisDefaultValues = typeof initialDialysis;
 export type TEmergencyDefaultValues = typeof initialEmergency;
 export type TIntubationDefaultValues = typeof initialIntubation;

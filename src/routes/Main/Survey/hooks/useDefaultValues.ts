@@ -52,6 +52,7 @@ import {
   getTransfusionAgree,
   getSuppressor,
   getCentralVenous,
+  getCPR,
 } from 'apis/survey';
 import useNotification from 'hooks/useNotification';
 import { findKeyValueToObj, findKeyValueToObjNoParse } from 'utils/convert';
@@ -114,6 +115,7 @@ import {
   initialCRRT,
   initialIntubation,
   initialCentralVenous,
+  initialCPR,
 } from '../initialStates';
 import { MENU } from '../type';
 
@@ -488,6 +490,14 @@ const useDefaultValues = ({ setDefaultValues, user_id }: Props) => {
               },
               initialTransfusion
             );
+          })
+          .catch(e => onFail('알 수 없는 오류가 발생했습니다.', e));
+        break;
+      case MENU.CPR:
+        getCPR({ user_id, patient_id })
+          .then(({ data }) => {
+            const { update_at, cnps_survey } = data;
+            convertDataToStates({ update_at, ...cnps_survey }, initialCPR);
           })
           .catch(e => onFail('알 수 없는 오류가 발생했습니다.', e));
         break;
