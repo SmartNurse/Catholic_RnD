@@ -9,9 +9,11 @@ import MuiDialog from 'components/MuiDialog';
 import { SurveyDialogProps, TCNPSDefaultValues } from '../../type';
 
 import CommonPatientInfo from '../../components/CommonPatientInfo';
-import CPRContents from './CNPSContents';
+import CPRContents from './CPRContents';
+import CPRContentsTwo from './CPRContentsTwo';
 
 import { updateCNPS } from 'apis/survey';
+import PatientStaffInfo from './PatientStaffInfo';
 
 const CPR = (props: SurveyDialogProps<TCNPSDefaultValues>) => {
   const {
@@ -27,7 +29,7 @@ const CPR = (props: SurveyDialogProps<TCNPSDefaultValues>) => {
 
   const { onUpdateIsSave } = useSurvey();
   const { onSuccess, onFail, onResultCode, onRequired } = useNotification();
-  const { handleSubmit, watch, getValues, setValue } = useForm({
+  const { handleSubmit, watch, getValues, setValue, register } = useForm({
     defaultValues,
   });
 
@@ -57,6 +59,7 @@ const CPR = (props: SurveyDialogProps<TCNPSDefaultValues>) => {
     setValue,
     onSuccess,
     onRequired,
+    register,
   };
 
   return (
@@ -75,12 +78,17 @@ const CPR = (props: SurveyDialogProps<TCNPSDefaultValues>) => {
           textAlign: 'center',
         }}
       >
-        CNPS
-        <br />
-        (Critical care Nonverbal Pain Scale)
+        심폐소생술(CPR,cardio-pulmonary resuscitation) 기록지
+        <br />- 테스트 중입니다. -
       </Typography>
-      <CommonPatientInfo patientInfo={patientInfo} nurseName={nurseName} />
+      <PatientStaffInfo
+        {...formProps}
+        patientInfo={patientInfo}
+        nurseName={nurseName}
+      />
+
       <CPRContents {...formProps} />
+      <CPRContentsTwo {...formProps} />
     </MuiDialog.SurveyForm>
   );
 };
