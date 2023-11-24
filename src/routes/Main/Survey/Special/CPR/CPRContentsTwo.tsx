@@ -3,7 +3,7 @@ import Form from 'components/Form';
 import { useEffect, useState } from 'react';
 import {
   Box,
-  Typography,
+  Checkbox,
   Table,
   TableBody,
   TableHead,
@@ -379,14 +379,16 @@ const CPRContentsTwo = (props: Props) => {
                                       textAlign: 'right',
                                     }}
                                   >
-                                    <Form.MuiCheckbox
-                                      label={''}
-                                      disabled={disabled}
+                                    <Checkbox
+                                      size="small"
+                                      // value={label}
                                       defaultValue={
-                                        Boolean(getValues(v)) ? [v] : []
+                                        Boolean(getValues(`${v}checked`))
+                                          ? [v]
+                                          : []
                                       }
                                       onChange={(_, checked) => {
-                                        setValue(v, checked);
+                                        setValue(`${v}checked`, checked);
                                       }}
                                     />
                                   </Box>

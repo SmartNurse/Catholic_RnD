@@ -10,6 +10,7 @@ import {
   TableRow,
   useTheme,
   Stack,
+  Checkbox,
 } from '@mui/material';
 import { AccessTime } from '@mui/icons-material';
 import {
@@ -27,25 +28,12 @@ import { MobileTimePicker } from '@mui/x-date-pickers';
 const radioId = ['face', 'activity', 'respiratory', 'vocalization'];
 const contentLabel = [
   {
-    id: '활력\n징후',
-    ko: ['혈압(mmHg)', '심박수', '호흡수', '체온'],
-    desc: [
-      '자연스러운 표정',
-      '미간 찡그림, 눈살 찌푸림, 눈물 글썽거림',
-      '눈물을 흘림, 눈을 꽉 감음, 입을 씰룩거리며 눈을 찡그림',
-      '이를 악뭄, 기관 내관을 밀어내거나 깨뭄',
-      'q',
-      'w',
-      'e',
-      'r',
-      't',
-      'y',
-      't',
-    ],
-  },
-  {
     id: '임상\n관찰',
     ko: [
+      '혈압(mmHg)',
+      '심박수',
+      '호흡수',
+      '체온',
       '산소포화도(%)',
       '의식상태',
       '동공크기',
@@ -433,14 +421,16 @@ const CPRContents = (props: Props) => {
                                       textAlign: 'right',
                                     }}
                                   >
-                                    <Form.MuiCheckbox
-                                      label={''}
-                                      disabled={disabled}
+                                    <Checkbox
+                                      size="small"
+                                      // value={label}
                                       defaultValue={
-                                        Boolean(getValues(v)) ? [v] : []
+                                        Boolean(getValues(`${v}checked`))
+                                          ? [v]
+                                          : []
                                       }
                                       onChange={(_, checked) => {
-                                        setValue(v, checked);
+                                        setValue(`${v}checked`, checked);
                                       }}
                                     />
                                   </Box>
