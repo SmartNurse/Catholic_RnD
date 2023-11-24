@@ -266,3 +266,41 @@ export const StyledTableCellWithoutLine = styled(TableCell)({
   borderTop: 'none',
   padding: '0px',
 });
+
+// CPR 선 변경
+export const CPRStyledTableCellHead = styled(TableCell)({
+  border: '1px solid lightgray',
+  borderBottom: '4px solid lightgray',
+  padding: '0px',
+  // width: '30px',
+  height: '40px',
+});
+
+export const CPRStyledTableCellHeadNumbering = styled(TableCell)({
+  border: '1px solid lightgray',
+  borderBottom: '4px solid lightgray',
+  padding: '0px',
+  width: '80px',
+  height: '40px',
+});
+
+export const CPRStyledTableCellFirst = styled(TableCell)({
+  border: '1px solid lightgray',
+  borderBottom: '4px solid lightgray',
+  padding: '0px',
+  width: '30px',
+});
+
+export const CPRStyledTableCell = styled(TableCell)({
+  border: '1px solid lightgray',
+  borderBottom: '4px solid lightgray',
+  padding: '0px',
+  width: '140px',
+});
+
+export const CPRStyledTableCellBodyNumbering = styled(TableCell)({
+  border: '1px solid lightgray',
+  borderBottom: '4px solid lightgray',
+  padding: '0px',
+  width: '80px',
+});
