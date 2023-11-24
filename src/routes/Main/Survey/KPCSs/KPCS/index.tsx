@@ -1,4 +1,4 @@
-import { Grid, Typography, Box } from '@mui/material';
+import { Grid, Typography, Box, useTheme } from '@mui/material';
 import { useForm } from 'react-hook-form';
 
 import { updateKPCS } from 'apis/survey';
@@ -29,6 +29,7 @@ const KPCS = (props: SurveyDialogProps<TKPCSDefaultValues>) => {
     nurseName,
     onClose,
   } = props;
+  const { palette } = useTheme();
 
   const { onUpdateIsSave } = useSurvey();
   const { onSuccess, onFail, onResultCode, onRequired } = useNotification();
@@ -200,6 +201,36 @@ const KPCS = (props: SurveyDialogProps<TKPCSDefaultValues>) => {
               sum10 +
               sum11}{' '}
             점
+          </Typography>
+          <Typography
+            minWidth={80}
+            variant="caption"
+            sx={{ color: `${palette.primary.main}` }}
+          >
+            <Typography variant="inherit">
+              <Box component={'strong'} mr={0.5}>
+                I군 :
+              </Box>
+              0-10점
+            </Typography>
+            <Typography variant="inherit">
+              <Box component={'strong'} mr={0.5}>
+                II군:
+              </Box>
+              11-20점
+            </Typography>
+            <Typography variant="inherit">
+              <Box component={'strong'} mr={0.5}>
+                III군:
+              </Box>
+              21-30점
+            </Typography>
+            <Typography variant="inherit">
+              <Box component={'strong'} mr={0.5}>
+                IV군:
+              </Box>
+              31점 이상
+            </Typography>
           </Typography>
         </Box>
       </Grid>
