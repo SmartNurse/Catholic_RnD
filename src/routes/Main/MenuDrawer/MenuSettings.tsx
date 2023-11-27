@@ -16,6 +16,8 @@ import {
   ExpandMore,
   VideoLibraryOutlined,
 } from '@mui/icons-material';
+import { TbMessagePlus } from 'react-icons/tb';
+
 import { AiOutlineCalculator } from 'react-icons/ai';
 import { BsCardChecklist } from 'react-icons/bs';
 import { MdPeopleAlt } from 'react-icons/md';
@@ -53,6 +55,11 @@ const MenuSettings = (props: Props) => {
   // 학생 메뉴와 교수 메뉴 변경
   const settings = isStudent
     ? [
+        {
+          isPro: true,
+          icon: <TbMessagePlus />,
+          label: '간호과정 서술기록',
+        },
         {
           disabled: true,
           icon: <MedicalInformationOutlined />,
