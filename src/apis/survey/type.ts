@@ -842,7 +842,7 @@ export interface IUpdateKPCS extends IGetSurvey {
     no29: number;
     no30: number;
     no31: number;
-    transfusion: IKPCSRecord[];
+    no32: number;
     no33: number;
     no34: number;
     no35: number;

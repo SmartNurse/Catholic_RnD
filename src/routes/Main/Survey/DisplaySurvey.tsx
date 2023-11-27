@@ -64,6 +64,7 @@ import Suppressor from './Agreement/Suppressor';
 import CRRT from './Agreement/CRRT';
 import Intubation from './Special/Intubation';
 import CentralVenous from './Agreement/CentralVenous';
+import NursingRecord from './NursingRecord';
 
 interface Props {
   surveyType: string;
@@ -288,6 +289,10 @@ const DisplaySurvey = (props: Props) => {
     case MENU.DNA: {
       if (!defaultValues) return null;
       return <DNA {...dialogProps} onClose={onCloseSave} />;
+    }
+    case MENU.NURSING_RECORD: {
+      if (!defaultValues) return null;
+      return <NursingRecord {...dialogProps} onClose={onCloseSave} />;
     }
     case MENU.DRUG_CALCULATOR: {
       if (!defaultValues) return null;
