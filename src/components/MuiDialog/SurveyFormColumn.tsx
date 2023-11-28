@@ -26,6 +26,7 @@ export interface SurveyFormProps {
   onSubmit?: React.FormEventHandler<HTMLFormElement>;
 }
 
+// 간호기록 가로로 뽑히지않게해달라고해서 세로로 인쇄되게끔 만든거
 function SurveyFormColumn(props: SurveyFormProps) {
   const { breakpoints } = useTheme();
   const isMobile = useMediaQuery(breakpoints.down('sm'));
