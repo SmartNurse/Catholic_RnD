@@ -58,6 +58,7 @@ import {
   IUpdateSTarTBack,
   IUpdateCRRT,
   IUpdateCentralVenous,
+  IUpdateNursingProcess,
 } from './type';
 
 // e-CARDEX
@@ -701,4 +702,15 @@ export const getNursingRecode = (request: IGetSearchSurvey) => {
 
   const url = `${baseUrl()}size=100&${formatToRequestParameter(request)}`;
   return apiGateway.get(url);
+};
+
+// 간호과정 서술기록
+export const getNursingProcess = (request: IGetSurvey) => {
+  const url = `/survey/mental?${formatToRequestParameter(request)}`;
+  return apiGateway.get(url);
+};
+
+export const updateNursingProcess = (request: IUpdateNursingProcess) => {
+  const url = `/survey/mental`;
+  return apiGateway.post(url, camelcaseKeys(request));
 };

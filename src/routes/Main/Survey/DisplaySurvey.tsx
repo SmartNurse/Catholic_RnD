@@ -290,7 +290,7 @@ const DisplaySurvey = (props: Props) => {
       if (!defaultValues) return null;
       return <DNA {...dialogProps} onClose={onCloseSave} />;
     }
-    case MENU.NURSING_RECORD: {
+    case MENU.NURSING_PROCESS: {
       if (!defaultValues) return null;
       return <NursingRecord {...dialogProps} onClose={onCloseSave} />;
     }

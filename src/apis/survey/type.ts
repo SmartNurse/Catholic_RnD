@@ -1412,3 +1412,19 @@ export interface IUpedateNursingRecord extends IGetSurvey {
   student_uuid: string;
   student_nursing_record: string;
 }
+
+// 간호과정 서술기록
+export interface INursingProcess {
+  subjective: string;
+  objective: string;
+  diagnosis: string;
+  goal: string;
+  paln: string;
+  reason: string;
+  perform: string;
+  evaluation: string;
+}
+
+export interface IUpdateNursingProcess extends IGetSurvey {
+  nursing_process: INursingProcess[];
+}

@@ -58,6 +58,7 @@ import {
   initialCRRT,
   initialIntubation,
   initialCPR,
+  initialNursingProcess,
 } from './initialStates';
 
 export enum MENU {
@@ -120,7 +121,7 @@ export enum MENU {
   CORE_NURSING_SKILL_VIDEO = '핵심간호술기영상 저장',
   CORE_NURSING_SKILL_VIDEO_EXEMPLE = '핵심간호술기영상 예시',
   DRUG_CALCULATOR = '약물계산기',
-  NURSING_RECORD = '간호과정 서술기록',
+  NURSING_PROCESS = '간호과정 서술기록',
   NURSE_CHECKLIST_ROOM = '병동',
   FFI = 'FFI',
   KOOS = 'KOOS',
@@ -210,3 +211,5 @@ export type TCoreNursingSkillVideoDefaultValues =
   typeof initialCoreNursingSkillVideo;
 export type TCoreNursingSkillVideoDeExemplefaultValues =
   typeof initialCoreNursingSkillVideoExemple;
+
+export type TNursingProcessDefaultValues = typeof initialNursingProcess;

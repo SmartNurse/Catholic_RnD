@@ -53,6 +53,7 @@ import {
   getSuppressor,
   getCentralVenous,
   getCPR,
+  getNursingProcess,
 } from 'apis/survey';
 import useNotification from 'hooks/useNotification';
 import { findKeyValueToObj, findKeyValueToObjNoParse } from 'utils/convert';
@@ -116,6 +117,7 @@ import {
   initialIntubation,
   initialCentralVenous,
   initialCPR,
+  initialNursingProcess,
 } from '../initialStates';
 import { MENU } from '../type';
 
@@ -772,6 +774,13 @@ const useDefaultValues = ({ setDefaultValues, user_id }: Props) => {
               },
               initialDNA
             );
+          })
+          .catch(e => onFail('알 수 없는 오류가 발생했습니다.', e));
+        break;
+      case MENU.NURSING_PROCESS:
+        getNursingProcess({ user_id, patient_id })
+          .then(({ data }) => {
+            convertDataToStates(data, initialNursingProcess);
           })
           .catch(e => onFail('알 수 없는 오류가 발생했습니다.', e));
         break;
