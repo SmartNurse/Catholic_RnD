@@ -7,16 +7,16 @@ import useNotification from 'hooks/useNotification';
 import { Typography, Grid, TableCell } from '@mui/material';
 import MuiDialog from 'components/MuiDialog';
 
-import { SurveyDialogProps, TMentalNursingDefaultValues } from '../type';
+import { SurveyDialogProps, TNursingProcessDefaultValues } from '../type';
 
 import CommonPatientInfo from '../components/CommonPatientInfo';
 import RecordComponents from './RecordComponents';
 
-import { updateMentalNursing } from 'apis/survey';
-import { IMentalNursingRecord } from 'apis/survey/type';
+import { updateNursingProcess } from 'apis/survey';
+import { INursingProcess } from 'apis/survey/type';
 
 const NursingRecord = (
-  props: SurveyDialogProps<TMentalNursingDefaultValues>
+  props: SurveyDialogProps<TNursingProcessDefaultValues>
 ) => {
   const {
     title,
@@ -36,34 +36,36 @@ const NursingRecord = (
   });
   const [yesDelet, setYesDelet] = useState(false);
 
-  const onSubmit = (data: TMentalNursingDefaultValues) => {
-    const { mental_survey } = data;
-
+  const onSubmit = (data: TNursingProcessDefaultValues) => {
+    const { nursing_process } = data;
+    console.log('data', data);
     const request = {
       user_id,
       patient_id: patientInfo.patient_id,
-      mental_survey: mental_survey?.map(
+      nursing_process: nursing_process?.map(
         ({
-          date,
-          time,
-          patient_activity,
-          student_activity,
-          student_rationale,
+          subjective,
+          objective,
+          diagnosis,
+          goal,
+          paln,
+          reason,
+          perform,
           evaluation,
-          mental_nursing,
-        }: IMentalNursingRecord) => ({
-          date,
-          time,
-          patient_activity,
-          student_activity,
-          student_rationale,
+        }: INursingProcess) => ({
+          subjective,
+          objective,
+          diagnosis,
+          goal,
+          paln,
+          reason,
+          perform,
           evaluation,
-          mental_nursing,
         })
       ),
     };
 
-    updateMentalNursing(request)
+    updateNursingProcess(request)
       .then(({ data: { rc } }) => {
         if (rc !== 1) return onResultCode(rc);
         if (yesDelet === true) {
@@ -111,7 +113,8 @@ const NursingRecord = (
             textAlign: 'center',
           }}
         >
-          정신간호 기록지
+          간호과정 서술기록
+          <br />- 테스트 중입니다. -
         </Typography>
         <CommonPatientInfo patientInfo={patientInfo} nurseName={nurseName} />
         <RecordComponents {...formProps} />
