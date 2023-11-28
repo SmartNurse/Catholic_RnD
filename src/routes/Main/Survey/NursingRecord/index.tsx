@@ -1,9 +1,10 @@
+import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 
 import useSurvey from 'store/survey/useSurvey';
 import useNotification from 'hooks/useNotification';
 
-import { Typography, Grid } from '@mui/material';
+import { Typography, Grid, TableCell } from '@mui/material';
 import MuiDialog from 'components/MuiDialog';
 
 import { SurveyDialogProps, TMentalNursingDefaultValues } from '../type';
@@ -33,6 +34,7 @@ const NursingRecord = (
   const { handleSubmit, watch, register, getValues, setValue } = useForm({
     defaultValues,
   });
+  const [yesDelet, setYesDelet] = useState(false);
 
   const onSubmit = (data: TMentalNursingDefaultValues) => {
     const { mental_survey } = data;
@@ -64,9 +66,12 @@ const NursingRecord = (
     updateMentalNursing(request)
       .then(({ data: { rc } }) => {
         if (rc !== 1) return onResultCode(rc);
-
-        onUpdateIsSave(true);
-        onSuccess('정신간호 기록지 저장에 성공하였습니다.');
+        if (yesDelet === true) {
+          onUpdateIsSave(true);
+        } else {
+          onUpdateIsSave(true);
+          onSuccess('정신간호 기록지 저장에 성공하였습니다.');
+        }
       })
       .catch(e => onFail('정신간호 기록지 저장에 실패하였습니다.', e));
   };
@@ -82,12 +87,14 @@ const NursingRecord = (
   };
 
   return (
-    <MuiDialog.SurveyForm
+    <MuiDialog.SurveyFormRecheckSave
       title={title}
       isOpen={isOpen}
       onClose={onClose}
       onSubmit={disabled ? undefined : handleSubmit(onSubmit)}
       update_at={defaultValues?.update_at}
+      yesDelet={yesDelet}
+      setYesDelet={setYesDelet}
     >
       <Grid
         container
@@ -109,7 +116,7 @@ const NursingRecord = (
         <CommonPatientInfo patientInfo={patientInfo} nurseName={nurseName} />
         <RecordComponents {...formProps} />
       </Grid>
-    </MuiDialog.SurveyForm>
+    </MuiDialog.SurveyFormRecheckSave>
   );
 };
 
