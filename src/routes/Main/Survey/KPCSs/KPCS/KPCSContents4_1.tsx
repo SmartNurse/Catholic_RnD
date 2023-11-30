@@ -95,6 +95,9 @@ const KPCSContents4_1 = (props: Props) => {
         } else if (cur === 'no29' && Number(getValues(cur)) > 1) {
           const value = Number(getValues(cur)) + 1;
           return value ? acc + value : acc;
+        } else if (cur === 'no32' && Number(getValues(cur)) > 1) {
+          const value = Number(getValues(cur)) - 1;
+          return value ? acc + value : acc;
         } else {
           const value = Number(getValues(cur));
           return value ? acc + value : acc;
@@ -243,15 +246,23 @@ const KPCSContents4_1 = (props: Props) => {
                                   required={false}
                                   type="number"
                                   textAlign="right"
-                                  disabled={disabled}
+                                  disabled={
+                                    Number(
+                                      getValues(radioId7_1[content.id - 1])
+                                    ) === 0
+                                      ? true
+                                      : disabled
+                                  }
                                   sx={{ width: '200px', marginLeft: '10px' }}
                                   InputProps={{
                                     ...Form.adornment('', 'unit'),
                                   }}
-                                  {...register(`${v}`)}
+                                  {...register('no32')}
                                   onChange={e => {
-                                    setValue(`${v}`, e.target.value);
-                                    setTransfusion(Number(e.target.value));
+                                    setValue('no32', Number(e.target.value));
+                                    setTransfusion(
+                                      Math.floor(Number(e.target.value) / 3) - 1
+                                    );
                                   }}
                                 />
                               </Box>
