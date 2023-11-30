@@ -706,11 +706,13 @@ export const getNursingRecode = (request: IGetSearchSurvey) => {
 
 // 간호과정 서술기록
 export const getNursingProcess = (request: IGetSurvey) => {
-  const url = `/survey/mental?${formatToRequestParameter(request)}`;
+  const url = `/survey/nursing_process_narrative_note?${formatToRequestParameter(
+    request
+  )}`;
   return apiGateway.get(url);
 };
 
 export const updateNursingProcess = (request: IUpdateNursingProcess) => {
-  const url = `/survey/mental`;
+  const url = `/survey/nursing_process_narrative_note?`;
   return apiGateway.post(url, camelcaseKeys(request));
 };

@@ -3,25 +3,26 @@ import Form from 'components/Form';
 import { Fragment, useState } from 'react';
 import { AccessTime, Delete } from '@mui/icons-material';
 import {
+  Box,
   Button,
   Grid,
   IconButton,
+  Stack,
   Table,
   TableBody,
   TableCell,
   TableRow,
   Typography,
 } from '@mui/material';
-import { MobileTimePicker } from '@mui/x-date-pickers';
 
 import { Ti18nId } from 'hooks/useI18n';
-import { IMentalNursingRecord } from 'apis/survey/type';
+import { INursingProcess } from 'apis/survey/type';
 import { IFormRegister, IFormValues, IFormWatch } from 'routes/Main/type';
 
 import MuiTextField from 'components/Form/MuiTextField';
 import SectionTitle from '../components/SectionTitle';
 
-import { formatStringToDate } from 'utils/formatting';
+import useUser from 'store/user/useUser';
 
 interface Props extends IFormValues, IFormWatch, IFormRegister {
   disabled?: boolean;
@@ -30,88 +31,86 @@ interface Props extends IFormValues, IFormWatch, IFormRegister {
 }
 
 const RecordComponents = (props: Props) => {
-  const { disabled, watch, setValue, onRequired, onSuccess, register } = props;
-  const mentalNursingRecordList: IMentalNursingRecord[] =
-    watch('mental_survey');
+  const {
+    disabled,
+    watch,
+    setValue,
+    onRequired,
+    onSuccess,
+    getValues,
+    register,
+  } = props;
+  const nursingRecordList: INursingProcess[] = watch(
+    'nursing_process_narrative_note_survey'
+  );
 
-  const [date, setDate] = useState('');
-  const [time, setTime] = useState(null);
-  const [patient, setPatient] = useState('');
-  const [student, setStudent] = useState('');
-  const [basis, setBasis] = useState('');
+  const { student_no, student_name } = useUser();
+
+  const [subjective, setSubjective] = useState('');
+  const [objective, setObjective] = useState('');
+  const [diagnosis, setDiagnosis] = useState('');
+  const [goal, setGoal] = useState('');
+  const [plan, setPlan] = useState('');
+  const [reason, setReason] = useState('');
+  const [perform, setPerform] = useState('');
   const [evaluation, setEvaluation] = useState('');
-  const [desc, setDesc] = useState('');
 
   const onAddRow = () => {
     const request = {
-      date,
-      time,
-      patient_activity: patient,
-      student_activity: student,
-      student_rationale: basis,
+      subjective,
+      objective,
+      diagnosis,
+      goal,
+      plan,
+      reason,
+      perform,
       evaluation,
-      mental_nursing: desc,
     };
 
-    if (Object.values(request).filter(v => !v).length > 0) {
-      return onRequired('CLINICAL.OBSERVATION.ADD.ROW');
-    }
-
-    onSuccess('정신간호 기록 추가되었습니다.');
+    onSuccess('간호과정 서술기록 추가되었습니다.');
     setValue(
-      'mental_survey',
-      mentalNursingRecordList
-        ? [...mentalNursingRecordList, request]
-        : [request]
+      'nursing_process_narrative_note_survey',
+      nursingRecordList ? [...nursingRecordList, request] : [request]
     );
-    setValue('mental_nursing_date', '');
-    setDate('');
-    setTime(null);
-    setPatient('');
-    setStudent('');
-    setBasis('');
+
+    setSubjective('');
+    setObjective('');
+    setDiagnosis('');
+    setGoal('');
+    setPlan('');
+    setReason('');
+    setPerform('');
     setEvaluation('');
-    setDesc('');
   };
 
   const onDeleteRow = (index: number) => {
     setValue(
-      'mental_survey',
-      mentalNursingRecordList.filter((_, i) => i !== index)
+      'nursing_process_narrative_note_survey',
+      nursingRecordList.filter((_, i) => i !== index)
     );
   };
 
   const inputRows = [
     {
-      label: '일시',
+      label: '제출자',
       elements: [
         {
           type: 'date',
           element: (
-            <Form.MuiTextField
-              type="date"
-              required={false}
-              {...register('mental_nursing_date', {
-                onChange: e => setDate(e.target.value),
-              })}
-            />
-          ),
-        },
-        {
-          type: 'time',
-          element: (
-            <MobileTimePicker
-              value={time}
-              onChange={setTime}
-              renderInput={params => (
-                <MuiTextField
-                  {...params}
-                  required={false}
-                  placeholder="00:00 pm"
-                  InputProps={{ endAdornment: <AccessTime /> }}
-                />
-              )}
-            />
+            <Stack direction="row" gap={2}>
+              <Form.MuiTextField
+                required={false}
+                value={student_no}
+                InputProps={{ readOnly: true }}
+                sx={{ backgroundColor: '#dcd8d8' }}
+              />
+              <Form.MuiTextField
+                required={false}
+                value={student_name}
+                InputProps={{ readOnly: true }}
+                sx={{ backgroundColor: '#dcd8d8' }}
+              />
+            </Stack>
           ),
         },
         {
@@ -125,90 +124,167 @@ const RecordComponents = (props: Props) => {
       ],
     },
     {
-      label: '환자의 언어적/비언어적 행동',
+      label: '간호사정',
+      elements: [
+        {
+          type: 'text',
+          element: (
+            <Box
+              display="flex"
+              sx={{
+                direction: 'row',
+                justifyContent: 'space-between',
+                width: '100%',
+                marginTop: '-20px',
+              }}
+            >
+              <Stack sx={{ width: '49%' }}>
+                <Typography sx={{ fontSize: '12px', fontWeight: 500 }}>
+                  주관적 자료
+                </Typography>
+                <Form.MuiTextField
+                  required={false}
+                  value={subjective}
+                  disabled={disabled}
+                  multiline
+                  minRows={5}
+                  onChange={({ target: { value } }) => setSubjective(value)}
+                />
+              </Stack>
+              <Stack sx={{ width: '49%' }}>
+                <Typography sx={{ fontSize: '12px', fontWeight: 500 }}>
+                  객관적 자료
+                </Typography>
+                <Form.MuiTextField
+                  required={false}
+                  value={objective}
+                  disabled={disabled}
+                  multiline
+                  minRows={5}
+                  onChange={({ target: { value } }) => setObjective(value)}
+                />
+              </Stack>
+            </Box>
+          ),
+        },
+      ],
+    },
+    {
+      label: '간호진단-간호진단진술문 (PE)',
       elements: [
         {
           type: 'text',
           element: (
             <MuiTextField
-              value={patient}
+              sx={{
+                marginTop: '-20px',
+              }}
+              value={diagnosis}
               required={false}
-              onChange={({ target: { value } }) => setPatient(value)}
+              onChange={({ target: { value } }) => setDiagnosis(value)}
               multiline
-              minRows={2}
-              placeholder="직접 입력"
+              minRows={5}
             />
           ),
         },
       ],
     },
     {
-      label: '간호사의 언어적/비언어적 행동',
+      label: '간호 계획',
+      elements: [
+        {
+          type: 'text',
+          element: (
+            <Box
+              display="flex"
+              sx={{
+                width: '100%',
+                marginTop: '-20px',
+                flexDirection: 'column',
+              }}
+            >
+              <Stack>
+                <Typography sx={{ fontSize: '12px', fontWeight: 500 }}>
+                  목표
+                </Typography>
+                <Form.MuiTextField
+                  value={goal}
+                  required={false}
+                  disabled={disabled}
+                  multiline
+                  minRows={5}
+                  onChange={({ target: { value } }) => setGoal(value)}
+                />
+              </Stack>
+
+              <Stack direction="row" gap={3.9} sx={{ marginTop: '20px' }}>
+                <Stack sx={{ width: '49%' }}>
+                  <Typography sx={{ fontSize: '12px', fontWeight: 500 }}>
+                    계획
+                  </Typography>
+                  <Form.MuiTextField
+                    value={plan}
+                    required={false}
+                    disabled={disabled}
+                    multiline
+                    minRows={30}
+                    onChange={({ target: { value } }) => setPlan(value)}
+                  />
+                </Stack>
+                <Stack sx={{ width: '49%' }}>
+                  <Typography sx={{ fontSize: '12px', fontWeight: 500 }}>
+                    이론적 근거
+                  </Typography>
+                  <Form.MuiTextField
+                    value={reason}
+                    required={false}
+                    disabled={disabled}
+                    multiline
+                    minRows={30}
+                    onChange={({ target: { value } }) => setReason(value)}
+                  />
+                </Stack>
+              </Stack>
+            </Box>
+          ),
+        },
+      ],
+    },
+    {
+      label: '간호 수행 (Optional)',
       elements: [
         {
           type: 'text',
           element: (
             <MuiTextField
-              value={student}
+              sx={{
+                marginTop: '-20px',
+              }}
+              value={perform}
               required={false}
-              onChange={({ target: { value } }) => setStudent(value)}
+              onChange={({ target: { value } }) => setPerform(value)}
               multiline
-              minRows={2}
-              placeholder="직접 입력"
+              minRows={5}
             />
           ),
         },
       ],
     },
     {
-      label: '간호사 반응의 이론적 근거',
+      label: '간호 평가 (Optional)',
       elements: [
         {
           type: 'text',
           element: (
             <MuiTextField
-              value={basis}
-              required={false}
-              onChange={({ target: { value } }) => setBasis(value)}
-              multiline
-              minRows={2}
-              placeholder="직접 입력"
-            />
-          ),
-        },
-      ],
-    },
-    {
-      label: '평가',
-      elements: [
-        {
-          type: 'text',
-          element: (
-            <MuiTextField
+              sx={{
+                marginTop: '-20px',
+              }}
               value={evaluation}
               required={false}
               onChange={({ target: { value } }) => setEvaluation(value)}
               multiline
-              minRows={2}
-              placeholder="직접 입력"
-            />
-          ),
-        },
-      ],
-    },
-    {
-      label: '정신간호 서술기록',
-      elements: [
-        {
-          type: 'text',
-          element: (
-            <MuiTextField
-              value={desc}
-              required={false}
-              onChange={({ target: { value } }) => setDesc(value)}
-              multiline
-              minRows={2}
-              placeholder="직접 입력"
+              minRows={5}
             />
           ),
         },
@@ -216,11 +292,11 @@ const RecordComponents = (props: Props) => {
     },
   ];
 
-  const displayRows = mentalNursingRecordList
-    ? mentalNursingRecordList.map((item, i) => ({
+  const displayRows = nursingRecordList
+    ? nursingRecordList.map((item, i) => ({
         ...item,
         id: i,
-        time: formatStringToDate(item.time, 'hh:mm a'),
+        // time: formatStringToDate(item.time, 'hh:mm a'),
         action: (
           <IconButton
             size="small"
@@ -232,122 +308,363 @@ const RecordComponents = (props: Props) => {
         ),
       }))
     : [];
+
   return (
     <Fragment>
-      <SectionTitle title="정신간호 기록" />
+      <SectionTitle title="간호과정 서술" />
       <Grid item xs={12}>
         <Table sx={{ minWidth: 650 }} aria-label="simple table">
           <TableBody>
             {!disabled &&
-              inputRows.map(row => (
-                <TableRow
-                  key={row.label}
-                  sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
-                >
-                  <TableCell style={{ width: '20%', verticalAlign: 'top' }}>
-                    {row.label}
-                  </TableCell>
-                  {row.elements.map(element =>
-                    element.type === 'date' || element.type === 'time' ? (
-                      <TableCell>{element.element}</TableCell>
-                    ) : element.type === 'button' ? (
-                      <TableCell align="right">{element.element}</TableCell>
-                    ) : (
-                      <TableCell colSpan={3}>{element.element}</TableCell>
-                    )
-                  )}
-                </TableRow>
-              ))}
+              inputRows.map(row => {
+                if (row.label === '제출자') {
+                  return (
+                    <TableRow
+                      key={row.label}
+                      sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
+                    >
+                      <TableCell
+                        style={{
+                          width: '20%',
+                          verticalAlign: 'top',
+                          fontSize: '13px',
+                          fontWeight: 500,
+                        }}
+                      >
+                        {row.label}
+                      </TableCell>
+                      {row.elements.map(element => {
+                        if (element.type === 'date') {
+                          return (
+                            <TableCell align="right" width="30%">
+                              {element.element}
+                            </TableCell>
+                          );
+                        } else if (element.type === 'button') {
+                          return (
+                            <TableCell align="right">
+                              {element.element}
+                            </TableCell>
+                          );
+                        } else
+                          return (
+                            <TableCell colSpan={3}>{element.element}</TableCell>
+                          );
+                      })}
+                    </TableRow>
+                  );
+                } else
+                  return (
+                    <>
+                      <TableRow
+                        key={row.label}
+                        sx={{
+                          '&:last-child td, &:last-child th': { border: 0 },
+                        }}
+                      >
+                        <TableCell
+                          style={{
+                            width: '20%',
+                            verticalAlign: 'top',
+                            borderBottom: 'none',
+                            fontSize: '13px',
+                            fontWeight: 500,
+                          }}
+                        >
+                          {row.label}
+                        </TableCell>
+                      </TableRow>
+                      <TableRow>
+                        {row.elements.map(element => {
+                          if (element.type === 'date') {
+                            return (
+                              <TableCell align="right" sx={{ width: '300px' }}>
+                                {element.element}
+                              </TableCell>
+                            );
+                          } else if (element.type === 'time') {
+                            return <TableCell>{element.element}</TableCell>;
+                          } else if (element.type === 'button') {
+                            return (
+                              <TableCell align="right">
+                                {element.element}
+                              </TableCell>
+                            );
+                          } else
+                            return (
+                              <TableCell colSpan={3}>
+                                {element.element}
+                              </TableCell>
+                            );
+                        })}
+                      </TableRow>
+                    </>
+                  );
+              })}
           </TableBody>
+        </Table>
+
+        <SectionTitle title="저장 항목" mt={2} mb={1} />
+
+        <Table sx={{ minWidth: 650 }} aria-label="simple table">
           <TableBody>
-            {displayRows.map(row => (
-              <>
-                <TableRow
-                  key="일시"
-                  sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
-                >
-                  <TableCell style={{ width: '20%', verticalAlign: 'top' }}>
-                    일시
-                  </TableCell>
-                  <TableCell>
-                    <Typography style={{ fontSize: '14px' }}>
-                      {row.date}
-                    </Typography>
-                  </TableCell>
-                  <TableCell>
-                    <Typography style={{ fontSize: '14px' }}>
-                      {row.time}
-                    </Typography>
-                  </TableCell>
-                  <TableCell align="right">{row.action}</TableCell>
-                </TableRow>
-                <TableRow
-                  key="환자의 언어적/비언어적 행동"
-                  sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
-                >
-                  <TableCell style={{ width: '20%', verticalAlign: 'top' }}>
-                    환자의 언어적/비언어적 행동
-                  </TableCell>
-                  <TableCell colSpan={3}>
-                    <Typography style={{ fontSize: '14px' }}>
-                      {row.patient_activity}
-                    </Typography>
-                  </TableCell>
-                </TableRow>
-                <TableRow
-                  key="학생의 언어적/비언어적 행동"
-                  sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
-                >
-                  <TableCell style={{ width: '20%', verticalAlign: 'top' }}>
-                    학생의 언어적/비언어적 행동
-                  </TableCell>
-                  <TableCell colSpan={3}>
-                    <Typography style={{ fontSize: '14px' }}>
-                      {row.student_activity}
-                    </Typography>
-                  </TableCell>
-                </TableRow>
-                <TableRow
-                  key="학생 반응의 이론적 근거"
-                  sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
-                >
-                  <TableCell style={{ width: '20%', verticalAlign: 'top' }}>
-                    학생 반응의 이론적 근거
-                  </TableCell>
-                  <TableCell colSpan={3}>
-                    <Typography style={{ fontSize: '14px' }}>
-                      {row.student_rationale}
-                    </Typography>
-                  </TableCell>
-                </TableRow>
-                <TableRow
-                  key="평가"
-                  sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
-                >
-                  <TableCell style={{ width: '20%', verticalAlign: 'top' }}>
-                    평가
-                  </TableCell>
-                  <TableCell colSpan={3}>
-                    <Typography style={{ fontSize: '14px' }}>
-                      {row.evaluation}
-                    </Typography>
-                  </TableCell>
-                </TableRow>
-                <TableRow
-                  key="정신간호 서술기록"
-                  sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
-                >
-                  <TableCell style={{ width: '20%', verticalAlign: 'top' }}>
-                    정신간호 서술기록
-                  </TableCell>
-                  <TableCell colSpan={3}>
-                    <Typography style={{ fontSize: '14px' }}>
-                      {row.mental_nursing}
-                    </Typography>
-                  </TableCell>
-                </TableRow>
-              </>
-            ))}
+            {displayRows.map(row => {
+              console.log('row  : ', row);
+              return (
+                <Grid item xs={12}>
+                  <TableRow
+                    key="일시"
+                    sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
+                  >
+                    <TableCell>
+                      <Stack direction="row" gap={30}>
+                        <Typography
+                          whiteSpace="nowrap"
+                          sx={{
+                            lineHeight: '38px',
+                            fontSize: '13px',
+                            fontWeight: 500,
+                          }}
+                        >
+                          제출자
+                        </Typography>
+                        <Stack direction="row" gap={2}>
+                          <Form.MuiTextField
+                            required={false}
+                            value={student_no}
+                            InputProps={{ readOnly: true }}
+                            sx={{ backgroundColor: '#dcd8d8' }}
+                          />
+                          <Form.MuiTextField
+                            required={false}
+                            value={student_name}
+                            InputProps={{ readOnly: true }}
+                            sx={{ backgroundColor: '#dcd8d8' }}
+                          />
+                        </Stack>
+                      </Stack>
+                    </TableCell>
+                    <TableCell></TableCell>
+                    <TableCell align="right">{row.action}</TableCell>
+                  </TableRow>
+                  <TableRow
+                    key="간호사정"
+                    sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
+                  >
+                    <TableCell
+                      style={{
+                        verticalAlign: 'top',
+                        // borderBottom: 'none',
+                      }}
+                      width="49%"
+                    >
+                      <Typography style={{ fontSize: '13px', fontWeight: 500 }}>
+                        간호사정
+                      </Typography>
+                      <Box
+                        display="flex"
+                        sx={{
+                          direction: 'row',
+                          justifyContent: 'space-between',
+                          width: '100%',
+                          marginTop: '10px',
+                        }}
+                      >
+                        <Box width="49%">
+                          <Typography
+                            style={{ fontSize: '12px', fontWeight: 500 }}
+                          >
+                            주관적자료
+                          </Typography>
+                          <Typography style={{ fontSize: '12px' }}>
+                            {row.subjective}
+                          </Typography>
+                        </Box>
+                      </Box>
+                    </TableCell>
+                    <TableCell
+                      style={{
+                        paddingTop: '40px',
+                      }}
+                      width="49%"
+                    >
+                      <Box width="49%">
+                        <Typography
+                          style={{ fontSize: '13px', fontWeight: 500 }}
+                        >
+                          객관적 자료
+                        </Typography>
+                        <Typography style={{ fontSize: '12px' }}>
+                          {row.objective}
+                        </Typography>
+                      </Box>
+                    </TableCell>
+                    <TableCell></TableCell>
+                  </TableRow>
+
+                  <TableRow
+                    key="간호진단-간호진단진술문 (PE)"
+                    sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
+                  >
+                    <TableCell
+                      style={{
+                        verticalAlign: 'top',
+                      }}
+                    >
+                      <Typography style={{ fontSize: '13px', fontWeight: 500 }}>
+                        간호진단-간호진단진술문 (PE)
+                      </Typography>
+                      <Box
+                        display="flex"
+                        sx={{
+                          direction: 'row',
+                          justifyContent: 'space-between',
+                          width: '100%',
+                          marginTop: '10px',
+                        }}
+                      >
+                        <Box>
+                          <Typography style={{ fontSize: '12px' }}>
+                            {row.diagnosis}
+                          </Typography>
+                        </Box>
+                      </Box>
+                    </TableCell>
+                    <TableCell></TableCell>
+                    <TableCell></TableCell>
+                  </TableRow>
+
+                  <TableRow>
+                    <TableCell sx={{ borderBottom: 'none' }}>
+                      <Box>
+                        <Typography
+                          style={{ fontSize: '13px', fontWeight: 500 }}
+                        >
+                          간호계획
+                        </Typography>
+                        <Typography
+                          style={{
+                            fontSize: '12px',
+                            fontWeight: 500,
+                            marginTop: '10px',
+                          }}
+                        >
+                          목표
+                        </Typography>
+                        <Typography style={{ fontSize: '12px' }}>
+                          {row.goal}
+                        </Typography>
+                      </Box>
+                    </TableCell>
+                    <TableCell sx={{ borderBottom: 'none' }}>
+                      <Typography style={{ fontSize: '12px', color: 'white' }}>
+                        {row.goal}
+                      </Typography>
+                    </TableCell>
+                    <TableCell sx={{ borderBottom: 'none' }}></TableCell>
+                  </TableRow>
+                  <TableRow
+                    key="간호계획"
+                    sx={{
+                      '&:last-child td, &:last-child th': { border: 0 },
+                    }}
+                  >
+                    <TableCell width="49%">
+                      <Box width="49%" sx={{ marginTop: '-30px' }}>
+                        <Typography
+                          style={{ fontSize: '12px', fontWeight: 500 }}
+                        >
+                          간호계획
+                        </Typography>
+                        <Typography style={{ fontSize: '12px' }}>
+                          {row.plan}
+                        </Typography>
+                      </Box>
+                    </TableCell>
+                    <TableCell
+                      // style={{
+                      //   paddingTop: '40px',
+                      // }}
+                      width="49%"
+                    >
+                      <Box width="49%" sx={{ marginTop: '-30px' }}>
+                        <Typography
+                          style={{ fontSize: '12px', fontWeight: 500 }}
+                        >
+                          이론적 근거
+                        </Typography>
+                        <Typography style={{ fontSize: '12px' }}>
+                          {row.reason}
+                        </Typography>
+                      </Box>
+                    </TableCell>
+                    <TableCell></TableCell>
+                  </TableRow>
+                  <TableRow
+                    key="간호 수행 (Optional)"
+                    sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
+                  >
+                    <TableCell
+                      style={{
+                        verticalAlign: 'top',
+                      }}
+                    >
+                      <Typography style={{ fontSize: '13px', fontWeight: 500 }}>
+                        간호 수행 (Optional)
+                      </Typography>
+                      <Box
+                        display="flex"
+                        sx={{
+                          direction: 'row',
+                          justifyContent: 'space-between',
+                          width: '100%',
+                          marginTop: '10px',
+                        }}
+                      >
+                        <Box>
+                          <Typography style={{ fontSize: '12px' }}>
+                            {row.perform}
+                          </Typography>
+                        </Box>
+                      </Box>
+                    </TableCell>
+                    <TableCell></TableCell>
+                    <TableCell></TableCell>
+                  </TableRow>
+                  <TableRow
+                    key="간호 평가 (Optional)"
+                    sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
+                  >
+                    <TableCell
+                      style={{
+                        verticalAlign: 'top',
+                      }}
+                    >
+                      <Typography style={{ fontSize: '13px', fontWeight: 500 }}>
+                        간호 평가 (Optional)
+                      </Typography>
+                      <Box
+                        display="flex"
+                        sx={{
+                          direction: 'row',
+                          justifyContent: 'space-between',
+                          width: '100%',
+                          marginTop: '10px',
+                        }}
+                      >
+                        <Box>
+                          <Typography style={{ fontSize: '12px' }}>
+                            {row.evaluation}
+                          </Typography>
+                        </Box>
+                      </Box>
+                    </TableCell>
+                    <TableCell></TableCell>
+                    <TableCell></TableCell>
+                  </TableRow>
+                </Grid>
+              );
+            })}
           </TableBody>
         </Table>
       </Grid>

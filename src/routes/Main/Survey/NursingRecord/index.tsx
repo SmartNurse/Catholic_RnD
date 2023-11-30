@@ -37,33 +37,36 @@ const NursingRecord = (
   const [yesDelet, setYesDelet] = useState(false);
 
   const onSubmit = (data: TNursingProcessDefaultValues) => {
-    const { nursing_process } = data;
-    console.log('data', data);
+    const { nursing_process_narrative_note_survey } = data;
+
     const request = {
       user_id,
       patient_id: patientInfo.patient_id,
-      nursing_process: nursing_process?.map(
-        ({
-          subjective,
-          objective,
-          diagnosis,
-          goal,
-          paln,
-          reason,
-          perform,
-          evaluation,
-        }: INursingProcess) => ({
-          subjective,
-          objective,
-          diagnosis,
-          goal,
-          paln,
-          reason,
-          perform,
-          evaluation,
-        })
-      ),
+      nursing_process_narrative_note_survey:
+        nursing_process_narrative_note_survey?.map(
+          ({
+            subjective,
+            objective,
+            diagnosis,
+            goal,
+            plan,
+            reason,
+            perform,
+            evaluation,
+          }: INursingProcess) => ({
+            subjective,
+            objective,
+            diagnosis,
+            goal,
+            plan,
+            reason,
+            perform,
+            evaluation,
+          })
+        ),
     };
+
+    console.log('request', request);
 
     updateNursingProcess(request)
       .then(({ data: { rc } }) => {
@@ -72,10 +75,10 @@ const NursingRecord = (
           onUpdateIsSave(true);
         } else {
           onUpdateIsSave(true);
-          onSuccess('정신간호 기록지 저장에 성공하였습니다.');
+          onSuccess('간호과정 서술기록 저장에 성공하였습니다.');
         }
       })
-      .catch(e => onFail('정신간호 기록지 저장에 실패하였습니다.', e));
+      .catch(e => onFail('간호과정 서술기록 저장에 실패하였습니다.', e));
   };
 
   const formProps = {

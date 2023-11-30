@@ -1419,12 +1419,12 @@ export interface INursingProcess {
   objective: string;
   diagnosis: string;
   goal: string;
-  paln: string;
+  plan: string;
   reason: string;
   perform: string;
   evaluation: string;
 }
 
 export interface IUpdateNursingProcess extends IGetSurvey {
-  nursing_process: INursingProcess[];
+  nursing_process_narrative_note_survey: INursingProcess[];
 }

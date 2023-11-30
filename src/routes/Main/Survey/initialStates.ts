@@ -807,7 +807,7 @@ export const initialKPCS = {
   no29: 0,
   no30: 0,
   no31: 0,
-  transfusion: [{ yes_or_no: 0, number: 2, unit: 0 }],
+  no32: 0,
   no33: 0,
   no34: 0,
   no35: 0,
@@ -1399,4 +1399,9 @@ export const initialSTarTBack = {
   sb07: '',
   sb08: '',
   sb09: '',
+};
+
+export const initialNursingProcess = {
+  update_at: '',
+  nursing_process_narrative_note_survey: [],
 };
