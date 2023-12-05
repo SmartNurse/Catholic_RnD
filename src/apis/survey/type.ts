@@ -1415,6 +1415,7 @@ export interface IUpedateNursingRecord extends IGetSurvey {
 
 // 간호과정 서술기록
 export interface INursingProcess {
+  priority: string;
   subjective: string;
   objective: string;
   diagnosis: string;
