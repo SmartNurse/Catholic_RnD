@@ -26,11 +26,17 @@ const useNotification = () => {
     });
   };
 
+  const onBeforeSearch = (message: string) => {
+    enqueueSnackbar(`${message}\n년도와 정렬순을 정해 조회버튼을 눌러주세요.`, {
+      variant: 'error',
+    });
+  };
+
   const onRequired = (id: Ti18nId) => {
     enqueueSnackbar(i18n(id), { variant: 'error' });
   };
 
-  return { onSuccess, onFail, onResultCode, onRequired };
+  return { onSuccess, onFail, onResultCode, onRequired, onBeforeSearch };
 };
 
 export default useNotification;
