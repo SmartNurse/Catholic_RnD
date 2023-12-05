@@ -713,6 +713,6 @@ export const getNursingProcess = (request: IGetSurvey) => {
 };
 
 export const updateNursingProcess = (request: IUpdateNursingProcess) => {
-  const url = `/survey/nursing_process_narrative_note?`;
+  const url = `/survey/nursing_process_narrative_note`;
   return apiGateway.post(url, camelcaseKeys(request));
 };
