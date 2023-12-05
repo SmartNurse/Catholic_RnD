@@ -697,7 +697,7 @@ export const getNursingRecode = (request: IGetSearchSurvey) => {
 
   const baseUrl = () => {
     if (sort_method && year) return '/main/inquiry_nursing_record?';
-    return '/main/manage_nursing_record?';
+    return '/main/inquiry_nursing_record?';
   };
 
   const url = `${baseUrl()}size=100&${formatToRequestParameter(request)}`;
@@ -715,4 +715,18 @@ export const getNursingProcess = (request: IGetSurvey) => {
 export const updateNursingProcess = (request: IUpdateNursingProcess) => {
   const url = `/survey/nursing_process_narrative_note`;
   return apiGateway.post(url, camelcaseKeys(request));
+};
+
+// 간호과정 서술기록 전체조회 페이지
+export const getNursingProcessAll = (request: IGetSearchSurvey) => {
+  const { year, sort_method } = request;
+
+  const baseUrl = () => {
+    if (sort_method && year)
+      return '/main/inquiry_nursing_process_narrative_note?';
+    return '/main/inquiry_nursing_process_narrative_note?';
+  };
+
+  const url = `${baseUrl()}size=100&${formatToRequestParameter(request)}`;
+  return apiGateway.get(url);
 };
