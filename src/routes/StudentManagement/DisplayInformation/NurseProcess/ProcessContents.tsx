@@ -44,7 +44,7 @@ const ProcessContents = ({ patientInfo }: Props) => {
       sort_method,
     })
       .then(({ data }) => {
-        setList(data.student_nursing_record_info);
+        setList(data.nursing_process_narrative_note_survey);
         setTotalCount(data.count);
       })
       .catch(e => {

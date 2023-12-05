@@ -1,11 +1,9 @@
-import { Fragment } from 'react';
-
 import { GridColDef } from '@mui/x-data-grid';
 
 import MuiDataGrid from 'components/MuiDataGrid';
 import { IUpedateNursingRecord } from 'apis/survey/type';
-import useI18n from 'hooks/useI18n';
-import { Box, Stack, Typography, useTheme } from '@mui/material';
+import { Box, Grid, Stack, Table, Typography, useTheme } from '@mui/material';
+import { formatStringToDate } from 'utils/formatting';
 
 interface Props {
   list: IUpedateNursingRecord[];
@@ -16,70 +14,342 @@ interface Props {
 }
 
 function ContentsBody(props: Props) {
-  const i18n = useI18n();
   const { palette } = useTheme();
 
   const { list, isLoading, totalCount, page, onPageChange } = props;
-
-  const Nanda = [
-    '주관적 자료',
-    '객관적 자료',
-    '간호진단-간호진단진술문 (PE)',
-    '목표',
-    '간호중재',
-    '이론적 근거',
-    '간호 수행 (Optional)',
-    '간호 평가 (Optional)',
-  ];
 
   const columns: GridColDef[] = [
     {
       field: 'student_name',
       headerName: '',
       renderCell: list => {
-        if (!list.row.student_nursing_record) {
+        if (!list.row.nursing_process_narrative_note_survey) {
           return <>기록없음</>;
         }
 
-        const recordTypes = list.row.student_nursing_record.map(
-          (type: any) => type.record_type
-        );
-        // console.log('recordTypes : ', recordTypes);
-        // console.log('list : ', list.row);
         return (
-          <Box>
-            <Stack direction="row" mt={1}>
-              <Typography
-                sx={{
-                  fontSize: '14px',
-                  fontWeight: 'bord',
-                  color: `${palette.primary.main}`,
-                }}
-              >
-                {list.row.student_name}
-              </Typography>
-              <Typography
-                sx={{
-                  fontSize: '14px',
-                  fontWeight: 'bold',
-                  color: '#00000052',
-                  margin: '0 5px 0 5px',
-                }}
-              >
-                |
-              </Typography>
-              <Typography
-                sx={{
-                  fontSize: '14px',
-                  fontWeight: 'bord',
-                  color: `${palette.primary.main}`,
-                }}
-              >
-                {list.row.student_no}
-              </Typography>
-            </Stack>
+          <Table sx={{ minWidth: 650 }} aria-label="simple table">
+            {list.row.nursing_process_narrative_note_survey.map(
+              (item: any, i: number) => {
+                const itemJSON = JSON.parse(item.contents);
+                const create_at = formatStringToDate(item.create_at);
 
-            {recordTypes.map((type: any, i: number) => {
+                return (
+                  <Grid item xs={12} sx={{ marginLeft: '10px' }}>
+                    <div
+                      style={{
+                        display: 'flex',
+                        borderBottom: '1px solid lightgray',
+                        paddingBottom: '15px',
+                        paddingTop: '5px',
+                      }}
+                    >
+                      <Stack direction="row" mt={1}>
+                        <Typography
+                          sx={{
+                            fontSize: '14px',
+                            fontWeight: 'bord',
+                            color: `${palette.primary.main}`,
+                          }}
+                        >
+                          {list.row.student_name}
+                        </Typography>
+                        <Typography
+                          sx={{
+                            fontSize: '14px',
+                            fontWeight: 'bold',
+                            color: '#00000052',
+                            margin: '0 5px 0 5px',
+                          }}
+                        >
+                          |
+                        </Typography>
+                        <Typography
+                          sx={{
+                            fontSize: '14px',
+                            fontWeight: 'bord',
+                            color: `${palette.primary.main}`,
+                          }}
+                        >
+                          {list.row.student_no}
+                        </Typography>
+                        <Typography
+                          sx={{
+                            fontSize: '14px',
+                            fontWeight: 'bold',
+                            color: '#00000052',
+                            margin: '0 5px 0 5px',
+                          }}
+                        >
+                          |
+                        </Typography>
+                        <Typography
+                          sx={{
+                            fontSize: '14px',
+                            fontWeight: 'bord',
+                            color: `${palette.primary.main}`,
+                          }}
+                        >
+                          최근 저장한 시간 : {create_at}
+                        </Typography>
+                      </Stack>
+                    </div>
+
+                    <Typography
+                      sx={{
+                        fontSize: '13px',
+                        fontWeight: 500,
+                        marginTop: '10px',
+                      }}
+                    >
+                      간호진단목록/우선순위
+                    </Typography>
+                    <div
+                      style={{
+                        display: 'flex',
+                        borderBottom: '1px solid lightgray',
+                        paddingBottom: '15px',
+                        paddingTop: '5px',
+                      }}
+                    >
+                      <Typography
+                        sx={{
+                          fontSize: '13px',
+                          fontWeight: 400,
+                        }}
+                      >
+                        {itemJSON[i]['priority']}
+                      </Typography>
+                    </div>
+
+                    <Typography
+                      sx={{
+                        fontSize: '13px',
+                        fontWeight: 500,
+                        marginTop: '10px',
+                      }}
+                    >
+                      간호사정
+                    </Typography>
+                    <div
+                      style={{
+                        display: 'flex',
+                        borderBottom: '1px solid lightgray',
+                        paddingBottom: '15px',
+                        paddingTop: '5px',
+                      }}
+                    >
+                      <Stack direction="row" mt={0.5} mb={1} gap={10}>
+                        <Box>
+                          <Typography
+                            sx={{
+                              fontSize: '13px',
+                              fontWeight: 500,
+                            }}
+                          >
+                            주관적 자료
+                          </Typography>
+                          <Typography
+                            sx={{
+                              fontSize: '13px',
+                              fontWeight: 400,
+                            }}
+                          >
+                            {itemJSON[i]['subjective']}
+                          </Typography>
+                        </Box>
+                        <Box>
+                          <Typography
+                            sx={{
+                              fontSize: '13px',
+                              fontWeight: 500,
+                            }}
+                          >
+                            객관적 자료
+                          </Typography>
+                          <Typography
+                            sx={{
+                              fontSize: '13px',
+                              fontWeight: 400,
+                            }}
+                          >
+                            {itemJSON[i]['objective']}
+                          </Typography>
+                        </Box>
+                      </Stack>
+                    </div>
+
+                    <Typography
+                      sx={{
+                        fontSize: '13px',
+                        fontWeight: 500,
+                        marginTop: '10px',
+                      }}
+                    >
+                      간호진단-간호진단진술문 (PE)
+                    </Typography>
+                    <div
+                      style={{
+                        display: 'flex',
+                        borderBottom: '1px solid lightgray',
+                        paddingBottom: '15px',
+                        paddingTop: '5px',
+                      }}
+                    >
+                      <Typography
+                        sx={{
+                          fontSize: '13px',
+                          fontWeight: 400,
+                        }}
+                      >
+                        {itemJSON[i]['diagnosis']}
+                      </Typography>
+                    </div>
+
+                    <Typography
+                      sx={{
+                        fontSize: '13px',
+                        fontWeight: 500,
+                        marginTop: '10px',
+                      }}
+                    >
+                      간호계획
+                    </Typography>
+
+                    <div
+                      style={{
+                        display: 'flex',
+                        paddingBottom: '15px',
+                        paddingTop: '5px',
+                      }}
+                    >
+                      <Box>
+                        <Typography
+                          sx={{
+                            fontSize: '13px',
+                            fontWeight: 500,
+                          }}
+                        >
+                          목표
+                        </Typography>
+                        <Typography
+                          sx={{
+                            fontSize: '13px',
+                            fontWeight: 400,
+                          }}
+                        >
+                          {itemJSON[i]['goal']}
+                        </Typography>
+                      </Box>
+                    </div>
+                    <div
+                      style={{
+                        display: 'flex',
+                        borderBottom: '1px solid lightgray',
+                        paddingBottom: '15px',
+                        paddingTop: '5px',
+                      }}
+                    >
+                      <Stack direction="row" mt={0.5} mb={1} gap={10}>
+                        <Box>
+                          <Typography
+                            sx={{
+                              fontSize: '13px',
+                              fontWeight: 500,
+                            }}
+                          >
+                            간호중재
+                          </Typography>
+                          <Typography
+                            sx={{
+                              fontSize: '13px',
+                              fontWeight: 400,
+                            }}
+                          >
+                            {itemJSON[i]['plan']}
+                          </Typography>
+                        </Box>
+                        <Box>
+                          <Typography
+                            sx={{
+                              fontSize: '13px',
+                              fontWeight: 500,
+                            }}
+                          >
+                            이론적 근거
+                          </Typography>
+                          <Typography
+                            sx={{
+                              fontSize: '13px',
+                              fontWeight: 400,
+                            }}
+                          >
+                            {itemJSON[i]['reason']}
+                          </Typography>
+                        </Box>
+                      </Stack>
+                    </div>
+
+                    <Typography
+                      sx={{
+                        fontSize: '13px',
+                        fontWeight: 500,
+                        marginTop: '10px',
+                      }}
+                    >
+                      간호 수행 (Optional)
+                    </Typography>
+                    <div
+                      style={{
+                        display: 'flex',
+                        borderBottom: '1px solid lightgray',
+                        paddingBottom: '15px',
+                        paddingTop: '5px',
+                      }}
+                    >
+                      <Typography
+                        sx={{
+                          fontSize: '13px',
+                          fontWeight: 400,
+                        }}
+                      >
+                        {itemJSON[i]['perform']}
+                      </Typography>
+                    </div>
+
+                    <Typography
+                      sx={{
+                        fontSize: '13px',
+                        fontWeight: 500,
+                        marginTop: '10px',
+                      }}
+                    >
+                      간호 평가 (Optional)
+                    </Typography>
+                    <div
+                      style={{
+                        display: 'flex',
+                        borderBottom: '3px solid black  ',
+                        paddingBottom: '15px',
+                        paddingTop: '5px',
+                        marginBottom: '20px',
+                      }}
+                    >
+                      <Typography
+                        sx={{
+                          fontSize: '13px',
+                          fontWeight: 400,
+                        }}
+                      >
+                        {itemJSON[i]['evaluation']}
+                      </Typography>
+                    </div>
+                  </Grid>
+                );
+              }
+            )}
+
+            {/* {recordTypes.map((type: any, i: number) => {
               const catecorys = list.row.student_nursing_record[i].content;
               const jsonCategory = JSON.parse(catecorys);
               const categoryKeys = Object.keys(jsonCategory) as any[];
@@ -373,8 +643,8 @@ function ContentsBody(props: Props) {
                   </Box>
                 );
               }
-            })}
-          </Box>
+            })} */}
+          </Table>
         );
       },
     },
