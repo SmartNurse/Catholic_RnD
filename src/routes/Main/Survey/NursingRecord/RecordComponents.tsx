@@ -484,7 +484,7 @@ const RecordComponents = (props: Props) => {
                   >
                     <Stack direction="column">
                       <Typography style={{ fontSize: '13px', fontWeight: 500 }}>
-                        간호 평가 (Optional)
+                        간호진단목록/우선순위
                       </Typography>
                       <Box
                         display="flex"
@@ -497,7 +497,7 @@ const RecordComponents = (props: Props) => {
                       >
                         <Box>
                           <Typography style={{ fontSize: '12px' }}>
-                            {row.evaluation}
+                            {row.priority}
                           </Typography>
                         </Box>
                       </Box>
