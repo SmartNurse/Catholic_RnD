@@ -20,7 +20,7 @@ interface Props {
 const NurseContents = ({ patientInfo }: Props) => {
   const { student_uuid: user_id } = useUser();
   const { search } = useLocation();
-  const { onFail, onRequired } = useNotification();
+  const { onBeforeSearch, onRequired } = useNotification();
 
   const { page = 1, year, sort_method } = getSearchQuery(search);
   const {
@@ -48,8 +48,8 @@ const NurseContents = ({ patientInfo }: Props) => {
         setTotalCount(data.count);
       })
       .catch(e => {
-        const message = `가상환자 목록을 불러오는데 실패했습니다.`;
-        onFail(message, e);
+        const message = `가상환자 목록을 불러오려면,`;
+        onBeforeSearch(message);
       })
       .finally(() => setIsLoading(false));
     // eslint-disable-next-line
