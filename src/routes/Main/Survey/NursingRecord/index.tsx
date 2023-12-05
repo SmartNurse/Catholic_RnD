@@ -45,6 +45,7 @@ const NursingRecord = (
       nursing_process_narrative_note_survey:
         nursing_process_narrative_note_survey?.map(
           ({
+            priority,
             subjective,
             objective,
             diagnosis,
@@ -54,6 +55,7 @@ const NursingRecord = (
             perform,
             evaluation,
           }: INursingProcess) => ({
+            priority,
             subjective,
             objective,
             diagnosis,
