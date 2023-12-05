@@ -46,6 +46,7 @@ const RecordComponents = (props: Props) => {
 
   const { student_no, student_name } = useUser();
 
+  const [priority, setPriority] = useState('');
   const [subjective, setSubjective] = useState('');
   const [objective, setObjective] = useState('');
   const [diagnosis, setDiagnosis] = useState('');
@@ -57,6 +58,7 @@ const RecordComponents = (props: Props) => {
 
   const onAddRow = () => {
     const request = {
+      priority,
       subjective,
       objective,
       diagnosis,
@@ -73,6 +75,7 @@ const RecordComponents = (props: Props) => {
       nursingRecordList ? [...nursingRecordList, request] : [request]
     );
 
+    setPriority('');
     setSubjective('');
     setObjective('');
     setDiagnosis('');
@@ -119,6 +122,26 @@ const RecordComponents = (props: Props) => {
             <Button variant="contained" size="small" onClick={onAddRow}>
               추가
             </Button>
+          ),
+        },
+      ],
+    },
+    {
+      label: '간호진단목록/우선순위',
+      elements: [
+        {
+          type: 'text',
+          element: (
+            <MuiTextField
+              sx={{
+                marginTop: '-20px',
+              }}
+              value={priority}
+              required={false}
+              onChange={({ target: { value } }) => setPriority(value)}
+              multiline
+              minRows={5}
+            />
           ),
         },
       ],
@@ -205,7 +228,7 @@ const RecordComponents = (props: Props) => {
             >
               <Stack>
                 <Typography sx={{ fontSize: '12px', fontWeight: 500 }}>
-                  목표
+                  목표 / 기대되는 결과
                 </Typography>
                 <Form.MuiTextField
                   value={goal}
@@ -220,7 +243,7 @@ const RecordComponents = (props: Props) => {
               <Stack direction="row" gap={3.9} sx={{ marginTop: '20px' }}>
                 <Stack sx={{ width: '49%' }}>
                   <Typography sx={{ fontSize: '12px', fontWeight: 500 }}>
-                    계획
+                    간호중재
                   </Typography>
                   <Form.MuiTextField
                     value={plan}
@@ -407,46 +430,298 @@ const RecordComponents = (props: Props) => {
         <SectionTitle title="저장 항목" mt={2} mb={1} />
 
         <Table sx={{ minWidth: 650 }} aria-label="simple table">
+          <Box>
+            {displayRows.map(row => {
+              return (
+                <Grid item xs={12} sx={{ marginLeft: '10px' }}>
+                  <div
+                    style={{
+                      display: 'flex',
+                      justifyContent: 'space-between',
+                      borderBottom: '1px solid lightgray',
+                      paddingBottom: '15px',
+                      paddingTop: '5px',
+                    }}
+                  >
+                    <Stack direction="row" gap={30}>
+                      <Typography
+                        whiteSpace="nowrap"
+                        sx={{
+                          lineHeight: '38px',
+                          fontSize: '13px',
+                          fontWeight: 500,
+                        }}
+                      >
+                        제출자
+                      </Typography>
+                      <Stack direction="row" gap={2}>
+                        <Form.MuiTextField
+                          required={false}
+                          value={student_no}
+                          InputProps={{ readOnly: true }}
+                          sx={{
+                            backgroundColor: '#dcd8d8',
+                          }}
+                        />
+                        <Form.MuiTextField
+                          required={false}
+                          value={student_name}
+                          InputProps={{ readOnly: true }}
+                          sx={{ backgroundColor: '#dcd8d8' }}
+                        />
+                      </Stack>
+                    </Stack>
+                    {row.action}
+                  </div>
+
+                  <div
+                    style={{
+                      display: 'flex',
+                      borderBottom: '1px solid lightgray',
+                      paddingBottom: '15px',
+                      paddingTop: '5px',
+                    }}
+                  >
+                    <Stack direction="column">
+                      <Typography style={{ fontSize: '13px', fontWeight: 500 }}>
+                        간호 평가 (Optional)
+                      </Typography>
+                      <Box
+                        display="flex"
+                        sx={{
+                          direction: 'row',
+                          justifyContent: 'space-between',
+                          width: '100%',
+                          marginTop: '10px',
+                        }}
+                      >
+                        <Box>
+                          <Typography style={{ fontSize: '12px' }}>
+                            {row.evaluation}
+                          </Typography>
+                        </Box>
+                      </Box>
+                    </Stack>
+                  </div>
+
+                  <div
+                    style={{
+                      display: 'flex',
+                      justifyContent: 'space-between',
+                      borderBottom: '1px solid lightgray',
+                      paddingBottom: '15px',
+                      paddingTop: '5px',
+                    }}
+                  >
+                    <Stack direction="column">
+                      <Typography style={{ fontSize: '13px', fontWeight: 500 }}>
+                        간호사정
+                      </Typography>
+                      <Stack
+                        gap={10}
+                        direction="row"
+                        sx={{
+                          display: 'flex',
+                          direction: 'row',
+                          justifyContent: 'space-between',
+                          marginTop: '10px',
+                        }}
+                      >
+                        <Box width="49%">
+                          <Typography
+                            style={{ fontSize: '12px', fontWeight: 500 }}
+                          >
+                            주관적자료
+                          </Typography>
+                          <Typography style={{ fontSize: '12px' }}>
+                            {row.subjective}
+                          </Typography>
+                        </Box>
+                        <Box width="49%">
+                          <Typography
+                            style={{
+                              fontSize: '13px',
+                              fontWeight: 500,
+                              whiteSpace: 'nowrap',
+                            }}
+                          >
+                            객관적 자료
+                          </Typography>
+                          <Typography style={{ fontSize: '12px' }}>
+                            {row.objective}
+                          </Typography>
+                        </Box>
+                      </Stack>
+                    </Stack>
+                  </div>
+
+                  <div
+                    style={{
+                      display: 'flex',
+                      borderBottom: '1px solid lightgray',
+                      paddingBottom: '15px',
+                      paddingTop: '5px',
+                    }}
+                  >
+                    <Stack direction="column">
+                      <Typography style={{ fontSize: '13px', fontWeight: 500 }}>
+                        간호진단-간호진단진술문 (PE)
+                      </Typography>
+                      <Box
+                        display="flex"
+                        sx={{
+                          direction: 'row',
+                          justifyContent: 'space-between',
+                          width: '100%',
+                          marginTop: '10px',
+                        }}
+                      >
+                        <Box>
+                          <Typography style={{ fontSize: '12px' }}>
+                            {row.diagnosis}
+                          </Typography>
+                        </Box>
+                      </Box>
+                    </Stack>
+                  </div>
+
+                  <div
+                    style={{
+                      display: 'flex',
+                      borderBottom: '1px solid lightgray',
+                      paddingBottom: '15px',
+                      paddingTop: '5px',
+                    }}
+                  >
+                    <Stack direction="column">
+                      <Typography style={{ fontSize: '13px', fontWeight: 500 }}>
+                        간호계획
+                      </Typography>
+                      <Box width="100%">
+                        <Typography
+                          style={{
+                            fontSize: '12px',
+                            fontWeight: 500,
+                            whiteSpace: 'nowrap',
+                            marginTop: '10px',
+                            minWidth: '650px',
+                          }}
+                        >
+                          목표 / 기대되는 결과
+                        </Typography>
+                        <Typography style={{ fontSize: '12px' }}>
+                          {row.goal}
+                        </Typography>
+                      </Box>
+                      <Stack
+                        direction="row"
+                        gap={10}
+                        sx={{ marginTop: '10px' }}
+                      >
+                        <Box width="49%">
+                          <Typography
+                            style={{
+                              fontSize: '13px',
+                              fontWeight: 500,
+                              whiteSpace: 'nowrap',
+                            }}
+                          >
+                            간호중재
+                          </Typography>
+                          <Typography style={{ fontSize: '12px' }}>
+                            {row.plan}
+                          </Typography>
+                        </Box>
+                        <Box width="49%">
+                          <Typography
+                            style={{
+                              fontSize: '13px',
+                              fontWeight: 500,
+                              whiteSpace: 'nowrap',
+                            }}
+                          >
+                            이론적 근거
+                          </Typography>
+                          <Typography style={{ fontSize: '12px' }}>
+                            {row.reason}
+                          </Typography>
+                        </Box>
+                      </Stack>
+                    </Stack>
+                  </div>
+
+                  <div
+                    style={{
+                      display: 'flex',
+                      borderBottom: '1px solid lightgray',
+                      paddingBottom: '15px',
+                      paddingTop: '5px',
+                    }}
+                  >
+                    <Stack direction="column">
+                      <Typography style={{ fontSize: '13px', fontWeight: 500 }}>
+                        간호 수행 (Optional)
+                      </Typography>
+                      <Box
+                        display="flex"
+                        sx={{
+                          direction: 'row',
+                          justifyContent: 'space-between',
+                          width: '100%',
+                          marginTop: '10px',
+                        }}
+                      >
+                        <Box>
+                          <Typography style={{ fontSize: '12px' }}>
+                            {row.perform}
+                          </Typography>
+                        </Box>
+                      </Box>
+                    </Stack>
+                  </div>
+
+                  <div
+                    style={{
+                      display: 'flex',
+                      borderBottom: '1px solid lightgray',
+                      paddingBottom: '15px',
+                      paddingTop: '5px',
+                    }}
+                  >
+                    <Stack direction="column">
+                      <Typography style={{ fontSize: '13px', fontWeight: 500 }}>
+                        간호 평가 (Optional)
+                      </Typography>
+                      <Box
+                        display="flex"
+                        sx={{
+                          direction: 'row',
+                          justifyContent: 'space-between',
+                          width: '100%',
+                          marginTop: '10px',
+                        }}
+                      >
+                        <Box>
+                          <Typography style={{ fontSize: '12px' }}>
+                            {row.evaluation}
+                          </Typography>
+                        </Box>
+                      </Box>
+                    </Stack>
+                  </div>
+                </Grid>
+              );
+            })}
+          </Box>
+        </Table>
+
+        {/* <Table sx={{ minWidth: 650 }} aria-label="simple table">
           <TableBody>
             {displayRows.map(row => {
               console.log('row  : ', row);
               return (
                 <Grid item xs={12}>
-                  <TableRow
-                    key="일시"
-                    sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
-                  >
-                    <TableCell>
-                      <Stack direction="row" gap={30}>
-                        <Typography
-                          whiteSpace="nowrap"
-                          sx={{
-                            lineHeight: '38px',
-                            fontSize: '13px',
-                            fontWeight: 500,
-                          }}
-                        >
-                          제출자
-                        </Typography>
-                        <Stack direction="row" gap={2}>
-                          <Form.MuiTextField
-                            required={false}
-                            value={student_no}
-                            InputProps={{ readOnly: true }}
-                            sx={{ backgroundColor: '#dcd8d8' }}
-                          />
-                          <Form.MuiTextField
-                            required={false}
-                            value={student_name}
-                            InputProps={{ readOnly: true }}
-                            sx={{ backgroundColor: '#dcd8d8' }}
-                          />
-                        </Stack>
-                      </Stack>
-                    </TableCell>
-                    <TableCell></TableCell>
-                    <TableCell align="right">{row.action}</TableCell>
-                  </TableRow>
+                 
                   <TableRow
                     key="간호사정"
                     sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
@@ -666,7 +941,7 @@ const RecordComponents = (props: Props) => {
               );
             })}
           </TableBody>
-        </Table>
+        </Table> */}
       </Grid>
     </Fragment>
   );
