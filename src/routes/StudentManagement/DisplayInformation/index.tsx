@@ -9,6 +9,7 @@ import VideoContents from './VideoContents/VideoContents';
 
 import useSelectorTyped from 'store/useSelectorTyped';
 import NurseContents from './NurseRecord/NurseContents';
+import ProcessContents from './NurseProcess/ProcessContents';
 
 interface Props {
   menuDrawerWidth: number;
@@ -64,11 +65,18 @@ const DisplayInformation = (props: Props) => {
           <VideoContents patientInfo={patientInfo} />
         </Box>
       );
+    } else if (menuState === '간호기록 전체조회') {
+      return (
+        <Box>
+          {/* 간호전체기록 준비중 */}
+          <NurseContents patientInfo={patientInfo} />
+        </Box>
+      );
     } else {
       return (
         <Box>
-          <NurseContents patientInfo={patientInfo} />
-          {/* 간호전체기록 준비중 */}
+          {/* 간호과정 서술기록 조회 준비중 */}
+          <ProcessContents patientInfo={patientInfo} />
         </Box>
       );
     }

@@ -7,7 +7,8 @@ import {
   ListItemText,
 } from '@mui/material';
 
-import { ReactComponent as ProPlus } from '../../../assets/proPlus.svg';
+import { TbMessagePlus } from 'react-icons/tb';
+
 import { ReactComponent as NonStudentVideo } from '../../../assets/icon-nonStudent-video.svg';
 import { ReactComponent as NonStudentNursint } from '../../../assets/icon-nonStudent-nursing.svg';
 
@@ -28,7 +29,8 @@ const MenuRecords = (props: Props) => {
     props;
 
   const changeOriginMenu = () => setMenuState('핵심간호술기영상 관리');
-  const changeMenu = () => setMenuState('간호기록 전체조회');
+  const changeMenuNurseRecord = () => setMenuState('간호기록 전체조회');
+  const changeMenuNurseProcess = () => setMenuState('간호과정 서술기록 조회');
 
   const [toggle, setToggle] = useState<IToggleObj>(initialToggleObj);
 
@@ -41,7 +43,12 @@ const MenuRecords = (props: Props) => {
     {
       icon: <NonStudentNursint />,
       label: '간호기록 전체조회',
-      onclick: changeMenu,
+      onclick: changeMenuNurseRecord,
+    },
+    {
+      icon: <TbMessagePlus />,
+      label: '간호과정 서술기록 조회',
+      onclick: changeMenuNurseProcess,
     },
   ];
 
