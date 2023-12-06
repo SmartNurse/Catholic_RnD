@@ -59,6 +59,7 @@ const Dialysis = (props: SurveyDialogProps<TDialysisDefaultValues>) => {
       post_today_weight,
       post_weight_change,
       dialysis_db,
+      crrt,
       additional_information,
     } = data;
 
@@ -88,6 +89,7 @@ const Dialysis = (props: SurveyDialogProps<TDialysisDefaultValues>) => {
           post_weight_change,
         },
         dialysis_db,
+        crrt,
         additional_information,
       },
     };
@@ -137,7 +139,6 @@ const Dialysis = (props: SurveyDialogProps<TDialysisDefaultValues>) => {
           }}
         >
           투석 기록지
-          <br /> - 테스트중 입니다. -
         </Typography>
         <CommonPatientInfo patientInfo={patientInfo} nurseName={nurseName} />
         <DialysisInfo {...formProps} />

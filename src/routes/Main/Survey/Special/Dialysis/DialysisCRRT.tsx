@@ -4,13 +4,10 @@ import Form from 'components/Form';
 import { IFormRegister, IFormValues, IFormWatch } from 'routes/Main/type';
 
 import { Table, TableBody, TableCell, TableRow, Grid } from '@mui/material';
-import { AccessTime } from '@mui/icons-material';
-import { MobileTimePicker } from '@mui/x-date-pickers';
 
-import MuiTextField from 'components/Form/MuiTextField';
 import RowContainer from '../../components/RowContainer';
 import SectionTitle from '../../components/SectionTitle';
-import { IDialysisRecord } from 'apis/survey/type';
+import { IDialysisCrrtRecord } from 'apis/survey/type';
 
 interface Props extends IFormRegister, IFormValues, IFormWatch {
   disabled?: boolean;
@@ -37,89 +34,93 @@ const DialysisCRRT = (props: Props) => {
     'Pressure drop',
   ];
   const registerIds = [
-    'volume',
-    'blood_flow',
-    'arterial_pressure',
-    'venous_pressure',
-    'ufr',
-    'tmp',
-    'heparin',
-    'sbp',
-    'dbp',
-    'pr',
-    'bt',
-    'rr',
-    'ㅇㅇ',
-    'ㅇㅇ',
-    'ㅇㅇ',
+    'mode',
+    'blood_flow_crrt',
+    'dialysate',
+    'pre_replacement',
+    'post_replacement',
+    'pbp',
+    'pt_fluid_rmv',
+    'anti_coagulation',
+    '',
+    'access_press',
+    'return_press',
+    'filter_press',
+    'effluent_press',
+    'tmp_press',
+    'press_drop',
   ];
 
-  const [dialysisRecord, setDialysisRecord] = useState<IDialysisRecord[]>([
+  const [dialysisRecord, setDialysisRecord] = useState<IDialysisCrrtRecord[]>([
     {
-      time: null,
-      volume: '',
-      blood_flow: '',
-      arterial_pressure: '',
-      venous_pressure: '',
-      ufr: '',
-      tmp: '',
-      heparin: '',
-      sbp: '',
-      dbp: '',
-      pr: '',
-      bt: '',
-      rr: '',
+      mode: '',
+      blood_flow_crrt: '',
+      dialysate: '',
+      pre_replacement: '',
+      post_replacement: '',
+      pbp: '',
+      pt_fluid_rmv: '',
+      anti_coagulation: '',
+      access_press: '',
+      return_press: '',
+      filter_press: '',
+      effluent_press: '',
+      tmp_press: '',
+      press_drop: '',
     },
     {
-      time: null,
-      volume: '',
-      blood_flow: '',
-      arterial_pressure: '',
-      venous_pressure: '',
-      ufr: '',
-      tmp: '',
-      heparin: '',
-      sbp: '',
-      dbp: '',
-      pr: '',
-      bt: '',
-      rr: '',
+      mode: '',
+      blood_flow_crrt: '',
+      dialysate: '',
+      pre_replacement: '',
+      post_replacement: '',
+      pbp: '',
+      pt_fluid_rmv: '',
+      anti_coagulation: '',
+      access_press: '',
+      return_press: '',
+      filter_press: '',
+      effluent_press: '',
+      tmp_press: '',
+      press_drop: '',
     },
     {
-      time: null,
-      volume: '',
-      blood_flow: '',
-      arterial_pressure: '',
-      venous_pressure: '',
-      ufr: '',
-      tmp: '',
-      heparin: '',
-      sbp: '',
-      dbp: '',
-      pr: '',
-      bt: '',
-      rr: '',
+      mode: '',
+      blood_flow_crrt: '',
+      dialysate: '',
+      pre_replacement: '',
+      post_replacement: '',
+      pbp: '',
+      pt_fluid_rmv: '',
+      anti_coagulation: '',
+      access_press: '',
+      return_press: '',
+      filter_press: '',
+      effluent_press: '',
+      tmp_press: '',
+      press_drop: '',
     },
     {
-      time: null,
-      volume: '',
-      blood_flow: '',
-      arterial_pressure: '',
-      venous_pressure: '',
-      ufr: '',
-      tmp: '',
-      heparin: '',
-      sbp: '',
-      dbp: '',
-      pr: '',
-      bt: '',
-      rr: '',
+      mode: '',
+      blood_flow_crrt: '',
+      dialysate: '',
+      pre_replacement: '',
+      post_replacement: '',
+      pbp: '',
+      pt_fluid_rmv: '',
+      anti_coagulation: '',
+      access_press: '',
+      return_press: '',
+      filter_press: '',
+      effluent_press: '',
+      tmp_press: '',
+      press_drop: '',
     },
   ]);
 
   useEffect(() => {
-    if (getValues('dialysis_db')) setDialysisRecord(getValues('dialysis_db'));
-    else setValue('dialysis_db', dialysisRecord);
+    if (getValues('crrt')) setDialysisRecord(getValues('crrt'));
+    else setValue('crrt', dialysisRecord);
   }, []);
 
   return (
@@ -175,7 +176,7 @@ const DialysisCRRT = (props: Props) => {
                               newRecord[idx][registerIds[labelIdx]] =
                                 e.target.value;
                               setDialysisRecord(newRecord);
-                              setValue('dialysis_db', newRecord);
+                              setValue('crrt', newRecord);
                             }}
                             required={false}
                             disabled={disabled}

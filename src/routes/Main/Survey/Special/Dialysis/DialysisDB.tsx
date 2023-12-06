@@ -35,7 +35,7 @@ const DialysisDB = (props: Props) => {
   ];
   const registerIds = [
     'volume',
-    'blood_flow',
+    'blood_flow_dialysis_db',
     'arterial_pressure',
     'venous_pressure',
     'ufr',
@@ -52,7 +52,7 @@ const DialysisDB = (props: Props) => {
     {
       time: null,
       volume: '',
-      blood_flow: '',
+      blood_flow_dialysis_db: '',
       arterial_pressure: '',
       venous_pressure: '',
       ufr: '',
@@ -67,7 +67,7 @@ const DialysisDB = (props: Props) => {
     {
       time: null,
       volume: '',
-      blood_flow: '',
+      blood_flow_dialysis_db: '',
       arterial_pressure: '',
       venous_pressure: '',
       ufr: '',
@@ -82,7 +82,7 @@ const DialysisDB = (props: Props) => {
     {
       time: null,
       volume: '',
-      blood_flow: '',
+      blood_flow_dialysis_db: '',
       arterial_pressure: '',
       venous_pressure: '',
       ufr: '',
@@ -97,7 +97,7 @@ const DialysisDB = (props: Props) => {
     {
       time: null,
       volume: '',
-      blood_flow: '',
+      blood_flow_dialysis_db: '',
       arterial_pressure: '',
       venous_pressure: '',
       ufr: '',
