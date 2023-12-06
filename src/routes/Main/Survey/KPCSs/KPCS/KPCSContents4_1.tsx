@@ -88,15 +88,15 @@ const KPCSContents4_1 = (props: Props) => {
           if (cur === 'no33') {
             const value = 2;
             return value ? acc + value : acc;
+          } else if (cur === 'no32') {
+            const value = Number(getValues(cur));
+            return value ? acc + value : acc;
           } else {
             const value = Number(getValues(cur));
             return value ? acc + value : acc;
           }
         } else if (cur === 'no29' && Number(getValues(cur)) > 1) {
           const value = Number(getValues(cur)) + 1;
-          return value ? acc + value : acc;
-        } else if (cur === 'no32' && Number(getValues(cur)) > 1) {
-          const value = Number(getValues(cur)) - 1;
           return value ? acc + value : acc;
         } else {
           const value = Number(getValues(cur));
@@ -257,13 +257,18 @@ const KPCSContents4_1 = (props: Props) => {
                                   InputProps={{
                                     ...Form.adornment('', 'unit'),
                                   }}
-                                  {...register('no32')}
-                                  onChange={e => {
-                                    setValue('no32', Number(e.target.value));
-                                    setTransfusion(
-                                      Math.floor(Number(e.target.value) / 3) - 1
-                                    );
-                                  }}
+                                  {...register('no32_1', {
+                                    onChange: e => {
+                                      setValue(
+                                        'no32_1',
+                                        Number(e.target.value)
+                                      );
+                                      setTransfusion(
+                                        Math.floor(Number(e.target.value) / 3) -
+                                          1
+                                      );
+                                    },
+                                  })}
                                 />
                               </Box>
                             </TableRow>

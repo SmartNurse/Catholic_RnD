@@ -49,13 +49,13 @@ const 영역6 = [
     id: 3,
     ko: '22. 단순도뇨',
     info: ['1회당 1점'],
-    desc: ['해당 없음', 'no22'],
+    desc: ['해당 없음', 'no22_1'],
   },
   {
     id: 4,
     ko: '23. 관장-횟수로 표시',
     info: ['1회당 1점'],
-    desc: ['해당 없음', 'no23'],
+    desc: ['해당 없음', 'no23_1'],
   },
 ];
 
@@ -297,34 +297,23 @@ const KPCSContents3 = (props: Props) => {
                       defaultValue={Number(getValues(radioId6[content.id - 1]))}
                     >
                       {content.desc.map((point, i) => {
-                        if (point.includes('no')) {
-                          return (
-                            <TableRow
-                              sx={{
-                                lineHeight: '43px',
-                                textAlign: 'center',
-                                height: '43px',
-                              }}
-                            ></TableRow>
-                          );
-                        } else
-                          return (
-                            <TableRow
-                              sx={{
-                                lineHeight: '43px',
-                                textAlign: 'center',
-                              }}
-                            >
-                              <Box>
-                                <Radio
-                                  disabled={disabled}
-                                  name={radioId6[content.id - 1]}
-                                  value={i}
-                                  onChange={handleChange6}
-                                />
-                              </Box>
-                            </TableRow>
-                          );
+                        return (
+                          <TableRow
+                            sx={{
+                              lineHeight: '43px',
+                              textAlign: 'center',
+                            }}
+                          >
+                            <Box>
+                              <Radio
+                                disabled={disabled}
+                                name={radioId6[content.id - 1]}
+                                value={i}
+                                onChange={handleChange6}
+                              />
+                            </Box>
+                          </TableRow>
+                        );
                       })}
                     </RadioGroup>
                   </StyledTableCellWithoutLeftTwo>
@@ -382,19 +371,26 @@ const KPCSContents3 = (props: Props) => {
                             >
                               <Box sx={{ minWidth: '500px' }}>
                                 <Form.MuiTextField
+                                  disabled={
+                                    Number(
+                                      getValues(radioId6[content.id - 1])
+                                    ) === 0
+                                      ? true
+                                      : disabled
+                                  }
                                   required={false}
                                   type="number"
                                   textAlign="right"
-                                  disabled={disabled}
                                   sx={{ width: '200px' }}
                                   InputProps={{
                                     ...Form.adornment('횟수', '회/day'),
                                   }}
-                                  {...register(`${v}`)}
-                                  onChange={e => {
-                                    setValue(`${v}`, e.target.value);
-                                    setUrin(Number(e.target.value));
-                                  }}
+                                  {...register('no22_1', {
+                                    onChange: e => {
+                                      setValue('no22_1', e.target.value);
+                                      setUrin(Number(e.target.value) - 1);
+                                    },
+                                  })}
                                 />
                               </Box>
                             </TableRow>
@@ -411,16 +407,23 @@ const KPCSContents3 = (props: Props) => {
                                   required={false}
                                   type="number"
                                   textAlign="right"
-                                  disabled={disabled}
+                                  disabled={
+                                    Number(
+                                      getValues(radioId6[content.id - 1])
+                                    ) === 0
+                                      ? true
+                                      : disabled
+                                  }
                                   sx={{ width: '200px' }}
                                   InputProps={{
                                     ...Form.adornment('횟수', '회/day'),
                                   }}
-                                  {...register(`${v}`)}
-                                  onChange={e => {
-                                    setValue(`${v}`, e.target.value);
-                                    setPoo(Number(e.target.value));
-                                  }}
+                                  {...register('no23_1', {
+                                    onChange: e => {
+                                      setValue('no23_1', e.target.value);
+                                      setPoo(Number(e.target.value) - 1);
+                                    },
+                                  })}
                                 />
                               </Box>
                             </TableRow>

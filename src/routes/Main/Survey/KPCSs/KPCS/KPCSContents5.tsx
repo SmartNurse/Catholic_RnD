@@ -137,7 +137,7 @@ const 영역10 = [
     id: 4,
     ko: '47. 간호사 keep 필요 (시간으로 표시)',
     info: ['CPR 시행 시 (시간당 6점)'],
-    desc: ['해당 없음', 'no47'],
+    desc: ['해당 없음', 'no47_1'],
   },
 ];
 
@@ -152,6 +152,7 @@ interface Props extends IFormValues, IFormWatch, IFormRegister {
   cpr: number;
   setCpr: (cpr: number) => void;
 }
+
 const KPCSContents5 = (props: Props) => {
   const { palette } = useTheme();
 
@@ -409,34 +410,23 @@ const KPCSContents5 = (props: Props) => {
                       )}
                     >
                       {content.desc.map((point, i) => {
-                        if (point.includes('no')) {
-                          return (
-                            <TableRow
-                              sx={{
-                                lineHeight: '43px',
-                                textAlign: 'center',
-                                height: '43px',
-                              }}
-                            ></TableRow>
-                          );
-                        } else
-                          return (
-                            <TableRow
-                              sx={{
-                                lineHeight: '43px',
-                                textAlign: 'center',
-                              }}
-                            >
-                              <Box>
-                                <Radio
-                                  disabled={disabled}
-                                  name={radioId10[content.id - 1]}
-                                  value={i}
-                                  onChange={handleChange10}
-                                />
-                              </Box>
-                            </TableRow>
-                          );
+                        return (
+                          <TableRow
+                            sx={{
+                              lineHeight: '43px',
+                              textAlign: 'center',
+                            }}
+                          >
+                            <Box>
+                              <Radio
+                                disabled={disabled}
+                                name={radioId10[content.id - 1]}
+                                value={i}
+                                onChange={handleChange10}
+                              />
+                            </Box>
+                          </TableRow>
+                        );
                       })}
                     </RadioGroup>
                   </StyledTableCellWithoutLeftTwo>
@@ -497,16 +487,26 @@ const KPCSContents5 = (props: Props) => {
                                   required={false}
                                   type="number"
                                   textAlign="right"
-                                  disabled={disabled}
+                                  disabled={
+                                    Number(
+                                      getValues(radioId10[content.id - 1])
+                                    ) === 0
+                                      ? true
+                                      : disabled
+                                  }
                                   sx={{ width: '200px' }}
                                   InputProps={{
                                     ...Form.adornment('', '시간'),
                                   }}
-                                  {...register(`${v}`)}
-                                  onChange={e => {
-                                    setValue(`${v}`, e.target.value);
-                                    setCpr(Number(e.target.value));
-                                  }}
+                                  {...register('no47_1', {
+                                    onChange: e => {
+                                      setValue(
+                                        'no47_1',
+                                        Number(e.target.value)
+                                      );
+                                      setCpr(Number(e.target.value) * 6);
+                                    },
+                                  })}
                                 />
                               </Box>
                             </TableRow>
