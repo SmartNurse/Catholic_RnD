@@ -6,8 +6,8 @@ import useNotification from 'hooks/useNotification';
 import { Typography, Box } from '@mui/material';
 import MuiDialog from 'components/MuiDialog';
 
-import { SurveyDialogProps, TMedicalRecordDefaultValues } from '../../type';
-import { updateMedicalRecords } from 'apis/survey';
+import { SurveyDialogProps, TCRRTDefaultValues } from '../../type';
+import { updateCentralVenous } from 'apis/survey';
 
 import CommonPatientInfo from '../../components/CommonPatientInfo';
 import PatientInfo from './PatientInfo';
@@ -15,7 +15,7 @@ import GuardianInfo from './GuardianInfo';
 import Signature from './Signature';
 import RecordInfo from './RecordInfo';
 
-const CRRT = (props: SurveyDialogProps<TMedicalRecordDefaultValues>) => {
+const CRRT = (props: SurveyDialogProps<TCRRTDefaultValues>) => {
   const {
     title,
     isOpen,
@@ -33,60 +33,40 @@ const CRRT = (props: SurveyDialogProps<TMedicalRecordDefaultValues>) => {
     defaultValues,
   });
 
-  const onSubmit = (data: TMedicalRecordDefaultValues) => {
+  const onSubmit = (data: TCRRTDefaultValues) => {
     const {
-      pt_name,
-      pt_ssn,
-      pt_addr,
-      pt_contact,
-
-      applier_name,
-      applier_relp,
-      applier_bday,
-      applier_contact,
-      applier_addr,
-
-      scope_center,
-      scope_period_from,
-      scope_period_to,
-      scope_reason,
-      scope_detail,
+      no1_1,
+      no1_2,
+      no2,
+      no3_1,
 
       date,
+      relationship,
       name,
-      sig,
+      applier_contact,
+      sign,
     } = data;
 
     const request = {
       user_id,
       patient_id: patientInfo.patient_id,
-      chart_confirmation: {
-        pt_name,
-        pt_ssn,
-        pt_addr,
-        pt_contact,
-
-        applier_name,
-        applier_relp,
-        applier_bday,
-        applier_contact,
-        applier_addr,
-
-        scope_center,
-        scope_period_from,
-        scope_period_to,
-        scope_reason,
-        scope_detail,
+      crrt_confirmation: {
+        no1_1,
+        no1_2,
+        no2,
+        no3_1,
 
         date,
+        relationship,
         name,
-        sig,
+        applier_contact,
+        sign,
       },
     };
 
     // console.log(request);
 
-    updateMedicalRecords(request)
+    updateCentralVenous(request)
       .then(({ data: { rc } }) => {
         if (rc !== 1) return onResultCode(rc);
 
