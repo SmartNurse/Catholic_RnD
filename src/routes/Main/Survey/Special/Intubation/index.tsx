@@ -93,14 +93,14 @@ const Intubation = (props: SurveyDialogProps<TDialysisDefaultValues>) => {
     };
 
     // console.log(request);
-    updateDialysis(request)
-      .then(({ data: { rc } }) => {
-        if (rc !== 1) return onResultCode(rc);
+    // updateDialysis(request)
+    //   .then(({ data: { rc } }) => {
+    //     if (rc !== 1) return onResultCode(rc);
 
-        onUpdateIsSave(true);
-        onSuccess('삽관 기록지 저장에 성공하였습니다.');
-      })
-      .catch(e => onFail('삽관 기록지 저장에 실패하였습니다.', e));
+    //     onUpdateIsSave(true);
+    //     onSuccess('삽관 기록지 저장에 성공하였습니다.');
+    //   })
+    //   .catch(e => onFail('삽관 기록지 저장에 실패하였습니다.', e));
   };
 
   const formProps = {
