@@ -6,8 +6,8 @@ import useNotification from 'hooks/useNotification';
 import { Typography, Box } from '@mui/material';
 import MuiDialog from 'components/MuiDialog';
 
-import { SurveyDialogProps, TMedicalRecordDefaultValues } from '../../type';
-import { updateMedicalRecords } from 'apis/survey';
+import { SurveyDialogProps, TSuppressorDefaultValues } from '../../type';
+import { updateSuppressor } from 'apis/survey';
 
 import CommonPatientInfo from '../../components/CommonPatientInfo';
 import PatientInfo from './PatientInfo';
@@ -15,7 +15,7 @@ import GuardianInfo from './GuardianInfo';
 import Signature from './Signature';
 import RecordInfo from './RecordInfo';
 
-const Suppressor = (props: SurveyDialogProps<TMedicalRecordDefaultValues>) => {
+const Suppressor = (props: SurveyDialogProps<TSuppressorDefaultValues>) => {
   const {
     title,
     isOpen,
@@ -33,60 +33,54 @@ const Suppressor = (props: SurveyDialogProps<TMedicalRecordDefaultValues>) => {
     defaultValues,
   });
 
-  const onSubmit = (data: TMedicalRecordDefaultValues) => {
+  const onSubmit = (data: TSuppressorDefaultValues) => {
     const {
-      pt_name,
-      pt_ssn,
-      pt_addr,
-      pt_contact,
-
-      applier_name,
-      applier_relp,
-      applier_bday,
-      applier_contact,
-      applier_addr,
-
-      scope_center,
-      scope_period_from,
-      scope_period_to,
-      scope_reason,
-      scope_detail,
-
+      no2_1,
+      no2_2,
+      no2_3,
+      no2_4,
+      no2_5,
+      no2_dr_name,
+      no2_dr_sign,
+      no3_check_box,
+      no3_input_box,
       date,
+      relationship,
       name,
-      sig,
+      sign,
+      dr_name,
+      dr_sign,
+      ns_name,
+      ns_sign,
     } = data;
 
     const request = {
       user_id,
       patient_id: patientInfo.patient_id,
-      chart_confirmation: {
-        pt_name,
-        pt_ssn,
-        pt_addr,
-        pt_contact,
-
-        applier_name,
-        applier_relp,
-        applier_bday,
-        applier_contact,
-        applier_addr,
-
-        scope_center,
-        scope_period_from,
-        scope_period_to,
-        scope_reason,
-        scope_detail,
-
+      restraints_confirmation: {
+        no2_1,
+        no2_2,
+        no2_3,
+        no2_4,
+        no2_5,
+        no2_dr_name,
+        no2_dr_sign,
+        no3_check_box,
+        no3_input_box,
         date,
+        relationship,
         name,
-        sig,
+        sign,
+        dr_name,
+        dr_sign,
+        ns_name,
+        ns_sign,
       },
     };
 
     // console.log(request);
 
-    updateMedicalRecords(request)
+    updateSuppressor(request)
       .then(({ data: { rc } }) => {
         if (rc !== 1) return onResultCode(rc);
 
