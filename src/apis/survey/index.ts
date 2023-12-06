@@ -517,12 +517,12 @@ export const updateCRRT = (request: IUpdateCRRT) => {
 
 // CRRT
 export const getCentralVenous = (request: IGetSurvey) => {
-  const url = `/survey/chartConfirm?${formatToRequestParameter(request)}`;
+  const url = `/survey/crrt_confirm?${formatToRequestParameter(request)}`;
   return apiGateway.get(url);
 };
 
-export const updateCentralVenous = (request: IUpdateCentralVenous) => {
-  const url = `/survey/chartConfirm`;
+export const updateCentralVenous = (request: IUpdateCRRT) => {
+  const url = `/survey/crrt_confirm`;
   return apiGateway.post(url, camelcaseKeys(request));
 };
 
