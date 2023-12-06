@@ -667,13 +667,13 @@ const useDefaultValues = ({ setDefaultValues, user_id }: Props) => {
           .catch(e => onFail('알 수 없는 오류가 발생했습니다.', e));
         break;
       case MENU.CRRT_AGREEMENT:
-        getMedicalRecords({ user_id, patient_id })
+        getCentralVenous({ user_id, patient_id })
           .then(({ data }) => {
-            const { update_at, chart_confirmation } = data;
+            const { update_at, crrt_confirmation } = data;
             convertDataToStates(
               {
                 update_at,
-                ...chart_confirmation,
+                ...crrt_confirmation,
               },
               initialCRRT
             );
@@ -711,11 +711,11 @@ const useDefaultValues = ({ setDefaultValues, user_id }: Props) => {
       case MENU.SUPPRESSOR:
         getSuppressor({ user_id, patient_id })
           .then(({ data }) => {
-            const { update_at, chart_confirmation } = data;
+            const { update_at, restraints_confirmation } = data;
             convertDataToStates(
               {
                 update_at,
-                ...chart_confirmation,
+                ...restraints_confirmation,
               },
               initialSuppressor
             );

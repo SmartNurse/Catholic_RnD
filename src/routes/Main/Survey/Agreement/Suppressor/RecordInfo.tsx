@@ -1,26 +1,11 @@
 import Form from 'components/Form';
 
-import { Fragment, useState } from 'react';
-import { Delete } from '@mui/icons-material';
-import {
-  Box,
-  Grid,
-  IconButton,
-  Table,
-  TableBody,
-  TableCell,
-  TableRow,
-  Typography,
-} from '@mui/material';
-
-import RowContainer from '../../components/RowContainer';
-import RowContent from '../../components/RowContent';
+import { Fragment } from 'react';
+import { Box, Grid, Typography } from '@mui/material';
 
 import { Ti18nId } from 'hooks/useI18n';
-import { IMentalNursingRecord } from 'apis/survey/type';
 import { IFormRegister, IFormValues, IFormWatch } from 'routes/Main/type';
 
-import MuiTextField from 'components/Form/MuiTextField';
 import SectionTitle from '../../components/SectionTitle';
 import { Stack } from '@mui/system';
 
@@ -33,19 +18,19 @@ interface Props extends IFormValues, IFormWatch, IFormRegister {
 const checks = [
   {
     label: '환자의 신체·정신적 장애로 인하여 약정 내용에 대하여 이해하지 못함',
-    key: 'fall_education.checked1',
+    key: 'no3_check_01',
   },
   {
     label: '설명하는 것이 환자의 심신에 중대한 나쁜 영향을 미칠 것이 명백함',
-    key: 'fall_education.checked2',
+    key: 'no3_check_02',
   },
   {
     label: '환자 본인이 승낙에 관한 권한을 특정인에게 위임함',
-    key: 'fall_education.checked3',
+    key: 'no3_check_03',
   },
   {
     label: '기타',
-    key: 'fall_education.checked4',
+    key: 'no3_check_04',
   },
 ];
 
@@ -73,7 +58,7 @@ const RecordInfo = (props: Props) => {
                     <Form.MuiTextField
                       sx={{ marginLeft: '20px' }}
                       disabled={disabled}
-                      {...register('restraints_confirmation.no3_input_box')}
+                      {...register('no3_input_box')}
                     />
                   </Stack>
                 </Grid>
