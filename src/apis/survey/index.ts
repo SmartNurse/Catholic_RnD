@@ -552,12 +552,12 @@ export const updateUpperEndoscopy = (request: IUpdateUpperEndoscopy) => {
 
 // 억제대 동의서
 export const getSuppressor = (request: IGetSurvey) => {
-  const url = `/survey/chartConfirm?${formatToRequestParameter(request)}`;
+  const url = `/survey/restraints_confirm?${formatToRequestParameter(request)}`;
   return apiGateway.get(url);
 };
 
 export const updateSuppressor = (request: IUpdateSuppressor) => {
-  const url = `/survey/chartConfirm`;
+  const url = `/survey/restraints_confirm`;
   return apiGateway.post(url, camelcaseKeys(request));
 };
 

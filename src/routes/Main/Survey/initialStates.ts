@@ -633,6 +633,7 @@ export const initialDialysis = {
   post_today_weight: '',
   post_weight_change: '',
   dialysis_db: [],
+  crrt: [],
   additional_information: '',
 };
 
@@ -1076,26 +1077,23 @@ export const initialMedicalRecords = {
 
 export const initialSuppressor = {
   update_at: '',
-  pt_name: '',
-  pt_ssn: '',
-  pt_addr: '',
-  pt_contact: '',
-
-  applier_name: '',
-  applier_relp: '',
-  applier_bday: '',
-  applier_contact: '',
-  applier_addr: '',
-
-  scope_center: '',
-  scope_period_from: '',
-  scope_period_to: '',
-  scope_reason: '',
-  scope_detail: '',
-
+  no2_1: '',
+  no2_2: '',
+  no2_3: '',
+  no2_4: '',
+  no2_5: '',
+  no2_dr_name: '',
+  no2_dr_sign: '',
+  no3_check_box: '',
+  no3_input_box: '',
   date: '',
+  relationship: '',
   name: '',
-  sig: '',
+  sign: '',
+  dr_name: '',
+  dr_sign: '',
+  ns_name: '',
+  ns_sign: '',
 };
 
 export const initialDNR = {

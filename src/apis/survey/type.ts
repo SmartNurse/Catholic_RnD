@@ -631,7 +631,7 @@ export interface IDialysisRecord {
   [index: string]: string | null;
   time: string | null;
   volume: string;
-  blood_flow: string;
+  blood_flow_dialysis_db: string;
   arterial_pressure: string;
   venous_pressure: string;
   ufr: string;
@@ -642,6 +642,24 @@ export interface IDialysisRecord {
   pr: string;
   bt: string;
   rr: string;
+}
+
+export interface IDialysisCrrtRecord {
+  [index: string]: string | null;
+  mode: string | null;
+  blood_flow_crrt: string;
+  dialysate: string;
+  pre_replacement: string;
+  post_replacement: string;
+  pbp: string;
+  pt_fluid_rmv: string;
+  anti_coagulation: string;
+  access_press: string;
+  return_press: string;
+  filter_press: string;
+  effluent_press: string;
+  tmp_press: string;
+  press_drop: string;
 }
 
 export interface IUpdateDialysis extends IGetSurvey {
@@ -666,6 +684,7 @@ export interface IUpdateDialysis extends IGetSurvey {
       post_weight_change: string;
     };
     dialysis_db: IDialysisRecord[];
+    crrt: IDialysisCrrtRecord[];
     additional_information: string;
   };
 }
@@ -1020,27 +1039,26 @@ export interface IUpdateUpperEndoscopy extends IGetSurvey {
 
 // 억제대동의서
 export interface IUpdateSuppressor extends IGetSurvey {
-  chart_confirmation: {
-    pt_name: string;
-    pt_ssn: string;
-    pt_addr: string;
-    pt_contact: string;
+  restraints_confirmation: {
+    no2_1: string;
+    no2_2: string;
+    no2_3: string;
+    no2_4: string;
+    no2_5: string;
+    no2_dr_name: string;
+    no2_dr_sign: string;
 
-    applier_name: string;
-    applier_relp: string;
-    applier_bday: string;
-    applier_contact: string;
-    applier_addr: string;
-
-    scope_center: string;
-    scope_period_from: string;
-    scope_period_to: string;
-    scope_reason: string;
-    scope_detail: string;
+    no3_check_box: string;
+    no3_input_box: string;
 
     date: string;
+    relationship: string;
     name: string;
-    sig: string;
+    sign: string;
+    dr_name: string;
+    dr_sign: string;
+    ns_name: string;
+    ns_sign: string;
   };
 }
 

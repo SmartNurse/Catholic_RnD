@@ -513,6 +513,7 @@ const useDefaultValues = ({ setDefaultValues, user_id }: Props) => {
                 ...hemodialysis_survey?.dialysis_information,
                 ...hemodialysis_survey?.weight_information,
                 dialysis_db: hemodialysis_survey?.dialysis_db,
+                crrt: hemodialysis_survey?.crrt,
                 additional_information:
                   hemodialysis_survey?.additional_information,
               },
