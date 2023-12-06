@@ -31,7 +31,7 @@ const IntubationC = (props: Props) => {
     {
       time: '',
       volume: '',
-      blood_flow: '',
+      blood_flow_dialysis_db: '',
       arterial_pressure: '',
       venous_pressure: '',
       ufr: '',
@@ -46,7 +46,7 @@ const IntubationC = (props: Props) => {
     {
       time: '',
       volume: '',
-      blood_flow: '',
+      blood_flow_dialysis_db: '',
       arterial_pressure: '',
       venous_pressure: '',
       ufr: '',
@@ -61,7 +61,7 @@ const IntubationC = (props: Props) => {
     {
       time: '',
       volume: '',
-      blood_flow: '',
+      blood_flow_dialysis_db: '',
       arterial_pressure: '',
       venous_pressure: '',
       ufr: '',
@@ -76,7 +76,7 @@ const IntubationC = (props: Props) => {
     {
       time: '',
       volume: '',
-      blood_flow: '',
+      blood_flow_dialysis_db: '',
       arterial_pressure: '',
       venous_pressure: '',
       ufr: '',

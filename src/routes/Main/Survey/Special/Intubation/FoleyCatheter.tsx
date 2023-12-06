@@ -20,13 +20,13 @@ const FoleyCatheter = (props: Props) => {
   const { disabled, register, getValues, setValue, watch } = props;
 
   const labels = ['시간당', '소변 양상'];
-  const registerIds = ['volume', 'blood_flow'];
+  const registerIds = ['volume', 'blood_flow_dialysis_db'];
 
   const [dialysisRecord, setDialysisRecord] = useState<IDialysisRecord[]>([
     {
       time: '',
       volume: '',
-      blood_flow: '',
+      blood_flow_dialysis_db: '',
       arterial_pressure: '',
       venous_pressure: '',
       ufr: '',
@@ -41,7 +41,7 @@ const FoleyCatheter = (props: Props) => {
     {
       time: '',
       volume: '',
-      blood_flow: '',
+      blood_flow_dialysis_db: '',
       arterial_pressure: '',
       venous_pressure: '',
       ufr: '',
@@ -56,7 +56,7 @@ const FoleyCatheter = (props: Props) => {
     {
       time: '',
       volume: '',
-      blood_flow: '',
+      blood_flow_dialysis_db: '',
       arterial_pressure: '',
       venous_pressure: '',
       ufr: '',
@@ -71,7 +71,7 @@ const FoleyCatheter = (props: Props) => {
     {
       time: '',
       volume: '',
-      blood_flow: '',
+      blood_flow_dialysis_db: '',
       arterial_pressure: '',
       venous_pressure: '',
       ufr: '',
