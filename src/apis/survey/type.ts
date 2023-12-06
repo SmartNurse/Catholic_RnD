@@ -952,27 +952,17 @@ export interface IUpdateTransfusionAgree extends IGetSurvey {
 
 // CRRT
 export interface IUpdateCRRT extends IGetSurvey {
-  chart_confirmation: {
-    pt_name: string;
-    pt_ssn: string;
-    pt_addr: string;
-    pt_contact: string;
-
-    applier_name: string;
-    applier_relp: string;
-    applier_bday: string;
-    applier_contact: string;
-    applier_addr: string;
-
-    scope_center: string;
-    scope_period_from: string;
-    scope_period_to: string;
-    scope_reason: string;
-    scope_detail: string;
+  crrt_confirmation: {
+    no1_1: string;
+    no1_2: string;
+    no2: string;
+    no3_1: string;
 
     date: string;
+    relationship: string;
     name: string;
-    sig: string;
+    applier_contact: string;
+    sign: string;
   };
 }
 
@@ -1048,7 +1038,10 @@ export interface IUpdateSuppressor extends IGetSurvey {
     no2_dr_name: string;
     no2_dr_sign: string;
 
-    no3_check_box: string;
+    no3_check_01: boolean;
+    no3_check_02: boolean;
+    no3_check_03: boolean;
+    no3_check_04: boolean;
     no3_input_box: string;
 
     date: string;
