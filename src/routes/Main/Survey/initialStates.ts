@@ -951,26 +951,16 @@ export const initialTransfusionAgree = {
 
 export const initialCRRT = {
   update_at: '',
-  pt_name: '',
-  pt_ssn: '',
-  pt_addr: '',
-  pt_contact: '',
-
-  applier_name: '',
-  applier_relp: '',
-  applier_bday: '',
-  applier_contact: '',
-  applier_addr: '',
-
-  scope_center: '',
-  scope_period_from: '',
-  scope_period_to: '',
-  scope_reason: '',
-  scope_detail: '',
+  no1_1: '',
+  no1_2: '',
+  no2: '',
+  no3_1: '',
 
   date: '',
+  relationship: '',
   name: '',
-  sig: '',
+  applier_contact: '',
+  sign: '',
 };
 
 export const initialCentralVenous = {
@@ -1084,7 +1074,12 @@ export const initialSuppressor = {
   no2_5: '',
   no2_dr_name: '',
   no2_dr_sign: '',
-  no3_check_box: '',
+
+  no3_check_01: false,
+  no3_check_02: false,
+  no3_check_03: false,
+  no3_check_04: false,
+
   no3_input_box: '',
   date: '',
   relationship: '',
