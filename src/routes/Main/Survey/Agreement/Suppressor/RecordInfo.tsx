@@ -73,6 +73,7 @@ const RecordInfo = (props: Props) => {
                     <Form.MuiTextField
                       sx={{ marginLeft: '20px' }}
                       disabled={disabled}
+                      {...register('restraints_confirmation.no3_input_box')}
                     />
                   </Stack>
                 </Grid>

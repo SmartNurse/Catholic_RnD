@@ -1,26 +1,14 @@
 import Form from 'components/Form';
 
-import { Fragment, useState } from 'react';
-import { Delete } from '@mui/icons-material';
-import {
-  Checkbox,
-  Grid,
-  IconButton,
-  Table,
-  TableBody,
-  TableCell,
-  TableRow,
-  Typography,
-} from '@mui/material';
+import { Fragment } from 'react';
+import { Typography } from '@mui/material';
 
 import RowContainer from '../../components/RowContainer';
 import RowContent from '../../components/RowContent';
 
 import { Ti18nId } from 'hooks/useI18n';
-import { IMentalNursingRecord } from 'apis/survey/type';
 import { IFormRegister, IFormValues, IFormWatch } from 'routes/Main/type';
 
-import MuiTextField from 'components/Form/MuiTextField';
 import SectionTitle from '../../components/SectionTitle';
 
 interface Props extends IFormValues, IFormWatch, IFormRegister {
@@ -33,26 +21,26 @@ const GuardianInfo = (props: Props) => {
   const { disabled, register } = props;
 
   const infos = [
-    { title: '가. 신체 억제대 사용이유', value: 'applier_name' },
+    { title: '가. 신체 억제대 사용이유', value: 'no2_1' },
     {
       title: '나. 신체 억제대를 대신하여 실시한 방법 및 그 효과 ',
-      value: 'applier_relp',
+      value: 'no2_2',
     },
     {
       title: '다. 신체 억제대 사용부위, 억제대 종류(유형) 및 사용방법 ',
-      value: 'applier_bday',
+      value: 'no2_3',
     },
     {
       title: '라. 신체 억제대 사용시 발생할 수 있는 부작용 및 대처방법',
-      value: 'applier_contact',
+      value: 'no2_4',
     },
-    { title: '마. 기타사항', value: 'applier_addr' },
+    { title: '마. 기타사항', value: 'no2_5' },
   ];
 
   const labels = [
     { title: '', variable: '' },
-    { title: '의사 성명', variable: 'name' },
-    { title: '의사 서명', variable: 'sig' },
+    { title: '의사 성명', variable: 'no2_dr_name' },
+    { title: '의사 서명', variable: 'no2_dr_sign' },
   ];
 
   return (

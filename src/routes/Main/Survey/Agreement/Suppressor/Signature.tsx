@@ -14,17 +14,17 @@ const Signature = (props: Props) => {
 
   const labels = [
     { title: '날짜', variable: 'date' },
-    { title: '환자와의 관계', variable: 'name' },
-    { title: '본인 (또는 법정대리인) 성명', variable: 'sig' },
-    { title: '본인 (또는 법정대리인) 서명', variable: 'sig' },
+    { title: '환자와의 관계', variable: 'relationship' },
+    { title: '본인 (또는 법정대리인) 성명', variable: 'name' },
+    { title: '본인 (또는 법정대리인) 서명', variable: 'sign' },
   ];
 
   const labelsTwo = [
     { title: '', variable: '' },
-    { title: '의사 성명', variable: 'date' },
-    { title: '의사 서명', variable: 'name' },
-    { title: '간호사 성명', variable: 'sig' },
-    { title: '간호사 서명', variable: 'sig' },
+    { title: '의사 성명', variable: 'dr_name' },
+    { title: '의사 서명', variable: 'dr_sign' },
+    { title: '간호사 성명', variable: 'ns_name' },
+    { title: '간호사 서명', variable: 'ns_sign' },
   ];
 
   return (
