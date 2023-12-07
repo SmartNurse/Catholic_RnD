@@ -156,6 +156,11 @@ const MenuSettings = (props: Props) => {
       ]
     : [
         {
+          isPro: true,
+          icon: <TbMessagePlus />,
+          label: '간호과정 서술기록',
+        },
+        {
           disabled: true,
           icon: <MedicalInformationOutlined />,
           label: '간호정보학',
