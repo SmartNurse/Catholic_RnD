@@ -159,11 +159,12 @@ const KPCSContents3 = (props: Props) => {
                       width: '300px',
                       whiteSpace: 'pre-wrap',
                       verticalAlign: 'top',
+                      borderBottom: 'none',
                     }}
                   >
                     {content.ko}
                   </StyledTableCellTwo>
-                  <StyledTableCellWithoutLeftTwo>
+                  <StyledTableCellWithoutLeftTwo sx={{ borderBottom: 'none' }}>
                     <RadioGroup
                       sx={{
                         paddingTop: content.info.length > 1 ? '55px' : '28px',
@@ -203,7 +204,9 @@ const KPCSContents3 = (props: Props) => {
                       })}
                     </RadioGroup>
                   </StyledTableCellWithoutLeftTwo>
-                  <StyledTableCellWithoutLeftRightTwo>
+                  <StyledTableCellWithoutLeftRightTwo
+                    sx={{ borderBottom: 'none' }}
+                  >
                     <Box>
                       {content.info.includes('') ? (
                         <TableRow
