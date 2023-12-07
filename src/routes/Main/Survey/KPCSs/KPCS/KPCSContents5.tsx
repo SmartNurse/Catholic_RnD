@@ -222,6 +222,9 @@ const KPCSContents5 = (props: Props) => {
           if (cur === 'no44' || cur === 'no46') {
             const value = 5;
             return value ? acc + value : acc;
+          } else if (cur === 'no47') {
+            const value = 1;
+            return value ? acc + value : acc;
           } else {
             const value = 3;
             return value ? acc + value : acc;
