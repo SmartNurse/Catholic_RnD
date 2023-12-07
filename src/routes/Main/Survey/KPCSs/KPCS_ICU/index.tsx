@@ -14,7 +14,6 @@ import KPCSICUContents3 from './KPCSICUContents3';
 import KPCSICUContents4 from './KPCSICUContents4';
 import KPCSICUContents401 from './KPCSICUContents4_1';
 import KPCSICUContents5 from './KPCSICUContents5';
-import KPCSICUContents6 from './KPCSICUContents6';
 
 import { useState } from 'react';
 
