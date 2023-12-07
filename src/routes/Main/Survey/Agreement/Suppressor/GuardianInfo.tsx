@@ -94,6 +94,7 @@ const GuardianInfo = (props: Props) => {
               >
                 <Form.MuiTextField
                   disabled={disabled}
+                  required={false}
                   {...register(`${variable}`)}
                 />
               </RowContent>

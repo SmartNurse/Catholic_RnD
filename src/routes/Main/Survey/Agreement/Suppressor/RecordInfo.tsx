@@ -58,6 +58,7 @@ const RecordInfo = (props: Props) => {
                     <Form.MuiTextField
                       sx={{ marginLeft: '20px' }}
                       disabled={disabled}
+                      required={false}
                       {...register('no3_input_box')}
                     />
                   </Stack>
