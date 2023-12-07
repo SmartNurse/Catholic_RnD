@@ -52,7 +52,7 @@ const 영역7_1 = [
       '혈액 확인, V/S check, 환자 관찰 등을 모두 포함',
       '혈소판, Cryo는 6unit당 2점',
     ],
-    desc: ['해당 없음', '수혈'],
+    desc: ['해당 없음 ', '수혈'],
   },
   {
     id: 5,
@@ -88,9 +88,6 @@ const KPCSContents4_1 = (props: Props) => {
           if (cur === 'no33') {
             const value = 2;
             return value ? acc + value : acc;
-          } else if (cur === 'no32') {
-            const value = Number(getValues(cur));
-            return value ? acc + value : acc;
           } else {
             const value = Number(getValues(cur));
             return value ? acc + value : acc;
@@ -106,11 +103,35 @@ const KPCSContents4_1 = (props: Props) => {
     );
   };
 
+  const [disableTF, setDisableTF] = useState(false);
+
   const handleChange7_1 = (
     e: React.ChangeEvent<HTMLInputElement>,
     checked: boolean
   ) => {
     setValue(e.target.name, e.target.value);
+    calculateSumValue7_1();
+  };
+
+  const handleChange7_2 = (
+    e: React.ChangeEvent<HTMLInputElement>,
+    checked: boolean
+  ) => {
+    setValue(e.target.name, e.target.value);
+    setValue('no32_1', 0);
+    setTransfusion(0);
+    setDisableTF(true);
+    calculateSumValue7_1();
+  };
+
+  const handleChange7_2_1 = (
+    e: React.ChangeEvent<HTMLInputElement>,
+    checked: boolean
+  ) => {
+    setValue(e.target.name, e.target.value);
+    setValue('no32_1', 0);
+    setTransfusion(0);
+    setDisableTF(false);
     calculateSumValue7_1();
   };
 
@@ -166,6 +187,42 @@ const KPCSContents4_1 = (props: Props) => {
                                 height: '43px',
                               }}
                             ></TableRow>
+                          );
+                        } else if (point === '해당 없음 ') {
+                          return (
+                            <TableRow
+                              sx={{
+                                lineHeight: '43px',
+                                textAlign: 'center',
+                              }}
+                            >
+                              <Box>
+                                <Radio
+                                  disabled={disabled}
+                                  name={'no32'}
+                                  value={i}
+                                  onChange={handleChange7_2}
+                                />
+                              </Box>
+                            </TableRow>
+                          );
+                        } else if (point === '수혈') {
+                          return (
+                            <TableRow
+                              sx={{
+                                lineHeight: '43px',
+                                textAlign: 'center',
+                              }}
+                            >
+                              <Box>
+                                <Radio
+                                  disabled={disabled}
+                                  name={'no32'}
+                                  value={i}
+                                  onChange={handleChange7_2_1}
+                                />
+                              </Box>
+                            </TableRow>
                           );
                         } else
                           return (
@@ -246,13 +303,7 @@ const KPCSContents4_1 = (props: Props) => {
                                   required={false}
                                   type="number"
                                   textAlign="right"
-                                  disabled={
-                                    Number(
-                                      getValues(radioId7_1[content.id - 1])
-                                    ) === 0
-                                      ? true
-                                      : disabled
-                                  }
+                                  disabled={disableTF ? true : disabled}
                                   sx={{ width: '200px', marginLeft: '10px' }}
                                   InputProps={{
                                     ...Form.adornment('', 'unit'),
@@ -264,8 +315,7 @@ const KPCSContents4_1 = (props: Props) => {
                                         Number(e.target.value)
                                       );
                                       setTransfusion(
-                                        Math.floor(Number(e.target.value) / 3) -
-                                          1
+                                        Math.floor(getValues('no32_1') / 3) - 1
                                       );
                                     },
                                   })}

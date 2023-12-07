@@ -49,13 +49,13 @@ const 영역6 = [
     id: 3,
     ko: '22. 단순도뇨',
     info: ['1회당 1점'],
-    desc: ['해당 없음', 'no22_1'],
+    desc: ['해당 없음 ', 'no22_1'],
   },
   {
     id: 4,
     ko: '23. 관장-횟수로 표시',
     info: ['1회당 1점'],
-    desc: ['해당 없음', 'no23_1'],
+    desc: ['해당 없음  ', 'no23_1'],
   },
 ];
 
@@ -114,7 +114,7 @@ const KPCSContents3 = (props: Props) => {
             return value ? acc + value : acc;
           } else {
             const value = Number(getValues(cur));
-            return value ? acc + value : acc;
+            return value ? acc : acc;
           }
         }
         const value = Number(getValues(cur));
@@ -128,6 +128,52 @@ const KPCSContents3 = (props: Props) => {
     checked: boolean
   ) => {
     setValue(e.target.name, e.target.value);
+    calculateSumValue6();
+  };
+
+  const [disableUrin, setDisableUrin] = useState(false);
+  const [disablePoo, setDisablePoo] = useState(false);
+
+  const handleChange6urin = (
+    e: React.ChangeEvent<HTMLInputElement>,
+    checked: boolean
+  ) => {
+    setValue(e.target.name, e.target.value);
+    setValue('no22_1', 0);
+    setUrin(0);
+    setDisableUrin(true);
+    calculateSumValue6();
+  };
+  const handleChange6urinTwo = (
+    e: React.ChangeEvent<HTMLInputElement>,
+    checked: boolean
+  ) => {
+    setValue(e.target.name, e.target.value);
+    setValue('no22_1', 0);
+    setUrin(0);
+    setDisableUrin(false);
+    calculateSumValue6();
+  };
+
+  const handleChange6Poo = (
+    e: React.ChangeEvent<HTMLInputElement>,
+    checked: boolean
+  ) => {
+    setValue(e.target.name, e.target.value);
+    setValue('no23_1', 0);
+    setPoo(0);
+    setDisablePoo(true);
+    calculateSumValue6();
+  };
+
+  const handleChange6PooTwo = (
+    e: React.ChangeEvent<HTMLInputElement>,
+    checked: boolean
+  ) => {
+    setValue(e.target.name, e.target.value);
+    setValue('no23_1', 0);
+    setPoo(0);
+    setDisablePoo(false);
     calculateSumValue6();
   };
 
@@ -300,6 +346,79 @@ const KPCSContents3 = (props: Props) => {
                       defaultValue={Number(getValues(radioId6[content.id - 1]))}
                     >
                       {content.desc.map((point, i) => {
+                        if (point === '해당 없음 ') {
+                          return (
+                            <TableRow
+                              sx={{
+                                lineHeight: '43px',
+                                textAlign: 'center',
+                              }}
+                            >
+                              <Box>
+                                <Radio
+                                  disabled={disabled}
+                                  name={'no22'}
+                                  value={i}
+                                  onChange={handleChange6urin}
+                                />
+                              </Box>
+                            </TableRow>
+                          );
+                        } else if (point === 'no22_1') {
+                          return (
+                            <TableRow
+                              sx={{
+                                lineHeight: '43px',
+                                textAlign: 'center',
+                              }}
+                            >
+                              <Box>
+                                <Radio
+                                  disabled={disabled}
+                                  name={'no22'}
+                                  value={i}
+                                  onChange={handleChange6urinTwo}
+                                />
+                              </Box>
+                            </TableRow>
+                          );
+                        } else if (point === '해당 없음  ') {
+                          return (
+                            <TableRow
+                              sx={{
+                                lineHeight: '43px',
+                                textAlign: 'center',
+                              }}
+                            >
+                              <Box>
+                                <Radio
+                                  disabled={disabled}
+                                  name={'no23'}
+                                  value={i}
+                                  onChange={handleChange6Poo}
+                                />
+                              </Box>
+                            </TableRow>
+                          );
+                        } else if (point === 'no23_1') {
+                          return (
+                            <TableRow
+                              sx={{
+                                lineHeight: '43px',
+                                textAlign: 'center',
+                              }}
+                            >
+                              <Box>
+                                <Radio
+                                  disabled={disabled}
+                                  name={'no23'}
+                                  value={i}
+                                  onChange={handleChange6PooTwo}
+                                />
+                              </Box>
+                            </TableRow>
+                          );
+                        }
                         return (
                           <TableRow
                             sx={{
@@ -374,13 +493,7 @@ const KPCSContents3 = (props: Props) => {
                             >
                               <Box sx={{ minWidth: '500px' }}>
                                 <Form.MuiTextField
-                                  disabled={
-                                    Number(
-                                      getValues(radioId6[content.id - 1])
-                                    ) === 0
-                                      ? true
-                                      : disabled
-                                  }
+                                  disabled={disableUrin ? true : disabled}
                                   required={false}
                                   type="number"
                                   textAlign="right"
@@ -391,7 +504,7 @@ const KPCSContents3 = (props: Props) => {
                                   {...register('no22_1', {
                                     onChange: e => {
                                       setValue('no22_1', e.target.value);
-                                      setUrin(Number(e.target.value) - 1);
+                                      setUrin(Number(e.target.value));
                                     },
                                   })}
                                 />
@@ -407,16 +520,10 @@ const KPCSContents3 = (props: Props) => {
                             >
                               <Box sx={{ minWidth: '500px' }}>
                                 <Form.MuiTextField
-                                  required={false}
+                                  required={true}
                                   type="number"
                                   textAlign="right"
-                                  disabled={
-                                    Number(
-                                      getValues(radioId6[content.id - 1])
-                                    ) === 0
-                                      ? true
-                                      : disabled
-                                  }
+                                  disabled={disablePoo ? true : disabled}
                                   sx={{ width: '200px' }}
                                   InputProps={{
                                     ...Form.adornment('횟수', '회/day'),
@@ -424,7 +531,7 @@ const KPCSContents3 = (props: Props) => {
                                   {...register('no23_1', {
                                     onChange: e => {
                                       setValue('no23_1', e.target.value);
-                                      setPoo(Number(e.target.value) - 1);
+                                      setPoo(Number(e.target.value));
                                     },
                                   })}
                                 />

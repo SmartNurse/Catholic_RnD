@@ -137,7 +137,7 @@ const 영역10 = [
     id: 4,
     ko: '47. 간호사 keep 필요 (시간으로 표시)',
     info: ['CPR 시행 시 (시간당 6점)'],
-    desc: ['해당 없음', 'no47_1'],
+    desc: ['해당 없음 ', 'no47_1'],
   },
 ];
 
@@ -223,8 +223,8 @@ const KPCSContents5 = (props: Props) => {
             const value = 5;
             return value ? acc + value : acc;
           } else if (cur === 'no47') {
-            const value = 1;
-            return value ? acc + value : acc;
+            const value = Number(getValues(cur));
+            return value ? acc : acc;
           } else {
             const value = 3;
             return value ? acc + value : acc;
@@ -237,11 +237,35 @@ const KPCSContents5 = (props: Props) => {
     );
   };
 
+  const [disableCPR, setDisableCPR] = useState(false);
+
   const handleChange10 = (
     e: React.ChangeEvent<HTMLInputElement>,
     checked: boolean
   ) => {
     setValue(e.target.name, e.target.value);
+    calculateSumValue10();
+  };
+
+  const handleChange10_1 = (
+    e: React.ChangeEvent<HTMLInputElement>,
+    checked: boolean
+  ) => {
+    setValue(e.target.name, e.target.value);
+    setValue('no47_1', 0);
+    setCpr(0);
+    setDisableCPR(true);
+    calculateSumValue10();
+  };
+
+  const handleChange10_1_1 = (
+    e: React.ChangeEvent<HTMLInputElement>,
+    checked: boolean
+  ) => {
+    setValue(e.target.name, e.target.value);
+    setValue('no47_1', 0);
+    setCpr(0);
+    setDisableCPR(false);
     calculateSumValue10();
   };
 
@@ -413,6 +437,43 @@ const KPCSContents5 = (props: Props) => {
                       )}
                     >
                       {content.desc.map((point, i) => {
+                        if (point === '해당 없음 ') {
+                          return (
+                            <TableRow
+                              sx={{
+                                lineHeight: '43px',
+                                textAlign: 'center',
+                              }}
+                            >
+                              <Box>
+                                <Radio
+                                  disabled={disabled}
+                                  name={'no47'}
+                                  value={i}
+                                  onChange={handleChange10_1}
+                                />
+                              </Box>
+                            </TableRow>
+                          );
+                        } else if (point === 'no47_1') {
+                          return (
+                            <TableRow
+                              sx={{
+                                lineHeight: '43px',
+                                textAlign: 'center',
+                              }}
+                            >
+                              <Box>
+                                <Radio
+                                  disabled={disabled}
+                                  name={'no47'}
+                                  value={i}
+                                  onChange={handleChange10_1_1}
+                                />
+                              </Box>
+                            </TableRow>
+                          );
+                        }
                         return (
                           <TableRow
                             sx={{
@@ -490,23 +551,14 @@ const KPCSContents5 = (props: Props) => {
                                   required={false}
                                   type="number"
                                   textAlign="right"
-                                  disabled={
-                                    Number(
-                                      getValues(radioId10[content.id - 1])
-                                    ) === 0
-                                      ? true
-                                      : disabled
-                                  }
+                                  disabled={disableCPR ? true : disabled}
                                   sx={{ width: '200px' }}
                                   InputProps={{
                                     ...Form.adornment('', '시간'),
                                   }}
                                   {...register('no47_1', {
                                     onChange: e => {
-                                      setValue(
-                                        'no47_1',
-                                        Number(e.target.value)
-                                      );
+                                      setValue('no47_1', e.target.value);
                                       setCpr(Number(e.target.value) * 6);
                                     },
                                   })}

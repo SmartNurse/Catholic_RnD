@@ -49,11 +49,9 @@ const KPCS = (props: SurveyDialogProps<TKPCSDefaultValues>) => {
 
   // input 창
   const [urin, setUrin] = useState(
-    getValues('no22_1') ? getValues('no22_1') - 1 : 0
+    getValues('no22_1') ? getValues('no22_1') : 0
   );
-  const [poo, setPoo] = useState(
-    getValues('no23_1') ? getValues('no23_1') - 1 : 0
-  );
+  const [poo, setPoo] = useState(getValues('no23_1') ? getValues('no23_1') : 0);
 
   const [sum7, setSum7] = useState(0);
   const [sum8, setSum8] = useState(0);
@@ -62,7 +60,7 @@ const KPCS = (props: SurveyDialogProps<TKPCSDefaultValues>) => {
 
   // 수혈 input
   const [trancfusion, setTransfusion] = useState(
-    getValues('no47_1') ? Math.floor(getValues('no47_1') / 3 - 1) : 0
+    getValues('no32_1') ? Math.floor(getValues('no32_1') / 3) : 0
   );
 
   const [sum9, setSum9] = useState(0);
