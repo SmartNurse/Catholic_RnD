@@ -135,6 +135,7 @@ const RecordComponents = (props: Props) => {
             <MuiTextField
               sx={{
                 marginTop: '-20px',
+                whiteSpace: 'pre',
               }}
               value={priority}
               required={false}
@@ -250,7 +251,7 @@ const RecordComponents = (props: Props) => {
                     required={false}
                     disabled={disabled}
                     multiline
-                    minRows={30}
+                    minRows={5}
                     onChange={({ target: { value } }) => setPlan(value)}
                   />
                 </Stack>
@@ -263,7 +264,7 @@ const RecordComponents = (props: Props) => {
                     required={false}
                     disabled={disabled}
                     multiline
-                    minRows={30}
+                    minRows={5}
                     onChange={({ target: { value } }) => setReason(value)}
                   />
                 </Stack>
@@ -514,16 +515,19 @@ const RecordComponents = (props: Props) => {
                     }}
                   >
                     <Stack direction="column">
-                      <Typography style={{ fontSize: '13px', fontWeight: 500 }}>
+                      <Typography
+                        style={{
+                          fontSize: '13px',
+                          fontWeight: 500,
+                          minWidth: '650px',
+                        }}
+                      >
                         간호사정
                       </Typography>
                       <Stack
                         gap={10}
                         direction="row"
                         sx={{
-                          display: 'flex',
-                          direction: 'row',
-                          justifyContent: 'space-between',
                           marginTop: '10px',
                         }}
                       >
@@ -540,7 +544,7 @@ const RecordComponents = (props: Props) => {
                         <Box width="49%">
                           <Typography
                             style={{
-                              fontSize: '13px',
+                              fontSize: '12px',
                               fontWeight: 500,
                               whiteSpace: 'nowrap',
                             }}
@@ -683,7 +687,7 @@ const RecordComponents = (props: Props) => {
                   <div
                     style={{
                       display: 'flex',
-                      borderBottom: '1px solid lightgray',
+                      borderBottom: '3px solid black',
                       paddingBottom: '15px',
                       paddingTop: '5px',
                     }}
