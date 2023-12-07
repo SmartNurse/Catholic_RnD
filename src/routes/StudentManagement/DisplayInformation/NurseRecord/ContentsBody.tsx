@@ -67,7 +67,7 @@ function ContentsBody(props: Props) {
         // console.log('recordTypes : ', recordTypes);
         // console.log('list : ', list.row);
         return (
-          <Box>
+          <Box sx={{ borderBottom: '3px solid black', width: '100%' }}>
             <Stack direction="row" mt={1}>
               <Typography
                 sx={{
