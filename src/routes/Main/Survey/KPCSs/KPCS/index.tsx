@@ -38,6 +38,7 @@ const KPCS = (props: SurveyDialogProps<TKPCSDefaultValues>) => {
     defaultValues,
   });
 
+  // test
   const [sum1, setSum1] = useState(0);
   const [sum2, setSum2] = useState(0);
 
