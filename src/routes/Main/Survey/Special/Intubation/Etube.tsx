@@ -16,18 +16,23 @@ interface Props extends IFormRegister, IFormValues, IFormWatch {
   disabled?: boolean;
 }
 
-const AVF = (props: Props) => {
+const Etube = (props: Props) => {
   const { disabled, register, getValues, setValue, watch } = props;
 
-  const labels = ['삽입 부위', '삽입 상태'];
-  const registerIds = ['volume', 'blood_flow'];
+  const labels = ['종류', '삽입 깊이', '고정 위치', 'Cuff pressure'];
+  const registerIds = [
+    'volume',
+    'blood_flow',
+    'arterial_pressure',
+    'venous_pressure',
+  ];
 
   const [dialysisRecord, setDialysisRecord] = useState<IDialysisRecord[]>([
     {
       time: '',
       volume: '',
       blood_flow_dialysis_db: '',
-      arterial_pressure: '',
+      arterial_pressure: 'ㅋㅋ1',
       venous_pressure: '',
       ufr: '',
       tmp: '',
@@ -42,7 +47,7 @@ const AVF = (props: Props) => {
       time: '',
       volume: '',
       blood_flow_dialysis_db: '',
-      arterial_pressure: '',
+      arterial_pressure: 'ㅋㅋ2',
       venous_pressure: '',
       ufr: '',
       tmp: '',
@@ -57,7 +62,7 @@ const AVF = (props: Props) => {
       time: '',
       volume: '',
       blood_flow_dialysis_db: '',
-      arterial_pressure: '',
+      arterial_pressure: 'ㅋㅋ3',
       venous_pressure: '',
       ufr: '',
       tmp: '',
@@ -70,10 +75,10 @@ const AVF = (props: Props) => {
     },
     {
       time: '',
-      volume: '',
+      volume: '111',
       blood_flow_dialysis_db: '',
-      arterial_pressure: '',
-      venous_pressure: '',
+      arterial_pressure: 'ㅋㅋ4',
+      venous_pressure: '마지막거',
       ufr: '',
       tmp: '',
       heparin: '',
@@ -85,14 +90,14 @@ const AVF = (props: Props) => {
     },
   ]);
 
-  useEffect(() => {
-    if (getValues('dialysis_db')) setDialysisRecord(getValues('dialysis_db'));
-    else setValue('dialysis_db', dialysisRecord);
-  }, []);
+  // useEffect(() => {
+  //   if (getValues('dialysis_db')) setDialysisRecord(getValues('dialysis_db'));
+  //   else setValue('dialysis_db', dialysisRecord);
+  // }, []);
 
   return (
     <>
-      <SectionTitle title="AVF" />
+      <SectionTitle title="E-tube" />
       <RowContainer xs={12}>
         <Grid item flex={1}>
           <Table sx={{ minWidth: 650 }} aria-label="simple table" size="small">
@@ -177,4 +182,4 @@ const AVF = (props: Props) => {
   );
 };
 
-export default AVF;
+export default Etube;

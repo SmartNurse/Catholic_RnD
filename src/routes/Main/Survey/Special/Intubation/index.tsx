@@ -14,11 +14,12 @@ import useNotification from 'hooks/useNotification';
 import { updateDialysis } from 'apis/survey';
 
 import CommonPatientInfo from '../../components/CommonPatientInfo';
-import IntubationC from './IntubationC';
-import IntubationA from './IntubationA';
+import IntubationPICC from './IntubationPICC';
+import IntubationPCA from './IntubationPCA';
 import FoleyCatheter from './FoleyCatheter';
-import AVF from './AVF';
-import HDCatheter from './HDCatheter';
+import Ltube from './Ltube';
+import JPbag from './JPbag';
+import Etube from './Etube';
 
 const Intubation = (props: SurveyDialogProps<TDialysisDefaultValues>) => {
   const {
@@ -140,11 +141,12 @@ const Intubation = (props: SurveyDialogProps<TDialysisDefaultValues>) => {
           <br /> - 테스트중 입니다. -
         </Typography>
         <CommonPatientInfo patientInfo={patientInfo} nurseName={nurseName} />
-        <IntubationC {...formProps} />
-        <IntubationA {...formProps} />
+        <IntubationPICC {...formProps} />
+        <IntubationPCA {...formProps} />
+        <Ltube {...formProps} />
+        <JPbag {...formProps} />
         <FoleyCatheter {...formProps} />
-        <AVF {...formProps} />
-        <HDCatheter {...formProps} />
+        <Etube {...formProps} />
       </Grid>
     </MuiDialog.SurveyForm>
   );

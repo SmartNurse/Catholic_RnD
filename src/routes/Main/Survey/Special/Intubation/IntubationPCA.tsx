@@ -16,10 +16,10 @@ interface Props extends IFormRegister, IFormValues, IFormWatch {
   disabled?: boolean;
 }
 
-const IntubationA = (props: Props) => {
+const IntubationPCA = (props: Props) => {
   const { disabled, register, getValues, setValue, watch } = props;
 
-  const labels = ['종류', '삽입 부위', '피부 상태', '드레싱 종류'];
+  const labels = ['종류'];
   const registerIds = [
     'volume',
     'blood_flow',
@@ -97,7 +97,7 @@ const IntubationA = (props: Props) => {
 
   return (
     <>
-      <SectionTitle title="A-line" />
+      <SectionTitle title="PCA" />
       <RowContainer xs={12}>
         <Grid item flex={1}>
           <Table sx={{ minWidth: 650 }} aria-label="simple table" size="small">
@@ -182,4 +182,4 @@ const IntubationA = (props: Props) => {
   );
 };
 
-export default IntubationA;
+export default IntubationPCA;

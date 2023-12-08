@@ -16,10 +16,10 @@ interface Props extends IFormRegister, IFormValues, IFormWatch {
   disabled?: boolean;
 }
 
-const HDCatheter = (props: Props) => {
+const JPbag = (props: Props) => {
   const { disabled, register, getValues, setValue, watch } = props;
 
-  const labels = ['종류', '삽입 부위', '피부 상태', '드레싱 종류'];
+  const labels = ['배액 양상', 'Pressure'];
   const registerIds = [
     'volume',
     'blood_flow',
@@ -97,7 +97,7 @@ const HDCatheter = (props: Props) => {
 
   return (
     <>
-      <SectionTitle title="HD catheter" />
+      <SectionTitle title="J-P bag" />
       <RowContainer xs={12}>
         <Grid item flex={1}>
           <Table sx={{ minWidth: 650 }} aria-label="simple table" size="small">
@@ -182,4 +182,4 @@ const HDCatheter = (props: Props) => {
   );
 };
 
-export default HDCatheter;
+export default JPbag;
