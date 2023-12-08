@@ -2,11 +2,21 @@ import React, { useState, useEffect } from 'react';
 import { Grid } from '@mui/material';
 import MuiTextField from 'components/Form/MuiTextField';
 import SectionTitle from '../../components/SectionTitle';
+import { IFormRegister, IFormValues, IFormWatch } from 'routes/Main/type';
+import { Ti18nId } from 'hooks/useI18n';
 
-const SurgeryContentInput = ({ disabled, register }) => {
-    useEffect(() => {
-      // test 한슬.!!
-    }, []);
+interface Props extends IFormValues, IFormWatch, IFormRegister {
+  disabled?: boolean;
+  onRequired: (id: Ti18nId) => void;
+  onSuccess: (message: string) => void;
+}
+
+const Implementation = (props: Props) => {
+  const { disabled, register } = props;
+
+  useEffect(() => {
+    // test 한슬.!!
+  }, []);
 
   return (
     <>
@@ -14,13 +24,12 @@ const SurgeryContentInput = ({ disabled, register }) => {
       <Grid item xs={12}>
         <MuiTextField
           multiline
-          minRows={15}
+          minRows={5}
           disabled={disabled}
           required={false}
           {...register('Blood_details.content')}
         />
       </Grid>
-    
     </>
   );
 };
