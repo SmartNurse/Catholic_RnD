@@ -17,6 +17,7 @@ import { updateTransfusion } from "apis/survey";
 import CommonPatientInfo from "../../components/CommonPatientInfo";
 import BloodInfo from "./BloodInfo";
 import BloodRecords from "./BloodRecords";
+import Implementation from './Implementation';
 
 const Transfusion = (props: SurveyDialogProps<TTransfusionDefaultValues>) => {
     const {
@@ -95,6 +96,14 @@ const Transfusion = (props: SurveyDialogProps<TTransfusionDefaultValues>) => {
 
     const formProps = { disabled, watch, register, getValues, setValue, onSuccess, onRequired };
 
+    const ImplementationProps = {
+      disabled: false,                
+      Implementation: '',              
+      onUpdateImplementation: (newValue: string) => {
+        console.log(newValue);
+      },
+    };
+    
     return (
         <MuiDialog.SurveyForm
         title={title}
@@ -116,6 +125,7 @@ const Transfusion = (props: SurveyDialogProps<TTransfusionDefaultValues>) => {
             <CommonPatientInfo patientInfo={patientInfo} nurseName={nurseName} />
             <BloodInfo {...formProps} blood={patientInfo.blood} />
             <BloodRecords {...formProps} />
+            <Implementation {...ImplementationProps} />
         </Grid>
       </MuiDialog.SurveyForm>  
     );

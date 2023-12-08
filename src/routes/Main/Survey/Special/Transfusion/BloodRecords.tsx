@@ -2,7 +2,14 @@ import Form from 'components/Form';
 
 import { Fragment, useState } from 'react';
 import { AccessTime, Delete } from '@mui/icons-material';
-import { Button, Grid, IconButton, MenuItem, TextField } from '@mui/material';
+import {
+  Button,
+  Grid,
+  IconButton,
+  MenuItem,
+  TextField,
+  Typography,
+} from '@mui/material';
 import { MobileTimePicker } from '@mui/x-date-pickers';
 
 import { Ti18nId } from 'hooks/useI18n';
@@ -10,8 +17,9 @@ import { IBloodRecord } from 'apis/survey/type';
 import { IFormRegister, IFormValues, IFormWatch } from 'routes/Main/type';
 import MuiTable from 'components/MuiTable';
 import MuiTextField from 'components/Form/MuiTextField';
+import SectionTitle from '../../components/SectionTitle';
 
-import { formatStringToDate } from "utils/formatting";
+import { formatStringToDate } from 'utils/formatting';
 
 interface Props extends IFormValues, IFormWatch, IFormRegister {
   disabled?: boolean;
@@ -24,14 +32,14 @@ const BloodRecords = (props: Props) => {
   const bloodRecordList: IBloodRecord[] = watch('transfusion_record');
 
   const [checkTime, setCheckTime] = useState(null);
-  const [division, setDivision] = useState("");
-  const [sbp, setSbp] = useState("");
-  const [dbp, setDbp] = useState("");
-  const [pr, setPr] = useState("");
-  const [rr, setRr] = useState("");
-  const [bt, setBt] = useState("");
+  const [division, setDivision] = useState('');
+  const [sbp, setSbp] = useState('');
+  const [dbp, setDbp] = useState('');
+  const [pr, setPr] = useState('');
+  const [rr, setRr] = useState('');
+  const [bt, setBt] = useState('');
   const [sideEffect, setSideEffect] = useState(1);
-  const [etc, setEtc] = useState("");
+  const [etc, setEtc] = useState('');
 
   const columns = [
     { fieldId: 'time', label: '측정시간', sx: { width: 200 } },
@@ -43,29 +51,57 @@ const BloodRecords = (props: Props) => {
     { fieldId: 'bt', label: 'BT', sx: { width: 150 } },
     { fieldId: 'side_effects', label: '수혈 부작용', sx: { width: 200 } },
     { fieldId: 'notes', label: '비고', sx: { width: 150 } },
-    { fieldId: 'action', label: '', sx: { width: 100 } }
+    { fieldId: 'action', label: '', sx: { width: 100 } },
   ];
 
-  const divisions = ['수혈 시작 전', '수혈 시작 15분 후', '수혈 시작 30분 후', '수혈 시작 1시간 후', '수혈 시작 1시간 30분 후', '수혈 종료 시'];
+  const divisions = [
+    '수혈 시작 전',
+    '수혈 시작 15분 후',
+    '수혈 시작 30분 후',
+    '수혈 시작 1시간 후',
+    '수혈 시작 1시간 30분 후',
+    '수혈 종료 시',
+  ];
 
   const onAddRow = () => {
-    const request = { time: checkTime, division, sbp, dbp, pr, rr, bt, side_effects: sideEffect === 1 ? true : false, notes: etc };
-  
-    if (checkTime === null || division === "" || sbp === "" || dbp === "" || pr === "" || rr === "" || bt === "") {
+    const request = {
+      time: checkTime,
+      division,
+      sbp,
+      dbp,
+      pr,
+      rr,
+      bt,
+      side_effects: sideEffect === 1 ? true : false,
+      notes: etc,
+    };
+
+    if (
+      checkTime === null ||
+      division === '' ||
+      sbp === '' ||
+      dbp === '' ||
+      pr === '' ||
+      rr === '' ||
+      bt === ''
+    ) {
       return onRequired('CLINICAL.OBSERVATION.ADD.ROW');
     }
 
     onSuccess('수혈 기록 추가되었습니다.');
-    setValue('transfusion_record', bloodRecordList ? [...bloodRecordList, {...request}] : [{...request}]);
+    setValue(
+      'transfusion_record',
+      bloodRecordList ? [...bloodRecordList, { ...request }] : [{ ...request }]
+    );
     setCheckTime(null);
-    setDivision("");
-    setSbp("");
-    setDbp("");
-    setPr("");
-    setRr("");
-    setBt("");
+    setDivision('');
+    setSbp('');
+    setDbp('');
+    setPr('');
+    setRr('');
+    setBt('');
     setSideEffect(1);
-    setEtc("");
+    setEtc('');
   };
 
   const inputRow = {
@@ -91,10 +127,10 @@ const BloodRecords = (props: Props) => {
         required={false}
         onChange={({ target: { value } }) => setDivision(value)}
       >
-        {divisions.map((option) => (
-            <MenuItem key={option} value={option}>
-              {option}
-            </MenuItem>
+        {divisions.map(option => (
+          <MenuItem key={option} value={option}>
+            {option}
+          </MenuItem>
         ))}
       </MuiTextField>
     ),
@@ -138,10 +174,10 @@ const BloodRecords = (props: Props) => {
         disabled={disabled}
         i18nNullKey="ETC"
         i18nKey="BLOOD.RECORD.SIDE.EFFECT"
-        values={[1 , 2]}
+        values={[1, 2]}
         defaultValue={sideEffect}
         value={sideEffect}
-        onChange={(value) => setSideEffect(value)}
+        onChange={value => setSideEffect(value)}
       />
     ),
     notes: (
@@ -165,34 +201,34 @@ const BloodRecords = (props: Props) => {
     );
   };
 
-  const displayRows = bloodRecordList ? 
-    bloodRecordList.map((item, i) => ({
+  const displayRows = bloodRecordList
+    ? bloodRecordList.map((item, i) => ({
         ...item,
         id: i,
         time: formatStringToDate(item.time, 'hh:mm a'),
-        side_effects: item.side_effects == true ? "유" : "무",
+        side_effects: item.side_effects == true ? '유' : '무',
         action: (
-        <IconButton
+          <IconButton
             size="small"
             onClick={() => onDeleteRow(i)}
             sx={{ display: disabled ? 'none' : 'block' }}
-        >
-          <Delete />
-        </IconButton>
+          >
+            <Delete />
+          </IconButton>
         ),
-  }))
-  :
-  []
-  ;
-
+      }))
+    : [];
   const tableRow = disabled ? displayRows : [inputRow, ...displayRows];
 
   return (
-    <Fragment>
-      <Grid item xs={12}>
-        <MuiTable columns={columns} rows={[...tableRow]} />
-      </Grid>
-    </Fragment>
+    <>
+      <SectionTitle title="수혈 기록" />
+      <Fragment>
+        <Grid item xs={12}>
+          <MuiTable columns={columns} rows={[...tableRow]} />
+        </Grid>
+      </Fragment>
+    </>
   );
 };
 
