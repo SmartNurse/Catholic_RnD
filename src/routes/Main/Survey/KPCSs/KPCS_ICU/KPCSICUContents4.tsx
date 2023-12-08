@@ -24,7 +24,9 @@ const 영역7 = [
   {
     id: 1,
     ko: '69. O2 therapy',
-    info: ['기구 준비, 산소농도 조절, 환자반응 평가 (oxyhood, prong, mask, nasal or mist with collar, face- tent), 2가지 사용 시 추가 점수 없음'],
+    info: [
+      '기구 준비, 산소농도 조절, 환자반응 평가 (oxyhood, prong, mask, nasal or mist with collar, face- tent), 2가지 사용 시 추가 점수 없음',
+    ],
     desc: ['해당 없음', '2점'],
   },
   {
@@ -107,7 +109,8 @@ const 영역8 = [
     id: 2,
     ko: '79. 개별교육',
     info: [
-      '당뇨/심장/장루/신생아투약/분만후/퇴원교육', '개인적으로 교육 실시(환자의 질환, 예방, 주의사항, 약물교육, 질문응답 포함)'
+      '당뇨/심장/장루/신생아투약/분만후/퇴원교육',
+      '개인적으로 교육 실시(환자의 질환, 예방, 주의사항, 약물교육, 질문응답 포함)',
     ],
     desc: ['해당 없음', '4점'],
   },
@@ -130,7 +133,7 @@ interface Props extends IFormValues, IFormWatch {
   sum8: number;
   setSum8: (sum8: number) => void;
 }
-const KPCSContents4 = (props: Props) => {
+const KPCSICUContents4 = (props: Props) => {
   const { palette } = useTheme();
 
   const { disabled, setValue, getValues, setSum7, setSum8 } = props;

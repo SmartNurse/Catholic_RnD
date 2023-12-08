@@ -17,7 +17,7 @@ import KPCSICUContents5 from './KPCSICUContents5';
 
 import { useState } from 'react';
 
-const KPCS = (props: SurveyDialogProps<TKPCSDefaultValues>) => {
+const KPCS_ICU = (props: SurveyDialogProps<TKPCSDefaultValues>) => {
   const {
     title,
     isOpen,
@@ -175,7 +175,7 @@ const KPCS = (props: SurveyDialogProps<TKPCSDefaultValues>) => {
           cpr={cpr}
           setCpr={setCpr}
         />
-        <KPCSICUContents6 {...formProps} sum11={sum11} setSum11={setSum11} />
+        {/* <KPCSICUContents6 {...formProps} sum11={sum11} setSum11={setSum11} /> */}
         <Box
           display={'flex'}
           flexDirection={'column'}

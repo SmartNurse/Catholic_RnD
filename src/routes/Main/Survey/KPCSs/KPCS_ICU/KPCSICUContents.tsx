@@ -27,11 +27,7 @@ const 영역1 = [
     info: [
       '구강체온, 맥박, 호흡수를 직접 측정, 혈압을 cuff를 이용하여 직접 측정하고 푸는 시간, 기록시간 포함. 모니터를 이용한 경우는 감시 및 측정 항목임',
     ],
-    desc: [
-      '해당 없음',
-      '4점 : q 2h or 12회',
-      '8점 : q 1h or 24회',
-    ],
+    desc: ['해당 없음', '4점 : q 2h or 12회', '8점 : q 1h or 24회'],
   },
   {
     id: 2,
@@ -42,13 +38,16 @@ const 영역1 = [
   {
     id: 3,
     ko: '3. Femoral pulse, Pedal pulse',
-    info: ['check q 4hr 이상', '측정빈도가 증가하더라도 점수는 증가하지 않는다, 두가지를 재더라도 동일함']
+    info: [
+      'check q 4hr 이상',
+      '측정빈도가 증가하더라도 점수는 증가하지 않는다, 두가지를 재더라도 동일함',
+    ],
     desc: ['해당 없음', '2점'],
   },
   {
     id: 4,
     ko: '4. 수술/검사/분만/출생 직후 신생아  V/S',
-    info: ['q 15' ×4, q 30' ×4, q 1 hr ×4, then 4 hr 측정시 적용']
+    info: ["q 15' ×4, q 30' ×4, q 1 hr ×4, then 4 hr 측정시 적용"],
     desc: ['해당 없음', '4점'],
   },
 ];
@@ -59,7 +58,9 @@ const 영역2 = [
   {
     id: 1,
     ko: '5. I/O check',
-    info: ['음수량, 배설량 모두 측정 시, 배설량은 소변과 기타 배액량을 재거나 무게측정, 기저귀, 침대린넨(삭제) 교환이 포함된다(한 가지만 측정한 경우에는 주지 않는다)'],
+    info: [
+      '음수량, 배설량 모두 측정 시, 배설량은 소변과 기타 배액량을 재거나 무게측정, 기저귀, 침대린넨(삭제) 교환이 포함된다(한 가지만 측정한 경우에는 주지 않는다)',
+    ],
     desc: [
       '해당 없음',
       '2점: q 8h',
@@ -72,14 +73,23 @@ const 영역2 = [
   {
     id: 2,
     ko: '6. 순환확인',
-    info: ['순환확인 (사지부종, 무감각, 저린감 확인, 피부온도/ 색깔, 사지 움직임 사정)'],
+    info: [
+      '순환확인 (사지부종, 무감각, 저린감 확인, 피부온도/ 색깔, 사지 움직임 사정)',
+    ],
     desc: ['해당 없음', '2점'],
   },
   {
     id: 3,
     ko: '7. 의식신경계 사정',
-    info: ['동공반사, 의식 확인, 지남력 확인, 감각(통증, 진동, 가벼운 터치, 정확한 입체감인식평가), 운동 및 감각검사(감각과 근력 사정)'],
-    desc: ['해당 없음', '3점: q 4hr or 6회', '6점: q 2hr or 12회', '12점: q 1hr or 24회'],
+    info: [
+      '동공반사, 의식 확인, 지남력 확인, 감각(통증, 진동, 가벼운 터치, 정확한 입체감인식평가), 운동 및 감각검사(감각과 근력 사정)',
+    ],
+    desc: [
+      '해당 없음',
+      '3점: q 4hr or 6회',
+      '6점: q 2hr or 12회',
+      '12점: q 1hr or 24회',
+    ],
   },
   {
     id: 4,
@@ -90,21 +100,23 @@ const 영역2 = [
   {
     id: 5,
     ko: '9. ICP check or monitor reading',
-    info: [
-      'manual or monitoring 모두 동일함',
-    ],
+    info: ['manual or monitoring 모두 동일함'],
     desc: ['해당 없음', '2점: q 2hr or 12회', '4점: q 1hr or 24회'],
   },
   {
     id: 6,
     ko: '10. Cardiac/apnea/temp/NIBP monitor',
-    info: ['하나 이상 측정했을 때 6점이며 가산하지 않는다. 모니터 조정 또는 leads연결, alarm  resets 포함한다.'],
+    info: [
+      '하나 이상 측정했을 때 6점이며 가산하지 않는다. 모니터 조정 또는 leads연결, alarm  resets 포함한다.',
+    ],
     desc: ['해당 없음', '6점'],
   },
   {
     id: 7,
     ko: '11. SpO2 monitor 4회이상',
-    info: ['6시간 마다 probe 위치 이동 및 피부확인, 피부 간호하는 시간. (자주  측정해도 추가점수 없음)'],
+    info: [
+      '6시간 마다 probe 위치 이동 및 피부확인, 피부 간호하는 시간. (자주  측정해도 추가점수 없음)',
+    ],
     desc: ['해당 없음', '6점'],
   },
   {
@@ -128,7 +140,9 @@ const 영역2 = [
   {
     id: 11,
     ko: '15. A-line monitor reading',
-    info: ['기록이 있어야 한다. 수은주 혈압계로 수치를 확인하는 행위를 포함한다.'],
+    info: [
+      '기록이 있어야 한다. 수은주 혈압계로 수치를 확인하는 행위를 포함한다.',
+    ],
     desc: ['해당 없음', '2점: q 2h', '4점: q 1h'],
   },
   {
@@ -161,7 +175,7 @@ interface Props extends IFormValues, IFormWatch {
   sum2: number;
   setSum2: (sum2: number) => void;
 }
-const KPCSContents = (props: Props) => {
+const KPCSICUContents = (props: Props) => {
   const { palette } = useTheme();
 
   const { disabled, setValue, getValues, setSum1, setSum2 } = props;

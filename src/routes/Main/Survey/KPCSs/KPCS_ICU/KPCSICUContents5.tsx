@@ -43,10 +43,7 @@ const 영역9 = [
     id: 2,
     ko: '82. 1:1 초과 coverage',
     info: ['각각의 근무조마다 1환자에게 1명 이상의 직원이 필요한 경우'],
-    desc: [
-      '해당 없음',
-      '146점',
-    ],
+    desc: ['해당 없음', '146점'],
   },
 ];
 
@@ -62,7 +59,7 @@ interface Props extends IFormValues, IFormWatch, IFormRegister {
   setCpr: (cpr: number) => void;
 }
 
-const KPCSContents5 = (props: Props) => {
+const KPCSICUContents5 = (props: Props) => {
   const { palette } = useTheme();
 
   const { disabled, setValue, getValues, setSum9, setSum10, setCpr, register } =
@@ -124,27 +121,27 @@ const KPCSContents5 = (props: Props) => {
     calculateSumValue9();
   };
 
-  const calculateSumValue10 = () => {
-    setSum10(
-      radioId10.reduce((acc, cur) => {
-        if (Number(getValues(cur)) > 0) {
-          if (cur === 'no44' || cur === 'no46') {
-            const value = 5;
-            return value ? acc + value : acc;
-          } else if (cur === 'no47') {
-            const value = Number(getValues(cur));
-            return value ? acc : acc;
-          } else {
-            const value = 3;
-            return value ? acc + value : acc;
-          }
-        } else {
-          let value = Number(getValues(cur));
-          return value ? acc + value : acc;
-        }
-      }, 0)
-    );
-  };
+  // const calculateSumValue10 = () => {
+  //   setSum10(
+  //     radioId10.reduce((acc, cur) => {
+  //       if (Number(getValues(cur)) > 0) {
+  //         if (cur === 'no44' || cur === 'no46') {
+  //           const value = 5;
+  //           return value ? acc + value : acc;
+  //         } else if (cur === 'no47') {
+  //           const value = Number(getValues(cur));
+  //           return value ? acc : acc;
+  //         } else {
+  //           const value = 3;
+  //           return value ? acc + value : acc;
+  //         }
+  //       } else {
+  //         let value = Number(getValues(cur));
+  //         return value ? acc + value : acc;
+  //       }
+  //     }, 0)
+  //   );
+  // };
 
   const [disableCPR, setDisableCPR] = useState(false);
 
@@ -153,34 +150,34 @@ const KPCSContents5 = (props: Props) => {
     checked: boolean
   ) => {
     setValue(e.target.name, e.target.value);
-    calculateSumValue10();
+    // calculateSumValue10();
   };
 
-  const handleChange10_1 = (
-    e: React.ChangeEvent<HTMLInputElement>,
-    checked: boolean
-  ) => {
-    setValue(e.target.name, e.target.value);
-    setValue('no47_1', 0);
-    setCpr(0);
-    setDisableCPR(true);
-    calculateSumValue10();
-  };
+  // const handleChange10_1 = (
+  //   e: React.ChangeEvent<HTMLInputElement>,
+  //   checked: boolean
+  // ) => {
+  //   setValue(e.target.name, e.target.value);
+  //   setValue('no47_1', 0);
+  //   setCpr(0);
+  //   setDisableCPR(true);
+  //   // calculateSumValue10();
+  // };
 
-  const handleChange10_1_1 = (
-    e: React.ChangeEvent<HTMLInputElement>,
-    checked: boolean
-  ) => {
-    setValue(e.target.name, e.target.value);
-    setValue('no47_1', 0);
-    setCpr(0);
-    setDisableCPR(false);
-    calculateSumValue10();
-  };
+  // const handleChange10_1_1 = (
+  //   e: React.ChangeEvent<HTMLInputElement>,
+  //   checked: boolean
+  // ) => {
+  //   setValue(e.target.name, e.target.value);
+  //   setValue('no47_1', 0);
+  //   setCpr(0);
+  //   setDisableCPR(false);
+  //   calculateSumValue10();
+  // };
 
   useEffect(() => {
     calculateSumValue9();
-    calculateSumValue10();
+    // calculateSumValue10();
   }, []);
 
   return (
@@ -311,7 +308,7 @@ const KPCSContents5 = (props: Props) => {
           </TableBody>
         </TableContainer>
 
-        <SectionTitle title="영역 : 특수 처치" />
+        {/* <SectionTitle title="영역 : 특수 처치" />
         <TableContainer sx={{ marginTop: '40px', marginBottom: '-30px' }}>
           <TableBody>
             {영역10.map(
@@ -492,7 +489,7 @@ const KPCSContents5 = (props: Props) => {
               )
             )}
           </TableBody>
-        </TableContainer>
+        </TableContainer> */}
       </Box>
     </>
   );

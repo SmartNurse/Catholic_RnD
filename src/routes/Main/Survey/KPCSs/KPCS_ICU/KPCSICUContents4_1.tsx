@@ -156,7 +156,7 @@ interface Props extends IFormValues, IFormWatch, IFormRegister {
   setTransfusion: (trancfusion: number) => void;
 }
 
-const KPCSContents4_1 = (props: Props) => {
+const KPCSICUContents4_1 = (props: Props) => {
   const { palette } = useTheme();
 
   const { disabled, setValue, getValues, setSum7_1, setTransfusion, register } =
