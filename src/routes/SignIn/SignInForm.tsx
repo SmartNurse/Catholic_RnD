@@ -15,7 +15,7 @@ import {
 import { FieldValues, UseFormRegister } from 'react-hook-form';
 
 import awsAhnlabCloudLogo from 'assets/aws-ahnlab-cloud-logo.svg';
-import smartnurseLogoStandard from 'assets/smartnurse-logo-standard.svg';
+import smartnurseLogoStandard from 'assets/catolic-login-logo.svg';
 import Form from 'components/Form';
 import MuiDialog from 'components/MuiDialog';
 
@@ -36,10 +36,10 @@ function SignInForm({ errors, register, onSignUp }: Props) {
           sx={{ borderTop: `solid 8px ${palette.primary.main}` }}
         >
           <CardMedia
-            height={120}
+            height={190}
             component="img"
             image={smartnurseLogoStandard}
-            sx={{ objectFit: 'contain', mt: 5, mb: 5 }}
+            sx={{ objectFit: 'contain', mt: 5, mb: 3 }}
           />
           <CardContent
             sx={{ width: '100%', textAlign: 'center', padding: '0 0 40px 0' }}
