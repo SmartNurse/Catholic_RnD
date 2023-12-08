@@ -26,7 +26,7 @@ import { ReactComponent as Number03 } from 'assets/icon-number-03.svg';
 import { ReactComponent as Number04 } from 'assets/icon-number-04.svg';
 import { ReactComponent as Number05 } from 'assets/icon-number-05.svg';
 
-// 테스트 정서
+// 테스트 정서123
 function Main() {
   const { palette } = useTheme();
 
