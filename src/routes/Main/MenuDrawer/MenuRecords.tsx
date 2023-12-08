@@ -64,18 +64,6 @@ const MenuRecords = (props: Props) => {
       label: 'e-CARDEX',
     },
     {
-      icon: <Diversity2Outlined />,
-      label: '간호 인수인계',
-    },
-    {
-      icon: <Healing />,
-      label: '입원간호 기록지',
-    },
-    {
-      icon: <HomeOutlined />,
-      label: '퇴원간호 기록지',
-    },
-    {
       icon: <LocalPharmacyOutlined />,
       label: '처방 기록지',
     },
@@ -95,18 +83,31 @@ const MenuRecords = (props: Props) => {
       icon: <TaskOutlined />,
       label: '임상병리검사 기록지',
     },
+    // {
+    //   icon: <Diversity2Outlined />,
+    //   label: '간호 인수인계',
+    // },
+    // {
+    //   icon: <Healing />,
+    //   label: '입원간호 기록지',
+    // },
+    // {
+    //   icon: <HomeOutlined />,
+    //   label: '퇴원간호 기록지',
+    // },
+
     {
       icon: <MonitorHeartOutlined />,
-      label: '활력징후 기록지',
+      label: '임상관찰 기록지',
     },
-    {
-      icon: <ExposureOutlined />,
-      label: '섭취 및 배설량 기록지',
-    },
-    {
-      icon: <WashOutlined />,
-      label: '혈당 기록지',
-    },
+    // {
+    //   icon: <ExposureOutlined />,
+    //   label: '섭취 및 배설량 기록지',
+    // },
+    // {
+    //   icon: <WashOutlined />,
+    //   label: '혈당 기록지',
+    // },
     {
       disabled: true,
       icon: <SentimentSatisfiedOutlined />,
@@ -114,60 +115,60 @@ const MenuRecords = (props: Props) => {
       id: 'patient_evaluation',
     },
     {
-      label: '낙상위험 평가도구 I',
+      label: '낙상위험 평가도구',
       toggle: toggle.patient_evaluation,
     },
+    // {
+    //   isPro: true,
+    //   label: '낙상위험 평가도구 II',
+    //   toggle: toggle.patient_evaluation,
+    // },
+    // {
+    //   isPro: true,
+    //   label: '소아 낙상위험 평가',
+    //   toggle: toggle.patient_evaluation,
+    // },
     {
-      isPro: true,
-      label: '낙상위험 평가도구 II',
+      label: '욕창위험 평가도구',
       toggle: toggle.patient_evaluation,
     },
-    {
-      isPro: true,
-      label: '소아 낙상위험 평가',
-      toggle: toggle.patient_evaluation,
-    },
-    {
-      label: '욕창위험 평가도구 I',
-      toggle: toggle.patient_evaluation,
-    },
-    {
-      isPro: true,
-      label: '욕창위험 평가도구 II',
-      toggle: toggle.patient_evaluation,
-    },
-    {
-      label: '욕구평가 기록지',
-      toggle: toggle.patient_evaluation,
-    },
-    {
-      isPro: true,
-      label: 'GCS',
-      toggle: toggle.patient_evaluation,
-    },
-    {
-      isPro: true,
-      label: 'Pediatric GCS',
-      toggle: toggle.patient_evaluation,
-    },
-    {
-      isPro: true,
-      label: 'FOUR Score',
-      toggle: toggle.patient_evaluation,
-    },
-    {
-      isPro: true,
-      label: '환자안전사고보고서',
-      toggle: toggle.patient_evaluation,
-    },
-    {
-      label: '환자안전보고학습시스템',
-      toggle: toggle.patient_evaluation,
-    },
-    {
-      label: '의약품이상사례보고시스템',
-      toggle: toggle.patient_evaluation,
-    },
+    // {
+    //   isPro: true,
+    //   label: '욕창위험 평가도구 II',
+    //   toggle: toggle.patient_evaluation,
+    // },
+    // {
+    //   label: '욕구평가 기록지',
+    //   toggle: toggle.patient_evaluation,
+    // },
+    // {
+    //   isPro: true,
+    //   label: 'GCS',
+    //   toggle: toggle.patient_evaluation,
+    // },
+    // {
+    //   isPro: true,
+    //   label: 'Pediatric GCS',
+    //   toggle: toggle.patient_evaluation,
+    // },
+    // {
+    //   isPro: true,
+    //   label: 'FOUR Score',
+    //   toggle: toggle.patient_evaluation,
+    // },
+    // {
+    //   isPro: true,
+    //   label: '환자안전사고보고서',
+    //   toggle: toggle.patient_evaluation,
+    // },
+    // {
+    //   label: '환자안전보고학습시스템',
+    //   toggle: toggle.patient_evaluation,
+    // },
+    // {
+    //   label: '의약품이상사례보고시스템',
+    //   toggle: toggle.patient_evaluation,
+    // },
     {
       icon: <SickOutlined />,
       disabled: true,
@@ -178,248 +179,245 @@ const MenuRecords = (props: Props) => {
       label: 'NRS',
       toggle: toggle.pain,
     },
+    // {
+    //   isPro: true,
+    //   label: 'FLACC Scale',
+    //   toggle: toggle.pain,
+    // },
+    // {
+    //   isPro: true,
+    //   label: 'CNPS',
+    //   toggle: toggle.pain,
+    // },
+    // {
+    //   isPro: true,
+    //   label: 'FFI',
+    //   toggle: toggle.pain,
+    // },
+    // {
+    //   isPro: true,
+    //   label: 'KOOS',
+    //   toggle: toggle.pain,
+    // },
+    // {
+    //   isPro: true,
+    //   label: 'LEFS',
+    //   toggle: toggle.pain,
+    // },
+    // {
+    //   isPro: true,
+    //   label: 'NDI',
+    //   toggle: toggle.pain,
+    // },
+    // {
+    //   isPro: true,
+    //   label: 'STarT Back\nScreening',
+    //   toggle: toggle.pain,
+    // },
+    // {
+    //   icon: <PsychologyOutlined />,
+    //   disabled: true,
+    //   isPro: true,
+    //   label: '정신건강 평가도구',
+    //   id: 'mental_health',
+    // },
+    // {
+    //   isPro: true,
+    //   label: '정신간호 기록지',
+    //   toggle: toggle.mental_health,
+    // },
+    // {
+    //   isPro: true,
+    //   label: 'BDI',
+    //   toggle: toggle.mental_health,
+    // },
+    // {
+    //   isPro: true,
+    //   label: 'BAI',
+    //   toggle: toggle.mental_health,
+    // },
+    // {
+    //   isPro: true,
+    //   label: 'MMSE-K',
+    //   toggle: toggle.mental_health,
+    // },
+    // {
+    //   isPro: true,
+    //   label: 'CIST',
+    //   toggle: toggle.mental_health,
+    // },
     {
-      isPro: true,
-      label: 'FLACC Scale',
-      toggle: toggle.pain,
-    },
-    {
-      isPro: true,
-      label: 'CNPS',
-      toggle: toggle.pain,
-    },
-    {
-      isPro: true,
-      label: 'FFI',
-      toggle: toggle.pain,
-    },
-    {
-      isPro: true,
-      label: 'KOOS',
-      toggle: toggle.pain,
-    },
-    {
-      isPro: true,
-      label: 'LEFS',
-      toggle: toggle.pain,
-    },
-    {
-      isPro: true,
-      label: 'NDI',
-      toggle: toggle.pain,
-    },
-    {
-      isPro: true,
-      label: 'STarT Back\nScreening',
-      toggle: toggle.pain,
-    },
-    {
-      icon: <PsychologyOutlined />,
-      disabled: true,
-      isPro: true,
-      label: '정신건강 평가도구',
-      id: 'mental_health',
-    },
-    {
-      isPro: true,
-      label: '정신간호 기록지',
-      toggle: toggle.mental_health,
-    },
-    {
-      isPro: true,
-      label: 'BDI',
-      toggle: toggle.mental_health,
-    },
-    {
-      isPro: true,
-      label: 'BAI',
-      toggle: toggle.mental_health,
-    },
-    {
-      isPro: true,
-      label: 'MMSE-K',
-      toggle: toggle.mental_health,
-    },
-    {
-      isPro: true,
-      label: 'CIST',
-      toggle: toggle.mental_health,
-    },
-    {
-      isPro: true,
       disabled: true,
       icon: <MasksOutlined />,
       label: '특수파트 기록지',
       id: 'special',
     },
+    // {
+    //   isPro: true,
+    //   label: '수술 기록지',
+    //   toggle: toggle.special,
+    // },
+    // {
+    //   isPro: true,
+    //   label: '마취 기록지',
+    //   toggle: toggle.special,
+    // },
     {
-      isPro: true,
-      label: '수술 기록지',
-      toggle: toggle.special,
-    },
-    {
-      isPro: true,
-      label: '마취 기록지',
-      toggle: toggle.special,
-    },
-    {
-      isPro: true,
       label: '수혈 기록지',
       toggle: toggle.special,
     },
     {
-      isPro: true,
-      label: 'CPR 기록지',
-      toggle: toggle.special,
-    },
-    {
-      isPro: true,
-      label: '투석 기록지',
-      toggle: toggle.special,
-    },
-    {
-      isPro: true,
       label: '삽관 기록지',
       toggle: toggle.special,
     },
     {
-      isPro: true,
-      label: '응급 기록지',
+      label: '투석 기록지',
       toggle: toggle.special,
     },
     {
-      label: 'NEDIS',
+      label: 'CPR 기록지',
       toggle: toggle.special,
     },
+    // {
+    //   isPro: true,
+    //   label: '응급 기록지',
+    //   toggle: toggle.special,
+    // },
+    // {
+    //   label: 'NEDIS',
+    //   toggle: toggle.special,
+    // },
+    // {
+    //   isPro: true,
+    //   label: '분만 기록지',
+    //   toggle: toggle.special,
+    // },
+    // {
+    //   isPro: true,
+    //   label: '가정간호 기록지',
+    //   toggle: toggle.special,
+    // },
     {
-      isPro: true,
-      label: '분만 기록지',
-      toggle: toggle.special,
-    },
-    {
-      isPro: true,
-      label: '가정간호 기록지',
-      toggle: toggle.special,
-    },
-    {
-      isPro: true,
       disabled: true,
       icon: <LocalHotelOutlined />,
       label: '중증도 평가도구',
       id: 'severity',
     },
+    // {
+    //   isPro: true,
+    //   label: 'KPCS',
+    //   toggle: toggle.severity,
+    // },
+    // {
+    //   isPro: true,
+    //   label: 'KPCSC',
+    //   toggle: toggle.severity,
+    // },
+    // {
+    //   isPro: true,
+    //   label: 'KPCSN',
+    //   toggle: toggle.severity,
+    // },
+    // {
+    //   isPro: true,
+    //   label: 'KPCS-GW',
+    //   toggle: toggle.severity,
+    // },
     {
-      isPro: true,
-      label: 'KPCS',
-      toggle: toggle.severity,
-    },
-    {
-      isPro: true,
-      label: 'KPCSC',
-      toggle: toggle.severity,
-    },
-    {
-      isPro: true,
-      label: 'KPCSN',
-      toggle: toggle.severity,
-    },
-    {
-      isPro: true,
-      label: 'KPCS-GW',
-      toggle: toggle.severity,
-    },
-    {
-      isPro: true,
       label: 'KPCS-ICU',
       toggle: toggle.severity,
     },
+    // {
+    //   isPro: true,
+    //   label: 'KPCS-NICU',
+    //   toggle: toggle.severity,
+    // },
+    // {
+    //   isPro: true,
+    //   icon: <RestaurantMenu />,
+    //   label: '식이/영양 기록지',
+    // },
     {
-      isPro: true,
-      label: 'KPCS-NICU',
-      toggle: toggle.severity,
-    },
-    {
-      isPro: true,
-      icon: <RestaurantMenu />,
-      label: '식이/영양 기록지',
-    },
-    {
-      isPro: true,
       disabled: true,
       icon: <VerifiedUserOutlined />,
-      label: '동의서 1',
+      label: '동의서',
       id: 'agreement',
     },
+    // {
+    //   isPro: true,
+    //   label: '입원 안내 확인서',
+    //   toggle: toggle.agreement,
+    // },
+    // {
+    //   isPro: true,
+    //   label: '낙상 예방교육 확인서',
+    //   toggle: toggle.agreement,
+    // },
     {
-      isPro: true,
-      label: '입원 안내 확인서',
-      toggle: toggle.agreement,
-    },
-    {
-      isPro: true,
-      label: '낙상 예방교육 확인서',
-      toggle: toggle.agreement,
-    },
-    {
-      isPro: true,
+      // isPro: true,
       label: '수혈 동의서',
       toggle: toggle.agreement,
     },
     {
-      isPro: true,
+      // isPro: true,
       label: 'CRRT 동의서',
       toggle: toggle.agreement,
     },
     {
-      isPro: true,
+      // isPro: true,
       label: '중심정맥삽관동의서',
       toggle: toggle.agreement,
     },
+    // {
+    //   isPro: true,
+    //   label: '대장내시경 동의서',
+    //   toggle: toggle.agreement,
+    // },
+    // {
+    //   isPro: true,
+    //   label: '상부내시경 동의서',
+    //   toggle: toggle.agreement,
+    // },
     {
-      isPro: true,
-      label: '대장내시경 동의서',
-      toggle: toggle.agreement,
-    },
-    {
-      isPro: true,
-      label: '상부내시경 동의서',
-      toggle: toggle.agreement,
-    },
-    {
-      isPro: true,
+      // isPro: true,
       label: '억제대 동의서',
       toggle: toggle.agreement,
     },
     {
-      isPro: true,
-      label: '비급여진료비동의서',
+      // isPro: true,
+      label: '연명의료중단등결정\n환자 가족 의사 확인서',
       toggle: toggle.agreement,
     },
-    {
-      isPro: true,
-      label: '진료기록 열람, \n사본발급 동의서',
-      toggle: toggle.agreement,
-    },
-    {
-      isPro: true,
-      label: '사전연명의료의향서',
-      toggle: toggle.agreement,
-    },
-    {
-      isPro: true,
-      label: '유전자검사 동의서',
-      toggle: toggle.agreement,
-    },
-    {
-      isPro: true,
-      icon: <AssignmentTurnedInOutlined />,
-      label: '동의서 2',
-    },
-    {
-      isPro: true,
-      icon: <BabyChangingStation />,
-      label: '영유아 건강검진 문진',
-    },
+    // {
+    //   isPro: true,
+    //   label: '비급여진료비동의서',
+    //   toggle: toggle.agreement,
+    // },
+    // {
+    //   isPro: true,
+    //   label: '진료기록 열람, \n사본발급 동의서',
+    //   toggle: toggle.agreement,
+    // },
+    // {
+    //   isPro: true,
+    //   label: '사전연명의료의향서',
+    //   toggle: toggle.agreement,
+    // },
+    // {
+    //   isPro: true,
+    //   label: '유전자검사 동의서',
+    //   toggle: toggle.agreement,
+    // },
+    // {
+    //   isPro: true,
+    //   icon: <AssignmentTurnedInOutlined />,
+    //   label: '동의서 2',
+    // },
+    // {
+    //   isPro: true,
+    //   icon: <BabyChangingStation />,
+    //   label: '영유아 건강검진 문진',
+    // },
   ];
 
   const onClickListItem = (label: string) => {
@@ -466,7 +464,7 @@ const MenuRecords = (props: Props) => {
 
   return (
     <Fragment>
-      {menus.map(({ icon, label, disabled, isPro, toggle, id }) => {
+      {menus.map(({ icon, label, disabled, toggle, id }) => {
         const onClick = () => {
           if (disabled) onClickDisabledItem(id);
           else onClickListItem(label);
@@ -477,10 +475,10 @@ const MenuRecords = (props: Props) => {
           return <ExpandMore fontSize="small" sx={{ color: '#fff' }} />;
         };
 
-        const ProIcon = () => {
-          if (!isPro) return null;
-          return <ProPlus />;
-        };
+        // const ProIcon = () => {
+        //   if (!isPro) return null;
+        //   return <ProPlus />;
+        // };
 
         return (
           <>
@@ -501,14 +499,14 @@ const MenuRecords = (props: Props) => {
                 <ListItemButton onClick={onClick}>
                   <ListItemIcon>{icon}</ListItemIcon>
                   <ListItemText primary={label} />
-                  <ProIcon />
+                  {/* <ProIcon /> */}
                   <MoreIcon />
                 </ListItemButton>
               </ListItem>
             ) : toggle ? (
               <ListItem key={label} disablePadding>
                 <ListItemButton
-                  className={isPro ? 'isPro' : ''}
+                  // className={isPro ? 'isPro' : ''}
                   onClick={onClick}
                 >
                   <ListItemIcon>{icon}</ListItemIcon>
@@ -516,7 +514,7 @@ const MenuRecords = (props: Props) => {
                     primary={label}
                     sx={{ whiteSpace: 'pre-wrap' }}
                   />
-                  <ProIcon />
+                  {/* <ProIcon /> */}
                   <MoreIcon />
                 </ListItemButton>
               </ListItem>
