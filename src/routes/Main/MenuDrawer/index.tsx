@@ -10,6 +10,8 @@ import CopyRight from './CopyRight';
 import MenuRecords from './MenuRecords';
 import MenuSettings from './MenuSettings';
 
+import catolicLogo from 'assets/catolic-logo.svg';
+
 interface Props {
   name?: string;
   college_ci?: string;
@@ -42,10 +44,10 @@ const MenuDrawer = (props: Props) => {
         <Toolbar>
           {menuDrawerWidth === 220 ? (
             <Box
-              height={35}
+              height={45}
               component="img"
               alt={college_name ? college_name : 'SmartNurse'}
-              src={college_ci ? college_ci : imgSmartNurseLogoText}
+              src={catolicLogo}
               sx={{ objectFit: 'contain' }}
             />
           ) : null}
