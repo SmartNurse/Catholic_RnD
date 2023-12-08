@@ -75,8 +75,15 @@ const Fall = (props: SurveyDialogProps<TFallDefaultValues>) => {
         columnSpacing={3}
         sx={{ py: 5, px: 1 }}
       >
-        <Typography sx={{ margin: "40px auto 0px auto", fontWeight: "700", fontSize: "16px", textAlign: "center" }}>
-          낙상위험 평가도구 I
+        <Typography
+          sx={{
+            margin: '40px auto 0px auto',
+            fontWeight: '700',
+            fontSize: '16px',
+            textAlign: 'center',
+          }}
+        >
+          낙상위험 평가도구
         </Typography>
         <CommonPatientInfo patientInfo={patientInfo} nurseName={nurseName} />
         <FallContents {...formProps} />
