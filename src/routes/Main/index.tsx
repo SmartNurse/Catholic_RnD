@@ -29,7 +29,7 @@ import { ReactComponent as Number05 } from 'assets/icon-number-05.svg';
 // 테스트 정서
 function Main() {
   const { palette } = useTheme();
-
+  //123
   const navigate = useNavigate();
   const {
     student_name,
