@@ -3,11 +3,11 @@ import { createTheme, css } from '@mui/material/styles';
 export const greenTheme = createTheme({
   palette: {
     primary: {
-      light: '#EBF8F3',
-      main: '#14855B',
+      light: '#EDF3FA',
+      main: '#0C2E86',
     },
     secondary: {
-      main: '#13AD74',
+      main: '#395AAE',
     },
     text: {
       primary: '#000000E5',
@@ -78,7 +78,7 @@ export const greenTheme = createTheme({
       styleOverrides: {
         root: {
           borderWidth: 1,
-          borderColor: '#EFF0F1',
+          borderColor: '#EDF3FA',
         },
       },
     },
@@ -117,11 +117,11 @@ export const greenTheme = createTheme({
           padding: '4px 8px',
           wordBreak: 'keep-all',
           textTransform: 'none',
-          backgroundColor: '#EBF8F3',
+          backgroundColor: '#EDF3FA',
 
           '&.Mui-selected': {
             color: '#fff',
-            backgroundColor: '#14855B',
+            backgroundColor: '#395AAE',
           },
         },
       },
@@ -666,16 +666,16 @@ export const blackTheme = createTheme({
       main: '#333333',
     },
     text: {
-      primary: "#FFF",
-      secondary: "#FFF",
-      disabled: "#FFF",
+      primary: '#FFF',
+      secondary: '#FFF',
+      disabled: '#FFF',
     },
-    mode: "dark",
+    mode: 'dark',
   },
 
   typography: {
     allVariants: {
-      color: "white",
+      color: 'white',
     },
 
     fontFamily: [
@@ -749,7 +749,7 @@ export const blackTheme = createTheme({
       styleOverrides: {
         paper: {
           width: '100%',
-          backgroundColor: "black",
+          backgroundColor: 'black',
         },
       },
     },
@@ -799,8 +799,8 @@ export const blackTheme = createTheme({
     },
     MuiTextField: {
       defaultProps: {
-        InputProps: { style: { color: "white" } },
-      }, 
+        InputProps: { style: { color: 'white' } },
+      },
       styleOverrides: {
         root: {
           '.MuiInputBase-sizeSmall': {
@@ -830,4 +830,3 @@ export const blackTheme = createTheme({
     },
   },
 });
-

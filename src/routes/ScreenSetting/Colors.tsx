@@ -8,7 +8,7 @@ const Colors = () => {
   const buttons = [
     { param: 'BLUE', text: 'BLUE', color: '#2264A8' },
 
-    { param: 'GREEN', text: 'GREEN', color: '#13AD74' },
+    { param: 'GREEN', text: 'ORIGIN', color: '#0C2E86' },
     { param: 'RED', text: 'RED', color: '#AD4751' },
     { param: 'PURPLE', text: 'PURPLE', color: '#6A3A87' },
     { param: 'BLACK', text: 'BLACK', color: '#333333' },
