@@ -153,29 +153,53 @@ const ECardex = (props: SurveyDialogProps<TECardexDefaultValues>) => {
         <CommonPatientInfo patientInfo={patientInfo} nurseName={nurseName} />
         <TextareaSection
           {...formProps}
-          title="기타 인계사항"
+          title="과거력"
           registerId="other_remarks"
           required={false}
         />
-        <Remark {...formProps} />
+        {/* <Remark {...formProps} />
         <Dosage {...formProps} />
         <Lab {...formProps} />
-        <ImageTest {...formProps} />
+        <ImageTest {...formProps} /> */}
         <TextareaSection
           {...formProps}
-          title="간호문제"
+          title="Diet"
           registerId="concerns"
           required={false}
         />
         <TextareaSection
           {...formProps}
-          title="간호 계획 및 지시"
+          title="주호소"
           registerId="plans"
           required={false}
         />
         <TextareaSection
           {...formProps}
-          title="평가"
+          title="삽관기구"
+          registerId="evaluation"
+          required={false}
+        />
+        <TextareaSection
+          {...formProps}
+          title="감염정보"
+          registerId="evaluation"
+          required={false}
+        />
+        <TextareaSection
+          {...formProps}
+          title="투약기록"
+          registerId="evaluation"
+          required={false}
+        />
+        <TextareaSection
+          {...formProps}
+          title="주요 검사"
+          registerId="evaluation"
+          required={false}
+        />
+        <TextareaSection
+          {...formProps}
+          title="인수인계"
           registerId="evaluation"
           required={false}
         />
