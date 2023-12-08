@@ -55,11 +55,11 @@ const MenuSettings = (props: Props) => {
   // 학생 메뉴와 교수 메뉴 변경
   const settings = isStudent
     ? [
-        {
-          isPro: true,
-          icon: <TbMessagePlus />,
-          label: '간호과정 서술기록',
-        },
+        // {
+        //   isPro: true,
+        //   icon: <TbMessagePlus />,
+        //   label: '간호과정 서술기록',
+        // },
         {
           disabled: true,
           icon: <MedicalInformationOutlined />,
@@ -94,38 +94,38 @@ const MenuSettings = (props: Props) => {
           label: 'CLOVA X',
           toggle: toggle.medical_information,
         },
-        {
-          isPro: true,
-          icon: <AiOutlineCalculator />,
-          label: '약물계산기',
-        },
-        {
-          disabled: true,
-          isPro: true,
-          icon: <BsCardChecklist />,
-          label: '간호기록체크리스트',
-          id: 'nurse_record',
-        },
-        {
-          isPro: true,
-          label: '병동',
-          toggle: toggle.nurse_record,
-        },
-        {
-          isPro: true,
-          label: '응급실',
-          toggle: toggle.nurse_record,
-        },
-        {
-          isPro: true,
-          label: '수술실',
-          toggle: toggle.nurse_record,
-        },
-        {
-          isPro: true,
-          icon: <DateRangeOutlined />,
-          label: '간호사 근무 스케줄표',
-        },
+        // {
+        //   isPro: true,
+        //   icon: <AiOutlineCalculator />,
+        //   label: '약물계산기',
+        // },
+        // {
+        //   disabled: true,
+        //   isPro: true,
+        //   icon: <BsCardChecklist />,
+        //   label: '간호기록체크리스트',
+        //   id: 'nurse_record',
+        // },
+        // {
+        //   isPro: true,
+        //   label: '병동',
+        //   toggle: toggle.nurse_record,
+        // },
+        // {
+        //   isPro: true,
+        //   label: '응급실',
+        //   toggle: toggle.nurse_record,
+        // },
+        // {
+        //   isPro: true,
+        //   label: '수술실',
+        //   toggle: toggle.nurse_record,
+        // },
+        // {
+        //   isPro: true,
+        //   icon: <DateRangeOutlined />,
+        //   label: '간호사 근무 스케줄표',
+        // },
         {
           icon: <NotificationsOutlined />,
           label: '공지사항',
@@ -155,11 +155,11 @@ const MenuSettings = (props: Props) => {
         },
       ]
     : [
-        {
-          isPro: true,
-          icon: <TbMessagePlus />,
-          label: '간호과정 서술기록',
-        },
+        // {
+        //   isPro: true,
+        //   icon: <TbMessagePlus />,
+        //   label: '간호과정 서술기록',
+        // },
         {
           disabled: true,
           icon: <MedicalInformationOutlined />,
@@ -194,38 +194,38 @@ const MenuSettings = (props: Props) => {
           label: 'CLOVA X',
           toggle: toggle.medical_information,
         },
-        {
-          isPro: true,
-          icon: <AiOutlineCalculator />,
-          label: '약물계산기',
-        },
-        {
-          disabled: true,
-          isPro: true,
-          icon: <BsCardChecklist />,
-          label: '간호기록체크리스트',
-          id: 'nurse_record',
-        },
-        {
-          isPro: true,
-          label: '병동',
-          toggle: toggle.nurse_record,
-        },
-        {
-          isPro: true,
-          label: '응급실',
-          toggle: toggle.nurse_record,
-        },
-        {
-          isPro: true,
-          label: '수술실',
-          toggle: toggle.nurse_record,
-        },
-        {
-          isPro: true,
-          icon: <DateRangeOutlined />,
-          label: '간호사 근무 스케줄표',
-        },
+        // {
+        //   isPro: true,
+        //   icon: <AiOutlineCalculator />,
+        //   label: '약물계산기',
+        // },
+        // {
+        //   disabled: true,
+        //   isPro: true,
+        //   icon: <BsCardChecklist />,
+        //   label: '간호기록체크리스트',
+        //   id: 'nurse_record',
+        // },
+        // {
+        //   isPro: true,
+        //   label: '병동',
+        //   toggle: toggle.nurse_record,
+        // },
+        // {
+        //   isPro: true,
+        //   label: '응급실',
+        //   toggle: toggle.nurse_record,
+        // },
+        // {
+        //   isPro: true,
+        //   label: '수술실',
+        //   toggle: toggle.nurse_record,
+        // },
+        // {
+        //   isPro: true,
+        //   icon: <DateRangeOutlined />,
+        //   label: '간호사 근무 스케줄표',
+        // },
         {
           icon: <NotificationsOutlined />,
           label: '공지사항',
