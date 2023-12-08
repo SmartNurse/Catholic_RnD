@@ -71,7 +71,7 @@ export enum MENU {
   MEDICATION = '투약 기록지',
   RADIOLOGY = '영상검사 기록지',
   PATHOLOGY = '임상병리검사 기록지',
-  CLINICAL_OBSERVATION = '활력징후 기록지',
+  CLINICAL_OBSERVATION = '임상관찰 기록지',
   IORECORD = '섭취 및 배설량 기록지',
   GLUCOSE = '혈당 기록지',
   BEDSORES = '욕창위험 평가도구',
