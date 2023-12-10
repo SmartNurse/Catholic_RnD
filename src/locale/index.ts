@@ -275,12 +275,13 @@ const locale = {
     'FALL.20': '있음 (20점)',
     'FALL.WALKING.AIDS.1': '없음/침상안정/간호보조 (0점)',
     'FALL.WALKING.AIDS.15': '목발/지팡이/보행기 (15점)',
-    'FALL.WALKING.AIDS.30': '기구를 잡고 이동 (30점)',
+    'FALL.WALKING.AIDS.30': '기구를 잡고 보행함 (30점)',
     'FALL.GAIT.1': '정상/침상안정/부동 (0점)',
-    'FALL.GAIT.10': '허약 (10점)',
-    'FALL.GAIT.20': '장애 (20점)',
-    'FALL.CONSCIOUSNESS.1': '자신의 기능수준을 인지함 (0점)',
-    'FALL.CONSCIOUSNESS.15': '자신의 기능수준을 인지하지 못함 (15점)',
+    'FALL.GAIT.10': '허약함 (10점)',
+    'FALL.GAIT.20': '장애가 있음 (20점)',
+    'FALL.CONSCIOUSNESS.1': '자신의 기능 수준에 대해 잘 알고 있음 (0점)',
+    'FALL.CONSCIOUSNESS.15':
+      '자신의 기능 수준을 과대평가하거나 잊어버림 (15점)',
     'REQUIRED.FALL': '평가항목을 모두 선택해주세요',
 
     // fall II

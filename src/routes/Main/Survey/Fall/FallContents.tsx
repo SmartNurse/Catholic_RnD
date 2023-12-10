@@ -25,7 +25,7 @@ const FallContents = (props: Props) => {
   const rows = [
     {
       id: 'experience',
-      title: '낙상 경험',
+      title: '지난 3개월 간 낙상의 경험',
       ...radioGroup({
         key: 'contents.experience',
         options: [1, 25],
@@ -43,7 +43,7 @@ const FallContents = (props: Props) => {
     },
     {
       id: 'walkingAids',
-      title: '보행보조기구',
+      title: '보행 보조',
       ...radioGroup({
         key: 'contents.walkingAids',
         options: [1, 15, 30],
@@ -52,7 +52,7 @@ const FallContents = (props: Props) => {
     },
     {
       id: 'intravenousLine',
-      title: '정맥주사라인',
+      title: '정맥 수액 요법/헤파린 락',
       ...radioGroup({
         key: 'contents.intravenousLine',
         options: [1, 20],
