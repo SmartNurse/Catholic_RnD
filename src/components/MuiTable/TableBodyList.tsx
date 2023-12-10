@@ -56,6 +56,8 @@ const TableBodyList = ({ columns, rows }: Props) => {
                       overflow="hidden"
                       textOverflow="ellipsis"
                       whiteSpace={width ? 'nowrap' : 'pre-line'}
+                      fontSize="12px"
+                      fontWeight={500}
                     >
                       {rowData}
                     </Typography>
