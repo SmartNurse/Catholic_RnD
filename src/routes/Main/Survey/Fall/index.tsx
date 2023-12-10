@@ -79,7 +79,7 @@ const Fall = (props: SurveyDialogProps<TFallDefaultValues>) => {
           sx={{
             margin: '40px auto 0px auto',
             fontWeight: '700',
-            fontSize: '16px',
+            fontSize: '20px',
             textAlign: 'center',
           }}
         >

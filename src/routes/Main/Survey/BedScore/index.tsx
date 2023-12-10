@@ -76,11 +76,11 @@ const BedScore = (props: SurveyDialogProps<TBedScoreDefaultValues>) => {
           sx={{
             margin: '40px auto 0px auto',
             fontWeight: '700',
-            fontSize: '16px',
+            fontSize: '20px',
             textAlign: 'center',
           }}
         >
-          욕창위험 평가도구
+          욕창 사정 도구
         </Typography>
         <CommonPatientInfo patientInfo={patientInfo} nurseName={nurseName} />
         <BedScoreContents {...formProps} />
