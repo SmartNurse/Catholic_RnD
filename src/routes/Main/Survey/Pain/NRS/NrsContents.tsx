@@ -37,7 +37,8 @@ const NrsContents = (props: Props) => {
   const columns = [
     { fieldId: 'date', label: '날짜', sx: { width: 200 } },
     { fieldId: 'time', label: '체크시간', sx: { width: 200 } },
-    { fieldId: 'pain_score', label: 'PAIN SCORE' },
+    { fieldId: 'pain_score', label: 'PAIN SCORE', sx: { width: 200 } },
+    { fieldId: 'pain_aspect', label: '통증 양상' },
     { fieldId: 'action', label: '', sx: { width: 100 } },
   ];
 
@@ -82,6 +83,8 @@ const NrsContents = (props: Props) => {
         )}
       />
     ),
+    pain_aspect: <MuiTextField required={false} sx={{ width: '400px' }} />,
+
     pain_score: (
       <>
         <MuiTextField
@@ -98,7 +101,6 @@ const NrsContents = (props: Props) => {
               setInputError(false);
             else setInputError(true);
           }}
-          placeholder="값을 직접 입력하거나 위의 슬라이더에서 선택해주세요"
           error={
             painScore === '' ||
             (Number(painScore) >= 0 &&
