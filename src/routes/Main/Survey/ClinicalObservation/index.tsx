@@ -32,7 +32,7 @@ const ClinicalObservation = (
   const { onUpdateIsSave } = useSurvey();
   const { onSuccess, onFail, onResultCode, onRequired } = useNotification();
 
-  const { handleSubmit, watch, getValues, setValue } = useForm({
+  const { handleSubmit, watch, getValues, setValue, register } = useForm({
     defaultValues,
   });
 
@@ -52,9 +52,9 @@ const ClinicalObservation = (
         if (rc !== 1) return onResultCode(rc);
 
         onUpdateIsSave(true);
-        onSuccess('활력징후 기록지 저장에 성공하였습니다.');
+        onSuccess('임상관찰 기록지 저장에 성공하였습니다.');
       })
-      .catch(e => onFail('활력징후 기록지 저장에 실패하였습니다.', e));
+      .catch(e => onFail('임상관찰 기록지 저장에 실패하였습니다.', e));
   };
 
   const formProps = {
@@ -64,6 +64,7 @@ const ClinicalObservation = (
     setValue,
     onSuccess,
     onRequired,
+    register,
   };
 
   return (
@@ -89,12 +90,12 @@ const ClinicalObservation = (
             textAlign: 'center',
           }}
         >
-          활력징후 기록지
+          임상관찰 기록지
         </Typography>
         <CommonPatientInfo patientInfo={patientInfo} nurseName={nurseName} />
         <VitalSignGraph {...formProps} />
-        <VitalSign {...formProps} />
-        <IOCheck {...formProps} />
+        {/*<VitalSign {...formProps} />
+        <IOCheck {...formProps} /> */}
       </Grid>
     </MuiDialog.SurveyForm>
   );
