@@ -15,16 +15,16 @@ const BedScoreContents = (props: Props) => {
 
   const columns = [
     { fieldId: 'title', label: '평가항목' },
-    { fieldId: '0', label: '1점' },
-    { fieldId: '1', label: '2점' },
-    { fieldId: '2', label: '3점' },
-    { fieldId: '3', label: '4점' },
+    { fieldId: '0', label: '           1점', sx: { whiteSpace: 'pre' } },
+    { fieldId: '1', label: '           2점', sx: { whiteSpace: 'pre' } },
+    { fieldId: '2', label: '           3점', sx: { whiteSpace: 'pre' } },
+    { fieldId: '3', label: '           4점', sx: { whiteSpace: 'pre' } },
   ];
 
   const rows = [
     {
       id: 'sensoryPerception',
-      title: '감각지각',
+      title: 'Sensory',
       ...radioGroup({
         key: 'contents.sensoryPerception',
         options: [1, 2, 3, 4],
@@ -33,16 +33,17 @@ const BedScoreContents = (props: Props) => {
     },
     {
       id: 'humidity',
-      title: '습기',
+      title: 'Moisture',
       ...radioGroup({
         key: 'contents.humidity',
         options: [1, 2, 3, 4],
         i18nKey: 'BED.SCORE.HUMIDITY',
+        width: '140px',
       }),
     },
     {
       id: 'activity',
-      title: '활동',
+      title: 'Activity',
       ...radioGroup({
         key: 'contents.activity',
         options: [1, 2, 3, 4],
@@ -51,7 +52,7 @@ const BedScoreContents = (props: Props) => {
     },
     {
       id: 'mobility',
-      title: '기동성',
+      title: 'Mobility',
       ...radioGroup({
         key: 'contents.mobility',
         options: [1, 2, 3, 4],
@@ -60,7 +61,7 @@ const BedScoreContents = (props: Props) => {
     },
     {
       id: 'nutrition',
-      title: '영양',
+      title: 'Nutrition',
       ...radioGroup({
         key: 'contents.nutrition',
         options: [1, 2, 3, 4],
@@ -69,7 +70,7 @@ const BedScoreContents = (props: Props) => {
     },
     {
       id: 'frictionAndDissolutionForce',
-      title: '마찰력과 응전력',
+      title: 'Friction & shear',
       ...radioGroup({
         key: 'contents.frictionAndDissolutionForce',
         options: [1, 2, 3],
@@ -99,7 +100,11 @@ const BedScoreContents = (props: Props) => {
           >
             합계 : {watchSumValues()}점
           </Typography>
-          <Typography minWidth={115} variant="caption" sx={{ color: `${palette.primary.main}`}}>
+          <Typography
+            minWidth={115}
+            variant="caption"
+            sx={{ color: `${palette.primary.main}` }}
+          >
             <Typography variant="inherit">
               <Box component={'strong'} mr={0.5}>
                 초고위험군:
