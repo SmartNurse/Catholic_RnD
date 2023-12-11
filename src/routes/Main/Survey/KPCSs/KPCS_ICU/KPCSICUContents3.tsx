@@ -19,14 +19,24 @@ import SectionTitle from '../../components/SectionTitle';
 
 import { IFormValues, IFormWatch, IFormRegister } from 'routes/Main/type';
 
-const radioId5 = ['no19'];
+const radioId5 = [
+  'no34',
+  'no35',
+  'no36',
+  'no37',
+  'no38',
+  'no39',
+  'no40',
+  'no41',
+  'no42',
+];
 
 const 영역5 = [
   {
     id: 1,
     ko: '34. IV route 만들기, 중심정맥관 삽입시',
     info: ['회 당 2점 가산', 'IV를 처음 시작했을 때, 중심정맥관 삽입시 보조'],
-    desc: ['해당 없음', '1회 당 2점 :'], //인풋박스 확인!!
+    desc: ['해당 없음 ', '1회당 2점 : '], //인풋박스 확인!!
   },
   {
     id: 2,
@@ -80,13 +90,13 @@ const 영역5 = [
       '혈액의 종류에 관계없이 팩마다 2점 부여',
       '혈액준비, 확인, 활력증후 측정, 기록, filter 교환 포함',
     ],
-    desc: ['해당 없음', '1개당 2점 :'], //인풋박스 확인!!
+    desc: ['해당 없음  ', '1개당 2점 : '], //인풋박스 확인!!
   },
   {
     id: 8,
     ko: '41. 혈액제제 (혈소판 6unit)',
     info: ['혈소판은 6개를 1회로 한다.'],
-    desc: ['해당 없음', '1회당 2점 :'], //인풋박스 확인!!
+    desc: ['해당 없음   ', '1회당 2점 :  '], //인풋박스 확인!!
   },
   {
     id: 9,
@@ -101,7 +111,20 @@ const 영역5 = [
   },
 ];
 
-const radioId6 = ['no20', 'no21', 'no22', 'no23'];
+const radioId6 = [
+  'no43',
+  'no44',
+  'no45',
+  'no46',
+  'no47',
+  'no48',
+  'no49',
+  'no50',
+  'no51',
+  'no52',
+  'no53',
+  'no54',
+];
 
 const 영역6 = [
   {
@@ -112,7 +135,7 @@ const 영역6 = [
       '유치도뇨의 준비, 삽입, 교환, 정리했을 때',
       'clearing, retension 목적으로 enema 할 때마다',
     ],
-    desc: ['해당 없음', '1회당 2점 :'], //인풋박스 확인!!!
+    desc: ['해당 없음 ', '1회당 2점 : '], //인풋박스 확인!!!
   },
   {
     id: 2,
@@ -127,7 +150,7 @@ const 영역6 = [
     id: 3,
     ko: '45. 12-lead EKG record',
     info: ['간호사가 12 lead EKG를 직접 찍었을 때'],
-    desc: ['해당 없음', '1회당 2점 :'], //인풋박스 확인!!
+    desc: ['해당 없음  ', '1회당 2점 :  '], //인풋박스 확인!!
   },
   {
     id: 4,
@@ -139,7 +162,7 @@ const 영역6 = [
     id: 5,
     ko: '47. 단순드레싱 (4"*8") 15-30분',
     info: ['각종 wound 드레싱, 1회 제공 시 마다 가산'],
-    desc: ['해당 없음', '1회당 1점 :'], //인풋박스 확인!!!
+    desc: ['해당 없음   ', '1회당 1점 :   '], //인풋박스 확인!!!
   },
   {
     id: 6,
@@ -147,7 +170,7 @@ const 영역6 = [
     info: [
       '중환자실내에서 현장응급검사(ABG, Electro, BST,  USG, Guaic test)를 위해 준비, 채혈, 검사를 6회 시행 시 마다 점수 추가',
     ],
-    desc: ['해당 없음', '1회당 2점 :'], //인풋박스 확인!!!
+    desc: ['해당 없음    ', '1회당 2점 :    '], //인풋박스 확인!!!
   },
   {
     id: 7,
@@ -155,15 +178,16 @@ const 영역6 = [
     info: [
       '3개에 1회 인정',
       '간호사에 의해 채취되어 검사실로 보내어진 것만 인정됨.',
-      '하루 3회 시행이란 튜브 종류가 아니라 venipuncture나 혈액을 채취하는 횟수임. ABG, Electro를 동시 채혈하여 튜브 2개에 나눠 담은 경우 1회, 다른 시간에 한 경우 2회로 한다',
+      '하루 3회 시행이란 튜브 종류가 아니라 venipuncture나 혈액을 채취하는 횟수임. ABG, Electro를 동시 채혈하여 튜브 2개에 나눠 담은 경우 1회, 다른 시간에 한',
+      '경우 2회로 한다',
     ],
-    desc: ['해당 없음', '1회당 1점 :'], //인풋박스 확인!!!
+    desc: ['해당 없음     ', '1회당 1점 :     '], //인풋박스 확인!!!
   },
   {
     id: 8,
     ko: '50. 튜브간호 (흉관,기관내관 등)',
     info: ['chest tube,  ET-tube care, 드레싱을 하루에 1번 했을 경우'],
-    desc: ['해당 없음', '1회당 1점 :'], //인풋박스 확인!!!
+    desc: ['해당 없음      ', '1회당 1점 :      '], //인풋박스 확인!!!
   },
   {
     id: 9,
@@ -171,7 +195,7 @@ const 영역6 = [
     info: [
       '배액관 드레싱 및 교환(gastrostomy tubes, penrose drain, ileostomy, colostomy, EVD, PTBD 등)',
     ],
-    desc: ['해당 없음', '1회당 1점 :'], //인풋박스 확인!!!
+    desc: ['해당 없음       ', '1회당 1점 :       '], //인풋박스 확인!!!
   },
   {
     id: 10,
@@ -206,11 +230,27 @@ interface Props extends IFormValues, IFormWatch, IFormRegister {
   sum6: number;
   setSum6: (sum6: number) => void;
 
-  urin: number;
-  setUrin: (urin: number) => void;
+  ivRoute: number;
+  setIvRoute: (ivRoute: number) => void;
+  blood: number;
+  setBlood: (blood: number) => void;
+  bloodUnit: number;
+  setBloodUnit: (bloodUnit: number) => void;
 
-  poo: number;
-  setPoo: (poo: number) => void;
+  nasogastric: number;
+  setNasogastric: (nasogastric: number) => void;
+  ekgRecord: number;
+  setEkgRecord: (ekgRecord: number) => void;
+  dressing: number;
+  setDressing: (dressing: number) => void;
+  emergency: number;
+  setEmergency: (emergency: number) => void;
+  testBodyOdor: number;
+  setTestBodyOdor: (testBodyOdor: number) => void;
+  tubeNursing: number;
+  setTubeNursing: (tubeNursing: number) => void;
+  drainageTube: number;
+  setDrainageTube: (drainageTube: number) => void;
 }
 
 const KPCSICUContents3 = (props: Props) => {
@@ -220,17 +260,63 @@ const KPCSICUContents3 = (props: Props) => {
     disabled,
     setValue,
     getValues,
-    setSum5,
-    setSum6,
-    setUrin,
-    setPoo,
     register,
+
+    setSum5,
+    sum6,
+    setSum6,
+
+    setIvRoute,
+    setBlood,
+    setBloodUnit,
+
+    setNasogastric,
+    setEkgRecord,
+    setDressing,
+    setEmergency,
+    setTestBodyOdor,
+    setTubeNursing,
+    setDrainageTube,
   } = props;
 
   const calculateSumValue5 = () => {
     setSum5(
       radioId5.reduce((acc, cur) => {
-        const value = Number(getValues(cur)) * 2;
+        // 인풋값 설정 34, 40, 41 번
+        if (
+          (cur === 'no34' && Number(getValues(cur)) > 0) ||
+          (cur === 'no40' && Number(getValues(cur)) > 0) ||
+          (cur === 'no41' && Number(getValues(cur)) > 0)
+        ) {
+          const value = Number(getValues(cur));
+          return value ? acc + value - 1 : acc;
+        }
+        // 35, 36번
+        else if (cur === 'no35' || cur === 'no36') {
+          const value = Number(getValues(cur)) * 4;
+          return value ? acc + value : acc;
+        }
+        // 37번
+        else if (cur === 'no37') {
+          const value = Number(getValues(cur)) * 6;
+          return value ? acc + value : acc;
+        }
+        // 38번
+        else if (cur === 'no38') {
+          const value = Number(getValues(cur)) * 8;
+          return value ? acc + value : acc;
+        }
+        // 39번
+        else if (cur === 'no39' && Number(getValues(cur)) > 0) {
+          const value = Number(getValues(cur)) + 1;
+          return value ? acc + value : acc;
+        }
+        // 42번
+        else if (cur === 'no42') {
+          const value = Number(getValues(cur)) * 2;
+          return value ? acc + value : acc;
+        }
+        const value = Number(getValues(cur));
         return value ? acc + value : acc;
       }, 0)
     );
@@ -244,19 +330,92 @@ const KPCSICUContents3 = (props: Props) => {
     calculateSumValue5();
   };
 
+  const [disable34, setDisable34] = useState(false);
+  const [disable40, setDisable40] = useState(false);
+  const [disable41, setDisable41] = useState(false);
+
+  const handleChange5_34_none = (
+    e: React.ChangeEvent<HTMLInputElement>,
+    checked: boolean
+  ) => {
+    setValue(e.target.name, e.target.value);
+    setValue('no34_1', 0);
+    setIvRoute(0);
+    setDisable34(true);
+    calculateSumValue5();
+  };
+  const handleChange5_34_One = (
+    e: React.ChangeEvent<HTMLInputElement>,
+    checked: boolean
+  ) => {
+    setValue(e.target.name, e.target.value);
+    setValue('no34_1', 1);
+    setIvRoute(2);
+    setDisable34(false);
+    calculateSumValue5();
+  };
+
+  const handleChange5_40_none = (
+    e: React.ChangeEvent<HTMLInputElement>,
+    checked: boolean
+  ) => {
+    setValue(e.target.name, e.target.value);
+    setValue('no40_1', 0);
+    setBlood(0);
+    setDisable40(true);
+    calculateSumValue5();
+  };
+
+  const handleChange5_40_One = (
+    e: React.ChangeEvent<HTMLInputElement>,
+    checked: boolean
+  ) => {
+    setValue(e.target.name, e.target.value);
+    setValue('no40_1', 1);
+    setBlood(2);
+    setDisable40(false);
+    calculateSumValue5();
+  };
+
+  const handleChange5_41_none = (
+    e: React.ChangeEvent<HTMLInputElement>,
+    checked: boolean
+  ) => {
+    setValue(e.target.name, e.target.value);
+    setValue('no41_1', 0);
+    setBloodUnit(0);
+    setDisable41(true);
+    calculateSumValue5();
+  };
+
+  const handleChange5_41_One = (
+    e: React.ChangeEvent<HTMLInputElement>,
+    checked: boolean
+  ) => {
+    setValue(e.target.name, e.target.value);
+    setValue('no41_1', 1);
+    setBloodUnit(2);
+    setDisable41(false);
+    calculateSumValue5();
+  };
+
   const calculateSumValue6 = () => {
     setSum6(
       radioId6.reduce((acc, cur) => {
-        if (Number(getValues(cur)) > 0) {
-          if (cur === 'no20' || cur === 'no21') {
-            const value = 2;
-            return value ? acc + value : acc;
-          } else {
-            const value = Number(getValues(cur));
-            return value ? acc : acc;
-          }
+        if (
+          (cur === 'no43' && Number(getValues(cur)) > 0) ||
+          (cur === 'no45' && Number(getValues(cur)) > 0) ||
+          (cur === 'no47' && Number(getValues(cur)) > 0) ||
+          (cur === 'no48' && Number(getValues(cur)) > 0) ||
+          (cur === 'no49' && Number(getValues(cur)) > 0) ||
+          (cur === 'no50' && Number(getValues(cur)) > 0) ||
+          (cur === 'no51' && Number(getValues(cur)) > 0)
+        ) {
+          const value = Number(getValues(cur));
+          return value ? acc + value - 1 : acc;
         }
-        const value = Number(getValues(cur));
+
+        const value = Number(getValues(cur)) * 2;
         return value ? acc + value : acc;
       }, 0)
     );
@@ -270,49 +429,164 @@ const KPCSICUContents3 = (props: Props) => {
     calculateSumValue6();
   };
 
-  const [disableUrin, setDisableUrin] = useState(false);
-  const [disablePoo, setDisablePoo] = useState(false);
+  const [disable43, setDisable43] = useState(false);
+  const [disable45, setDisable45] = useState(false);
+  const [disable47, setDisable47] = useState(false);
+  const [disable48, setDisable48] = useState(false);
+  const [disable49, setDisable49] = useState(false);
+  const [disable50, setDisable50] = useState(false);
+  const [disable51, setDisable51] = useState(false);
 
-  const handleChange6urin = (
+  const handleChange6_43_none = (
     e: React.ChangeEvent<HTMLInputElement>,
     checked: boolean
   ) => {
     setValue(e.target.name, e.target.value);
-    setValue('no22_1', 0);
-    setUrin(0);
-    setDisableUrin(true);
+    setValue('no43_1', 0);
+    setNasogastric(0);
+    setDisable43(true);
     calculateSumValue6();
   };
-  const handleChange6urinTwo = (
+  const handleChange6_43_One = (
     e: React.ChangeEvent<HTMLInputElement>,
     checked: boolean
   ) => {
     setValue(e.target.name, e.target.value);
-    setValue('no22_1', 0);
-    setUrin(0);
-    setDisableUrin(false);
-    calculateSumValue6();
-  };
-
-  const handleChange6Poo = (
-    e: React.ChangeEvent<HTMLInputElement>,
-    checked: boolean
-  ) => {
-    setValue(e.target.name, e.target.value);
-    setValue('no23_1', 0);
-    setPoo(0);
-    setDisablePoo(true);
+    setValue('no43_1', 1);
+    setNasogastric(2);
+    setDisable43(false);
     calculateSumValue6();
   };
 
-  const handleChange6PooTwo = (
+  const handleChange6_45_none = (
     e: React.ChangeEvent<HTMLInputElement>,
     checked: boolean
   ) => {
     setValue(e.target.name, e.target.value);
-    setValue('no23_1', 0);
-    setPoo(0);
-    setDisablePoo(false);
+    setValue('no45_1', 0);
+    setEkgRecord(0);
+    setDisable45(true);
+    calculateSumValue6();
+  };
+
+  const handleChange6_45_One = (
+    e: React.ChangeEvent<HTMLInputElement>,
+    checked: boolean
+  ) => {
+    setValue(e.target.name, e.target.value);
+    setValue('no45_1', 1);
+    setEkgRecord(2);
+    setDisable45(false);
+    calculateSumValue6();
+  };
+
+  const handleChange6_47_none = (
+    e: React.ChangeEvent<HTMLInputElement>,
+    checked: boolean
+  ) => {
+    setValue(e.target.name, e.target.value);
+    setValue('no47_1', 0);
+    setDressing(0);
+    setDisable47(true);
+    calculateSumValue6();
+  };
+
+  const handleChange6_47_One = (
+    e: React.ChangeEvent<HTMLInputElement>,
+    checked: boolean
+  ) => {
+    setValue(e.target.name, e.target.value);
+    setValue('no47_1', 1);
+    setDressing(1);
+    setDisable47(false);
+    calculateSumValue6();
+  };
+
+  const handleChange6_48_none = (
+    e: React.ChangeEvent<HTMLInputElement>,
+    checked: boolean
+  ) => {
+    setValue(e.target.name, e.target.value);
+    setValue('no48_1', 0);
+    setEmergency(0);
+    setDisable48(true);
+    calculateSumValue6();
+  };
+
+  const handleChange6_48_One = (
+    e: React.ChangeEvent<HTMLInputElement>,
+    checked: boolean
+  ) => {
+    setValue(e.target.name, e.target.value);
+    setValue('no48_1', 1);
+    setEmergency(2);
+    setDisable48(false);
+    calculateSumValue6();
+  };
+
+  const handleChange6_49_none = (
+    e: React.ChangeEvent<HTMLInputElement>,
+    checked: boolean
+  ) => {
+    setValue(e.target.name, e.target.value);
+    setValue('no49_1', 0);
+    setTestBodyOdor(0);
+    setDisable49(true);
+    calculateSumValue6();
+  };
+
+  const handleChange6_49_One = (
+    e: React.ChangeEvent<HTMLInputElement>,
+    checked: boolean
+  ) => {
+    setValue(e.target.name, e.target.value);
+    setValue('no49_1', 1);
+    setTestBodyOdor(1);
+    setDisable49(false);
+    calculateSumValue6();
+  };
+
+  const handleChange6_50_none = (
+    e: React.ChangeEvent<HTMLInputElement>,
+    checked: boolean
+  ) => {
+    setValue(e.target.name, e.target.value);
+    setValue('no50_1', 0);
+    setTubeNursing(0);
+    setDisable50(true);
+    calculateSumValue6();
+  };
+
+  const handleChange6_50_One = (
+    e: React.ChangeEvent<HTMLInputElement>,
+    checked: boolean
+  ) => {
+    setValue(e.target.name, e.target.value);
+    setValue('no50_1', 1);
+    setTubeNursing(1);
+    setDisable50(false);
+    calculateSumValue6();
+  };
+
+  const handleChange6_51_none = (
+    e: React.ChangeEvent<HTMLInputElement>,
+    checked: boolean
+  ) => {
+    setValue(e.target.name, e.target.value);
+    setValue('no51_1', 0);
+    setDrainageTube(0);
+    setDisable51(true);
+    calculateSumValue6();
+  };
+
+  const handleChange6_51_One = (
+    e: React.ChangeEvent<HTMLInputElement>,
+    checked: boolean
+  ) => {
+    setValue(e.target.name, e.target.value);
+    setValue('no51_1', 1);
+    setDrainageTube(1);
+    setDisable51(false);
     calculateSumValue6();
   };
 
@@ -352,23 +626,18 @@ const KPCSICUContents3 = (props: Props) => {
                   <StyledTableCellWithoutLeftTwo sx={{ borderBottom: 'none' }}>
                     <RadioGroup
                       sx={{
-                        paddingTop: content.info.length > 1 ? '55px' : '28px',
+                        paddingTop:
+                          content.info.length === 1
+                            ? '28px'
+                            : content.info.length === 4
+                            ? '99px'
+                            : '55px',
                       }}
                       name={radioId5[content.id - 1]}
                       defaultValue={Number(getValues(radioId5[content.id - 1]))}
                     >
                       {content.desc.map((point, i) => {
-                        if (point.includes('no')) {
-                          return (
-                            <TableRow
-                              sx={{
-                                lineHeight: '43px',
-                                textAlign: 'center',
-                                height: '43px',
-                              }}
-                            ></TableRow>
-                          );
-                        } else
+                        if (point === '해당 없음 ') {
                           return (
                             <TableRow
                               sx={{
@@ -379,13 +648,121 @@ const KPCSICUContents3 = (props: Props) => {
                               <Box>
                                 <Radio
                                   disabled={disabled}
-                                  name={radioId5[content.id - 1]}
+                                  name={'no34'}
                                   value={i}
-                                  onChange={handleChange5}
+                                  onChange={handleChange5_34_none}
                                 />
                               </Box>
                             </TableRow>
                           );
+                        } else if (point === '1회당 2점 : ') {
+                          return (
+                            <TableRow
+                              sx={{
+                                lineHeight: '43px',
+                                textAlign: 'center',
+                              }}
+                            >
+                              <Box>
+                                <Radio
+                                  disabled={disabled}
+                                  name={'no34'}
+                                  value={i}
+                                  onChange={handleChange5_34_One}
+                                />
+                              </Box>
+                            </TableRow>
+                          );
+                        } else if (point === '해당 없음  ') {
+                          return (
+                            <TableRow
+                              sx={{
+                                lineHeight: '43px',
+                                textAlign: 'center',
+                              }}
+                            >
+                              <Box>
+                                <Radio
+                                  disabled={disabled}
+                                  name={'no40'}
+                                  value={i}
+                                  onChange={handleChange5_40_none}
+                                />
+                              </Box>
+                            </TableRow>
+                          );
+                        } else if (point === '1개당 2점 : ') {
+                          return (
+                            <TableRow
+                              sx={{
+                                lineHeight: '43px',
+                                textAlign: 'center',
+                              }}
+                            >
+                              <Box>
+                                <Radio
+                                  disabled={disabled}
+                                  name={'no40'}
+                                  value={i}
+                                  onChange={handleChange5_40_One}
+                                />
+                              </Box>
+                            </TableRow>
+                          );
+                        } else if (point === '해당 없음   ') {
+                          return (
+                            <TableRow
+                              sx={{
+                                lineHeight: '43px',
+                                textAlign: 'center',
+                              }}
+                            >
+                              <Box>
+                                <Radio
+                                  disabled={disabled}
+                                  name={'no41'}
+                                  value={i}
+                                  onChange={handleChange5_41_none}
+                                />
+                              </Box>
+                            </TableRow>
+                          );
+                        } else if (point === '1회당 2점 :  ') {
+                          return (
+                            <TableRow
+                              sx={{
+                                lineHeight: '43px',
+                                textAlign: 'center',
+                              }}
+                            >
+                              <Box>
+                                <Radio
+                                  disabled={disabled}
+                                  name={'no41'}
+                                  value={i}
+                                  onChange={handleChange5_41_One}
+                                />
+                              </Box>
+                            </TableRow>
+                          );
+                        }
+                        return (
+                          <TableRow
+                            sx={{
+                              lineHeight: '43px',
+                              textAlign: 'center',
+                            }}
+                          >
+                            <Box>
+                              <Radio
+                                disabled={disabled}
+                                name={radioId5[content.id - 1]}
+                                value={i}
+                                onChange={handleChange5}
+                              />
+                            </Box>
+                          </TableRow>
+                        );
                       })}
                     </RadioGroup>
                   </StyledTableCellWithoutLeftTwo>
@@ -403,20 +780,21 @@ const KPCSICUContents3 = (props: Props) => {
                         </TableRow>
                       ) : content.info.length > 1 ? (
                         content.info.map((item, i) => {
-                          return (
-                            <TableRow
-                              sx={{
-                                lineHeight: '23px',
-                                height: '4px',
-                              }}
-                            >
-                              <Box
-                                sx={{ minWidth: '65vw', marginLeft: '-28px' }}
+                          if (item.includes(''))
+                            return (
+                              <TableRow
+                                sx={{
+                                  lineHeight: '23px',
+                                  height: '4px',
+                                }}
                               >
-                                ・ {item}
-                              </Box>
-                            </TableRow>
-                          );
+                                <Box
+                                  sx={{ minWidth: '65vw', marginLeft: '-28px' }}
+                                >
+                                  ・ {item}
+                                </Box>
+                              </TableRow>
+                            );
                         })
                       ) : (
                         content.info.map((item, i) => {
@@ -435,15 +813,102 @@ const KPCSICUContents3 = (props: Props) => {
                           );
                         })
                       )}
-                      {content.desc.map((v, i) => (
-                        <TableRow
-                          sx={{
-                            lineHeight: '42px',
-                          }}
-                        >
-                          <Box sx={{ minWidth: '500px' }}>{v}</Box>
-                        </TableRow>
-                      ))}
+                      {content.desc.map((v, i) => {
+                        if (v === '1회당 2점 : ') {
+                          return (
+                            <TableRow
+                              sx={{
+                                lineHeight: '42px',
+                              }}
+                            >
+                              <Box sx={{ minWidth: '500px' }}>
+                                {v}
+                                <Form.MuiTextField
+                                  disabled={disable34 ? true : disabled}
+                                  required={false}
+                                  type="number"
+                                  textAlign="right"
+                                  sx={{ width: '140px', marginLeft: '3px' }}
+                                  InputProps={{
+                                    ...Form.adornment('', '회'),
+                                  }}
+                                  {...register('no34_1', {
+                                    onChange: e => {
+                                      setValue('no34_1', e.target.value);
+                                      setBlood(Number(e.target.value));
+                                    },
+                                  })}
+                                />
+                              </Box>
+                            </TableRow>
+                          );
+                        } else if (v === '1개당 2점 : ') {
+                          return (
+                            <TableRow
+                              sx={{
+                                lineHeight: '42px',
+                              }}
+                            >
+                              <Box sx={{ minWidth: '500px' }}>
+                                {v}
+                                <Form.MuiTextField
+                                  required={true}
+                                  type="number"
+                                  textAlign="right"
+                                  disabled={disable40 ? true : disabled}
+                                  sx={{ width: '140px', marginLeft: '3px' }}
+                                  InputProps={{
+                                    ...Form.adornment('', '회'),
+                                  }}
+                                  {...register('no40_1', {
+                                    onChange: e => {
+                                      setValue('no40_1', e.target.value);
+                                      setBloodUnit(Number(e.target.value));
+                                    },
+                                  })}
+                                />
+                              </Box>
+                            </TableRow>
+                          );
+                        } else if (v === '1회당 2점 :  ') {
+                          return (
+                            <TableRow
+                              sx={{
+                                lineHeight: '42px',
+                              }}
+                            >
+                              <Box sx={{ minWidth: '500px' }}>
+                                {v}
+                                <Form.MuiTextField
+                                  required={true}
+                                  type="number"
+                                  textAlign="right"
+                                  disabled={disable41 ? true : disabled}
+                                  sx={{ width: '140px', marginLeft: '3px' }}
+                                  InputProps={{
+                                    ...Form.adornment('', '회'),
+                                  }}
+                                  {...register('no41_1', {
+                                    onChange: e => {
+                                      setValue('no41_1', e.target.value);
+                                      setBloodUnit(Number(e.target.value));
+                                    },
+                                  })}
+                                />
+                              </Box>
+                            </TableRow>
+                          );
+                        } else
+                          return (
+                            <TableRow
+                              sx={{
+                                lineHeight: '42px',
+                              }}
+                            >
+                              <Box sx={{ minWidth: '500px' }}>{v}</Box>
+                            </TableRow>
+                          );
+                      })}
                     </Box>
                   </StyledTableCellWithoutLeftRightTwo>
                 </TableRow>
@@ -479,7 +944,14 @@ const KPCSICUContents3 = (props: Props) => {
                   <StyledTableCellWithoutLeftTwo>
                     <RadioGroup
                       sx={{
-                        paddingTop: content.info.length > 1 ? '55px' : '28px',
+                        paddingTop:
+                          content.info.length === 1
+                            ? '28px'
+                            : content.info.length === 3
+                            ? '78px'
+                            : content.info.length === 4
+                            ? '99px'
+                            : '55px',
                       }}
                       name={radioId6[content.id - 1]}
                       defaultValue={Number(getValues(radioId6[content.id - 1]))}
@@ -496,14 +968,14 @@ const KPCSICUContents3 = (props: Props) => {
                               <Box>
                                 <Radio
                                   disabled={disabled}
-                                  name={'no22'}
+                                  name={'no43'}
                                   value={i}
-                                  onChange={handleChange6urin}
+                                  onChange={handleChange6_43_none}
                                 />
                               </Box>
                             </TableRow>
                           );
-                        } else if (point === 'no22_1') {
+                        } else if (point === '1회당 2점 : ') {
                           return (
                             <TableRow
                               sx={{
@@ -514,9 +986,9 @@ const KPCSICUContents3 = (props: Props) => {
                               <Box>
                                 <Radio
                                   disabled={disabled}
-                                  name={'no22'}
+                                  name={'no43'}
                                   value={i}
-                                  onChange={handleChange6urinTwo}
+                                  onChange={handleChange6_43_One}
                                 />
                               </Box>
                             </TableRow>
@@ -532,14 +1004,14 @@ const KPCSICUContents3 = (props: Props) => {
                               <Box>
                                 <Radio
                                   disabled={disabled}
-                                  name={'no23'}
+                                  name={'no45'}
                                   value={i}
-                                  onChange={handleChange6Poo}
+                                  onChange={handleChange6_45_none}
                                 />
                               </Box>
                             </TableRow>
                           );
-                        } else if (point === 'no23_1') {
+                        } else if (point === '1회당 2점 :  ') {
                           return (
                             <TableRow
                               sx={{
@@ -550,9 +1022,189 @@ const KPCSICUContents3 = (props: Props) => {
                               <Box>
                                 <Radio
                                   disabled={disabled}
-                                  name={'no23'}
+                                  name={'no45'}
                                   value={i}
-                                  onChange={handleChange6PooTwo}
+                                  onChange={handleChange6_45_One}
+                                />
+                              </Box>
+                            </TableRow>
+                          );
+                        } else if (point === '해당 없음   ') {
+                          return (
+                            <TableRow
+                              sx={{
+                                lineHeight: '43px',
+                                textAlign: 'center',
+                              }}
+                            >
+                              <Box>
+                                <Radio
+                                  disabled={disabled}
+                                  name={'no47'}
+                                  value={i}
+                                  onChange={handleChange6_47_none}
+                                />
+                              </Box>
+                            </TableRow>
+                          );
+                        } else if (point === '1회당 1점 :   ') {
+                          return (
+                            <TableRow
+                              sx={{
+                                lineHeight: '43px',
+                                textAlign: 'center',
+                              }}
+                            >
+                              <Box>
+                                <Radio
+                                  disabled={disabled}
+                                  name={'no47'}
+                                  value={i}
+                                  onChange={handleChange6_47_One}
+                                />
+                              </Box>
+                            </TableRow>
+                          );
+                        } else if (point === '해당 없음    ') {
+                          return (
+                            <TableRow
+                              sx={{
+                                lineHeight: '43px',
+                                textAlign: 'center',
+                              }}
+                            >
+                              <Box>
+                                <Radio
+                                  disabled={disabled}
+                                  name={'no48'}
+                                  value={i}
+                                  onChange={handleChange6_48_none}
+                                />
+                              </Box>
+                            </TableRow>
+                          );
+                        } else if (point === '1회당 2점 :    ') {
+                          return (
+                            <TableRow
+                              sx={{
+                                lineHeight: '43px',
+                                textAlign: 'center',
+                              }}
+                            >
+                              <Box>
+                                <Radio
+                                  disabled={disabled}
+                                  name={'no48'}
+                                  value={i}
+                                  onChange={handleChange6_48_One}
+                                />
+                              </Box>
+                            </TableRow>
+                          );
+                        } else if (point === '해당 없음     ') {
+                          return (
+                            <TableRow
+                              sx={{
+                                lineHeight: '43px',
+                                textAlign: 'center',
+                              }}
+                            >
+                              <Box>
+                                <Radio
+                                  disabled={disabled}
+                                  name={'no49'}
+                                  value={i}
+                                  onChange={handleChange6_49_none}
+                                />
+                              </Box>
+                            </TableRow>
+                          );
+                        } else if (point === '1회당 1점 :     ') {
+                          return (
+                            <TableRow
+                              sx={{
+                                lineHeight: '43px',
+                                textAlign: 'center',
+                              }}
+                            >
+                              <Box>
+                                <Radio
+                                  disabled={disabled}
+                                  name={'no49'}
+                                  value={i}
+                                  onChange={handleChange6_49_One}
+                                />
+                              </Box>
+                            </TableRow>
+                          );
+                        } else if (point === '해당 없음      ') {
+                          return (
+                            <TableRow
+                              sx={{
+                                lineHeight: '43px',
+                                textAlign: 'center',
+                              }}
+                            >
+                              <Box>
+                                <Radio
+                                  disabled={disabled}
+                                  name={'no50'}
+                                  value={i}
+                                  onChange={handleChange6_50_none}
+                                />
+                              </Box>
+                            </TableRow>
+                          );
+                        } else if (point === '1회당 1점 :      ') {
+                          return (
+                            <TableRow
+                              sx={{
+                                lineHeight: '43px',
+                                textAlign: 'center',
+                              }}
+                            >
+                              <Box>
+                                <Radio
+                                  disabled={disabled}
+                                  name={'no50'}
+                                  value={i}
+                                  onChange={handleChange6_50_One}
+                                />
+                              </Box>
+                            </TableRow>
+                          );
+                        } else if (point === '해당 없음       ') {
+                          return (
+                            <TableRow
+                              sx={{
+                                lineHeight: '43px',
+                                textAlign: 'center',
+                              }}
+                            >
+                              <Box>
+                                <Radio
+                                  disabled={disabled}
+                                  name={'no51'}
+                                  value={i}
+                                  onChange={handleChange6_51_none}
+                                />
+                              </Box>
+                            </TableRow>
+                          );
+                        } else if (point === '1회당 1점 :       ') {
+                          return (
+                            <TableRow
+                              sx={{
+                                lineHeight: '43px',
+                                textAlign: 'center',
+                              }}
+                            >
+                              <Box>
+                                <Radio
+                                  disabled={disabled}
+                                  name={'no51'}
+                                  value={i}
+                                  onChange={handleChange6_51_One}
                                 />
                               </Box>
                             </TableRow>
@@ -590,6 +1242,22 @@ const KPCSICUContents3 = (props: Props) => {
                         </TableRow>
                       ) : content.info.length > 1 ? (
                         content.info.map((item, i) => {
+                          if (item.includes('경우 2회로')) {
+                            return (
+                              <TableRow
+                                sx={{
+                                  lineHeight: '23px',
+                                  height: '4px',
+                                }}
+                              >
+                                <Box
+                                  sx={{ minWidth: '65vw', marginLeft: '-12px' }}
+                                >
+                                  {item}
+                                </Box>
+                              </TableRow>
+                            );
+                          }
                           return (
                             <TableRow
                               sx={{
@@ -623,7 +1291,7 @@ const KPCSICUContents3 = (props: Props) => {
                         })
                       )}
                       {content.desc.map((v, i) => {
-                        if (v.includes('no22')) {
+                        if (v === '1회당 2점 : ') {
                           return (
                             <TableRow
                               sx={{
@@ -631,26 +1299,27 @@ const KPCSICUContents3 = (props: Props) => {
                               }}
                             >
                               <Box sx={{ minWidth: '500px' }}>
+                                {v}
                                 <Form.MuiTextField
-                                  disabled={disableUrin ? true : disabled}
+                                  disabled={disable43 ? true : disabled}
                                   required={false}
                                   type="number"
                                   textAlign="right"
-                                  sx={{ width: '200px' }}
+                                  sx={{ width: '140px', marginLeft: '3px' }}
                                   InputProps={{
-                                    ...Form.adornment('횟수', '회/day'),
+                                    ...Form.adornment('', '회'),
                                   }}
-                                  {...register('no22_1', {
+                                  {...register('no43_1', {
                                     onChange: e => {
-                                      setValue('no22_1', e.target.value);
-                                      setUrin(Number(e.target.value));
+                                      setValue('no43_1', e.target.value);
+                                      setNasogastric(Number(e.target.value));
                                     },
                                   })}
                                 />
                               </Box>
                             </TableRow>
                           );
-                        } else if (v.includes('no23')) {
+                        } else if (v === '1회당 2점 :  ') {
                           return (
                             <TableRow
                               sx={{
@@ -658,35 +1327,176 @@ const KPCSICUContents3 = (props: Props) => {
                               }}
                             >
                               <Box sx={{ minWidth: '500px' }}>
+                                {v}
                                 <Form.MuiTextField
                                   required={true}
                                   type="number"
                                   textAlign="right"
-                                  disabled={disablePoo ? true : disabled}
-                                  sx={{ width: '200px' }}
+                                  disabled={disable45 ? true : disabled}
+                                  sx={{ width: '140px', marginLeft: '3px' }}
                                   InputProps={{
-                                    ...Form.adornment('횟수', '회/day'),
+                                    ...Form.adornment('', '회'),
                                   }}
-                                  {...register('no23_1', {
+                                  {...register('no45_1', {
                                     onChange: e => {
-                                      setValue('no23_1', e.target.value);
-                                      setPoo(Number(e.target.value));
+                                      setValue('no45_1', e.target.value);
+                                      setEkgRecord(Number(e.target.value));
                                     },
                                   })}
                                 />
                               </Box>
                             </TableRow>
                           );
-                        } else
+                        } else if (v === '1회당 1점 :   ') {
                           return (
                             <TableRow
                               sx={{
                                 lineHeight: '42px',
                               }}
                             >
-                              <Box sx={{ minWidth: '500px' }}>{v}</Box>
+                              <Box sx={{ minWidth: '500px' }}>
+                                {v}
+                                <Form.MuiTextField
+                                  required={true}
+                                  type="number"
+                                  textAlign="right"
+                                  disabled={disable47 ? true : disabled}
+                                  sx={{ width: '140px', marginLeft: '3px' }}
+                                  InputProps={{
+                                    ...Form.adornment('', '회'),
+                                  }}
+                                  {...register('no47_1', {
+                                    onChange: e => {
+                                      setValue('no47_1', e.target.value);
+                                      setDressing(Number(e.target.value));
+                                    },
+                                  })}
+                                />
+                              </Box>
                             </TableRow>
                           );
+                        } else if (v === '1회당 2점 :    ') {
+                          return (
+                            <TableRow
+                              sx={{
+                                lineHeight: '42px',
+                              }}
+                            >
+                              <Box sx={{ minWidth: '500px' }}>
+                                {v}
+                                <Form.MuiTextField
+                                  required={true}
+                                  type="number"
+                                  textAlign="right"
+                                  disabled={disable48 ? true : disabled}
+                                  sx={{ width: '140px', marginLeft: '3px' }}
+                                  InputProps={{
+                                    ...Form.adornment('', '회'),
+                                  }}
+                                  {...register('no48_1', {
+                                    onChange: e => {
+                                      setValue('no48_1', e.target.value);
+                                      setEmergency(Number(e.target.value));
+                                    },
+                                  })}
+                                />
+                              </Box>
+                            </TableRow>
+                          );
+                        } else if (v === '1회당 1점 :     ') {
+                          return (
+                            <TableRow
+                              sx={{
+                                lineHeight: '42px',
+                              }}
+                            >
+                              <Box sx={{ minWidth: '500px' }}>
+                                {v}
+                                <Form.MuiTextField
+                                  required={true}
+                                  type="number"
+                                  textAlign="right"
+                                  disabled={disable49 ? true : disabled}
+                                  sx={{ width: '140px', marginLeft: '3px' }}
+                                  InputProps={{
+                                    ...Form.adornment('', '회'),
+                                  }}
+                                  {...register('no49_1', {
+                                    onChange: e => {
+                                      setValue('no49_1', e.target.value);
+                                      setTestBodyOdor(Number(e.target.value));
+                                    },
+                                  })}
+                                />
+                              </Box>
+                            </TableRow>
+                          );
+                        } else if (v === '1회당 1점 :      ') {
+                          return (
+                            <TableRow
+                              sx={{
+                                lineHeight: '42px',
+                              }}
+                            >
+                              <Box sx={{ minWidth: '500px' }}>
+                                {v}
+                                <Form.MuiTextField
+                                  required={true}
+                                  type="number"
+                                  textAlign="right"
+                                  disabled={disable50 ? true : disabled}
+                                  sx={{ width: '140px', marginLeft: '3px' }}
+                                  InputProps={{
+                                    ...Form.adornment('', '회'),
+                                  }}
+                                  {...register('no50_1', {
+                                    onChange: e => {
+                                      setValue('no50_1', e.target.value);
+                                      setTubeNursing(Number(e.target.value));
+                                    },
+                                  })}
+                                />
+                              </Box>
+                            </TableRow>
+                          );
+                        } else if (v === '1회당 1점 :       ') {
+                          return (
+                            <TableRow
+                              sx={{
+                                lineHeight: '42px',
+                              }}
+                            >
+                              <Box sx={{ minWidth: '500px' }}>
+                                {v}
+                                <Form.MuiTextField
+                                  required={true}
+                                  type="number"
+                                  textAlign="right"
+                                  disabled={disable51 ? true : disabled}
+                                  sx={{ width: '140px', marginLeft: '3px' }}
+                                  InputProps={{
+                                    ...Form.adornment('', '회'),
+                                  }}
+                                  {...register('no51_1', {
+                                    onChange: e => {
+                                      setValue('no51_1', e.target.value);
+                                      setDrainageTube(Number(e.target.value));
+                                    },
+                                  })}
+                                />
+                              </Box>
+                            </TableRow>
+                          );
+                        }
+                        return (
+                          <TableRow
+                            sx={{
+                              lineHeight: '42px',
+                            }}
+                          >
+                            <Box sx={{ minWidth: '500px' }}>{v}</Box>
+                          </TableRow>
+                        );
                       })}
                     </Box>
                   </StyledTableCellWithoutLeftRightTwo>

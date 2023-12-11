@@ -1,3 +1,5 @@
+import Form from 'components/Form';
+
 import { useEffect, useState } from 'react';
 import {
   Box,
@@ -16,9 +18,22 @@ import {
 } from 'routes/Main/style';
 import SectionTitle from '../../components/SectionTitle';
 
-import { IFormValues, IFormWatch } from 'routes/Main/type';
+import { IFormValues, IFormWatch, IFormRegister } from 'routes/Main/type';
 
-const radioId7 = ['no24', 'no25', 'no26'];
+const radioId7 = [
+  'no69',
+  'no70',
+  'no71',
+  'no72',
+  'no73',
+  'no74',
+  'no75',
+  'no76',
+  'no77',
+  'no78',
+  'no79',
+  'no80',
+];
 
 const 영역7 = [
   {
@@ -92,11 +107,11 @@ const 영역7 = [
     info: [
       '돌려 눕힐 때마다 가산, 환자를 돌려 눕히고 자세보조하며 반응을 살핌',
     ],
-    desc: ['해당 없음', '1회당 4점 :'], //인풋박스 확인!
+    desc: ['해당 없음 ', '1회당 4점 : '], //인풋박스 확인!
   },
 ];
 
-const radioId8 = ['no27', 'no28'];
+const radioId8 = ['no78', 'no79', 'no80'];
 
 const 영역8 = [
   {
@@ -125,10 +140,13 @@ const 영역8 = [
   },
 ];
 
-interface Props extends IFormValues, IFormWatch {
+interface Props extends IFormValues, IFormWatch, IFormRegister {
   disabled?: boolean;
   sum7: number;
   setSum7: (sum7: number) => void;
+
+  treatment: number;
+  setTreatment: (treatment: number) => void;
 
   sum8: number;
   setSum8: (sum8: number) => void;
@@ -136,26 +154,68 @@ interface Props extends IFormValues, IFormWatch {
 const KPCSICUContents4 = (props: Props) => {
   const { palette } = useTheme();
 
-  const { disabled, setValue, getValues, setSum7, setSum8 } = props;
+  const {
+    disabled,
+    setValue,
+    getValues,
+    setSum7,
+    setSum8,
+    sum8,
+    setTreatment,
+    register,
+  } = props;
 
   const calculateSumValue7 = () => {
     setSum7(
       radioId7.reduce((acc, cur) => {
-        if (Number(getValues(cur)) > 0) {
-          if (cur === 'no24') {
-            const value = Number(getValues(cur)) + 1;
-            return value ? acc + value : acc;
-          } else if (cur === 'no26') {
-            const value = Number(getValues(cur)) + 1;
-            return value ? acc + value : acc;
-          } else {
-            const value = Number(getValues(cur));
-            return value ? acc + value : acc;
-          }
-        } else {
-          const value = Number(getValues(cur));
+        // 7번
+        if (cur === 'no70') {
+          const value = Number(getValues(cur)) * 4;
           return value ? acc + value : acc;
         }
+        // input value 77번
+        else if (cur === 'no77') {
+          const value = Number(getValues(cur));
+          return value ? acc + value - 1 : acc;
+        }
+        // 69, 71 ,72 ,73 번
+        else if (
+          cur === 'no69' ||
+          cur === 'no71' ||
+          cur === 'no72' ||
+          cur === 'no73'
+        ) {
+          const value = Number(getValues(cur)) * 2;
+          return value ? acc + value : acc;
+        }
+        // 74번
+        else if (cur === 'no74') {
+          const value = Number(getValues(cur)) * 8;
+          return value ? acc + value : acc;
+        }
+        // 75번
+        else if (
+          (cur === 'no75' && Number(getValues(cur)) === 1) ||
+          (cur === 'no75' && Number(getValues(cur)) === 2)
+        ) {
+          const value = Number(getValues(cur)) * 2;
+          return value ? acc + value : acc;
+        } else if (cur === 'no75' && Number(getValues(cur)) === 3) {
+          const value = Number(getValues(cur)) * 2 + 2;
+          return value ? acc + value : acc;
+        } else if (cur === 'no75' && Number(getValues(cur)) === 4) {
+          const value = Number(getValues(cur)) * 4;
+          return value ? acc + value : acc;
+        }
+
+        // 76번
+        else if (cur === 'no76') {
+          const value = Number(getValues(cur)) * 10;
+          return value ? acc + value : acc;
+        }
+
+        const value = Number(getValues(cur));
+        return value ? acc + value : acc;
       }, 0)
     );
   };
@@ -168,16 +228,35 @@ const KPCSICUContents4 = (props: Props) => {
     calculateSumValue7();
   };
 
+  const [disable77, setDisable77] = useState(false);
+
+  const handleChange7_77_none = (
+    e: React.ChangeEvent<HTMLInputElement>,
+    checked: boolean
+  ) => {
+    setValue(e.target.name, e.target.value);
+    setValue('no77_1', 0);
+    setTreatment(0);
+    setDisable77(true);
+    calculateSumValue7();
+  };
+
+  const handleChange7_77_One = (
+    e: React.ChangeEvent<HTMLInputElement>,
+    checked: boolean
+  ) => {
+    setValue(e.target.name, e.target.value);
+    setValue('no77_1', 1);
+    setTreatment(4);
+    setDisable77(false);
+    calculateSumValue7();
+  };
+
   const calculateSumValue8 = () => {
     setSum8(
       radioId8.reduce((acc, cur) => {
-        if (cur === 'no28' && Number(getValues(cur)) > 0) {
-          const value = 2;
-          return value ? acc + value : acc;
-        } else {
-          const value = Number(getValues(cur));
-          return value ? acc + value : acc;
-        }
+        const value = Number(getValues(cur)) * 4;
+        return value ? acc + value : acc;
       }, 0)
     );
   };
@@ -231,17 +310,7 @@ const KPCSICUContents4 = (props: Props) => {
                       defaultValue={Number(getValues(radioId7[content.id - 1]))}
                     >
                       {content.desc.map((point, i) => {
-                        if (point.includes('no')) {
-                          return (
-                            <TableRow
-                              sx={{
-                                lineHeight: '43px',
-                                textAlign: 'center',
-                                height: '43px',
-                              }}
-                            ></TableRow>
-                          );
-                        } else
+                        if (point === '해당 없음 ') {
                           return (
                             <TableRow
                               sx={{
@@ -252,13 +321,49 @@ const KPCSICUContents4 = (props: Props) => {
                               <Box>
                                 <Radio
                                   disabled={disabled}
-                                  name={radioId7[content.id - 1]}
+                                  name={'no77'}
                                   value={i}
-                                  onChange={handleChange7}
+                                  onChange={handleChange7_77_none}
                                 />
                               </Box>
                             </TableRow>
                           );
+                        } else if (point === '1회당 4점 : ') {
+                          return (
+                            <TableRow
+                              sx={{
+                                lineHeight: '43px',
+                                textAlign: 'center',
+                              }}
+                            >
+                              <Box>
+                                <Radio
+                                  disabled={disabled}
+                                  name={'no77'}
+                                  value={i}
+                                  onChange={handleChange7_77_One}
+                                />
+                              </Box>
+                            </TableRow>
+                          );
+                        }
+                        return (
+                          <TableRow
+                            sx={{
+                              lineHeight: '43px',
+                              textAlign: 'center',
+                            }}
+                          >
+                            <Box>
+                              <Radio
+                                disabled={disabled}
+                                name={radioId7[content.id - 1]}
+                                value={i}
+                                onChange={handleChange7}
+                              />
+                            </Box>
+                          </TableRow>
+                        );
                       })}
                     </RadioGroup>
                   </StyledTableCellWithoutLeftTwo>
@@ -306,15 +411,46 @@ const KPCSICUContents4 = (props: Props) => {
                           );
                         })
                       )}
-                      {content.desc.map((v, i) => (
-                        <TableRow
-                          sx={{
-                            lineHeight: '42px',
-                          }}
-                        >
-                          <Box sx={{ minWidth: '500px' }}>{v}</Box>
-                        </TableRow>
-                      ))}
+                      {content.desc.map((v, i) => {
+                        if (v === '1회당 4점 : ') {
+                          return (
+                            <TableRow
+                              sx={{
+                                lineHeight: '42px',
+                              }}
+                            >
+                              <Box sx={{ minWidth: '500px' }}>
+                                {v}
+                                <Form.MuiTextField
+                                  disabled={disable77 ? true : disabled}
+                                  required={false}
+                                  type="number"
+                                  textAlign="right"
+                                  sx={{ width: '140px', marginLeft: '3px' }}
+                                  InputProps={{
+                                    ...Form.adornment('', '회'),
+                                  }}
+                                  {...register('no77_1', {
+                                    onChange: e => {
+                                      setValue('no77_1', e.target.value);
+                                      setTreatment(Number(e.target.value));
+                                    },
+                                  })}
+                                />
+                              </Box>
+                            </TableRow>
+                          );
+                        }
+                        return (
+                          <TableRow
+                            sx={{
+                              lineHeight: '42px',
+                            }}
+                          >
+                            <Box sx={{ minWidth: '500px' }}>{v}</Box>
+                          </TableRow>
+                        );
+                      })}
                     </Box>
                   </StyledTableCellWithoutLeftRightTwo>
                 </TableRow>
@@ -431,15 +567,17 @@ const KPCSICUContents4 = (props: Props) => {
                           );
                         })
                       )}
-                      {content.desc.map((v, i) => (
-                        <TableRow
-                          sx={{
-                            lineHeight: '42px',
-                          }}
-                        >
-                          <Box sx={{ minWidth: '500px' }}>{v}</Box>
-                        </TableRow>
-                      ))}
+                      {content.desc.map((v, i) => {
+                        return (
+                          <TableRow
+                            sx={{
+                              lineHeight: '42px',
+                            }}
+                          >
+                            <Box sx={{ minWidth: '500px' }}>{v}</Box>
+                          </TableRow>
+                        );
+                      })}
                     </Box>
                   </StyledTableCellWithoutLeftRightTwo>
                 </TableRow>

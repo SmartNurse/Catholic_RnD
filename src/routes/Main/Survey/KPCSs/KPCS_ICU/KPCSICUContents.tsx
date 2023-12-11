@@ -18,7 +18,7 @@ import SectionTitle from '../../components/SectionTitle';
 
 import { IFormValues, IFormWatch } from 'routes/Main/type';
 
-const radioId = ['no01', 'no02'];
+const radioId = ['no01', 'no02', 'no03', 'no04'];
 
 const 영역1 = [
   {
@@ -52,7 +52,21 @@ const 영역1 = [
   },
 ];
 
-const radioId1 = ['no03', 'no04', 'no05', 'no06', 'no07', 'no08'];
+const radioId1 = [
+  'no05',
+  'no06',
+  'no07',
+  'no08',
+  'no09',
+  'no10',
+  'no11',
+  'no12',
+  'no13',
+  'no14',
+  'no15',
+  'no16',
+  'no17',
+];
 
 const 영역2 = [
   {
@@ -159,14 +173,6 @@ const 영역2 = [
   },
 ];
 
-const scoreLabel = [
-  { score: '15', label: 'ALERT' },
-  { score: '13~14', label: 'DROWSY' },
-  { score: '8~12', label: 'STUPOR' },
-  { score: '4~7', label: 'SEMI-COMA' },
-  { score: '3', label: 'COMA' },
-];
-
 interface Props extends IFormValues, IFormWatch {
   disabled?: boolean;
   sum1: number;
@@ -183,6 +189,13 @@ const KPCSICUContents = (props: Props) => {
   const calculateSumValue1 = () => {
     setSum1(
       radioId.reduce((acc, cur) => {
+        if (cur === 'no01' || cur === 'no04') {
+          const value = Number(getValues(cur)) * 4;
+          return value ? acc + value : acc;
+        } else if (cur === 'no02' || cur === 'no03') {
+          const value = Number(getValues(cur)) * 2;
+          return value ? acc + value : acc;
+        }
         const value = Number(getValues(cur));
         return value ? acc + value : acc;
       }, 0)
@@ -200,18 +213,61 @@ const KPCSICUContents = (props: Props) => {
   const calculateSumValue2 = () => {
     setSum2(
       radioId1.reduce((acc, cur) => {
-        if (Number(getValues(cur)) === 1) {
-          if (cur === 'no05') {
-            const value = 2;
+        // 5번
+        if (cur === 'no05' && Number(getValues(cur)) > 0) {
+          if (Number(getValues(cur)) === 4) {
+            const value = Number(getValues(cur)) * 2;
             return value ? acc + value : acc;
-          } else if (cur === 'no06') {
-            const value = 3;
+          } else if (Number(getValues(cur)) === 5) {
+            const value = Number(getValues(cur)) * 3 + 1;
             return value ? acc + value : acc;
           } else {
-            const value = Number(getValues(cur));
+            const value = Number(getValues(cur)) + 1;
             return value ? acc + value : acc;
           }
         }
+        // 6, 8, 9, 15, 17번
+        else if (
+          cur === 'no06' ||
+          cur === 'no08' ||
+          cur === 'no09' ||
+          cur === 'no15' ||
+          cur === 'no17'
+        ) {
+          const value = Number(getValues(cur)) * 2;
+          return value ? acc + value : acc;
+        }
+        // 7번
+        else if (cur === 'no07') {
+          if (Number(getValues(cur)) === 1) {
+            const value = Number(getValues(cur)) * 3;
+            return value ? acc + value : acc;
+          } else if (Number(getValues(cur)) === 2) {
+            const value = Number(getValues(cur)) * 3;
+            return value ? acc + value : acc;
+          } else if (Number(getValues(cur)) === 3) {
+            const value = Number(getValues(cur)) * 4;
+            return value ? acc + value : acc;
+          }
+          const value = Number(getValues(cur)) * 2;
+          return value ? acc + value : acc;
+        }
+        // 10, 11번
+        else if (cur === 'no10' || cur === 'no11') {
+          const value = Number(getValues(cur)) * 6;
+          return value ? acc + value : acc;
+        }
+        // 12, 13, 14, 16 번
+        else if (
+          cur === 'no12' ||
+          cur === 'no13' ||
+          cur === 'no14' ||
+          cur === 'no16'
+        ) {
+          const value = Number(getValues(cur)) * 4;
+          return value ? acc + value : acc;
+        }
+
         const value = Number(getValues(cur));
         return value ? acc + value : acc;
       }, 0)
@@ -314,7 +370,6 @@ const KPCSICUContents = (props: Props) => {
                             <TableRow
                               sx={{
                                 lineHeight: '17px',
-                                height: '4px',
                               }}
                             >
                               <Box
@@ -445,7 +500,6 @@ const KPCSICUContents = (props: Props) => {
                             <TableRow
                               sx={{
                                 lineHeight: '23px',
-                                height: '4px',
                               }}
                             >
                               <Box
