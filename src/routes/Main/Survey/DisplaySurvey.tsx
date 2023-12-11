@@ -40,6 +40,7 @@ import HomeCare from './Special/HomeCare';
 import DietList from './DietList';
 
 import KPCS from './KPCSs/KPCS';
+import KPCSICU from './KPCSs/KPCS_ICU';
 
 import HospitalizationInfo from './Agreement/HospitalizationInfo';
 import FallPrevention from './Agreement/FallPrevention';
@@ -236,6 +237,10 @@ const DisplaySurvey = (props: Props) => {
     case MENU.KPCS: {
       if (!defaultValues) return null;
       return <KPCS {...dialogProps} onClose={onCloseSave} />;
+    }
+    case MENU.KPCS_ICU: {
+      if (!defaultValues) return null;
+      return <KPCSICU {...dialogProps} onClose={onCloseSave} />;
     }
     case MENU.DIET_NUTRITION: {
       if (!defaultValues) return null;
