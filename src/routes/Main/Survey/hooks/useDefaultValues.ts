@@ -716,6 +716,20 @@ const useDefaultValues = ({ setDefaultValues, user_id }: Props) => {
           })
           .catch(e => onFail('알 수 없는 오류가 발생했습니다.', e));
         break;
+      case MENU.DNRTWO:
+        getCentralVenous({ user_id, patient_id })
+          .then(({ data }) => {
+            const { update_at, chart_confirmation } = data;
+            convertDataToStates(
+              {
+                update_at,
+                ...chart_confirmation,
+              },
+              initialCentralVenous
+            );
+          })
+          .catch(e => onFail('알 수 없는 오류가 발생했습니다.', e));
+        break;
       case MENU.UPPER_ENDOSCOPY:
         getUpperEndoscopy({ user_id, patient_id })
           .then(({ data }) => {

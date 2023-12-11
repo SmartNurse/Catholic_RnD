@@ -67,6 +67,7 @@ import Intubation from './Special/Intubation';
 import CentralVenous from './Agreement/CentralVenous';
 import NursingRecord from './NursingRecord';
 import IntubationAgreement from './Agreement/Intubation';
+import DNRTwo from './Agreement/DNRTwo';
 
 interface Props {
   surveyType: string;
@@ -271,6 +272,10 @@ const DisplaySurvey = (props: Props) => {
     case MENU.CENTRALVENOUS: {
       if (!defaultValues) return null;
       return <CentralVenous {...dialogProps} onClose={onCloseSave} />;
+    }
+    case MENU.DNRTWO: {
+      if (!defaultValues) return null;
+      return <DNRTwo {...dialogProps} onClose={onCloseSave} />;
     }
     case MENU.COLONOSCOPY: {
       if (!defaultValues) return null;

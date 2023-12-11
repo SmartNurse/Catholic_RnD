@@ -120,6 +120,7 @@ export enum MENU {
   MEDICALRECORDS = '진료기록 열람, \n사본발급 동의서',
   DNR = '사전연명의료의향서',
   DNA = '유전자검사 동의서',
+  DNRTWO = '연명의료중단등결정\n환자 가족 의사 확인서',
   CORE_NURSING_SKILL_VIDEO = '핵심간호술기영상 저장',
   CORE_NURSING_SKILL_VIDEO_EXEMPLE = '핵심간호술기영상 예시',
   DRUG_CALCULATOR = '약물계산기',

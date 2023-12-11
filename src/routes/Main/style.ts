@@ -304,3 +304,32 @@ export const CPRStyledTableCellBodyNumbering = styled(TableCell)({
   padding: '0px',
   width: '80px',
 });
+
+// DNRTWO 선색 변경
+export const DNRTWOStyledTableCellHead = styled(TableCell)({
+  border: '1px solid lightgray',
+  padding: '0px',
+  height: '40px',
+  width: '80px',
+});
+
+export const DNRTWOStyledTableCellHeadNumbering = styled(TableCell)({
+  border: '1px solid lightgray',
+  padding: '0px',
+  height: '40px',
+});
+
+export const DNRTWOStyledTableCellFirst = styled(TableCell)({
+  border: '1px solid lightgray',
+  padding: '0px',
+});
+
+export const DNRTWOStyledTableCell = styled(TableCell)({
+  border: '1px solid lightgray',
+  padding: '0px',
+});
+
+export const DNRTWOStyledTableCellBodyNumbering = styled(TableCell)({
+  border: '1px solid lightgray',
+  padding: '0px',
+});
