@@ -59,6 +59,7 @@ import {
   IUpdateCRRT,
   IUpdateCentralVenous,
   IUpdateNursingProcess,
+  IUpdateKPCS_ICU,
 } from './type';
 
 // e-CARDEX
@@ -443,6 +444,17 @@ export const getKPCS = (request: IGetSurvey) => {
 };
 
 export const updateKPCS = (request: IUpdateKPCS) => {
+  const url = `/survey/kpcs`;
+  return apiGateway.post(url, camelcaseKeys(request));
+};
+
+// KPCS_ICU
+export const getKPCS_ICU = (request: IGetSurvey) => {
+  const url = `/survey/kpcs?${formatToRequestParameter(request)}`;
+  return apiGateway.get(url);
+};
+
+export const updateKPCS_ICU = (request: IUpdateKPCS_ICU) => {
   const url = `/survey/kpcs`;
   return apiGateway.post(url, camelcaseKeys(request));
 };
