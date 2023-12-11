@@ -59,6 +59,7 @@ import {
   initialIntubation,
   initialCPR,
   initialNursingProcess,
+  initialKPCS_ICU,
 } from './initialStates';
 
 export enum MENU {
@@ -104,6 +105,7 @@ export enum MENU {
   CHILDBIRTH = '분만 기록지',
   HOME_CARE = '가정간호 기록지',
   KPCS = 'KPCS',
+  KPCS_ICU = 'KPCS-ICU',
   DIET_NUTRITION = '식이/영양 기록지',
   HOSPITAL_CONFIRM = '입원 안내 확인서',
   FALL_CONFIRM = '낙상 예방교육 확인서',
@@ -185,6 +187,8 @@ export type TIntubationDefaultValues = typeof initialIntubation;
 export type TChildbirthDefaultValues = typeof initialChildbirth;
 export type THomeCareDefaultValues = typeof initialHomeCare;
 export type TKPCSDefaultValues = typeof initialKPCS;
+export type TKPCS_ICUDefaultValues = typeof initialKPCS_ICU;
+
 export type TDietListDefaultValues = typeof initialDietList;
 export type THospitalConfirmDefaultValues = typeof initialHospitalConfirm;
 export type TFallConfirmDefaultValues = typeof initialFallConfirm;
