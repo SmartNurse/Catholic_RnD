@@ -579,6 +579,14 @@ const useDefaultValues = ({ setDefaultValues, user_id }: Props) => {
           })
           .catch(e => onFail('알 수 없는 오류가 발생했습니다.', e));
         break;
+      case MENU.KPCS_ICU:
+        getKPCS({ user_id, patient_id })
+          .then(({ data }) => {
+            const { update_at, kpcs_survey } = data;
+            convertDataToStates({ update_at, ...kpcs_survey }, initialKPCS);
+          })
+          .catch(e => onFail('알 수 없는 오류가 발생했습니다.', e));
+        break;
       case MENU.DIET_NUTRITION:
         getDietNutrition({ user_id, patient_id })
           .then(({ data }) => {
