@@ -822,12 +822,6 @@ export interface IUpdateHomeCare extends IGetSurvey {
 }
 
 // KPCS
-export interface IKPCSRecord {
-  yes_or_no: number;
-  number: number;
-  unit: number;
-}
-
 export interface IUpdateKPCS extends IGetSurvey {
   kpcs_survey: {
     no01: number;
@@ -880,6 +874,109 @@ export interface IUpdateKPCS extends IGetSurvey {
     no48: number;
     no49: number;
     no50: number;
+  };
+}
+
+// KPCS-ICU
+export interface IUpdateKPCS_ICU extends IGetSurvey {
+  kpcs_survey: {
+    no01: number;
+    no02: number;
+    no03: number;
+    no04: number;
+    no05: number;
+    no06: number;
+    no07: number;
+    no08: number;
+    no09: number;
+    no10: number;
+    no11: number;
+    no12: number;
+    no13: number;
+    no14: number;
+    no15: number;
+    no16: number;
+    no17: number;
+    no18: number;
+    no19: number;
+    no20: number;
+    no21: number;
+    no22: number;
+    no23: number;
+    no24: number;
+    no25: number;
+    no26: number;
+    no27: number;
+    no28: number;
+    no29: number;
+    no30_1: number;
+    no31: number;
+    no32: number;
+    no33: number;
+    no33_1: number;
+    no34: number;
+    no34_1: number;
+    no35: number;
+    no36: number;
+    no37: number;
+    no38: number;
+    no39: number;
+    no40: number;
+    no40_1: number;
+    no41: number;
+    no41_1: number;
+    no42: number;
+    no43: number;
+    no43_1: number;
+    no44: number;
+    no45: number;
+    no45_1: number;
+    no46: number;
+    no47: number;
+    no47_1: number;
+    no48: number;
+    no48_1: number;
+    no49: number;
+    no49_1: number;
+    no50: number;
+    no50_1: number;
+    no51: number;
+    no51_1: number;
+    no52: number;
+    no53: number;
+    no54: number;
+    no55: number;
+    no56: number;
+    no57: number;
+    no58: number;
+    no58_1: number;
+    no59: number;
+    no60: number;
+    no60_1: number;
+    no61: number;
+    no61_1: number;
+    no62: number;
+    no63: number;
+    no64: number;
+    no65: number;
+    no66: number;
+    no67: number;
+    no68: number;
+    no69: number;
+    no70: number;
+    no71: number;
+    no72: number;
+    no73: number;
+    no74: number;
+    no75: number;
+    no76: number;
+    no77: number;
+    no77_1: number;
+    no78: number;
+    no79: number;
+    no80: number;
+    no81: number;
+    no82: number;
   };
 }
 
