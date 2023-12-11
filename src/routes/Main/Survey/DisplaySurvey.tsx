@@ -66,6 +66,7 @@ import CRRT from './Agreement/CRRT';
 import Intubation from './Special/Intubation';
 import CentralVenous from './Agreement/CentralVenous';
 import NursingRecord from './NursingRecord';
+import IntubationAgreement from './Agreement/Intubation';
 
 interface Props {
   surveyType: string;
@@ -258,6 +259,10 @@ const DisplaySurvey = (props: Props) => {
     case MENU.TRANSFUSIONAGREEMENT: {
       if (!defaultValues) return null;
       return <TransfusionAgreement {...dialogProps} onClose={onCloseSave} />;
+    }
+    case MENU.INTUBATIONAGREEMENT: {
+      if (!defaultValues) return null;
+      return <IntubationAgreement {...dialogProps} onClose={onCloseSave} />;
     }
     case MENU.CRRT_AGREEMENT: {
       if (!defaultValues) return null;

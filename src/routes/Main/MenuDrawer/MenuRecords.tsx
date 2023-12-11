@@ -368,6 +368,11 @@ const MenuRecords = (props: Props) => {
       label: '중심정맥삽관동의서',
       toggle: toggle.agreement,
     },
+    {
+      // isPro: true,
+      label: '기관내 삽관 동의서',
+      toggle: toggle.agreement,
+    },
     // {
     //   isPro: true,
     //   label: '대장내시경 동의서',
