@@ -185,6 +185,7 @@ const KPCSICUContents4_1 = (props: Props) => {
           cur === 'no57' ||
           cur === 'no59' ||
           cur === 'no60' ||
+          cur === 'no64' ||
           cur === 'no67'
         ) {
           const value = Number(getValues(cur)) * 4;
