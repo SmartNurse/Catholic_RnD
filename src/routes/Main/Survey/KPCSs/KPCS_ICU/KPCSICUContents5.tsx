@@ -63,8 +63,6 @@ const KPCSICUContents5 = (props: Props) => {
     );
   };
 
-  console.log('값  : ', sum9);
-
   const handleChange9 = (
     e: React.ChangeEvent<HTMLInputElement>,
     checked: boolean

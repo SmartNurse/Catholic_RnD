@@ -433,7 +433,7 @@ const KPCSICUContents4 = (props: Props) => {
                                   {...register('no77_1', {
                                     onChange: e => {
                                       setValue('no77_1', e.target.value);
-                                      setTreatment(Number(e.target.value));
+                                      setTreatment(Number(e.target.value) * 4);
                                     },
                                   })}
                                 />

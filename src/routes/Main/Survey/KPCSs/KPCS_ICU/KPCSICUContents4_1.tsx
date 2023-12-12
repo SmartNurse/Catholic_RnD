@@ -528,7 +528,9 @@ const KPCSICUContents4_1 = (props: Props) => {
                                   {...register('no58_1', {
                                     onChange: e => {
                                       setValue('no58_1', e.target.value);
-                                      setTracheotomy(Number(e.target.value));
+                                      setTracheotomy(
+                                        Number(e.target.value) * 4
+                                      );
                                     },
                                   })}
                                 />
@@ -556,7 +558,7 @@ const KPCSICUContents4_1 = (props: Props) => {
                                   {...register('no61_1', {
                                     onChange: e => {
                                       setValue('no61_1', e.target.value);
-                                      setEtc30(Number(e.target.value));
+                                      setEtc30(Number(e.target.value) * 4);
                                     },
                                   })}
                                 />
@@ -584,7 +586,7 @@ const KPCSICUContents4_1 = (props: Props) => {
                                   {...register('no62_1', {
                                     onChange: e => {
                                       setValue('no62_1', e.target.value);
-                                      setFilter(Number(e.target.value));
+                                      setFilter(Number(e.target.value) * 8);
                                     },
                                   })}
                                 />

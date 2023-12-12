@@ -835,7 +835,7 @@ const KPCSICUContents3 = (props: Props) => {
                                   {...register('no34_1', {
                                     onChange: e => {
                                       setValue('no34_1', e.target.value);
-                                      setBlood(Number(e.target.value));
+                                      setIvRoute(Number(e.target.value) * 2);
                                     },
                                   })}
                                 />
@@ -863,7 +863,7 @@ const KPCSICUContents3 = (props: Props) => {
                                   {...register('no40_1', {
                                     onChange: e => {
                                       setValue('no40_1', e.target.value);
-                                      setBloodUnit(Number(e.target.value));
+                                      setBlood(Number(e.target.value) * 2);
                                     },
                                   })}
                                 />
@@ -891,7 +891,7 @@ const KPCSICUContents3 = (props: Props) => {
                                   {...register('no41_1', {
                                     onChange: e => {
                                       setValue('no41_1', e.target.value);
-                                      setBloodUnit(Number(e.target.value));
+                                      setBloodUnit(Number(e.target.value) * 2);
                                     },
                                   })}
                                 />
@@ -1312,7 +1312,9 @@ const KPCSICUContents3 = (props: Props) => {
                                   {...register('no43_1', {
                                     onChange: e => {
                                       setValue('no43_1', e.target.value);
-                                      setNasogastric(Number(e.target.value));
+                                      setNasogastric(
+                                        Number(e.target.value) * 2
+                                      );
                                     },
                                   })}
                                 />
@@ -1340,7 +1342,7 @@ const KPCSICUContents3 = (props: Props) => {
                                   {...register('no45_1', {
                                     onChange: e => {
                                       setValue('no45_1', e.target.value);
-                                      setEkgRecord(Number(e.target.value));
+                                      setEkgRecord(Number(e.target.value) * 2);
                                     },
                                   })}
                                 />
