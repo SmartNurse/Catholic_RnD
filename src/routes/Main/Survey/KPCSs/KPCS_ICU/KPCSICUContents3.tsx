@@ -618,12 +618,11 @@ const KPCSICUContents3 = (props: Props) => {
                       width: '300px',
                       whiteSpace: 'pre-wrap',
                       verticalAlign: 'top',
-                      borderBottom: 'none',
                     }}
                   >
                     {content.ko}
                   </StyledTableCellTwo>
-                  <StyledTableCellWithoutLeftTwo sx={{ borderBottom: 'none' }}>
+                  <StyledTableCellWithoutLeftTwo>
                     <RadioGroup
                       sx={{
                         paddingTop:
@@ -766,9 +765,7 @@ const KPCSICUContents3 = (props: Props) => {
                       })}
                     </RadioGroup>
                   </StyledTableCellWithoutLeftTwo>
-                  <StyledTableCellWithoutLeftRightTwo
-                    sx={{ borderBottom: 'none' }}
-                  >
+                  <StyledTableCellWithoutLeftRightTwo>
                     <Box>
                       {content.info.includes('') ? (
                         <TableRow
