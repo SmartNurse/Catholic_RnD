@@ -591,8 +591,18 @@ export const initialAnesthesia = {
 export const initialTransfusion = {
   update_at: '',
   blood_number: '',
+
+  blood_product: '',
+
   blood_name: '',
   volume: '',
+
+  pre_dose: '',
+  irradiation: '',
+  filtering: '',
+  education: '',
+  confirm_transfusion: '',
+
   arrival_time: '',
   blood_transfusion_arrival: '',
   transfusion_check1: '',
@@ -602,6 +612,7 @@ export const initialTransfusion = {
   transfusion_end_time: '',
   practitioner_end: '',
   transfusion_record: [],
+  nursing_implementation: '',
 };
 
 export const initialCPR = {

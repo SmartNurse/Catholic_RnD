@@ -43,6 +43,7 @@ const Transfusion = (props: SurveyDialogProps<TTransfusionDefaultValues>) => {
   const onSubmit = (data: TTransfusionDefaultValues) => {
     const {
       blood_number,
+      blood_product,
       blood_name,
       volume,
       arrival_time,
@@ -54,6 +55,12 @@ const Transfusion = (props: SurveyDialogProps<TTransfusionDefaultValues>) => {
       transfusion_end_time,
       practitioner_end,
       transfusion_record,
+      pre_dose,
+      irradiation,
+      filtering,
+      education,
+      confirm_transfusion,
+      nursing_implementation,
     } = data;
 
     const request = {
@@ -61,6 +68,12 @@ const Transfusion = (props: SurveyDialogProps<TTransfusionDefaultValues>) => {
       patient_id: patientInfo.patient_id,
       transfusion_survey: {
         transfusion_information: {
+          blood_product,
+          pre_dose,
+          irradiation,
+          filtering,
+          education,
+          confirm_transfusion,
           blood_number,
           blood_name,
           volume,
@@ -72,6 +85,7 @@ const Transfusion = (props: SurveyDialogProps<TTransfusionDefaultValues>) => {
           practitioner_start,
           transfusion_end_time,
           practitioner_end,
+          nursing_implementation,
         },
         transfusion_record: transfusion_record?.map(
           ({

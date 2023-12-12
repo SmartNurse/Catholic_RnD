@@ -601,6 +601,12 @@ export interface IBloodRecord {
 export interface IUpdateTransfusion extends IGetSurvey {
   transfusion_survey: {
     transfusion_information: {
+      blood_product: string;
+      pre_dose: string;
+      irradiation: string;
+      filtering: string;
+      education: string;
+      confirm_transfusion: string;
       blood_number: string;
       blood_name: string;
       volume: string;
@@ -612,6 +618,7 @@ export interface IUpdateTransfusion extends IGetSurvey {
       practitioner_start: string;
       transfusion_end_time: string;
       practitioner_end: string;
+      nursing_implementation: string;
     };
     transfusion_record: IBloodRecord[];
   };

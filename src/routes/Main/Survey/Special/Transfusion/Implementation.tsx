@@ -1,4 +1,3 @@
-import React, { useState, useEffect } from 'react';
 import { Grid } from '@mui/material';
 import MuiTextField from 'components/Form/MuiTextField';
 import SectionTitle from '../../components/SectionTitle';
@@ -14,10 +13,6 @@ interface Props extends IFormValues, IFormWatch, IFormRegister {
 const Implementation = (props: Props) => {
   const { disabled, register } = props;
 
-  useEffect(() => {
-    // test 한슬.!!
-  }, []);
-
   return (
     <>
       <SectionTitle title="간호 수행" />
@@ -27,7 +22,7 @@ const Implementation = (props: Props) => {
           minRows={5}
           disabled={disabled}
           required={false}
-          {...register('Blood_details.content')}
+          {...register('nursing_implementation')}
         />
       </Grid>
     </>

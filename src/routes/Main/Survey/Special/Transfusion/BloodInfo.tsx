@@ -22,14 +22,14 @@ const BloodInfo = (props: Props) => {
 
   const rows = [
     { title: '혈액번호', variable: 'blood_number', type: 'text' },
-    { title: '혈액제제/용량(ml)', variable: 'blood_name', type: 'text' },
+    { title: '혈액제제/용량(ml)', variable: 'blood_product', type: 'text' },
     { title: '혈액형', variable: 'type', type: 'label' },
-    { title: '수혈 전 투약', variable: 'volume', type: 'text' },
+    { title: '수혈 전 투약', variable: 'pre_dose', type: 'text' },
 
-    { title: '수혈 부작용 교육', variable: 'volume', type: 'select' },
-    { title: '수혈 동의서', variable: 'volume', type: 'select' },
-    { title: 'Irradiation', variable: 'volume', type: 'select' },
-    { title: 'filtering', variable: 'volume', type: 'select' },
+    { title: '수혈 부작용 교육', variable: 'education', type: 'select' },
+    { title: '수혈 동의서', variable: 'confirm_transfusion', type: 'select' },
+    { title: 'Irradiation', variable: 'irradiation', type: 'select' },
+    { title: 'filtering', variable: 'filtering', type: 'select' },
 
     { title: '도착확인시간', variable: 'arrival_time', type: 'time' },
     {
@@ -72,8 +72,8 @@ const BloodInfo = (props: Props) => {
                 select
                 required={false}
                 disabled={disabled}
-                defaultValue={getValues('operation_information.npo_status')}
-                {...register('operation_information.npo_status')}
+                defaultValue={getValues(`${variable}`)}
+                {...register(`${variable}`)}
               >
                 <MenuItem value="유">유</MenuItem>
                 <MenuItem value="무">무</MenuItem>
