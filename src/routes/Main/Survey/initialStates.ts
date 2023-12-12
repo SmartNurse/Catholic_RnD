@@ -401,7 +401,7 @@ export const initialSafety = {
 
 export const initialNRS = {
   update_at: '',
-  nrs_survey: [],
+  catholic_nrs_survey: [],
 };
 
 export const initialFLACC = {

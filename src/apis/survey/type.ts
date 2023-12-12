@@ -410,10 +410,11 @@ export interface INRS {
   date: string;
   time: string;
   pain_score: number;
+  pain_character: string;
 }
 
 export interface IUpdateNRS extends IGetSurvey {
-  nrs_survey: INRS[];
+  catholic_nrs_survey: INRS[];
 }
 
 // FLACC Scale

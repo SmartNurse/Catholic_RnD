@@ -32,16 +32,19 @@ const NRS = (props: SurveyDialogProps<TNRSDefaultValues>) => {
   });
 
   const onSubmit = (data: TNRSDefaultValues) => {
-    const { nrs_survey } = data;
+    const { catholic_nrs_survey } = data;
 
     const request = {
       user_id,
       patient_id: patientInfo.patient_id,
-      nrs_survey: nrs_survey?.map(({ date, time, pain_score }: INRS) => ({
-        date,
-        time,
-        pain_score,
-      })),
+      catholic_nrs_survey: catholic_nrs_survey?.map(
+        ({ date, time, pain_score, pain_character }: INRS) => ({
+          date,
+          time,
+          pain_score,
+          pain_character,
+        })
+      ),
     };
     // console.log(request);
     updateNRS(request)

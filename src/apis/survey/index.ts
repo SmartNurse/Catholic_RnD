@@ -263,12 +263,12 @@ export const updateSafety = (request: IUpdateSafety) => {
 
 // NRS
 export const getNRS = (request: IGetSurvey) => {
-  const url = `/survey/nrs?${formatToRequestParameter(request)}`;
+  const url = `/enr_etc/catholic/nrs?${formatToRequestParameter(request)}`;
   return apiGateway.get(url);
 };
 
 export const updateNRS = (request: IUpdateNRS) => {
-  const url = `/survey/nrs`;
+  const url = `/enr_etc/catholic/nrs`;
   return apiGateway.post(url, camelcaseKeys(request));
 };
 

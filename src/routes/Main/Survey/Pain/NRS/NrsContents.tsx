@@ -27,33 +27,45 @@ interface Props extends IFormValues, IFormWatch, IFormRegister {
 
 const NrsContents = (props: Props) => {
   const { disabled, watch, setValue, onRequired, onSuccess, register } = props;
-  const nrsList: INRS[] = watch('nrs_survey');
+  const nrsList: INRS[] = watch('catholic_nrs_survey');
 
   const [date, setDate] = useState(null);
   const [checkTime, setCheckTime] = useState(null);
   const [painScore, setPainScore] = useState('');
+  const [painChracter, setPainChracter] = useState('');
   const [inputError, setInputError] = useState(false);
 
   const columns = [
     { fieldId: 'date', label: '날짜', sx: { width: 200 } },
     { fieldId: 'time', label: '체크시간', sx: { width: 200 } },
     { fieldId: 'pain_score', label: 'PAIN SCORE', sx: { width: 200 } },
-    { fieldId: 'pain_aspect', label: '통증 양상' },
+    { fieldId: 'pain_character', label: '통증 양상' },
     { fieldId: 'action', label: '', sx: { width: 100 } },
   ];
 
+  console.log('nrsList', nrsList);
   const onAddRow = () => {
-    const request = { date, time: checkTime, pain_score: painScore };
+    const request = {
+      date,
+      time: checkTime,
+      pain_score: painScore,
+      pain_character: painChracter,
+    };
     if (Object.values(request).filter(v => !v).length > 0) {
       return onRequired('NRS.ADD.ROW');
     }
-
+    console.log(request);
     onSuccess('NRS 추가되었습니다.');
-    setValue('nrs_survey', nrsList ? [...nrsList, request] : [request]);
+    setValue(
+      'catholic_nrs_survey',
+      nrsList ? [...nrsList, request] : [request]
+    );
+
     setValue('nrs_date', '');
     setDate(null);
     setCheckTime(null);
     setPainScore('');
+    setPainChracter('');
   };
 
   const inputRow = {
@@ -83,8 +95,6 @@ const NrsContents = (props: Props) => {
         )}
       />
     ),
-    pain_aspect: <MuiTextField required={false} sx={{ width: '400px' }} />,
-
     pain_score: (
       <>
         <MuiTextField
@@ -117,6 +127,14 @@ const NrsContents = (props: Props) => {
         ) : null}
       </>
     ),
+    pain_character: (
+      <MuiTextField
+        value={painChracter}
+        required={false}
+        sx={{ width: '400px' }}
+        onChange={({ target: { value } }) => setPainChracter(value)}
+      />
+    ),
     action: (
       <Button variant="contained" size="small" onClick={onAddRow}>
         추가
@@ -126,7 +144,7 @@ const NrsContents = (props: Props) => {
 
   const onDeleteRow = (index: number) => {
     setValue(
-      'nrs_survey',
+      'catholic_nrs_survey',
       nrsList.filter((_, i) => i !== index)
     );
   };
