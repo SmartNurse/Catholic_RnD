@@ -879,7 +879,7 @@ export interface IUpdateKPCS extends IGetSurvey {
 
 // KPCS-ICU
 export interface IUpdateKPCS_ICU extends IGetSurvey {
-  kpcs_survey: {
+  kpcs_icu_survey: {
     no01: number;
     no02: number;
     no03: number;
@@ -952,10 +952,10 @@ export interface IUpdateKPCS_ICU extends IGetSurvey {
     no58_1: number;
     no59: number;
     no60: number;
-    no60_1: number;
     no61: number;
     no61_1: number;
     no62: number;
+    no62_1: number;
     no63: number;
     no64: number;
     no65: number;

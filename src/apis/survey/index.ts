@@ -450,12 +450,12 @@ export const updateKPCS = (request: IUpdateKPCS) => {
 
 // KPCS_ICU
 export const getKPCS_ICU = (request: IGetSurvey) => {
-  const url = `/survey/kpcs?${formatToRequestParameter(request)}`;
+  const url = `/survey/kpcs_icu?${formatToRequestParameter(request)}`;
   return apiGateway.get(url);
 };
 
 export const updateKPCS_ICU = (request: IUpdateKPCS_ICU) => {
-  const url = `/survey/kpcs`;
+  const url = `/survey/kpcs_icu`;
   return apiGateway.post(url, camelcaseKeys(request));
 };
 

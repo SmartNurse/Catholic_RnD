@@ -545,7 +545,7 @@ const KPCSICUContents4_1 = (props: Props) => {
                               <Box sx={{ minWidth: '500px' }}>
                                 {v}
                                 <Form.MuiTextField
-                                  required={true}
+                                  required={false}
                                   type="number"
                                   textAlign="right"
                                   disabled={disable61 ? true : disabled}
@@ -573,7 +573,7 @@ const KPCSICUContents4_1 = (props: Props) => {
                               <Box sx={{ minWidth: '500px' }}>
                                 {v}
                                 <Form.MuiTextField
-                                  required={true}
+                                  required={false}
                                   type="number"
                                   textAlign="right"
                                   disabled={disable62 ? true : disabled}

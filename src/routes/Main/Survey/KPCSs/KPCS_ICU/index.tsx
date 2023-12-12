@@ -77,7 +77,7 @@ const KPCS_ICU = (props: SurveyDialogProps<TKPCS_ICUDefaultValues>) => {
     getValues('no47_1') ? getValues('no47_1') : 0
   );
   const [emergency, setEmergency] = useState(
-    getValues('no48_1') ? getValues('no48_1') : 0
+    getValues('no48_1') ? getValues('no48_1') * 2 : 0
   );
   const [testBodyOdor, setTestBodyOdor] = useState(
     getValues('no49_1') ? getValues('no49_1') : 0
@@ -90,20 +90,20 @@ const KPCS_ICU = (props: SurveyDialogProps<TKPCS_ICUDefaultValues>) => {
   );
 
   const [sum7_1, setSum7_1] = useState(0);
-  // 58, 60, 61 input
+  // 58, 61, 62 input
   const [tracheotomy, setTracheotomy] = useState(
-    getValues('no58_1') ? getValues('no58_1') : 0
+    getValues('no58_1') ? getValues('no58_1') * 4 : 0
   );
   const [etc30, setEtc30] = useState(
-    getValues('no60_1') ? getValues('no60_1') : 0
+    getValues('no61_1') ? getValues('no61_1') * 4 : 0
   );
   const [filter, setFilter] = useState(
-    getValues('no61_1') ? getValues('no61_1') : 0
+    getValues('no62_1') ? getValues('no62_1') * 8 : 0
   );
 
   const [sum7, setSum7] = useState(0);
   const [treatment, setTreatment] = useState(
-    getValues('no77_1') ? getValues('no77_1') : 0
+    getValues('no77_1') ? getValues('no77_1') * 4 : 0
   );
   const [sum8, setSum8] = useState(0);
 
@@ -116,7 +116,7 @@ const KPCS_ICU = (props: SurveyDialogProps<TKPCS_ICUDefaultValues>) => {
     const request = {
       user_id,
       patient_id: patientInfo.patient_id,
-      kpcs_survey: { ...data },
+      kpcs_icu_survey: { ...data },
     };
 
     updateKPCS_ICU(request)
@@ -136,8 +136,6 @@ const KPCS_ICU = (props: SurveyDialogProps<TKPCS_ICUDefaultValues>) => {
     setValue,
     onRequired,
   };
-
-  console.log('합계임  :', sum7 + treatment);
 
   return (
     <MuiDialog.SurveyForm
