@@ -22,9 +22,9 @@ const Signature = (props: Props) => {
 
   return (
     <>
-      <Box sx={{ width: '1100px', margin: '20px auto' }}>
+      <Box sx={{ width: '98%', margin: '20px auto' }}>
         <Typography
-          sx={{ fontWeight: 400, fontSize: '15px', marginBottom: '10px' }}
+          sx={{ fontWeight: 500, fontSize: '12px', marginBottom: '10px' }}
         >
           위 설명을 듣고 충분히 이해하였으며, 수혈에 동의합니다.
         </Typography>

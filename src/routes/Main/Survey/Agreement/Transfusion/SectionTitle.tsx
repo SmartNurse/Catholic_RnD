@@ -18,7 +18,7 @@ const SectionTitle = ({ title, mb = -3 }: Props) => {
           p: 1,
           backgroundColor: palette.mode === 'dark' ? 'lightgrey' : '#F2F2F2',
           borderTop: 'solid 1px',
-          fontSize: '16px',
+          fontSize: '13px',
         }}
       >
         {title}

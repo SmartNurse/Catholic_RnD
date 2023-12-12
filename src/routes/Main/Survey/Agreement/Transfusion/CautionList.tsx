@@ -26,7 +26,7 @@ const CautionList = (props: Props) => {
       <Box sx={{ width: '98%', margin: '48px auto 24px auto' }}>
         {contents.map((v, i) => (
           <Typography
-            sx={{ fontWeight: '400', fontSize: '15px', lineHeight: '24px' }}
+            sx={{ fontWeight: '400', fontSize: '12px', lineHeight: '24px' }}
           >
             {v}
           </Typography>

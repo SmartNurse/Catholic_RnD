@@ -29,7 +29,7 @@ const Complications = (props: Props) => {
           <Typography
             sx={{
               fontWeight: '400',
-              fontSize: '15px',
+              fontSize: '12px',
               lineHeight: '24px',
               whiteSpace: 'pre-wrap',
             }}
