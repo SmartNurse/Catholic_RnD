@@ -28,7 +28,7 @@ const Signature = (props: Props) => {
             <TableRow>
               <StyledTableCell
                 align="center"
-                sx={{ padding: '50px', width: '100px' }}
+                sx={{ padding: '50px', width: '100px', whiteSpace: 'nowrap' }}
               >
                 담당의사
               </StyledTableCell>
@@ -45,7 +45,6 @@ const Signature = (props: Props) => {
                   </Box>
                   <Form.MuiTextField
                     required={false}
-                    sx={{ width: '230px' }}
                     disabled={disabled}
                     {...register('patient_bday')}
                   />
@@ -60,7 +59,7 @@ const Signature = (props: Props) => {
                     서명 또는 인
                   </Box>
                   <Form.MuiTextField
-                    sx={{ paddingRight: '60px', width: '230px' }}
+                    sx={{ paddingRight: '60px' }}
                     required={false}
                     disabled={disabled}
                     {...register('patient_contact')}
@@ -74,12 +73,28 @@ const Signature = (props: Props) => {
                       minWidth: '150px',
                     }}
                   >
-                    면허번호
+                    전문의 성명
                   </Box>
                   <Form.MuiTextField
                     required={false}
                     disabled={disabled}
-                    sx={{ width: '230px' }}
+                    {...register('patient_name')}
+                  />
+                  <Box
+                    sx={{
+                      paddingTop: '2$››px',
+                      paddingLeft: '60px',
+                      minWidth: '150px',
+                    }}
+                  >
+                    의료기관/
+                    <br />
+                    전문과목 서명
+                  </Box>
+                  <Form.MuiTextField
+                    required={false}
+                    disabled={disabled}
+                    sx={{ paddingRight: '60px' }}
                     {...register('patient_name')}
                   />
                 </div>
@@ -90,7 +105,7 @@ const Signature = (props: Props) => {
             <TableRow>
               <StyledTableCell
                 align="center"
-                sx={{ padding: '50px', width: '150px' }}
+                sx={{ padding: '50px', width: '150px', whiteSpace: 'nowrap' }}
               >
                 해당분야의 전문의
               </StyledTableCell>
@@ -107,7 +122,6 @@ const Signature = (props: Props) => {
                   </Box>
                   <Form.MuiTextField
                     required={false}
-                    sx={{ width: '230px' }}
                     disabled={disabled}
                     {...register('companion_bday')}
                   />
@@ -121,7 +135,7 @@ const Signature = (props: Props) => {
                     소속 의료기관
                   </Box>
                   <Form.MuiTextField
-                    sx={{ paddingRight: '60px', width: '230px' }}
+                    sx={{ paddingRight: '60px' }}
                     required={false}
                     disabled={disabled}
                     {...register('companion_contact')}
@@ -139,27 +153,9 @@ const Signature = (props: Props) => {
                   </Box>
                   <Form.MuiTextField
                     required={false}
-                    sx={{ width: '230px' }}
                     disabled={disabled}
                     {...register('companion_name')}
                   />
-                  <Box
-                    sx={{
-                      paddingTop: '10px',
-                      paddingLeft: '60px',
-                      minWidth: '150px',
-                    }}
-                  >
-                    전문의 자격 번호
-                  </Box>
-                  <Form.MuiTextField
-                    sx={{ paddingRight: '60px', width: '230px' }}
-                    required={false}
-                    disabled={disabled}
-                    {...register('companion_sig')}
-                  />
-                </div>
-                <div style={{ display: 'flex', marginBottom: '20px' }}>
                   <Box
                     sx={{
                       paddingTop: '10px',
@@ -172,10 +168,28 @@ const Signature = (props: Props) => {
                   <Form.MuiTextField
                     required={false}
                     disabled={disabled}
-                    sx={{ width: '230px' }}
+                    sx={{ paddingRight: '60px' }}
                     {...register('patient_name')}
                   />
                 </div>
+                {/* <div style={{ display: 'flex', marginBottom: '20px' }}>
+                  <Box
+                    sx={{
+                      paddingTop: '10px',
+                      paddingLeft: '45px',
+                      minWidth: '150px',
+                      whiteSpace: 'nowrap',
+                    }}
+                  >
+                    전문의 자격 번호
+                  </Box>
+                  <Form.MuiTextField
+                    sx={{ paddingRight: '60px' }}
+                    required={false}
+                    disabled={disabled}
+                    {...register('companion_sig')}
+                  />
+                </div> */}
               </StyledTableCellWithoutLeftRight>
               <StyledTableCellWithoutLeft></StyledTableCellWithoutLeft>
             </TableRow>
