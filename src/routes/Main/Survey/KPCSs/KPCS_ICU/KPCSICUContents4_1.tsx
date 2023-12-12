@@ -296,7 +296,7 @@ const KPCSICUContents4_1 = (props: Props) => {
 
   return (
     <>
-      <SectionTitle title="영역 : 투약" />
+      <SectionTitle title="영역 : 치료 및 시술 (30분 이상)" />
       <Box sx={{ width: '98%', margin: '20px' }}>
         <TableContainer sx={{ marginTop: '20px', marginBottom: '-30px' }}>
           <TableBody>
