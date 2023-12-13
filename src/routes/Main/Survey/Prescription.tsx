@@ -27,15 +27,27 @@ const Prescription = (props: SurveyDialogProps<null>) => {
         <Typography variant="body2" lineHeight="22px" whiteSpace="pre-wrap">
           {patientInfo.medical_note}
         </Typography> */}
-        <Stack direction="row" gap={3}>
-          <Button variant="contained" onClick={() => setPatientName('김희철')}>
-            김희철
+        <Stack direction="column" gap={3}>
+          <Button
+            variant="outlined"
+            onClick={() => setPatientName('김희철')}
+            sx={{ width: '200px' }}
+          >
+            김희철 환자 투약 처방 기록지
           </Button>
-          <Button variant="contained" onClick={() => setPatientName('박복례')}>
-            박복례
+          <Button
+            variant="outlined"
+            onClick={() => setPatientName('박복례')}
+            sx={{ width: '200px' }}
+          >
+            박복례 환자 투약 처방 기록지
           </Button>
-          <Button variant="contained" onClick={() => setPatientName('이금자')}>
-            이금자
+          <Button
+            variant="outlined"
+            onClick={() => setPatientName('이금자')}
+            sx={{ width: '200px' }}
+          >
+            이금자 환자 투약 처방 기록지
           </Button>
         </Stack>
       </Box>
@@ -64,7 +76,7 @@ const Prescription = (props: SurveyDialogProps<null>) => {
             sx={{ objectFit: 'contain' }}
           />
         </Box>
-      ) : (
+      ) : patientName === '김금례' ? (
         <Box component="section" sx={{ width: '98%' }}>
           <CardMedia
             height={1200}
@@ -85,6 +97,8 @@ const Prescription = (props: SurveyDialogProps<null>) => {
             sx={{ objectFit: 'contain' }}
           />
         </Box>
+      ) : (
+        <></>
       )}
     </MuiDialog.SurveyForm>
   );
