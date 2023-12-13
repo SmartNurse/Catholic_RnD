@@ -104,10 +104,10 @@ const MenuRecords = (props: Props) => {
     //   icon: <ExposureOutlined />,
     //   label: '섭취 및 배설량 기록지',
     // },
-    // {
-    //   icon: <WashOutlined />,
-    //   label: '혈당 기록지',
-    // },
+    {
+      icon: <WashOutlined />,
+      label: '혈당 기록지',
+    },
     {
       disabled: true,
       icon: <SentimentSatisfiedOutlined />,
