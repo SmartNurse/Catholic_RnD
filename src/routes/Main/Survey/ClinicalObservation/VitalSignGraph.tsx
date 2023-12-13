@@ -200,7 +200,7 @@ const contentLabel = [
   {
     id: 'CRRT',
     ko: [
-      '모드',
+      'Mode',
       'Blood flow',
       'Dialysate (mL/hr)',
       'Pre-Replacement (mL/hr)',
