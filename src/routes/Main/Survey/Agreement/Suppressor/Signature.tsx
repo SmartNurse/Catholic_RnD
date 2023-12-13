@@ -23,8 +23,6 @@ const Signature = (props: Props) => {
     { title: '', variable: '' },
     { title: '의사 성명', variable: 'dr_name' },
     { title: '의사 서명', variable: 'dr_sign' },
-    { title: '간호사 성명', variable: 'ns_name' },
-    { title: '간호사 서명', variable: 'ns_sign' },
   ];
 
   return (
