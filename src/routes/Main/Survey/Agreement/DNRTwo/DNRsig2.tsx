@@ -67,7 +67,7 @@ const contentLabel = [
   },
 ];
 
-const CVCone = (props: Props) => {
+const DNRsig2 = (props: Props) => {
   const { disabled, register } = props;
 
   return (
@@ -75,11 +75,15 @@ const CVCone = (props: Props) => {
       <Box
         sx={{
           width: '100%',
-          marginTop: '60px',
+          marginTop: '-30px',
           marginRight: 'auto',
           marginLeft: 'auto',
         }}
       >
+        <Typography sx={{ fontSize: '12px' }}>
+          위 환자의 법정대리인(친권자)으로서 환자에게 연명의료를 시행하지 않거나
+          중단하겠다는 의사를 표시합니다.
+        </Typography>
         <Table aria-label="simple table">
           <TableHead>
             <TableRow>
@@ -177,4 +181,4 @@ const CVCone = (props: Props) => {
   );
 };
 
-export default CVCone;
+export default DNRsig2;

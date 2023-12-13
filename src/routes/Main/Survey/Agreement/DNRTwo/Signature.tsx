@@ -82,16 +82,15 @@ const Signature = (props: Props) => {
                   />
                   <Box
                     sx={{
-                      paddingTop: '2$››px',
+                      paddingTop: '10px',
                       paddingLeft: '60px',
                       minWidth: '150px',
                     }}
                   >
-                    의료기관/
-                    <br />
-                    전문과목 서명
+                    날짜
                   </Box>
                   <Form.MuiTextField
+                    type="date"
                     required={false}
                     disabled={disabled}
                     sx={{ paddingRight: '60px' }}

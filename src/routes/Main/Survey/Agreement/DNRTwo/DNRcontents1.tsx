@@ -16,17 +16,17 @@ interface Props extends IFormValues, IFormWatch, IFormRegister {
 
 const checks = [
   {
-    label: '환자가족 전원의 의견이 필요한 경우',
+    label: '환자가 미성년자인 경우',
     key: 'fall_education.checked1',
   },
 ];
 
-const CVCone = (props: Props) => {
+const DNRcontents1 = (props: Props) => {
   const { disabled, register, getValues, setValue } = props;
 
   return (
     <Fragment>
-      <SectionTitle title="1. 중심정맥관 정의 및 종류" />
+      <SectionTitle title="연명의료중단등결정에 대한 친권자 및 환자 가족 의사 확인서" />
 
       <Box sx={{ margin: '38px 0px 30px 10px' }}>
         <Grid container xs={11.8}>
@@ -45,13 +45,9 @@ const CVCone = (props: Props) => {
             );
           })}
         </Grid>
-        <Typography sx={{ fontSize: '12px' }}>
-          위 환자의 환자가족으로서 환자의 연명의료중단등결정에 동의하겠다는
-          의사를 환자가족 전원의 합의로 표시합니다.
-        </Typography>
       </Box>
     </Fragment>
   );
 };
 
-export default CVCone;
+export default DNRcontents1;

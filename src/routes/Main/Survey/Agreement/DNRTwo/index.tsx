@@ -10,9 +10,11 @@ import { SurveyDialogProps, TMedicalRecordDefaultValues } from '../../type';
 import { updateMedicalRecords } from 'apis/survey';
 
 import CommonPatientInfo from '../../components/CommonPatientInfo';
-import CVCone from './CVCone';
-import CVCtwo from './CVCtwo';
+import DNRcontents1 from './DNRcontents1';
+import DNRsig1 from './DNRsig1';
 import Signature from './Signature';
+import DNRcontents2 from './DNRcontents2';
+import DNRsig2 from './DNRsig2';
 
 const DNRTwo = (props: SurveyDialogProps<TMedicalRecordDefaultValues>) => {
   const {
@@ -133,8 +135,10 @@ const DNRTwo = (props: SurveyDialogProps<TMedicalRecordDefaultValues>) => {
       </Typography>
       <CommonPatientInfo patientInfo={patientInfo} nurseName={nurseName} />
       <Box sx={{ marginTop: '48px' }}>
-        <CVCone {...formProps} />
-        <CVCtwo {...formProps} />
+        <DNRcontents1 {...formProps} />
+        <DNRsig1 {...formProps} />
+        <DNRcontents2 {...formProps} />
+        <DNRsig2 {...formProps} />
         <Signature {...formProps} />
       </Box>
     </MuiDialog.SurveyForm>
