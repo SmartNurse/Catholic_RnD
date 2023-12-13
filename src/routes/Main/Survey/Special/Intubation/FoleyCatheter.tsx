@@ -10,7 +10,7 @@ import { MobileTimePicker } from '@mui/x-date-pickers';
 import MuiTextField from 'components/Form/MuiTextField';
 import RowContainer from '../../components/RowContainer';
 import SectionTitle from '../../components/SectionTitle';
-import { IDialysisRecord } from 'apis/survey/type';
+import { IIntubationFoley } from 'apis/survey/type';
 
 interface Props extends IFormRegister, IFormValues, IFormWatch {
   disabled?: boolean;
@@ -20,74 +20,38 @@ const FoleyCatheter = (props: Props) => {
   const { disabled, register, getValues, setValue, watch } = props;
 
   const labels = ['시간당', '소변 양상'];
-  const registerIds = ['volume', 'blood_flow_dialysis_db'];
+  const registerIds = ['amount_per_hour', 'urine_condition'];
 
-  const [dialysisRecord, setDialysisRecord] = useState<IDialysisRecord[]>([
+  const [dialysisRecord, setDialysisRecord] = useState<IIntubationFoley[]>([
     {
-      time: '',
-      volume: '',
-      blood_flow_dialysis_db: '',
-      arterial_pressure: '',
-      venous_pressure: '',
-      ufr: '',
-      tmp: '',
-      heparin: '',
-      sbp: '',
-      dbp: '',
-      pr: '',
-      bt: '',
-      rr: '',
+      record_date: '',
+      insertion_date: '',
+      amount_per_hour: '',
+      urine_condition: '',
     },
     {
-      time: '',
-      volume: '',
-      blood_flow_dialysis_db: '',
-      arterial_pressure: '',
-      venous_pressure: '',
-      ufr: '',
-      tmp: '',
-      heparin: '',
-      sbp: '',
-      dbp: '',
-      pr: '',
-      bt: '',
-      rr: '',
+      record_date: '',
+      insertion_date: '',
+      amount_per_hour: '',
+      urine_condition: '',
     },
     {
-      time: '',
-      volume: '',
-      blood_flow_dialysis_db: '',
-      arterial_pressure: '',
-      venous_pressure: '',
-      ufr: '',
-      tmp: '',
-      heparin: '',
-      sbp: '',
-      dbp: '',
-      pr: '',
-      bt: '',
-      rr: '',
+      record_date: '',
+      insertion_date: '',
+      amount_per_hour: '',
+      urine_condition: '',
     },
     {
-      time: '',
-      volume: '',
-      blood_flow_dialysis_db: '',
-      arterial_pressure: '',
-      venous_pressure: '',
-      ufr: '',
-      tmp: '',
-      heparin: '',
-      sbp: '',
-      dbp: '',
-      pr: '',
-      bt: '',
-      rr: '',
+      record_date: '',
+      insertion_date: '',
+      amount_per_hour: '',
+      urine_condition: '',
     },
   ]);
 
   useEffect(() => {
-    if (getValues('dialysis_db')) setDialysisRecord(getValues('dialysis_db'));
-    else setValue('dialysis_db', dialysisRecord);
+    if (getValues('foley')) setDialysisRecord(getValues('foley'));
+    else setValue('foley', dialysisRecord);
   }, []);
 
   return (
@@ -110,8 +74,19 @@ const FoleyCatheter = (props: Props) => {
                     <TableCell key={idx}>
                       <Form.MuiTextField
                         type="date"
+                        required={false}
                         disabled={disabled}
-                        // {...register(`${time}`)}
+                        value={
+                          dialysisRecord ? dialysisRecord[idx].record_date : ''
+                        }
+                        onChange={e => {
+                          let newRecord = dialysisRecord
+                            ? [...dialysisRecord]
+                            : [];
+                          newRecord[idx]['record_date'] = e.target.value;
+                          setDialysisRecord(newRecord);
+                          setValue('foley', newRecord);
+                        }}
                       />
                     </TableCell>
                   ))}
@@ -128,9 +103,22 @@ const FoleyCatheter = (props: Props) => {
                   .map((_, idx) => (
                     <TableCell key={idx}>
                       <Form.MuiTextField
+                        required={false}
                         type="date"
                         disabled={disabled}
-                        // {...register(`${time}`)}
+                        value={
+                          dialysisRecord
+                            ? dialysisRecord[idx].insertion_date
+                            : ''
+                        }
+                        onChange={e => {
+                          let newRecord = dialysisRecord
+                            ? [...dialysisRecord]
+                            : [];
+                          newRecord[idx]['insertion_date'] = e.target.value;
+                          setDialysisRecord(newRecord);
+                          setValue('foley', newRecord);
+                        }}
                       />
                     </TableCell>
                   ))}
@@ -160,7 +148,7 @@ const FoleyCatheter = (props: Props) => {
                             newRecord[idx][registerIds[labelIdx]] =
                               e.target.value;
                             setDialysisRecord(newRecord);
-                            setValue('dialysis_db', newRecord);
+                            setValue('foley', newRecord);
                           }}
                           required={false}
                           disabled={disabled}

@@ -10,6 +10,7 @@ import {
   TableRow,
   Grid,
   MenuItem,
+  Box,
 } from '@mui/material';
 import { AccessTime } from '@mui/icons-material';
 import { MobileTimePicker } from '@mui/x-date-pickers';
@@ -17,13 +18,13 @@ import { MobileTimePicker } from '@mui/x-date-pickers';
 import MuiTextField from 'components/Form/MuiTextField';
 import RowContainer from '../../components/RowContainer';
 import SectionTitle from '../../components/SectionTitle';
-import { IIntubationPICCandMore1 } from 'apis/survey/type';
+import { IIntubationPICCandMore2 } from 'apis/survey/type';
 
 interface Props extends IFormRegister, IFormValues, IFormWatch {
   disabled?: boolean;
 }
 
-const IntubationPICC = (props: Props) => {
+const IntubationCline = (props: Props) => {
   const { disabled, register, getValues, setValue, watch } = props;
 
   const labels = [
@@ -32,54 +33,54 @@ const IntubationPICC = (props: Props) => {
     '피부 및 삽입 상태',
     '드레싱 종류, 상태, 부착',
   ];
-  const registerIds = ['type1', 'part1', 'condition1', 'dressing1'];
+  const registerIds = ['type2', 'part2', 'condition2', 'dressing2'];
 
   const [dialysisRecord, setDialysisRecord] = useState<
-    IIntubationPICCandMore1[]
+    IIntubationPICCandMore2[]
   >([
     {
-      record_date1: '',
-      insertion_date1: '',
-      type1: '',
-      part1: '',
-      condition1: '',
-      dressing1: '',
+      record_date2: '',
+      insertion_date2: '',
+      type2: '',
+      part2: '',
+      condition2: '',
+      dressing2: '',
     },
     {
-      record_date1: '',
-      insertion_date1: '',
-      type1: '',
-      part1: '',
-      condition1: '',
-      dressing1: '',
+      record_date2: '',
+      insertion_date2: '',
+      type2: '',
+      part2: '',
+      condition2: '',
+      dressing2: '',
     },
     {
-      record_date1: '',
-      insertion_date1: '',
-      type1: '',
-      part1: '',
-      condition1: '',
-      dressing1: '',
+      record_date2: '',
+      insertion_date2: '',
+      type2: '',
+      part2: '',
+      condition2: '',
+      dressing2: '',
     },
     {
-      record_date1: '',
-      insertion_date1: '',
-      type1: '',
-      part1: '',
-      condition1: '',
-      dressing1: '',
+      record_date2: '',
+      insertion_date2: '',
+      type2: '',
+      part2: '',
+      condition2: '',
+      dressing2: '',
     },
   ]);
 
   useEffect(() => {
-    if (getValues('picc_and_more1'))
-      setDialysisRecord(getValues('picc_and_more1'));
-    else setValue('picc_and_more1', dialysisRecord);
+    if (getValues('picc_and_more2'))
+      setDialysisRecord(getValues('picc_and_more2'));
+    else setValue('picc_and_more2', dialysisRecord);
   }, []);
 
   return (
     <>
-      <SectionTitle title="PICC " />
+      <SectionTitle title="C-line" />
       <RowContainer xs={12}>
         <Grid item flex={1}>
           <Table sx={{ minWidth: 650 }} aria-label="simple table" size="small">
@@ -100,15 +101,15 @@ const IntubationPICC = (props: Props) => {
                         type="date"
                         disabled={disabled}
                         value={
-                          dialysisRecord ? dialysisRecord[idx].record_date1 : ''
+                          dialysisRecord ? dialysisRecord[idx].record_date2 : ''
                         }
                         onChange={e => {
                           let newRecord = dialysisRecord
                             ? [...dialysisRecord]
                             : [];
-                          newRecord[idx]['record_date1'] = e.target.value;
+                          newRecord[idx]['record_date2'] = e.target.value;
                           setDialysisRecord(newRecord);
-                          setValue('picc_and_more1', newRecord);
+                          setValue('picc_and_more2', newRecord);
                         }}
                       />
                     </TableCell>
@@ -131,16 +132,16 @@ const IntubationPICC = (props: Props) => {
                         disabled={disabled}
                         value={
                           dialysisRecord
-                            ? dialysisRecord[idx].insertion_date1
+                            ? dialysisRecord[idx].insertion_date2
                             : ''
                         }
                         onChange={e => {
                           let newRecord = dialysisRecord
                             ? [...dialysisRecord]
                             : [];
-                          newRecord[idx]['insertion_date1'] = e.target.value;
+                          newRecord[idx]['insertion_date2'] = e.target.value;
                           setDialysisRecord(newRecord);
-                          setValue('picc_and_more1', newRecord);
+                          setValue('picc_and_more2', newRecord);
                         }}
                       />
                     </TableCell>
@@ -176,7 +177,7 @@ const IntubationPICC = (props: Props) => {
                               newRecord[idx][registerIds[labelIdx]] =
                                 e.target.value;
                               setDialysisRecord(newRecord);
-                              setValue('picc_and_more1', newRecord);
+                              setValue('picc_and_more2', newRecord);
                             }}
                             required={false}
                             disabled={disabled}
@@ -194,4 +195,4 @@ const IntubationPICC = (props: Props) => {
   );
 };
 
-export default IntubationPICC;
+export default IntubationCline;

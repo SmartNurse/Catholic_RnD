@@ -184,6 +184,7 @@ export type TAnesthesiaDefaultValues = typeof initialAnesthesia;
 export type TTransfusionDefaultValues = typeof initialTransfusion;
 export type TCPRDefaultValues = typeof initialCPR;
 export type TDialysisDefaultValues = typeof initialDialysis;
+
 export type TEmergencyDefaultValues = typeof initialEmergency;
 export type TIntubationDefaultValues = typeof initialIntubation;
 export type TChildbirthDefaultValues = typeof initialChildbirth;

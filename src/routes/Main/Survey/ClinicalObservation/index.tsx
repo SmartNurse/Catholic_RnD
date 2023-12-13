@@ -94,8 +94,6 @@ const ClinicalObservation = (
         </Typography>
         <CommonPatientInfo patientInfo={patientInfo} nurseName={nurseName} />
         <VitalSignGraph {...formProps} />
-        {/*<VitalSign {...formProps} />
-        <IOCheck {...formProps} /> */}
       </Grid>
     </MuiDialog.SurveyForm>
   );

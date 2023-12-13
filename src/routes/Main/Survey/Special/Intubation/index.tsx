@@ -6,12 +6,12 @@ import { useForm } from 'react-hook-form';
 import MuiDialog from 'components/MuiDialog';
 import {
   SurveyDialogProps,
-  TDialysisDefaultValues,
+  TIntubationDefaultValues,
 } from 'routes/Main/Survey/type';
 import useSurvey from 'store/survey/useSurvey';
 import useNotification from 'hooks/useNotification';
 
-import { updateDialysis } from 'apis/survey';
+import { updateIntubation } from 'apis/survey';
 
 import CommonPatientInfo from '../../components/CommonPatientInfo';
 import IntubationPICC from './IntubationPICC';
@@ -20,8 +20,12 @@ import FoleyCatheter from './FoleyCatheter';
 import Ltube from './Ltube';
 import JPbag from './JPbag';
 import Etube from './Etube';
+import IntubationCline from './IntubationCline';
+import IntubationAline from './IntubationAline';
+import IntubationAVF from './IntubationAVF';
+import IntubationHDcatheter from './IntubationHDcatheter';
 
-const Intubation = (props: SurveyDialogProps<TDialysisDefaultValues>) => {
+const Intubation = (props: SurveyDialogProps<TIntubationDefaultValues>) => {
   const {
     title,
     isOpen,
@@ -40,68 +44,46 @@ const Intubation = (props: SurveyDialogProps<TDialysisDefaultValues>) => {
     defaultValues,
   });
 
-  const onSubmit = (data: TDialysisDefaultValues) => {
+  const onSubmit = (data: TIntubationDefaultValues) => {
     const {
-      date,
-      time,
-      visiting_route,
-      visiting_route_etc,
-      dialysis_machine,
-      dialyzer,
-      dialysate,
-      vascular_access,
-      vascular_access_etc,
-      starting_nurse,
-      ending_nurse,
-      pre_previous_weight,
-      pre_today_weight,
-      pre_weight_change,
-      post_previous_weight,
-      post_today_weight,
-      post_weight_change,
-      dialysis_db,
-      additional_information,
+      picc_and_more1,
+      picc_and_more2,
+      picc_and_more3,
+      picc_and_more4,
+      picc_and_more5,
+      pca,
+      ltube,
+      jpbag,
+      foley,
+      etube,
     } = data;
 
     const request = {
       user_id,
       patient_id: patientInfo.patient_id,
-      hemodialysis_survey: {
-        dialysis_information: {
-          date,
-          time,
-          visiting_route:
-            visiting_route === '0' ? visiting_route_etc : visiting_route,
-          dialysis_machine,
-          dialyzer,
-          dialysate,
-          vascular_access:
-            vascular_access === '0' ? vascular_access_etc : vascular_access,
-          starting_nurse,
-          ending_nurse,
-        },
-        weight_information: {
-          pre_previous_weight,
-          pre_today_weight,
-          pre_weight_change,
-          post_previous_weight,
-          post_today_weight,
-          post_weight_change,
-        },
-        dialysis_db,
-        additional_information,
+      catholic_line_info_survey: {
+        picc_and_more1,
+        picc_and_more2,
+        picc_and_more3,
+        picc_and_more4,
+        picc_and_more5,
+        pca,
+        ltube,
+        jpbag,
+        foley,
+        etube,
       },
     };
 
-    // console.log(request);
-    // updateDialysis(request)
-    //   .then(({ data: { rc } }) => {
-    //     if (rc !== 1) return onResultCode(rc);
+    console.log(request);
+    updateIntubation(request)
+      .then(({ data: { rc } }) => {
+        if (rc !== 1) return onResultCode(rc);
 
-    //     onUpdateIsSave(true);
-    //     onSuccess('삽관 기록지 저장에 성공하였습니다.');
-    //   })
-    //   .catch(e => onFail('삽관 기록지 저장에 실패하였습니다.', e));
+        onUpdateIsSave(true);
+        onSuccess('삽관 기록지 저장에 성공하였습니다.');
+      })
+      .catch(e => onFail('삽관 기록지 저장에 실패하였습니다.', e));
   };
 
   const formProps = {
@@ -138,10 +120,14 @@ const Intubation = (props: SurveyDialogProps<TDialysisDefaultValues>) => {
           }}
         >
           삽관 기록지
-          <br /> - 테스트중 입니다. -
         </Typography>
         <CommonPatientInfo patientInfo={patientInfo} nurseName={nurseName} />
         <IntubationPICC {...formProps} />
+        <IntubationCline {...formProps} />
+        <IntubationAline {...formProps} />
+        <IntubationAVF {...formProps} />
+        <IntubationHDcatheter {...formProps} />
+
         <IntubationPCA {...formProps} />
         <Ltube {...formProps} />
         <JPbag {...formProps} />

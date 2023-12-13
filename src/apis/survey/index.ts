@@ -60,6 +60,7 @@ import {
   IUpdateCentralVenous,
   IUpdateNursingProcess,
   IUpdateKPCS_ICU,
+  IUpdateIntubation,
 } from './type';
 
 // e-CARDEX
@@ -401,6 +402,17 @@ export const getDialysis = (request: IGetSurvey) => {
 
 export const updateDialysis = (request: IUpdateDialysis) => {
   const url = `/survey/hemodialysis`;
+  return apiGateway.post(url, camelcaseKeys(request));
+};
+
+// 삽관 기록지
+export const getIntubation = (request: IGetSurvey) => {
+  const url = `/enr_etc/catholic/line?${formatToRequestParameter(request)}`;
+  return apiGateway.get(url);
+};
+
+export const updateIntubation = (request: IUpdateIntubation) => {
+  const url = `/enr_etc/catholic/line`;
   return apiGateway.post(url, camelcaseKeys(request));
 };
 

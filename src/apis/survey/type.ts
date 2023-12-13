@@ -697,6 +697,115 @@ export interface IUpdateDialysis extends IGetSurvey {
   };
 }
 
+// 삽관기록지
+export interface IIntubationPICCandMore1 {
+  [index: string]: string | null;
+  record_date1: string;
+  insertion_date1: string;
+  type1: string;
+  part1: string;
+  condition1: string;
+  dressing1: string;
+}
+
+export interface IIntubationPICCandMore2 {
+  [index: string]: string | null;
+  record_date2: string;
+  insertion_date2: string;
+  type2: string;
+  part2: string;
+  condition2: string;
+  dressing2: string;
+}
+
+export interface IIntubationPICCandMore3 {
+  [index: string]: string | null;
+  record_date3: string;
+  insertion_date3: string;
+  type3: string;
+  part3: string;
+  condition3: string;
+  dressing3: string;
+}
+
+export interface IIntubationPICCandMore4 {
+  [index: string]: string | null;
+  record_date4: string;
+  insertion_date4: string;
+  type4: string;
+  part4: string;
+  condition4: string;
+  dressing4: string;
+}
+
+export interface IIntubationPICCandMore5 {
+  [index: string]: string | null;
+  record_date5: string;
+  insertion_date5: string;
+  type5: string;
+  part5: string;
+  condition5: string;
+  dressing5: string;
+}
+
+export interface IIntubationPCA {
+  [index: string]: string | null;
+  record_dates: string;
+  insertion_dates: string;
+  types: string;
+}
+
+export interface IIntubationLtube {
+  [index: string]: string | null;
+  record_date: string;
+  insertion_date: string;
+  insertion_part: string;
+  insertion_condition: string;
+}
+
+export interface IIntubationJPbag {
+  [index: string]: string | null;
+  record_date: string;
+  insertion_date: string;
+  insertion_part: string;
+  drainage_condition: string;
+  pressure: string;
+}
+
+export interface IIntubationFoley {
+  [index: string]: string | null;
+  record_date: string;
+  insertion_date: string;
+  amount_per_hour: string;
+  urine_condition: string;
+}
+
+export interface IIntubationEtube {
+  [index: string]: string | null;
+  record_date: string;
+  insertion_date: string;
+  type: string;
+  insertion_depth: string;
+  fixing_area: string;
+  cuff_pressure: string;
+}
+
+export interface IUpdateIntubation extends IGetSurvey {
+  catholic_line_info_survey: {
+    picc_and_more1: IIntubationPICCandMore1[];
+    picc_and_more2: IIntubationPICCandMore2[];
+    picc_and_more3: IIntubationPICCandMore3[];
+    picc_and_more4: IIntubationPICCandMore4[];
+    picc_and_more5: IIntubationPICCandMore5[];
+
+    pca: IIntubationPCA[];
+    ltube: IIntubationLtube[];
+    jpbag: IIntubationJPbag[];
+    foley: IIntubationFoley[];
+    etube: IIntubationEtube[];
+  };
+}
+
 // 응급기록지
 export interface IEmergencyVitalsignRecord {
   check_time: string;

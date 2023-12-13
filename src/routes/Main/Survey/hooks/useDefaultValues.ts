@@ -55,6 +55,7 @@ import {
   getCPR,
   getNursingProcess,
   getKPCS_ICU,
+  getIntubation,
 } from 'apis/survey';
 import useNotification from 'hooks/useNotification';
 import { findKeyValueToObj, findKeyValueToObjNoParse } from 'utils/convert';
@@ -525,17 +526,23 @@ const useDefaultValues = ({ setDefaultValues, user_id }: Props) => {
           .catch(e => onFail('알 수 없는 오류가 발생했습니다.', e));
         break;
       case MENU.INTUBATION:
-        getDialysis({ user_id, patient_id })
+        getIntubation({ user_id, patient_id })
           .then(({ data }) => {
-            const { update_at, hemodialysis_survey } = data;
+            const { update_at, catholic_line_info_survey } = data;
             convertDataToStates(
               {
                 update_at,
-                ...hemodialysis_survey?.dialysis_information,
-                ...hemodialysis_survey?.weight_information,
-                dialysis_db: hemodialysis_survey?.dialysis_db,
-                additional_information:
-                  hemodialysis_survey?.additional_information,
+                picc_and_more1: catholic_line_info_survey?.picc_and_more1,
+                picc_and_more2: catholic_line_info_survey?.picc_and_more2,
+                picc_and_more3: catholic_line_info_survey?.picc_and_more3,
+                picc_and_more4: catholic_line_info_survey?.picc_and_more4,
+                picc_and_more5: catholic_line_info_survey?.picc_and_more5,
+
+                pca: catholic_line_info_survey?.pca,
+                ltube: catholic_line_info_survey?.ltube,
+                jpbag: catholic_line_info_survey?.jpbag,
+                foley: catholic_line_info_survey?.foley,
+                etube: catholic_line_info_survey?.etube,
               },
               initialIntubation
             );

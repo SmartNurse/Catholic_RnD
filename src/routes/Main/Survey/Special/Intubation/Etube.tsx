@@ -10,7 +10,7 @@ import { MobileTimePicker } from '@mui/x-date-pickers';
 import MuiTextField from 'components/Form/MuiTextField';
 import RowContainer from '../../components/RowContainer';
 import SectionTitle from '../../components/SectionTitle';
-import { IDialysisRecord } from 'apis/survey/type';
+import { IIntubationEtube } from 'apis/survey/type';
 
 interface Props extends IFormRegister, IFormValues, IFormWatch {
   disabled?: boolean;
@@ -21,79 +21,51 @@ const Etube = (props: Props) => {
 
   const labels = ['종류', '삽입 깊이', '고정 위치', 'Cuff pressure'];
   const registerIds = [
-    'volume',
-    'blood_flow',
-    'arterial_pressure',
-    'venous_pressure',
+    'type',
+    'insertion_depth',
+    'fixing_area',
+    'cuff_pressure',
   ];
 
-  const [dialysisRecord, setDialysisRecord] = useState<IDialysisRecord[]>([
+  const [dialysisRecord, setDialysisRecord] = useState<IIntubationEtube[]>([
     {
-      time: '',
-      volume: '',
-      blood_flow_dialysis_db: '',
-      arterial_pressure: 'ㅋㅋ1',
-      venous_pressure: '',
-      ufr: '',
-      tmp: '',
-      heparin: '',
-      sbp: '',
-      dbp: '',
-      pr: '',
-      bt: '',
-      rr: '',
+      record_date: '',
+      insertion_date: '',
+      type: '',
+      insertion_depth: '',
+      fixing_area: '',
+      cuff_pressure: '',
     },
     {
-      time: '',
-      volume: '',
-      blood_flow_dialysis_db: '',
-      arterial_pressure: 'ㅋㅋ2',
-      venous_pressure: '',
-      ufr: '',
-      tmp: '',
-      heparin: '',
-      sbp: '',
-      dbp: '',
-      pr: '',
-      bt: '',
-      rr: '',
+      record_date: '',
+      insertion_date: '',
+      type: '',
+      insertion_depth: '',
+      fixing_area: '',
+      cuff_pressure: '',
     },
     {
-      time: '',
-      volume: '',
-      blood_flow_dialysis_db: '',
-      arterial_pressure: 'ㅋㅋ3',
-      venous_pressure: '',
-      ufr: '',
-      tmp: '',
-      heparin: '',
-      sbp: '',
-      dbp: '',
-      pr: '',
-      bt: '',
-      rr: '',
+      record_date: '',
+      insertion_date: '',
+      type: '',
+      insertion_depth: '',
+      fixing_area: '',
+      cuff_pressure: '',
     },
     {
-      time: '',
-      volume: '111',
-      blood_flow_dialysis_db: '',
-      arterial_pressure: 'ㅋㅋ4',
-      venous_pressure: '마지막거',
-      ufr: '',
-      tmp: '',
-      heparin: '',
-      sbp: '',
-      dbp: '',
-      pr: '',
-      bt: '',
-      rr: '',
+      record_date: '',
+      insertion_date: '',
+      type: '',
+      insertion_depth: '',
+      fixing_area: '',
+      cuff_pressure: '',
     },
   ]);
 
-  // useEffect(() => {
-  //   if (getValues('dialysis_db')) setDialysisRecord(getValues('dialysis_db'));
-  //   else setValue('dialysis_db', dialysisRecord);
-  // }, []);
+  useEffect(() => {
+    if (getValues('etube')) setDialysisRecord(getValues('etube'));
+    else setValue('etube', dialysisRecord);
+  }, []);
 
   return (
     <>
@@ -115,8 +87,19 @@ const Etube = (props: Props) => {
                     <TableCell key={idx}>
                       <Form.MuiTextField
                         type="date"
+                        value={
+                          dialysisRecord ? dialysisRecord[idx].record_date : ''
+                        }
+                        onChange={e => {
+                          let newRecord = dialysisRecord
+                            ? [...dialysisRecord]
+                            : [];
+                          newRecord[idx]['record_date'] = e.target.value;
+                          setDialysisRecord(newRecord);
+                          setValue('etube', newRecord);
+                        }}
+                        required={false}
                         disabled={disabled}
-                        // {...register(`${time}`)}
                       />
                     </TableCell>
                   ))}
@@ -134,8 +117,21 @@ const Etube = (props: Props) => {
                     <TableCell key={idx}>
                       <Form.MuiTextField
                         type="date"
+                        value={
+                          dialysisRecord
+                            ? dialysisRecord[idx].insertion_date
+                            : ''
+                        }
+                        onChange={e => {
+                          let newRecord = dialysisRecord
+                            ? [...dialysisRecord]
+                            : [];
+                          newRecord[idx]['insertion_date'] = e.target.value;
+                          setDialysisRecord(newRecord);
+                          setValue('etube', newRecord);
+                        }}
+                        required={false}
                         disabled={disabled}
-                        // {...register(`${time}`)}
                       />
                     </TableCell>
                   ))}
@@ -165,7 +161,7 @@ const Etube = (props: Props) => {
                             newRecord[idx][registerIds[labelIdx]] =
                               e.target.value;
                             setDialysisRecord(newRecord);
-                            setValue('dialysis_db', newRecord);
+                            setValue('etube', newRecord);
                           }}
                           required={false}
                           disabled={disabled}
