@@ -67,7 +67,7 @@ export enum MENU {
   TAKING_OVER = '간호 인수인계',
   HOSPITALIZATION = '입원간호 기록지',
   OUT_HOSPITAL = '퇴원간호 기록지',
-  PRESCRIPTION = '처방 기록지',
+  PRESCRIPTION = '투약처방 기록지',
   NURSE = '간호 기록지',
   MEDICATION = '투약 기록지',
   RADIOLOGY = '영상검사 기록지',

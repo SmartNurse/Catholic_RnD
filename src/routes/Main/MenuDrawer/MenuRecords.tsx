@@ -65,7 +65,7 @@ const MenuRecords = (props: Props) => {
     },
     {
       icon: <LocalPharmacyOutlined />,
-      label: '처방 기록지',
+      label: '투약처방 기록지',
     },
     {
       icon: <DriveFileRenameOutline />,
