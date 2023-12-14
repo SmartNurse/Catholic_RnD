@@ -119,7 +119,7 @@ const JPbag = (props: Props) => {
                           let newRecord = dialysisRecord
                             ? [...dialysisRecord]
                             : [];
-                          newRecord[idx]['insertion_dat'] = e.target.value;
+                          newRecord[idx]['insertion_date'] = e.target.value;
                           setDialysisRecord(newRecord);
                           setValue('jpbag', newRecord);
                         }}

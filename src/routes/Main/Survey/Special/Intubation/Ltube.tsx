@@ -85,7 +85,7 @@ const Ltube = (props: Props) => {
                             : [];
                           newRecord[idx]['record_date'] = e.target.value;
                           setDialysisRecord(newRecord);
-                          setValue('jpbag', newRecord);
+                          setValue('ltube', newRecord);
                         }}
                       />
                     </TableCell>
@@ -115,9 +115,9 @@ const Ltube = (props: Props) => {
                           let newRecord = dialysisRecord
                             ? [...dialysisRecord]
                             : [];
-                          newRecord[idx]['insertion_dat'] = e.target.value;
+                          newRecord[idx]['insertion_date'] = e.target.value;
                           setDialysisRecord(newRecord);
-                          setValue('jpbag', newRecord);
+                          setValue('ltube', newRecord);
                         }}
                       />
                     </TableCell>

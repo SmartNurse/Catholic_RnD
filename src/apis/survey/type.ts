@@ -811,9 +811,9 @@ export interface IIntubationPICCandMore5 {
 
 export interface IIntubationPCA {
   [index: string]: string | null;
-  record_dates: string;
-  insertion_dates: string;
-  types: string;
+  record_date: string;
+  insertion_date: string;
+  type: string;
 }
 
 export interface IIntubationLtube {

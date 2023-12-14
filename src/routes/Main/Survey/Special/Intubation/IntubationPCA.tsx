@@ -23,24 +23,24 @@ const IntubationPCA = (props: Props) => {
   const registerIds = ['types'];
   const [dialysisRecord, setDialysisRecord] = useState<IIntubationPCA[]>([
     {
-      record_dates: '',
-      insertion_dates: '',
-      types: '',
+      record_date: '',
+      insertion_date: '',
+      type: '',
     },
     {
-      record_dates: '',
-      insertion_dates: '',
-      types: '',
+      record_date: '',
+      insertion_date: '',
+      type: '',
     },
     {
-      record_dates: '',
-      insertion_dates: '',
-      types: '',
+      record_date: '',
+      insertion_date: '',
+      type: '',
     },
     {
-      record_dates: '',
-      insertion_dates: '',
-      types: '',
+      record_date: '',
+      insertion_date: '',
+      type: '',
     },
   ]);
 
@@ -72,15 +72,13 @@ const IntubationPCA = (props: Props) => {
                         type="date"
                         disabled={disabled}
                         value={
-                          dialysisRecord
-                            ? dialysisRecord[idx].insertion_dates
-                            : ''
+                          dialysisRecord ? dialysisRecord[idx].record_date : ''
                         }
                         onChange={e => {
                           let newRecord = dialysisRecord
                             ? [...dialysisRecord]
                             : [];
-                          newRecord[idx]['record_dates'] = e.target.value;
+                          newRecord[idx]['record_date'] = e.target.value;
                           setDialysisRecord(newRecord);
                           setValue('pca', newRecord);
                         }}
@@ -105,14 +103,14 @@ const IntubationPCA = (props: Props) => {
                         disabled={disabled}
                         value={
                           dialysisRecord
-                            ? dialysisRecord[idx].insertion_dates
+                            ? dialysisRecord[idx].insertion_date
                             : ''
                         }
                         onChange={e => {
                           let newRecord = dialysisRecord
                             ? [...dialysisRecord]
                             : [];
-                          newRecord[idx]['insertion_dates'] = e.target.value;
+                          newRecord[idx]['insertion_date'] = e.target.value;
                           setDialysisRecord(newRecord);
                           setValue('pca', newRecord);
                         }}
