@@ -18,6 +18,9 @@ import {
 
 import { IFormValues, IFormWatch, IFormRegister } from 'routes/Main/type';
 import CPRHeader from './CPRHeader';
+import { initialCPR } from '../../initialStates';
+import { TCPRDefaultValues } from '../../type';
+import { IUpdateCPR } from 'apis/survey/type';
 
 const radioId = ['face', 'activity', 'respiratory', 'vocalization'];
 const contentLabel = [
@@ -34,87 +37,55 @@ const contentLabel = [
       '동공반사',
       '심장리듬(VF, VT, PEA,\n Asystole, ROSC 등)',
     ],
-    desc: [
-      '편안한 자세, 움직임이 없음',
-      '느리고 조심스러운 움직임, 몸을 뒤척임',
-      '통증 부위를 만지려고 하거나 문지름, 온몸에 힘을 줌',
-      '온몸을 흔들거나 비틀며 심하게 움직임, 공격적 행동',
-      'q',
-      'q',
-      'w',
-      'e',
-      'r',
-      't',
-      't',
+    idForApi: 'clinical_observation',
+    koForApi: [
+      'bp',
+      'hr',
+      'rr',
+      'bt',
+      'spo2',
+      'consciousness',
+      'pupil_size',
+      'pupil_reflex',
+      'cardio_ryt',
     ],
+    desc: Array(11).fill(' '),
   },
   {
     id: '처치',
     ko: ['흉부압박', '인공호흡', '제세동'],
-    desc: [
-      '경보가 울리지 않고, 잘 적응함',
-      '경보가 울리지만 곧 멈춤',
-      '경보가 자주 울림, 인공호흡기에 저항함',
-      '기계 호흡과 Fighting',
-      'q',
-      'q',
-      'w',
-      'e',
-      'r',
-      't',
-      't',
-    ],
+    idForApi: 'treatment',
+    koForApi: ['chest_compression', 'artificial_ventilation', 'aed'],
+    desc: Array(11).fill(' '),
   },
   {
     id: ' 처치:\n기관\n삽관',
     ko: ['ID', 'Depth', 'Balloon', '시술자'],
-    desc: [
-      '정상적인 말투',
-      '공공대며 신음소리를 냄',
-      '훌쩍거리거나, 소리를 내어 흐느껴 울음',
-      '큰소리를 지름, 폭언을 함, 울부짖음',
-      'q',
-      'q',
-      'w',
-      'e',
-      'r',
-      't',
-      't',
-    ],
+    idForApi: 'intubation',
+    koForApi: ['id', 'depth', 'balloon', 'times', 'practitioner'],
+    desc: Array(11).fill(' '),
   },
   {
     id: '투약',
     ko: [' ', ' ', ' ', ' ', ' ', ' ', ' '],
-    desc: [
-      '정상적인 말투',
-      '공공대며 신음소리를 냄',
-      '훌쩍거리거나, 소리를 내어 흐느껴 울음',
-      '큰소리를 지름, 폭언을 함, 울부짖음',
-      'q',
-      'q',
-      'w',
-      'e',
-      'r',
-      't',
-      't',
+    idForApi: 'medication',
+    koForApi: [
+      'no00_1',
+      'no00_2',
+      'no00_3',
+      'no00_4',
+      'no00_5',
+      'no00_6',
+      'no00_7',
     ],
+    desc: Array(11).fill(' '),
   },
   {
     id: '검사',
     ko: ['ABGA', 'Chest X-ray', 'lab'],
-    desc: [
-      '정상적인 말투',
-      '공공대며 신음소리를 냄',
-      '훌쩍거리거나, 소리를 내어 흐느껴 울음',
-      '큰소리를 지름, 폭언을 함, 울부짖음',
-      'q',
-      'q',
-      'w',
-      'e',
-      'r',
-      't',
-      't',
-    ],
+    idforApi: 'test',
+    koforApi: ['abga', 'chest', 'lab'],
+    desc: Array(11).fill(' '),
   },
 ];
 const scoreLabel = [
@@ -135,6 +106,7 @@ const CPRContents = (props: Props) => {
   const { disabled, setValue, getValues, register, timeStart } = props;
 
   const [sumValue, setSumValue] = useState(0);
+  const [cprRecord, setCprRecord] = useState(initialCPR);
 
   const timeCount = new Array(11).fill(timeStart).map((num, i) => num + i);
 
@@ -159,9 +131,88 @@ const CPRContents = (props: Props) => {
     calculateSumValue();
   }, []);
 
+  useEffect(() => {
+    if (getValues('update_at')) {
+      setCprRecord(prev => ({ ...prev, update_at: getValues('update_at') }));
+    } else {
+      setValue('update_at', cprRecord.update_at);
+    }
+    if (getValues('find_date')) {
+      setCprRecord(prev => ({ ...prev, find_date: getValues('find_date') }));
+    } else {
+      setValue('find_date', cprRecord.find_date);
+    }
+    if (getValues('find_time')) {
+      setCprRecord(prev => ({ ...prev, find_time: getValues('find_time') }));
+    } else {
+      setValue('find_time', cprRecord.find_time);
+    }
+    if (getValues('terminate_reason')) {
+      setCprRecord(prev => ({
+        ...prev,
+        terminate_reason: getValues('terminate_reason'),
+      }));
+    } else {
+      setValue('terminate_reason', cprRecord.terminate_reason);
+    }
+    if (getValues('clinical_observation')) {
+      setCprRecord(prev => ({
+        ...prev,
+        clinical_observation: getValues('clinical_observation'),
+      }));
+    } else {
+      setValue('clinical_observation', cprRecord.clinical_observation);
+    }
+    if (getValues('treatment')) {
+      setCprRecord(prev => ({ ...prev, treatment: getValues('treatment') }));
+    } else {
+      setValue('treatment', cprRecord.treatment);
+    }
+    if (getValues('intubation')) {
+      setCprRecord(prev => ({ ...prev, intubation: getValues('intubation') }));
+    } else {
+      setValue('intubation', cprRecord.intubation);
+    }
+    if (getValues('medication')) {
+      setCprRecord(prev => ({ ...prev, medication: getValues('medication') }));
+    } else {
+      setValue('medication', cprRecord.medication);
+    }
+    if (getValues('test')) {
+      setCprRecord(prev => ({ ...prev, test: getValues('test') }));
+    } else {
+      setValue('test', cprRecord.test);
+    }
+  }, [
+    cprRecord.clinical_observation,
+    cprRecord.find_date,
+    cprRecord.find_time,
+    cprRecord.intubation,
+    cprRecord.medication,
+    cprRecord.terminate_reason,
+    cprRecord.test,
+    cprRecord.treatment,
+    cprRecord.update_at,
+    getValues,
+    setValue,
+  ]);
+
+  useEffect(() => {
+    console.log(cprRecord);
+  }, [cprRecord]);
+
+  const headerProps = {
+    disabled,
+    register,
+    getValues,
+    setValue,
+    cprRecord,
+    setCprRecord,
+  };
+
   return (
     <>
-      {timeStart === 0 && <CPRHeader disabled={disabled} register={register} />}
+      {timeStart === 0 && <CPRHeader {...headerProps} />}
       <Box
         sx={{
           width: '88%',
@@ -186,6 +237,7 @@ const CPRContents = (props: Props) => {
                   colSpan={1}
                   align="right"
                   sx={{ paddingRight: '5px' }}
+                  key={min}
                 >
                   {min}
                 </CPRStyledTableCellHeadNumbering>
@@ -207,12 +259,12 @@ const CPRContents = (props: Props) => {
                       {content.id}
                     </CPRStyledTableCellFirst>
                     <CPRStyledTableCell>
-                      {content.ko.map((_, i) => {
-                        if (content.ko[i] === ' ') {
+                      {content.ko.map((el, i) => {
+                        if (el === ' ') {
                           return (
                             <TableRow
                               sx={{
-                                lineHeight: content.ko[i].includes('심장리듬')
+                                lineHeight: el.includes('심장리듬')
                                   ? '22px'
                                   : '44px',
                                 borderBottom:
@@ -234,7 +286,16 @@ const CPRContents = (props: Props) => {
                                     width: '100%',
                                     height: '44px',
                                   }}
-                                  {...register(`${content.desc[i]}`)}
+                                  {...register(
+                                    `medication.no00_${i + timeStart + 1}`
+                                  )}
+                                  onChange={e =>
+                                    setCprRecord(prev => ({
+                                      ...prev,
+                                      [`medication.no00_${i + 1}`]:
+                                        e.target.value,
+                                    }))
+                                  }
                                 />
                               </Box>
                             </TableRow>

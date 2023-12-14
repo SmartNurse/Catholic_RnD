@@ -6,15 +6,14 @@ import useNotification from 'hooks/useNotification';
 import { Typography } from '@mui/material';
 import MuiDialog from 'components/MuiDialog';
 
-import { SurveyDialogProps, TCNPSDefaultValues } from '../../type';
+import { SurveyDialogProps, TCPRDefaultValues } from '../../type';
 
-import CommonPatientInfo from '../../components/CommonPatientInfo';
 import CPRContents from './CPRContents';
 
-import { updateCNPS } from 'apis/survey';
+import { updateCNPS, updateCPR } from 'apis/survey';
 import PatientStaffInfo from './PatientStaffInfo';
 
-const CPR = (props: SurveyDialogProps<TCNPSDefaultValues>) => {
+const CPR = (props: SurveyDialogProps<TCPRDefaultValues>) => {
   const {
     title,
     isOpen,
@@ -32,23 +31,39 @@ const CPR = (props: SurveyDialogProps<TCNPSDefaultValues>) => {
     defaultValues,
   });
 
-  const onSubmit = (data: TCNPSDefaultValues) => {
-    const { face, activity, respiratory, vocalization } = data;
-
-    const request = {
-      user_id,
-      patient_id: patientInfo.patient_id,
-      cnps_survey: { ...data },
-    };
-
-    updateCNPS(request)
-      .then(({ data: { rc } }) => {
-        if (rc !== 1) return onResultCode(rc);
-
-        onUpdateIsSave(true);
-        onSuccess('CNPS 저장에 성공하였습니다.');
-      })
-      .catch(e => onFail('CNPS 저장에 실패하였습니다.', e));
+  const onSubmit = (data: TCPRDefaultValues) => {
+    const {
+      find_date,
+      find_time,
+      terminate_reason,
+      clinical_observation,
+      treatment,
+      intubation,
+      medication,
+      test,
+    } = data;
+    console.log(data.find_date);
+    // const request = {
+    //   user_id,
+    //   patient_id: patientInfo.patient_id,
+    //   catholic_line_info_survey: {
+    //     find_date,
+    //     find_time,
+    //     terminate_reason,
+    //     clinical_observation,
+    //     treatment,
+    //     intubation,
+    //     medication,
+    //     test,
+    //   },
+    // };
+    // updateCPR(request)
+    //   .then(({ data: { rc } }) => {
+    //     if (rc !== 1) return onResultCode(rc);
+    //     onUpdateIsSave(true);
+    //     onSuccess('CNPS 저장에 성공하였습니다.');
+    //   })
+    //   .catch(e => onFail('CNPS 저장에 실패하였습니다.', e));
   };
 
   const formProps = {
