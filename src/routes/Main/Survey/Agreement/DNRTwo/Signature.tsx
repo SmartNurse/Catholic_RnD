@@ -73,7 +73,7 @@ const Signature = (props: Props) => {
                       minWidth: '150px',
                     }}
                   >
-                    전문의 성명
+                    소속의료기관
                   </Box>
                   <Form.MuiTextField
                     required={false}
@@ -131,7 +131,7 @@ const Signature = (props: Props) => {
                       minWidth: '150px',
                     }}
                   >
-                    소속 의료기관
+                    서명 또는 인
                   </Box>
                   <Form.MuiTextField
                     sx={{ paddingRight: '60px' }}
@@ -148,7 +148,7 @@ const Signature = (props: Props) => {
                       minWidth: '150px',
                     }}
                   >
-                    전문과목
+                    소속의료기관
                   </Box>
                   <Form.MuiTextField
                     required={false}
@@ -162,7 +162,7 @@ const Signature = (props: Props) => {
                       minWidth: '150px',
                     }}
                   >
-                    서명 또는 인
+                    전문과목
                   </Box>
                   <Form.MuiTextField
                     required={false}
