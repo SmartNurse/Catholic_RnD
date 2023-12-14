@@ -1,31 +1,16 @@
 import Form from 'components/Form';
 
 import { useEffect, useState, Fragment } from 'react';
-import {
-  Box,
-  Typography,
-  Table,
-  TableBody,
-  TableHead,
-  TableRow,
-  useTheme,
-  Stack,
-  Checkbox,
-} from '@mui/material';
-import { AccessTime } from '@mui/icons-material';
+import { Box, Table, TableBody, TableRow, useTheme } from '@mui/material';
 import {
   CPRStyledTableCell,
   CPRStyledTableCellFirst,
-  CPRStyledTableCellHead,
-  CPRStyledTableCellHeadNumbering,
   CPRStyledTableCellBodyNumbering,
 } from 'routes/Main/style';
 import SectionTitle from '../components/SectionTitle';
 
 import { IFormValues, IFormWatch, IFormRegister } from 'routes/Main/type';
-import { MobileTimePicker } from '@mui/x-date-pickers';
 
-const radioId = ['face', 'activity', 'respiratory', 'vocalization'];
 const contentLabel = [
   {
     id: 'V/S',
@@ -42,85 +27,80 @@ const contentLabel = [
       '기타',
     ],
     desc: [
-      '편안한 자세, 움직임이 없음',
-      '느리고 조심스러운 움직임, 몸을 뒤척임',
-      '통증 부위를 만지려고 하거나 문지름, 온몸에 힘을 줌',
-      '온몸을 흔들거나 비틀며 심하게 움직임, 공격적 행동',
-      'q',
-      'q',
-      'w',
-      'e',
-      'r',
-      't',
-      't',
+      'vital_sign.date.date',
+      'vital_sign.time.time',
+      'vital_sign.sbp.sbp',
+      'vital_sign.dbp.dbp',
+      'vital_sign.pr.pr',
+      'vital_sign.rr.rr',
+      'vital_sign.bt.bt',
+      'vital_sign.spo2.spo2',
+      'vital_sign.o2.o2',
+      'vital_sign.etc.etc',
     ],
   },
   {
     id: '키 / 체중',
     ko: ['키 (cm)', '체중 (kg)'],
     desc: [
-      '경보가 울리지 않고, 잘 적응함',
-      '경보가 울리지만 곧 멈춤',
-      '경보가 자주 울림, 인공호흡기에 저항함',
-      '기계 호흡과 Fighting',
-      'q',
-      'q',
-      'w',
-      'e',
-      'r',
-      't',
-      't',
+      'weight_height.weight.weight_height0',
+      'weight_height.weight_height1',
+      'weight_height.weight_height2',
+      'weight_height.weight_height3',
+      'weight_height.weight_height4',
+      'weight_height.weight_height5',
+      'weight_height.weight_height6',
+      'weight_height.weight_height7',
+      'weight_height.weight_height8',
+      'weight_height.weight_height9',
     ],
   },
   {
     id: '섭취량',
     ko: ['경구', '정맥 주입', '혈액 및 기타', '총 섭취량'],
     desc: [
-      '정상적인 말투',
-      '공공대며 신음소리를 냄',
-      '훌쩍거리거나, 소리를 내어 흐느껴 울음',
-      '큰소리를 지름, 폭언을 함, 울부짖음',
-      'q',
-      'q',
-      'w',
-      'e',
-      'r',
-      't',
-      't',
+      'intake.intake0',
+      'intake.intake1',
+      'intake.intake2',
+      'intake.intake3',
+      'intake.intake4',
+      'intake.intake5',
+      'intake.intake6',
+      'intake.intake7',
+      'intake.intake8',
+      'intake.intake9',
     ],
   },
   {
     id: '배설량',
     ko: ['소변', '구토', '대변', '배액 및 기타', '총 배설량'],
     desc: [
-      '정상적인 말투',
-      '공공대며 신음소리를 냄',
-      '훌쩍거리거나, 소리를 내어 흐느껴 울음',
-      '큰소리를 지름, 폭언을 함, 울부짖음',
-      'q',
-      'q',
-      'w',
-      'e',
-      'r',
-      't',
-      't',
+      'output.output0',
+      'output.output1',
+      'output.output2',
+      'output.output3',
+      'output.output4',
+      'output.output5',
+      'output.output6',
+      'output.output7',
+      'output.output8',
+      'output.output9',
     ],
   },
   {
     id: '체위변경',
     ko: ['수행 여부', 'Position', '피부 상태'],
     desc: [
-      '정상적인 말투',
-      '공공대며 신음소리를 냄',
-      '훌쩍거리거나, 소리를 내어 흐느껴 울음',
-      '큰소리를 지름, 폭언을 함, 울부짖음',
-      'q',
-      'q',
-      'w',
-      'e',
-      'r',
-      't',
-      't',
+      'position_change.position_change0',
+      'position_change.position_change1',
+      'position_change.position_change2',
+      'position_change.position_change3',
+      'position_change.position_change4',
+      'position_change.position_change5',
+      'position_change.position_change6',
+      'position_change.position_change7',
+      'position_change.position_change8',
+      'position_change.position_change9',
     ],
   },
   {
@@ -137,34 +117,32 @@ const contentLabel = [
       '예방활동',
     ],
     desc: [
-      '정상적인 말투',
-      '공공대며 신음소리를 냄',
-      '훌쩍거리거나, 소리를 내어 흐느껴 울음',
-      '큰소리를 지름, 폭언을 함, 울부짖음',
-      'q',
-      'q',
-      'w',
-      'e',
-      'r',
-      't',
-      't',
+      'restraint.restraint0',
+      'restraint.restraint1',
+      'restraint.restraint2',
+      'restraint.restraint3',
+      'restraint.restraint4',
+      'restraint.restraint5',
+      'restraint.restraint6',
+      'restraint.restraint7',
+      'restraint.restraint8',
+      'restraint.restraint9',
     ],
   },
   {
     id: 'IPC',
     ko: ['적용 일시'],
     desc: [
-      '정상적인 말투',
-      '공공대며 신음소리를 냄',
-      '훌쩍거리거나, 소리를 내어 흐느껴 울음',
-      '큰소리를 지름, 폭언을 함, 울부짖음',
-      'q',
-      'q',
-      'w',
-      'e',
-      'r',
-      't',
-      't',
+      'ipc.ipc0',
+      'ipc.ipc1',
+      'ipc.ipc2',
+      'ipc.ipc3',
+      'ipc.ipc4',
+      'ipc.ipc5',
+      'ipc.ipc6',
+      'ipc.ipc7',
+      'ipc.ipc8',
+      'ipc.ipc9',
     ],
   },
   {
@@ -184,17 +162,16 @@ const contentLabel = [
       'P/F ratio',
     ],
     desc: [
-      '정상적인 말투',
-      '공공대며 신음소리를 냄',
-      '훌쩍거리거나, 소리를 내어 흐느껴 울음',
-      '큰소리를 지름, 폭언을 함, 울부짖음',
-      'q',
-      'q',
-      'w',
-      'e',
-      'r',
-      't',
-      't',
+      'vent.vent0',
+      'vent.vent1',
+      'vent.vent2',
+      'vent.vent3',
+      'vent.vent4',
+      'vent.vent5',
+      'vent.vent6',
+      'vent.vent7',
+      'vent.vent8',
+      'vent.vent9',
     ],
   },
   {
@@ -217,25 +194,18 @@ const contentLabel = [
       'Pressure drop',
     ],
     desc: [
-      '정상적인 말투',
-      '공공대며 신음소리를 냄',
-      '훌쩍거리거나, 소리를 내어 흐느껴 울음',
-      '큰소리를 지름, 폭언을 함, 울부짖음',
-      'q',
-      'q',
-      'w',
-      'e',
-      'r',
-      't',
-      't',
+      'crrt.crrt0',
+      'crrt.crrt1',
+      'crrt.crrt2',
+      'crrt.crrt3',
+      'crrt.crrt4',
+      'crrt.crrt5',
+      'crrt.crrt6',
+      'crrt.crrt7',
+      'crrt.crrt8',
+      'crrt.crrt9',
     ],
   },
-];
-const scoreLabel = [
-  { score: '0', label: '통증없음' },
-  { score: '1~3', label: '약간 불편함' },
-  { score: '4~6', label: '중간정도 불편함' },
-  { score: '7~10', label: '매우 불편하고 아픈상태' },
 ];
 
 interface Props extends IFormValues, IFormWatch, IFormRegister {
@@ -243,33 +213,7 @@ interface Props extends IFormValues, IFormWatch, IFormRegister {
 }
 
 const VitalSignGraph = (props: Props) => {
-  const { palette } = useTheme();
-  const [checkTime, setCheckTime] = useState(null);
-
   const { disabled, setValue, getValues, register } = props;
-
-  const [sumValue, setSumValue] = useState(0);
-
-  const calculateSumValue = () => {
-    setSumValue(
-      radioId.reduce((acc, cur) => {
-        const value = Number(getValues(cur));
-        return value ? acc + value : acc;
-      }, 0)
-    );
-  };
-
-  const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement>,
-    checked: boolean
-  ) => {
-    setValue(e.target.name, e.target.value);
-    calculateSumValue();
-  };
-
-  useEffect(() => {
-    calculateSumValue();
-  }, []);
 
   return (
     <>
@@ -299,38 +243,6 @@ const VitalSignGraph = (props: Props) => {
                     </CPRStyledTableCellFirst>
                     <CPRStyledTableCell>
                       {content.ko.map((_, i) => {
-                        if (content.ko[i] === ' ') {
-                          return (
-                            <TableRow
-                              sx={{
-                                lineHeight: content.ko[i].includes('심장리듬')
-                                  ? '22px'
-                                  : '44px',
-                                borderBottom:
-                                  i !== content.ko.length - 1
-                                    ? '1px solid lightgray'
-                                    : '',
-                              }}
-                            >
-                              <Box
-                                sx={{
-                                  minWidth: '70px',
-                                  textAlign: 'center',
-                                }}
-                              >
-                                <input
-                                  disabled={disabled}
-                                  style={{
-                                    border: 'none',
-                                    width: '100%',
-                                    height: '44px',
-                                  }}
-                                  {...register(`${content.desc[i]}`)}
-                                />
-                              </Box>
-                            </TableRow>
-                          );
-                        }
                         return (
                           <TableRow
                             sx={{
@@ -358,47 +270,10 @@ const VitalSignGraph = (props: Props) => {
                     </CPRStyledTableCell>
 
                     {content.desc.map((v, i) => {
+                      console.log('ko', content.ko[i]);
                       return (
                         <CPRStyledTableCellBodyNumbering>
                           {content.ko.map((_, i) => {
-                            if (
-                              content.ko[i] === '인공호흡' ||
-                              content.ko[i] === 'ABGA' ||
-                              content.ko[i] === 'Chest X-ray'
-                            ) {
-                              return (
-                                <TableRow
-                                  sx={{
-                                    lineHeight: '47px',
-                                    borderBottom:
-                                      i !== content.ko.length - 1
-                                        ? '1px solid lightgray'
-                                        : '',
-                                  }}
-                                >
-                                  <Box
-                                    sx={{
-                                      minWidth: '100px',
-                                      textAlign: 'right',
-                                    }}
-                                  >
-                                    <Checkbox
-                                      size="small"
-                                      // value={label}
-                                      defaultValue={
-                                        Boolean(getValues(`${v}checked`))
-                                          ? [v]
-                                          : []
-                                      }
-                                      onChange={(_, checked) => {
-                                        setValue(`${v}checked`, checked);
-                                      }}
-                                    />
-                                  </Box>
-                                </TableRow>
-                              );
-                            }
-
                             return (
                               <TableRow
                                 sx={{
@@ -416,13 +291,14 @@ const VitalSignGraph = (props: Props) => {
                                   }}
                                 >
                                   <input
+                                    value={`${v}${i}`}
                                     disabled={disabled}
                                     style={{
                                       border: 'none',
                                       width: '100%',
                                       height: '44px',
                                     }}
-                                    {...register(`${v}`)}
+                                    {...register(`${v}${i}`)}
                                   />
                                 </Box>
                               </TableRow>

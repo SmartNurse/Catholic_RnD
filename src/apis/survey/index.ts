@@ -132,12 +132,14 @@ export const getPathology = (request: IGetSurvey) => {
 
 // 임상관찰기록지
 export const getClinicObservation = (request: IGetSurvey) => {
-  const url = `/survey/clinicObservation?${formatToRequestParameter(request)}`;
+  const url = `/enr_etc/catholic/clinical_observation?${formatToRequestParameter(
+    request
+  )}`;
   return apiGateway.get(url);
 };
 
 export const updateClinicObservation = (request: IUpdateClinicObservation) => {
-  const url = `/survey/clinicObservation`;
+  const url = `/enr_etc/catholic/clinical_observation`;
   return apiGateway.post(url, camelcaseKeys(request));
 };
 

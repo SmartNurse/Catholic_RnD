@@ -172,27 +172,88 @@ export interface IPathology {
 }
 
 // 임상관찰기록지
-export interface IVitalSign {
-  checkTime: string;
-  sbp: number;
-  dbp: number;
-  pr: number;
-  rr: number;
-  bt: number;
-  sp02: number;
-  etc: string;
-}
-
-export interface IIOCheck {
-  checkTime: string;
-  intake: number;
-  output: number;
-  etc: string;
-}
 export interface IUpdateClinicObservation extends IGetSurvey {
-  survey_uuid: string;
-  vital_sign: string;
-  io_check: string;
+  catholic_clinical_observation: {
+    vital_sign: {
+      // v/s 첫열
+      date: string;
+      // v/s 두번째열
+      time: string;
+      sbp: string;
+      dbp: string;
+      pr: string;
+      rr: string;
+      bt: string;
+      spo2: string;
+      o2: string;
+      etc: string;
+    };
+    weight_height: {
+      weight: string;
+      height: string;
+    };
+    intake: {
+      oral: string;
+      veinal: string;
+      blood_and_more: string;
+      total: string;
+    };
+    output: {
+      urine: string;
+      vomit: string;
+      stool: string;
+      drainage: string;
+      total: string;
+    };
+    position_change: {
+      do_or_not: string;
+      position: string;
+      condition: string;
+    };
+    restraint: {
+      date: string;
+      reason: string;
+      part: string;
+      condition: string;
+      cyanosis: string;
+      temp: string;
+      sense: string;
+      adverse_reaction: string;
+      prevention: string;
+    };
+    ipc: string;
+    vent: {
+      date: string;
+      mode: string;
+      fio2: string;
+      peep: string;
+      f: string;
+      vsennse: string;
+      pi: string;
+      ti: string;
+      tv: string;
+      mv: string;
+      cstat: string;
+      pf_ration: string;
+    };
+    crrt: {
+      mode: string;
+      blood_flow: string;
+      dialysate: string;
+      pre: string;
+      post: string;
+      pbp: string;
+      pt_fluid_rmv: string;
+      anti_coagulation: string;
+      crrt_ck: string;
+      access_prs: string;
+      return_prs: string;
+      filter_prs: string;
+      effluent_prs: string;
+      tmp_prs: string;
+      prs_drop: string;
+    };
+  };
 }
 
 // 정신간호기록지

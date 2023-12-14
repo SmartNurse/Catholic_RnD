@@ -76,7 +76,7 @@ const Prescription = (props: SurveyDialogProps<null>) => {
             sx={{ objectFit: 'contain' }}
           />
         </Box>
-      ) : patientName === '김금례' ? (
+      ) : patientName === '이금자' ? (
         <Box component="section" sx={{ width: '98%' }}>
           <CardMedia
             height={1200}

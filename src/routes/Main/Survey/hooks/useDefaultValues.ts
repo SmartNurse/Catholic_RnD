@@ -227,13 +227,257 @@ const useDefaultValues = ({ setDefaultValues, user_id }: Props) => {
       case MENU.CLINICAL_OBSERVATION:
         getClinicObservation({ user_id, patient_id })
           .then(({ data }) => {
-            const { vital_sign, io_check } = data;
-            const m_data = {
-              ...data,
-              vital_sign: JSON.parse(vital_sign),
-              io_check: JSON.parse(io_check),
-            };
-            convertDataToStates(m_data, initialClinicalObservation);
+            const { update_at, catholic_clinical_observation } = data;
+
+            convertDataToStates(
+              {
+                update_at,
+
+                vital_sign: {
+                  date: catholic_clinical_observation
+                    ? JSON.parse(catholic_clinical_observation.vital_sign.date)
+                    : {},
+                  time: catholic_clinical_observation
+                    ? JSON.parse(catholic_clinical_observation.vital_sign.time)
+                    : {},
+                  sbp: catholic_clinical_observation
+                    ? JSON.parse(catholic_clinical_observation.vital_sign.sbp)
+                    : {},
+                  dbp: catholic_clinical_observation
+                    ? JSON.parse(catholic_clinical_observation.vital_sign.dbp)
+                    : {},
+                  pr: catholic_clinical_observation
+                    ? JSON.parse(catholic_clinical_observation.vital_sign.pr)
+                    : {},
+                  rr: catholic_clinical_observation
+                    ? JSON.parse(catholic_clinical_observation.vital_sign.rr)
+                    : {},
+                  bt: catholic_clinical_observation
+                    ? JSON.parse(catholic_clinical_observation.vital_sign.bt)
+                    : {},
+                  spo2: catholic_clinical_observation
+                    ? JSON.parse(catholic_clinical_observation.vital_sign.spo2)
+                    : {},
+                  o2: catholic_clinical_observation
+                    ? JSON.parse(catholic_clinical_observation.vital_sign.o2)
+                    : {},
+                  etc: catholic_clinical_observation
+                    ? JSON.parse(catholic_clinical_observation.vital_sign.etc)
+                    : {},
+                },
+                weight_height: {
+                  weight: catholic_clinical_observation
+                    ? JSON.parse(
+                        catholic_clinical_observation.weight_height.weight
+                      )
+                    : {},
+                  height: catholic_clinical_observation
+                    ? JSON.parse(
+                        catholic_clinical_observation.weight_height.height
+                      )
+                    : {},
+                  intake: {
+                    oral: catholic_clinical_observation
+                      ? JSON.parse(catholic_clinical_observation.intake.oral)
+                      : {},
+                    veinal: catholic_clinical_observation
+                      ? JSON.parse(catholic_clinical_observation.intake.veinal)
+                      : {},
+                    blood_and_more: catholic_clinical_observation
+                      ? JSON.parse(
+                          catholic_clinical_observation.intake.blood_and_more
+                        )
+                      : {},
+                    total: catholic_clinical_observation
+                      ? JSON.parse(catholic_clinical_observation.intake.total)
+                      : {},
+                  },
+                  output: {
+                    urin: catholic_clinical_observation
+                      ? JSON.parse(catholic_clinical_observation.output.urin)
+                      : {},
+                    vomit: catholic_clinical_observation
+                      ? JSON.parse(catholic_clinical_observation.output.vomit)
+                      : {},
+                    stool: catholic_clinical_observation
+                      ? JSON.parse(catholic_clinical_observation.output.stool)
+                      : {},
+                    drainage: catholic_clinical_observation
+                      ? JSON.parse(
+                          catholic_clinical_observation.output.drainage
+                        )
+                      : {},
+                    total: catholic_clinical_observation
+                      ? JSON.parse(catholic_clinical_observation.output.total)
+                      : {},
+                  },
+                  position_change: {
+                    do_or_not: catholic_clinical_observation
+                      ? JSON.parse(
+                          catholic_clinical_observation.position_change
+                            .do_or_not
+                        )
+                      : {},
+                    position: catholic_clinical_observation
+                      ? JSON.parse(
+                          catholic_clinical_observation.position_change.position
+                        )
+                      : {},
+                    condition: catholic_clinical_observation
+                      ? JSON.parse(
+                          catholic_clinical_observation.position_change
+                            .condition
+                        )
+                      : {},
+                  },
+                  restraint: {
+                    date: catholic_clinical_observation
+                      ? JSON.parse(catholic_clinical_observation.restraint.date)
+                      : {},
+                    reason: catholic_clinical_observation
+                      ? JSON.parse(
+                          catholic_clinical_observation.restraint.reason
+                        )
+                      : {},
+                    part: catholic_clinical_observation
+                      ? JSON.parse(catholic_clinical_observation.restraint.part)
+                      : {},
+                    condition: catholic_clinical_observation
+                      ? JSON.parse(
+                          catholic_clinical_observation.restraint.condition
+                        )
+                      : {},
+                    cyanosis: catholic_clinical_observation
+                      ? JSON.parse(
+                          catholic_clinical_observation.restraint.cyanosis
+                        )
+                      : {},
+                    temp: catholic_clinical_observation
+                      ? JSON.parse(catholic_clinical_observation.restraint.temp)
+                      : {},
+                    sense: catholic_clinical_observation
+                      ? JSON.parse(
+                          catholic_clinical_observation.restraint.sense
+                        )
+                      : {},
+                    adverse_reaction: catholic_clinical_observation
+                      ? JSON.parse(
+                          catholic_clinical_observation.restraint
+                            .adverse_reaction
+                        )
+                      : {},
+                    prevention: catholic_clinical_observation
+                      ? JSON.parse(
+                          catholic_clinical_observation.restraint.prevention
+                        )
+                      : {},
+                  },
+                  ipc: catholic_clinical_observation
+                    ? JSON.parse(catholic_clinical_observation.ipc)
+                    : {},
+                  vent: {
+                    date: catholic_clinical_observation
+                      ? JSON.parse(catholic_clinical_observation.vent.date)
+                      : {},
+                    mode: catholic_clinical_observation
+                      ? JSON.parse(catholic_clinical_observation.vent.mode)
+                      : {},
+                    fio2: catholic_clinical_observation
+                      ? JSON.parse(catholic_clinical_observation.vent.fio2)
+                      : {},
+                    peep: catholic_clinical_observation
+                      ? JSON.parse(catholic_clinical_observation.vent.peep)
+                      : {},
+                    f: catholic_clinical_observation
+                      ? JSON.parse(catholic_clinical_observation.vent.f)
+                      : {},
+                    vsennse: catholic_clinical_observation
+                      ? JSON.parse(catholic_clinical_observation.vent.vsennse)
+                      : {},
+                    pi: catholic_clinical_observation
+                      ? JSON.parse(catholic_clinical_observation.vent.pi)
+                      : {},
+                    ti: catholic_clinical_observation
+                      ? JSON.parse(catholic_clinical_observation.vent.ti)
+                      : {},
+                    tv: catholic_clinical_observation
+                      ? JSON.parse(catholic_clinical_observation.vent.tv)
+                      : {},
+                    mv: catholic_clinical_observation
+                      ? JSON.parse(catholic_clinical_observation.vent.mv)
+                      : {},
+                    cstat: catholic_clinical_observation
+                      ? JSON.parse(catholic_clinical_observation.vent.cstat)
+                      : {},
+                    pf_ration: catholic_clinical_observation
+                      ? JSON.parse(catholic_clinical_observation.vent.pf_ration)
+                      : {},
+                  },
+                  crrt: {
+                    mode: catholic_clinical_observation
+                      ? JSON.parse(catholic_clinical_observation.crrt.mode)
+                      : {},
+                    blood_flow: catholic_clinical_observation
+                      ? JSON.parse(
+                          catholic_clinical_observation.crrt.blood_flow
+                        )
+                      : {},
+                    dialysate: catholic_clinical_observation
+                      ? JSON.parse(catholic_clinical_observation.crrt.dialysate)
+                      : {},
+                    pre: catholic_clinical_observation
+                      ? JSON.parse(catholic_clinical_observation.crrt.pre)
+                      : {},
+                    post: catholic_clinical_observation
+                      ? JSON.parse(catholic_clinical_observation.crrt.post)
+                      : {},
+                    pbp: catholic_clinical_observation
+                      ? JSON.parse(catholic_clinical_observation.crrt.pbp)
+                      : {},
+                    pt_fluid_rmv: catholic_clinical_observation
+                      ? JSON.parse(
+                          catholic_clinical_observation.crrt.pt_fluid_rmv
+                        )
+                      : {},
+                    anti_coagulation: catholic_clinical_observation
+                      ? JSON.parse(
+                          catholic_clinical_observation.crrt.anti_coagulation
+                        )
+                      : {},
+                    crrt_ck: catholic_clinical_observation
+                      ? JSON.parse(catholic_clinical_observation.crrt.crrt_ck)
+                      : {},
+                    access_prs: catholic_clinical_observation
+                      ? JSON.parse(
+                          catholic_clinical_observation.crrt.access_prs
+                        )
+                      : {},
+                    return_prs: catholic_clinical_observation
+                      ? JSON.parse(
+                          catholic_clinical_observation.crrt.return_prs
+                        )
+                      : {},
+                    filter_prs: catholic_clinical_observation
+                      ? JSON.parse(
+                          catholic_clinical_observation.crrt.filter_prs
+                        )
+                      : {},
+                    effluent_prs: catholic_clinical_observation
+                      ? JSON.parse(
+                          catholic_clinical_observation.crrt.effluent_prs
+                        )
+                      : {},
+                    tmp_prs: catholic_clinical_observation
+                      ? JSON.parse(catholic_clinical_observation.crrt.tmp_prs)
+                      : {},
+                    prs_drop: catholic_clinical_observation
+                      ? JSON.parse(catholic_clinical_observation.crrt.prs_drop)
+                      : {},
+                  },
+                },
+              },
+              initialClinicalObservation
+            );
           })
           .catch(e => onFail('알 수 없는 오류가 발생했습니다.', e));
         break;

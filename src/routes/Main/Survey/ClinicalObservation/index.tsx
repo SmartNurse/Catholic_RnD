@@ -12,8 +12,6 @@ import {
 
 import CommonPatientInfo from '../components/CommonPatientInfo';
 import VitalSignGraph from './VitalSignGraph';
-import VitalSign from './VitalSign';
-import IOCheck from './IOCheck';
 
 const ClinicalObservation = (
   props: SurveyDialogProps<TClinicalObservationDefaultValues>
@@ -37,14 +35,100 @@ const ClinicalObservation = (
   });
 
   const onSubmit = (data: TClinicalObservationDefaultValues) => {
-    const { vital_sign, io_check, survey_uuid } = data;
+    const {
+      vital_sign,
+      weight_height,
+      intake,
+      output,
+      position_change,
+      restraint,
+      ipc,
+      vent,
+      crrt,
+    } = data;
 
     const request = {
       user_id,
-      survey_uuid,
       patient_id: patientInfo.patient_id,
-      vital_sign: vital_sign ? JSON.stringify(vital_sign) : '',
-      io_check: io_check ? JSON.stringify(io_check) : '',
+      catholic_clinical_observation: {
+        vital_sign: {
+          date: JSON.stringify(vital_sign.date),
+          time: JSON.stringify(vital_sign.time),
+          sbp: JSON.stringify(vital_sign.sbp),
+          dbp: JSON.stringify(vital_sign.dbp),
+          pr: JSON.stringify(vital_sign.pr),
+          rr: JSON.stringify(vital_sign.rr),
+          bt: JSON.stringify(vital_sign.bt),
+          spo2: JSON.stringify(vital_sign.spo2),
+          o2: JSON.stringify(vital_sign.o2),
+          etc: JSON.stringify(vital_sign.etc),
+        },
+        weight_height: {
+          weight: JSON.stringify(weight_height.weight),
+          height: JSON.stringify(weight_height.height),
+        },
+        intake: {
+          oral: JSON.stringify(intake.oral),
+          veinal: JSON.stringify(intake.veinal),
+          blood_and_more: JSON.stringify(intake.blood_and_more),
+          total: JSON.stringify(intake.total),
+        },
+        output: {
+          urine: JSON.stringify(output.urine),
+          vomit: JSON.stringify(output.vomit),
+          stool: JSON.stringify(output.stool),
+          drainage: JSON.stringify(output.drainage),
+          total: JSON.stringify(output.total),
+        },
+        position_change: {
+          do_or_not: JSON.stringify(position_change.do_or_not),
+          position: JSON.stringify(position_change.position),
+          condition: JSON.stringify(position_change.condition),
+        },
+        restraint: {
+          date: JSON.stringify(restraint.date),
+          reason: JSON.stringify(restraint.reason),
+          part: JSON.stringify(restraint.part),
+          condition: JSON.stringify(restraint.condition),
+          cyanosis: JSON.stringify(restraint.cyanosis),
+          temp: JSON.stringify(restraint.temp),
+          sense: JSON.stringify(restraint.sense),
+          adverse_reaction: JSON.stringify(restraint.adverse_reaction),
+          prevention: JSON.stringify(restraint.prevention),
+        },
+        ipc: JSON.stringify(ipc),
+        vent: {
+          date: JSON.stringify(vent.date),
+          mode: JSON.stringify(vent.mode),
+          fio2: JSON.stringify(vent.fio2),
+          peep: JSON.stringify(vent.peep),
+          f: JSON.stringify(vent.f),
+          vsennse: JSON.stringify(vent.vsennse),
+          pi: JSON.stringify(vent.pi),
+          ti: JSON.stringify(vent.ti),
+          tv: JSON.stringify(vent.tv),
+          mv: JSON.stringify(vent.mv),
+          cstat: JSON.stringify(vent.cstat),
+          pf_ration: JSON.stringify(vent.pf_ration),
+        },
+        crrt: {
+          mode: JSON.stringify(crrt.mode),
+          blood_flow: JSON.stringify(crrt.blood_flow),
+          dialysate: JSON.stringify(crrt.dialysate),
+          pre: JSON.stringify(crrt.pre),
+          post: JSON.stringify(crrt.post),
+          pbp: JSON.stringify(crrt.pbp),
+          pt_fluid_rmv: JSON.stringify(crrt.pt_fluid_rmv),
+          anti_coagulation: JSON.stringify(crrt.anti_coagulation),
+          crrt_ck: JSON.stringify(crrt.crrt_ck),
+          access_prs: JSON.stringify(crrt.access_prs),
+          return_prs: JSON.stringify(crrt.return_prs),
+          filter_prs: JSON.stringify(crrt.filter_prs),
+          effluent_prs: JSON.stringify(crrt.effluent_prs),
+          tmp_prs: JSON.stringify(crrt.tmp_prs),
+          prs_drop: JSON.stringify(crrt.prs_drop),
+        },
+      },
     };
 
     updateClinicObservation(request)
