@@ -10,7 +10,6 @@ import { SurveyDialogProps, TCNPSDefaultValues } from '../../type';
 
 import CommonPatientInfo from '../../components/CommonPatientInfo';
 import CPRContents from './CPRContents';
-import CPRContentsTwo from './CPRContentsTwo';
 
 import { updateCNPS } from 'apis/survey';
 import PatientStaffInfo from './PatientStaffInfo';
@@ -87,8 +86,8 @@ const CPR = (props: SurveyDialogProps<TCNPSDefaultValues>) => {
         nurseName={nurseName}
       />
 
-      <CPRContents {...formProps} />
-      <CPRContentsTwo {...formProps} />
+      <CPRContents {...formProps} timeStart={0} />
+      <CPRContents {...formProps} timeStart={11} />
     </MuiDialog.SurveyForm>
   );
 };

@@ -1,18 +1,13 @@
-import Form from 'components/Form';
-
 import { useEffect, useState } from 'react';
 import {
   Box,
-  Typography,
   Table,
   TableBody,
   TableHead,
   TableRow,
   useTheme,
-  Stack,
   Checkbox,
 } from '@mui/material';
-import { AccessTime } from '@mui/icons-material';
 import {
   CPRStyledTableCell,
   CPRStyledTableCellFirst,
@@ -20,10 +15,9 @@ import {
   CPRStyledTableCellHeadNumbering,
   CPRStyledTableCellBodyNumbering,
 } from 'routes/Main/style';
-import SectionTitle from '../../components/SectionTitle';
 
 import { IFormValues, IFormWatch, IFormRegister } from 'routes/Main/type';
-import { MobileTimePicker } from '@mui/x-date-pickers';
+import CPRHeader from './CPRHeader';
 
 const radioId = ['face', 'activity', 'respiratory', 'vocalization'];
 const contentLabel = [
@@ -31,9 +25,9 @@ const contentLabel = [
     id: '임상\n관찰',
     ko: [
       '혈압(mmHg)',
-      '심박수',
-      '호흡수',
-      '체온',
+      '심박수 (회/분당)',
+      '호흡수 (회/분당)',
+      '체온 (°C)',
       '산소포화도(%)',
       '의식상태',
       '동공크기',
@@ -73,7 +67,7 @@ const contentLabel = [
   },
   {
     id: ' 처치:\n기관\n삽관',
-    ko: ['ID', 'Depth', 'Balloon', '시도횟수', '시술자'],
+    ko: ['ID', 'Depth', 'Balloon', '시술자'],
     desc: [
       '정상적인 말투',
       '공공대며 신음소리를 냄',
@@ -107,7 +101,7 @@ const contentLabel = [
   },
   {
     id: '검사',
-    ko: ['ABGA', 'Chest X-ray'],
+    ko: ['ABGA', 'Chest X-ray', 'lab'],
     desc: [
       '정상적인 말투',
       '공공대며 신음소리를 냄',
@@ -132,15 +126,17 @@ const scoreLabel = [
 
 interface Props extends IFormValues, IFormWatch, IFormRegister {
   disabled?: boolean;
+  timeStart: number;
 }
 
 const CPRContents = (props: Props) => {
   const { palette } = useTheme();
-  const [checkTime, setCheckTime] = useState(null);
 
-  const { disabled, setValue, getValues, register } = props;
+  const { disabled, setValue, getValues, register, timeStart } = props;
 
   const [sumValue, setSumValue] = useState(0);
+
+  const timeCount = new Array(11).fill(timeStart).map((num, i) => num + i);
 
   const calculateSumValue = () => {
     setSumValue(
@@ -165,65 +161,11 @@ const CPRContents = (props: Props) => {
 
   return (
     <>
-      <SectionTitle title="CPR 기록지" mt={3} />
-      <Box
-        display={'flex'}
-        justifyContent={'space-between'}
-        sx={{ padding: '50px 0 0 30px' }}
-      >
-        <Stack direction="row">
-          <Typography
-            sx={{
-              whiteSpace: 'nowrap',
-              lineHeight: '38px',
-              marginRight: '50px',
-              fontSize: '14px',
-            }}
-          >
-            심정지 발견
-          </Typography>
-          <Form.MuiTextField
-            type="date"
-            disabled={disabled}
-            sx={{ marginRight: '20px' }}
-            {...register('zz')}
-          />
-          <MobileTimePicker
-            value={checkTime}
-            onChange={setCheckTime}
-            renderInput={params => (
-              <Form.MuiTextField
-                {...params}
-                required={false}
-                placeholder="00:00 pm"
-                InputProps={{ endAdornment: <AccessTime /> }}
-              />
-            )}
-          />
-        </Stack>
-        <Stack direction="row" marginRight="20px">
-          <Typography
-            sx={{
-              whiteSpace: 'nowrap',
-              lineHeight: '38px',
-              marginRight: '50px',
-              fontSize: '14px',
-            }}
-          >
-            소생술 종료사유
-          </Typography>
-          <Form.MuiTextField
-            disabled={disabled}
-            // sx={{ marginRight: '20px' }}
-            {...register('zz')}
-          />
-        </Stack>
-      </Box>
-
+      {timeStart === 0 && <CPRHeader disabled={disabled} register={register} />}
       <Box
         sx={{
           width: '88%',
-          marginTop: '60px',
+          marginTop: '30px',
           marginRight: 'auto',
           marginLeft: 'auto',
         }}
@@ -239,83 +181,15 @@ const CPRContents = (props: Props) => {
                 시간경과(분)
               </CPRStyledTableCellHead>
 
-              <CPRStyledTableCellHeadNumbering
-                colSpan={1}
-                align="right"
-                sx={{ paddingRight: '5px' }}
-              >
-                0
-              </CPRStyledTableCellHeadNumbering>
-              <CPRStyledTableCellHeadNumbering
-                colSpan={1}
-                align="right"
-                sx={{ paddingRight: '5px' }}
-              >
-                1
-              </CPRStyledTableCellHeadNumbering>
-              <CPRStyledTableCellHeadNumbering
-                colSpan={1}
-                align="right"
-                sx={{ paddingRight: '5px' }}
-              >
-                2
-              </CPRStyledTableCellHeadNumbering>
-              <CPRStyledTableCellHeadNumbering
-                colSpan={1}
-                align="right"
-                sx={{ paddingRight: '5px' }}
-              >
-                3
-              </CPRStyledTableCellHeadNumbering>
-              <CPRStyledTableCellHeadNumbering
-                colSpan={1}
-                align="right"
-                sx={{ paddingRight: '5px' }}
-              >
-                4
-              </CPRStyledTableCellHeadNumbering>
-              <CPRStyledTableCellHeadNumbering
-                colSpan={1}
-                align="right"
-                sx={{ paddingRight: '5px' }}
-              >
-                5
-              </CPRStyledTableCellHeadNumbering>
-              <CPRStyledTableCellHeadNumbering
-                colSpan={1}
-                align="right"
-                sx={{ paddingRight: '5px' }}
-              >
-                6
-              </CPRStyledTableCellHeadNumbering>
-              <CPRStyledTableCellHeadNumbering
-                colSpan={1}
-                align="right"
-                sx={{ paddingRight: '5px' }}
-              >
-                7
-              </CPRStyledTableCellHeadNumbering>
-              <CPRStyledTableCellHeadNumbering
-                colSpan={1}
-                align="right"
-                sx={{ paddingRight: '5px' }}
-              >
-                8
-              </CPRStyledTableCellHeadNumbering>
-              <CPRStyledTableCellHeadNumbering
-                colSpan={1}
-                align="right"
-                sx={{ paddingRight: '5px' }}
-              >
-                9
-              </CPRStyledTableCellHeadNumbering>
-              <CPRStyledTableCellHeadNumbering
-                colSpan={1}
-                align="right"
-                sx={{ paddingRight: '5px' }}
-              >
-                10
-              </CPRStyledTableCellHeadNumbering>
+              {timeCount.map(min => (
+                <CPRStyledTableCellHeadNumbering
+                  colSpan={1}
+                  align="right"
+                  sx={{ paddingRight: '5px' }}
+                >
+                  {min}
+                </CPRStyledTableCellHeadNumbering>
+              ))}
             </TableRow>
           </TableHead>
           <TableBody>
@@ -397,9 +271,9 @@ const CPRContents = (props: Props) => {
                         <CPRStyledTableCellBodyNumbering>
                           {content.ko.map((_, i) => {
                             if (
-                              content.ko[i] === '인공호흡' ||
                               content.ko[i] === 'ABGA' ||
-                              content.ko[i] === 'Chest X-ray'
+                              content.ko[i] === 'Chest X-ray' ||
+                              content.ko[i] === 'lab'
                             ) {
                               return (
                                 <TableRow
