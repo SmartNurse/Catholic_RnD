@@ -1,18 +1,13 @@
-import Form from 'components/Form';
-
 import { useEffect, useState } from 'react';
 import {
   Box,
-  Typography,
   Table,
   TableBody,
   TableHead,
   TableRow,
   useTheme,
-  Stack,
   Checkbox,
 } from '@mui/material';
-import { AccessTime } from '@mui/icons-material';
 import {
   CPRStyledTableCell,
   CPRStyledTableCellFirst,
@@ -20,10 +15,12 @@ import {
   CPRStyledTableCellHeadNumbering,
   CPRStyledTableCellBodyNumbering,
 } from 'routes/Main/style';
-import SectionTitle from '../../components/SectionTitle';
 
 import { IFormValues, IFormWatch, IFormRegister } from 'routes/Main/type';
-import { MobileTimePicker } from '@mui/x-date-pickers';
+import CPRHeader from './CPRHeader';
+import { initialCPR } from '../../initialStates';
+import { TCPRDefaultValues } from '../../type';
+import { IUpdateCPR } from 'apis/survey/type';
 
 const radioId = ['face', 'activity', 'respiratory', 'vocalization'];
 const contentLabel = [
@@ -31,96 +28,56 @@ const contentLabel = [
     id: '임상\n관찰',
     ko: [
       '혈압(mmHg)',
-      '심박수',
-      '호흡수',
-      '체온',
+      '심박수 (회/분당)',
+      '호흡수 (회/분당)',
+      '체온 (°C)',
       '산소포화도(%)',
       '의식상태',
       '동공크기',
       '동공반사',
       '심장리듬(VF, VT, PEA,\n Asystole, ROSC 등)',
     ],
-    desc: [
-      '편안한 자세, 움직임이 없음',
-      '느리고 조심스러운 움직임, 몸을 뒤척임',
-      '통증 부위를 만지려고 하거나 문지름, 온몸에 힘을 줌',
-      '온몸을 흔들거나 비틀며 심하게 움직임, 공격적 행동',
-      'q',
-      'q',
-      'w',
-      'e',
-      'r',
-      't',
-      't',
+    idForApi: 'clinical_observation',
+    koForApi: [
+      'bp',
+      'hr',
+      'rr',
+      'bt',
+      'spo2',
+      'consciousness',
+      'pupil_size',
+      'pupil_reflex',
+      'cardio_ryt',
     ],
+    desc: Array(11).fill(' '),
   },
   {
     id: '처치',
     ko: ['흉부압박', '인공호흡', '제세동'],
-    desc: [
-      '경보가 울리지 않고, 잘 적응함',
-      '경보가 울리지만 곧 멈춤',
-      '경보가 자주 울림, 인공호흡기에 저항함',
-      '기계 호흡과 Fighting',
-      'q',
-      'q',
-      'w',
-      'e',
-      'r',
-      't',
-      't',
-    ],
+    idForApi: 'treatment',
+    koForApi: ['chest_compression', 'artificial_ventilation', 'aed'],
+    desc: Array(11).fill(' '),
   },
   {
     id: ' 처치:\n기관\n삽관',
-    ko: ['ID', 'Depth', 'Balloon', '시도횟수', '시술자'],
-    desc: [
-      '정상적인 말투',
-      '공공대며 신음소리를 냄',
-      '훌쩍거리거나, 소리를 내어 흐느껴 울음',
-      '큰소리를 지름, 폭언을 함, 울부짖음',
-      'q',
-      'q',
-      'w',
-      'e',
-      'r',
-      't',
-      't',
-    ],
+    ko: ['ID', 'Depth', 'Balloon', '시술자'],
+    idForApi: 'intubation',
+    koForApi: ['id', 'depth', 'balloon', 'times', 'practitioner'],
+    desc: Array(11).fill(' '),
   },
   {
     id: '투약',
     ko: [' ', ' ', ' ', ' ', ' ', ' ', ' '],
-    desc: [
-      '정상적인 말투',
-      '공공대며 신음소리를 냄',
-      '훌쩍거리거나, 소리를 내어 흐느껴 울음',
-      '큰소리를 지름, 폭언을 함, 울부짖음',
-      'q',
-      'q',
-      'w',
-      'e',
-      'r',
-      't',
-      't',
-    ],
+    idForApi: 'medication',
+    koForApi: ['no', 'no', 'no', 'no', 'no', 'no', 'no'],
+    desc: Array(11).fill(' '),
   },
   {
     id: '검사',
-    ko: ['ABGA', 'Chest X-ray'],
-    desc: [
-      '정상적인 말투',
-      '공공대며 신음소리를 냄',
-      '훌쩍거리거나, 소리를 내어 흐느껴 울음',
-      '큰소리를 지름, 폭언을 함, 울부짖음',
-      'q',
-      'q',
-      'w',
-      'e',
-      'r',
-      't',
-      't',
-    ],
+    ko: ['ABGA', 'Chest X-ray', 'lab'],
+    idForApi: 'test',
+    koForApi: ['abga', 'chest', 'lab'],
+    desc: Array(11).fill(' '),
   },
 ];
 const scoreLabel = [
@@ -132,15 +89,18 @@ const scoreLabel = [
 
 interface Props extends IFormValues, IFormWatch, IFormRegister {
   disabled?: boolean;
+  timeStart: number;
 }
 
 const CPRContents = (props: Props) => {
   const { palette } = useTheme();
-  const [checkTime, setCheckTime] = useState(null);
 
-  const { disabled, setValue, getValues, register } = props;
+  const { disabled, setValue, getValues, register, timeStart } = props;
 
   const [sumValue, setSumValue] = useState(0);
+  const [cprRecord, setCprRecord] = useState(initialCPR);
+
+  const timeCount = new Array(11).fill(timeStart).map((num, i) => num + i);
 
   const calculateSumValue = () => {
     setSumValue(
@@ -163,67 +123,86 @@ const CPRContents = (props: Props) => {
     calculateSumValue();
   }, []);
 
+  useEffect(() => {
+    if (getValues('update_at')) {
+      setCprRecord(prev => ({ ...prev, update_at: getValues('update_at') }));
+    } else {
+      setValue('update_at', cprRecord.update_at);
+    }
+    if (getValues('find_date')) {
+      setCprRecord(prev => ({ ...prev, find_date: getValues('find_date') }));
+    } else {
+      setValue('find_date', cprRecord.find_date);
+    }
+    if (getValues('find_time')) {
+      setCprRecord(prev => ({ ...prev, find_time: getValues('find_time') }));
+    } else {
+      setValue('find_time', cprRecord.find_time);
+    }
+    if (getValues('terminate_reason')) {
+      setCprRecord(prev => ({
+        ...prev,
+        terminate_reason: getValues('terminate_reason'),
+      }));
+    } else {
+      setValue('terminate_reason', cprRecord.terminate_reason);
+    }
+    if (getValues('clinical_observation')) {
+      setCprRecord(prev => ({
+        ...prev,
+        clinical_observation: getValues('clinical_observation'),
+      }));
+    } else {
+      setValue('clinical_observation', cprRecord.clinical_observation);
+    }
+    if (getValues('treatment')) {
+      setCprRecord(prev => ({ ...prev, treatment: getValues('treatment') }));
+    } else {
+      setValue('treatment', cprRecord.treatment);
+    }
+    if (getValues('intubation')) {
+      setCprRecord(prev => ({
+        ...prev,
+        intubation: getValues('intubation'),
+      }));
+    } else {
+      setValue('intubation', cprRecord.intubation);
+    }
+    if (getValues('medication')) {
+      setCprRecord(prev => ({
+        ...prev,
+        medication: getValues('medication'),
+      }));
+    } else {
+      setValue('medication', cprRecord.medication);
+    }
+    if (getValues('test')) {
+      setCprRecord(prev => ({ ...prev, test: getValues('test') }));
+    } else {
+      setValue('test', cprRecord.test);
+    }
+  }, []);
+
+  useEffect(() => {
+    console.log(cprRecord);
+  }, [cprRecord]);
+
+  const headerProps = {
+    disabled,
+    register,
+    getValues,
+    setValue,
+    cprRecord,
+    setCprRecord,
+  };
+
   return (
     <>
-      <SectionTitle title="CPR 기록지" mt={3} />
-      <Box
-        display={'flex'}
-        justifyContent={'space-between'}
-        sx={{ padding: '50px 0 0 30px' }}
-      >
-        <Stack direction="row">
-          <Typography
-            sx={{
-              whiteSpace: 'nowrap',
-              lineHeight: '38px',
-              marginRight: '50px',
-              fontSize: '14px',
-            }}
-          >
-            심정지 발견
-          </Typography>
-          <Form.MuiTextField
-            type="date"
-            disabled={disabled}
-            sx={{ marginRight: '20px' }}
-            {...register('zz')}
-          />
-          <MobileTimePicker
-            value={checkTime}
-            onChange={setCheckTime}
-            renderInput={params => (
-              <Form.MuiTextField
-                {...params}
-                required={false}
-                placeholder="00:00 pm"
-                InputProps={{ endAdornment: <AccessTime /> }}
-              />
-            )}
-          />
-        </Stack>
-        <Stack direction="row" marginRight="20px">
-          <Typography
-            sx={{
-              whiteSpace: 'nowrap',
-              lineHeight: '38px',
-              marginRight: '50px',
-              fontSize: '14px',
-            }}
-          >
-            소생술 종료사유
-          </Typography>
-          <Form.MuiTextField
-            disabled={disabled}
-            // sx={{ marginRight: '20px' }}
-            {...register('zz')}
-          />
-        </Stack>
-      </Box>
-
+      {timeStart === 0 && <CPRHeader {...headerProps} />}
       <Box
         sx={{
           width: '88%',
-          marginTop: '60px',
+          marginTop: '30px',
           marginRight: 'auto',
           marginLeft: 'auto',
         }}
@@ -239,88 +218,30 @@ const CPRContents = (props: Props) => {
                 시간경과(분)
               </CPRStyledTableCellHead>
 
-              <CPRStyledTableCellHeadNumbering
-                colSpan={1}
-                align="right"
-                sx={{ paddingRight: '5px' }}
-              >
-                0
-              </CPRStyledTableCellHeadNumbering>
-              <CPRStyledTableCellHeadNumbering
-                colSpan={1}
-                align="right"
-                sx={{ paddingRight: '5px' }}
-              >
-                1
-              </CPRStyledTableCellHeadNumbering>
-              <CPRStyledTableCellHeadNumbering
-                colSpan={1}
-                align="right"
-                sx={{ paddingRight: '5px' }}
-              >
-                2
-              </CPRStyledTableCellHeadNumbering>
-              <CPRStyledTableCellHeadNumbering
-                colSpan={1}
-                align="right"
-                sx={{ paddingRight: '5px' }}
-              >
-                3
-              </CPRStyledTableCellHeadNumbering>
-              <CPRStyledTableCellHeadNumbering
-                colSpan={1}
-                align="right"
-                sx={{ paddingRight: '5px' }}
-              >
-                4
-              </CPRStyledTableCellHeadNumbering>
-              <CPRStyledTableCellHeadNumbering
-                colSpan={1}
-                align="right"
-                sx={{ paddingRight: '5px' }}
-              >
-                5
-              </CPRStyledTableCellHeadNumbering>
-              <CPRStyledTableCellHeadNumbering
-                colSpan={1}
-                align="right"
-                sx={{ paddingRight: '5px' }}
-              >
-                6
-              </CPRStyledTableCellHeadNumbering>
-              <CPRStyledTableCellHeadNumbering
-                colSpan={1}
-                align="right"
-                sx={{ paddingRight: '5px' }}
-              >
-                7
-              </CPRStyledTableCellHeadNumbering>
-              <CPRStyledTableCellHeadNumbering
-                colSpan={1}
-                align="right"
-                sx={{ paddingRight: '5px' }}
-              >
-                8
-              </CPRStyledTableCellHeadNumbering>
-              <CPRStyledTableCellHeadNumbering
-                colSpan={1}
-                align="right"
-                sx={{ paddingRight: '5px' }}
-              >
-                9
-              </CPRStyledTableCellHeadNumbering>
-              <CPRStyledTableCellHeadNumbering
-                colSpan={1}
-                align="right"
-                sx={{ paddingRight: '5px' }}
-              >
-                10
-              </CPRStyledTableCellHeadNumbering>
+              {timeCount.map(min => (
+                <CPRStyledTableCellHeadNumbering
+                  colSpan={1}
+                  align="right"
+                  sx={{ paddingRight: '5px' }}
+                  key={min}
+                >
+                  {min}
+                </CPRStyledTableCellHeadNumbering>
+              ))}
             </TableRow>
           </TableHead>
           <TableBody>
             {contentLabel.map(
-              (content: { id: string; ko: string[]; desc: string[] }, i) => {
+              (
+                content: {
+                  id: string;
+                  ko: string[];
+                  desc: string[];
+                  koForApi: string[];
+                  idForApi: string;
+                },
+                i
+              ) => {
                 return (
                   <TableRow>
                     <CPRStyledTableCellFirst
@@ -333,12 +254,12 @@ const CPRContents = (props: Props) => {
                       {content.id}
                     </CPRStyledTableCellFirst>
                     <CPRStyledTableCell>
-                      {content.ko.map((_, i) => {
-                        if (content.ko[i] === ' ') {
+                      {content.ko.map((el, i) => {
+                        if (el === ' ') {
                           return (
                             <TableRow
                               sx={{
-                                lineHeight: content.ko[i].includes('심장리듬')
+                                lineHeight: el.includes('심장리듬')
                                   ? '22px'
                                   : '44px',
                                 borderBottom:
@@ -360,7 +281,14 @@ const CPRContents = (props: Props) => {
                                     width: '100%',
                                     height: '44px',
                                   }}
-                                  {...register(`${content.desc[i]}`)}
+                                  {...register(`medication.no00_${i + 1}`)}
+                                  onChange={e =>
+                                    setCprRecord(prev => ({
+                                      ...prev,
+                                      [`medication.no00_${i + 1}`]:
+                                        e.target.value,
+                                    }))
+                                  }
                                 />
                               </Box>
                             </TableRow>
@@ -392,19 +320,19 @@ const CPRContents = (props: Props) => {
                       })}
                     </CPRStyledTableCell>
 
-                    {content.desc.map((v, i) => {
+                    {content.desc.map((_, descIdx) => {
                       return (
                         <CPRStyledTableCellBodyNumbering>
-                          {content.ko.map((_, i) => {
+                          {content.ko.map((_, koIdx) => {
                             if (
-                              content.ko[i] === '인공호흡' ||
-                              content.ko[i] === 'ABGA' ||
-                              content.ko[i] === 'Chest X-ray'
+                              content.ko[koIdx] === 'ABGA' ||
+                              content.ko[koIdx] === 'Chest X-ray' ||
+                              content.ko[koIdx] === 'lab'
                             ) {
                               return (
                                 <TableRow
                                   sx={{
-                                    lineHeight: content.ko[i].includes(
+                                    lineHeight: content.ko[koIdx].includes(
                                       '심장리듬'
                                     )
                                       ? '44px'
@@ -423,14 +351,40 @@ const CPRContents = (props: Props) => {
                                   >
                                     <Checkbox
                                       size="small"
-                                      // value={label}
-                                      defaultValue={
-                                        Boolean(getValues(`${v}checked`))
-                                          ? [v]
-                                          : []
+                                      {...register(
+                                        `${content.idForApi}.${
+                                          content.koForApi[koIdx]
+                                        }${descIdx + timeStart}`
+                                      )}
+                                      checked={
+                                        // @ts-ignore
+                                        cprRecord.test[
+                                          `${content.koForApi[koIdx]}${
+                                            descIdx + timeStart
+                                          }`
+                                        ] === true
                                       }
                                       onChange={(_, checked) => {
-                                        setValue(`${v}checked`, checked);
+                                        setValue(
+                                          `${content.idForApi}.${
+                                            content.koForApi[koIdx]
+                                          }${descIdx + timeStart}`,
+                                          checked
+                                        );
+                                        setCprRecord(prev => {
+                                          const key = `${
+                                            content.koForApi[koIdx]
+                                          }${descIdx + timeStart}`;
+                                          const idForApi =
+                                            content.idForApi as keyof typeof prev;
+                                          return {
+                                            ...prev,
+                                            [idForApi]: {
+                                              ...(prev[idForApi] as object),
+                                              [key]: checked,
+                                            },
+                                          };
+                                        });
                                       }}
                                     />
                                   </Box>
@@ -463,7 +417,60 @@ const CPRContents = (props: Props) => {
                                       width: '100%',
                                       height: '44px',
                                     }}
-                                    {...register(`${v}`)}
+                                    {...register(
+                                      content.idForApi === 'medication'
+                                        ? `medication.no${
+                                            descIdx + timeStart
+                                          }_${koIdx + 1}`
+                                        : `${content.idForApi}.${
+                                            content.koForApi[koIdx]
+                                          }${descIdx + timeStart}`
+                                    )}
+                                    value={
+                                      content.idForApi === 'medication'
+                                        ? // @ts-ignore
+                                          cprRecord.medication[
+                                            `no${descIdx + timeStart}_${
+                                              koIdx + 1
+                                            }`
+                                          ]
+                                        : // @ts-ignore
+                                          cprRecord[content.idForApi][
+                                            `${content.koForApi[koIdx]}${
+                                              descIdx + timeStart
+                                            }`
+                                          ]
+                                    }
+                                    onChange={e => {
+                                      if (content.idForApi === 'medication') {
+                                        const key = `no${descIdx}_${koIdx + 1}`;
+                                        setCprRecord(prev => {
+                                          return {
+                                            ...prev,
+                                            medication: {
+                                              // @ts-ignore
+                                              ...prev[cprRecord.medication],
+                                              [key]: e.target.value,
+                                            },
+                                          };
+                                        });
+                                      } else {
+                                        const key = `${
+                                          content.koForApi[koIdx]
+                                        }${descIdx + timeStart}`;
+                                        setCprRecord(prev => {
+                                          const idForApi =
+                                            content.idForApi as keyof typeof prev;
+                                          return {
+                                            ...prev,
+                                            [idForApi]: {
+                                              ...(prev[idForApi] as object),
+                                              [key]: e.target.value,
+                                            },
+                                          };
+                                        });
+                                      }
+                                    }}
                                   />
                                 </Box>
                               </TableRow>

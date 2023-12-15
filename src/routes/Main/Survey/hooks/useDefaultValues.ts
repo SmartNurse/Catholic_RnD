@@ -745,8 +745,21 @@ const useDefaultValues = ({ setDefaultValues, user_id }: Props) => {
       case MENU.CPR:
         getCPR({ user_id, patient_id })
           .then(({ data }) => {
-            const { update_at, cnps_survey } = data;
-            convertDataToStates({ update_at, ...cnps_survey }, initialCPR);
+            const { update_at, catholic_cpr_survey } = data;
+            convertDataToStates(
+              {
+                update_at,
+                find_date: catholic_cpr_survey?.find_date,
+                find_time: catholic_cpr_survey?.find_time,
+                terminate_reason: catholic_cpr_survey?.terminate_reason,
+                clinical_observation: catholic_cpr_survey?.clinical_observation,
+                treatment: catholic_cpr_survey?.treatment,
+                intubation: catholic_cpr_survey?.intubation,
+                medication: catholic_cpr_survey?.medication,
+                test: catholic_cpr_survey?.test,
+              },
+              initialCPR
+            );
           })
           .catch(e => onFail('알 수 없는 오류가 발생했습니다.', e));
         break;
