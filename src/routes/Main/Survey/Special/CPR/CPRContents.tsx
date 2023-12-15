@@ -69,15 +69,7 @@ const contentLabel = [
     id: '투약',
     ko: [' ', ' ', ' ', ' ', ' ', ' ', ' '],
     idForApi: 'medication',
-    koForApi: [
-      'no00_1',
-      'no00_2',
-      'no00_3',
-      'no00_4',
-      'no00_5',
-      'no00_6',
-      'no00_7',
-    ],
+    koForApi: ['no', 'no', 'no', 'no', 'no', 'no', 'no'],
     desc: Array(11).fill(' '),
   },
   {
@@ -289,9 +281,7 @@ const CPRContents = (props: Props) => {
                                     width: '100%',
                                     height: '44px',
                                   }}
-                                  {...register(
-                                    `medication.no00_${i + timeStart + 1}`
-                                  )}
+                                  {...register(`medication.no00_${i + 1}`)}
                                   onChange={e =>
                                     setCprRecord(prev => ({
                                       ...prev,
@@ -361,13 +351,41 @@ const CPRContents = (props: Props) => {
                                   >
                                     <Checkbox
                                       size="small"
-                                      // value={label}
-                                      // FIXME: 선택안됨
-                                      checked={Boolean(
-                                        cprRecord.test[
-                                          `${content.koForApi[koIdx]}${descIdx}` as keyof typeof cprRecord.test.abga0
-                                        ]
+                                      {...register(
+                                        `${content.idForApi}.${
+                                          content.koForApi[koIdx]
+                                        }${descIdx + timeStart}`
                                       )}
+                                      checked={
+                                        // @ts-ignore
+                                        cprRecord.test[
+                                          `${content.koForApi[koIdx]}${
+                                            descIdx + timeStart
+                                          }`
+                                        ] === true
+                                      }
+                                      onChange={(_, checked) => {
+                                        setValue(
+                                          `${content.idForApi}.${
+                                            content.koForApi[koIdx]
+                                          }${descIdx + timeStart}`,
+                                          checked
+                                        );
+                                        setCprRecord(prev => {
+                                          const key = `${
+                                            content.koForApi[koIdx]
+                                          }${descIdx + timeStart}`;
+                                          const idForApi =
+                                            content.idForApi as keyof typeof prev;
+                                          return {
+                                            ...prev,
+                                            [idForApi]: {
+                                              ...(prev[idForApi] as object),
+                                              [key]: checked,
+                                            },
+                                          };
+                                        });
+                                      }}
                                     />
                                   </Box>
                                 </TableRow>
@@ -400,28 +418,57 @@ const CPRContents = (props: Props) => {
                                       height: '44px',
                                     }}
                                     {...register(
-                                      `${content.koForApi[koIdx]}${descIdx}`
+                                      content.idForApi === 'medication'
+                                        ? `${
+                                            cprRecord.medication
+                                          }.no${descIdx}_${koIdx + 1}`
+                                        : `${content.idForApi}.${
+                                            content.koForApi[koIdx]
+                                          }${descIdx + timeStart}`
                                     )}
-                                    // FIXME: submit 시 넘어오는 값 변경안됨, 렌더링 늦게됨
+                                    // FIXME: 기존 medication 값 유지가 안됨, 초기 medication 값 렌더링 안됨
                                     value={
-                                      // @ts-ignore
-                                      cprRecord[content.idForApi][
-                                        `${content.koForApi[koIdx]}${descIdx}`
-                                      ]
+                                      content.idForApi === 'medication'
+                                        ? // @ts-ignore
+                                          cprRecord.medication[
+                                            `no${descIdx}_${koIdx + 1}`
+                                          ]
+                                        : // @ts-ignore
+                                          cprRecord[content.idForApi][
+                                            `${content.koForApi[koIdx]}${
+                                              descIdx + timeStart
+                                            }`
+                                          ]
                                     }
                                     onChange={e => {
-                                      const key = `${content.koForApi[koIdx]}${descIdx}`;
-                                      setCprRecord(prev => {
-                                        const idForApi =
-                                          content.idForApi as keyof typeof prev;
-                                        return {
-                                          ...prev,
-                                          [idForApi]: {
-                                            ...(prev[idForApi] as object),
-                                            [key]: e.target.value,
-                                          },
-                                        };
-                                      });
+                                      if (content.idForApi === 'medication') {
+                                        const key = `no${descIdx}_${koIdx + 1}`;
+                                        setCprRecord(prev => {
+                                          return {
+                                            ...prev,
+                                            medication: {
+                                              // @ts-ignore
+                                              ...prev[cprRecord.medication],
+                                              [key]: e.target.value,
+                                            },
+                                          };
+                                        });
+                                      } else {
+                                        const key = `${
+                                          content.koForApi[koIdx]
+                                        }${descIdx + timeStart}`;
+                                        setCprRecord(prev => {
+                                          const idForApi =
+                                            content.idForApi as keyof typeof prev;
+                                          return {
+                                            ...prev,
+                                            [idForApi]: {
+                                              ...(prev[idForApi] as object),
+                                              [key]: e.target.value,
+                                            },
+                                          };
+                                        });
+                                      }
                                     }}
                                   />
                                 </Box>
