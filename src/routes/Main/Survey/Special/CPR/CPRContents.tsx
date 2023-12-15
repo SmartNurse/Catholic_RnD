@@ -60,9 +60,9 @@ const contentLabel = [
   },
   {
     id: ' 처치:\n기관\n삽관',
-    ko: ['ID', 'Depth', 'Balloon', '시술자'],
+    ko: ['ID', 'Depth', 'Balloon'],
     idForApi: 'intubation',
-    koForApi: ['id', 'depth', 'balloon', 'times', 'practitioner'],
+    koForApi: ['id', 'depth', 'balloon'],
     desc: Array(11).fill(' '),
   },
   {
@@ -376,10 +376,7 @@ const CPRContents = (props: Props) => {
                                   lineHeight: content.ko[i].includes('심장리듬')
                                     ? '44px'
                                     : '44px',
-                                  borderBottom:
-                                    i !== content.ko.length - 1
-                                      ? '1px solid lightgray'
-                                      : '',
+                                  borderBottom: '1px solid lightgray',
                                 }}
                               >
                                 <Box
