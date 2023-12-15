@@ -39,9 +39,7 @@ const CPRHeader = (props: Props) => {
             type="date"
             disabled={disabled}
             sx={{ marginRight: '20px' }}
-            // FIXME: 값 안바뀜
-            // value={cprRecord.find_date}
-            value={getValues('find_date')}
+            value={cprRecord.find_date}
             {...register('find_date')}
             onChange={e =>
               setCprRecord(prev => ({
@@ -51,20 +49,21 @@ const CPRHeader = (props: Props) => {
             }
           />
           <MobileTimePicker
-            value={getValues('find_time')}
-            onChange={value =>
+            value={cprRecord.find_time}
+            {...register('find_time')}
+            onChange={value => {
+              setValue('find_time', value);
               setCprRecord(prev => ({
                 ...prev,
                 find_time: value as string,
-              }))
-            }
+              }));
+            }}
             renderInput={params => (
               <Form.MuiTextField
                 {...params}
                 required={false}
                 placeholder="00:00 pm"
                 InputProps={{ endAdornment: <AccessTime /> }}
-                {...register('find_time')}
               />
             )}
           />
@@ -82,10 +81,15 @@ const CPRHeader = (props: Props) => {
           </Typography>
           <Form.MuiTextField
             disabled={disabled}
-            value={getValues('terminate_reason')}
             // sx={{ marginRight: '20px' }}
-            // FIXME: onchange??
+            value={cprRecord.terminate_reason}
             {...register('terminate_reason')}
+            onChange={e =>
+              setCprRecord(prev => ({
+                ...prev,
+                terminate_reason: e.target.value,
+              }))
+            }
           />
         </Stack>
       </Box>
