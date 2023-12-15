@@ -97,31 +97,9 @@ const CPRContents = (props: Props) => {
 
   const { disabled, setValue, getValues, register, timeStart } = props;
 
-  const [sumValue, setSumValue] = useState(0);
   const [cprRecord, setCprRecord] = useState(initialCPR);
 
   const timeCount = new Array(11).fill(timeStart).map((num, i) => num + i);
-
-  const calculateSumValue = () => {
-    setSumValue(
-      radioId.reduce((acc, cur) => {
-        const value = Number(getValues(cur));
-        return value ? acc + value : acc;
-      }, 0)
-    );
-  };
-
-  const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement>,
-    checked: boolean
-  ) => {
-    setValue(e.target.name, e.target.value);
-    calculateSumValue();
-  };
-
-  useEffect(() => {
-    calculateSumValue();
-  }, []);
 
   useEffect(() => {
     if (getValues('update_at')) {

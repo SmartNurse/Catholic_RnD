@@ -43,7 +43,6 @@ const CPR = (props: SurveyDialogProps<TCPRDefaultValues>) => {
       medication,
       test,
     } = data;
-    console.log(data);
 
     const request = {
       user_id,
@@ -64,9 +63,9 @@ const CPR = (props: SurveyDialogProps<TCPRDefaultValues>) => {
       .then(({ data: { rc } }) => {
         if (rc !== 1) return onResultCode(rc);
         onUpdateIsSave(true);
-        onSuccess('CNPS 저장에 성공하였습니다.');
+        onSuccess('CPR 기록지 저장에 성공하였습니다.');
       })
-      .catch(e => onFail('CNPS 저장에 실패하였습니다.', e));
+      .catch(e => onFail('CPR 기록지 저장에 실패하였습니다.', e));
   };
 
   const formProps = {
@@ -96,7 +95,6 @@ const CPR = (props: SurveyDialogProps<TCPRDefaultValues>) => {
         }}
       >
         심폐소생술(CPR,cardio-pulmonary resuscitation) 기록지
-        <br />- 테스트 중입니다. -
       </Typography>
       <PatientStaffInfo
         {...formProps}
