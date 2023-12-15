@@ -50,9 +50,9 @@ const BedScore = (props: SurveyDialogProps<TBedScoreDefaultValues>) => {
       .then(({ data: { rc } }) => {
         if (rc !== 1) return onResultCode(rc);
         onUpdateIsSave(true);
-        onSuccess('욕창위험 평가도구 I 저장에 성공하였습니다.');
+        onSuccess('욕창위험 평가도구 저장에 성공하였습니다.');
       })
-      .catch(e => onFail('욕창위험 평가도구 I 저장에 실패하였습니다.', e));
+      .catch(e => onFail('욕창위험 평가도구 저장에 실패하였습니다.', e));
   };
 
   const formProps = { disabled, watch, register, getValues, setValue };
@@ -80,7 +80,7 @@ const BedScore = (props: SurveyDialogProps<TBedScoreDefaultValues>) => {
             textAlign: 'center',
           }}
         >
-          욕창 사정 도구
+          욕창위험 평가도구
         </Typography>
         <CommonPatientInfo patientInfo={patientInfo} nurseName={nurseName} />
         <BedScoreContents {...formProps} />

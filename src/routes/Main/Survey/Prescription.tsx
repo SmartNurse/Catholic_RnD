@@ -7,6 +7,7 @@ import { SurveyDialogProps } from 'routes/Main/Survey/type';
 
 import one from 'assets/kimheechul.svg';
 import two from 'assets/kimheechulTwo.svg';
+import two_1 from 'assets/kimheechuThree.svg';
 import three from 'assets/parkboklei.svg';
 import four from 'assets/leegeumja.svg';
 import five from 'assets/leegeumjaTwo.svg';

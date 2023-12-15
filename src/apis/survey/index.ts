@@ -65,12 +65,12 @@ import {
 
 // e-CARDEX
 export const getECardex = (request: IGetSurvey) => {
-  const url = `/survey/ecardex?${formatToRequestParameter(request)}`;
+  const url = `/enr_etc/catholic/ecardex?${formatToRequestParameter(request)}`;
   return apiGateway.get(url);
 };
 
 export const updateECardex = (request: IUpdateECardex) => {
-  const url = `/survey/ecardex`;
+  const url = `/enr_etc/catholic/ecardex`;
   return apiGateway.post(url, camelcaseKeys(request));
 };
 

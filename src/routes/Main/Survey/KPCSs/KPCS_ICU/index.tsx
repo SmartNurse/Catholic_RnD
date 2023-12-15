@@ -287,25 +287,37 @@ const KPCS_ICU = (props: SurveyDialogProps<TKPCS_ICUDefaultValues>) => {
               <Box component={'strong'} mr={0.5}>
                 I군 :
               </Box>
-              0-10점
+              0-12점
             </Typography>
             <Typography variant="inherit">
               <Box component={'strong'} mr={0.5}>
                 II군:
               </Box>
-              11-20점
+              13-30점
             </Typography>
             <Typography variant="inherit">
               <Box component={'strong'} mr={0.5}>
                 III군:
               </Box>
-              21-30점
+              31-61점
             </Typography>
             <Typography variant="inherit">
               <Box component={'strong'} mr={0.5}>
                 IV군:
               </Box>
-              31점 이상
+              62-92점
+            </Typography>
+            <Typography variant="inherit">
+              <Box component={'strong'} mr={0.5}>
+                V군:
+              </Box>
+              93-141점
+            </Typography>
+            <Typography variant="inherit">
+              <Box component={'strong'} mr={0.5}>
+                VI군:
+              </Box>
+              142점 이상
             </Typography>
           </Typography>
         </Box>

@@ -26,82 +26,27 @@ const contentLabel = [
       'O2',
       '기타',
     ],
-    desc: [
-      'vital_sign.date.date',
-      'vital_sign.time.time',
-      'vital_sign.sbp.sbp',
-      'vital_sign.dbp.dbp',
-      'vital_sign.pr.pr',
-      'vital_sign.rr.rr',
-      'vital_sign.bt.bt',
-      'vital_sign.spo2.spo2',
-      'vital_sign.o2.o2',
-      'vital_sign.etc.etc',
-    ],
+    desc: ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'],
   },
   {
     id: '키 / 체중',
     ko: ['키 (cm)', '체중 (kg)'],
-    desc: [
-      'weight_height.weight.weight_height0',
-      'weight_height.weight_height1',
-      'weight_height.weight_height2',
-      'weight_height.weight_height3',
-      'weight_height.weight_height4',
-      'weight_height.weight_height5',
-      'weight_height.weight_height6',
-      'weight_height.weight_height7',
-      'weight_height.weight_height8',
-      'weight_height.weight_height9',
-    ],
+    desc: ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'],
   },
   {
     id: '섭취량',
     ko: ['경구', '정맥 주입', '혈액 및 기타', '총 섭취량'],
-    desc: [
-      'intake.intake0',
-      'intake.intake1',
-      'intake.intake2',
-      'intake.intake3',
-      'intake.intake4',
-      'intake.intake5',
-      'intake.intake6',
-      'intake.intake7',
-      'intake.intake8',
-      'intake.intake9',
-    ],
+    desc: ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'],
   },
   {
     id: '배설량',
     ko: ['소변', '구토', '대변', '배액 및 기타', '총 배설량'],
-    desc: [
-      'output.output0',
-      'output.output1',
-      'output.output2',
-      'output.output3',
-      'output.output4',
-      'output.output5',
-      'output.output6',
-      'output.output7',
-      'output.output8',
-      'output.output9',
-    ],
+    desc: ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'],
   },
   {
     id: '체위변경',
     ko: ['수행 여부', 'Position', '피부 상태'],
-    desc: [
-      'position_change.position_change0',
-      'position_change.position_change1',
-      'position_change.position_change2',
-      'position_change.position_change3',
-      'position_change.position_change4',
-      'position_change.position_change5',
-      'position_change.position_change6',
-      'position_change.position_change7',
-      'position_change.position_change8',
-      'position_change.position_change9',
-    ],
+    desc: ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'],
   },
   {
     id: '신체 보호대',
@@ -116,34 +61,12 @@ const contentLabel = [
       '부작용 발생',
       '예방활동',
     ],
-    desc: [
-      'restraint.restraint0',
-      'restraint.restraint1',
-      'restraint.restraint2',
-      'restraint.restraint3',
-      'restraint.restraint4',
-      'restraint.restraint5',
-      'restraint.restraint6',
-      'restraint.restraint7',
-      'restraint.restraint8',
-      'restraint.restraint9',
-    ],
+    desc: ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'],
   },
   {
     id: 'IPC',
     ko: ['적용 일시'],
-    desc: [
-      'ipc.ipc0',
-      'ipc.ipc1',
-      'ipc.ipc2',
-      'ipc.ipc3',
-      'ipc.ipc4',
-      'ipc.ipc5',
-      'ipc.ipc6',
-      'ipc.ipc7',
-      'ipc.ipc8',
-      'ipc.ipc9',
-    ],
+    desc: ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'],
   },
   {
     id: 'Vent',
@@ -161,18 +84,7 @@ const contentLabel = [
       'Cstat',
       'P/F ratio',
     ],
-    desc: [
-      'vent.vent0',
-      'vent.vent1',
-      'vent.vent2',
-      'vent.vent3',
-      'vent.vent4',
-      'vent.vent5',
-      'vent.vent6',
-      'vent.vent7',
-      'vent.vent8',
-      'vent.vent9',
-    ],
+    desc: ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'],
   },
   {
     id: 'CRRT',
@@ -193,18 +105,7 @@ const contentLabel = [
       'TMP Pressure',
       'Pressure drop',
     ],
-    desc: [
-      'crrt.crrt0',
-      'crrt.crrt1',
-      'crrt.crrt2',
-      'crrt.crrt3',
-      'crrt.crrt4',
-      'crrt.crrt5',
-      'crrt.crrt6',
-      'crrt.crrt7',
-      'crrt.crrt8',
-      'crrt.crrt9',
-    ],
+    desc: ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'],
   },
 ];
 
@@ -270,39 +171,283 @@ const VitalSignGraph = (props: Props) => {
                     </CPRStyledTableCell>
 
                     {content.desc.map((v, i) => {
-                      console.log('ko', content.ko[i]);
                       return (
                         <CPRStyledTableCellBodyNumbering>
-                          {content.ko.map((_, i) => {
-                            return (
-                              <TableRow
-                                sx={{
-                                  lineHeight: '43px',
-                                  borderBottom:
-                                    i !== content.ko.length - 1
-                                      ? '1px solid lightgray'
-                                      : '',
-                                }}
-                              >
-                                <Box
+                          {content.ko.map((item, i) => {
+                            if (content.id === 'V/S') {
+                              return (
+                                <TableRow
                                   sx={{
-                                    minWidth: '100px',
-                                    textAlign: 'center',
+                                    lineHeight: '43px',
+                                    borderBottom:
+                                      i !== content.ko.length - 1
+                                        ? '1px solid lightgray'
+                                        : '',
                                   }}
                                 >
-                                  <input
-                                    value={`${v}${i}`}
-                                    disabled={disabled}
-                                    style={{
-                                      border: 'none',
-                                      width: '100%',
-                                      height: '44px',
+                                  <Box
+                                    sx={{
+                                      minWidth: '100px',
+                                      textAlign: 'center',
                                     }}
-                                    {...register(`${v}${i}`)}
-                                  />
-                                </Box>
-                              </TableRow>
-                            );
+                                  >
+                                    <input
+                                      disabled={disabled}
+                                      style={{
+                                        border: 'none',
+                                        width: '100%',
+                                        height: '44px',
+                                      }}
+                                      {...register(
+                                        `vital_sign.vital0${v}.no${v}${i}`
+                                      )}
+                                    />
+                                  </Box>
+                                </TableRow>
+                              );
+                            } else if (content.id === '키 / 체중') {
+                              return (
+                                <TableRow
+                                  sx={{
+                                    lineHeight: '43px',
+                                    borderBottom:
+                                      i !== content.ko.length - 1
+                                        ? '1px solid lightgray'
+                                        : '',
+                                  }}
+                                >
+                                  <Box
+                                    sx={{
+                                      minWidth: '100px',
+                                      textAlign: 'center',
+                                    }}
+                                  >
+                                    <input
+                                      disabled={disabled}
+                                      style={{
+                                        border: 'none',
+                                        width: '100%',
+                                        height: '44px',
+                                      }}
+                                      {...register(
+                                        `weight_height.weight_height0${v}.no${v}${i}`
+                                      )}
+                                    />
+                                  </Box>
+                                </TableRow>
+                              );
+                            } else if (content.id === '섭취량') {
+                              return (
+                                <TableRow
+                                  sx={{
+                                    lineHeight: '43px',
+                                    borderBottom:
+                                      i !== content.ko.length - 1
+                                        ? '1px solid lightgray'
+                                        : '',
+                                  }}
+                                >
+                                  <Box
+                                    sx={{
+                                      minWidth: '100px',
+                                      textAlign: 'center',
+                                    }}
+                                  >
+                                    <input
+                                      disabled={disabled}
+                                      style={{
+                                        border: 'none',
+                                        width: '100%',
+                                        height: '44px',
+                                      }}
+                                      {...register(
+                                        `intake.intake0${v}.no${v}${i}`
+                                      )}
+                                    />
+                                  </Box>
+                                </TableRow>
+                              );
+                            } else if (content.id === '배설량') {
+                              return (
+                                <TableRow
+                                  sx={{
+                                    lineHeight: '43px',
+                                    borderBottom:
+                                      i !== content.ko.length - 1
+                                        ? '1px solid lightgray'
+                                        : '',
+                                  }}
+                                >
+                                  <Box
+                                    sx={{
+                                      minWidth: '100px',
+                                      textAlign: 'center',
+                                    }}
+                                  >
+                                    <input
+                                      disabled={disabled}
+                                      style={{
+                                        border: 'none',
+                                        width: '100%',
+                                        height: '44px',
+                                      }}
+                                      {...register(
+                                        `output.output0${v}.no${v}${i}`
+                                      )}
+                                    />
+                                  </Box>
+                                </TableRow>
+                              );
+                            } else if (content.id === '체위변경') {
+                              return (
+                                <TableRow
+                                  sx={{
+                                    lineHeight: '43px',
+                                    borderBottom:
+                                      i !== content.ko.length - 1
+                                        ? '1px solid lightgray'
+                                        : '',
+                                  }}
+                                >
+                                  <Box
+                                    sx={{
+                                      minWidth: '100px',
+                                      textAlign: 'center',
+                                    }}
+                                  >
+                                    <input
+                                      disabled={disabled}
+                                      style={{
+                                        border: 'none',
+                                        width: '100%',
+                                        height: '44px',
+                                      }}
+                                      {...register(
+                                        `position_change.position_change0${v}.no${v}${i}`
+                                      )}
+                                    />
+                                  </Box>
+                                </TableRow>
+                              );
+                            } else if (content.id === '신체 보호대') {
+                              return (
+                                <TableRow
+                                  sx={{
+                                    lineHeight: '43px',
+                                    borderBottom:
+                                      i !== content.ko.length - 1
+                                        ? '1px solid lightgray'
+                                        : '',
+                                  }}
+                                >
+                                  <Box
+                                    sx={{
+                                      minWidth: '100px',
+                                      textAlign: 'center',
+                                    }}
+                                  >
+                                    <input
+                                      disabled={disabled}
+                                      style={{
+                                        border: 'none',
+                                        width: '100%',
+                                        height: '44px',
+                                      }}
+                                      {...register(
+                                        `restraint.restraint0${v}.no${v}${i}`
+                                      )}
+                                    />
+                                  </Box>
+                                </TableRow>
+                              );
+                            } else if (content.id === 'IPC') {
+                              return (
+                                <TableRow
+                                  sx={{
+                                    lineHeight: '43px',
+                                    borderBottom:
+                                      i !== content.ko.length - 1
+                                        ? '1px solid lightgray'
+                                        : '',
+                                  }}
+                                >
+                                  <Box
+                                    sx={{
+                                      minWidth: '100px',
+                                      textAlign: 'center',
+                                    }}
+                                  >
+                                    <input
+                                      disabled={disabled}
+                                      style={{
+                                        border: 'none',
+                                        width: '100%',
+                                        height: '44px',
+                                      }}
+                                      {...register(`ipc.ipc0${v}`)}
+                                    />
+                                  </Box>
+                                </TableRow>
+                              );
+                            } else if (content.id === 'Vent') {
+                              return (
+                                <TableRow
+                                  sx={{
+                                    lineHeight: '43px',
+                                    borderBottom:
+                                      i !== content.ko.length - 1
+                                        ? '1px solid lightgray'
+                                        : '',
+                                  }}
+                                >
+                                  <Box
+                                    sx={{
+                                      minWidth: '100px',
+                                      textAlign: 'center',
+                                    }}
+                                  >
+                                    <input
+                                      disabled={disabled}
+                                      style={{
+                                        border: 'none',
+                                        width: '100%',
+                                        height: '44px',
+                                      }}
+                                      {...register(`vent.vent0${v}.no${v}${i}`)}
+                                    />
+                                  </Box>
+                                </TableRow>
+                              );
+                            } else if (content.id === 'CRRT') {
+                              return (
+                                <TableRow
+                                  sx={{
+                                    lineHeight: '43px',
+                                    borderBottom:
+                                      i !== content.ko.length - 1
+                                        ? '1px solid lightgray'
+                                        : '',
+                                  }}
+                                >
+                                  <Box
+                                    sx={{
+                                      minWidth: '100px',
+                                      textAlign: 'center',
+                                    }}
+                                  >
+                                    <input
+                                      disabled={disabled}
+                                      style={{
+                                        border: 'none',
+                                        width: '100%',
+                                        height: '44px',
+                                      }}
+                                      {...register(`crrt.crrt0${v}.no${v}${i}`)}
+                                    />
+                                  </Box>
+                                </TableRow>
+                              );
+                            }
                           })}
                         </CPRStyledTableCellBodyNumbering>
                       );

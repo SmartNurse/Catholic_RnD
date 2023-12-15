@@ -106,7 +106,6 @@ const CRRT = (props: SurveyDialogProps<TCRRTDefaultValues>) => {
         }}
       >
         지속적신대체요법(CRRT) 동의서
-        <br />- 테스트 중입니다. -
       </Typography>
       <CommonPatientInfo patientInfo={patientInfo} nurseName={nurseName} />
       <Box sx={{ marginTop: '48px' }}>

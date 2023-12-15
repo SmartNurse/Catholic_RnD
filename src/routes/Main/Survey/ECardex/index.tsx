@@ -45,63 +45,28 @@ const ECardex = (props: SurveyDialogProps<TECardexDefaultValues>) => {
 
   const onSubmit = (data: TECardexDefaultValues) => {
     const {
-      other_remarks,
-      remark_data,
-      medication_data,
-      lab_data,
-      imaging_test_data,
-      concerns,
-      plans,
-      evaluation,
+      history,
+      diet,
+      cheif_complain,
+      intubation_device,
+      infection_info,
+      medical_record,
+      main_checkup,
+      handover,
     } = data;
 
     const request = {
       user_id,
       patient_id: patientInfo.patient_id,
-      e_cardex_survey: {
-        other_remarks,
-        remark_data: remark_data?.map(({ date, remark }: IECardexRemark) => ({
-          date,
-          remark,
-        })),
-        medication_data: medication_data?.map(
-          ({ date, medication, method, time, end }: IECardexDosage) => ({
-            date,
-            medication,
-            method,
-            time,
-            end,
-          })
-        ),
-        lab_data: lab_data?.map(
-          ({
-            date,
-            lab,
-            implementing_and_inspection,
-            result,
-          }: IECardexLab) => ({
-            date,
-            lab,
-            implementing_and_inspection,
-            result,
-          })
-        ),
-        imaging_test_data: imaging_test_data?.map(
-          ({
-            date,
-            imaging_test,
-            implementing_and_inspection,
-            result,
-          }: IECardexImagingTest) => ({
-            date,
-            imaging_test,
-            implementing_and_inspection,
-            result,
-          })
-        ),
-        concerns,
-        plans,
-        evaluation,
+      catholic_ecardex_survey: {
+        history,
+        diet,
+        cheif_complain,
+        intubation_device,
+        infection_info,
+        medical_record,
+        main_checkup,
+        handover,
       },
     };
 
@@ -154,53 +119,49 @@ const ECardex = (props: SurveyDialogProps<TECardexDefaultValues>) => {
         <TextareaSection
           {...formProps}
           title="과거력"
-          registerId="other_remarks"
+          registerId="history"
           required={false}
         />
-        {/* <Remark {...formProps} />
-        <Dosage {...formProps} />
-        <Lab {...formProps} />
-        <ImageTest {...formProps} /> */}
         <TextareaSection
           {...formProps}
           title="Diet"
-          registerId="concerns"
+          registerId="diet"
           required={false}
         />
         <TextareaSection
           {...formProps}
           title="주호소"
-          registerId="plans"
+          registerId="cheif_complain"
           required={false}
         />
         <TextareaSection
           {...formProps}
           title="삽관기구"
-          registerId="evaluation"
+          registerId="intubation_device"
           required={false}
         />
         <TextareaSection
           {...formProps}
           title="감염정보"
-          registerId="evaluation"
+          registerId="infection_info"
           required={false}
         />
         <TextareaSection
           {...formProps}
           title="투약기록"
-          registerId="evaluation"
+          registerId="medical_record"
           required={false}
         />
         <TextareaSection
           {...formProps}
           title="주요 검사"
-          registerId="evaluation"
+          registerId="main_checkup"
           required={false}
         />
         <TextareaSection
           {...formProps}
           title="인수인계"
-          registerId="evaluation"
+          registerId="handover"
           required={false}
         />
       </Grid>

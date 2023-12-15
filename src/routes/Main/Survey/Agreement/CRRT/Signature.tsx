@@ -37,6 +37,7 @@ const Signature = (props: Props) => {
                 childrenRatio={2.5}
               >
                 <Form.MuiTextField
+                  required={false}
                   type="date"
                   disabled={disabled}
                   {...register(`${variable}`)}
@@ -50,6 +51,7 @@ const Signature = (props: Props) => {
                 childrenRatio={2.5}
               >
                 <Form.MuiTextField
+                  required={false}
                   disabled={disabled}
                   {...register(`${variable}`)}
                 />

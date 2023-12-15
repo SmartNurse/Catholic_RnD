@@ -47,15 +47,15 @@ export interface IECardexImagingTest {
 }
 
 export interface IUpdateECardex extends IGetSurvey {
-  e_cardex_survey: {
-    other_remarks: string;
-    remark_data: IECardexRemark[];
-    medication_data: IECardexDosage[];
-    lab_data: IECardexLab[];
-    imaging_test_data: IECardexImagingTest[];
-    concerns: string;
-    plans: string;
-    evaluation: string;
+  catholic_ecardex_survey: {
+    history: string;
+    diet: string;
+    cheif_complain: string;
+    intubation_device: string;
+    infection_info: string;
+    medical_record: string;
+    main_checkup: string;
+    handover: string;
   };
 }
 
@@ -175,83 +175,802 @@ export interface IPathology {
 export interface IUpdateClinicObservation extends IGetSurvey {
   catholic_clinical_observation: {
     vital_sign: {
-      // v/s 첫열
-      date: string;
-      // v/s 두번째열
-      time: string;
-      sbp: string;
-      dbp: string;
-      pr: string;
-      rr: string;
-      bt: string;
-      spo2: string;
-      o2: string;
-      etc: string;
+      vital00: {
+        no00: string;
+        no01: string;
+        no02: string;
+        no03: string;
+        no04: string;
+        no05: string;
+        no06: string;
+        no07: string;
+        no08: string;
+        no09: string;
+      };
+      vital01: {
+        no10: string;
+        no11: string;
+        no12: string;
+        no13: string;
+        no14: string;
+        no15: string;
+        no16: string;
+        no17: string;
+        no18: string;
+        no19: string;
+      };
+      vital02: {
+        no20: string;
+        no21: string;
+        no22: string;
+        no23: string;
+        no24: string;
+        no25: string;
+        no26: string;
+        no27: string;
+        no28: string;
+        no29: string;
+      };
+      vital03: {
+        no30: string;
+        no31: string;
+        no32: string;
+        no33: string;
+        no34: string;
+        no35: string;
+        no36: string;
+        no37: string;
+        no38: string;
+        no39: string;
+      };
+      vital04: {
+        no40: string;
+        no41: string;
+        no42: string;
+        no43: string;
+        no44: string;
+        no45: string;
+        no46: string;
+        no47: string;
+        no48: string;
+        no49: string;
+      };
+      vital05: {
+        no50: string;
+        no51: string;
+        no52: string;
+        no53: string;
+        no54: string;
+        no55: string;
+        no56: string;
+        no57: string;
+        no58: string;
+        no59: string;
+      };
+      vital06: {
+        no60: string;
+        no61: string;
+        no62: string;
+        no63: string;
+        no64: string;
+        no65: string;
+        no66: string;
+        no67: string;
+        no68: string;
+        no69: string;
+      };
+      vital07: {
+        no70: string;
+        no71: string;
+        no72: string;
+        no73: string;
+        no74: string;
+        no75: string;
+        no76: string;
+        no77: string;
+        no78: string;
+        no79: string;
+      };
+      vital08: {
+        no80: string;
+        no81: string;
+        no82: string;
+        no83: string;
+        no84: string;
+        no85: string;
+        no86: string;
+        no87: string;
+        no88: string;
+        no89: string;
+      };
+      vital09: {
+        no90: string;
+        no91: string;
+        no92: string;
+        no93: string;
+        no94: string;
+        no95: string;
+        no96: string;
+        no97: string;
+        no98: string;
+        no99: string;
+      };
     };
     weight_height: {
-      weight: string;
-      height: string;
+      weight_height00: {
+        no00: string;
+        no01: string;
+      };
+      weight_height01: {
+        no10: string;
+        no11: string;
+      };
+      weight_height02: {
+        no20: string;
+        no21: string;
+      };
+      weight_height03: {
+        no30: string;
+        no31: string;
+      };
+      weight_height04: {
+        no40: string;
+        no41: string;
+      };
+      weight_height05: {
+        no50: string;
+        no51: string;
+      };
+      weight_height06: {
+        no60: string;
+        no61: string;
+      };
+      weight_height07: {
+        no70: string;
+        no71: string;
+      };
+      weight_height08: {
+        no80: string;
+        no81: string;
+      };
+      weight_height09: {
+        no90: string;
+        no91: string;
+      };
     };
     intake: {
-      oral: string;
-      veinal: string;
-      blood_and_more: string;
-      total: string;
+      intake00: {
+        no00: string;
+        no01: string;
+        no02: string;
+        no03: string;
+      };
+      intake01: {
+        no10: string;
+        no11: string;
+        no12: string;
+        no13: string;
+      };
+      intake02: {
+        no20: string;
+        no21: string;
+        no22: string;
+        no23: string;
+      };
+      intake03: {
+        no30: string;
+        no31: string;
+        no32: string;
+        no33: string;
+      };
+      intake04: {
+        no40: string;
+        no41: string;
+        no42: string;
+        no43: string;
+      };
+      intake05: {
+        no50: string;
+        no51: string;
+        no52: string;
+        no53: string;
+      };
+      intake06: {
+        no60: string;
+        no61: string;
+        no62: string;
+        no63: string;
+      };
+      intake07: {
+        no70: string;
+        no71: string;
+        no72: string;
+        no73: string;
+      };
+      intake08: {
+        no80: string;
+        no81: string;
+        no82: string;
+        no83: string;
+      };
+      intake09: {
+        no90: string;
+        no91: string;
+        no92: string;
+        no93: string;
+      };
     };
     output: {
-      urine: string;
-      vomit: string;
-      stool: string;
-      drainage: string;
-      total: string;
+      output00: {
+        no00: string;
+        no01: string;
+        no02: string;
+        no03: string;
+        no04: string;
+      };
+      output01: {
+        no10: string;
+        no11: string;
+        no12: string;
+        no13: string;
+        no14: string;
+      };
+      output02: {
+        no20: string;
+        no21: string;
+        no22: string;
+        no23: string;
+        no24: string;
+      };
+      output03: {
+        no30: string;
+        no31: string;
+        no32: string;
+        no33: string;
+        no34: string;
+      };
+      output04: {
+        no40: string;
+        no41: string;
+        no42: string;
+        no43: string;
+        no44: string;
+      };
+      output05: {
+        no50: string;
+        no51: string;
+        no52: string;
+        no53: string;
+        no54: string;
+      };
+      output06: {
+        no60: string;
+        no61: string;
+        no62: string;
+        no63: string;
+        no64: string;
+      };
+      output07: {
+        no70: string;
+        no71: string;
+        no72: string;
+        no73: string;
+        no74: string;
+      };
+      output08: {
+        no80: string;
+        no81: string;
+        no82: string;
+        no83: string;
+        no84: string;
+      };
+      output09: {
+        no90: string;
+        no91: string;
+        no92: string;
+        no93: string;
+        no94: string;
+      };
     };
     position_change: {
-      do_or_not: string;
-      position: string;
-      condition: string;
+      position_change00: {
+        no00: string;
+        no01: string;
+        no02: string;
+        no03: string;
+      };
+      position_change01: {
+        no10: string;
+        no11: string;
+        no12: string;
+        no13: string;
+      };
+      position_change02: {
+        no20: string;
+        no21: string;
+        no22: string;
+        no23: string;
+      };
+      position_change03: {
+        no30: string;
+        no31: string;
+        no32: string;
+        no33: string;
+      };
+      position_change04: {
+        no40: string;
+        no41: string;
+        no42: string;
+        no43: string;
+      };
+      position_change05: {
+        no50: string;
+        no51: string;
+        no52: string;
+        no53: string;
+      };
+      position_change06: {
+        no60: string;
+        no61: string;
+        no62: string;
+        no63: string;
+      };
+      position_change07: {
+        no70: string;
+        no71: string;
+        no72: string;
+        no73: string;
+      };
+      position_change08: {
+        no80: string;
+        no81: string;
+        no82: string;
+        no83: string;
+      };
+      position_change09: {
+        no90: string;
+        no91: string;
+        no92: string;
+        no93: string;
+      };
     };
     restraint: {
-      date: string;
-      reason: string;
-      part: string;
-      condition: string;
-      cyanosis: string;
-      temp: string;
-      sense: string;
-      adverse_reaction: string;
-      prevention: string;
+      restraint00: {
+        no00: string;
+        no01: string;
+        no02: string;
+        no03: string;
+        no04: string;
+        no05: string;
+        no06: string;
+        no07: string;
+        no08: string;
+      };
+      restraint01: {
+        no10: string;
+        no11: string;
+        no12: string;
+        no13: string;
+        no14: string;
+        no15: string;
+        no16: string;
+        no17: string;
+        no18: string;
+      };
+      restraint02: {
+        no20: string;
+        no21: string;
+        no22: string;
+        no23: string;
+        no24: string;
+        no25: string;
+        no26: string;
+        no27: string;
+        no28: string;
+      };
+      restraint03: {
+        no30: string;
+        no31: string;
+        no32: string;
+        no33: string;
+        no34: string;
+        no35: string;
+        no36: string;
+        no37: string;
+        no38: string;
+      };
+      restraint04: {
+        no40: string;
+        no41: string;
+        no42: string;
+        no43: string;
+        no44: string;
+        no45: string;
+        no46: string;
+        no47: string;
+        no48: string;
+      };
+      restraint05: {
+        no50: string;
+        no51: string;
+        no52: string;
+        no53: string;
+        no54: string;
+        no55: string;
+        no56: string;
+        no57: string;
+        no58: string;
+      };
+      restraint06: {
+        no60: string;
+        no61: string;
+        no62: string;
+        no63: string;
+        no64: string;
+        no65: string;
+        no66: string;
+        no67: string;
+        no68: string;
+      };
+      restraint07: {
+        no70: string;
+        no71: string;
+        no72: string;
+        no73: string;
+        no74: string;
+        no75: string;
+        no76: string;
+        no77: string;
+        no78: string;
+      };
+      restraint08: {
+        no80: string;
+        no81: string;
+        no82: string;
+        no83: string;
+        no84: string;
+        no85: string;
+        no86: string;
+        no87: string;
+        no88: string;
+      };
+      restraint09: {
+        no90: string;
+        no91: string;
+        no92: string;
+        no93: string;
+        no94: string;
+        no95: string;
+        no96: string;
+        no97: string;
+        no98: string;
+      };
     };
-    ipc: string;
+    ipc: {
+      ipc00: string;
+      ipc01: string;
+      ipc02: string;
+      ipc03: string;
+      ipc04: string;
+      ipc05: string;
+      ipc06: string;
+      ipc07: string;
+      ipc08: string;
+      ipc09: string;
+    };
     vent: {
-      date: string;
-      mode: string;
-      fio2: string;
-      peep: string;
-      f: string;
-      vsennse: string;
-      pi: string;
-      ti: string;
-      tv: string;
-      mv: string;
-      cstat: string;
-      pf_ration: string;
+      vent00: {
+        no00: string;
+        no01: string;
+        no02: string;
+        no03: string;
+        no04: string;
+        no05: string;
+        no06: string;
+        no07: string;
+        no08: string;
+        no09: string;
+        no010: string;
+        no011: string;
+      };
+      vent01: {
+        no10: string;
+        no11: string;
+        no12: string;
+        no13: string;
+        no14: string;
+        no15: string;
+        no16: string;
+        no17: string;
+        no18: string;
+        no19: string;
+        no110: string;
+        no111: string;
+      };
+      vent02: {
+        no20: string;
+        no21: string;
+        no22: string;
+        no23: string;
+        no24: string;
+        no25: string;
+        no26: string;
+        no27: string;
+        no28: string;
+        no29: string;
+        no210: string;
+        no211: string;
+      };
+      vent03: {
+        no30: string;
+        no31: string;
+        no32: string;
+        no33: string;
+        no34: string;
+        no35: string;
+        no36: string;
+        no37: string;
+        no38: string;
+        no39: string;
+        no310: string;
+        no311: string;
+      };
+      vent04: {
+        no40: string;
+        no41: string;
+        no42: string;
+        no43: string;
+        no44: string;
+        no45: string;
+        no46: string;
+        no47: string;
+        no48: string;
+        no49: string;
+        no410: string;
+        no411: string;
+      };
+      vent05: {
+        no50: string;
+        no51: string;
+        no52: string;
+        no53: string;
+        no54: string;
+        no55: string;
+        no56: string;
+        no57: string;
+        no58: string;
+        no59: string;
+        no510: string;
+        no511: string;
+      };
+      vent06: {
+        no60: string;
+        no61: string;
+        no62: string;
+        no63: string;
+        no64: string;
+        no65: string;
+        no66: string;
+        no67: string;
+        no68: string;
+        no69: string;
+        no610: string;
+        no611: string;
+      };
+      vent07: {
+        no70: string;
+        no71: string;
+        no72: string;
+        no73: string;
+        no74: string;
+        no75: string;
+        no76: string;
+        no77: string;
+        no78: string;
+        no79: string;
+        no710: string;
+        no711: string;
+      };
+      vent08: {
+        no80: string;
+        no81: string;
+        no82: string;
+        no83: string;
+        no84: string;
+        no85: string;
+        no86: string;
+        no87: string;
+        no88: string;
+        no89: string;
+        no810: string;
+        no811: string;
+      };
+      vent09: {
+        no90: string;
+        no91: string;
+        no92: string;
+        no93: string;
+        no94: string;
+        no95: string;
+        no96: string;
+        no97: string;
+        no98: string;
+        no99: string;
+        no910: string;
+        no911: string;
+      };
     };
     crrt: {
-      mode: string;
-      blood_flow: string;
-      dialysate: string;
-      pre: string;
-      post: string;
-      pbp: string;
-      pt_fluid_rmv: string;
-      anti_coagulation: string;
-      crrt_ck: string;
-      access_prs: string;
-      return_prs: string;
-      filter_prs: string;
-      effluent_prs: string;
-      tmp_prs: string;
-      prs_drop: string;
+      crrt00: {
+        no00: string;
+        no01: string;
+        no02: string;
+        no03: string;
+        no04: string;
+        no05: string;
+        no06: string;
+        no07: string;
+        no08: string;
+        no09: string;
+        no010: string;
+        no011: string;
+        no012: string;
+        no013: string;
+        no014: string;
+      };
+      crrt01: {
+        no10: string;
+        no11: string;
+        no12: string;
+        no13: string;
+        no14: string;
+        no15: string;
+        no16: string;
+        no17: string;
+        no18: string;
+        no19: string;
+        no110: string;
+        no111: string;
+        no112: string;
+        no113: string;
+        no114: string;
+      };
+      crrt02: {
+        no20: string;
+        no21: string;
+        no22: string;
+        no23: string;
+        no24: string;
+        no25: string;
+        no26: string;
+        no27: string;
+        no28: string;
+        no29: string;
+        no210: string;
+        no211: string;
+        no212: string;
+        no213: string;
+        no214: string;
+      };
+      crrt03: {
+        no30: string;
+        no31: string;
+        no32: string;
+        no33: string;
+        no34: string;
+        no35: string;
+        no36: string;
+        no37: string;
+        no38: string;
+        no39: string;
+        no310: string;
+        no311: string;
+        no312: string;
+        no313: string;
+        no314: string;
+      };
+      crrt04: {
+        no40: string;
+        no41: string;
+        no42: string;
+        no43: string;
+        no44: string;
+        no45: string;
+        no46: string;
+        no47: string;
+        no48: string;
+        no49: string;
+        no410: string;
+        no411: string;
+        no412: string;
+        no413: string;
+        no414: string;
+      };
+      crrt05: {
+        no50: string;
+        no51: string;
+        no52: string;
+        no53: string;
+        no54: string;
+        no55: string;
+        no56: string;
+        no57: string;
+        no58: string;
+        no59: string;
+        no510: string;
+        no511: string;
+        no512: string;
+        no513: string;
+        no514: string;
+      };
+      crrt06: {
+        no60: string;
+        no61: string;
+        no62: string;
+        no63: string;
+        no64: string;
+        no65: string;
+        no66: string;
+        no67: string;
+        no68: string;
+        no69: string;
+        no610: string;
+        no611: string;
+        no612: string;
+        no613: string;
+        no614: string;
+      };
+      crrt07: {
+        no70: string;
+        no71: string;
+        no72: string;
+        no73: string;
+        no74: string;
+        no75: string;
+        no76: string;
+        no77: string;
+        no78: string;
+        no79: string;
+        no710: string;
+        no711: string;
+        no712: string;
+        no713: string;
+        no714: string;
+      };
+      crrt08: {
+        no80: string;
+        no81: string;
+        no82: string;
+        no83: string;
+        no84: string;
+        no85: string;
+        no86: string;
+        no87: string;
+        no88: string;
+        no89: string;
+        no810: string;
+        no811: string;
+        no812: string;
+        no813: string;
+        no814: string;
+      };
+      crrt09: {
+        no90: string;
+        no91: string;
+        no92: string;
+        no93: string;
+        no94: string;
+        no95: string;
+        no96: string;
+        no97: string;
+        no98: string;
+        no99: string;
+        no910: string;
+        no911: string;
+        no912: string;
+        no913: string;
+        no914: string;
+      };
     };
   };
 }

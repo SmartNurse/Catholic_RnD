@@ -127,7 +127,6 @@ const Suppressor = (props: SurveyDialogProps<TSuppressorDefaultValues>) => {
         }}
       >
         신체 억제대 사용동의서
-        <br />- 테스트 중입니다. -
       </Typography>
       <CommonPatientInfo patientInfo={patientInfo} nurseName={nurseName} />
       <Box sx={{ marginTop: '48px' }}>

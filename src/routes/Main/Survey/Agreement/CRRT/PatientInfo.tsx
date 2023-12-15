@@ -70,7 +70,11 @@ const PatientInfo = (props: Props) => {
         >
           1) 진단명
         </Typography>
-        <Form.MuiTextField disabled={disabled} placeholder="직접 입력" />
+        <Form.MuiTextField
+          disabled={disabled}
+          required={false}
+          placeholder="직접 입력"
+        />
         <Typography
           sx={{
             lineHeight: '20px',
@@ -98,6 +102,7 @@ const PatientInfo = (props: Props) => {
                     <Form.MuiTextField
                       sx={{ width: '120px', marginLeft: '20px' }}
                       disabled={disabled}
+                      required={false}
                       placeholder="직접 입력"
                     />
                   </Stack>
