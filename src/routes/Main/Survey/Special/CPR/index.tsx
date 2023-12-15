@@ -6,14 +6,16 @@ import useNotification from 'hooks/useNotification';
 import { Typography } from '@mui/material';
 import MuiDialog from 'components/MuiDialog';
 
-import { SurveyDialogProps, TCPRDefaultValues } from '../../type';
+import { SurveyDialogProps, TCNPSDefaultValues } from '../../type';
 
+import CommonPatientInfo from '../../components/CommonPatientInfo';
 import CPRContents from './CPRContents';
+import CPRContentsTwo from './CPRContentsTwo';
 
-import { updateCNPS, updateCPR } from 'apis/survey';
+import { updateCNPS } from 'apis/survey';
 import PatientStaffInfo from './PatientStaffInfo';
 
-const CPR = (props: SurveyDialogProps<TCPRDefaultValues>) => {
+const CPR = (props: SurveyDialogProps<TCNPSDefaultValues>) => {
   const {
     title,
     isOpen,
@@ -31,38 +33,19 @@ const CPR = (props: SurveyDialogProps<TCPRDefaultValues>) => {
     defaultValues,
   });
 
-  const onSubmit = (data: TCPRDefaultValues) => {
-    const {
-      update_at,
-      find_date,
-      find_time,
-      terminate_reason,
-      clinical_observation,
-      treatment,
-      intubation,
-      medication,
-      test,
-    } = data;
-    console.log(data);
+  const onSubmit = (data: TCNPSDefaultValues) => {
+    const { face, activity, respiratory, vocalization } = data;
 
     const request = {
       user_id,
       patient_id: patientInfo.patient_id,
-      catholic_cpr_survey: {
-        update_at,
-        find_date,
-        find_time,
-        terminate_reason,
-        clinical_observation,
-        treatment,
-        intubation,
-        medication,
-        test,
-      },
+      cnps_survey: { ...data },
     };
-    updateCPR(request)
+
+    updateCNPS(request)
       .then(({ data: { rc } }) => {
         if (rc !== 1) return onResultCode(rc);
+
         onUpdateIsSave(true);
         onSuccess('CNPS 저장에 성공하였습니다.');
       })
@@ -104,8 +87,8 @@ const CPR = (props: SurveyDialogProps<TCPRDefaultValues>) => {
         nurseName={nurseName}
       />
 
-      <CPRContents {...formProps} timeStart={0} />
-      <CPRContents {...formProps} timeStart={11} />
+      <CPRContents {...formProps} />
+      <CPRContentsTwo {...formProps} />
     </MuiDialog.SurveyForm>
   );
 };

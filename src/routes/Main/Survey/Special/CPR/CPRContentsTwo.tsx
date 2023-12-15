@@ -3,14 +3,13 @@ import Form from 'components/Form';
 import { useEffect, useState } from 'react';
 import {
   Box,
-  Typography,
+  Checkbox,
   Table,
   TableBody,
   TableHead,
   TableRow,
   useTheme,
   Stack,
-  Checkbox,
 } from '@mui/material';
 import { AccessTime } from '@mui/icons-material';
 import {
@@ -28,12 +27,25 @@ import { MobileTimePicker } from '@mui/x-date-pickers';
 const radioId = ['face', 'activity', 'respiratory', 'vocalization'];
 const contentLabel = [
   {
+    id: '활력\n징후',
+    ko: ['혈압(mmHg)', '심박수', '호흡수', '체온'],
+    desc: [
+      '자연스러운 표정',
+      '미간 찡그림, 눈살 찌푸림, 눈물 글썽거림',
+      '눈물을 흘림, 눈을 꽉 감음, 입을 씰룩거리며 눈을 찡그림',
+      '이를 악뭄, 기관 내관을 밀어내거나 깨뭄',
+      'q',
+      'w',
+      'e',
+      'r',
+      't',
+      'y',
+      't',
+    ],
+  },
+  {
     id: '임상\n관찰',
     ko: [
-      '혈압(mmHg)',
-      '심박수',
-      '호흡수',
-      '체온',
       '산소포화도(%)',
       '의식상태',
       '동공크기',
@@ -134,7 +146,7 @@ interface Props extends IFormValues, IFormWatch, IFormRegister {
   disabled?: boolean;
 }
 
-const CPRContents = (props: Props) => {
+const CPRContentsTwo = (props: Props) => {
   const { palette } = useTheme();
   const [checkTime, setCheckTime] = useState(null);
 
@@ -165,65 +177,10 @@ const CPRContents = (props: Props) => {
 
   return (
     <>
-      <SectionTitle title="CPR 기록지" mt={3} />
-      <Box
-        display={'flex'}
-        justifyContent={'space-between'}
-        sx={{ padding: '50px 0 0 30px' }}
-      >
-        <Stack direction="row">
-          <Typography
-            sx={{
-              whiteSpace: 'nowrap',
-              lineHeight: '38px',
-              marginRight: '50px',
-              fontSize: '14px',
-            }}
-          >
-            심정지 발견
-          </Typography>
-          <Form.MuiTextField
-            type="date"
-            disabled={disabled}
-            sx={{ marginRight: '20px' }}
-            {...register('zz')}
-          />
-          <MobileTimePicker
-            value={checkTime}
-            onChange={setCheckTime}
-            renderInput={params => (
-              <Form.MuiTextField
-                {...params}
-                required={false}
-                placeholder="00:00 pm"
-                InputProps={{ endAdornment: <AccessTime /> }}
-              />
-            )}
-          />
-        </Stack>
-        <Stack direction="row" marginRight="20px">
-          <Typography
-            sx={{
-              whiteSpace: 'nowrap',
-              lineHeight: '38px',
-              marginRight: '50px',
-              fontSize: '14px',
-            }}
-          >
-            소생술 종료사유
-          </Typography>
-          <Form.MuiTextField
-            disabled={disabled}
-            // sx={{ marginRight: '20px' }}
-            {...register('zz')}
-          />
-        </Stack>
-      </Box>
-
       <Box
         sx={{
           width: '88%',
-          marginTop: '60px',
+          marginTop: '30px',
           marginRight: 'auto',
           marginLeft: 'auto',
         }}
@@ -244,77 +201,77 @@ const CPRContents = (props: Props) => {
                 align="right"
                 sx={{ paddingRight: '5px' }}
               >
-                0
+                11
               </CPRStyledTableCellHeadNumbering>
               <CPRStyledTableCellHeadNumbering
                 colSpan={1}
                 align="right"
                 sx={{ paddingRight: '5px' }}
               >
-                1
+                12
               </CPRStyledTableCellHeadNumbering>
               <CPRStyledTableCellHeadNumbering
                 colSpan={1}
                 align="right"
                 sx={{ paddingRight: '5px' }}
               >
-                2
+                13
               </CPRStyledTableCellHeadNumbering>
               <CPRStyledTableCellHeadNumbering
                 colSpan={1}
                 align="right"
                 sx={{ paddingRight: '5px' }}
               >
-                3
+                14
               </CPRStyledTableCellHeadNumbering>
               <CPRStyledTableCellHeadNumbering
                 colSpan={1}
                 align="right"
                 sx={{ paddingRight: '5px' }}
               >
-                4
+                15
               </CPRStyledTableCellHeadNumbering>
               <CPRStyledTableCellHeadNumbering
                 colSpan={1}
                 align="right"
                 sx={{ paddingRight: '5px' }}
               >
-                5
+                16
               </CPRStyledTableCellHeadNumbering>
               <CPRStyledTableCellHeadNumbering
                 colSpan={1}
                 align="right"
                 sx={{ paddingRight: '5px' }}
               >
-                6
+                17
               </CPRStyledTableCellHeadNumbering>
               <CPRStyledTableCellHeadNumbering
                 colSpan={1}
                 align="right"
                 sx={{ paddingRight: '5px' }}
               >
-                7
+                18
               </CPRStyledTableCellHeadNumbering>
               <CPRStyledTableCellHeadNumbering
                 colSpan={1}
                 align="right"
                 sx={{ paddingRight: '5px' }}
               >
-                8
+                19
               </CPRStyledTableCellHeadNumbering>
               <CPRStyledTableCellHeadNumbering
                 colSpan={1}
                 align="right"
                 sx={{ paddingRight: '5px' }}
               >
-                9
+                20
               </CPRStyledTableCellHeadNumbering>
               <CPRStyledTableCellHeadNumbering
                 colSpan={1}
                 align="right"
                 sx={{ paddingRight: '5px' }}
               >
-                10
+                21
               </CPRStyledTableCellHeadNumbering>
             </TableRow>
           </TableHead>
@@ -366,6 +323,7 @@ const CPRContents = (props: Props) => {
                             </TableRow>
                           );
                         }
+
                         return (
                           <TableRow
                             sx={{
@@ -512,4 +470,4 @@ const CPRContents = (props: Props) => {
   );
 };
 
-export default CPRContents;
+export default CPRContentsTwo;

@@ -387,12 +387,12 @@ export const updateTransfusion = (request: IUpdateTransfusion) => {
 
 // CPR 기록지
 export const getCPR = (request: IGetSurvey) => {
-  const url = `/enr_etc/catholic/cpr?${formatToRequestParameter(request)}`;
+  const url = `/survey/cnps?${formatToRequestParameter(request)}`;
   return apiGateway.get(url);
 };
 
 export const updateCPR = (request: IUpdateCPR) => {
-  const url = `/enr_etc/catholic/cpr`;
+  const url = `/survey/cnps`;
   return apiGateway.post(url, camelcaseKeys(request));
 };
 
