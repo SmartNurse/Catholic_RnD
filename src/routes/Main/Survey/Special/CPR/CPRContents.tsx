@@ -83,8 +83,8 @@ const contentLabel = [
   {
     id: '검사',
     ko: ['ABGA', 'Chest X-ray', 'lab'],
-    idforApi: 'test',
-    koforApi: ['abga', 'chest', 'lab'],
+    idForApi: 'test',
+    koForApi: ['abga', 'chest', 'lab'],
     desc: Array(11).fill(' '),
   },
 ];
@@ -169,12 +169,18 @@ const CPRContents = (props: Props) => {
       setValue('treatment', cprRecord.treatment);
     }
     if (getValues('intubation')) {
-      setCprRecord(prev => ({ ...prev, intubation: getValues('intubation') }));
+      setCprRecord(prev => ({
+        ...prev,
+        intubation: getValues('intubation'),
+      }));
     } else {
       setValue('intubation', cprRecord.intubation);
     }
     if (getValues('medication')) {
-      setCprRecord(prev => ({ ...prev, medication: getValues('medication') }));
+      setCprRecord(prev => ({
+        ...prev,
+        medication: getValues('medication'),
+      }));
     } else {
       setValue('medication', cprRecord.medication);
     }
@@ -183,19 +189,7 @@ const CPRContents = (props: Props) => {
     } else {
       setValue('test', cprRecord.test);
     }
-  }, [
-    cprRecord.clinical_observation,
-    cprRecord.find_date,
-    cprRecord.find_time,
-    cprRecord.intubation,
-    cprRecord.medication,
-    cprRecord.terminate_reason,
-    cprRecord.test,
-    cprRecord.treatment,
-    cprRecord.update_at,
-    getValues,
-    setValue,
-  ]);
+  }, []);
 
   useEffect(() => {
     console.log(cprRecord);
@@ -246,7 +240,16 @@ const CPRContents = (props: Props) => {
           </TableHead>
           <TableBody>
             {contentLabel.map(
-              (content: { id: string; ko: string[]; desc: string[] }, i) => {
+              (
+                content: {
+                  id: string;
+                  ko: string[];
+                  desc: string[];
+                  koForApi: string[];
+                  idForApi: string;
+                },
+                i
+              ) => {
                 return (
                   <TableRow>
                     <CPRStyledTableCellFirst
@@ -327,19 +330,19 @@ const CPRContents = (props: Props) => {
                       })}
                     </CPRStyledTableCell>
 
-                    {content.desc.map((v, i) => {
+                    {content.desc.map((_, descIdx) => {
                       return (
                         <CPRStyledTableCellBodyNumbering>
-                          {content.ko.map((_, i) => {
+                          {content.ko.map((_, koIdx) => {
                             if (
-                              content.ko[i] === 'ABGA' ||
-                              content.ko[i] === 'Chest X-ray' ||
-                              content.ko[i] === 'lab'
+                              content.ko[koIdx] === 'ABGA' ||
+                              content.ko[koIdx] === 'Chest X-ray' ||
+                              content.ko[koIdx] === 'lab'
                             ) {
                               return (
                                 <TableRow
                                   sx={{
-                                    lineHeight: content.ko[i].includes(
+                                    lineHeight: content.ko[koIdx].includes(
                                       '심장리듬'
                                     )
                                       ? '44px'
@@ -359,14 +362,12 @@ const CPRContents = (props: Props) => {
                                     <Checkbox
                                       size="small"
                                       // value={label}
-                                      defaultValue={
-                                        Boolean(getValues(`${v}checked`))
-                                          ? [v]
-                                          : []
-                                      }
-                                      onChange={(_, checked) => {
-                                        setValue(`${v}checked`, checked);
-                                      }}
+                                      // FIXME: 선택안됨
+                                      checked={Boolean(
+                                        cprRecord.test[
+                                          `${content.koForApi[koIdx]}${descIdx}` as keyof typeof cprRecord.test.abga0
+                                        ]
+                                      )}
                                     />
                                   </Box>
                                 </TableRow>
@@ -398,7 +399,30 @@ const CPRContents = (props: Props) => {
                                       width: '100%',
                                       height: '44px',
                                     }}
-                                    {...register(`${v}`)}
+                                    {...register(
+                                      `${content.koForApi[koIdx]}${descIdx}`
+                                    )}
+                                    // FIXME: submit 시 넘어오는 값 변경안됨, 렌더링 늦게됨
+                                    value={
+                                      // @ts-ignore
+                                      cprRecord[content.idForApi][
+                                        `${content.koForApi[koIdx]}${descIdx}`
+                                      ]
+                                    }
+                                    onChange={e => {
+                                      const key = `${content.koForApi[koIdx]}${descIdx}`;
+                                      setCprRecord(prev => {
+                                        const idForApi =
+                                          content.idForApi as keyof typeof prev;
+                                        return {
+                                          ...prev,
+                                          [idForApi]: {
+                                            ...(prev[idForApi] as object),
+                                            [key]: e.target.value,
+                                          },
+                                        };
+                                      });
+                                    }}
                                   />
                                 </Box>
                               </TableRow>
