@@ -419,19 +419,20 @@ const CPRContents = (props: Props) => {
                                     }}
                                     {...register(
                                       content.idForApi === 'medication'
-                                        ? `${
-                                            cprRecord.medication
-                                          }.no${descIdx}_${koIdx + 1}`
+                                        ? `medication.no${
+                                            descIdx + timeStart
+                                          }_${koIdx + 1}`
                                         : `${content.idForApi}.${
                                             content.koForApi[koIdx]
                                           }${descIdx + timeStart}`
                                     )}
-                                    // FIXME: 기존 medication 값 유지가 안됨, 초기 medication 값 렌더링 안됨
                                     value={
                                       content.idForApi === 'medication'
                                         ? // @ts-ignore
                                           cprRecord.medication[
-                                            `no${descIdx}_${koIdx + 1}`
+                                            `no${descIdx + timeStart}_${
+                                              koIdx + 1
+                                            }`
                                           ]
                                         : // @ts-ignore
                                           cprRecord[content.idForApi][
