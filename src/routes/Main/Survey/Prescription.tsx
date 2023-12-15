@@ -91,12 +91,6 @@ const Prescription = (props: SurveyDialogProps<null>) => {
             image={five}
             sx={{ objectFit: 'contain' }}
           />
-          <CardMedia
-            height={1200}
-            component="img"
-            image={six}
-            sx={{ objectFit: 'contain' }}
-          />
         </Box>
       ) : (
         <></>
