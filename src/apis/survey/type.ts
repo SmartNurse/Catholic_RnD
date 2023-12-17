@@ -1498,7 +1498,7 @@ export interface IUpdateCPR extends IGetSurvey {
       hr9: string;
       rr9: string;
       bt9: string;
-      sp929: string;
+      spo29: string;
       consciousness9: string;
       pupil_size9: string;
       pupil_reflex9: string;
@@ -1588,7 +1588,7 @@ export interface IUpdateCPR extends IGetSurvey {
       hr19: string;
       rr19: string;
       bt19: string;
-      sp9219: string;
+      spo219: string;
       consciousness19: string;
       pupil_size19: string;
       pupil_reflex19: string;
