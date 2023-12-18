@@ -56,6 +56,7 @@ import {
   getNursingProcess,
   getKPCS_ICU,
   getIntubation,
+  getHygiene,
 } from 'apis/survey';
 import useNotification from 'hooks/useNotification';
 import { findKeyValueToObj, findKeyValueToObjNoParse } from 'utils/convert';
@@ -252,6 +253,18 @@ const useDefaultValues = ({ setDefaultValues, user_id }: Props) => {
         break;
       case MENU.GLUCOSE:
         getGlucose({ user_id, patient_id })
+          .then(({ data }) => {
+            const { update_at, blood_sugar_survey } = data;
+            convertDataToStates(
+              { update_at, ...blood_sugar_survey },
+              initialGlucose
+            );
+          })
+          .catch(e => onFail('알 수 없는 오류가 발생했습니다.', e));
+        break;
+      // TODO: 위생간호 API 연결
+      case MENU.HYGIENE:
+        getHygiene({ user_id, patient_id })
           .then(({ data }) => {
             const { update_at, blood_sugar_survey } = data;
             convertDataToStates(

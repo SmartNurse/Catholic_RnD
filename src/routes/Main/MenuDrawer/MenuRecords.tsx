@@ -30,6 +30,7 @@ import {
   ExposureOutlined,
   LocalHotelOutlined,
   AssignmentTurnedInOutlined,
+  CleanHandsOutlined,
 } from '@mui/icons-material';
 
 import { ReactComponent as ProPlus } from '../../../assets/proPlus.svg';
@@ -107,6 +108,10 @@ const MenuRecords = (props: Props) => {
     {
       icon: <WashOutlined />,
       label: '혈당 기록지',
+    },
+    {
+      icon: <CleanHandsOutlined />,
+      label: '위생간호 수행 기록지',
     },
     {
       disabled: true,

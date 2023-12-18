@@ -10,7 +10,7 @@ import {
   Box,
   TextField,
 } from '@mui/material';
-import { DatePicker, MobileTimePicker } from '@mui/x-date-pickers';
+import { MobileTimePicker } from '@mui/x-date-pickers';
 
 import { Ti18nId } from 'hooks/useI18n';
 import { IGlucoseRecord } from 'apis/survey/type';

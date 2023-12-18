@@ -987,6 +987,13 @@ export const initialGlucose = {
   prescription: [],
 };
 
+export const initialHygiene = {
+  update_at: '',
+  oral: [{ date: '', isComplete: '' }],
+  perineum: [{ date: '', isComplete: '' }],
+  bath: [{ date: '', isComplete: '' }],
+};
+
 export const initialBedScore = {
   date: '',
   update_at: '',
