@@ -68,6 +68,7 @@ import CentralVenous from './Agreement/CentralVenous';
 import NursingRecord from './NursingRecord';
 import IntubationAgreement from './Agreement/Intubation';
 import DNRTwo from './Agreement/DNRTwo';
+import Hygiene from './Hygiene';
 
 interface Props {
   surveyType: string;
@@ -127,6 +128,10 @@ const DisplaySurvey = (props: Props) => {
     case MENU.GLUCOSE: {
       if (!defaultValues) return null;
       return <Glucose {...dialogProps} onClose={onCloseSave} />;
+    }
+    case MENU.HYGIENE: {
+      if (!defaultValues) return null;
+      return <Hygiene {...dialogProps} onClose={onCloseSave} />;
     }
     case MENU.BEDSORES: {
       if (!defaultValues) return null;

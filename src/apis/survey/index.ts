@@ -61,6 +61,7 @@ import {
   IUpdateNursingProcess,
   IUpdateKPCS_ICU,
   IUpdateIntubation,
+  IUpdateHygiene,
 } from './type';
 
 // e-CARDEX
@@ -150,6 +151,17 @@ export const getGlucose = (request: IGetSurvey) => {
 };
 
 export const updateGlucose = (request: IUpdateGlucose) => {
+  const url = `/survey/bloodSugar`;
+  return apiGateway.post(url, camelcaseKeys(request));
+};
+
+// 위생간호 수행기록지
+export const getHygiene = (request: IGetSurvey) => {
+  const url = `/survey/bloodSugar?${formatToRequestParameter(request)}`;
+  return apiGateway.get(url);
+};
+
+export const updateHygiene = (request: IUpdateHygiene) => {
   const url = `/survey/bloodSugar`;
   return apiGateway.post(url, camelcaseKeys(request));
 };

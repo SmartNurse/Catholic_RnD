@@ -1084,6 +1084,21 @@ export interface IUpdateGlucose extends IGetSurvey {
   };
 }
 
+// 위생간호 수행 기록
+export interface IHygieneRecord {
+  update_at: string;
+  oral: [{ date: string; isComplete: string }];
+  perineum: [{ date: string; isComplete: string }];
+  bath: [{ date: string; isComplete: string }];
+}
+
+export interface IUpdateHygiene extends IGetSurvey {
+  update_at: string;
+  oral: [{ date: string; isComplete: string }];
+  perineum: [{ date: string; isComplete: string }];
+  bath: [{ date: string; isComplete: string }];
+}
+
 // 욕창위험도평가도구
 export interface IBedScore {
   date: string;

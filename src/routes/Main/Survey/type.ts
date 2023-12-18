@@ -60,6 +60,7 @@ import {
   initialCPR,
   initialNursingProcess,
   initialKPCS_ICU,
+  initialHygiene,
 } from './initialStates';
 
 export enum MENU {
@@ -75,6 +76,7 @@ export enum MENU {
   CLINICAL_OBSERVATION = '임상관찰 기록지',
   IORECORD = '섭취 및 배설량 기록지',
   GLUCOSE = '혈당 기록지',
+  HYGIENE = '위생간호 수행 기록지',
   BEDSORES = '욕창위험 평가도구',
   BEDSORESTWO = '욕창위험 평가도구 II',
   NEEDS = '욕구평가 기록지',
@@ -161,6 +163,7 @@ export type TPathologyDefaultValues = typeof initialPathology;
 export type TClinicalObservationDefaultValues =
   typeof initialClinicalObservation;
 export type TGlucoseDefaultValues = typeof initialGlucose;
+export type THygieneDefaultValues = typeof initialHygiene;
 export type TBedScoreDefaultValues = typeof initialBedScore;
 export type TBedScoreTwoDefaultValues = typeof initialBedScoreTwo;
 export type TNeedsDefaultValues = typeof initialNeeds;
