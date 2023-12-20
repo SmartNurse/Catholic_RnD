@@ -69,6 +69,7 @@ import NursingRecord from './NursingRecord';
 import IntubationAgreement from './Agreement/Intubation';
 import DNRTwo from './Agreement/DNRTwo';
 import Hygiene from './Hygiene';
+import PrescriptionOrigin from './PrescriptionOrigin';
 
 interface Props {
   surveyType: string;
@@ -98,6 +99,9 @@ const DisplaySurvey = (props: Props) => {
     case MENU.OUT_HOSPITAL: {
       if (!defaultValues) return null;
       return <OutHospital {...dialogProps} onClose={onCloseSave} />;
+    }
+    case MENU.PRESCRIPTIONORIGIN: {
+      return <PrescriptionOrigin {...dialogProps} onClose={onCloseReadOnly} />;
     }
     case MENU.PRESCRIPTION: {
       return <Prescription {...dialogProps} onClose={onCloseReadOnly} />;

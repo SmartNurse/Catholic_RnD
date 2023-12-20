@@ -29,8 +29,8 @@ import {
   Diversity2Outlined,
   ExposureOutlined,
   LocalHotelOutlined,
-  AssignmentTurnedInOutlined,
   CleanHandsOutlined,
+  HealingOutlined,
 } from '@mui/icons-material';
 
 import { ReactComponent as ProPlus } from '../../../assets/proPlus.svg';
@@ -63,6 +63,10 @@ const MenuRecords = (props: Props) => {
     {
       icon: <DvrOutlined />,
       label: 'e-CARDEX',
+    },
+    {
+      icon: <HealingOutlined />,
+      label: '처방 기록지',
     },
     {
       icon: <LocalPharmacyOutlined />,
